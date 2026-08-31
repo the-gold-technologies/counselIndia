@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 
 export default function CorporateClients() {
   const clientLogos = [
@@ -10,90 +10,117 @@ export default function CorporateClients() {
     { id: 5, image: "/assets/images/partners-logo/client-logo-05.jpg", alt: "Indiabulls" },
     { id: 6, image: "/assets/images/partners-logo/client-logo-06.jpg", alt: "HDFC Credila" },
     { id: 7, image: "/assets/images/partners-logo/client-logo-111.jpg", alt: "JBM Group" },
-    { id: 8, image: "/assets/images/partners-logo/client-logo-121.jpg", alt: "Corporate Partner 8" },
-    { id: 9, image: "/assets/images/partners-logo/client-logo-131.jpg", alt: "Corporate Partner 9" },
+    { id: 8, image: "/assets/images/partners-logo/client-logo-121.jpg", alt: "BharatBenz" },
+    { id: 9, image: "/assets/images/partners-logo/client-logo-131.jpg", alt: "Corporate Partner" },
+    { id: 10, image: "/assets/images/partners-logo/client-logo-07.jpg", alt: "Corporate Partner 7" },
+    { id: 11, image: "/assets/images/partners-logo/client-logo-08.jpg", alt: "Corporate Partner 8" },
+    { id: 12, image: "/assets/images/partners-logo/client-logo-09.jpg", alt: "Corporate Partner 9" },
+    { id: 13, image: "/assets/images/partners-logo/client-logo-10.jpg", alt: "Corporate Partner 10" },
+    { id: 14, image: "/assets/images/partners-logo/client-logo-11.jpg", alt: "Corporate Partner 11" },
+    { id: 15, image: "/assets/images/partners-logo/client-logo-12.jpg", alt: "Corporate Partner 12" },
   ];
 
-  useEffect(() => {
-    let swiperInstance: any = null;
-    const init = () => {
-      if (typeof window !== "undefined" && (window as any).Swiper) {
-        swiperInstance = new (window as any).Swiper(".corporate-active .swiper", {
-          slidesPerView: 7,
-          spaceBetween: 20,
-          loop: true,
-          autoplay: { delay: 2000, disableOnInteraction: false },
-          speed: 1000,
-          breakpoints: {
-            0: { slidesPerView: 2, spaceBetween: 12 },
-            576: { slidesPerView: 3, spaceBetween: 15 },
-            768: { slidesPerView: 4, spaceBetween: 15 },
-            992: { slidesPerView: 5, spaceBetween: 18 },
-            1200: { slidesPerView: 7, spaceBetween: 20 },
-          },
-        });
-      }
-    };
-    init();
-    const t = setTimeout(init, 400);
-    return () => {
-      clearTimeout(t);
-      if (swiperInstance?.destroy) swiperInstance.destroy(true, true);
-    };
-  }, []);
+  // Triplicate array for seamless infinite marquee loop
+  const marqueeClients = [...clientLogos, ...clientLogos, ...clientLogos];
 
   return (
-    <div className="partners-seaction section-padding-02 bg-white">
+    <div className="partners-seaction section-padding-02 bg-white py-5">
       <div className="container custom-container">
-        <div className="row">
-          <div className="col-sm-12">
+        <div className="row mb-4">
+          <div className="col-12">
             {/* Section Title Start */}
-            <div className="section-title mb-4">
-              <h2 className="section-title__title">
-                Our <mark>Valued Corporate</mark> Clients
+            <div className="section-title">
+              <h2 className="section-title__title font-size-36 fw-bold">
+                Our Valued <mark>Corporate Clients</mark>
               </h2>
             </div>
             {/* Section Title End */}
           </div>
         </div>
 
-        {/* Partners Active Start */}
-        <div className="partners-active corporate-active">
-          <div className="swiper">
-            <div className="swiper-wrapper py-2">
-              {clientLogos.map((client) => (
-                <div className="swiper-slide" key={client.id}>
-                  {/* Partners Logo Box */}
-                  <div
-                    className="bg-white d-flex align-items-center justify-content-center w-100"
-                    style={{
-                      height: "115px",
-                      borderRadius: "8px",
-                      border: "1px solid #edf0f4",
-                      boxShadow: "0 4px 15px rgba(0, 0, 0, 0.04)",
-                      padding: "15px",
-                      transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                    }}
-                  >
-                    <img
-                      src={client.image}
-                      alt={client.alt}
-                      style={{
-                        maxHeight: "55px",
-                        maxWidth: "88%",
-                        objectFit: "contain",
-                        display: "block",
-                        margin: "0 auto",
-                      }}
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
+        {/* Infinite Marquee Slider Container - Inside Container */}
+        <div className="corporate-marquee-container position-relative w-100 overflow-hidden py-2">
+          <div className="corporate-marquee-track d-flex align-items-center gap-3">
+            {marqueeClients.map((client, index) => (
+              <div
+                key={`${client.id}-${index}`}
+                className="corporate-marquee-item flex-shrink-0"
+                style={{
+                  width: "140px",
+                  height: "95px",
+                  backgroundColor: "#ffffff",
+                  borderRadius: "6px",
+                  border: "1px solid #eceff3",
+                  boxShadow: "0 2px 8px rgba(0, 0, 0, 0.03)",
+                  padding: "10px 14px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                  cursor: "pointer",
+                }}
+              >
+                <img
+                  src={client.image}
+                  alt={client.alt}
+                  style={{
+                    maxHeight: "58px",
+                    maxWidth: "92%",
+                    objectFit: "contain",
+                    display: "block",
+                    margin: "0 auto",
+                    transition: "transform 0.3s ease",
+                  }}
+                  className="hover-scale"
+                />
+              </div>
+            ))}
           </div>
         </div>
-        {/* Partners Active End */}
       </div>
+
+      <style jsx>{`
+        .corporate-marquee-container {
+          mask-image: linear-gradient(
+            to right,
+            transparent,
+            black 3%,
+            black 97%,
+            transparent
+          );
+          -webkit-mask-image: linear-gradient(
+            to right,
+            transparent,
+            black 3%,
+            black 97%,
+            transparent
+          );
+        }
+
+        .corporate-marquee-track {
+          display: flex;
+          width: max-content;
+          animation: corporate-scroll 32s linear infinite;
+        }
+
+        .corporate-marquee-track:hover {
+          animation-play-state: paused;
+        }
+
+        @keyframes corporate-scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-33.3333%);
+          }
+        }
+
+        .corporate-marquee-item:hover {
+          transform: translateY(-3px) scale(1.04);
+          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08) !important;
+        }
+      `}</style>
     </div>
   );
 }

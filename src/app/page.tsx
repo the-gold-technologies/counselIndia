@@ -12,11 +12,13 @@ import CounselIndiaImpact from "@/components/home/CounselIndiaImpact";
 import AlumniCounselors from "@/components/home/AlumniCounselors";
 import CorporateClients from "@/components/home/CorporateClients";
 import SignedMous from "@/components/home/SignedMous";
+import GlobalHiringPartners from "@/components/home/GlobalHiringPartners";
 import IndustryExperts from "@/components/home/IndustryExperts";
 import ShortCoursesSlider from "@/components/home/ShortCoursesSlider";
 import TestimonialsReviews from "@/components/home/TestimonialsReviews";
 import NewsInFocus from "@/components/home/NewsInFocus";
 import EventsSpotlight from "@/components/home/EventsSpotlight";
+import LatestNewsAndUpdates from "@/components/home/LatestNewsAndUpdates";
 import AppDownloadBanner from "@/components/home/AppDownloadBanner";
 
 export default function Home() {
@@ -58,22 +60,28 @@ export default function Home() {
       {/* 12. Expanding Horizons: Signed MOUs */}
       <SignedMous />
 
-      {/* 13. Learn from the Leading Industry Experts */}
+      {/* 13. Our Global Hiring Partner Network */}
+      <GlobalHiringPartners />
+
+      {/* 14. Learn from the Leading Industry Experts */}
       <IndustryExperts />
 
-      {/* 14. Exclusive Short Courses from Counsel India */}
+      {/* 15. Exclusive Short Courses from Counsel India */}
       <ShortCoursesSlider />
 
-      {/* 15. Testimonials - Here’s why learners love us.. */}
+      {/* 16. Testimonials - Here’s why learners love us.. */}
       <TestimonialsReviews />
 
-      {/* 16. Counsel India inFocus */}
+      {/* 17. Counsel India inFocus */}
       <NewsInFocus />
 
-      {/* 17. Events Spotlight - Live Webinars & Workshops */}
+      {/* 18. Events Spotlight - Live Webinars & Workshops */}
       <EventsSpotlight />
 
-      {/* 18. Learning Made Easy - Mobile App Download & Get in Touch Banner */}
+      {/* 19. Latest News and Updates */}
+      <LatestNewsAndUpdates />
+
+      {/* 20. Learning Made Easy - Mobile App Download & Get in Touch Banner */}
       <AppDownloadBanner />
     </main>
   );

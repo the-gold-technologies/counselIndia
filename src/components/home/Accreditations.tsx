@@ -43,10 +43,6 @@ export default function Accreditations() {
             disableOnInteraction: false,
           },
           speed: 1000,
-          pagination: {
-            el: ".program-active .swiper-pagination",
-            clickable: true,
-          },
           breakpoints: {
             0: {
               slidesPerView: 1,
@@ -111,10 +107,6 @@ export default function Accreditations() {
                     </div>
                   ))}
                 </div>
-                <div
-                  className="swiper-pagination mt-4 d-flex justify-content-center gap-2"
-                  style={{ position: "relative", bottom: "0" }}
-                ></div>
               </div>
             </div>
           </div>

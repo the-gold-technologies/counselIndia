@@ -55,10 +55,6 @@ export default function AlumniCounselors() {
           loop: true,
           autoplay: { delay: 2500, disableOnInteraction: false },
           speed: 1000,
-          pagination: {
-            el: ".instructor-active .swiper-pagination",
-            clickable: true,
-          },
           breakpoints: {
             0: { slidesPerView: 1, spaceBetween: 15 },
             576: { slidesPerView: 2, spaceBetween: 15 },
@@ -159,10 +155,6 @@ export default function AlumniCounselors() {
                 </div>
               ))}
             </div>
-            <div
-              className="swiper-pagination mt-4 d-flex justify-content-center gap-2"
-              style={{ position: "relative", bottom: "0" }}
-            ></div>
           </div>
         </div>
       </div>

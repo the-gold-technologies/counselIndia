@@ -51,10 +51,6 @@ export default function TestimonialsReviews() {
           loop: true,
           autoplay: { delay: 3500, disableOnInteraction: false },
           speed: 1000,
-          pagination: {
-            el: ".testimonial-active-02 .swiper-pagination",
-            clickable: true,
-          },
           breakpoints: {
             0: { slidesPerView: 1, spaceBetween: 15 },
             768: { slidesPerView: 2, spaceBetween: 20 },
@@ -143,7 +139,6 @@ export default function TestimonialsReviews() {
                 </div>
               ))}
             </div>
-            <div className="swiper-pagination mt-4"></div>
           </div>
         </div>
       </div>

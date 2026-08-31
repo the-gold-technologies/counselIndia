@@ -58,10 +58,6 @@ export default function IndustryExperts() {
           loop: true,
           autoplay: { delay: 3000, disableOnInteraction: false },
           speed: 1000,
-          pagination: {
-            el: ".experts-active .swiper-pagination",
-            clickable: true,
-          },
           breakpoints: {
             0: { slidesPerView: 1, spaceBetween: 15 },
             768: { slidesPerView: 2, spaceBetween: 20 },
@@ -156,7 +152,6 @@ export default function IndustryExperts() {
                 </div>
               ))}
             </div>
-            <div className="swiper-pagination mt-4"></div>
           </div>
         </div>
       </div>

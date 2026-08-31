@@ -228,3 +228,10 @@ mark::after {
 .blog-item-02__more:hover i {
     transform: translateX(4px);
 }
+
+/* Global Swiper Pagination Dots Hidden */
+.swiper-pagination,
+.swiper-pagination-bullet,
+.swiper-dots-style .swiper-pagination {
+    display: none !important;
+}
