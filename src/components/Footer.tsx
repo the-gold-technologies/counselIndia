@@ -36,7 +36,7 @@ export default function Footer() {
                       </Link>
                     </li>
                     <li>
-                      <Link href="/counselling" className="text-white hover-text-primary text-decoration-none">
+                      <Link href="/counsellors-network" className="text-white hover-text-primary text-decoration-none">
                         Counselling
                       </Link>
                     </li>

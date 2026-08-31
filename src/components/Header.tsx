@@ -30,7 +30,7 @@ export default function Header() {
   };
 
   return (
-    <div className="header-section header-sticky">
+    <div className="header-section header-sticky" style={{ position: "relative", zIndex: 999 }}>
       <div className="header-main-06" style={{ paddingTop: 0, backgroundColor: "#ffffff" }}>
         {/* Top Announcement Bar */}
         <div className="main22">
@@ -81,7 +81,7 @@ export default function Header() {
                       </Link>
                     </li>
                     <li className="menu-item-has-children">
-                      <Link href="/counselling">
+                      <Link href="/counsellors-network">
                         <span>Counselling</span>
                       </Link>
                       <ul className="sub-menu">
@@ -349,7 +349,7 @@ export default function Header() {
                   style={{ borderBottom: "1px solid #d9dadd" }}
                 >
                   <Link
-                    href="/counselling"
+                    href="/counsellors-network"
                     onClick={closeMobileMenu}
                     style={{
                       padding: "16px 0",
