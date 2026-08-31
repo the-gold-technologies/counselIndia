@@ -53,6 +53,8 @@ export default function MembershipStories() {
               style={{ maxWidth: "100%", height: "auto" }}
               src="https://prod-s3.counselindia.com/mastergalaxyimages/test112233_1726050926.png"
               alt="Community member highlights"
+              loading="lazy"
+              decoding="async"
               onError={(e) => {
                 e.currentTarget.style.display = "none";
               }}

@@ -1,19 +1,47 @@
 import React from "react";
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import MembershipHero from "@/components/membership/MembershipHero";
 import MembershipIntro from "@/components/membership/MembershipIntro";
 import MembershipWhyJoin from "@/components/membership/MembershipWhyJoin";
-import MembershipStories from "@/components/membership/MembershipStories";
-import MembershipPrivileges from "@/components/membership/MembershipPrivileges";
-import MembershipVideoCheers from "@/components/membership/MembershipVideoCheers";
-import MembershipPricing from "@/components/membership/MembershipPricing";
-import MembershipCertificate from "@/components/membership/MembershipCertificate";
-import MembershipGuide from "@/components/membership/MembershipGuide";
-import MembershipEmpower from "@/components/membership/MembershipEmpower";
-import MembershipHealing from "@/components/membership/MembershipHealing";
-import MembershipInsideWalkthrough from "@/components/membership/MembershipInsideWalkthrough";
-import MembershipManifesto from "@/components/membership/MembershipManifesto";
-import MembershipFaq from "@/components/membership/MembershipFaq";
+
+// Dynamically import below-the-fold components for instant initial page render
+const MembershipStories = dynamic(() => import("@/components/membership/MembershipStories"), {
+  ssr: true,
+});
+const MembershipPrivileges = dynamic(() => import("@/components/membership/MembershipPrivileges"), {
+  ssr: true,
+});
+const MembershipVideoCheers = dynamic(() => import("@/components/membership/MembershipVideoCheers"), {
+  ssr: true,
+});
+const MembershipPricing = dynamic(() => import("@/components/membership/MembershipPricing"), {
+  ssr: true,
+});
+const MembershipCertificate = dynamic(() => import("@/components/membership/MembershipCertificate"), {
+  ssr: true,
+});
+const MembershipGuide = dynamic(() => import("@/components/membership/MembershipGuide"), {
+  ssr: true,
+});
+const MembershipEmpower = dynamic(() => import("@/components/membership/MembershipEmpower"), {
+  ssr: true,
+});
+const MembershipHealing = dynamic(() => import("@/components/membership/MembershipHealing"), {
+  ssr: true,
+});
+const MembershipInsideWalkthrough = dynamic(
+  () => import("@/components/membership/MembershipInsideWalkthrough"),
+  {
+    ssr: true,
+  }
+);
+const MembershipManifesto = dynamic(() => import("@/components/membership/MembershipManifesto"), {
+  ssr: true,
+});
+const MembershipFaq = dynamic(() => import("@/components/membership/MembershipFaq"), {
+  ssr: true,
+});
 
 export const metadata: Metadata = {
   title: "Counsel India Membership - Online Psychology & Emotional Wellbeing",
@@ -24,7 +52,7 @@ export const metadata: Metadata = {
 export default function MembershipPage() {
   return (
     <main className="membership-page">
-      {/* 1. Hero Section */}
+      {/* 1. Hero Section (Loaded instantly) */}
       <MembershipHero />
 
       {/* 2. Hey Fellow Human & 14-Step Checklist with Collage */}
@@ -39,7 +67,7 @@ export default function MembershipPage() {
       {/* 5. Glimpse Of Our Membership Privileges */}
       <MembershipPrivileges />
 
-      {/* 6. Cheers From Our Member Video */}
+      {/* 6. Cheers From Our Member Video (Optimized with preload='none') */}
       <MembershipVideoCheers />
 
       {/* 7. Membership Plans Pricing (#member) */}
@@ -57,7 +85,7 @@ export default function MembershipPage() {
       {/* 11. We Are Here For Healing!! */}
       <MembershipHealing />
 
-      {/* 12. Inside The Membership Video Walkthrough & 5-Step Infographic */}
+      {/* 12. Inside The Membership Video Walkthrough (Optimized with preload='none') */}
       <MembershipInsideWalkthrough />
 
       {/* 13. At Counsel India, People get Transformed */}

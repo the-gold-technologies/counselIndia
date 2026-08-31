@@ -35,6 +35,7 @@ export default function MembershipInsideWalkthrough() {
             id="videoElement2"
             controls
             playsInline
+            preload="none"
             style={{
               width: "100%",
               height: "100%",
@@ -65,6 +66,7 @@ export default function MembershipInsideWalkthrough() {
                   src="https://prod-s3.counselindia.com/mastergalaxyimages/Professional%205%20Steps%20Women%20Career%20Tips%20Graph%20(1500%20x%20700%20px)-2_1725972064.png"
                   alt="Inside The Membership 5 Steps"
                   className="img-fluid"
+                  loading="lazy"
                   style={{ width: "100%", height: "auto" }}
                   onError={(e) => {
                     e.currentTarget.style.display = "none";

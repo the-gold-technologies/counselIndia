@@ -41,6 +41,7 @@ export default function MembershipVideoCheers() {
               id="videoElement"
               controls
               playsInline
+              preload="none"
               poster="https://prod-s3.counselindia.com/mastergalaxyimages/WhatsApp%20Image%202024-09-11%20at%2015.29.02_1726049092.jpeg"
               style={{
                 width: "100%",

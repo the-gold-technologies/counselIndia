@@ -32,6 +32,8 @@ export default function MembershipCertificate() {
                       alt="Certificate Sample"
                       width="570"
                       height="399"
+                      loading="lazy"
+                      decoding="async"
                       className="img-fluid"
                       style={{
                         maxWidth: "580px",
