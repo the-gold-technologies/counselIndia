@@ -56,9 +56,7 @@
       .addClass("menu-item-has-children"),
     e(".mega-menu").parent("li").addClass("mega-menu-children"),
     document.querySelectorAll(".scene").forEach((e) => {
-      if (typeof Parallax !== 'undefined') {
-        new Parallax(e, { pointerEvents: !0 });
-      }
+      new Parallax(e, { pointerEvents: !0 });
     }),
     e(".btn-toggle").click(function () {
       e(".dashboard-menu").addClass("open");

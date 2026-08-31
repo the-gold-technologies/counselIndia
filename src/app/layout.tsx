@@ -34,6 +34,7 @@ export default function RootLayout({
         
         <link rel="stylesheet" href="/assets/css/style.css" />
         <link rel="stylesheet" href="/assets/css/style2.css" />
+        <link rel="stylesheet" href="/assets/css/user.min.css" />
       </head>
       <body>
         <Header />
