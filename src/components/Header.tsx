@@ -1,10 +1,12 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import AiCounsellingModal from "./common/AiCounsellingModal";
 
 export default function Header() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [expandedMenu, setExpandedMenu] = useState<string | null>(null);
+  const [isAiModalOpen, setIsAiModalOpen] = useState(false);
 
   useEffect(() => {
     if (isMobileOpen) {
@@ -86,9 +88,13 @@ export default function Header() {
                       </Link>
                       <ul className="sub-menu">
                         <li>
-                          <Link href="/ai-counselling">
+                          <a
+                            onClick={() => setIsAiModalOpen(true)}
+                            id="gradientButton"
+                            style={{ cursor: "pointer" }}
+                          >
                             <span>AI Counselling</span>
-                          </Link>
+                          </a>
                         </li>
                         <li>
                           <Link href="/counsellors-network">
@@ -378,14 +384,16 @@ export default function Header() {
                 {expandedMenu === "counselling" && (
                   <ul className="list-unstyled ps-3 py-2 bg-light rounded mt-1">
                     <li className="py-1">
-                      <Link
-                        href="/ai-counselling"
-                        onClick={closeMobileMenu}
+                      <a
+                        onClick={() => {
+                          closeMobileMenu();
+                          setIsAiModalOpen(true);
+                        }}
                         className="text-decoration-none font-size-14 d-block py-1 fw-medium"
-                        style={{ color: "#242a37" }}
+                        style={{ color: "#242a37", cursor: "pointer" }}
                       >
                         AI Counselling
-                      </Link>
+                      </a>
                     </li>
                     <li className="py-1">
                       <Link
@@ -688,6 +696,12 @@ export default function Header() {
           </div>
         </div>
       </div>
+
+      {/* AI Counselling Lead Capture Modal (Matching PHP #viewModalCourse99) */}
+      <AiCounsellingModal
+        isOpen={isAiModalOpen}
+        onClose={() => setIsAiModalOpen(false)}
+      />
     </div>
   );
 }

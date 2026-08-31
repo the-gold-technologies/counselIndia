@@ -126,7 +126,7 @@ export default function SuccessStoriesCarousel() {
           </div>
         </div>
 
-        {/* Continuous Smooth Auto-Scrolling Track */}
+        {/* Continuous Butter-Smooth Auto-Scrolling Track */}
         <div style={{ overflow: "hidden", width: "100%", padding: "10px 0 20px" }}>
           <div
             className="smooth-marquee-track"
@@ -134,7 +134,10 @@ export default function SuccessStoriesCarousel() {
               display: "flex",
               gap: "30px",
               width: "max-content",
-              animation: "marqueeScroll 38s linear infinite",
+              willChange: "transform",
+              transform: "translate3d(0, 0, 0)",
+              backfaceVisibility: "hidden",
+              animation: "marqueeScroll 32s linear infinite",
               animationPlayState: isPaused ? "paused" : "running",
             }}
           >
@@ -160,6 +163,7 @@ export default function SuccessStoriesCarousel() {
                     minHeight: "380px",
                     height: "100%",
                     boxSizing: "border-box",
+                    transition: "transform 0.3s ease, box-shadow 0.3s ease",
                   }}
                 >
                   {/* Quote Watermark Icon */}
@@ -265,10 +269,10 @@ export default function SuccessStoriesCarousel() {
       <style jsx>{`
         @keyframes marqueeScroll {
           0% {
-            transform: translateX(0);
+            transform: translate3d(0, 0, 0);
           }
           100% {
-            transform: translateX(-50%);
+            transform: translate3d(-50%, 0, 0);
           }
         }
       `}</style>

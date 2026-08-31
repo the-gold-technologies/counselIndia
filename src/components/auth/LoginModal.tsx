@@ -70,6 +70,7 @@ export default function LoginModal({ isOpen, onClose, onSuccess }: LoginModalPro
         justifyContent: "center",
         padding: "20px 15px",
         overflow: "hidden",
+        animation: "modalFadeIn 0.25s ease-out forwards",
       }}
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
@@ -83,6 +84,7 @@ export default function LoginModal({ isOpen, onClose, onSuccess }: LoginModalPro
           position: "relative",
           maxWidth: "470px",
           width: "100%",
+          animation: "modalSlideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards",
           maxHeight: "92vh",
           overflowY: "auto",
           padding: "36px 42px 42px",
@@ -474,6 +476,27 @@ export default function LoginModal({ isOpen, onClose, onSuccess }: LoginModalPro
           </form>
         )}
       </div>
+
+      <style jsx>{`
+        @keyframes modalFadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+        @keyframes modalSlideDown {
+          from {
+            opacity: 0;
+            transform: scale(0.95) translateY(-20px);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+          }
+        }
+      `}</style>
     </div>
   );
 }
