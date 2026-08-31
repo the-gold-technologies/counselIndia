@@ -109,7 +109,7 @@ export default function Header() {
                       </Link>
                       <ul className="sub-menu">
                         <li>
-                          <Link href="/mental-health-test">
+                          <Link href="/mentalhealthtest">
                             <span>Mental Health Test</span>
                           </Link>
                         </li>
@@ -446,7 +446,7 @@ export default function Header() {
                   <ul className="list-unstyled ps-3 py-2 bg-light rounded mt-1">
                     <li className="py-1">
                       <Link
-                        href="/mental-health-test"
+                        href="/mentalhealthtest"
                         onClick={closeMobileMenu}
                         className="text-decoration-none font-size-14 d-block py-1 fw-medium"
                         style={{ color: "#242a37" }}
