@@ -124,7 +124,7 @@ export default function Footer() {
                       </Link>
                     </li>
                     <li>
-                      <Link href="/ebooks" className="text-white hover-text-primary text-decoration-none">
+                      <Link href="/ebook" className="text-white hover-text-primary text-decoration-none">
                         eBooks
                       </Link>
                     </li>
