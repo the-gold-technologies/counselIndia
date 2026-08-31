@@ -15,7 +15,7 @@ export default function MembershipHealing() {
         <div className="container custom-container" style={{ maxWidth: "1140px" }}>
           <div className="row justify-content-center">
             <div className="col-lg-12">
-              <div className="section-title text-center mb-5" data-aos="fade-up" data-aos-duration="1000">
+              <div className="section-title text-center mb-5">
                 <h2 className="section-title__title-03" style={{ fontSize: "44px", fontWeight: 700, color: "#1a2638", marginBottom: "20px" }}>
                   We Are Here For Healing!!
                 </h2>

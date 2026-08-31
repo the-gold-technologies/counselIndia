@@ -34,7 +34,7 @@ export default function MembershipFaq() {
   return (
     <div className="faqq-section" style={{ padding: "70px 0 80px", backgroundColor: "#f3f1f1" }}>
       <div className="container custom-container" style={{ maxWidth: "1140px" }}>
-        <div className="section-title text-center mb-5" data-aos="fade-up" data-aos-duration="1000">
+        <div className="section-title text-center mb-5">
           <h2
             className="section-title__title-03"
             style={{ fontSize: "40px", fontWeight: 700, color: "#1a2638" }}
@@ -45,7 +45,7 @@ export default function MembershipFaq() {
 
         <div className="row justify-content-center">
           <div className="col-lg-12">
-            <div className="faq-accordion" data-aos="fade-up" data-aos-duration="1000">
+            <div className="faq-accordion">
               <div className="accordion" id="accordionFAQ">
                 {faqs.map((faq, idx) => (
                   <div key={idx} className="accordion-item mb-3">

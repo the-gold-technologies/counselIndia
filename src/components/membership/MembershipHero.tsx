@@ -10,7 +10,7 @@ export default function MembershipHero() {
         <div className="container custom-container custom-container222">
           <div className="row">
             <div className="col-lg-12">
-              <div className="section-title" data-aos="fade-up" data-aos-duration="1000">
+              <div className="section-title">
                 <h6 className="primary-text-color mb-2">
                   Let Your Life Overflow with Emotional Richness and Wellness
                 </h6>

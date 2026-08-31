@@ -223,3 +223,10 @@ mark {
 .swiper-dots-style .swiper-pagination {
     display: none !important;
 }
+
+/* Ensure content with data-aos is always visible during Next.js client-side navigation */
+[data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+}

@@ -29,7 +29,7 @@ export default function MembershipStories() {
     <>
       <div className="test-main">
         <div className="container custom-container">
-          <div className="section-title text-center mb-4" data-aos="fade-up" data-aos-duration="1000">
+          <div className="section-title text-center mb-4">
             <h2 className="section-title__title-03" style={{ fontSize: "40px", fontWeight: 700, color: "#1a2638" }}>
               Personal Stories Straight from the Heart
             </h2>

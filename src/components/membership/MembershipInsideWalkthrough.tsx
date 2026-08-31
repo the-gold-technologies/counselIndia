@@ -54,7 +54,7 @@ export default function MembershipInsideWalkthrough() {
         <div className="container custom-container">
           <div className="row justify-content-center">
             <div className="col-lg-10">
-              <div className="section-title text-center" data-aos="fade-up" data-aos-duration="1000">
+              <div className="section-title text-center">
                 <h2
                   className="section-title__title-03"
                   style={{ marginTop: "5%", marginBottom: "3%", fontSize: "38px", color: "#1a2638", fontWeight: 700 }}

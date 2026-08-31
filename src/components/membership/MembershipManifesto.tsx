@@ -8,7 +8,7 @@ export default function MembershipManifesto() {
         <div className="container custom-container" style={{ padding: "70px 0" }}>
           <div className="row justify-content-center">
             <div className="col-lg-10">
-              <div className="section-title text-center" data-aos="fade-up" data-aos-duration="1000">
+              <div className="section-title text-center">
                 <h2
                   className="section-title__title-03"
                   style={{

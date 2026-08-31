@@ -30,7 +30,7 @@ export default function MembershipPricing() {
         <div className="container" id="member">
           <div className="row">
             <div className="col-md-12">
-              <div className="section-title text-center mb-5" data-aos="fade-up" data-aos-duration="1000">
+              <div className="section-title text-center mb-5">
                 <h2 className="section-title__title-03 mark-title">Membership Plans</h2>
               </div>
             </div>

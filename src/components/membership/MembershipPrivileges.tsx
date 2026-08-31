@@ -74,7 +74,7 @@ export default function MembershipPrivileges() {
     <>
       <div className="testimonial-section galaxy section-padding-01" style={{ padding: "60px 0 50px", backgroundColor: "#f8faf9" }}>
         <div className="container custom-container">
-          <div className="section-title text-center mb-5" data-aos="fade-up" data-aos-duration="1000">
+          <div className="section-title text-center mb-5">
             <h2 className="section-title__title-03" style={{ fontSize: "42px", fontWeight: 700, color: "#1a2638" }}>
               Glimpse Of Our Membership Privileges
             </h2>

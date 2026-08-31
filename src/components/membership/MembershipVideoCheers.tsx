@@ -29,7 +29,7 @@ export default function MembershipVideoCheers() {
     <>
       <div className="test-women">
         <div className="container" style={{ paddingTop: "5%", paddingBottom: "5%" }}>
-          <div className="section-title text-center mb-4" data-aos="fade-up" data-aos-duration="1000">
+          <div className="section-title text-center mb-4">
             <h2 className="section-title__title-03 mark-title">
               Cheers from Our <mark>Member</mark>
             </h2>

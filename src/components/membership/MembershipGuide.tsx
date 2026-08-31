@@ -15,7 +15,7 @@ export default function MembershipGuide() {
       >
         {/* Full-width Section Title Centered on Page */}
         <div className="container custom-container">
-          <div className="section-title text-center mb-5" data-aos="fade-up" data-aos-duration="1000">
+          <div className="section-title text-center mb-5">
             <h2
               className="section-title__title-03"
               style={{

@@ -41,7 +41,7 @@ export default function MembershipIntro() {
         <div className="container custom-container">
           <div className="row justify-content-center">
             <div className="col-lg-10">
-              <div className="section-title text-center" data-aos="fade-up" data-aos-duration="1000">
+              <div className="section-title text-center">
                 <h2 className="section-title__title-03">
                   Hey, Fellow Human!
                 </h2>
@@ -102,7 +102,7 @@ export default function MembershipIntro() {
         <div className="container">
           <div className="row gy-10 align-items-center justify-content-center">
             <div className="col-md-6">
-              <div className="countdown-widget" data-aos="fade-up" data-aos-duration="1000">
+              <div className="countdown-widget">
                 <div className="countdown-title">
                   <h2 className="countdown-title__title" style={{ fontSize: "38px", fontWeight: 700, color: "#212529" }}>
                     Live a life that&apos;s truly yours <br />
@@ -129,7 +129,7 @@ export default function MembershipIntro() {
             </div>
 
             <div className="col-md-6">
-              <div className="countdown-image text-center scene" data-aos="fade-up" data-aos-duration="1000">
+              <div className="countdown-image text-center scene">
                 <div className="countdown-image__image">
                   <img
                     className="lifeimg"

@@ -8,7 +8,7 @@ export default function MembershipCertificate() {
         <div className="campus" style={{ padding: "50px 0 70px" }}>
           <div className="container custom-container" style={{ maxWidth: "1240px" }}>
             {/* Centered Heading at Top */}
-            <div className="section-title text-center" data-aos="fade-up" data-aos-duration="1000" style={{ marginBottom: "50px" }}>
+            <div className="section-title text-center" style={{ marginBottom: "50px" }}>
               <h2
                 className="section-title__title-03 mark-title"
                 style={{
@@ -26,7 +26,7 @@ export default function MembershipCertificate() {
               {/* Certificate Image on Right */}
               <div className="col-md-6 col-lg-7 text-center text-md-end">
                 <div className="campus-image">
-                  <div className="campus-image__image" data-aos="fade-up" data-aos-duration="1000">
+                  <div className="campus-image__image">
                     <img
                       src="https://prod-s3.counselindia.com/mastergalaxyimages/WhatsApp%20Image%202024-09-12%20at%2015.08.40_1726134061.jpeg"
                       alt="Certificate Sample"
@@ -51,7 +51,7 @@ export default function MembershipCertificate() {
               {/* Text Widget on Left */}
               <div className="col-md-6 col-lg-5">
                 <div className="campus-widget" style={{ paddingLeft: "15px" }}>
-                  <div className="campus-widget-item" data-aos="fade-up" data-aos-duration="1000">
+                  <div className="campus-widget-item">
                     <div className="campus-widget-item__content">
                       <h3
                         className="fw-bold"

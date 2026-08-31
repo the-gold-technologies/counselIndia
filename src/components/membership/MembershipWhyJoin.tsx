@@ -8,7 +8,7 @@ export default function MembershipWhyJoin() {
         <div className="row justify-content-center">
           <div className="col-lg-10">
             {/* Section Title Start */}
-            <div className="section-title text-center" data-aos="fade-up" data-aos-duration="1000">
+            <div className="section-title text-center">
               <h2
                 className="section-title__title-03"
                 style={{ fontSize: "42px", fontWeight: 700, color: "#1a2638", marginBottom: "15px" }}
