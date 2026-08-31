@@ -278,9 +278,9 @@ export default function Footer() {
                     style={{ width: "56px", height: "56px" }}
                   >
                     <img
-                      src="/assets/images/wfhm_new.png"
-                      alt="WFMH"
-                      style={{ width: "46px", height: "46px", objectFit: "contain" }}
+                      src="/assets/images/counsel2.jpg"
+                      alt="IAOTH Accredited"
+                      style={{ width: "46px", height: "46px", objectFit: "contain", borderRadius: "50%" }}
                     />
                   </div>
                   <div
@@ -288,9 +288,9 @@ export default function Footer() {
                     style={{ width: "56px", height: "56px" }}
                   >
                     <img
-                      src="/assets/images/iso_new.png"
-                      alt="ISO 9001"
-                      style={{ width: "46px", height: "46px", objectFit: "contain" }}
+                      src="/assets/images/counsel1.jpg"
+                      alt="Skill India Accreditation"
+                      style={{ width: "46px", height: "46px", objectFit: "contain", borderRadius: "50%" }}
                     />
                   </div>
                   <div
@@ -298,9 +298,9 @@ export default function Footer() {
                     style={{ width: "56px", height: "56px" }}
                   >
                     <img
-                      src="/assets/images/national_new.png"
-                      alt="National Career Service"
-                      style={{ width: "46px", height: "46px", objectFit: "contain" }}
+                      src="/assets/images/logo/msu_logo.png"
+                      alt="Medhavi Skills University"
+                      style={{ width: "46px", height: "46px", objectFit: "contain", borderRadius: "50%" }}
                     />
                   </div>
                   <div
@@ -308,9 +308,9 @@ export default function Footer() {
                     style={{ width: "56px", height: "56px" }}
                   >
                     <img
-                      src="/assets/images/counselindia_new.png"
-                      alt="Accreditation"
-                      style={{ width: "46px", height: "46px", objectFit: "contain" }}
+                      src="/assets/images/logo/GU_logo.png"
+                      alt="Galgotias University"
+                      style={{ width: "46px", height: "46px", objectFit: "contain", borderRadius: "50%" }}
                     />
                   </div>
                 </div>

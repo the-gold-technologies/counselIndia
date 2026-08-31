@@ -30,6 +30,9 @@ export default function Accreditations() {
     },
   ];
 
+  // Duplicate for smooth, glitch-free Swiper loop mode
+  const slides = [...accreditationCards, ...accreditationCards];
+
   useEffect(() => {
     let swiperInstance: any = null;
     const init = () => {
@@ -42,7 +45,7 @@ export default function Accreditations() {
             delay: 2500,
             disableOnInteraction: false,
           },
-          speed: 1000,
+          speed: 800,
           breakpoints: {
             0: {
               slidesPerView: 1,
@@ -62,7 +65,7 @@ export default function Accreditations() {
     };
 
     init();
-    const timer = setTimeout(init, 400);
+    const timer = setTimeout(init, 300);
 
     return () => {
       clearTimeout(timer);
@@ -83,11 +86,11 @@ export default function Accreditations() {
               </h2>
             </div>
 
-            <div className="program-active swiper-dots-style">
+            <div className="program-active">
               <div className="swiper">
                 <div className="swiper-wrapper py-3">
-                  {accreditationCards.map((card, idx) => (
-                    <div className="swiper-slide" key={idx}>
+                  {slides.map((card, idx) => (
+                    <div className="swiper-slide" key={`${card.id}-${idx}`}>
                       <div className="partner-logo w-100">
                         <div className="partner-logo__logo w-100">
                           <img
