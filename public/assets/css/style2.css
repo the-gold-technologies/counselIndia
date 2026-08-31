@@ -1,0 +1,68 @@
+ .submit_color{
+         color: #fff !important;
+         }
+         .popup {
+         display: none;
+         position: fixed;
+         padding: 20px;
+         width: 400px;
+         right: 10px;
+         bottom: 140px;
+         height: auto;
+         background: #FFF;
+         z-index: 20;
+         }
+         #popup:after {
+         position: fixed;
+         content: "";
+         top: 0;
+         left: 0;
+         bottom: 0;
+         right: 0;
+         background: rgba(0,0,0,0.5);
+         z-index: -2;
+         }
+         #popup:before {
+         position: absolute;
+         content: "";
+         top: 0;
+         left: 0;
+         bottom: 0;
+         right: 0;
+         background: #FFF;
+         z-index: -1;
+         }
+         .close21_btn{
+         float: right;
+         font-size: 24px;
+         padding-top: 15px;
+         }
+         /* Styling buttons & webpage */
+         .my-floatwa {
+         margin-top: 16px;
+         }
+         .support_form{
+         position: absolute;
+         right: 15px;
+         bottom: 12%;
+         }
+         .support {
+         position: fixed;
+         width: 60px;
+         height: 60px;
+         bottom: 40px;
+         right: 40px;
+         background-color: #25d366;
+         color: #FFF;
+         border-radius: 50px;
+         text-align: center;
+         font-size: 30px;
+         box-shadow: 2px 2px 3px #999;
+         z-index: 100;
+         }
+         .sub{
+         height: 45px;
+         }
+         textarea.sub{
+         height: 95px;
+         }

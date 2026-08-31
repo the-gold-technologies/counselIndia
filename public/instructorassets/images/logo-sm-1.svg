@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="321px" height="120px" viewBox="0 0 321 120" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>1 copy 4</title>
+    <desc>Created with Sketch.</desc>
+    <g id="1-copy-4" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-2" transform="translate(1.000000, -11.000000)">
+            <g id="Group">
+                <g id="Group-3">
+                    <path d="M44.3872941,16 C47.3339704,16 50.2135835,16.2878613 52.9996805,16.8370642 L53.0000312,24.7687952 C50.2377906,24.1019918 47.3536891,23.7487562 44.3872941,23.7487562 C24.1415496,23.7487562 7.72913081,40.2028485 7.72913081,60.5 C7.72913081,80.7971515 24.1415496,97.2512438 44.3872941,97.2512438 C47.3536891,97.2512438 50.2377906,96.8980082 53.0000312,96.2312048 L52.9996805,104.162936 C50.2135835,104.712139 47.3339704,105 44.3872941,105 C19.8728685,105 -2.84217094e-14,85.0766714 -2.84217094e-14,60.5 C-2.84217094e-14,35.9233286 19.8728685,16 44.3872941,16 Z" id="Combined-Shape" fill="#07A64B" fill-rule="nonzero"></path>
+                    <path d="M44.7977584,29 C47.6340178,29 50.3835462,29.3678622 53.0003778,30.0580514 L53.0007842,38.2208021 C50.4421299,37.2960486 47.6794207,36.7915194 44.7977584,36.7915194 C31.5801548,36.7915194 20.8651699,47.4061677 20.8651699,60.5 C20.8651699,73.5938323 31.5801548,84.2084806 44.7977584,84.2084806 C47.6794207,84.2084806 50.4421299,83.7039514 53.0007842,82.7791979 L53.0003778,90.9419486 C50.3835462,91.6321378 47.6340178,92 44.7977584,92 C27.2363414,92 13,77.8969696 13,60.5 C13,43.1030304 27.2363414,29 44.7977584,29 Z" id="Combined-Shape" fill="#07A64B" fill-rule="nonzero"></path>
+                    <rect id="Rectangle" fill="#07A64B" x="59" y="46" width="7" height="59"></rect>
+                    <rect id="Rectangle-Copy" fill="#07A64B" x="73" y="46" width="7" height="59"></rect>
+                    <polygon id="Path-4" fill="#07A64B" points="59 31.7476533 59 24.5840711 69.5 16 80 24.5840711 80 31.7476533 69.5 23.8738267"></polygon>
+                    <polygon id="Path-4-Copy" fill="#07A64B" points="59 44.7476533 59 37.5840711 69.5 29 80 37.5840711 80 44.7476533 69.5 36.8738267"></polygon>
+                    <text id="counsel" font-family="Poppins-SemiBold, Poppins" font-size="50" font-weight="500" fill="#242A37">
+                        <tspan x="90" y="53">COUNSEL</tspan>
+                    </text>
+                    <text id="india" font-family="Poppins-Medium, Poppins" font-size="50" font-weight="400" fill="#242A37">
+                        <tspan x="90" y="105">INDIA</tspan>
+                    </text>
+                    <text id="Counselling-Simplifi" font-family="Poppins-Regular, Poppins" font-size="15" font-weight="normal" letter-spacing="2.35" fill="#242A37">
+                        <tspan x="92" y="126">COUNSELLING SIMPLIFIED</tspan>
+                    </text>
+                    <rect id="Rectangle" fill="#07A64B" x="228" y="97" width="8" height="8"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
