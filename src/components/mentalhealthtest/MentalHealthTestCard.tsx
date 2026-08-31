@@ -81,6 +81,8 @@ export default function MentalHealthTestCard({ test, onExplore }: CardProps) {
             margin: "0 0 18px",
             lineHeight: 1.25,
             textAlign: "center",
+            wordBreak: "break-word",
+            overflowWrap: "break-word",
           }}
         >
           {test.title}
