@@ -28,7 +28,8 @@ export default function HeroSection() {
                     Gain a deeper understanding of human behaviour
                   </h3>
                   <p>
-                    Be part of a growing community of 200,000+ learners &amp; skilled counsellors from 22+ countries.
+                    Be part of a growing community of 200,000+ learners &amp;
+                    skilled counsellors from 22+ countries.
                   </p>
                 </div>
                 <Link
@@ -39,12 +40,12 @@ export default function HeroSection() {
                 </Link>
                 <Link
                   href="/eligibility-test"
-                  style={{ marginLeft: "3%" }}
+                  style={{ marginLeft: "3.7%" }}
                   className="btn btn-secondary btn-hover-primary course-btn-hero2"
                 >
                   Check Your Eligibility
                 </Link>
-                <div className="slider-search mt-4">
+                <div className="slider-search mt-8">
                   <div className="download-content-02__btn">
                     <a href="#" className="ios_img_but mr-2">
                       <img
@@ -108,23 +109,33 @@ export default function HeroSection() {
                         top: "50%",
                         left: "50%",
                         transform: "translate(-50%, -50%)",
-                        background: "linear-gradient(135deg, #0DA74B 0%, #085127 100%)",
+                        background: "#ff0000",
                         color: "white",
                         border: "none",
                         borderRadius: "50%",
                         fontSize: "24px",
-                        width: "65px",
-                        height: "65px",
+                        width: "60px",
+                        height: "60px",
                         cursor: "pointer",
                         zIndex: 10,
-                        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.3)",
+                        boxShadow: "0 4px 15px rgba(0, 0, 0, 0.35)",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
+                        transition:
+                          "transform 0.2s ease, background-color 0.2s ease",
                       }}
                       aria-label="Play video"
                     >
-                      <i className="fas fa-play" style={{ marginLeft: "4px" }}></i>
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="#ffffff"
+                        style={{ marginLeft: "3px" }}
+                      >
+                        <polygon points="6,3 20,12 6,21" />
+                      </svg>
                     </button>
                   </>
                 )}

@@ -65,28 +65,14 @@
     }
 }
 
-/* Green Brush Underline Mark */
+/* Mark tag styling */
 mark {
     background-color: transparent !important;
     color: inherit !important;
-    position: relative !important;
-    display: inline-block !important;
-    padding-bottom: 10px !important;
 }
 
-mark::after {
-    content: "" !important;
-    position: absolute !important;
-    width: 100px !important;
-    height: 14px !important;
-    bottom: 0 !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    background-color: #07a64b !important;
-    -webkit-mask: url("/assets/images/headline-curve-02.svg") no-repeat center / contain !important;
-    mask: url("/assets/images/headline-curve-02.svg") no-repeat center / contain !important;
-    pointer-events: none !important;
-    z-index: 1 !important;
+.slider-caption__main-title mark {
+    color: #07a64b !important;
 }
 
 /* Background Animated / Wave Shapes */
