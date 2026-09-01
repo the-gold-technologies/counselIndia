@@ -325,9 +325,14 @@ export default function Footer() {
               </div>
 
               <div className="col-lg-5 col-md-6">
-                <h6 className="text-white font-size-15 fw-bold mb-2">
-                  Subscribe to our Newsletter
-                </h6>
+                <div className="d-flex align-items-center justify-content-between mb-2">
+                  <h6 className="text-white font-size-15 fw-bold mb-0">
+                    Subscribe to our Newsletter
+                  </h6>
+                  <Link href="/newsletter" className="text-white-50 font-size-12 hover-text-white text-decoration-none">
+                    View Newsletter Page &rarr;
+                  </Link>
+                </div>
                 <form
                   onSubmit={handleSubscribe}
                   className="d-flex align-items-center p-1 rounded-2 bg-white shadow-sm"

@@ -32,8 +32,14 @@ export default function Header() {
   };
 
   return (
-    <div className="header-section header-sticky" style={{ position: "relative", zIndex: 999 }}>
-      <div className="header-main-06" style={{ paddingTop: 0, backgroundColor: "#ffffff" }}>
+    <div
+      className="header-section header-sticky"
+      style={{ position: "relative", zIndex: 999 }}
+    >
+      <div
+        className="header-main-06"
+        style={{ paddingTop: 0, backgroundColor: "#ffffff" }}
+      >
         {/* Top Announcement Bar */}
         <div className="main22">
           <div className="marquee22">
@@ -104,7 +110,7 @@ export default function Header() {
                       </ul>
                     </li>
                     <li className="menu-item-has-children">
-                      <Link href="/resources">
+                      <Link href="/">
                         <span>Resources</span>
                       </Link>
                       <ul className="sub-menu">
@@ -296,7 +302,11 @@ export default function Header() {
         {/* Offcanvas Header */}
         <div className="offcanvas-header bg-white d-flex align-items-center justify-content-between p-3 border-bottom flex-shrink-0">
           <div className="offcanvas-logo">
-            <Link className="offcanvas-logo__logo" href="/" onClick={closeMobileMenu}>
+            <Link
+              className="offcanvas-logo__logo"
+              href="/"
+              onClick={closeMobileMenu}
+            >
               <img
                 src="/assets/images/dark-logo.png"
                 alt="Counsel India"
@@ -325,7 +335,10 @@ export default function Header() {
         {/* Offcanvas Navigation Body */}
         <div
           className="offcanvas-body p-3 overflow-auto flex-grow-1"
-          style={{ overscrollBehavior: "contain", WebkitOverflowScrolling: "touch" }}
+          style={{
+            overscrollBehavior: "contain",
+            WebkitOverflowScrolling: "touch",
+          }}
         >
           <nav className="canvas-menu">
             <ul className="offcanvas-menu list-unstyled mb-0">
@@ -647,7 +660,10 @@ export default function Header() {
 
         {/* Offcanvas Footer / User Buttons */}
         <div className="offcanvas-user p-3 border-top bg-light flex-shrink-0">
-          <div className="d-flex align-items-center gap-2" style={{ width: "100%" }}>
+          <div
+            className="d-flex align-items-center gap-2"
+            style={{ width: "100%" }}
+          >
             <button
               className="btn fw-semibold"
               onClick={closeMobileMenu}
