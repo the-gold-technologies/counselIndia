@@ -17,51 +17,53 @@ export default function CounsellorsNetworkPage() {
   };
 
   return (
-    <div className="main-wrapper position-relative" style={{ minHeight: "100vh", backgroundColor: "transparent" }}>
-      {/* Floating Animated Circles Background */}
-      <NetworkAnimatedBackground />
+    <>
+      <div className="main-wrapper position-relative" style={{ backgroundColor: "transparent" }}>
+        {/* Floating Animated Circles Background */}
+        <NetworkAnimatedBackground />
 
-      <main className="counsellors-network-main-page position-relative" style={{ zIndex: 1, minHeight: "80vh" }}>
-        {/* Page Banner with Shapes (matches PHP page-banner) */}
-        <NetworkBanner />
+        <main className="counsellors-network-main-page position-relative" style={{ zIndex: 1 }}>
+          {/* Page Banner with Shapes (matches PHP page-banner) */}
+          <NetworkBanner />
 
-        {/* Heading - uses the exact same class as PHP */}
-        <h2 className="page-banner__main-title-02" style={{ textAlign: "center", marginTop: "5%" }}>
-          Counsellors Network
-        </h2>
+          {/* Heading - uses the exact same class as PHP */}
+          <h2 className="page-banner__main-title-02" style={{ textAlign: "center", marginTop: "5%" }}>
+            Counsellors Network
+          </h2>
 
-        {/* Courses Section */}
-        <div className="courses-section section-padding-01">
-          <div className="container">
-            {/* Archive Filter Bar */}
-            <div className="archive-filter-bars">
-              <div className="archive-filter-bar">
-                <p>
-                  We found <span><strong>{COUNSELLORS_DATA.length}</strong></span> counsellors for you
-                </p>
+          {/* Courses Section */}
+          <div className="courses-section section-padding-01">
+            <div className="container">
+              {/* Archive Filter Bar */}
+              <div className="archive-filter-bars">
+                <div className="archive-filter-bar">
+                  <p>
+                    We found <span><strong>{COUNSELLORS_DATA.length}</strong></span> counsellors for you
+                  </p>
+                </div>
+              </div>
+
+              {/* Counsellor Cards Grid (3 Columns) */}
+              <div className="row">
+                {COUNSELLORS_DATA.map((counselor) => (
+                  <CounsellorCard
+                    key={counselor.id}
+                    counselor={counselor}
+                    onBookSession={handleOpenBooking}
+                  />
+                ))}
               </div>
             </div>
-
-            {/* Counsellor Cards Grid (3 Columns) */}
-            <div className="row">
-              {COUNSELLORS_DATA.map((counselor) => (
-                <CounsellorCard
-                  key={counselor.id}
-                  counselor={counselor}
-                  onBookSession={handleOpenBooking}
-                />
-              ))}
-            </div>
           </div>
-        </div>
-      </main>
+        </main>
+      </div>
 
-      {/* Booking Modal */}
+      {/* Booking Modal (Outside main-wrapper) */}
       <BookSessionModal
         counselor={selectedCounselor}
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
       />
-    </div>
+    </>
   );
 }

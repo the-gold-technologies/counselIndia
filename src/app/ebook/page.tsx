@@ -25,7 +25,6 @@ export default function EbookPage() {
         className="main-wrapper position-relative"
         style={{
           backgroundColor: "transparent",
-          minHeight: "100vh",
           position: "relative",
           zIndex: 1,
         }}
@@ -34,9 +33,9 @@ export default function EbookPage() {
         <EbookBanner />
 
         {/* E-Book Library Grid */}
-        <div className="section-padding-01" style={{ padding: "0 0 100px" }}>
-          <div className="container custom-container">
-            <div className="row g-4 justify-content-center">
+        <div className="section-padding-01" style={{ padding: "0 0 40px" }}>
+          <div className="container">
+            <div className="row g-4">
               {EBOOKS_DATA.map((ebook) => (
                 <div key={ebook.id} className="col-xl-4 col-md-6">
                   <EbookCard ebook={ebook} onDownload={handleOpenDownload} />
@@ -45,14 +44,14 @@ export default function EbookPage() {
             </div>
           </div>
         </div>
-
-        {/* Ebook Download Lead Modal Component */}
-        <EbookDownloadModal
-          ebook={selectedEbook}
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-        />
       </div>
+
+      {/* Ebook Download Lead Modal Component (Outside main-wrapper for root z-index overlay) */}
+      <EbookDownloadModal
+        ebook={selectedEbook}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </>
   );
 }

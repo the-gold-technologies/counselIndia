@@ -136,8 +136,9 @@ export default function EbookDownloadModal({ ebook, isOpen, onClose }: ModalProp
   };
 
   const inputStyle: React.CSSProperties = {
-    border: "1.2px solid #64748b",
-    borderRadius: "6px",
+    boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.4)",
+    border: "0.8px solid black",
+    borderRadius: "5px",
     width: "100%",
     height: "46px",
     padding: "0 14px",
@@ -149,7 +150,7 @@ export default function EbookDownloadModal({ ebook, isOpen, onClose }: ModalProp
   };
 
   const labelStyle: React.CSSProperties = {
-    fontSize: "14px",
+    fontSize: "14.5px",
     fontWeight: 600,
     color: "#212529",
     marginBottom: "6px",
@@ -164,7 +165,7 @@ export default function EbookDownloadModal({ ebook, isOpen, onClose }: ModalProp
         left: 0,
         width: "100%",
         height: "100%",
-        backgroundColor: "rgba(0, 0, 0, 0.65)",
+        backgroundColor: "rgba(0, 0, 0, 0.6)",
         zIndex: 99999,
         display: "flex",
         alignItems: "center",
@@ -180,13 +181,14 @@ export default function EbookDownloadModal({ ebook, isOpen, onClose }: ModalProp
       <div
         style={{
           backgroundColor: "#ffffff",
-          borderRadius: "8px",
-          boxShadow: "0 20px 50px rgba(0, 0, 0, 0.35)",
-          maxWidth: "500px",
+          border: "1px solid black",
+          borderRadius: "10px",
+          boxShadow: "0px 10px 25px rgba(0, 0, 0, 0.35)",
+          maxWidth: "480px",
           width: "100%",
-          maxHeight: "92vh",
+          maxHeight: "90vh",
           overflowY: "auto",
-          padding: "36px 32px",
+          padding: "36px 30px 32px",
           position: "relative",
           boxSizing: "border-box",
           animation: "modalSlideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards",
@@ -455,30 +457,25 @@ export default function EbookDownloadModal({ ebook, isOpen, onClose }: ModalProp
             </div>
 
             {/* 10. Left-Aligned Green Submit Button */}
-            <div style={{ display: "flex", justifyContent: "flex-start" }}>
+            <div>
               <button
                 type="submit"
                 disabled={isSubmitting}
                 style={{
-                  backgroundColor: "#00a651",
+                  boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.4)",
+                  border: "0.8px solid black",
+                  borderRadius: "5px",
+                  width: "100%",
+                  height: "46px",
+                  backgroundColor: "#07a64b",
                   color: "#ffffff",
-                  border: "none",
-                  borderRadius: "6px",
-                  padding: "0 34px",
-                  height: "44px",
-                  fontSize: "15.5px",
+                  fontSize: "16px",
                   fontWeight: 700,
                   cursor: "pointer",
-                  display: "inline-flex",
+                  display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                   transition: "background-color 0.2s ease",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = "#008f45";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = "#00a651";
                 }}
               >
                 {isSubmitting ? "Submitting..." : "Submit"}

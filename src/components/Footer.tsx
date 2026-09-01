@@ -20,7 +20,15 @@ export default function Footer() {
 
   return (
     <>
-      <div className="footer-section bg-color-12" style={{ backgroundColor: "#242a37", color: "#ffffff" }}>
+      <footer
+        className="footer-section bg-color-12 position-relative"
+        style={{
+          backgroundColor: "#242a37",
+          color: "#ffffff",
+          position: "relative",
+          zIndex: 10,
+        }}
+      >
         {/* Footer Widget Area Start */}
         <div className="footer-widget-area section-padding-01 pt-5 pb-4">
           <div className="container custom-container pb-4">
@@ -426,7 +434,7 @@ export default function Footer() {
             </p>
           </div>
         </div>
-      </div>
+      </footer>
 
       {/* Counselor Login Modal */}
       {showLoginModal && (
