@@ -4,54 +4,92 @@ import Link from "next/link";
 
 export default function AboutCareersCTA() {
   return (
-    <section className="banner-section py-5 bg-white">
+    <div className="banner-section section-padding-01 py-5 bg-white">
       <div className="container custom-container py-3">
-        <div className="banner-big-box p-4 p-lg-5 rounded-4 position-relative overflow-hidden shadow-sm">
-          {/* Arrow Decoration */}
+        {/* Banner Box Start */}
+        <div className="banner-big-box banner-bg-4 position-relative rounded-3">
           <img
-            className="banner-big-box__arrow position-absolute d-none d-md-block"
-            src="/assets/images/curve-arrow.png"
-            alt="Arrow"
+            className="banner-big-box__arrow"
+            src="https://prod-s3.counselindia.com/images/curve-arrow.png"
+            alt="arrow"
             width={50}
             height={45}
-            style={{ top: "30px", right: "50px", opacity: 0.8 }}
           />
-
-          <div className="banner-caption-03 position-relative z-1" style={{ maxWidth: "880px" }}>
-            <span className="badge bg-success-subtle text-success font-size-12 fw-bold text-uppercase px-3 py-1 mb-3 d-inline-block">
-              We Are Hiring!
-            </span>
-            <h3 className="banner-caption-03__title font-size-32 fw-bold text-dark mb-3" style={{ fontFamily: "Georgia, serif" }}>
-              Explore Opportunities with Counsel India
-            </h3>
-            <p className="font-size-15 text-muted lh-lg mb-3 text-justify">
-              Being a mental health education company, we ensure our employees a greater level of care, support, and work-life balance. We provide a healthy, zero-burnout, skill-focused working environment as opposed to over-working and highly stressful culture across most workplaces. The Individual Development Plans (IDPs), regular personal counselling sessions, flexible working hours, incentives &amp; bonuses, female healthcare plans, rapid growth opportunities and perfect work-life balance are just some of the reasons that people prefer to work with us.
+          <div className="banner-caption-03">
+            <h3 className="banner-caption-03__title">Explore Opportunities with CI</h3>
+            <p>
+              Being a mental health education company, we ensure our employees a greater level of care, support, and work-life balance. We provide a healthy, zero-burnout, skill-focused working environment as opposed to over-working and highly stressful culture across most of the workplaces. The Individual Development Plans (IDPs), regular personal counselling sessions, flexible working hours, incentives &amp; bonuses, female health care plans, rapid growth opportunities and perfect work-life balance are just some of the reasons that people prefer to work with us.
             </p>
-            <p className="font-size-15 text-muted lh-lg mb-4 text-justify">
-              We aren’t looking for long resumes or high qualifications. We make our hiring decisions based on your skill sets, passion to excel and succeed in your domain. Our hardworking and passionate employees are rightfully rewarded with increments and perks. If you have it yourself then Counsel India is a place for you to thrive and grow.
+            <p>
+              We aren’t looking for long resumes or high qualifications. We make our hiring decisions based on your skill sets passion to excel and succeed in your domain. Our hardworking and passionate employees are rightfully rewarded with increments and perks. If you have it yourself then Counsel India is a place for you to thrive and grow.
             </p>
-
             <Link
               href="/career"
-              className="btn btn-primary px-4 py-3 font-size-15 fw-bold rounded-pill shadow-sm text-decoration-none d-inline-flex align-items-center"
-              style={{ backgroundColor: "#07a64b", borderColor: "#07a64b" }}
+              className="banner-caption-03__btn btn btn-primary btn-hover-primary"
             >
-              Current Openings <i className="fal fa-arrow-right ms-2"></i>
+              Current Openings
             </Link>
           </div>
         </div>
+        {/* Banner Box End */}
       </div>
 
       <style jsx>{`
-        .banner-big-box {
-          background: linear-gradient(135deg, #e6f6ed 0%, #f4fbf7 50%, #ffffff 100%);
-          border: 1px solid #dceed5;
+        .banner-bg-4 {
+          background-color: #f1f3f2;
+          padding: 40px 45px 42px 95px;
+          border-radius: 8px;
+          position: relative;
+        }
+
+        .banner-big-box__arrow {
+          position: absolute;
+          left: 32px;
+          bottom: 50px;
         }
 
         .banner-caption-03__title {
-          color: #1e293b;
+          font-family: Georgia, "Playfair Display", "Times New Roman", serif;
+          font-size: 28px;
+          font-weight: 700;
+          color: #212529;
+          margin-bottom: 16px;
+        }
+
+        .banner-caption-03 p {
+          font-size: 14px;
+          color: #4b5563;
+          line-height: 1.7;
+          margin-bottom: 16px;
+        }
+
+        .banner-caption-03__btn {
+          background-color: #07a64b;
+          border-color: #07a64b;
+          color: #ffffff;
+          font-size: 14px;
+          font-weight: 600;
+          padding: 10px 24px;
+          border-radius: 4px;
+          display: inline-block;
+          margin-top: 10px;
+          text-decoration: none;
+        }
+
+        .banner-caption-03__btn:hover {
+          background-color: #05853c;
+          border-color: #05853c;
+        }
+
+        @media (max-width: 768px) {
+          .banner-bg-4 {
+            padding: 30px 20px;
+          }
+          .banner-big-box__arrow {
+            display: none;
+          }
         }
       `}</style>
-    </section>
+    </div>
   );
 }
