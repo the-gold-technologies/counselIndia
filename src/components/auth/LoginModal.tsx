@@ -8,7 +8,11 @@ interface LoginModalProps {
   onSuccess?: () => void;
 }
 
-export default function LoginModal({ isOpen, onClose, onSuccess }: LoginModalProps) {
+export default function LoginModal({
+  isOpen,
+  onClose,
+  onSuccess,
+}: LoginModalProps) {
   const [activeTab, setActiveTab] = useState<"password" | "otp">("password");
   const [emailOrPhone, setEmailOrPhone] = useState("");
   const [password, setPassword] = useState("");
@@ -19,7 +23,10 @@ export default function LoginModal({ isOpen, onClose, onSuccess }: LoginModalPro
 
   // Dynamically load lord-icon for animated waving avatar
   useEffect(() => {
-    if (typeof window !== "undefined" && !document.getElementById("lord-icon-script")) {
+    if (
+      typeof window !== "undefined" &&
+      !document.getElementById("lord-icon-script")
+    ) {
       const script = document.createElement("script");
       script.id = "lord-icon-script";
       script.src = "https://cdn.lordicon.com/lordicon.js";
@@ -84,7 +91,8 @@ export default function LoginModal({ isOpen, onClose, onSuccess }: LoginModalPro
           position: "relative",
           maxWidth: "470px",
           width: "100%",
-          animation: "modalSlideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+          animation:
+            "modalSlideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards",
           maxHeight: "92vh",
           overflowY: "auto",
           padding: "36px 42px 42px",
@@ -131,7 +139,7 @@ export default function LoginModal({ isOpen, onClose, onSuccess }: LoginModalPro
           {/* Logo */}
           <div>
             <img
-              src="https://www.counselindia.com/assets/images/dark-logo.png"
+              src=" /assets/images/dark-logo.png"
               alt="Counsel India"
               style={{
                 width: "220px",
@@ -146,7 +154,15 @@ export default function LoginModal({ isOpen, onClose, onSuccess }: LoginModalPro
           </div>
 
           {/* Avatar Character */}
-          <div style={{ width: "90px", height: "90px", display: "flex", alignItems: "center", justifyContent: "flex-end" }}>
+          <div
+            style={{
+              width: "90px",
+              height: "90px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-end",
+            }}
+          >
             {/* Lordicon Animated Avatar */}
             {React.createElement("lord-icon", {
               src: "https://cdn.lordicon.com/mebvgwrs.json",
@@ -209,7 +225,8 @@ export default function LoginModal({ isOpen, onClose, onSuccess }: LoginModalPro
             type="button"
             onClick={() => setActiveTab("password")}
             style={{
-              backgroundColor: activeTab === "password" ? "#00a651" : "transparent",
+              backgroundColor:
+                activeTab === "password" ? "#00a651" : "transparent",
               color: activeTab === "password" ? "#ffffff" : "#0d6efd",
               borderRadius: "4px",
               padding: "10px 18px",
@@ -334,7 +351,9 @@ export default function LoginModal({ isOpen, onClose, onSuccess }: LoginModalPro
                     padding: 0,
                   }}
                 >
-                  <i className={showPassword ? "fas fa-eye-slash" : "fas fa-eye"}></i>
+                  <i
+                    className={showPassword ? "fas fa-eye-slash" : "fas fa-eye"}
+                  ></i>
                 </button>
               </div>
             </div>
@@ -471,7 +490,11 @@ export default function LoginModal({ isOpen, onClose, onSuccess }: LoginModalPro
                 transition: "background-color 0.2s ease",
               }}
             >
-              {isSubmitting ? "Verifying..." : otpSent ? "Verify & Log In" : "Send OTP"}
+              {isSubmitting
+                ? "Verifying..."
+                : otpSent
+                  ? "Verify & Log In"
+                  : "Send OTP"}
             </button>
           </form>
         )}

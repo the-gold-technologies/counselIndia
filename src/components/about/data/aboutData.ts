@@ -92,15 +92,17 @@ export const LEADERS: LeaderMember[] = [
     id: 1,
     name: "Bobby Thakur",
     designation: "Founder & CEO",
-    image: "https://prod-s3.counselindia.com/master_leaders/Bobby sir_1715950400.jpg",
+    image:
+      "https://prod-s3.counselindia.com/master_leaders/Bobby sir_1715950400.jpg",
     linkedin: "https://www.linkedin.com/in/bobby-thakur-ceo-counsel-india/",
   },
   {
     id: 2,
     name: "Kamal Pande",
     designation: "Chief Financial Officer",
-    image: "https://prod-s3.counselindia.com/master_leaders/Kamal sir_1715949024.jpg",
-    linkedin: "https://www.counselindia.com/",
+    image:
+      "https://prod-s3.counselindia.com/master_leaders/Kamal sir_1715949024.jpg",
+    linkedin: " /",
   },
 ];
 
@@ -109,28 +111,32 @@ export const CORE_TEAM: TeamMember[] = [
     id: 1,
     name: "Sapna Singh",
     designation: "Finance Associate",
-    image: "https://prod-s3.counselindia.com/meet_our_team/sapna finance photo_1756911088.jpeg",
+    image:
+      "https://prod-s3.counselindia.com/meet_our_team/sapna finance photo_1756911088.jpeg",
     type: "core",
   },
   {
     id: 2,
     name: "Shubham Sharma",
     designation: "Sr. Manager - Business Development & Operations",
-    image: "https://prod-s3.counselindia.com/meet_our_team/shubham_1753159155.jpeg",
+    image:
+      "https://prod-s3.counselindia.com/meet_our_team/shubham_1753159155.jpeg",
     type: "core",
   },
   {
     id: 3,
     name: "Deepanjali Soni",
     designation: "Assistant HR Manager",
-    image: "https://prod-s3.counselindia.com/meet_our_team/deepanjali_1753159327.jpeg",
+    image:
+      "https://prod-s3.counselindia.com/meet_our_team/deepanjali_1753159327.jpeg",
     type: "core",
   },
   {
     id: 4,
     name: "Rocky Bhati",
     designation: "Compliance Officer",
-    image: "https://prod-s3.counselindia.com/meet_our_team/rocky_1753159466.jpeg",
+    image:
+      "https://prod-s3.counselindia.com/meet_our_team/rocky_1753159466.jpeg",
     type: "core",
   },
   {
@@ -230,7 +236,8 @@ export const WORK_CULTURE_TESTIMONIALS: WorkCultureTestimonial[] = [
     description:
       "Counsel India is like another home to me. I started my journey as an intern and am now a full-time employee. The work culture and environment are amazing which always motivated me in every part of my life.",
     name: "Himani Khatter",
-    image: "https://prod-s3.counselindia.com/meet_our_team/1147366070_1688707163.jpg",
+    image:
+      "https://prod-s3.counselindia.com/meet_our_team/1147366070_1688707163.jpg",
   },
   {
     id: 5,
@@ -238,7 +245,8 @@ export const WORK_CULTURE_TESTIMONIALS: WorkCultureTestimonial[] = [
     description:
       "I started my journey in counsel India as an Academic counsellor. And I can proudly say that it is the best platform for growth and practical exposure as within 6 months, it given great positional and financial growth. All credit goes to the management and environment of counsel India.",
     name: "Aparna",
-    image: "https://prod-s3.counselindia.com/meet_our_team/464286759_1688711821.jpg",
+    image:
+      "https://prod-s3.counselindia.com/meet_our_team/464286759_1688711821.jpg",
   },
 ];
 
