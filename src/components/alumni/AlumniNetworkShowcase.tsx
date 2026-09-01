@@ -115,7 +115,7 @@ export default function AlumniNetworkShowcase() {
         {/* Bottom Button (Guaranteed Solid Green Button with inline styles) */}
         <div className="d-flex justify-content-center py-4">
           <Link
-            href=" /learners-network"
+            href="/learners-network"
             target="_blank"
             rel="noopener noreferrer"
             className="btn text-white text-decoration-none shadow-sm"

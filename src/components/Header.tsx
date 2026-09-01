@@ -44,7 +44,7 @@ export default function Header() {
         <div className="main22">
           <div className="marquee22">
             <div className="geek22">
-              <a href=" /membership" target="_blank" rel="noreferrer">
+              <a href="/membership" target="_blank" rel="noreferrer">
                 <strong>
                   Join our exclusive membership for a personalized wellbeing
                   routine crafted by expert psychologists—starting at just Rs

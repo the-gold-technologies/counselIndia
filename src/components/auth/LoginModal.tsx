@@ -139,7 +139,7 @@ export default function LoginModal({
           {/* Logo */}
           <div>
             <img
-              src=" /assets/images/dark-logo.png"
+              src="/assets/images/dark-logo.png"
               alt="Counsel India"
               style={{
                 width: "220px",
