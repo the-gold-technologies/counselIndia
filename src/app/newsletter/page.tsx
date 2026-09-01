@@ -17,28 +17,35 @@ interface NewsletterItem {
 const FEATURED_NEWSLETTERS: NewsletterItem[] = [
   {
     id: 1,
-    name: "Understanding Color Psychology & Emotional Perception",
-    image: "https://prod-s3.counselindia.com/blog/Color Theory Presentation In Colorful Simple Style (1)_1741849717.jpg",
+    name: "Counsel India's",
+    monthTitle: "February Newsletter",
+    image:
+      "https://prod-s3.counselindia.com/blog/Color Theory Presentation In Colorful Simple Style (1)_1741849717.jpg",
   },
   {
     id: 2,
-    name: "Cognitive Resilience in High-Pressure Workplaces",
-    image: "/assets/images/blog/blog-01.jpg",
+    name: "Counsel India's",
+    monthTitle: "January Newsletter",
+    image:
+      "https://prod-s3.counselindia.com/blog/Art Therapy for Kids. (3)_1741849646.jpg",
   },
   {
     id: 3,
-    name: "Child Behavioral Development & Modern Parenting",
-    image: "/assets/images/blog/blog-04.jpg",
+    name: "Counsel India",
+    monthTitle: "November Newsletter",
+    image: "/assets/images/blog/blog-01.jpg",
   },
   {
     id: 4,
-    name: "The Role of Mindfulness in Stress Reduction",
-    image: "/assets/images/blog/blog-05.jpg",
+    name: "Counsel India's",
+    monthTitle: "December Newsletter",
+    image: "/assets/images/blog/blog-04.jpg",
   },
   {
     id: 5,
-    name: "Clinical Psychotherapy Breakthroughs in 2025",
-    image: "/assets/images/blog/blog-06.jpg",
+    name: "Counsel India's",
+    monthTitle: "October Newsletter",
+    image: "/assets/images/blog/blog-05.jpg",
   },
 ];
 
