@@ -5,15 +5,17 @@ import { GrowthCourse } from "./data/growthCoursesData";
 
 interface Props {
   course: GrowthCourse;
-  onEnrollClick?: (course: GrowthCourse) => void;
 }
 
-export default function GrowthCourseCard({ course, onEnrollClick }: Props) {
+export default function GrowthCourseCard({ course }: Props) {
   return (
     <div className="blog-item-02 bg-white rounded-2 overflow-hidden d-flex flex-column h-100 shadow-sm border border-light-subtle">
       {/* Course Thumbnail */}
       <div className="blog-item-02__image position-relative overflow-hidden">
-        <Link href={`/courses/${course.slug}`} className="d-block overflow-hidden">
+        <Link
+          href={`/course-detail/${course.slug}`}
+          className="d-block overflow-hidden"
+        >
           <img
             src={course.coverimage}
             alt={course.title}
@@ -36,7 +38,7 @@ export default function GrowthCourseCard({ course, onEnrollClick }: Props) {
           style={{ height: "3.6em", lineHeight: "1.4" }}
         >
           <Link
-            href={`/courses/${course.slug}`}
+            href={`/course-detail/${course.slug}`}
             className="text-dark text-decoration-none hover-primary fw-bold"
           >
             {course.title}
@@ -70,22 +72,23 @@ export default function GrowthCourseCard({ course, onEnrollClick }: Props) {
           </h6>
         </div>
 
-        {/* Buy Now Button */}
+        {/* Buy Now Button linking directly to course detail */}
         <div className="mt-auto">
-          <button
-            type="button"
-            onClick={() => onEnrollClick?.(course)}
+          <Link
+            href={`/course-detail/${course.slug}`}
             className="btn btn-light-custom text-decoration-none d-inline-flex align-items-center"
           >
             Buy Now <span className="ms-2">→</span>
-          </button>
+          </Link>
         </div>
       </div>
 
       <style jsx>{`
         .blog-item-02 {
           box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-          transition: transform 0.25s ease, box-shadow 0.25s ease;
+          transition:
+            transform 0.25s ease,
+            box-shadow 0.25s ease;
         }
 
         .blog-item-02:hover {
@@ -99,24 +102,29 @@ export default function GrowthCourseCard({ course, onEnrollClick }: Props) {
           color: #212529;
         }
 
-        .hover-primary:hover {
-          color: #07a64b !important;
+        .course-img {
+          transition: transform 0.4s ease;
+        }
+
+        .blog-item-02:hover .course-img {
+          transform: scale(1.05);
         }
 
         .btn-light-custom {
-          background-color: #f1f3f5;
-          color: #212529;
+          background-color: #f1f5f9;
+          color: #0f172a;
+          border: 1px solid #e2e8f0;
           font-size: 14px;
           font-weight: 600;
-          padding: 8px 20px;
-          border-radius: 4px;
-          border: 1px solid #e9ecef;
+          padding: 8px 18px;
+          border-radius: 6px;
           transition: all 0.2s ease;
         }
 
         .btn-light-custom:hover {
-          background-color: #e2e6ea;
-          color: #000000;
+          background-color: #07a64b;
+          color: #ffffff;
+          border-color: #07a64b;
         }
       `}</style>
     </div>

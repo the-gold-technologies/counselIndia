@@ -14,10 +14,7 @@ export default function GrowthCoursesGrid({ onSelectCourse }: Props) {
         <div className="row gy-5">
           {GROWTH_COURSES.map((course) => (
             <div key={course.id} className="col-xl-4 col-md-6 col-12">
-              <GrowthCourseCard
-                course={course}
-                onEnrollClick={onSelectCourse}
-              />
+              <GrowthCourseCard course={course} />
             </div>
           ))}
         </div>
