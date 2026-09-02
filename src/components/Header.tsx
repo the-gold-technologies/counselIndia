@@ -161,7 +161,7 @@ export default function Header() {
                           </Link>
                         </li>
                         <li>
-                          <Link href="/charity">
+                          <Link href="/Har-Ghar-Counsellor">
                             <span>Har Ghar Counsellor</span>
                           </Link>
                         </li>
@@ -589,7 +589,7 @@ export default function Header() {
                     </li>
                     <li className="py-1">
                       <Link
-                        href="/charity"
+                        href="/Har-Ghar-Counsellor"
                         onClick={closeMobileMenu}
                         className="text-decoration-none font-size-14 d-block py-1 fw-medium"
                         style={{ color: "#242a37" }}
