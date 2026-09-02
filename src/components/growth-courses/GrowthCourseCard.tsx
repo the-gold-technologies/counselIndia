@@ -72,13 +72,35 @@ export default function GrowthCourseCard({ course }: Props) {
           </h6>
         </div>
 
-        {/* Buy Now Button linking directly to course detail */}
+        {/* Buy Now Button with guaranteed inline styling */}
         <div className="mt-auto">
           <Link
             href={`/course-detail/${course.slug}`}
-            className="btn btn-light-custom text-decoration-none d-inline-flex align-items-center"
+            className="text-decoration-none"
+            style={{
+              backgroundColor: "#f3f4f6",
+              color: "#212529",
+              borderRadius: "8px",
+              padding: "8px 16px",
+              fontSize: "16px",
+              fontWeight: 500,
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              border: "none",
+              outline: "none",
+              transition: "all 0.2s ease",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = "#07a64b";
+              e.currentTarget.style.color = "#ffffff";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = "#f3f4f6";
+              e.currentTarget.style.color = "#212529";
+            }}
           >
-            Buy Now <span className="ms-2">→</span>
+            Buy Now <span style={{ marginLeft: "8px" }}>→</span>
           </Link>
         </div>
       </div>
@@ -108,23 +130,6 @@ export default function GrowthCourseCard({ course }: Props) {
 
         .blog-item-02:hover .course-img {
           transform: scale(1.05);
-        }
-
-        .btn-light-custom {
-          background-color: #f1f5f9;
-          color: #0f172a;
-          border: 1px solid #e2e8f0;
-          font-size: 14px;
-          font-weight: 600;
-          padding: 8px 18px;
-          border-radius: 6px;
-          transition: all 0.2s ease;
-        }
-
-        .btn-light-custom:hover {
-          background-color: #07a64b;
-          color: #ffffff;
-          border-color: #07a64b;
         }
       `}</style>
     </div>
