@@ -1,8 +1,23 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
+import Link from "next/link";
 import { EVENTS_DATA, EventItem } from "./data/eventsData";
 
 export default function EventsGrid() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 12;
+  const totalPages = Math.ceil(EVENTS_DATA.length / itemsPerPage);
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const displayedEvents = EVENTS_DATA.slice(startIndex, startIndex + itemsPerPage);
+
+  const handlePageChange = (page: number) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+      window.scrollTo({ top: 300, behavior: "smooth" });
+    }
+  };
+
   return (
     <div
       className="event-section overflow-visible py-5"
@@ -32,7 +47,7 @@ export default function EventsGrid() {
 
         {/* 3-Column Responsive Grid */}
         <div className="row gy-4 gx-4">
-          {EVENTS_DATA.map((event: EventItem) => (
+          {displayedEvents.map((event: EventItem) => (
             <div
               className="col-xl-4 col-lg-4 col-sm-6 col-12 grid-item"
               key={event.id}
@@ -53,10 +68,8 @@ export default function EventsGrid() {
                     backgroundColor: "#f8fafc",
                   }}
                 >
-                  <a
-                    href={event.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Link
+                    href={`/events/${event.slug}`}
                     className="d-block w-100 h-100"
                   >
                     <img
@@ -73,7 +86,7 @@ export default function EventsGrid() {
                           "https://prod-s3.counselindia.com/images/home-university-image-campus-life.jpg";
                       }}
                     />
-                  </a>
+                  </Link>
                 </div>
 
                 {/* Content Section (Dull white by default, brighter white on hover) */}
@@ -115,22 +128,18 @@ export default function EventsGrid() {
                       height: "3em",
                     }}
                   >
-                    <a
-                      href={event.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <Link
+                      href={`/events/${event.slug}`}
                       className="text-decoration-none text-dark event-title-link"
                     >
                       {event.title}
-                    </a>
+                    </Link>
                   </h3>
 
-                  {/* Know More Green Button matching screenshot */}
+                  {/* Know More Green Button */}
                   <div className="mt-auto">
-                    <a
-                      href={event.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <Link
+                      href={`/events/${event.slug}`}
                       className="btn event-cta-btn d-inline-flex align-items-center justify-content-center"
                       style={{
                         backgroundColor: "#07a64b",
@@ -145,13 +154,91 @@ export default function EventsGrid() {
                       }}
                     >
                       Know more
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
             </div>
           ))}
         </div>
+
+        {/* Custom Pagination: Displayed ONLY when totalPages > 1 */}
+        {totalPages > 1 && (
+          <div className="page-pagination-wrapper pt-5 mt-2 d-flex justify-content-center align-items-center">
+            <div className="d-flex align-items-center gap-4 gap-md-5">
+              {/* PREVIOUS button (visible when not on page 1) */}
+              {currentPage > 1 && (
+                <button
+                  type="button"
+                  onClick={() => handlePageChange(currentPage - 1)}
+                  className="btn border-0 shadow-none d-inline-flex align-items-center gap-1 p-0 fw-bold"
+                  style={{
+                    background: "transparent",
+                    color: "#1e2532",
+                    fontSize: "16px",
+                    fontWeight: 700,
+                    fontFamily: "Poppins, sans-serif",
+                    letterSpacing: "0.5px",
+                    textTransform: "uppercase",
+                    cursor: "pointer",
+                  }}
+                >
+                  &larr; PREVIOUS
+                </button>
+              )}
+
+              {/* Page numbers */}
+              <div className="d-flex align-items-center gap-3">
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => {
+                  const isActive = currentPage === page;
+                  return (
+                    <button
+                      key={page}
+                      type="button"
+                      onClick={() => handlePageChange(page)}
+                      className="btn border-0 shadow-none d-inline-flex align-items-center justify-content-center p-0"
+                      style={{
+                        width: "48px",
+                        height: "48px",
+                        backgroundColor: isActive ? "#0071dc" : "transparent",
+                        color: isActive ? "#ffffff" : "#1e2532",
+                        fontSize: "18px",
+                        fontWeight: 700,
+                        fontFamily: "Poppins, sans-serif",
+                        borderRadius: isActive ? "50%" : "0px",
+                        transition: "all 0.2s ease",
+                        cursor: "pointer",
+                      }}
+                    >
+                      {page}
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* NEXT button (visible when not on last page) */}
+              {currentPage < totalPages && (
+                <button
+                  type="button"
+                  onClick={() => handlePageChange(currentPage + 1)}
+                  className="btn border-0 shadow-none d-inline-flex align-items-center gap-1 p-0 fw-bold"
+                  style={{
+                    background: "transparent",
+                    color: "#1e2532",
+                    fontSize: "16px",
+                    fontWeight: 700,
+                    fontFamily: "Poppins, sans-serif",
+                    letterSpacing: "0.5px",
+                    textTransform: "uppercase",
+                    cursor: "pointer",
+                  }}
+                >
+                  NEXT &rarr;
+                </button>
+              )}
+            </div>
+          </div>
+        )}
       </div>
 
       <style jsx>{`
