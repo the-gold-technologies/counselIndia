@@ -33,7 +33,7 @@ export default function HeroSection() {
                   </p>
                 </div>
                 <Link
-                  href="/courses"
+                  href="/all-courses-list"
                   className="btn btn-secondary btn-hover-primary course-btn-hero1"
                 >
                   Explore Our Courses

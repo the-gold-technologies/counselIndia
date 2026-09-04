@@ -6,7 +6,7 @@ export default function MobileBottomNav() {
   const navItems = [
     {
       title: "Courses",
-      href: "/courses",
+      href: "/all-courses-list",
       icon: "fas fa-book",
     },
     {

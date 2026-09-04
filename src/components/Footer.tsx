@@ -39,7 +39,7 @@ export default function Footer() {
                   <h4 className="footer-widget__title text-white font-size-16 fw-bold mb-3">Products</h4>
                   <ul className="footer-widget__link footer-widget__link-02 list-unstyled ps-0 font-size-14" style={{ lineHeight: "2.1" }}>
                     <li>
-                      <Link href="/courses" className="text-white hover-text-primary text-decoration-none">
+                      <Link href="/all-courses-list" className="text-white hover-text-primary text-decoration-none">
                         Courses
                       </Link>
                     </li>

@@ -96,7 +96,7 @@ export default function HarGharHero() {
         {/* CTA Button */}
         <div>
           <Link
-            href="/courses"
+            href="/all-courses-list"
             className="text-white text-decoration-none"
             style={{
               padding: "12px 28px",

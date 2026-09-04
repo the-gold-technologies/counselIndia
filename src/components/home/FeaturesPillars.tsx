@@ -12,7 +12,7 @@ export default function FeaturesPillars() {
         <div className="row g-4 align-items-center justify-content-between">
           {/* Pillar 1: Specialized Courses & Diplomas */}
           <div className="col-lg-4 col-md-4 col-12 d-flex justify-content-lg-start justify-content-center">
-            <Link href="/courses" className="text-decoration-none">
+            <Link href="/all-courses-list" className="text-decoration-none">
               <div className="features-item d-flex align-items-center gap-3">
                 <div className="features-item__icon flex-shrink-0">
                   <svg

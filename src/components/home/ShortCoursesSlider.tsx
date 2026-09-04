@@ -83,7 +83,7 @@ export default function ShortCoursesSlider() {
               </h2>
             </div>
             <div className="section-btn mt-4">
-              <Link href="/courses" className="btn btn-light btn-hover-primary px-4 py-2 font-size-14 fw-semibold">
+              <Link href="/all-courses-list" className="btn btn-light btn-hover-primary px-4 py-2 font-size-14 fw-semibold">
                 View all
               </Link>
             </div>

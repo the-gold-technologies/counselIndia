@@ -103,7 +103,7 @@ export default function Header() {
                 <nav className="menu-primary">
                   <ul className="menu-primary__container justify-content-center">
                     <li>
-                      <Link href="/courses">
+                      <Link href="/all-courses-list">
                         <span className="custom-btn">Courses</span>
                       </Link>
                     </li>
@@ -364,7 +364,7 @@ export default function Header() {
               {/* Courses */}
               <li style={{ position: "relative" }}>
                 <Link
-                  href="/courses"
+                  href="/all-courses-list"
                   onClick={closeMobileMenu}
                   style={{
                     padding: "16px 0",
