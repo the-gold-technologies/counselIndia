@@ -2,11 +2,34 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import AiCounsellingModal from "./common/AiCounsellingModal";
+import LoginModal from "./auth/LoginModal";
 
 export default function Header() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [expandedMenu, setExpandedMenu] = useState<string | null>(null);
   const [isAiModalOpen, setIsAiModalOpen] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+
+  useEffect(() => {
+    const handleOpenLogin = () => setIsLoginModalOpen(true);
+    window.addEventListener("openLoginModal", handleOpenLogin);
+
+    const handleGlobalClick = (e: MouseEvent) => {
+      const target = (e.target as HTMLElement)?.closest(
+        '[data-bs-target="#loginModal"], [href="#loginModal"]'
+      );
+      if (target) {
+        e.preventDefault();
+        setIsLoginModalOpen(true);
+      }
+    };
+    document.addEventListener("click", handleGlobalClick);
+
+    return () => {
+      window.removeEventListener("openLoginModal", handleOpenLogin);
+      document.removeEventListener("click", handleGlobalClick);
+    };
+  }, []);
 
   useEffect(() => {
     if (isMobileOpen) {
@@ -205,13 +228,13 @@ export default function Header() {
                   <div className="header-user__button">
                     <button
                       className="header-user__login"
-                      data-bs-toggle="modal"
-                      data-bs-target="#loginModal"
+                      onClick={() => setIsLoginModalOpen(true)}
                       style={{
                         display: "inline-flex",
                         alignItems: "center",
                         justifyContent: "center",
                         textAlign: "center",
+                        cursor: "pointer",
                       }}
                     >
                       Log In
@@ -662,9 +685,10 @@ export default function Header() {
           >
             <button
               className="btn fw-semibold"
-              onClick={closeMobileMenu}
-              data-bs-toggle="modal"
-              data-bs-target="#loginModal"
+              onClick={() => {
+                closeMobileMenu();
+                setIsLoginModalOpen(true);
+              }}
               style={{
                 flex: "1 1 0%",
                 height: "44px",
@@ -679,6 +703,7 @@ export default function Header() {
                 fontSize: "14px",
                 padding: "0 10px",
                 whiteSpace: "nowrap",
+                cursor: "pointer",
               }}
             >
               Log In
@@ -713,6 +738,12 @@ export default function Header() {
       <AiCounsellingModal
         isOpen={isAiModalOpen}
         onClose={() => setIsAiModalOpen(false)}
+      />
+
+      {/* Login & Sign Up Pop-Up Modal */}
+      <LoginModal
+        isOpen={isLoginModalOpen}
+        onClose={() => setIsLoginModalOpen(false)}
       />
     </div>
   );
