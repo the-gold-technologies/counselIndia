@@ -35,11 +35,32 @@ export default function CounsellorsNetworkPage() {
           <div className="courses-section section-padding-01">
             <div className="container">
               {/* Archive Filter Bar */}
-              <div className="archive-filter-bars">
+              <div className="archive-filter-bars" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "15px", marginBottom: "25px" }}>
                 <div className="archive-filter-bar">
-                  <p>
+                  <p style={{ margin: 0 }}>
                     We found <span><strong>{COUNSELLORS_DATA.length}</strong></span> counsellors for you
                   </p>
+                </div>
+                <div>
+                  <a
+                    href="/mentor-registration"
+                    className="btn btn-hover-primary"
+                    style={{
+                      backgroundColor: "#07a64b",
+                      borderColor: "#07a64b",
+                      color: "#ffffff",
+                      borderRadius: "5px",
+                      padding: "8px 18px",
+                      fontSize: "13.5px",
+                      fontWeight: 600,
+                      textDecoration: "none",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "6px",
+                    }}
+                  >
+                    <span>+</span> Be a Counsellor
+                  </a>
                 </div>
               </div>
 

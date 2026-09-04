@@ -107,6 +107,11 @@ export default function Footer() {
                         Alumni Network
                       </Link>
                     </li>
+                    <li>
+                      <Link href="/mentor-registration" className="text-white hover-text-primary text-decoration-none">
+                        Be a Counsellor
+                      </Link>
+                    </li>
                   </ul>
                 </div>
               </div>

@@ -16,7 +16,7 @@ export default function Header() {
 
     const handleGlobalClick = (e: MouseEvent) => {
       const target = (e.target as HTMLElement)?.closest(
-        '[data-bs-target="#loginModal"], [href="#loginModal"]'
+        '[data-bs-target="#loginModal"], [href="#loginModal"]',
       );
       if (target) {
         e.preventDefault();
@@ -169,7 +169,7 @@ export default function Header() {
                       className="menu-item-has-children"
                       style={{ marginRight: "10px" }}
                     >
-                      <Link href="/more">
+                      <Link href=" /">
                         <span>More</span>
                       </Link>
                       <ul className="sub-menu">
