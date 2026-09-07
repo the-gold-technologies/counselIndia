@@ -129,13 +129,13 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         "id": "tab170",
         "label": "CI Certificate",
         "text": "Upon successful completion of the course, you will receive a recognized certificate from Counsel India, validating your skills and expertise in the field.",
-        "image": "https://prod-s3.counselindia.com/credential/ CMC Foundation-3_1728552205.png"
+        "image": "https://prod-s3.counselindia.com/credential/CMC%20Foundation-3_1728552205.png"
       },
       {
         "id": "tab167",
         "label": "Letter of Recommendation",
         "text": "Upon successful completion of the course, you will be eligible to receive a Letter of Recommendation from Counsel India, endorsing your expertise and professional capabilities in the field.",
-        "image": "https://prod-s3.counselindia.com/credential/Letter of recommendation for Jon Doe (1)_1755835658.png"
+        "image": "https://prod-s3.counselindia.com/credential/Letter%20of%20recommendation%20for%20Jon%20Doe%20%281%29_1755835658.png"
       }
     ],
     "curriculum": {
@@ -239,12 +239,12 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       {
         "name": "Himanshi Singh",
         "title": "Clinical Psychologist",
-        "image": "https://prod-s3.counselindia.com/counsellor/counsellor_Himanshi Singh_1673871256.png"
+        "image": "https://prod-s3.counselindia.com/counsellor/counsellor_Himanshi%20Singh_1673871256.png"
       },
       {
         "name": "Ayushi Madaan",
         "title": "Clinical Psychologist",
-        "image": "https://prod-s3.counselindia.com/counsellor/counsellor_Ayushi Madaan_1673869282.png"
+        "image": "https://prod-s3.counselindia.com/counsellor/counsellor_Ayushi%20Madaan_1673869282.png"
       },
       {
         "name": "Kriti Kamal",
@@ -386,19 +386,19 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         "id": "tab147",
         "label": "CI Certificate",
         "text": "Upon completing UGC-approved programs aligned with NEP 2020 at Counsel India, receive a prestigious certificate endorsed by the Counsel, India—validating your expertise in your chosen field.",
-        "image": "https://prod-s3.counselindia.com/credential/ Child Psychology_1728552794.png"
+        "image": "https://prod-s3.counselindia.com/credential/Child%20Psychology_1728552794.png"
       },
       {
         "id": "tab148",
         "label": "Letter of Recommendation",
         "text": "This globally recognized credential showcases your expertise and commitment in your field.",
-        "image": "https://prod-s3.counselindia.com/credential/Letter of recommendation for Jon Doe (1)_1755835717.png"
+        "image": "https://prod-s3.counselindia.com/credential/Letter%20of%20recommendation%20for%20Jon%20Doe%20%281%29_1755835717.png"
       },
       {
         "id": "tab149",
         "label": "Certificate of Specialization",
         "text": "Earn distinction with this Certificate of Specialization. Empower your career with expertise, a prized validation in your field.",
-        "image": "https://prod-s3.counselindia.com/credential/Child Psychology_1727068538.jpg"
+        "image": "https://prod-s3.counselindia.com/credential/Child%20Psychology_1727068538.jpg"
       }
     ],
     "curriculum": {
@@ -602,19 +602,19 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         "id": "tab143",
         "label": "CI Advanced Certificate",
         "text": "Upon completing UGC-approved programs aligned with NEP 2020 at Counsel India, receive a prestigious certificate endorsed by the Counsel, India—validating your expertise in your chosen field.",
-        "image": "https://prod-s3.counselindia.com/credential/Advanced Certificate in Child Psychology_1728552855.png"
+        "image": "https://prod-s3.counselindia.com/credential/Advanced%20Certificate%20in%20Child%20Psychology_1728552855.png"
       },
       {
         "id": "tab144",
         "label": "Letter of Recommendation",
         "text": "Official Letter of Recommendation awarded upon successful completion of the course and practical assessments.",
-        "image": "https://www.counselindia.com/assets/images/certificate/certificate.png"
+        "image": "https://prod-s3.counselindia.com/credential/Letter%20of%20recommendation%20for%20Jon%20Doe%20%281%29_1755835717.png"
       },
       {
         "id": "tab145",
         "label": "Certificate of Specialization",
         "text": "Earn distinction with this Certificate of Specialization. Empower your career with expertise, a prized validation in your field.",
-        "image": "https://prod-s3.counselindia.com/credential/Advanced Child Psychology_1727068369.jpg"
+        "image": "https://prod-s3.counselindia.com/credential/Advanced%20Child%20Psychology_1727068369.jpg"
       }
     ],
     "curriculum": {
@@ -777,7 +777,7 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
     "slug": "pg-diploma-in-counselling-psychology-clinical-skills",
     "badgeSale": "50% OFF",
     "category": "Course",
-    "bgImage": "https://prod-s3.counselindia.com/courses/background_image/Counselling psychology and clinical skills_1722430554.jpg",
+    "bgImage": "https://prod-s3.counselindia.com/courses/background_image/Counselling%20psychology%20and%20clinical%20skills_1722430554.jpg",
     "partnerLogo": "https://www.counselindia.com/assets/images/logo/icpemci.png",
     "description": "The PG Diploma in Counselling Psychology & Clinical Skills at Counsel India offers a holistic, one-year program bringing together theoretical knowledge with hands-on clinical training.",
     "rating": 5,
@@ -822,13 +822,13 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         "id": "tab177",
         "label": "Certificate of Completion",
         "text": "Official Certificate of Completion awarded upon successful completion of the course and practical assessments.",
-        "image": "https://www.counselindia.com/assets/images/certificate/certificate.png"
+        "image": "https://prod-s3.counselindia.com/credential/Advanced%20Certificate%20in%20Child%20Psychology_1728552855.png"
       },
       {
         "id": "tab176",
         "label": "Letter of Recommendation",
         "text": "This Letter of Recommendation acknowledges your successful completion of this program, demonstrating exceptional commitment and skill in your field. This certificate reflects the high standards and rigorous training of this program.",
-        "image": "https://prod-s3.counselindia.com/credential/Letter of recommendation for Jon Doe (1)_1755835619.png"
+        "image": "https://prod-s3.counselindia.com/credential/Letter%20of%20recommendation%20for%20Jon%20Doe%20%281%29_1755835619.png"
       }
     ],
     "curriculum": {
@@ -975,7 +975,7 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
     "slug": "business-growth-master-course",
     "badgeSale": "50% OFF",
     "category": "Course",
-    "bgImage": "https://prod-s3.counselindia.com/courses/background_image/Untitled design-19_1727090924.png",
+    "bgImage": "https://prod-s3.counselindia.com/courses/background_image/Untitled%20design-19_1727090924.png",
     "partnerLogo": "https://www.counselindia.com/assets/images/logo/icpemci.png",
     "description": "Are you a psychologist, counsellor or mental health professional with the skills to transform lives but struggling to grow your practice? In this action-packed course, you’ll master the entrepreneurial, marketing and business strategies to attract more clients, increase your reach, and scale your venture. Learn how to build a brand that resonates with your audience and implement proven techniques to stand out in a crowded market.",
     "rating": 5,
@@ -1029,7 +1029,7 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         "id": "tab192",
         "label": "Certificate of Completion",
         "text": "This certificate honors your dedication, hard work, and mastery of essential skills and specializations. It celebrates your commitment to excellence and acknowledges your achievement in making a meaningful impact in your field moving forward.",
-        "image": "https://prod-s3.counselindia.com/credential/ CMC - Intermediate-4_1728552416.png"
+        "image": "https://prod-s3.counselindia.com/credential/CMC%20Foundation-3_1728552205.png"
       }
     ],
     "curriculum": {
@@ -1186,7 +1186,7 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
     "slug": "masters-in-psychology-work-integrated-skill-based-program",
     "badgeSale": "40% OFF",
     "category": "Course",
-    "bgImage": "https://prod-s3.counselindia.com/courses/background_image/MA Psychology_1728647201.jpg",
+    "bgImage": "https://prod-s3.counselindia.com/courses/background_image/MA%20Psychology_1728647201.jpg",
     "partnerLogo": "https://www.counselindia.com/assets/images/logo/icpemci.png",
     "description": "(Internship/Apprenticeship Embedded) - Our Masters in Psychology program is designed to help you understand human behavior more effectively, look at the mental processes, and comprehend emotional well-being. With advanced coursework ensuring the highest standards, hands-on training, and research potential, you will gain the skills needed to succeed in diverse areas of psychology, such as counselling and organizational behavior. Explore the complexities of the human mind and build a rewarding career in psychology. This course, In partnership with IPA(International Psychology Association) & Skill India, provides you a strong foundation for a successful career in mental health.",
     "rating": 5,
@@ -1239,25 +1239,25 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         "id": "tab201",
         "label": "IPA certificate",
         "text": "Upon successful completion of the course, you will be awarded a prestigious certificate from IPA( International Psychology Association)",
-        "image": "https://prod-s3.counselindia.com/credential/Screenshot 2025-08-04 114105_1754288577.png"
+        "image": "https://prod-s3.counselindia.com/credential/Screenshot%202025-08-04%20114105_1754288577.png"
       },
       {
         "id": "tab204",
         "label": "MEPSC Certificate",
         "text": "After the successful training and assessment, the Management & Entrepreneurship and Professionals Skills Council (MEPSC) will issue a skill certificate, add your database in the central skills qualification database which can be accessed online for verification and due-diligence by employers. This skills certification will be valid across all G20 nations.",
-        "image": "https://prod-s3.counselindia.com/credential/Certificate Template - Job Role (1)_1753183761.jpg"
+        "image": "https://prod-s3.counselindia.com/credential/Certificate%20Template%20-%20Job%20Role%20%281%29_1753183761.jpg"
       },
       {
         "id": "tab195",
         "label": "Certificate of Completion",
         "text": "This certificate honors your dedication, hard work, and mastery of essential skills and specializations. It celebrates your commitment to excellence and acknowledges your achievement in making a meaningful impact in your field moving forward.",
-        "image": "https://prod-s3.counselindia.com/credential/Advanced Certificate in Child Psychology-2_1728648469.png"
+        "image": "https://prod-s3.counselindia.com/credential/Advanced%20Certificate%20in%20Child%20Psychology-2_1728648469.png"
       },
       {
         "id": "tab196",
         "label": "Letter of Recommendation",
         "text": "This globally recognized credential showcases your expertise and commitment in your field",
-        "image": "https://prod-s3.counselindia.com/credential/Letter of recommendation for Jon Doe (1)_1755835833.png"
+        "image": "https://prod-s3.counselindia.com/credential/Letter%20of%20recommendation%20for%20Jon%20Doe%20%281%29_1755835833.png"
       }
     ],
     "curriculum": {
@@ -1463,13 +1463,13 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         "id": "tab1",
         "label": "CI Certificate",
         "text": "Authorized Certificate awarded by Counsel India verifying core counselling competency and hours completed.",
-        "image": "https://www.counselindia.com/assets/images/certificate/certificate.png"
+        "image": "https://prod-s3.counselindia.com/credential/CMC%20Foundation-3_1728552205.png"
       },
       {
         "id": "tab2",
         "label": "Letter of Recommendation",
         "text": "Personalized Letter of Recommendation for top performing learners to bolster higher education and clinical applications.",
-        "image": "https://www.counselindia.com/assets/images/certificate/certificate.png"
+        "image": "https://prod-s3.counselindia.com/credential/Letter%20of%20recommendation%20for%20Jon%20Doe%20%281%29_1755835619.png"
       }
     ],
     "curriculum": {
@@ -1681,13 +1681,13 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         "id": "tab169",
         "label": "CI Certificate",
         "text": "Upon successful completion of the course, you will receive a recognized certificate from Counsel India, validating your skills and expertise in the field.",
-        "image": "https://prod-s3.counselindia.com/credential/ CMC - Intermediate-3_1728552153.png"
+        "image": "https://prod-s3.counselindia.com/credential/CMC%20-%20Intermediate-3_1728552153.png"
       },
       {
         "id": "tab168",
         "label": "Letter of Recommendation",
         "text": "This globally recognized credential showcases your expertise and commitment in your field.",
-        "image": "https://prod-s3.counselindia.com/credential/Letter of recommendation for Jon Doe (1)_1755835699.png"
+        "image": "https://prod-s3.counselindia.com/credential/Letter%20of%20recommendation%20for%20Jon%20Doe%20%281%29_1755835699.png"
       }
     ],
     "curriculum": {
@@ -1875,7 +1875,7 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         "id": "tab172",
         "label": "certificate",
         "text": "Psychology Internship (Clinical Psychology) Letter of Recommendation These certificates will get you recognized as a certified counsellor and start your career as a primary counsellor anywhere in the world.",
-        "image": "https://prod-s3.counselindia.com/credential/Psychology Internship (Clinical Psychology)_1728552630.png"
+        "image": "https://prod-s3.counselindia.com/credential/Psychology%20Internship%20%28Clinical%20Psychology%29_1728552630.png"
       }
     ],
     "curriculum": {
@@ -2050,7 +2050,7 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
     "slug": "masters-in-child-psychology-work-integrated-skill-based-program%29",
     "badgeSale": "40% OFF",
     "category": "Course",
-    "bgImage": "https://prod-s3.counselindia.com/courses/background_image/New Project (41)_1713437634.webp",
+    "bgImage": "https://prod-s3.counselindia.com/courses/background_image/New%20Project%20%2841%29_1713437634.webp",
     "partnerLogo": "https://www.counselindia.com/assets/images/logo/icpemci.png",
     "description": "(Internship/Apprenticeship Embedded) - Essentially designed for individuals passionate about understanding and nurturing children, this comprehensive, detailed program combines theoretical insights with practical training. It covers a broad range of topics, starting from cognitive development to social and emotional well-being. Learners will gain an in-depth understanding of the complexities of Child Psychology. Engage in ground-breaking research initiatives that ultimately contribute to Child Psychology. Recognised by the IPA(International Psychology Association) & Skill India, provides learners with a solid foundation for a successful career in mental health.",
     "rating": 5,
@@ -2102,25 +2102,25 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         "id": "tab85",
         "label": "IPA Certificate",
         "text": "Upon successful completion of the course, you will be awarded a prestigious cerificate from IPA( International Psychology Association)",
-        "image": "https://prod-s3.counselindia.com/credential/Screenshot 2025-08-04 114105_1754288852.png"
+        "image": "https://prod-s3.counselindia.com/credential/Screenshot%202025-08-04%20114105_1754288852.png"
       },
       {
         "id": "tab86",
         "label": "MEPSC Certificate",
         "text": "After the successful training and assessment, the Management & Entrepreneurship and Professionals Skills Council (MEPSC) will issue a skill certificate, add your database in the central skills qualification database which can be accessed online for verification and due-diligence by employers. This skills certification will be valid across all G20 nations.",
-        "image": "https://prod-s3.counselindia.com/credential/Certificate Template - Job Role (1)_1753182320.jpg"
+        "image": "https://prod-s3.counselindia.com/credential/Certificate%20Template%20-%20Job%20Role%20%281%29_1753182320.jpg"
       },
       {
         "id": "tab194",
         "label": "Certificate of Completion",
         "text": "This certificate honors your dedication, hard work, and mastery of essential skills and specializations. It celebrates your commitment to excellence and acknowledges your achievement in making a meaningful impact in your field moving forward.",
-        "image": "https://prod-s3.counselindia.com/credential/M.A Child Psychology & Developemnt_1728551938.png"
+        "image": "https://prod-s3.counselindia.com/credential/M.A%20Child%20Psychology%20%26%20Developemnt_1728551938.png"
       },
       {
         "id": "tab84",
         "label": "Letter of Recommendation",
         "text": "This globally recognized credential showcases your expertise and commitment in your field.",
-        "image": "https://prod-s3.counselindia.com/credential/Letter of recommendation for Jon Doe (1)_1755835795.png"
+        "image": "https://prod-s3.counselindia.com/credential/Letter%20of%20recommendation%20for%20Jon%20Doe%20%281%29_1755835795.png"
       }
     ],
     "curriculum": {
@@ -2341,13 +2341,13 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         "id": "tab171",
         "label": "CI Certificate",
         "text": "Upon successful completion of the program, you will be awarded a prestigious, co-branded certificate from Counsel India and ICPEM, affirming your advanced skills and specialized training in counselling psychology. This certificate not only validates your theoretical knowledge and practical expertise but also enhances your professional credibility in the mental health field. Recognized by academic and industry bodies, your certification reflects your readiness to make a real-world impact—whether through employment, private practice, or further academic pursuits. It serves as a powerful testament to your dedication, growth, and competence as a trained counsellor.",
-        "image": "https://prod-s3.counselindia.com/credential/ CMC - Advanced-2_1728552024.png"
+        "image": "https://prod-s3.counselindia.com/credential/CMC%20-%20Advanced-2_1728552024.png"
       },
       {
         "id": "tab166",
         "label": "Letter of Recommendation",
         "text": "Upon successful completion of the course, you become eligible to receive a personalized Letter of Recommendation from Counsel India, formally endorsing your counselling expertise, skillset, and professional readiness. This LOR serves as a strong testament to your capabilities, helping you stand out in academic, clinical, and job-related opportunities. It reflects your commitment, performance, and practical training—backed by India's leading psychology education platform.",
-        "image": "https://prod-s3.counselindia.com/credential/Letter of recommendation for Jon Doe (1)_1755835777.png"
+        "image": "https://prod-s3.counselindia.com/credential/Letter%20of%20recommendation%20for%20Jon%20Doe%20%281%29_1755835777.png"
       }
     ],
     "curriculum": {
@@ -2551,19 +2551,19 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         "id": "tab202",
         "label": "IPA Certificate",
         "text": "Upon successful completion of the course, you will be awarded a prestigious certificate from IPA( International Psychology Association)",
-        "image": "https://prod-s3.counselindia.com/credential/Screenshot 2025-08-04 114105_1754288504.png"
+        "image": "https://prod-s3.counselindia.com/credential/Screenshot%202025-08-04%20114105_1754288504.png"
       },
       {
         "id": "tab88",
         "label": "Letter of Recommendation",
         "text": "This globally recognized credential showcases your expertise and commitment in your field.",
-        "image": "https://prod-s3.counselindia.com/credential/Letter of recommendation for Jon Doe (1)_1755835814.png"
+        "image": "https://prod-s3.counselindia.com/credential/Letter%20of%20recommendation%20for%20Jon%20Doe%20%281%29_1755835814.png"
       },
       {
         "id": "tab205",
         "label": "MEPSC Certificate",
         "text": "After the successful training and assessment, the Management & Entrepreneurship and Professionals Skills Council (MEPSC) will issue a skill certificate, add your database in the central skills qualification database which can be accessed online for verification and due-diligence by employers. This skills certification will be valid across all G20 nations.",
-        "image": "https://prod-s3.counselindia.com/credential/Certificate Template - Job Role (1)_1753183776.jpg"
+        "image": "https://prod-s3.counselindia.com/credential/Certificate%20Template%20-%20Job%20Role%20%281%29_1753183776.jpg"
       }
     ],
     "curriculum": {
@@ -2770,19 +2770,19 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         "id": "tab190",
         "label": "Letter of Recommendation",
         "text": "This Letter of Recommendation acknowledges your successful completion of this program, demonstrating exceptional commitment and skill in your field. This certificate reflects the high standards and rigorous training of this program.",
-        "image": "https://prod-s3.counselindia.com/credential/Letter of recommendation for Jon Doe (1)_1755835754.png"
+        "image": "https://prod-s3.counselindia.com/credential/Letter%20of%20recommendation%20for%20Jon%20Doe%20%281%29_1755835754.png"
       },
       {
         "id": "tab199",
         "label": "MEPSC Certificate",
         "text": "Upon successful completion of the course, you will also receive a MEPSC certification.",
-        "image": "https://prod-s3.counselindia.com/credential/WhatsApp Image 2025-05-27 at 16.50.25_1748587499.jpeg"
+        "image": "https://prod-s3.counselindia.com/credential/WhatsApp%20Image%202025-05-27%20at%2016.50.25_1748587499.jpeg"
       },
       {
         "id": "tab200",
         "label": "Psychology foundation course certificate",
         "text": "This certificate is a testament to your dedication, hard work, and mastery of essential skills and specializations. It recognizes your commitment to excellence and marks your achievement in creating meaningful impact in your field. You will receive this additional certificate upon completing the program, making your profile truly future-ready and industry-recognized.",
-        "image": "https://prod-s3.counselindia.com/credential/WhatsApp Image 2025-05-30 at 12.13.37_1748587672.jpeg"
+        "image": "https://prod-s3.counselindia.com/credential/WhatsApp%20Image%202025-05-30%20at%2012.13.37_1748587672.jpeg"
       }
     ],
     "curriculum": {
@@ -2965,7 +2965,7 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
     "slug": "diploma-in-child-psychology-parenting",
     "badgeSale": "50% OFF",
     "category": "Course",
-    "bgImage": "https://prod-s3.counselindia.com/courses/background_image/child psychology_1722431559.jpg",
+    "bgImage": "https://prod-s3.counselindia.com/courses/background_image/child%20psychology_1722431559.jpg",
     "partnerLogo": "https://www.counselindia.com/assets/images/logo/icpemci.png",
     "description": "Counsel India's Diploma in Child Psychology offers an unparalleled opportunity for educators, parents, aspiring child psychologists, and professionals working with children to deepen their understanding of childhood development and behavior. This program stands out with its expert-led curriculum, practical hands-on learning, and cutting-edge content tailored to contemporary needs. You'll gain valuable skills to support and guide children effectively, whether in educational settings, counseling, or personal interactions",
     "rating": 5,
@@ -3010,13 +3010,13 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         "id": "tab186",
         "label": "Certificate of Completion",
         "text": "This certificate acknowledges your sincere dedication and mastery of key skills throughout the program. Your commitment to excellence is truly commendable, and we are confident that you will make a significant impact in your professional endeavors.",
-        "image": "https://prod-s3.counselindia.com/credential/Diploma Child Psychology & Parenting-2_1728553068.png"
+        "image": "https://prod-s3.counselindia.com/credential/Diploma%20Child%20Psychology%20%26%20Parenting-2_1728553068.png"
       },
       {
         "id": "tab188",
         "label": "LOR",
         "text": "This Letter of Recommendation acknowledges your successful completion of this program, demonstrating exceptional commitment and skill in your field. This certificate reflects the high standards and rigorous training of this program.",
-        "image": "https://prod-s3.counselindia.com/credential/Letter of recommendation for Jon Doe (1)_1755835645.png"
+        "image": "https://prod-s3.counselindia.com/credential/Letter%20of%20recommendation%20for%20Jon%20Doe%20%281%29_1755835645.png"
       }
     ],
     "curriculum": {
@@ -3222,13 +3222,13 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         "id": "tab45",
         "label": "Letter Of Recommendation",
         "text": "Upon successful completion of the course, you will be eligible to receive a Letter of Recommendation from Counsel India, endorsing your expertise and professional capabilities in the field .",
-        "image": "https://prod-s3.counselindia.com/credential/Letter of recommendation for Jon Doe (1)_1755835676.png"
+        "image": "https://prod-s3.counselindia.com/credential/Letter%20of%20recommendation%20for%20Jon%20Doe%20%281%29_1755835676.png"
       },
       {
         "id": "tab193",
         "label": "EIMT certificates",
         "text": "Upon successful completion of the course, you will be awarded with a prestigious certificate from the European Institute of Manage ment & Training, offering you with valuable opportunities to gain practical skills and industry connections through both on-campus and online programs.",
-        "image": "https://prod-s3.counselindia.com/credential/EIMT Certificate_1728045371.png"
+        "image": "https://prod-s3.counselindia.com/credential/EIMT%20Certificate_1728045371.png"
       }
     ],
     "curriculum": {
@@ -3377,474 +3377,23 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       }
     ]
   },
-  "masters-in-child-psychology-work-integrated-skill-based-program)": {
-    "id": 10,
-    "name": "Masters in Child Psychology",
-    "slug": "masters-in-child-psychology-work-integrated-skill-based-program%29",
-    "badgeSale": "40% OFF",
-    "category": "Course",
-    "bgImage": "https://prod-s3.counselindia.com/courses/background_image/New Project (41)_1713437634.webp",
-    "partnerLogo": "https://www.counselindia.com/assets/images/logo/icpemci.png",
-    "description": "(Internship/Apprenticeship Embedded) - Essentially designed for individuals passionate about understanding and nurturing children, this comprehensive, detailed program combines theoretical insights with practical training. It covers a broad range of topics, starting from cognitive development to social and emotional well-being. Learners will gain an in-depth understanding of the complexities of Child Psychology. Engage in ground-breaking research initiatives that ultimately contribute to Child Psychology. Recognised by the IPA(International Psychology Association) & Skill India, provides learners with a solid foundation for a successful career in mental health.",
-    "rating": 5,
-    "enrollUrl": "https://rzp.io/rzp/X5Q7xhF",
-    "phone": "+918031320449",
-    "highlights": [
-      {
-        "title": "Duration",
-        "desc": "24 Months"
-      },
-      {
-        "title": "Eligibility",
-        "desc": "Graduation & above"
-      },
-      {
-        "title": "Semesters",
-        "desc": "4"
-      },
-      {
-        "title": "Program Credits",
-        "desc": "Standard"
-      },
-      {
-        "title": "Program start date",
-        "desc": "22 August 2026"
-      }
-    ],
-    "benefits": [
-      "Learn about the multiple aspects of a child’s growth, covering physical, cognitive, social, and emotional aspects, to develop an overall understanding of their developmental phase.",
-      "Explore the sequential milestones that show the key stages of development in childhood, examining the behavioral patterns, abilities in children, and challenges they encounter at each phase, providing important insights for observation and effective intervention.",
-      "Learn about the underlying factors which influence children's behaviors, including environmental, social, and biological factors, and master countless evidence-based techniques to help manage and redirect behavior positively, and foster healthy development.",
-      "Examine the interplay of family dynamics, parenting styles, socioeconomic factors, and cultural influences which impact the development of children, recognizing the significant role played by families in shaping their experiences and outcomes.",
-      "Access a diverse toolkit of intervention strategies to address diverse challenges that are commonly encountered by children, like academic difficulties, emotional disturbances, or social adjustment issues, and help promote resilience and well-being.",
-      "Build observational abilities and assess and interpret children's behaviors, interactions, and developmental progress accurately, by employing systematic observation techniques and assessment tools and develop tailored interventions.",
-      "Get practical training, including supervised internships, hands-on exercises, or fieldwork, to apply theoretical insights in real-world settings, developing and enhancing practical skills and building your professional competency.",
-      "Stay updated about latest research and empirical findings in the field, critically evaluating research material to make use of evidence-based practices and innovative approaches to promoting children's well-being.",
-      "Explore diverse career pathways in education, counselling, clinical psychology, social work, or child advocacy, and get equipped with a strong foundation of knowledge, practical skills, and ethical principles to make meaningful contributions to children's lives and society."
-    ],
-    "about": [
-      "(Internship/Apprenticeship Embedded) - Essentially designed for individuals passionate about understanding and nurturing children, this comprehensive, detailed program combines theoretical insights with practical training. It covers a broad range of topics, starting from cognitive development to social and emotional well-being. Learners will gain an in-depth understanding of the complexities of Child Psychology. Engage in ground-breaking research initiatives that ultimately contribute to Child Psychology. Recognised by the IPA(International Psychology Association) & Skill India, provides learners with a solid foundation for a successful career in mental health."
-    ],
-    "learningObjectives": [
-      "Develop a foundational understanding of evidence-based psychological theories and counselling models.",
-      "Master essential micro-skills: active listening, empathetic reflection, goal setting, and therapeutic rapport.",
-      "Acquire hands-on expertise in conducting intake assessments, case conceptualization, and structured interventions."
-    ],
-    "credentials": [
-      {
-        "id": "tab85",
-        "label": "IPA Certificate",
-        "text": "Upon successful completion of the course, you will be awarded a prestigious cerificate from IPA( International Psychology Association)",
-        "image": "https://prod-s3.counselindia.com/credential/Screenshot 2025-08-04 114105_1754288852.png"
-      },
-      {
-        "id": "tab86",
-        "label": "MEPSC Certificate",
-        "text": "After the successful training and assessment, the Management & Entrepreneurship and Professionals Skills Council (MEPSC) will issue a skill certificate, add your database in the central skills qualification database which can be accessed online for verification and due-diligence by employers. This skills certification will be valid across all G20 nations.",
-        "image": "https://prod-s3.counselindia.com/credential/Certificate Template - Job Role (1)_1753182320.jpg"
-      },
-      {
-        "id": "tab194",
-        "label": "Certificate of Completion",
-        "text": "This certificate honors your dedication, hard work, and mastery of essential skills and specializations. It celebrates your commitment to excellence and acknowledges your achievement in making a meaningful impact in your field moving forward.",
-        "image": "https://prod-s3.counselindia.com/credential/M.A Child Psychology & Developemnt_1728551938.png"
-      },
-      {
-        "id": "tab84",
-        "label": "Letter of Recommendation",
-        "text": "This globally recognized credential showcases your expertise and commitment in your field.",
-        "image": "https://prod-s3.counselindia.com/credential/Letter of recommendation for Jon Doe (1)_1755835795.png"
-      }
-    ],
-    "curriculum": {
-      "totalSessions": "480 Sessions",
-      "totalHours": "2220 Hrs",
-      "stats": [
-        {
-          "count": "Standard",
-          "text": "Program Credits"
-        },
-        {
-          "count": "21",
-          "text": "Subjects"
-        },
-        {
-          "count": "480",
-          "text": "Live Session Hours"
-        },
-        {
-          "count": "840",
-          "text": "Project Hours"
-        },
-        {
-          "count": "900",
-          "text": "OJL Hours"
-        },
-        {
-          "count": "3",
-          "text": "Projects"
-        }
-      ],
-      "modules": [
-        {
-          "title": "Module 1: Foundations & Theoretical Frameworks",
-          "topics": [
-            "Introduction to Psychology & Psychological Dynamics",
-            "Major Schools of Thought (CBT, Humanistic, Psychodynamic)",
-            "The Role & Ethics of a Professional Counsellor"
-          ]
-        },
-        {
-          "title": "Module 2: Practical Skills & Intervention Strategies",
-          "topics": [
-            "Active Listening, Empathy, & Clinical Rapport Building",
-            "Identifying Distortions & Emotional Imbalances",
-            "Structured Therapy Sessions & Treatment Planning"
-          ]
-        },
-        {
-          "title": "Module 3: Clinical Application & Professional Practice",
-          "topics": [
-            "Live Case Studies & Supervised Roleplay Practice",
-            "Documentation, Ethics, & Client Confidentiality",
-            "Setting Up Your Private Practice & Career Pathways"
-          ]
-        }
-      ]
-    },
-    "whoCanJoin": [
-      "Aspiring Counsellors & Psychology Students",
-      "Mental Health Professionals & Social Workers",
-      "Doctors, Nurses & Healthcare Practitioners",
-      "School Teachers, Educators & Academic Mentors",
-      "HR Professionals & Corporate Wellness Coaches",
-      "Parents, Homemakers & Career Changers Passionate About Mental Health"
-    ],
-    "scholarship": {
-      "title": "Scholarship & Practical Learning Support",
-      "subtitle": "Guaranteed practical internship & training support under our Har Ghar Counsellor initiative.",
-      "image": "https://www.counselindia.com/assets/images/about/about-13.png",
-      "points": [
-        {
-          "label": "Direct Mentorship",
-          "desc": "One-on-one supervision by senior counselling psychologists."
-        },
-        {
-          "label": "Hands-on Practice",
-          "desc": "Live case discussions and clinical roleplay sessions."
-        },
-        {
-          "label": "Fee Assistance",
-          "desc": "Flexible installment plans and merit-based fee support."
-        }
-      ]
-    },
-    "faculty": [
-      {
-        "name": "Dr. Bobby Archer",
-        "title": "Senior Clinical Psychologist & Master Trainer",
-        "image": "https://www.counselindia.com/assets/images/instructor/instructor-01.jpg"
-      },
-      {
-        "name": "Prof. Meenakshi Sharma",
-        "title": "Head of Counselling Psychology & CBT Specialist",
-        "image": "https://www.counselindia.com/assets/images/instructor/instructor-02.jpg"
-      }
-    ],
-    "referEarn": {
-      "title": "Refer & Earn with Counsel India",
-      "subtitle": "Help your peers discover transformative psychology programs and earn exciting referral rewards.",
-      "buttonText": "Refer a Friend",
-      "buttonLink": "https://www.counselindia.com/membership"
-    },
-    "reviews": [
-      {
-        "quote": "The practical exposure and case discussions helped me build immense confidence in dealing with real client scenarios. The mentors are always accessible and supportive.",
-        "name": "Priyanka S.",
-        "city": "New Delhi",
-        "image": "https://www.counselindia.com/assets/images/testimonial/testimonial-01.jpg"
-      },
-      {
-        "quote": "The curriculum is thorough and grounded in real-world application. Counsel India's approach makes practical psychology understandable and actionable.",
-        "name": "Rahul Verma",
-        "city": "Mumbai",
-        "image": "https://www.counselindia.com/assets/images/testimonial/testimonial-02.jpg"
-      }
-    ],
-    "partners": [
-      "https://www.counselindia.com/assets/images/logo/GU_logo.png",
-      "https://www.counselindia.com/assets/images/logo/msu_logo.png",
-      "https://www.counselindia.com/assets/images/logo/icpemci.png",
-      "https://www.counselindia.com/assets/images/logo/VGU.png"
-    ],
-    "faqs": [
-      {
-        "question": "Introduction to Human Psychology",
-        "answer": [
-          "Yes, completing the Psychology Foundation Course is mandatory and complimentary for all enrolled learners. This foundational course must be completed within 3 months to qualify for the final certificate. It is designed to strengthen your basics in psychology, ensuring you have a solid understanding to excel in advanced modules of the program."
-        ]
-      },
-      {
-        "question": "How does this program prepare graduates to work with children with special needs or developmental disabilities?",
-        "answer": [
-          "This Pr ogram include s coursework and practical training in assessing and supporting children with a wide range of developmental challenges, including autism spectrum disorder, learning disabilities, ADHD, emotional and behavioral disorders, and trauma-related difficulties. Students learn evidence-based interventions and strategies to promote positive outcomes for children with special needs."
-        ]
-      },
-      {
-        "question": "How does this program address ethical considerations in working with children and families?",
-        "answer": [
-          "Ethical principles and guidelines are integrated into the curriculum to ensure that students develop a strong understanding of professional ethics and legal standards in child psychology practice. Students learn about informed consent, confidentiality, boundary issues, cultural competence, and ethical decision-making in their interactions with children and families."
-        ]
-      },
-      {
-        "question": "Can the credits earned in this program be transferred to other academic programs or institutions?",
-        "answer": [
-          "Yes, our program follows a stackable system of education, allowing students to earn credits that may be transferable to other academic programs or institutions. This flexibility enables students to build upon their existing qualifications and pursue further education or specialization in Career Counselling."
-        ]
-      }
-    ]
-  },
-  "masters-in-child-psychology-work-integrated-skill-based-program": {
-    "id": 10,
-    "name": "Masters in Child Psychology",
-    "slug": "masters-in-child-psychology-work-integrated-skill-based-program%29",
-    "badgeSale": "40% OFF",
-    "category": "Course",
-    "bgImage": "https://prod-s3.counselindia.com/courses/background_image/New Project (41)_1713437634.webp",
-    "partnerLogo": "https://www.counselindia.com/assets/images/logo/icpemci.png",
-    "description": "(Internship/Apprenticeship Embedded) - Essentially designed for individuals passionate about understanding and nurturing children, this comprehensive, detailed program combines theoretical insights with practical training. It covers a broad range of topics, starting from cognitive development to social and emotional well-being. Learners will gain an in-depth understanding of the complexities of Child Psychology. Engage in ground-breaking research initiatives that ultimately contribute to Child Psychology. Recognised by the IPA(International Psychology Association) & Skill India, provides learners with a solid foundation for a successful career in mental health.",
-    "rating": 5,
-    "enrollUrl": "https://rzp.io/rzp/X5Q7xhF",
-    "phone": "+918031320449",
-    "highlights": [
-      {
-        "title": "Duration",
-        "desc": "24 Months"
-      },
-      {
-        "title": "Eligibility",
-        "desc": "Graduation & above"
-      },
-      {
-        "title": "Semesters",
-        "desc": "4"
-      },
-      {
-        "title": "Program Credits",
-        "desc": "Standard"
-      },
-      {
-        "title": "Program start date",
-        "desc": "22 August 2026"
-      }
-    ],
-    "benefits": [
-      "Learn about the multiple aspects of a child’s growth, covering physical, cognitive, social, and emotional aspects, to develop an overall understanding of their developmental phase.",
-      "Explore the sequential milestones that show the key stages of development in childhood, examining the behavioral patterns, abilities in children, and challenges they encounter at each phase, providing important insights for observation and effective intervention.",
-      "Learn about the underlying factors which influence children's behaviors, including environmental, social, and biological factors, and master countless evidence-based techniques to help manage and redirect behavior positively, and foster healthy development.",
-      "Examine the interplay of family dynamics, parenting styles, socioeconomic factors, and cultural influences which impact the development of children, recognizing the significant role played by families in shaping their experiences and outcomes.",
-      "Access a diverse toolkit of intervention strategies to address diverse challenges that are commonly encountered by children, like academic difficulties, emotional disturbances, or social adjustment issues, and help promote resilience and well-being.",
-      "Build observational abilities and assess and interpret children's behaviors, interactions, and developmental progress accurately, by employing systematic observation techniques and assessment tools and develop tailored interventions.",
-      "Get practical training, including supervised internships, hands-on exercises, or fieldwork, to apply theoretical insights in real-world settings, developing and enhancing practical skills and building your professional competency.",
-      "Stay updated about latest research and empirical findings in the field, critically evaluating research material to make use of evidence-based practices and innovative approaches to promoting children's well-being.",
-      "Explore diverse career pathways in education, counselling, clinical psychology, social work, or child advocacy, and get equipped with a strong foundation of knowledge, practical skills, and ethical principles to make meaningful contributions to children's lives and society."
-    ],
-    "about": [
-      "(Internship/Apprenticeship Embedded) - Essentially designed for individuals passionate about understanding and nurturing children, this comprehensive, detailed program combines theoretical insights with practical training. It covers a broad range of topics, starting from cognitive development to social and emotional well-being. Learners will gain an in-depth understanding of the complexities of Child Psychology. Engage in ground-breaking research initiatives that ultimately contribute to Child Psychology. Recognised by the IPA(International Psychology Association) & Skill India, provides learners with a solid foundation for a successful career in mental health."
-    ],
-    "learningObjectives": [
-      "Develop a foundational understanding of evidence-based psychological theories and counselling models.",
-      "Master essential micro-skills: active listening, empathetic reflection, goal setting, and therapeutic rapport.",
-      "Acquire hands-on expertise in conducting intake assessments, case conceptualization, and structured interventions."
-    ],
-    "credentials": [
-      {
-        "id": "tab85",
-        "label": "IPA Certificate",
-        "text": "Upon successful completion of the course, you will be awarded a prestigious cerificate from IPA( International Psychology Association)",
-        "image": "https://prod-s3.counselindia.com/credential/Screenshot 2025-08-04 114105_1754288852.png"
-      },
-      {
-        "id": "tab86",
-        "label": "MEPSC Certificate",
-        "text": "After the successful training and assessment, the Management & Entrepreneurship and Professionals Skills Council (MEPSC) will issue a skill certificate, add your database in the central skills qualification database which can be accessed online for verification and due-diligence by employers. This skills certification will be valid across all G20 nations.",
-        "image": "https://prod-s3.counselindia.com/credential/Certificate Template - Job Role (1)_1753182320.jpg"
-      },
-      {
-        "id": "tab194",
-        "label": "Certificate of Completion",
-        "text": "This certificate honors your dedication, hard work, and mastery of essential skills and specializations. It celebrates your commitment to excellence and acknowledges your achievement in making a meaningful impact in your field moving forward.",
-        "image": "https://prod-s3.counselindia.com/credential/M.A Child Psychology & Developemnt_1728551938.png"
-      },
-      {
-        "id": "tab84",
-        "label": "Letter of Recommendation",
-        "text": "This globally recognized credential showcases your expertise and commitment in your field.",
-        "image": "https://prod-s3.counselindia.com/credential/Letter of recommendation for Jon Doe (1)_1755835795.png"
-      }
-    ],
-    "curriculum": {
-      "totalSessions": "480 Sessions",
-      "totalHours": "2220 Hrs",
-      "stats": [
-        {
-          "count": "Standard",
-          "text": "Program Credits"
-        },
-        {
-          "count": "21",
-          "text": "Subjects"
-        },
-        {
-          "count": "480",
-          "text": "Live Session Hours"
-        },
-        {
-          "count": "840",
-          "text": "Project Hours"
-        },
-        {
-          "count": "900",
-          "text": "OJL Hours"
-        },
-        {
-          "count": "3",
-          "text": "Projects"
-        }
-      ],
-      "modules": [
-        {
-          "title": "Module 1: Foundations & Theoretical Frameworks",
-          "topics": [
-            "Introduction to Psychology & Psychological Dynamics",
-            "Major Schools of Thought (CBT, Humanistic, Psychodynamic)",
-            "The Role & Ethics of a Professional Counsellor"
-          ]
-        },
-        {
-          "title": "Module 2: Practical Skills & Intervention Strategies",
-          "topics": [
-            "Active Listening, Empathy, & Clinical Rapport Building",
-            "Identifying Distortions & Emotional Imbalances",
-            "Structured Therapy Sessions & Treatment Planning"
-          ]
-        },
-        {
-          "title": "Module 3: Clinical Application & Professional Practice",
-          "topics": [
-            "Live Case Studies & Supervised Roleplay Practice",
-            "Documentation, Ethics, & Client Confidentiality",
-            "Setting Up Your Private Practice & Career Pathways"
-          ]
-        }
-      ]
-    },
-    "whoCanJoin": [
-      "Aspiring Counsellors & Psychology Students",
-      "Mental Health Professionals & Social Workers",
-      "Doctors, Nurses & Healthcare Practitioners",
-      "School Teachers, Educators & Academic Mentors",
-      "HR Professionals & Corporate Wellness Coaches",
-      "Parents, Homemakers & Career Changers Passionate About Mental Health"
-    ],
-    "scholarship": {
-      "title": "Scholarship & Practical Learning Support",
-      "subtitle": "Guaranteed practical internship & training support under our Har Ghar Counsellor initiative.",
-      "image": "https://www.counselindia.com/assets/images/about/about-13.png",
-      "points": [
-        {
-          "label": "Direct Mentorship",
-          "desc": "One-on-one supervision by senior counselling psychologists."
-        },
-        {
-          "label": "Hands-on Practice",
-          "desc": "Live case discussions and clinical roleplay sessions."
-        },
-        {
-          "label": "Fee Assistance",
-          "desc": "Flexible installment plans and merit-based fee support."
-        }
-      ]
-    },
-    "faculty": [
-      {
-        "name": "Dr. Bobby Archer",
-        "title": "Senior Clinical Psychologist & Master Trainer",
-        "image": "https://www.counselindia.com/assets/images/instructor/instructor-01.jpg"
-      },
-      {
-        "name": "Prof. Meenakshi Sharma",
-        "title": "Head of Counselling Psychology & CBT Specialist",
-        "image": "https://www.counselindia.com/assets/images/instructor/instructor-02.jpg"
-      }
-    ],
-    "referEarn": {
-      "title": "Refer & Earn with Counsel India",
-      "subtitle": "Help your peers discover transformative psychology programs and earn exciting referral rewards.",
-      "buttonText": "Refer a Friend",
-      "buttonLink": "https://www.counselindia.com/membership"
-    },
-    "reviews": [
-      {
-        "quote": "The practical exposure and case discussions helped me build immense confidence in dealing with real client scenarios. The mentors are always accessible and supportive.",
-        "name": "Priyanka S.",
-        "city": "New Delhi",
-        "image": "https://www.counselindia.com/assets/images/testimonial/testimonial-01.jpg"
-      },
-      {
-        "quote": "The curriculum is thorough and grounded in real-world application. Counsel India's approach makes practical psychology understandable and actionable.",
-        "name": "Rahul Verma",
-        "city": "Mumbai",
-        "image": "https://www.counselindia.com/assets/images/testimonial/testimonial-02.jpg"
-      }
-    ],
-    "partners": [
-      "https://www.counselindia.com/assets/images/logo/GU_logo.png",
-      "https://www.counselindia.com/assets/images/logo/msu_logo.png",
-      "https://www.counselindia.com/assets/images/logo/icpemci.png",
-      "https://www.counselindia.com/assets/images/logo/VGU.png"
-    ],
-    "faqs": [
-      {
-        "question": "Introduction to Human Psychology",
-        "answer": [
-          "Yes, completing the Psychology Foundation Course is mandatory and complimentary for all enrolled learners. This foundational course must be completed within 3 months to qualify for the final certificate. It is designed to strengthen your basics in psychology, ensuring you have a solid understanding to excel in advanced modules of the program."
-        ]
-      },
-      {
-        "question": "How does this program prepare graduates to work with children with special needs or developmental disabilities?",
-        "answer": [
-          "This Pr ogram include s coursework and practical training in assessing and supporting children with a wide range of developmental challenges, including autism spectrum disorder, learning disabilities, ADHD, emotional and behavioral disorders, and trauma-related difficulties. Students learn evidence-based interventions and strategies to promote positive outcomes for children with special needs."
-        ]
-      },
-      {
-        "question": "How does this program address ethical considerations in working with children and families?",
-        "answer": [
-          "Ethical principles and guidelines are integrated into the curriculum to ensure that students develop a strong understanding of professional ethics and legal standards in child psychology practice. Students learn about informed consent, confidentiality, boundary issues, cultural competence, and ethical decision-making in their interactions with children and families."
-        ]
-      },
-      {
-        "question": "Can the credits earned in this program be transferred to other academic programs or institutions?",
-        "answer": [
-          "Yes, our program follows a stackable system of education, allowing students to earn credits that may be transferable to other academic programs or institutions. This flexibility enables students to build upon their existing qualifications and pursue further education or specialization in Career Counselling."
-        ]
-      }
-    ]
-  }
 };
 
 export function getCourseDetailBySlug(slug: string): CourseDetailData {
-  const decodedSlug = decodeURIComponent(slug);
+  // Direct match first
   if (COURSE_DETAILS_MAP[slug]) {
     return COURSE_DETAILS_MAP[slug];
   }
+  // Decode URL encoding (e.g. %29 -> ")") and try again
+  const decodedSlug = decodeURIComponent(slug);
   if (COURSE_DETAILS_MAP[decodedSlug]) {
     return COURSE_DETAILS_MAP[decodedSlug];
   }
-  // Try matching without trailing parenthesis or special symbols
-  const cleanSlug = slug.replace(/[%29)]/g, '');
-  if (COURSE_DETAILS_MAP[cleanSlug]) {
-    return COURSE_DETAILS_MAP[cleanSlug];
+  // Re-encode decoded slug (e.g. "slug)" -> "slug%29") and try
+  const reEncodedSlug = encodeURIComponent(decodedSlug);
+  if (COURSE_DETAILS_MAP[reEncodedSlug]) {
+    return COURSE_DETAILS_MAP[reEncodedSlug];
   }
+  // Fallback to foundation course
   return COURSE_DETAILS_MAP["counselling-master-course-foundation"];
 }
