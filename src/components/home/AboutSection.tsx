@@ -30,9 +30,9 @@ export default function AboutSection() {
                   </div>
                   <p className="mb-2">
                     India&apos;s first{" "}
-                    <span className="fw-bold text-success">
+                    <strong className="fw-bold text-dark">
                       Practical Psychology Learning Platform
-                    </span>{" "}
+                    </strong>{" "}
                     for counsellors and psychologists to connect, learn, grow, and explore lifelong opportunities in psychology.
                   </p>
                   <p>
