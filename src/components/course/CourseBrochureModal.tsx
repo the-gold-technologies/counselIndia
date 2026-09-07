@@ -257,11 +257,20 @@ export default function CourseBrochureModal({ isOpen, onClose }: ModalProps) {
                 required
                 value={formData.state}
                 onChange={(e) => setFormData({ ...formData, state: e.target.value })}
-                style={{ ...inputStyle, cursor: "pointer" }}
+                style={{
+                  ...inputStyle,
+                  cursor: "pointer",
+                  color: formData.state ? "#212529" : "#6c757d",
+                }}
               >
-                <option value="">Please Select State</option>
+                <option value="" disabled hidden>
+                  Please Select State
+                </option>
+                <option value="" disabled>
+                  Please Select State
+                </option>
                 {INDIAN_STATES.map((s) => (
-                  <option key={s} value={s}>
+                  <option key={s} value={s} style={{ color: "#212529" }}>
                     {s}
                   </option>
                 ))}
@@ -292,18 +301,27 @@ export default function CourseBrochureModal({ isOpen, onClose }: ModalProps) {
                 required
                 value={formData.hearAbout}
                 onChange={(e) => setFormData({ ...formData, hearAbout: e.target.value })}
-                style={{ ...inputStyle, cursor: "pointer" }}
+                style={{
+                  ...inputStyle,
+                  cursor: "pointer",
+                  color: formData.hearAbout ? "#212529" : "#6c757d",
+                }}
               >
-                <option value="">Please Select</option>
-                <option value="Google">Google</option>
-                <option value="Facebook">Facebook</option>
-                <option value="Instagram">Instagram</option>
-                <option value="LinkedIn">LinkedIn</option>
-                <option value="Blogs">Blogs</option>
-                <option value="Email">Email</option>
-                <option value="Whatsapp">Whatsapp</option>
-                <option value="Reference">Reference</option>
-                <option value="YouTube">YouTube</option>
+                <option value="" disabled hidden>
+                  Please Select
+                </option>
+                <option value="" disabled>
+                  Please Select
+                </option>
+                <option value="Google" style={{ color: "#212529" }}>Google</option>
+                <option value="Facebook" style={{ color: "#212529" }}>Facebook</option>
+                <option value="Instagram" style={{ color: "#212529" }}>Instagram</option>
+                <option value="LinkedIn" style={{ color: "#212529" }}>LinkedIn</option>
+                <option value="Blogs" style={{ color: "#212529" }}>Blogs</option>
+                <option value="Email" style={{ color: "#212529" }}>Email</option>
+                <option value="Whatsapp" style={{ color: "#212529" }}>Whatsapp</option>
+                <option value="Reference" style={{ color: "#212529" }}>Reference</option>
+                <option value="YouTube" style={{ color: "#212529" }}>YouTube</option>
               </select>
             </div>
 
