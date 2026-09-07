@@ -305,3 +305,26 @@ mark::after,
 .menu-primary__container > li.menu-item-has-children > a span::after {
   display: none !important;
 }
+
+/* Partner Marquee Slider */
+@keyframes partnerMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.partner-marquee-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  gap: 50px;
+  animation: partnerMarquee 26s linear infinite;
+}
+
+.partner-marquee-container:hover .partner-marquee-track {
+  animation-play-state: paused;
+}
+

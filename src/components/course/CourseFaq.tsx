@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 interface FaqItem {
   question: string;
@@ -12,6 +12,7 @@ interface Props {
 
 export default function CourseFaq({ faqs }: Props) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   if (!faqs || faqs.length === 0) return null;
 
@@ -89,7 +90,7 @@ export default function CourseFaq({ faqs }: Props) {
                     {faq.question}
                   </span>
 
-                  {/* Square outline toggle icon matching screenshot */}
+                  {/* Square outline toggle icon */}
                   <span
                     style={{
                       display: "inline-flex",
@@ -113,7 +114,14 @@ export default function CourseFaq({ faqs }: Props) {
                   </span>
                 </button>
 
-                {isOpen && (
+                {/* Animated body — always rendered, max-height drives the open/close */}
+                <div
+                  style={{
+                    maxHeight: isOpen ? "600px" : "0px",
+                    overflow: "hidden",
+                    transition: "max-height 0.35s ease",
+                  }}
+                >
                   <div
                     style={{
                       padding: "16px 24px 22px",
@@ -143,7 +151,7 @@ export default function CourseFaq({ faqs }: Props) {
                       ))}
                     </div>
                   </div>
-                )}
+                </div>
               </div>
             );
           })}

@@ -24,7 +24,7 @@ export default function CourseReferEarn({ referEarn }: Props) {
   return (
     <section
       style={{
-        padding: "50px 0 60px",
+        padding: "60px 0 70px",
         backgroundColor: "#ffffff",
         fontFamily: "'Poppins', sans-serif",
       }}
@@ -38,17 +38,17 @@ export default function CourseReferEarn({ referEarn }: Props) {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            gap: "36px",
+            gap: "44px",
           }}
           className="refer-earn-wrapper"
         >
-          {/* Left illustration */}
+          {/* Left illustration - enlarged to match screenshot */}
           <div style={{ flexShrink: 0 }}>
             <img
               src="/assets/images/refer.png"
               alt="Refer and Earn"
               style={{
-                width: "180px",
+                width: "260px",
                 maxWidth: "100%",
                 height: "auto",
                 display: "block",
@@ -56,12 +56,12 @@ export default function CourseReferEarn({ referEarn }: Props) {
             />
           </div>
 
-          {/* Middle text content */}
-          <div style={{ flex: 1, maxWidth: "620px" }}>
+          {/* Middle text content - enlarged title matching screenshot */}
+          <div style={{ flex: 1, maxWidth: "660px" }}>
             <h3
               style={{
-                margin: "0 0 12px",
-                fontSize: "23px",
+                margin: "0 0 16px",
+                fontSize: "28px",
                 fontWeight: 700,
                 color: "#1c2d3a",
                 lineHeight: "1.35",
@@ -72,7 +72,7 @@ export default function CourseReferEarn({ referEarn }: Props) {
             <p
               style={{
                 margin: 0,
-                fontSize: "15px",
+                fontSize: "16px",
                 color: "#555555",
                 lineHeight: "1.5",
                 fontWeight: 400,
@@ -91,9 +91,9 @@ export default function CourseReferEarn({ referEarn }: Props) {
               style={{
                 backgroundColor: "#07a64b",
                 color: "#ffffff",
-                padding: "14px 34px",
+                padding: "14px 36px",
                 borderRadius: "6px",
-                fontSize: "15px",
+                fontSize: "16px",
                 fontWeight: 600,
                 textDecoration: "none",
                 display: "inline-flex",
@@ -121,7 +121,7 @@ export default function CourseReferEarn({ referEarn }: Props) {
           .refer-earn-wrapper {
             flex-direction: column !important;
             text-align: center !important;
-            gap: 24px !important;
+            gap: 28px !important;
           }
           .refer-earn-wrapper img {
             margin: 0 auto;

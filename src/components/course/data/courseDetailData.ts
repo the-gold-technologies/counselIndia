@@ -265,12 +265,6 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
     },
     "reviews": [
       {
-        "quote": "Great opportunity to explore, discover & learn topics related to psychology. Counsel India enables you to acquire relevant workspace skills and specialisations.",
-        "name": "Renuka Rai",
-        "city": "Mumbai",
-        "image": "/assets/images/avatar/renuka.jpg"
-      },
-      {
         "quote": "Counselling Master Course is really a great Course. Efforts made by experts is really appreciable. I suggest everyone to take this course and learning Counselling Framework to be successful in life.",
         "name": "Esha Sharma",
         "city": "Ajmer",
@@ -281,6 +275,30 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         "name": "Neha Gupta",
         "city": "Manali",
         "image": "/assets/images/avatar/neha.jpg"
+      },
+      {
+        "quote": "The overall experience was top notch. The classes were perfectly on time and trainers were very professional.",
+        "name": "Maninder Kaur",
+        "city": "Chandigarh",
+        "image": "/assets/images/avatar/maninder-kaur.jpg"
+      },
+      {
+        "quote": "Counselling psychology is one such course that requires more of practical knowledge. Inspite of COVID situation, the team managed well through online platform , coming from a psychology background got my basics even more stronger from this experience.",
+        "name": "Vishal Yadav",
+        "city": "Patna",
+        "image": "/assets/images/avatar/vishal.jpg"
+      },
+      {
+        "quote": "It was the best experience to be a part of Counsel India. A great initiative by the team for building people into professionals. The organization has such friendly experts and they just simplify the counselling technique to make us understand in depth.I took up Counselling Master Course from them and am fully satisfied.",
+        "name": "Anand Sinha",
+        "city": "Chennai",
+        "image": "/assets/images/avatar/anand.jpg"
+      },
+      {
+        "quote": "Great opportunity to explore, discover & learn topics related to psychology. Counsel India enables you to acquire relevant workspace skills and specialisations.",
+        "name": "Renuka Rai",
+        "city": "Mumbai",
+        "image": "/assets/images/avatar/renuka.jpg"
       }
     ],
     "partners": [

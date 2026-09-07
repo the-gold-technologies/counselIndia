@@ -127,7 +127,7 @@ export default function CourseCurriculum({ curriculum }: Props) {
                       outline: "none",
                     }}
                   >
-                    {/* Small Square Outline Icon */}
+                    {/* Small Square Outline Icon — original design */}
                     <span
                       style={{
                         width: "12px",
@@ -149,7 +149,14 @@ export default function CourseCurriculum({ curriculum }: Props) {
                     </span>
                   </button>
 
-                  {isOpen && (
+                  {/* Animated body — always rendered, max-height drives smooth expand/collapse */}
+                  <div
+                    style={{
+                      maxHeight: isOpen ? "800px" : "0px",
+                      overflow: "hidden",
+                      transition: "max-height 0.35s ease",
+                    }}
+                  >
                     <div
                       style={{
                         padding: "12px 28px 20px 48px",
@@ -181,7 +188,7 @@ export default function CourseCurriculum({ curriculum }: Props) {
                         ))}
                       </ul>
                     </div>
-                  )}
+                  </div>
                 </div>
               );
             })}

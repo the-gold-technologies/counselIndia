@@ -17,7 +17,7 @@ export default function CourseScholarship({ scholarship, phone }: Props) {
   return (
     <section
       style={{
-        padding: "60px 0 50px",
+        padding: "20px 0 50px",
         backgroundColor: "#ffffff",
         fontFamily: "'Poppins', sans-serif",
       }}
@@ -92,8 +92,8 @@ export default function CourseScholarship({ scholarship, phone }: Props) {
               <div
                 style={{
                   position: "absolute",
-                  top: "-22px",
-                  right: "40px",
+                  top: "-40px",
+                  right: "-75px",
                   pointerEvents: "none",
                 }}
                 className="scholarship-doodle-wrapper"
@@ -102,10 +102,10 @@ export default function CourseScholarship({ scholarship, phone }: Props) {
                   src="/assets/images/scholarship/scholarship-doodle.png"
                   alt="Doodle"
                   style={{
-                    width: "72px",
+                    width: "98px",
                     height: "auto",
                     display: "block",
-                    transform: "rotate(5deg)",
+                    transform: "rotate(6deg)",
                   }}
                 />
               </div>

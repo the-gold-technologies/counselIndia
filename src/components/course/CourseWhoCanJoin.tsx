@@ -11,7 +11,7 @@ export default function CourseWhoCanJoin({ audience }: Props) {
   return (
     <section
       style={{
-        padding: "40px 0 30px",
+        padding: "40px 0 10px",
         backgroundColor: "#ffffff",
         fontFamily: "'Poppins', sans-serif",
       }}
