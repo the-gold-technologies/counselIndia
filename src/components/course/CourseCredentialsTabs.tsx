@@ -20,28 +20,27 @@ export default function CourseCredentialsTabs({ credentials }: Props) {
   const current = credentials.find((c) => c.id === activeTab) || credentials[0];
 
   return (
-    <section
+    <div
+      className="become-an-instructor tutor-course-segment bg-color-03 section-padding-01"
       style={{
-        padding: "50px 0",
-        backgroundColor: "#f8fafc",
+        padding: "60px 0 70px",
+        backgroundColor: "#f8f8f8",
         fontFamily: "'Poppins', sans-serif",
       }}
     >
-      <div className="container custom-container" style={{ maxWidth: "1140px", margin: "0 auto", padding: "0 16px" }}>
-        <h3
+      <div className="container custom-container" style={{ maxWidth: "1170px", margin: "0 auto", padding: "0 16px" }}>
+        {/* Tab Headers with Bottom Border Line */}
+        <div
+          className="become-an-instructor__tabs"
           style={{
-            margin: "0 0 24px",
-            fontSize: "24px",
-            fontWeight: 700,
-            color: "#1e293b",
-            textAlign: "center",
+            display: "flex",
+            justifyContent: "center",
+            borderBottom: "1px solid #e2e8f0",
+            marginBottom: "40px",
+            gap: "36px",
+            flexWrap: "wrap",
           }}
         >
-          Course Certification & Credentials
-        </h3>
-
-        {/* Tab Buttons */}
-        <div style={{ display: "flex", justifyContent: "center", gap: "12px", marginBottom: "36px", flexWrap: "wrap" }}>
           {credentials.map((tab) => {
             const isActive = tab.id === current.id;
             return (
@@ -49,15 +48,16 @@ export default function CourseCredentialsTabs({ credentials }: Props) {
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 style={{
-                  padding: "10px 24px",
-                  borderRadius: "30px",
-                  fontSize: "14px",
-                  fontWeight: 600,
+                  padding: "6px 12px 14px",
+                  fontSize: "22px",
+                  fontWeight: isActive ? 700 : 600,
                   cursor: "pointer",
-                  border: isActive ? "2px solid #07a64b" : "1px solid #cbd5e1",
-                  backgroundColor: isActive ? "#07a64b" : "#ffffff",
-                  color: isActive ? "#ffffff" : "#475569",
-                  transition: "all 0.2s",
+                  border: "none",
+                  backgroundColor: "transparent",
+                  color: isActive ? "#212529" : "#c4c4c4",
+                  borderBottom: isActive ? "3px solid #07a64b" : "3px solid transparent",
+                  marginBottom: "-1px",
+                  transition: "all 0.2s ease",
                 }}
               >
                 {tab.label}
@@ -66,63 +66,48 @@ export default function CourseCredentialsTabs({ credentials }: Props) {
           })}
         </div>
 
-        {/* Tab Content */}
-        <div
-          style={{
-            backgroundColor: "#ffffff",
-            borderRadius: "12px",
-            padding: "36px",
-            border: "1px solid #e2e8f0",
-            boxShadow: "0 4px 20px rgba(0, 0, 0, 0.04)",
-          }}
-        >
+        {/* Tab Content 2-Column Row */}
+        <div className="tab-content">
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-              gap: "36px",
-              alignItems: "center",
+              gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+              gap: "40px",
+              alignItems: "flex-start",
             }}
           >
-            <div>
-              <h4
-                style={{
-                  margin: "0 0 14px",
-                  fontSize: "20px",
-                  fontWeight: 700,
-                  color: "#1e293b",
-                }}
-              >
-                {current.label}
-              </h4>
+            {/* Left Caption Description */}
+            <div style={{ paddingRight: "15px", paddingTop: "10px" }}>
               <p
                 style={{
                   margin: 0,
-                  fontSize: "14.5px",
+                  fontSize: "15px",
                   lineHeight: "1.75",
-                  color: "#475569",
+                  color: "#555555",
                 }}
               >
                 {current.text}
               </p>
             </div>
 
+            {/* Right Certificate / Full Tall Letter Preview (natural aspect ratio) */}
             <div style={{ display: "flex", justifyContent: "center" }}>
               <img
                 src={current.image}
                 alt={current.label}
                 style={{
-                  maxWidth: "100%",
-                  maxHeight: "340px",
-                  borderRadius: "8px",
-                  boxShadow: "0 8px 24px rgba(0, 0, 0, 0.1)",
-                  border: "1px solid #e2e8f0",
+                  width: "100%",
+                  maxWidth: "560px",
+                  height: "auto",
+                  borderRadius: "4px",
+                  boxShadow: "0 6px 20px rgba(0, 0, 0, 0.06)",
+                  backgroundColor: "#ffffff",
                 }}
               />
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

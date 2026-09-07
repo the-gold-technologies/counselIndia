@@ -16,75 +16,118 @@ export default function CourseTestimonials({ reviews }: Props) {
   if (!reviews || reviews.length === 0) return null;
 
   return (
-    <section style={{ padding: "60px 0", backgroundColor: "#ffffff", fontFamily: "'Poppins', sans-serif" }}>
-      <div className="container custom-container" style={{ maxWidth: "1140px", margin: "0 auto", padding: "0 16px" }}>
+    <section
+      style={{
+        padding: "45px 0 55px",
+        backgroundColor: "#ffffff",
+        fontFamily: "'Poppins', sans-serif",
+      }}
+    >
+      <div
+        className="container custom-container"
+        style={{ maxWidth: "1170px", margin: "0 auto", padding: "0 16px" }}
+      >
         <h3
           style={{
-            margin: "0 0 32px",
-            fontSize: "26px",
+            margin: "0 0 28px",
+            fontSize: "24px",
             fontWeight: 700,
-            color: "#1e293b",
-            textAlign: "center",
+            color: "#1c2d3a",
+            lineHeight: "1.3",
           }}
         >
-          Learner Success Stories
+          Success Stories
         </h3>
 
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            gridTemplateColumns: "repeat(3, 1fr)",
             gap: "24px",
           }}
+          className="testimonials-grid"
         >
           {reviews.map((rev, idx) => (
             <div
               key={idx}
               style={{
                 backgroundColor: "#f8fafc",
-                borderRadius: "12px",
-                padding: "28px",
-                border: "1px solid #e2e8f0",
+                borderRadius: "10px",
+                padding: "36px 30px 32px",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "space-between",
-                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.02)",
+                minHeight: "260px",
+                position: "relative",
               }}
             >
-              <div style={{ marginBottom: "20px" }}>
-                <div style={{ color: "#07a64b", fontSize: "28px", lineHeight: 1, marginBottom: "12px" }}>
-                  “
+              {/* Quote text and top-right quotation mark */}
+              <div style={{ position: "relative", marginBottom: "24px" }}>
+                {/* Large subtle quote marks on top-right */}
+                <div
+                  style={{
+                    position: "absolute",
+                    top: "-15px",
+                    right: "0",
+                    fontSize: "44px",
+                    lineHeight: 1,
+                    fontFamily: "Georgia, serif",
+                    color: "#e2e8f0",
+                    fontWeight: 700,
+                    userSelect: "none",
+                    pointerEvents: "none",
+                  }}
+                >
+                  ”
                 </div>
+
                 <p
                   style={{
                     margin: 0,
-                    fontSize: "14px",
+                    fontSize: "14.5px",
                     lineHeight: "1.7",
-                    color: "#475569",
-                    fontStyle: "italic",
+                    color: "#555555",
+                    fontWeight: 400,
+                    paddingRight: "24px",
                   }}
                 >
                   {rev.quote}
                 </p>
               </div>
 
+              {/* Bottom user profile */}
               <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
                 <img
                   src={rev.image}
                   alt={rev.name}
                   style={{
-                    width: "50px",
-                    height: "50px",
+                    width: "48px",
+                    height: "48px",
                     borderRadius: "50%",
                     objectFit: "cover",
-                    border: "2px solid #07a64b",
+                    flexShrink: 0,
                   }}
                 />
                 <div>
-                  <h4 style={{ margin: "0 0 2px", fontSize: "15px", fontWeight: 700, color: "#1e293b" }}>
+                  <h4
+                    style={{
+                      margin: "0 0 2px",
+                      fontSize: "15px",
+                      fontWeight: 700,
+                      color: "#1c2d3a",
+                      lineHeight: "1.3",
+                    }}
+                  >
                     {rev.name}
                   </h4>
-                  <p style={{ margin: 0, fontSize: "12.5px", color: "#64748b" }}>
+                  <p
+                    style={{
+                      margin: 0,
+                      fontSize: "13px",
+                      color: "#6c757d",
+                      fontWeight: 400,
+                    }}
+                  >
                     {rev.city}
                   </p>
                 </div>
@@ -93,6 +136,14 @@ export default function CourseTestimonials({ reviews }: Props) {
           ))}
         </div>
       </div>
+
+      <style jsx>{`
+        @media (max-width: 991px) {
+          .testimonials-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

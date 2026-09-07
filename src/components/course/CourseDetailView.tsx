@@ -8,6 +8,7 @@ import CourseCtaBox from "./CourseCtaBox";
 import CourseAboutObjectives from "./CourseAboutObjectives";
 import CourseCredentialsTabs from "./CourseCredentialsTabs";
 import CourseCurriculum from "./CourseCurriculum";
+import CourseProgramBenefit from "./CourseProgramBenefit";
 import CourseWhoCanJoin from "./CourseWhoCanJoin";
 import CourseScholarship from "./CourseScholarship";
 import CourseFaculty from "./CourseFaculty";
@@ -55,7 +56,10 @@ export default function CourseDetailView({ course }: Props) {
       {/* 7. Curriculum & Stats */}
       <CourseCurriculum curriculum={course.curriculum} />
 
-      {/* 8. Who All Can Join */}
+      {/* 8. How will this program benefit you? */}
+      <CourseProgramBenefit programBenefit={course.programBenefit} />
+
+      {/* 9. Who All Can Join */}
       <CourseWhoCanJoin audience={course.whoCanJoin} />
 
       {/* 9. Up to 30% Scholarship Section */}

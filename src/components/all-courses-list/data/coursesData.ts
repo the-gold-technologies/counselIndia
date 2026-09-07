@@ -20,7 +20,7 @@ export const ALL_COURSES_DATA: CourseItem[] = [
     "badgeText": "CI",
     "badgeBg": "#07a64b",
     "list_duration": "3 months",
-    "enrolment": "28 Seats Left",
+    "enrolment": "25 Seats Left",
     "subdescription": "The Counselling Master Course is a foundation course on various psychological problems that a professional counsellor must have to cater to the nee...",
     "rating": 5
   },
@@ -31,8 +31,8 @@ export const ALL_COURSES_DATA: CourseItem[] = [
     "cover_image": "https://prod-s3.counselindia.com/courses/cover_image/certificate-in-child-psychologynormcover_1707113365.png",
     "badgeText": "CI",
     "badgeBg": "#07a64b",
-    "list_duration": "3 months, 225 hours",
-    "enrolment": "50 Seats Left",
+    "list_duration": "3 months",
+    "enrolment": "25 Seats Left",
     "subdescription": "The Certificate in Child Psychology stands out for its comprehensive curriculum, meticulously crafted by seasoned psychologists and education experts....",
     "rating": 5
   },
@@ -44,7 +44,7 @@ export const ALL_COURSES_DATA: CourseItem[] = [
     "badgeText": "CI",
     "badgeBg": "#07a64b",
     "list_duration": "6 months",
-    "enrolment": "20 Seats Left",
+    "enrolment": "25 Seats Left",
     "subdescription": "Gain expertise in specialized topics such as behavioral disorders, learning disabilities, and effective therapeutic interventions, setting you apart i...",
     "rating": 5
   },
@@ -56,7 +56,7 @@ export const ALL_COURSES_DATA: CourseItem[] = [
     "badgeText": "CI",
     "badgeBg": "#07a64b",
     "list_duration": "12 Months",
-    "enrolment": "12 Seats Left",
+    "enrolment": "25 Seats Left",
     "subdescription": "The PG Diploma in Counselling Psychology & Clinical Skills at Counsel India offers a holistic, one-year program bringing together theoretical knowledg...",
     "rating": 5
   },
@@ -67,8 +67,8 @@ export const ALL_COURSES_DATA: CourseItem[] = [
     "cover_image": "https://prod-s3.counselindia.com/courses/cover_image/WhatsApp Image 2024-09-21 at 18.23.26_1726924159.jpeg",
     "badgeText": "CI",
     "badgeBg": "#07a64b",
-    "list_duration": "3 Months, 60+Hours",
-    "enrolment": "100 Seats Left",
+    "list_duration": "3 Months",
+    "enrolment": "25 Seats Left",
     "subdescription": "Are you a psychologist, counsellor or mental health professional with the skills to transform lives but struggling to grow your practice? In this acti...",
     "rating": 5
   },
@@ -80,7 +80,7 @@ export const ALL_COURSES_DATA: CourseItem[] = [
     "badgeText": "CI",
     "badgeBg": "#07a64b",
     "list_duration": "24 Months",
-    "enrolment": "100 Seats Left",
+    "enrolment": "25 Seats Left",
     "subdescription": "(Internship/Apprenticeship Embedded) - Our Masters in Psychology program is designed to help you understand human behavior more effectively, look at t...",
     "rating": 5
   },
@@ -92,7 +92,7 @@ export const ALL_COURSES_DATA: CourseItem[] = [
     "badgeText": "CI",
     "badgeBg": "#07a64b",
     "list_duration": "24 Months",
-    "enrolment": "100 Seats Left",
+    "enrolment": "25 Seats Left",
     "subdescription": "(Internship/Apprenticeship Embedded) - Our Masters In Clinical Psychology program is designed to help you understand human behavior more effectively,...",
     "rating": 5
   },
@@ -104,8 +104,8 @@ export const ALL_COURSES_DATA: CourseItem[] = [
     "badgeText": "CI",
     "badgeBg": "#07a64b",
     "list_duration": "6 months",
-    "enrolment": "22 Seats Left",
-    "subdescription": "The Counselling Master Course is a comprehensive program on various kinds of counselling techniques that a professional  employs in order to cater...",
+    "enrolment": "25 Seats Left",
+    "subdescription": "The Counselling Master Course is a comprehensive program on various kinds of counselling techniques that a professional employs in order to cater...",
     "rating": 5
   },
   {
@@ -116,20 +116,20 @@ export const ALL_COURSES_DATA: CourseItem[] = [
     "badgeText": "CI",
     "badgeBg": "#07a64b",
     "list_duration": "12 week",
-    "enrolment": "23 Seats Left",
+    "enrolment": "25 Seats Left",
     "subdescription": "If you are looking for an opportunity to get trained in practical aspects of psychology, this is the perfect program for you. Counsel India brings...",
     "rating": 5
   },
   {
     "id": 10,
-    "name": "Masters  in Child Psychology",
+    "name": "Masters in Child Psychology",
     "slug": "masters-in-child-psychology-work-integrated-skill-based-program%29",
     "cover_image": "https://prod-s3.counselindia.com/courses/cover_image/machild_1720519570.jpg",
     "badgeText": "CI",
     "badgeBg": "#07a64b",
     "list_duration": "24 Months",
-    "enrolment": "100 Seats Left",
-    "subdescription": "(Internship/Apprenticeship Embedded) - \nEssentially designed for individuals passionate about understanding and nurturing children, this comprehensiv...",
+    "enrolment": "25 Seats Left",
+    "subdescription": "(Internship/Apprenticeship Embedded) - Essentially designed for individuals passionate about understanding and nurturing children, this comprehensiv...",
     "rating": 5
   },
   {
@@ -140,8 +140,8 @@ export const ALL_COURSES_DATA: CourseItem[] = [
     "badgeText": "CI",
     "badgeBg": "#07a64b",
     "list_duration": "12 months",
-    "enrolment": "45 Seats Left",
-    "subdescription": "The Counselling Master Course \u2013 Advanced is a comprehensive 12-month certification program designed for aspiring counsellors, psychology graduates, an...",
+    "enrolment": "25 Seats Left",
+    "subdescription": "The Counselling Master Course – Advanced is a comprehensive 12-month certification program designed for aspiring counsellors, psychology graduates, an...",
     "rating": 5
   },
   {
@@ -152,7 +152,7 @@ export const ALL_COURSES_DATA: CourseItem[] = [
     "badgeText": "CI",
     "badgeBg": "#07a64b",
     "list_duration": "24 Months",
-    "enrolment": "100 Seats Left",
+    "enrolment": "25 Seats Left",
     "subdescription": "Ready to reshape workplaces and boost careers? Our Masters in Industrial/Organizational Psychology In partnership with IPA(International Psychology As...",
     "rating": 5
   },
@@ -164,7 +164,7 @@ export const ALL_COURSES_DATA: CourseItem[] = [
     "badgeText": "CI",
     "badgeBg": "#07a64b",
     "list_duration": "12 Months",
-    "enrolment": "12 Seats Left",
+    "enrolment": "25 Seats Left",
     "subdescription": "This is a triple certification program designed for aspiring counsellors and therapists who want to grow and scale their business and entrepreneurial...",
     "rating": 5
   },
@@ -176,7 +176,7 @@ export const ALL_COURSES_DATA: CourseItem[] = [
     "badgeText": "CI",
     "badgeBg": "#07a64b",
     "list_duration": "1 year",
-    "enrolment": "12 Seats Left",
+    "enrolment": "25 Seats Left",
     "subdescription": "Counsel India's Diploma in Child Psychology offers an unparalleled opportunity for educators, parents, aspiring child psychologists, and professionals...",
     "rating": 5
   },

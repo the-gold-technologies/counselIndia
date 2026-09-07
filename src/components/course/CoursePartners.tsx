@@ -3,65 +3,75 @@ import React from "react";
 
 export default function CoursePartners() {
   const partners = [
-    { name: "Fortis", logo: "https://www.counselindia.com/assets/images/partners-logo/partner1.jpg" },
-    { name: "Max Healthcare", logo: "https://www.counselindia.com/assets/images/partners-logo/partner2.jpg" },
-    { name: "Apollo", logo: "https://www.counselindia.com/assets/images/partners-logo/partner3.jpg" },
-    { name: "Medanta", logo: "https://www.counselindia.com/assets/images/partners-logo/partner4.jpg" },
-    { name: "Vimhans", logo: "https://www.counselindia.com/assets/images/partners-logo/partner5.jpg" },
-    { name: "Manipal", logo: "https://www.counselindia.com/assets/images/partners-logo/partner6.jpg" },
+    { name: "DPS", logo: "/assets/images/partners-logo/partner1.jpg" },
+    { name: "London Kids", logo: "/assets/images/partners-logo/partner2.jpg" },
+    { name: "Drishti IAS", logo: "/assets/images/partners-logo/partner3.jpg" },
+    { name: "Zoom", logo: "/assets/images/partners-logo/partner4.jpg" },
+    { name: "Cognizavest", logo: "/assets/images/partners-logo/partner5.jpg" },
+    { name: "Cambridge School", logo: "/assets/images/partners-logo/partner6.jpg" },
+    { name: "Byjus", logo: "/assets/images/partners-logo/partner7.jpg" },
+    { name: "Partner 8", logo: "/assets/images/partners-logo/partner8.jpg" },
+    { name: "Partner 9", logo: "/assets/images/partners-logo/partner9.jpg" },
+    { name: "Partner 10", logo: "/assets/images/partners-logo/partner10.jpg" },
+    { name: "Partner 11", logo: "/assets/images/partners-logo/partner11.jpg" },
+    { name: "Partner 12", logo: "/assets/images/partners-logo/partner12.jpg" },
+    { name: "Partner 13", logo: "/assets/images/partners-logo/partner13.jpg" },
   ];
 
   return (
-    <section style={{ padding: "40px 0", backgroundColor: "#f8fafc", fontFamily: "'Poppins', sans-serif" }}>
-      <div className="container custom-container" style={{ maxWidth: "1140px", margin: "0 auto", padding: "0 16px" }}>
+    <section
+      style={{
+        padding: "45px 0 55px",
+        backgroundColor: "#ffffff",
+        fontFamily: "'Poppins', sans-serif",
+      }}
+    >
+      <div
+        className="container custom-container"
+        style={{ maxWidth: "1170px", margin: "0 auto", padding: "0 16px" }}
+      >
         <h3
           style={{
-            margin: "0 0 24px",
-            fontSize: "22px",
+            margin: "0 0 36px",
+            fontSize: "24px",
             fontWeight: 700,
-            color: "#1e293b",
-            textAlign: "center",
+            color: "#1c2d3a",
+            lineHeight: "1.3",
           }}
         >
-          Our Hiring & Placement Partners
+          Our Learners Work At
         </h3>
 
         <div
           style={{
             display: "flex",
             alignItems: "center",
-            justifyContent: "center",
-            gap: "24px",
+            justifyContent: "space-between",
+            gap: "32px",
             flexWrap: "wrap",
           }}
+          className="partners-logo-row"
         >
           {partners.map((p, idx) => (
             <div
               key={idx}
               style={{
-                backgroundColor: "#ffffff",
-                borderRadius: "8px",
-                padding: "12px 20px",
-                border: "1px solid #e2e8f0",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                height: "64px",
-                minWidth: "130px",
+                height: "55px",
+                flexShrink: 0,
               }}
             >
               <img
                 src={p.logo}
                 alt={p.name}
-                onError={(e) => {
-                  e.currentTarget.style.display = "none";
-                  if (e.currentTarget.parentElement) {
-                    e.currentTarget.parentElement.innerText = p.name;
-                    e.currentTarget.parentElement.style.fontWeight = "600";
-                    e.currentTarget.parentElement.style.color = "#475569";
-                  }
+                style={{
+                  maxHeight: "46px",
+                  maxWidth: "135px",
+                  objectFit: "contain",
+                  display: "block",
                 }}
-                style={{ maxHeight: "38px", maxWidth: "110px", objectFit: "contain" }}
               />
             </div>
           ))}

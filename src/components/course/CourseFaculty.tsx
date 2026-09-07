@@ -15,59 +15,72 @@ export default function CourseFaculty({ faculty }: Props) {
   if (!faculty || faculty.length === 0) return null;
 
   return (
-    <section style={{ padding: "60px 0", backgroundColor: "#f8fafc", fontFamily: "'Poppins', sans-serif" }}>
-      <div className="container custom-container" style={{ maxWidth: "1140px", margin: "0 auto", padding: "0 16px" }}>
+    <section
+      style={{
+        padding: "45px 0 55px",
+        backgroundColor: "#ffffff",
+        fontFamily: "'Poppins', sans-serif",
+      }}
+    >
+      <div
+        className="container custom-container"
+        style={{ maxWidth: "1170px", margin: "0 auto", padding: "0 16px" }}
+      >
         <h3
           style={{
-            margin: "0 0 32px",
-            fontSize: "26px",
+            margin: "0 0 28px",
+            fontSize: "24px",
             fontWeight: 700,
-            color: "#1e293b",
-            textAlign: "center",
+            color: "#1c2d3a",
+            lineHeight: "1.3",
           }}
         >
-          Course Faculty & Mentors
+          Course Faculty
         </h3>
 
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-            gap: "24px",
-            justifyContent: "center",
+            gridTemplateColumns: "repeat(5, 1fr)",
+            gap: "22px",
           }}
+          className="faculty-grid"
         >
           {faculty.map((f, idx) => (
             <div
               key={idx}
               style={{
                 backgroundColor: "#ffffff",
-                borderRadius: "12px",
-                padding: "24px 16px",
+                borderRadius: "10px",
+                padding: "36px 14px 40px",
+                minHeight: "330px",
                 textAlign: "center",
-                border: "1px solid #e2e8f0",
-                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.03)",
-                transition: "all 0.2s",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                boxShadow: "0 4px 18px rgba(0, 0, 0, 0.04)",
+                border: "1px solid #f1f2f4",
+                transition: "all 0.25s ease",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "translateY(-4px)";
-                e.currentTarget.style.boxShadow = "0 8px 24px rgba(0, 0, 0, 0.08)";
-                e.currentTarget.style.borderColor = "#cbd5e1";
+                e.currentTarget.style.boxShadow = "0 10px 24px rgba(0, 0, 0, 0.08)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.boxShadow = "0 4px 12px rgba(0, 0, 0, 0.03)";
-                e.currentTarget.style.borderColor = "#e2e8f0";
+                e.currentTarget.style.boxShadow = "0 4px 18px rgba(0, 0, 0, 0.04)";
               }}
             >
               <div
                 style={{
-                  width: "110px",
-                  height: "110px",
+                  width: "70px",
+                  height: "70px",
                   borderRadius: "50%",
                   overflow: "hidden",
-                  margin: "0 auto 16px",
-                  border: "3px solid #e7f6ed",
+                  marginBottom: "22px",
+                  backgroundColor: "#f4f6fb",
+                  border: "1px solid #eaeaea",
+                  flexShrink: 0,
                 }}
               >
                 <img
@@ -83,10 +96,12 @@ export default function CourseFaculty({ faculty }: Props) {
 
               <h4
                 style={{
-                  margin: "0 0 4px",
-                  fontSize: "17px",
-                  fontWeight: 700,
-                  color: "#1e293b",
+                  margin: "0 0 6px",
+                  fontSize: "16px",
+                  fontWeight: 500,
+                  color: "#1c2d3a",
+                  fontFamily: "'Playfair Display', Georgia, serif",
+                  lineHeight: "1.3",
                 }}
               >
                 {f.name}
@@ -94,9 +109,10 @@ export default function CourseFaculty({ faculty }: Props) {
               <p
                 style={{
                   margin: 0,
-                  fontSize: "13.5px",
-                  color: "#07a64b",
-                  fontWeight: 500,
+                  fontSize: "12.5px",
+                  color: "#6c757d",
+                  fontWeight: 400,
+                  lineHeight: "1.4",
                 }}
               >
                 {f.title}
@@ -105,6 +121,14 @@ export default function CourseFaculty({ faculty }: Props) {
           ))}
         </div>
       </div>
+
+      <style jsx>{`
+        @media (max-width: 991px) {
+          .faculty-grid {
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

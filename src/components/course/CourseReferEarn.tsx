@@ -9,74 +9,125 @@ interface ReferEarnData {
 }
 
 interface Props {
-  referEarn: ReferEarnData;
+  referEarn?: ReferEarnData;
 }
 
 export default function CourseReferEarn({ referEarn }: Props) {
+  const title =
+    referEarn?.title ||
+    "Refer someone and Earn upto INR 12,000 Cashback/Vouchers, on every successful enrollment";
+  const subtitle =
+    referEarn?.subtitle || "Your friend also gets an instant scholarship!";
+  const buttonText = referEarn?.buttonText || "Start Referring";
+  const buttonLink = referEarn?.buttonLink || "https://www.counselindia.com/membership";
+
   return (
-    <section style={{ padding: "40px 0", backgroundColor: "#ffffff", fontFamily: "'Poppins', sans-serif" }}>
-      <div className="container custom-container" style={{ maxWidth: "1140px", margin: "0 auto", padding: "0 16px" }}>
+    <section
+      style={{
+        padding: "50px 0 60px",
+        backgroundColor: "#ffffff",
+        fontFamily: "'Poppins', sans-serif",
+      }}
+    >
+      <div
+        className="container custom-container"
+        style={{ maxWidth: "1170px", margin: "0 auto", padding: "0 16px" }}
+      >
         <div
           style={{
-            backgroundColor: "#f8fafc",
-            borderRadius: "12px",
-            padding: "32px 36px",
-            border: "1px solid #e2e8f0",
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            gap: "24px",
-            flexWrap: "wrap",
+            gap: "36px",
           }}
+          className="refer-earn-wrapper"
         >
-          <div style={{ maxWidth: "700px" }}>
-            <h4
+          {/* Left illustration */}
+          <div style={{ flexShrink: 0 }}>
+            <img
+              src="/assets/images/refer.png"
+              alt="Refer and Earn"
               style={{
-                margin: "0 0 6px",
-                fontSize: "19px",
+                width: "180px",
+                maxWidth: "100%",
+                height: "auto",
+                display: "block",
+              }}
+            />
+          </div>
+
+          {/* Middle text content */}
+          <div style={{ flex: 1, maxWidth: "620px" }}>
+            <h3
+              style={{
+                margin: "0 0 12px",
+                fontSize: "23px",
                 fontWeight: 700,
-                color: "#1e293b",
-                lineHeight: "1.4",
+                color: "#1c2d3a",
+                lineHeight: "1.35",
               }}
             >
-              {referEarn.title}
-            </h4>
+              {title}
+            </h3>
             <p
               style={{
                 margin: 0,
-                fontSize: "14px",
-                color: "#07a64b",
-                fontWeight: 500,
+                fontSize: "15px",
+                color: "#555555",
+                lineHeight: "1.5",
+                fontWeight: 400,
               }}
             >
-              {referEarn.subtitle}
+              {subtitle}
             </p>
           </div>
 
-          <a
-            href={referEarn.buttonLink}
-            style={{
-              backgroundColor: "#07a64b",
-              color: "#ffffff",
-              padding: "12px 26px",
-              borderRadius: "6px",
-              fontSize: "14.5px",
-              fontWeight: 600,
-              textDecoration: "none",
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "8px",
-              flexShrink: 0,
-              boxShadow: "0 4px 12px rgba(7, 166, 75, 0.3)",
-              transition: "all 0.2s",
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#068f40")}
-            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#07a64b")}
-          >
-            {referEarn.buttonText}
-          </a>
+          {/* Right action button */}
+          <div style={{ flexShrink: 0 }}>
+            <a
+              href={buttonLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                backgroundColor: "#07a64b",
+                color: "#ffffff",
+                padding: "14px 34px",
+                borderRadius: "6px",
+                fontSize: "15px",
+                fontWeight: 600,
+                textDecoration: "none",
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                boxShadow: "0 4px 14px rgba(7, 166, 75, 0.25)",
+                transition: "all 0.2s ease",
+                whiteSpace: "nowrap",
+              }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.backgroundColor = "#068f40")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.backgroundColor = "#07a64b")
+              }
+            >
+              {buttonText}
+            </a>
+          </div>
         </div>
       </div>
+
+      <style jsx>{`
+        @media (max-width: 991px) {
+          .refer-earn-wrapper {
+            flex-direction: column !important;
+            text-align: center !important;
+            gap: 24px !important;
+          }
+          .refer-earn-wrapper img {
+            margin: 0 auto;
+          }
+        }
+      `}</style>
     </section>
   );
 }
