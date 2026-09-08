@@ -55,18 +55,90 @@ const INDIAN_STATES = [
 ];
 
 const MAJOR_CITIES: Record<string, string[]> = {
-  Delhi: ["New Delhi", "North Delhi", "South Delhi", "West Delhi", "East Delhi", "Other"],
-  "Uttar Pradesh": ["Noida", "Greater Noida", "Ghaziabad", "Lucknow", "Kanpur", "Varanasi", "Agra", "Prayagraj", "Meerut", "Bareilly", "Other"],
-  Maharashtra: ["Mumbai", "Pune", "Nagpur", "Thane", "Nashik", "Aurangabad", "Navi Mumbai", "Other"],
+  Delhi: [
+    "New Delhi",
+    "North Delhi",
+    "South Delhi",
+    "West Delhi",
+    "East Delhi",
+    "Other",
+  ],
+  "Uttar Pradesh": [
+    "Noida",
+    "Greater Noida",
+    "Ghaziabad",
+    "Lucknow",
+    "Kanpur",
+    "Varanasi",
+    "Agra",
+    "Prayagraj",
+    "Meerut",
+    "Bareilly",
+    "Other",
+  ],
+  Maharashtra: [
+    "Mumbai",
+    "Pune",
+    "Nagpur",
+    "Thane",
+    "Nashik",
+    "Aurangabad",
+    "Navi Mumbai",
+    "Other",
+  ],
   Karnataka: ["Bengaluru", "Mysuru", "Hubli", "Mangaluru", "Belagavi", "Other"],
-  Haryana: ["Gurugram", "Faridabad", "Panipat", "Ambala", "Karnal", "Hisar", "Other"],
-  "Tamil Nadu": ["Chennai", "Coimbatore", "Madurai", "Tiruchirappalli", "Salem", "Other"],
-  "West Bengal": ["Kolkata", "Howrah", "Durgapur", "Asansol", "Siliguri", "Other"],
+  Haryana: [
+    "Gurugram",
+    "Faridabad",
+    "Panipat",
+    "Ambala",
+    "Karnal",
+    "Hisar",
+    "Other",
+  ],
+  "Tamil Nadu": [
+    "Chennai",
+    "Coimbatore",
+    "Madurai",
+    "Tiruchirappalli",
+    "Salem",
+    "Other",
+  ],
+  "West Bengal": [
+    "Kolkata",
+    "Howrah",
+    "Durgapur",
+    "Asansol",
+    "Siliguri",
+    "Other",
+  ],
   Gujarat: ["Ahmedabad", "Surat", "Vadodara", "Rajkot", "Bhavnagar", "Other"],
-  Rajasthan: ["Jaipur", "Jodhpur", "Udaipur", "Kota", "Bikaner", "Ajmer", "Other"],
-  Punjab: ["Chandigarh", "Ludhiana", "Amritsar", "Jalandhar", "Patiala", "Other"],
+  Rajasthan: [
+    "Jaipur",
+    "Jodhpur",
+    "Udaipur",
+    "Kota",
+    "Bikaner",
+    "Ajmer",
+    "Other",
+  ],
+  Punjab: [
+    "Chandigarh",
+    "Ludhiana",
+    "Amritsar",
+    "Jalandhar",
+    "Patiala",
+    "Other",
+  ],
   Bihar: ["Patna", "Gaya", "Bhagalpur", "Muzaffarpur", "Purnia", "Other"],
-  "Madhya Pradesh": ["Bhopal", "Indore", "Gwalior", "Jabalpur", "Ujjain", "Other"],
+  "Madhya Pradesh": [
+    "Bhopal",
+    "Indore",
+    "Gwalior",
+    "Jabalpur",
+    "Ujjain",
+    "Other",
+  ],
   Telangana: ["Hyderabad", "Warangal", "Nizamabad", "Karimnagar", "Other"],
 };
 
@@ -117,7 +189,9 @@ export default function ContactUsView() {
       : ["Please Select City", "Other"];
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >,
   ) => {
     const { name, value, type } = e.target;
     if (type === "checkbox") {
@@ -143,7 +217,9 @@ export default function ContactUsView() {
       return;
     }
     if (!formData.agree) {
-      setErrorMsg("You must agree to our Terms & Conditions and Privacy Policy.");
+      setErrorMsg(
+        "You must agree to our Terms & Conditions and Privacy Policy.",
+      );
       return;
     }
 
@@ -159,7 +235,7 @@ export default function ContactUsView() {
         style={{
           position: "relative",
           overflow: "hidden",
-          padding: "16px 0 28px",
+          padding: "41px 0 53px",
           backgroundColor: "#f8f8f8",
         }}
       >
@@ -173,7 +249,10 @@ export default function ContactUsView() {
             style={{ maxWidth: "1170px", margin: "0 auto", padding: "0 16px" }}
           >
             {/* Page Banner Caption Start */}
-            <div className="page-banner__caption-02 text-center" style={{ padding: "8px 0 16px" }}>
+            <div
+              className="page-banner__caption-02"
+              style={{ padding: "8px 0 16px", textAlign: "left" }}
+            >
               <h2
                 className="page-banner__main-title-02"
                 style={{
@@ -183,6 +262,7 @@ export default function ContactUsView() {
                   color: "#07a64b",
                   lineHeight: 1.2,
                   margin: 0,
+                  textAlign: "left",
                 }}
               >
                 Contact Us
@@ -195,7 +275,10 @@ export default function ContactUsView() {
       {/* Page Banner Section End */}
 
       {/* Hero Panoramic Image */}
-      <div className="hero-img-contact-us" style={{ width: "100%", lineHeight: 0 }}>
+      <div
+        className="hero-img-contact-us"
+        style={{ width: "100%", lineHeight: 0 }}
+      >
         <img
           src="https://counselindiastudymaterial.s3.ap-south-1.amazonaws.com/media/CI_Full_team.png"
           alt="Counsel India Team"
@@ -238,13 +321,30 @@ export default function ContactUsView() {
                 lineHeight: "1.7",
               }}
             >
-              If you have any questions or need help, please fill in the details below and our Success
-              Manager will get in touch with you within 24 Hours.
+              If you have any questions or need help, please fill in the details
+              below and our Success Manager will get in touch with you within 24
+              Hours.
             </p>
           </div>
 
           {/* Office Cards Grid (Left-aligned 50% width on desktop) */}
           <div className="main-container" style={{ marginBottom: "45px" }}>
+            <style>{`
+              @media (max-width: 600px) {
+                .office-card {
+                  flex-direction: column !important;
+                  height: auto !important;
+                  max-width: 100% !important;
+                }
+                .office-card-img {
+                  width: 100% !important;
+                  height: 200px !important;
+                }
+                .office-card-title {
+                  white-space: normal !important;
+                }
+              }
+            `}</style>
             <div
               className="grid-container"
               style={{
@@ -256,128 +356,112 @@ export default function ContactUsView() {
             >
               {/* Noida Head Office Card */}
               <div
-                className="card card--featured"
+                className="office-card"
                 style={{
                   width: "100%",
-                  maxWidth: "560px",
-                  border: "1px solid #ccc",
-                  borderRadius: "10px",
+                  maxWidth: "580px",
+                  height: "260px",
+                  border: "1px solid #cccccc",
+                  borderRadius: "16px",
                   overflow: "hidden",
                   backgroundColor: "#ffffff",
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "stretch",
                   boxShadow: "none",
                 }}
               >
+                {/* Left Photo (Flush to edges with rounded left corners) */}
                 <div
-                  className="card__side-by-side--m"
+                  className="office-card-img"
                   style={{
-                    display: "flex",
-                    flexFlow: "row wrap",
-                    width: "100%",
+                    width: "230px",
+                    minWidth: "230px",
+                    height: "100%",
+                    overflow: "hidden",
                   }}
                 >
-                  <div
-                    className="card__image"
+                  <img
+                    src="https://counselindiastudymaterial.s3.ap-south-1.amazonaws.com/mastergalaxyimages/office_gate.webp?auto=compress&cs=tinysrgb&h=750&w=1260"
+                    alt="Counsel India Noida Head Office"
                     style={{
-                      height: "260px",
-                      width: "220px",
-                      overflow: "hidden",
-                      flexShrink: 0,
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      display: "block",
+                      borderTopLeftRadius: "15px",
+                      borderBottomLeftRadius: "15px",
+                    }}
+                  />
+                </div>
+
+                {/* Right Content */}
+                <div
+                  style={{
+                    flex: 1,
+                    padding: "24px 26px",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    backgroundColor: "#ffffff",
+                    textAlign: "left",
+                  }}
+                >
+                  <h5
+                    className="office-card-title"
+                    style={{
+                      fontFamily: "'Playfair Display', serif",
+                      fontSize: "20px",
+                      fontWeight: 700,
+                      color: "#212529",
+                      margin: "0 0 12px 0",
+                      lineHeight: 1.3,
+                      whiteSpace: "nowrap",
+                      textAlign: "left",
                     }}
                   >
-                    <img
-                      src="https://counselindiastudymaterial.s3.ap-south-1.amazonaws.com/mastergalaxyimages/office_gate.webp?auto=compress&cs=tinysrgb&h=750&w=1260"
-                      alt="Counsel India Noida Head Office"
+                    <span style={{ color: "#07a64b" }}>Counselindia </span>:
+                    Noida Head Office
+                  </h5>
+
+                  <p
+                    style={{
+                      margin: "0 0 18px 0",
+                      fontSize: "14px",
+                      color: "#212529",
+                      fontFamily: "'Poppins', sans-serif",
+                      lineHeight: "1.6",
+                      textAlign: "left",
+                    }}
+                  >
+                    <span style={{ fontWeight: 700, color: "#212529" }}>
+                      Address:
+                    </span>{" "}
+                    Office no 12A20, Floor No-13, E-Square sector 96, Noida,
+                    Uttar Pradesh 201301
+                  </p>
+
+                  <div>
+                    <button
+                      type="button"
+                      onClick={() => setIsMapOpen(true)}
                       style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
+                        width: "155px",
+                        height: "46px",
+                        borderRadius: "10px",
+                        backgroundImage:
+                          "url('https://counselindiastudymaterial.s3.ap-south-1.amazonaws.com/images/Button_1.svg')",
+                        backgroundSize: "100% 100%",
+                        backgroundPosition: "center",
+                        backgroundRepeat: "no-repeat",
+                        backgroundColor: "transparent",
+                        border: "none",
+                        cursor: "pointer",
+                        padding: 0,
                         display: "block",
                       }}
+                      aria-label="View Location on Google Maps"
                     />
-                  </div>
-
-                  <div
-                    className="card__content"
-                    style={{
-                      padding: "20px 22px",
-                      flex: "1 1 240px",
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "center",
-                      backgroundColor: "#ffffff",
-                    }}
-                  >
-                    <div className="card-body" style={{ padding: 0 }}>
-                      <h5
-                        className="card-title"
-                        style={{
-                          fontSize: "1.25rem",
-                          fontWeight: 700,
-                          color: "#212529",
-                          marginBottom: "12px",
-                          fontFamily: "'Playfair Display', serif",
-                          lineHeight: 1.3,
-                        }}
-                      >
-                        <span style={{ color: "#07a64b" }}>Counselindia </span>: Noida Head Office
-                      </h5>
-
-                      <address style={{ fontStyle: "normal", marginBottom: "20px", lineHeight: "1.6" }}>
-                        <p
-                          className="card-text"
-                          style={{
-                            margin: 0,
-                            fontSize: "14px",
-                            color: "#4a5568",
-                            fontFamily: "'Poppins', sans-serif",
-                          }}
-                        >
-                          <span style={{ fontWeight: 700, color: "#363939" }}>Address:</span> Office no
-                          12A20, Floor No-13, E-Square sector 96, Noida, Uttar Pradesh 201301
-                        </p>
-                      </address>
-
-                      <p className="card-text" style={{ margin: 0 }}>
-                        <button
-                          type="button"
-                          className="btn btn--block card__btn btn--map card__button"
-                          onClick={() => setIsMapOpen(true)}
-                          style={{
-                            backgroundColor: "#07a64b",
-                            color: "#ffffff",
-                            border: "none",
-                            borderRadius: "10px",
-                            padding: "10px 26px",
-                            display: "inline-flex",
-                            alignItems: "center",
-                            gap: "8px",
-                            fontWeight: 600,
-                            fontSize: "15px",
-                            cursor: "pointer",
-                            fontFamily: "'Poppins', sans-serif",
-                            transition: "background-color 0.2s ease",
-                          }}
-                          onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#068f40")}
-                          onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#07a64b")}
-                          aria-label="View Location on Google Maps"
-                        >
-                          <svg
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          >
-                            <path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z" />
-                            <circle cx="12" cy="10" r="3" />
-                          </svg>
-                          Google Map
-                        </button>
-                      </p>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -399,7 +483,10 @@ export default function ContactUsView() {
               boxSizing: "border-box",
             }}
           >
-            <div className="section-title text-center" style={{ textAlign: "center", marginBottom: "35px" }}>
+            <div
+              className="section-title text-center"
+              style={{ textAlign: "center", marginBottom: "35px" }}
+            >
               <h2
                 className="section-title__title"
                 style={{
@@ -411,7 +498,8 @@ export default function ContactUsView() {
                   margin: 0,
                 }}
               >
-                Fill the form below so we can get to know you and your needs better.
+                Fill the form below so we can get to know you and your needs
+                better.
               </h2>
             </div>
 
@@ -428,12 +516,19 @@ export default function ContactUsView() {
                 }}
               >
                 <div style={{ fontSize: "36px", marginBottom: "12px" }}>✓</div>
-                <h3 style={{ fontSize: "20px", fontWeight: 700, marginBottom: "8px", color: "#166534" }}>
+                <h3
+                  style={{
+                    fontSize: "20px",
+                    fontWeight: 700,
+                    marginBottom: "8px",
+                    color: "#166534",
+                  }}
+                >
                   Thank you for reaching out!
                 </h3>
                 <p style={{ margin: 0, fontSize: "14px" }}>
-                  Our Success Manager has received your details and will get in touch with you within 24
-                  Hours.
+                  Our Success Manager has received your details and will get in
+                  touch with you within 24 Hours.
                 </p>
                 <button
                   type="button"
@@ -522,7 +617,8 @@ export default function ContactUsView() {
                   {/* Country with Code */}
                   <div>
                     <label style={labelStyle}>
-                      Select Country With Country Code<span style={{ color: "red" }}>*</span>
+                      Select Country With Country Code
+                      <span style={{ color: "red" }}>*</span>
                     </label>
                     <select
                       name="country"
@@ -535,7 +631,11 @@ export default function ContactUsView() {
                       required
                     >
                       {COUNTRIES.map((c, idx) => (
-                        <option key={idx} value={c.code || c.name} style={{ color: "#212529" }}>
+                        <option
+                          key={idx}
+                          value={c.code || c.name}
+                          style={{ color: "#212529" }}
+                        >
                           {c.name}
                         </option>
                       ))}
@@ -575,7 +675,11 @@ export default function ContactUsView() {
                       required
                     >
                       {INDIAN_STATES.map((st, idx) => (
-                        <option key={idx} value={idx === 0 ? "" : st} style={{ color: "#212529" }}>
+                        <option
+                          key={idx}
+                          value={idx === 0 ? "" : st}
+                          style={{ color: "#212529" }}
+                        >
                           {st}
                         </option>
                       ))}
@@ -598,7 +702,11 @@ export default function ContactUsView() {
                       required
                     >
                       {citiesForState.map((ct, idx) => (
-                        <option key={idx} value={idx === 0 ? "" : ct} style={{ color: "#212529" }}>
+                        <option
+                          key={idx}
+                          value={idx === 0 ? "" : ct}
+                          style={{ color: "#212529" }}
+                        >
                           {ct}
                         </option>
                       ))}
@@ -608,7 +716,8 @@ export default function ContactUsView() {
                   {/* How did you hear about us */}
                   <div style={{ gridColumn: "1 / -1" }}>
                     <label style={labelStyle}>
-                      Select How You Hear About Us<span style={{ color: "red" }}>*</span>
+                      Select How You Hear About Us
+                      <span style={{ color: "red" }}>*</span>
                     </label>
                     <select
                       name="hearabout"
@@ -689,7 +798,11 @@ export default function ContactUsView() {
                           href="/terms-condition"
                           target="_blank"
                           rel="noopener noreferrer"
-                          style={{ color: "#07a64b", fontWeight: 500, textDecoration: "none" }}
+                          style={{
+                            color: "#07a64b",
+                            fontWeight: 500,
+                            textDecoration: "none",
+                          }}
                         >
                           Terms &amp; Conditions
                         </a>{" "}
@@ -698,7 +811,11 @@ export default function ContactUsView() {
                           href="/privacy-policy"
                           target="_blank"
                           rel="noopener noreferrer"
-                          style={{ color: "#07a64b", fontWeight: 500, textDecoration: "none" }}
+                          style={{
+                            color: "#07a64b",
+                            fontWeight: 500,
+                            textDecoration: "none",
+                          }}
                         >
                           Privacy Policy.
                         </a>{" "}
@@ -708,7 +825,13 @@ export default function ContactUsView() {
                   </div>
 
                   {/* Submit Button */}
-                  <div style={{ gridColumn: "1 / -1", textAlign: "center", marginTop: "22px" }}>
+                  <div
+                    style={{
+                      gridColumn: "1 / -1",
+                      textAlign: "center",
+                      marginTop: "22px",
+                    }}
+                  >
                     <button
                       type="submit"
                       className="btn btn-primary btn-hover-secondary btn-submit"
