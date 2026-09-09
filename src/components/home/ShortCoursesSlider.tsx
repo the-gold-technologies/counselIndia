@@ -1,190 +1,140 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import Link from "next/link";
 
 export default function ShortCoursesSlider() {
   const shortCourses = [
     {
       id: 1,
-      title: "Counselor Se Charcha",
-      date: "19th Feb 2023",
-      location: "Noida",
-      image: "/assets/images/event/counselor_se_charcha.jpg",
-      slug: "counselor-se-charcha",
+      title: "Psychology for Everyday Struggles",
+      image: "https://prod-s3.counselindia.com/blog/Psychology for Everyday Struggles_1736508322.jpg",
+      slug: "psychology-for-everyday-struggles",
     },
     {
       id: 2,
-      title: "Certificate in Cognitive Behavioural Therapy (CBT)",
-      date: "Online Masterclass",
-      location: "Live Interactive",
-      image: "https://prod-s3.counselindia.com/mastergalaxyimages/12345678_1728475516.png",
-      slug: "cbt-certification",
+      title: "The Art of Understanding Yourself",
+      image: "https://prod-s3.counselindia.com/blog/The Art of Understanding Yourself_1736508692.jpg",
+      slug: "the-art-of-understanding-yourself",
     },
     {
       id: 3,
-      title: "Certificate in Expressive Art & Play Therapy",
-      date: "Hands-on Practical",
-      location: "Live Interactive",
-      image: "https://prod-s3.counselindia.com/mastergalaxyimages/7f76f6_1728475558.png",
-      slug: "art-therapy-certification",
-    },
-    {
-      id: 4,
-      title: "Certificate in Child & Adolescent Psychology",
-      date: "Skill Development",
-      location: "Live Interactive",
-      image: "https://prod-s3.counselindia.com/mastergalaxyimages/86o7tfytcv_1728475571.png",
-      slug: "child-psychology-certification",
+      title: "Counselling Booster Program",
+      image: "https://prod-s3.counselindia.com/blog/Counselling Booster Program_1736508523.jpg",
+      slug: "counselling-booster-program",
     },
   ];
-
-  useEffect(() => {
-    let swiperInstance: any = null;
-    const init = () => {
-      if (typeof window !== "undefined" && (window as any).Swiper) {
-        swiperInstance = new (window as any).Swiper(".event-active .swiper", {
-          slidesPerView: 3,
-          spaceBetween: 25,
-          loop: true,
-          autoplay: { delay: 2800, disableOnInteraction: false },
-          speed: 1000,
-          navigation: {
-            nextEl: ".event-active .swiper-button-next",
-            prevEl: ".event-active .swiper-button-prev",
-          },
-          breakpoints: {
-            0: { slidesPerView: 1, spaceBetween: 15 },
-            576: { slidesPerView: 2, spaceBetween: 20 },
-            992: { slidesPerView: 3, spaceBetween: 25 },
-          },
-        });
-      }
-    };
-    init();
-    const t = setTimeout(init, 400);
-    return () => {
-      clearTimeout(t);
-      if (swiperInstance?.destroy) swiperInstance.destroy(true, true);
-    };
-  }, []);
 
   return (
     <div className="event-section section-padding-01 bg-white">
       <div className="container custom-container">
         <div className="row gy-10 align-items-center">
-          {/* Left Column: Title & View All */}
+          {/* Left Column: Title & View All Button */}
           <div className="col-xl-3 col-lg-5 col-md-6 col-sm-7">
             <div className="section-title mb-0 pe-lg-8">
-              <h4 className="section-title__sub-title text-success font-size-14 fw-bold mb-2">
+              <h4 className="section-title__sub-title">
                 SHORT COURSES
               </h4>
-              <h2 className="section-title__title-02 font-size-32 lh-sm">
-                Exclusive Short Courses from <mark>Counsel India</mark>
+              <h2 className="section-title__title-02">
+                <br /> Exclusive Short Courses from <mark>Counsel India</mark>
               </h2>
             </div>
             <div className="section-btn mt-4">
-              <Link href="/all-courses-list" className="btn btn-light btn-hover-primary px-4 py-2 font-size-14 fw-semibold">
+              <Link
+                href="/growth-courses"
+                className="btn btn-light btn-hover-primary"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  textAlign: "center",
+                  lineHeight: "1",
+                }}
+              >
                 View all
               </Link>
             </div>
           </div>
 
-          {/* Right Column: Swiper Carousel */}
+          {/* Right Column: 3 Course Cards (Static Grid) */}
           <div className="col-xl-9">
-            <div className="event-active swiper-button-style position-relative">
-              <div className="swiper">
-                <div className="swiper-wrapper py-2">
-                  {shortCourses.map((course) => (
-                    <div className="swiper-slide h-auto" key={course.id}>
-                      {/* Event Item Start */}
-                      <div className="event-item bg-white rounded-3 shadow-sm overflow-hidden d-flex flex-column h-100">
-                        <div className="event-item__image">
-                          <Link href={`/course/${course.slug}`} className="d-block overflow-hidden" style={{ height: "185px" }}>
-                            <img
-                              src={course.image}
-                              alt={course.title}
-                              style={{
-                                width: "100%",
-                                height: "100%",
-                                objectFit: "cover",
-                                display: "block",
-                                transition: "transform 0.5s ease",
-                              }}
-                            />
-                          </Link>
-                        </div>
-                        <div className="event-item__content text-center p-4 d-flex flex-column justify-content-between flex-grow-1" style={{ backgroundColor: "#f8f9fa" }}>
-                          <div>
-                            <span className="event-item__date text-success font-size-13 fw-semibold d-block mb-1">
-                              {course.date}
-                            </span>
-                            <h3 className="event-item__title font-size-16 fw-bold mb-2" style={{ minHeight: "48px" }}>
-                              <Link href={`/course/${course.slug}`} className="text-dark hover-text-primary text-decoration-none">
-                                {course.title}
-                              </Link>
-                            </h3>
-                            <p className="event-item__location font-size-13 text-muted mb-3">
-                              <i className="fas fa-map-marker-alt text-success me-1"></i> {course.location}
-                            </p>
-                          </div>
-                          <Link
-                            href={`/course/${course.slug}`}
-                            className="btn btn-2 btn-primary btn-hover-primary w-100 font-size-14 py-2 fw-semibold mt-2"
-                            style={{
-                              backgroundColor: "#07a64b",
-                              borderColor: "#07a64b",
-                              color: "#fff",
-                            }}
-                          >
-                            Know more
-                          </Link>
-                        </div>
-                      </div>
-                      {/* Event Item End */}
+            <div className="row g-4 g-lg-6">
+              {shortCourses.map((course) => (
+                <div className="col-md-4 col-sm-6" key={course.id}>
+                  {/* Event / Short Course Item */}
+                  <div className="event-item h-100 d-flex flex-column" style={{ borderRadius: "5px", overflow: "hidden" }}>
+                    <div className="event-item__image">
+                      <Link
+                        href={`/course-detail/${course.slug}`}
+                        className="d-block overflow-hidden"
+                      >
+                        <img
+                          src={course.image}
+                          alt={course.title}
+                          width={370}
+                          height={201}
+                          style={{
+                            width: "100%",
+                            height: "auto",
+                            aspectRatio: "370/201",
+                            objectFit: "cover",
+                            display: "block",
+                            transition: "all 1.5s cubic-bezier(0, 0, 0.2, 1)",
+                          }}
+                        />
+                      </Link>
                     </div>
-                  ))}
-                </div>
-              </div>
 
-              {/* Navigation Arrows */}
-              <div
-                className="swiper-button-next d-none d-md-flex align-items-center justify-content-center"
-                style={{
-                  position: "absolute",
-                  right: "-20px",
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                  width: "40px",
-                  height: "40px",
-                  borderRadius: "50%",
-                  background: "#fff",
-                  boxShadow: "0 4px 15px rgba(0,0,0,0.15)",
-                  color: "#333",
-                  zIndex: 10,
-                  cursor: "pointer",
-                }}
-              >
-                <i className="fas fa-chevron-right font-size-14"></i>
-              </div>
-              <div
-                className="swiper-button-prev d-none d-md-flex align-items-center justify-content-center"
-                style={{
-                  position: "absolute",
-                  left: "-20px",
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                  width: "40px",
-                  height: "40px",
-                  borderRadius: "50%",
-                  background: "#fff",
-                  boxShadow: "0 4px 15px rgba(0,0,0,0.15)",
-                  color: "#333",
-                  zIndex: 10,
-                  cursor: "pointer",
-                }}
-              >
-                <i className="fas fa-chevron-left font-size-14"></i>
-              </div>
+                    <div
+                      className="event-item__content text-center d-flex flex-column justify-content-between flex-grow-1"
+                      style={{
+                        backgroundColor: "#f8f8f8",
+                        padding: "21px 20px 35px",
+                        transition: "all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1)",
+                      }}
+                    >
+                      <h3
+                        className="blog-item-02__title"
+                        style={{
+                          height: "3.6em",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          margin: "0 0 10px 0",
+                        }}
+                      >
+                        <Link
+                          href={`/course-detail/${course.slug}`}
+                          style={{
+                            color: "#222736",
+                            fontSize: "15px",
+                            fontWeight: 600,
+                            lineHeight: "1.4",
+                            textDecoration: "none",
+                          }}
+                        >
+                          {course.title}
+                        </Link>
+                      </h3>
+
+                      <div>
+                        <Link
+                          className="blog-item-02__more btn btn-light btn-hover-white"
+                          href={`/course-detail/${course.slug}`}
+                          style={{
+                            display: "inline-flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            gap: "8px",
+                            lineHeight: "1",
+                          }}
+                        >
+                          Buy Now <i className="fal fa-long-arrow-right"></i>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

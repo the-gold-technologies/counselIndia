@@ -44,7 +44,10 @@ export default function AppDownloadBanner() {
                   Learning Made <mark>Easy</mark>
                 </h2>
 
-                <h5 className="download-content-02__sub-title text-success fw-bold font-size-18 mb-4">
+                <h5
+                  className="download-content-02__sub-title fw-bold font-size-18 mb-4"
+                  style={{ color: "#08A64B" }}
+                >
                   Quality education that&apos;s accessible no matter where you are
                 </h5>
 

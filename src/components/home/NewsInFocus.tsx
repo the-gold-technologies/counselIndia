@@ -5,86 +5,94 @@ export default function NewsInFocus() {
   const mediaLogos = [
     {
       id: 1,
-      image: "/assets/images/partners-logo/client_logo.jpg",
-      alt: "Certificate of Nomination - India 500 Startup Awards",
-      width: "155px",
+      image: "https://prod-s3.counselindia.com/masterfetured/image_client_logo_1677487852.jpg",
+      alt: "India 5000 Executive / Startup Awards",
+      width: 350,
+      height: 245,
     },
     {
       id: 2,
-      image: "/assets/images/partners-logo/client_logo1.jpg",
+      image: "https://prod-s3.counselindia.com/masterfetured/image_client_logo1_1677487902.jpg",
       alt: "India 500 Startup Awards",
-      width: "110px",
+      width: 350,
+      height: 245,
     },
     {
       id: 3,
-      image: "/assets/images/partners-logo/client_logo2.jpg",
+      image: "https://prod-s3.counselindia.com/masterfetured/image_client_logo2_1677487923.jpg",
       alt: "Teacher Tribe World",
-      width: "160px",
+      width: 350,
+      height: 245,
     },
     {
       id: 4,
-      image: "/assets/images/partners-logo/client_logo3.png",
+      image: "https://prod-s3.counselindia.com/masterfetured/image_client_logo3_1677487937.png",
       alt: "EdTech Entrepreneur Award",
-      width: "90px",
+      width: 350,
+      height: 245,
     },
     {
       id: 5,
-      image: "/assets/images/partners-logo/client_logo4.png",
+      image: "https://prod-s3.counselindia.com/masterfetured/image_client_logo4_1677487951.png",
       alt: "Psychologs Magazine",
-      width: "170px",
+      width: 350,
+      height: 245,
     },
     {
       id: 6,
-      image: "/assets/images/partners-logo/client_logo5.png",
+      image: "https://prod-s3.counselindia.com/masterfetured/image_client_logo5_1677487966.png",
       alt: "Radio Manav Rachna 107.8",
-      width: "140px",
+      width: 350,
+      height: 245,
     },
     {
       id: 7,
-      image: "/assets/images/partners-logo/client_logo6.jpg",
+      image: "https://prod-s3.counselindia.com/masterfetured/image_client_logo6_1677487985.jpg",
       alt: "All India Radio Akashvani",
-      width: "100px",
+      width: 350,
+      height: 245,
     },
   ];
-
-  // Triplicate array for smooth infinite continuous scrolling
-  const marqueeLogos = [...mediaLogos, ...mediaLogos, ...mediaLogos];
 
   return (
     <div className="partners-seaction section-padding-02 bg-white py-5">
       <div className="container custom-container">
         <div className="row mb-4">
           <div className="col-sm-12">
-            {/* Section Title Start */}
+            {/* Section Title Start - Placed on the left side matching standard layout */}
             <div className="section-title">
-              <h2 className="section-title__title font-size-36 fw-bold">
-                Counsel India in<mark>Focus</mark>
+              <h2 className="section-title__title font-size-36 fw-bold text-start">
+                Counsel India in <mark>Focus</mark>
               </h2>
             </div>
             {/* Section Title End */}
           </div>
         </div>
 
-        {/* Infinite Marquee Slider Container - Inside Container */}
-        <div className="infocus-marquee-container position-relative w-100 overflow-hidden py-3">
-          <div className="infocus-marquee-track d-flex align-items-center gap-5">
-            {marqueeLogos.map((item, index) => (
-              <div
-                key={`${item.id}-${index}`}
-                className="infocus-marquee-item flex-shrink-0 d-flex align-items-center justify-content-center"
-                style={{
-                  minWidth: item.width,
-                  height: "90px",
-                  padding: "6px 12px",
-                  transition: "transform 0.3s ease",
-                }}
-              >
+        {/* Static Logos Row Layout on Left Side */}
+        <div className="d-flex flex-wrap align-items-center justify-content-start gap-4 gap-lg-5 py-2">
+          {mediaLogos.map((item) => (
+            <div
+              key={item.id}
+              className="partner-logo d-flex align-items-center justify-content-center"
+              style={{
+                width: "140px",
+                height: "98px",
+                padding: "4px",
+                transition: "transform 0.3s ease",
+              }}
+            >
+              <div className="partner-logo__logo d-flex align-items-center justify-content-center w-100 h-100">
                 <img
                   src={item.image}
                   alt={item.alt}
+                  width={item.width}
+                  height={item.height}
                   style={{
-                    maxHeight: "80px",
-                    maxWidth: "100%",
+                    width: "100%",
+                    height: "auto",
+                    aspectRatio: "350/245",
+                    maxHeight: "90px",
                     objectFit: "contain",
                     display: "block",
                     margin: "0 auto",
@@ -93,49 +101,16 @@ export default function NewsInFocus() {
                   className="hover-scale"
                 />
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
 
       <style jsx>{`
-        .infocus-marquee-container {
-          mask-image: linear-gradient(
-            to right,
-            transparent,
-            black 3%,
-            black 97%,
-            transparent
-          );
-          -webkit-mask-image: linear-gradient(
-            to right,
-            transparent,
-            black 3%,
-            black 97%,
-            transparent
-          );
+        .hover-scale {
+          transition: transform 0.3s ease;
         }
-
-        .infocus-marquee-track {
-          display: flex;
-          width: max-content;
-          animation: infocus-scroll 28s linear infinite;
-        }
-
-        .infocus-marquee-track:hover {
-          animation-play-state: paused;
-        }
-
-        @keyframes infocus-scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-33.3333%);
-          }
-        }
-
-        .infocus-marquee-item:hover img {
+        .partner-logo:hover .hover-scale {
           transform: scale(1.08);
         }
       `}</style>

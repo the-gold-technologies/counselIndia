@@ -4,19 +4,126 @@ import Link from "next/link";
 
 export default function GlobalHiringPartners() {
   const hiringPartners = [
-    { id: 1, name: "LK International School", image: "/assets/images/partners-logo/partner1.jpg", slug: "lk-international" },
-    { id: 2, name: "Saadhak Foundation", image: "/assets/images/partners-logo/partner2.jpg", slug: "saadhak-foundation" },
-    { id: 3, name: "Pehchaan The Street School", image: "/assets/images/partners-logo/partner3.jpg", slug: "pehchaan-the-street-school" },
-    { id: 4, name: "Educlouds India & UK", image: "/assets/images/partners-logo/partner4.jpg", slug: "educlouds" },
-    { id: 5, name: "The Peace Lab", image: "/assets/images/partners-logo/partner5.jpg", slug: "the-peace-lab" },
-    { id: 6, name: "Traident Brains", image: "/assets/images/partners-logo/partner6.jpg", slug: "traident-brains" },
-    { id: 7, name: "The Mind & Wellness Clinic", image: "/assets/images/partners-logo/partner7.jpg", slug: "mind-and-wellness-clinic" },
-    { id: 8, name: "Care Foundation", image: "/assets/images/partners-logo/partner8.jpg", slug: "care-foundation" },
-    { id: 9, name: "Psychology Partner 9", image: "/assets/images/partners-logo/partner9.jpg", slug: "partner-9" },
-    { id: 10, name: "Psychology Partner 10", image: "/assets/images/partners-logo/partner10.jpg", slug: "partner-10" },
-    { id: 11, name: "Psychology Partner 11", image: "/assets/images/partners-logo/partner11.jpg", slug: "partner-11" },
-    { id: 12, name: "Psychology Partner 12", image: "/assets/images/partners-logo/partner12.jpg", slug: "partner-12" },
-    { id: 13, name: "Psychology Partner 13", image: "/assets/images/partners-logo/partner13.jpg", slug: "partner-13" },
+    {
+      id: 1,
+      href: "/hiring-partner/minds",
+      image: "https://prod-s3.counselindia.com/hiring_partners/Screenshot 2024-07-13 at 11.01.14 AM_1720849487.png",
+      alt: "Minds",
+    },
+    {
+      id: 2,
+      href: "/hiring-partner/iexplain-education-pvt-ltd",
+      image: "https://prod-s3.counselindia.com/hiring_partners/news_explain_1691568875.png",
+      alt: "IExplain Education",
+    },
+    {
+      id: 3,
+      href: "/hiring-partner/find-hope",
+      image: "https://prod-s3.counselindia.com/hiring_partners/news_hope_1691568818.png",
+      alt: "Find Hope",
+    },
+    {
+      id: 4,
+      href: "/hiring-partner/manav-foundation",
+      image: "https://prod-s3.counselindia.com/hiring_partners/news_MF Logo JPG (1)_1706359165.jpg",
+      alt: "Manav Foundation",
+    },
+    {
+      id: 5,
+      href: "/hiring-partner/shining-youth-foundation",
+      image: "https://prod-s3.counselindia.com/hiring_partners/news_SYF Logo - Copy_1703745072.JPG",
+      alt: "Shining Youth Foundation",
+    },
+    {
+      id: 6,
+      href: "/hiring-partner/firstvite-e-learning-pvt-ltd",
+      image: "https://prod-s3.counselindia.com/hiring_partners/news_WhatsApp_Image_2023-07-31_at_11.45.32_AM-removebg-preview_1690784289.png",
+      alt: "Firstvite E-Learning",
+    },
+    {
+      id: 7,
+      href: "/hiring-partner/adventure-flight-education-private-limited",
+      image: "https://prod-s3.counselindia.com/hiring_partners/news_news_logo2_1689053141_1708927422_1715323913.png",
+      alt: "Adventure Flight Education",
+    },
+    {
+      id: 8,
+      href: "/hiring-partner/my-career-pathshala",
+      image: "https://prod-s3.counselindia.com/hiring_partners/news_my-career-pathshala (1)_1686290177_1715326236.jpg",
+      alt: "My Career Pathshala",
+    },
+    {
+      id: 9,
+      href: "/hiring-partner/uk-international-beauty-school",
+      image: "https://prod-s3.counselindia.com/hiring_partners/news_UK INTERNATIONAL BEAUTY SCHOOL_1690778864.jpg",
+      alt: "UK International Beauty School",
+    },
+    {
+      id: 10,
+      href: "/hiring-partner/saadhak-foundation",
+      image: "https://prod-s3.counselindia.com/hiring_partners/news_black logo_1706359212.png",
+      alt: "Saadhak Foundation",
+    },
+    {
+      id: 11,
+      href: "/hiring-partner/pehchaan",
+      image: "https://prod-s3.counselindia.com/hiring_partners/news_Pehchaan (1)_1707722290.png",
+      alt: "Pehchaan",
+    },
+    {
+      id: 12,
+      href: "/hiring-partner/educlouds",
+      image: "https://prod-s3.counselindia.com/hiring_partners/news_Logo Educlouds (1)_1707722328_1715324005.png",
+      alt: "Educlouds",
+    },
+    {
+      id: 13,
+      href: "/hiring-partner/the-peace-lab",
+      image: "https://prod-s3.counselindia.com/hiring_partners/news_The Peace Lab_1690778780.webp",
+      alt: "The Peace Lab",
+    },
+    {
+      id: 14,
+      href: "/hiring-partner/traident-brains-pvt-ltd",
+      image: "https://prod-s3.counselindia.com/hiring_partners/news_cropped-traident-logo-illustration-2-1_1689053556_1715324116.png",
+      alt: "Traident Brains",
+    },
+    {
+      id: 15,
+      href: "/hiring-partner/the-mind-and-wellness-clinic",
+      image: "https://prod-s3.counselindia.com/hiring_partners/news_The Mind and Wellness Clinic_1703744904_1715325965.png",
+      alt: "The Mind and Wellness Clinic",
+    },
+    {
+      id: 16,
+      href: "/hiring-partner/educounsoullers",
+      image: "https://prod-s3.counselindia.com/hiring_partners/news_Educounsellors_1690780582_1715322524.jpg",
+      alt: "Educounsellors",
+    },
+    {
+      id: 17,
+      href: "/hiring-partner/jan-elaaj",
+      image: "https://prod-s3.counselindia.com/hiring_partners/news_jain_1702555646_1715326139.png",
+      alt: "Jan Elaaj",
+    },
+    {
+      id: 18,
+      href: "/hiring-partner/safal-teaching-training",
+      image: "https://prod-s3.counselindia.com/hiring_partners/news_safal_1691568529.png",
+      alt: "Safal Teaching Training",
+    },
+    {
+      id: 19,
+      href: "/hiring-partner/unique-consulting-services",
+      image: "https://prod-s3.counselindia.com/hiring_partners/news_WhatsApp_Image_2023-07-31_at_11.37.18_AM-removebg-preview_1690783719.png",
+      alt: "Unique Consulting Services",
+    },
+    {
+      id: 20,
+      href: "/hiring-partner/jagatmitra-foundation",
+      image: "https://prod-s3.counselindia.com/hiring_partners/news_Jagatmitra Foundation _1702555785.png",
+      alt: "Jagatmitra Foundation",
+    },
   ];
 
   // Triplicate array for smooth infinite continuous scrolling
@@ -45,23 +152,26 @@ export default function GlobalHiringPartners() {
                 key={`${partner.id}-${index}`}
                 className="hiring-marquee-item flex-shrink-0"
                 style={{
-                  width: "155px",
-                  height: "90px",
+                  width: "141px",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  padding: "8px 12px",
                   transition: "transform 0.3s ease",
                 }}
               >
-                <Link href={`/hiring-partner/${partner.slug}`} className="text-decoration-none d-flex align-items-center justify-content-center w-100 h-100">
+                <Link
+                  href={partner.href}
+                  className="text-decoration-none d-flex align-items-center justify-content-center w-100 h-100"
+                >
                   <img
                     src={partner.image}
-                    alt={partner.name}
+                    alt={partner.alt}
                     style={{
-                      maxHeight: "70px",
-                      maxWidth: "100%",
+                      width: "141px",
+                      height: "auto",
+                      maxHeight: "80px",
                       objectFit: "contain",
+                      display: "block",
                       transition: "transform 0.3s ease",
                     }}
                     className="hover-scale"
@@ -93,8 +203,9 @@ export default function GlobalHiringPartners() {
 
         .hiring-marquee-track {
           display: flex;
+          align-items: center;
           width: max-content;
-          animation: hiring-scroll 30s linear infinite;
+          animation: hiring-scroll 38s linear infinite;
         }
 
         .hiring-marquee-track:hover {

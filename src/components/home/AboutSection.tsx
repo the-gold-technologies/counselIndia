@@ -7,9 +7,15 @@ export default function AboutSection() {
     { title: "General Psychology", href: "/course/general-psychology" },
     { title: "Sports Psychology", href: "/course/sports-psychology" },
     { title: "Educational Psychology", href: "/course/educational-psychology" },
-    { title: "Addictions & Relationships", href: "/course/counselling-psychology" },
+    {
+      title: "Addictions & Relationships",
+      href: "/course/counselling-psychology",
+    },
     { title: "Child Psychology", href: "/course/child-psychology" },
-    { title: "Industrial/Organizational Psychology", href: "/course/organizational-psychology" },
+    {
+      title: "Industrial/Organizational Psychology",
+      href: "/course/organizational-psychology",
+    },
   ];
 
   return (
@@ -33,10 +39,16 @@ export default function AboutSection() {
                     <strong className="fw-bold text-dark">
                       Practical Psychology Learning Platform
                     </strong>{" "}
-                    for counsellors and psychologists to connect, learn, grow, and explore lifelong opportunities in psychology.
+                    for counsellors and psychologists to connect, learn, grow,
+                    and explore lifelong opportunities in psychology.
                   </p>
                   <p>
-                    We simplify learning psychology and emphasize practical application, helping you gain tangible skills. Our classes, led by experts, blend psychology&apos;s academic traditions with modern scientific applications, allowing you to specialize in various concentrations.<br />
+                    We simplify learning psychology and emphasize practical
+                    application, helping you gain tangible skills. Our classes,
+                    led by experts, blend psychology&apos;s academic traditions
+                    with modern scientific applications, allowing you to
+                    specialize in various concentrations.
+                    <br />
                     Some of our popular courses include:
                   </p>
                   <div className="row pt-4">
@@ -44,7 +56,10 @@ export default function AboutSection() {
                       <ul className="tutor-course-segment__list-style-03 font-size-16">
                         {popularCourses.slice(0, 3).map((item, idx) => (
                           <li key={idx}>
-                            <Link href={item.href} className="text-dark fw-medium">
+                            <Link
+                              href={item.href}
+                              className="text-dark fw-medium"
+                            >
                               {item.title}
                             </Link>
                           </li>
@@ -55,7 +70,10 @@ export default function AboutSection() {
                       <ul className="tutor-course-segment__list-style-03 font-size-16">
                         {popularCourses.slice(3).map((item, idx) => (
                           <li key={idx}>
-                            <Link href={item.href} className="text-dark fw-medium">
+                            <Link
+                              href={item.href}
+                              className="text-dark fw-medium"
+                            >
                               {item.title}
                             </Link>
                           </li>
@@ -69,6 +87,14 @@ export default function AboutSection() {
           </div>
         </div>
       </div>
+
+      <img
+        className="about-section__shape-03"
+        data-depth="-0.4"
+        src="https://prod-s3.counselindia.com/images/shape/edumall-shape-grid-dots.png"
+        alt="Psychology background"
+      />
+      <div className="about-section__shape-04" data-depth="0.4"></div>
     </div>
   );
 }

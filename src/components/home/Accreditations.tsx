@@ -1,7 +1,10 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 export default function Accreditations() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const swiperRef = useRef<any>(null);
+
   const accreditationCards = [
     {
       id: 1,
@@ -30,20 +33,30 @@ export default function Accreditations() {
     },
   ];
 
-  // Duplicate for smooth, glitch-free Swiper loop mode
   const slides = [...accreditationCards, ...accreditationCards];
 
   useEffect(() => {
-    let swiperInstance: any = null;
-    const init = () => {
+    let pollTimer: any = null;
+
+    const initSwiper = () => {
       if (typeof window !== "undefined" && (window as any).Swiper) {
-        swiperInstance = new (window as any).Swiper(".program-active .swiper", {
+        if (swiperRef.current) {
+          try {
+            swiperRef.current.destroy(true, true);
+          } catch (e) {}
+        }
+
+        const instance = new (window as any).Swiper(".program-active .swiper", {
           slidesPerView: 3,
           spaceBetween: 30,
           loop: true,
           autoplay: {
             delay: 2500,
             disableOnInteraction: false,
+          },
+          pagination: {
+            el: ".program-active .swiper-pagination",
+            clickable: true,
           },
           speed: 800,
           breakpoints: {
@@ -60,20 +73,48 @@ export default function Accreditations() {
               spaceBetween: 30,
             },
           },
+          on: {
+            slideChange: function (this: any) {
+              setActiveIndex(this.realIndex % accreditationCards.length);
+            },
+          },
         });
+        swiperRef.current = instance;
+        return true;
       }
+      return false;
     };
 
-    init();
-    const timer = setTimeout(init, 300);
+    if (!initSwiper()) {
+      let attempts = 0;
+      pollTimer = setInterval(() => {
+        attempts++;
+        if (initSwiper() || attempts > 25) {
+          clearInterval(pollTimer);
+        }
+      }, 150);
+    }
 
     return () => {
-      clearTimeout(timer);
-      if (swiperInstance && swiperInstance.destroy) {
-        swiperInstance.destroy(true, true);
+      if (pollTimer) clearInterval(pollTimer);
+      if (swiperRef.current && swiperRef.current.destroy) {
+        try {
+          swiperRef.current.destroy(true, true);
+        } catch (e) {}
       }
     };
-  }, []);
+  }, [accreditationCards.length]);
+
+  const handleDotClick = (index: number) => {
+    setActiveIndex(index);
+    if (swiperRef.current) {
+      if (swiperRef.current.slideToLoop) {
+        swiperRef.current.slideToLoop(index);
+      } else if (swiperRef.current.slideTo) {
+        swiperRef.current.slideTo(index);
+      }
+    }
+  };
 
   return (
     <div className="blog-section section-padding-01 bg-white">
@@ -86,7 +127,11 @@ export default function Accreditations() {
               </h2>
             </div>
 
-            <div className="program-active">
+            <div
+              className="program-active swiper-dots-style"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+            >
               <div className="swiper">
                 <div className="swiper-wrapper py-3">
                   {slides.map((card, idx) => (
@@ -110,11 +155,52 @@ export default function Accreditations() {
                     </div>
                   ))}
                 </div>
+
+                {/* Swiper native pagination element */}
+                <div className="swiper-pagination"></div>
+
+                {/* Fallback & Interactive dot pointers matching exact markup */}
+                <div className="custom-pagination-dots d-flex justify-content-center align-items-center mt-4">
+                  {accreditationCards.map((_, idx) => (
+                    <span
+                      key={idx}
+                      className={`custom-dot-bullet ${activeIndex === idx ? "active" : ""}`}
+                      onClick={() => handleDotClick(idx)}
+                      role="button"
+                      tabIndex={0}
+                      aria-label={`Go to slide ${idx + 1}`}
+                      style={{
+                        display: "inline-block",
+                        width: activeIndex === idx ? "26px" : "10px",
+                        height: "10px",
+                        borderRadius: activeIndex === idx ? "5px" : "50%",
+                        backgroundColor: activeIndex === idx ? "#07a64b" : "#b0b0b0",
+                        margin: "0 5px",
+                        cursor: "pointer",
+                        transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                      }}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        :global(.program-active .swiper-pagination) {
+          display: none !important;
+        }
+        .custom-pagination-dots {
+          position: relative;
+          z-index: 5;
+        }
+        .custom-dot-bullet:hover {
+          background-color: #07a64b !important;
+          opacity: 0.8;
+        }
+      `}</style>
     </div>
   );
 }

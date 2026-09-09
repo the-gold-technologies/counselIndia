@@ -6,40 +6,52 @@ export default function LatestNewsAndUpdates() {
   const newsList = [
     {
       id: 1,
-      title: "Counsel India Elevates Work Culture with Modernized HR Policies",
-      date: "05 Feb 2024",
-      url: "https://businessnewsthisweek.com/news/examining-ways-to-promote-a-healthy-and-safe-work-environment-for-employees/",
-      type: "svg-news24",
+      image: "https://prod-s3.counselindia.com/news/Untitled%20design%20(25)_1719390395.png",
+      date: "24 Jun 2024",
+      title: "Examining Ways to Promote a Healthy and Safe Work Environment for Employees",
+      link: "https://businessnewsthisweek.com/news/examining-ways-to-promote-a-healthy-and-safe-work-environment-for-employees/",
     },
     {
       id: 2,
-      title: "News from the world of Education",
-      date: "20 Feb 2024",
-      url: "https://www.thehindu.com/education/",
-      type: "svg-thehindu",
+      image: "https://prod-s3.counselindia.com/news/Untitled%20design%20(4)_1752639280.png",
+      date: "15 Jul 2025",
+      title: "Counsel India empowers 10,000+ professionals, aims to become India's largest psychology learning platform",
+      link: "https://ncrexpressnews.com/counsel-india-set-a-target-to-become-100000-professionals/",
     },
     {
       id: 3,
-      title: "Do You Frequently Get Panic Attacks? Check 10 Tips To Manage Them",
-      date: "10 Feb 2024",
-      url: "https://news.abplive.com/lifestyle/",
-      type: "svg-abplive",
+      image: "https://prod-s3.counselindia.com/news/Untitled%20design%20(11)_1728455491.png",
+      date: "08 Oct 2024",
+      title: "Counsel India Partners with Galgotias University to Launch UGC-Approved Psychology Programs",
+      link: "https://taasir.com/2024/10/counsel-india-partners-with-galgotias-university-to-launch-ugc-approved-psychology-programs/#:~:text=Counsel%20India%20will%20now%20provide%20UGC-approved%20psychology%20programs%20as%20part",
     },
     {
       id: 4,
-      title: "Counsel India Partners with Galgotias University to Launch UGC-Approved Psychology Programs",
-      date: "08 Oct 2024",
-      url: "https://taasir.com/2024/10/counsel-india-partners-with-galgotias-university-to-launch-ugc-approved-psychology-programs/",
-      image: "https://prod-s3.counselindia.com/news/Untitled design (11)_1728455491.png",
-      type: "image",
+      image: "https://prod-s3.counselindia.com/news/Untitled%20design_1720768645_1725625604.png",
+      date: "05 Sep 2024",
+      title: "Is Counsel India a scam?",
+      link: "https://www.passionateinmarketing.com/is-counsel-india-a-scam/",
     },
     {
       id: 5,
-      title: "Counsel India empowers 10,000+ professionals, aims to become India's largest psychology learning platform",
-      date: "15 Jul 2025",
-      url: "https://ncrexpressnews.com/counsel-india-set-a-target-to-become-100000-professionals/",
-      image: "https://prod-s3.counselindia.com/news/Untitled design (4)_1752639280.png",
-      type: "image",
+      image: "https://prod-s3.counselindia.com/news/passionate%20(1)_1720767393.png",
+      date: "11 Jul 2024",
+      title: "The Path to Becoming a Counsellor: Examining Career Options in Different Specialisations",
+      link: "https://www.aajtakcampus.in/news/the-path-to-becoming-a-counsellor-examining-career-options-in-different-specialisations",
+    },
+    {
+      id: 6,
+      image: "https://prod-s3.counselindia.com/news/WhatsApp%20Image%202024-07-12%20at%2012.00.55_1720766201.jpeg",
+      date: "10 Jul 2024",
+      title: "News from the world of education - July 4, 2024",
+      link: "https://www.thehindu.com/education/news-from-the-world-of-education-july-4-2024/article68366397.ece",
+    },
+    {
+      id: 7,
+      image: "https://prod-s3.counselindia.com/news/Untitled%20design%20(27)_1719390817.png",
+      date: "13 Jun 2024",
+      title: "Examining Ways to Promote a Healthy and Safe Work Environment for Employees",
+      link: "https://taasir.com/2024/06/examining-ways-to-promote-a-healthy-and-safe-work-environment-for-employees/?lang=English#google_vignette",
     },
   ];
 
@@ -47,16 +59,27 @@ export default function LatestNewsAndUpdates() {
     let swiperInstance: any = null;
     const init = () => {
       if (typeof window !== "undefined" && (window as any).Swiper) {
-        swiperInstance = new (window as any).Swiper(".news-active-swiper .swiper", {
+        if (swiperInstance) {
+          try {
+            swiperInstance.destroy(true, true);
+          } catch (e) {}
+        }
+        swiperInstance = new (window as any).Swiper(".testimonial-active-02 .swiper", {
           slidesPerView: 3,
-          spaceBetween: 25,
+          spaceBetween: 30,
           loop: true,
-          autoplay: { delay: 3500, disableOnInteraction: false },
+          observer: true,
+          observeParents: true,
+          watchSlidesProgress: true,
           speed: 800,
+          pagination: {
+            el: ".testimonial-active-02 .swiper-pagination",
+            clickable: true,
+          },
           breakpoints: {
             0: { slidesPerView: 1, spaceBetween: 15 },
             768: { slidesPerView: 2, spaceBetween: 20 },
-            992: { slidesPerView: 3, spaceBetween: 25 },
+            992: { slidesPerView: 3, spaceBetween: 30 },
           },
         });
       }
@@ -70,222 +93,163 @@ export default function LatestNewsAndUpdates() {
   }, []);
 
   return (
-    <div className="section-padding-01 py-5" style={{ backgroundColor: "#ffffff" }}>
+    <div className="blog-section-02 section-padding-02 py-5 bg-white">
       <div className="container custom-container">
         {/* Section Title */}
         <div className="row mb-4">
           <div className="col-12">
             <div className="section-title">
               <h2 className="section-title__title font-size-36 fw-bold">
-                Latest <mark>News and</mark> Updates
+                <mark>Latest News and Updates</mark>
               </h2>
             </div>
           </div>
         </div>
 
         {/* News Cards Carousel */}
-        <div className="news-active-swiper swiper-dots-style mb-4">
-          <div className="swiper">
-            <div className="swiper-wrapper">
-              {newsList.map((item) => (
-                <div className="swiper-slide h-auto" key={item.id}>
-                  <div
-                    className="blog-item-02 h-100 d-flex flex-column bg-white"
-                    style={{
-                      borderRadius: "12px",
-                      border: "1.5px solid #1a1a1a",
-                      overflow: "hidden",
-                      boxShadow: "0 4px 15px rgba(0,0,0,0.03)",
-                      transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                    }}
-                  >
-                    {/* Card Header Media */}
+        <div className="col-xl-12" style={{ marginBottom: "5%" }}>
+          <div className="testimonial-active-02 swiper-dots-style position-relative">
+            <div className="swiper">
+              <div className="swiper-wrapper py-2">
+                {newsList.map((item) => (
+                  <div className="swiper-slide h-auto" key={item.id}>
                     <div
-                      className="blog-item-02__image d-flex align-items-center justify-content-center"
+                      className="blog-item-02 h-100 d-flex flex-column bg-white overflow-hidden w-100"
                       style={{
-                        height: "220px",
-                        backgroundColor: item.type === "svg-abplive" ? "#e51a24" : "#ffffff",
-                        borderBottom: "1px solid #f0f0f0",
-                        position: "relative",
-                        overflow: "hidden",
+                        borderRadius: "10px",
+                        border: "1.5px solid #000000",
+                        boxShadow: "0 4px 15px rgba(0, 0, 0, 0.04)",
+                        transition: "all 0.3s ease",
+                        width: "100%",
                       }}
                     >
-                      <a
-                        href={item.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-100 h-100 d-flex align-items-center justify-content-center text-decoration-none"
+                      {/* Card Header Media - Enforced Consistent Width & Height */}
+                      <div
+                        className="blog-item-02__image overflow-hidden"
+                        style={{
+                          height: "220px",
+                          width: "100%",
+                          position: "relative",
+                        }}
                       >
-                        {item.type === "svg-news24" && (
-                          <div className="text-center p-3">
-                            <div
-                              style={{
-                                display: "inline-block",
-                                backgroundColor: "#e2231a",
-                                color: "#ffffff",
-                                padding: "4px 18px",
-                                borderRadius: "8px 8px 0 0",
-                                fontWeight: 900,
-                                fontSize: "28px",
-                                letterSpacing: "-0.5px",
-                                fontFamily: "sans-serif",
-                              }}
-                            >
-                              News<span style={{ fontSize: "34px", marginLeft: "2px" }}>24</span>
-                            </div>
-                            <div
-                              style={{
-                                backgroundColor: "#112658",
-                                color: "#ffffff",
-                                padding: "2px 24px",
-                                fontWeight: 800,
-                                fontSize: "14px",
-                                letterSpacing: "4px",
-                                textTransform: "uppercase",
-                                borderRadius: "0 0 4px 4px",
-                              }}
-                            >
-                              ASIA
-                            </div>
-                            <div
-                              style={{
-                                fontSize: "9px",
-                                fontWeight: 700,
-                                letterSpacing: "1px",
-                                color: "#333",
-                                marginTop: "6px",
-                                textTransform: "uppercase",
-                              }}
-                            >
-                              STRAIGHT TO THE POINT
-                            </div>
-                          </div>
-                        )}
-
-                        {item.type === "svg-thehindu" && (
-                          <div className="text-center p-3">
-                            {/* The Hindu Heraldic Emblem SVG */}
-                            <svg width="140px" height="60px" viewBox="0 0 140 60" fill="#1a1a1a">
-                              <g transform="translate(10, 0)">
-                                <circle cx="60" cy="22" r="16" stroke="#1a1a1a" strokeWidth="2" fill="none" />
-                                <path d="M54 22 L66 22 M60 16 L60 28" stroke="#1a1a1a" strokeWidth="1.5" />
-                                <path d="M25 35 C20 20, 35 10, 48 20 C42 26, 38 32, 25 35 Z" fill="#1a1a1a" opacity="0.85" />
-                                <path d="M95 35 C100 20, 85 10, 72 20 C78 26, 82 32, 95 35 Z" fill="#1a1a1a" opacity="0.85" />
-                              </g>
-                            </svg>
-                            <h3
-                              style={{
-                                fontFamily: "serif",
-                                fontWeight: 900,
-                                fontSize: "26px",
-                                letterSpacing: "2px",
-                                color: "#111111",
-                                margin: "2px 0 0 0",
-                              }}
-                            >
-                              THE HINDU
-                            </h3>
-                          </div>
-                        )}
-
-                        {item.type === "svg-abplive" && (
-                          <div className="text-center p-3 text-white">
-                            {/* ABP arrowhead icon */}
-                            <svg width="65px" height="55px" viewBox="0 0 65 55" fill="#ffffff">
-                              <path d="M32.5 4 L60 48 L46 48 L32.5 24 L19 48 L5 48 Z" fill="#ffffff" />
-                            </svg>
-                            <div
-                              style={{
-                                fontWeight: 900,
-                                fontSize: "32px",
-                                letterSpacing: "-1px",
-                                lineHeight: "1",
-                                marginTop: "4px",
-                                fontFamily: "sans-serif",
-                              }}
-                            >
-                              abp
-                            </div>
-                            <div
-                              style={{
-                                fontWeight: 900,
-                                fontSize: "18px",
-                                letterSpacing: "3px",
-                                lineHeight: "1.2",
-                                marginTop: "2px",
-                                textTransform: "uppercase",
-                              }}
-                            >
-                              LIVE
-                            </div>
-                          </div>
-                        )}
-
-                        {item.type === "image" && item.image && (
-                          <img
-                            src={item.image}
-                            alt={item.title}
-                            style={{
-                              maxHeight: "180px",
-                              maxWidth: "90%",
-                              objectFit: "contain",
-                            }}
-                          />
-                        )}
-                      </a>
-                    </div>
-
-                    {/* Card Body Content */}
-                    <div className="blog-item-02__content p-4 d-flex flex-column flex-grow-1 justify-content-between">
-                      <div>
-                        {/* Meta Published Date */}
-                        <div className="blog-item-02__meta mb-2 text-muted font-size-13 d-flex align-items-center gap-2">
-                          <i className="far fa-calendar-alt text-muted"></i>
-                          <span>{item.date}</span>
-                        </div>
-
-                        {/* Title */}
-                        <h3
-                          className="blog-item-02__title font-size-16 fw-bold mb-4"
-                          style={{
-                            lineHeight: "1.4",
-                            color: "#1a1a1a",
-                            display: "-webkit-box",
-                            WebkitLineClamp: 3,
-                            WebkitBoxOrient: "vertical",
-                            overflow: "hidden",
-                            minHeight: "65px",
-                          }}
-                        >
-                          {item.title}
-                        </h3>
-                      </div>
-
-                      {/* Read More Button */}
-                      <div>
                         <a
-                          href={item.url}
+                          href={item.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="btn btn-light px-3 py-2 font-size-13 fw-semibold text-dark d-inline-flex align-items-center gap-2"
-                          style={{
-                            backgroundColor: "#f5f6f8",
-                            border: "none",
-                            borderRadius: "6px",
-                            transition: "all 0.2s ease",
-                          }}
+                          className="d-block w-100 h-100 overflow-hidden"
+                          style={{ width: "100%", height: "220px" }}
                         >
-                          Read More <span style={{ fontSize: "14px" }}>→</span>
+                          <img
+                            src={item.image}
+                            alt="psychology news"
+                            className="grid-item-image"
+                            style={{
+                              width: "100%",
+                              height: "100%",
+                              objectFit: "cover",
+                              display: "block",
+                              transition: "transform 0.5s ease",
+                            }}
+                          />
                         </a>
+                      </div>
+
+                      {/* Card Content */}
+                      <div
+                        className="blog-item-02__content p-4 d-flex flex-column justify-content-between flex-grow-1"
+                        style={{ backgroundColor: "#ffffff" }}
+                      >
+                        <div>
+                          {/* Published Date */}
+                          <div className="blog-item-02__meta mb-2">
+                            <span
+                              className="meta-action text-muted"
+                              style={{
+                                fontSize: "13px",
+                                display: "inline-flex",
+                                alignItems: "center",
+                                gap: "6px",
+                              }}
+                            >
+                              <i className="far fa-calendar"></i> {item.date}
+                            </span>
+                          </div>
+
+                          {/* News Title */}
+                          <h3
+                            className="blog-item-02__title mb-3"
+                            style={{
+                              fontSize: "16px",
+                              fontWeight: 700,
+                              lineHeight: "1.5",
+                              minHeight: "48px",
+                              display: "-webkit-box",
+                              WebkitLineClamp: 2,
+                              WebkitBoxOrient: "vertical",
+                              overflow: "hidden",
+                            }}
+                          >
+                            <a
+                              href={item.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-dark text-decoration-none hover-text-primary"
+                              style={{ color: "#222736" }}
+                            >
+                              {item.title}
+                            </a>
+                          </h3>
+                        </div>
+
+                        {/* Read More Button */}
+                        <div>
+                          <a
+                            className="blog-item-02__more btn btn-light btn-hover-white"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href={item.link}
+                            style={{
+                              display: "inline-flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              gap: "8px",
+                              lineHeight: "1",
+                            }}
+                          >
+                            Read More <i className="fal fa-long-arrow-right"></i>
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
+
+            {/* Pagination Dots */}
+            <div className="swiper-pagination text-center mt-4"></div>
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        .testimonial-active-02 .swiper-slide {
+          height: auto !important;
+          display: flex !important;
+          box-sizing: border-box !important;
+        }
+        .testimonial-active-02 .blog-item-02 {
+          width: 100% !important;
+          max-width: 100% !important;
+          box-sizing: border-box !important;
+        }
+        .blog-item-02:hover {
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+        .blog-item-02:hover .blog-item-02__image img {
+          transform: scale(1.08);
+        }
+      `}</style>
     </div>
   );
 }

@@ -137,14 +137,14 @@ mark {
     content: none !important;
 }
 
-/* Use single clean headline curve instead of double/scribble headline-curve-02 */
+/* Use double line headline curve (headline-curve-02.svg) for landing page marks */
 mark::after,
 .section-title__title mark::after,
 .section-title__title-02 mark::after,
 .section-title__title-03 mark::after,
 .mark-title mark::after {
-  -webkit-mask-image: url(/assets/images/headline-curve.svg) !important;
-  mask-image: url(/assets/images/headline-curve.svg) !important;
+  -webkit-mask-image: url(/assets/images/headline-curve-02.svg) !important;
+  mask-image: url(/assets/images/headline-curve-02.svg) !important;
 }
 
 /* Background Animated / Wave Shapes */

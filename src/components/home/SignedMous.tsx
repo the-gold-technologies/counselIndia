@@ -39,14 +39,12 @@ export default function SignedMous() {
                 key={`${item.id}-${index}`}
                 className="mou-marquee-item flex-shrink-0"
                 style={{
-                  width: "180px",
-                  aspectRatio: "1 / 1.38",
-                  border: "4px solid #b8860b",
-                  borderRadius: "4px",
+                  width: "141px",
+                  height: "195px",
+                  borderRadius: "6px",
                   overflow: "hidden",
-                  boxShadow: "0 6px 16px rgba(0, 0, 0, 0.12)",
+                  boxShadow: "0 4px 15px rgba(0, 0, 0, 0.12)",
                   backgroundColor: "#ffffff",
-                  padding: "2px",
                   transition: "transform 0.3s ease, box-shadow 0.3s ease",
                   cursor: "pointer",
                 }}
@@ -57,9 +55,8 @@ export default function SignedMous() {
                   style={{
                     width: "100%",
                     height: "100%",
-                    objectFit: "contain",
+                    objectFit: "fill",
                     display: "block",
-                    backgroundColor: "#ffffff",
                   }}
                   className="hover-scale"
                 />
