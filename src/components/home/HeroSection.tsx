@@ -4,49 +4,83 @@ import Link from "next/link";
 
 export default function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
 
   useEffect(() => {
-    // Attempt unmuted auto-play after 2 seconds
-    const timer = setTimeout(() => {
+    const video = videoRef.current;
+    const container = containerRef.current;
+    if (!video) return;
+
+    // Attempt audio-enabled playback first
+    video.playsInline = true;
+
+    const startPlayback = async () => {
+      try {
+        video.muted = false;
+        await video.play();
+        setIsPlaying(true);
+        setIsMuted(false);
+      } catch {
+        // If unmuted autoplay is blocked by browser policy, fallback to muted autoplay
+        try {
+          video.muted = true;
+          await video.play();
+          setIsPlaying(true);
+          setIsMuted(true);
+        } catch {
+          // Keep cover ready for click-to-play
+        }
+      }
+    };
+
+    startPlayback();
+
+    // IntersectionObserver to pause when offscreen and resume when onscreen
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!videoRef.current) return;
+          if (entry.isIntersecting) {
+            videoRef.current.play().catch(() => {});
+          } else {
+            videoRef.current.pause();
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+
+    if (container) {
+      observer.observe(container);
+    }
+
+    // Unmute on first user interaction anywhere if video is running muted
+    const handleFirstGesture = () => {
       if (videoRef.current) {
         videoRef.current.muted = false;
-        videoRef.current
-          .play()
-          .then(() => {
-            setIsPlaying(true);
-          })
-          .catch(() => {
-            // Browser prevented unmuted auto-play without user gesture; keep cover ready for 1-click play
-          });
-      }
-    }, 2000);
-
-    // If user clicks anywhere on the page, try unmuted play
-    const handleFirstInteraction = () => {
-      if (videoRef.current && !isPlaying) {
-        videoRef.current.muted = false;
-        videoRef.current
-          .play()
-          .then(() => {
-            setIsPlaying(true);
-          })
-          .catch(() => {});
+        videoRef.current.volume = 1.0;
+        setIsMuted(false);
       }
     };
 
-    window.addEventListener("click", handleFirstInteraction, { once: true });
+    window.addEventListener("click", handleFirstGesture, { once: true });
+    window.addEventListener("touchstart", handleFirstGesture, { once: true });
 
     return () => {
-      clearTimeout(timer);
-      window.removeEventListener("click", handleFirstInteraction);
+      if (container) observer.unobserve(container);
+      window.removeEventListener("click", handleFirstGesture);
+      window.removeEventListener("touchstart", handleFirstGesture);
     };
-  }, [isPlaying]);
+  }, []); // Empty dependency array so it never re-mutes
 
-  const handlePlayClick = () => {
+  const handlePlayOrUnmute = () => {
     setIsPlaying(true);
     if (videoRef.current) {
       videoRef.current.muted = false;
+      videoRef.current.volume = 1.0;
+      setIsMuted(false);
       videoRef.current.play().catch(() => {});
     }
   };
@@ -109,10 +143,13 @@ export default function HeroSection() {
                 </div>
               </div>
             </div>
+
             <div className="col-md-6">
               <div
+                ref={containerRef}
                 className="video-container2"
                 id="videoContainer2"
+                onClick={handlePlayOrUnmute}
                 style={{
                   position: "relative",
                   maxWidth: "100%",
@@ -122,6 +159,8 @@ export default function HeroSection() {
                   border: "5px solid rgba(255, 255, 255, 0.8)",
                   borderRadius: "15px",
                   boxShadow: "0 4px 15px rgba(0, 0, 0, 0.3)",
+                  backgroundColor: "#000000",
+                  cursor: "pointer",
                 }}
               >
                 {!isPlaying && (
@@ -141,7 +180,10 @@ export default function HeroSection() {
                     <button
                       id="playButton2"
                       className="play-button"
-                      onClick={handlePlayClick}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handlePlayOrUnmute();
+                      }}
                       style={{
                         position: "absolute",
                         top: "50%",
@@ -163,7 +205,7 @@ export default function HeroSection() {
                         transition:
                           "transform 0.2s ease, background-color 0.2s ease",
                       }}
-                      aria-label="Play video"
+                      aria-label="Play video with audio"
                     >
                       <svg
                         width="24"
@@ -177,10 +219,51 @@ export default function HeroSection() {
                     </button>
                   </>
                 )}
+
+                {/* Floating Unmute Indicator if playing in muted state */}
+                {isPlaying && isMuted && (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handlePlayOrUnmute();
+                    }}
+                    style={{
+                      position: "absolute",
+                      bottom: "55px",
+                      right: "15px",
+                      backgroundColor: "rgba(0, 0, 0, 0.75)",
+                      color: "#ffffff",
+                      border: "1px solid rgba(255, 255, 255, 0.3)",
+                      borderRadius: "20px",
+                      padding: "6px 14px",
+                      fontSize: "13px",
+                      fontWeight: 600,
+                      cursor: "pointer",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "6px",
+                      zIndex: 20,
+                      boxShadow: "0 2px 8px rgba(0,0,0,0.3)",
+                    }}
+                  >
+                    <span>🔇 Tap to Unmute</span>
+                  </button>
+                )}
+
                 <video
                   id="videoElement2"
                   ref={videoRef}
+                  autoPlay
+                  playsInline
+                  loop
                   controls
+                  preload="auto"
+                  onVolumeChange={() => {
+                    if (videoRef.current) {
+                      setIsMuted(videoRef.current.muted);
+                    }
+                  }}
+                  onPlay={() => setIsPlaying(true)}
                   style={{
                     width: "100%",
                     height: "100%",
