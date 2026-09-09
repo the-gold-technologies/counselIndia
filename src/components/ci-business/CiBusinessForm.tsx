@@ -323,7 +323,7 @@ export default function CiBusinessForm() {
                     >
                       By submitting this form, I agree to Counsel India’s{" "}
                       <Link
-                        href="/terms-condition"
+                        href="/terms-and-conditions"
                         style={{ color: "#07a64b", fontWeight: 500 }}
                         className="text-decoration-none"
                       >

@@ -883,7 +883,7 @@ export default function MentorRegistrationForm() {
                     <span>
                       By submitting this form, I agree to Counsel India&apos;s{" "}
                       <Link
-                        href="/terms-condition"
+                        href="/terms-and-conditions"
                         target="_blank"
                         style={{ color: "#07a64b", textDecoration: "none", fontWeight: 500 }}
                       >

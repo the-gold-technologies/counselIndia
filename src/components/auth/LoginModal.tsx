@@ -1649,7 +1649,7 @@ export default function LoginModal({
                         >
                           By submitting this form, I agree to Counsel India&apos;s{" "}
                           <Link
-                            href="/terms-condition"
+                            href="/terms-and-conditions"
                             style={{ color: "#07a64b" }}
                             target="_blank"
                           >

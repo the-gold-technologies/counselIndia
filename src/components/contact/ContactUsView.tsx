@@ -795,7 +795,7 @@ export default function ContactUsView() {
                       <span>
                         By submitting this form, I agree to Counsel India&apos;s{" "}
                         <a
-                          href="/terms-condition"
+                          href="/terms-and-conditions"
                           target="_blank"
                           rel="noopener noreferrer"
                           style={{

@@ -631,7 +631,7 @@ export default function BlogDetailContent({ blog, relatedBlogs }: DetailProps) {
                       />
                       <label htmlFor="commentTerms" style={{ fontSize: "13.5px", color: "#334155", lineHeight: 1.5, cursor: "pointer" }}>
                         By submitting this form, I agree to Counsel India&apos;s{" "}
-                        <Link href="/terms-condition" style={{ color: "#00a651", textDecoration: "none", fontWeight: 600 }}>
+                        <Link href="/terms-and-conditions" style={{ color: "#00a651", textDecoration: "none", fontWeight: 600 }}>
                           Terms &amp; Conditions
                         </Link>{" "}
                         and{" "}

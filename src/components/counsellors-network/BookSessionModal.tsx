@@ -517,7 +517,7 @@ export default function BookSessionModal({ counselor, isOpen, onClose }: ModalPr
                   style={{ fontSize: "14px", color: "#475569", cursor: "pointer", lineHeight: "1.5", margin: 0 }}
                 >
                   By submitting this form, I agree to Counsel India&apos;s{" "}
-                  <a href="/terms" style={{ color: "#07a64b", fontWeight: 600, textDecoration: "none" }}>
+                  <a href="/terms-and-conditions" style={{ color: "#07a64b", fontWeight: 600, textDecoration: "none" }}>
                     Terms &amp; Conditions
                   </a>{" "}
                   and{" "}

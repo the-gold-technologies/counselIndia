@@ -354,7 +354,7 @@ export default function CourseBrochureModal({ isOpen, onClose }: ModalProps) {
               >
                 By submitting this form, I agree to Counsel India&apos;s{" "}
                 <a
-                  href="/terms-condition"
+                  href="/terms-and-conditions"
                   style={{ color: "#07a64b", textDecoration: "none" }}
                   target="_blank"
                   rel="noreferrer"
