@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
+import LoginModal from "./auth/LoginModal";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -447,61 +448,10 @@ export default function Footer() {
       </footer>
 
       {/* Counselor Login Modal */}
-      {showLoginModal && (
-        <div
-          className="modal fade show d-block"
-          style={{ backgroundColor: "rgba(0, 0, 0, 0.75)", zIndex: 1050 }}
-          onClick={() => setShowLoginModal(false)}
-        >
-          <div className="modal-dialog modal-dialog-centered" onClick={(e) => e.stopPropagation()}>
-            <div className="modal-content rounded-3 overflow-hidden shadow-lg border-0">
-              <div className="modal-header border-0 bg-light p-4">
-                <h5 className="modal-title fw-bold text-dark font-size-18">Counselor Portal Login</h5>
-                <button
-                  type="button"
-                  className="btn-close"
-                  onClick={() => setShowLoginModal(false)}
-                ></button>
-              </div>
-              <div className="modal-body p-4">
-                <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    alert("Counselor credentials verified.");
-                    setShowLoginModal(false);
-                  }}
-                >
-                  <div className="mb-3">
-                    <label className="form-label font-size-13 fw-semibold text-muted">Registered Email</label>
-                    <input
-                      type="email"
-                      required
-                      placeholder="counselor@counselindia.com"
-                      className="form-control font-size-14"
-                    />
-                  </div>
-                  <div className="mb-3">
-                    <label className="form-label font-size-13 fw-semibold text-muted">Password</label>
-                    <input
-                      type="password"
-                      required
-                      placeholder="••••••••"
-                      className="form-control font-size-14"
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className="btn btn-primary w-100 py-2 font-size-14 fw-semibold"
-                    style={{ backgroundColor: "#07a64b", borderColor: "#07a64b" }}
-                  >
-                    Login to Portal
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      <LoginModal
+        isOpen={showLoginModal}
+        onClose={() => setShowLoginModal(false)}
+      />
     </>
   );
 }
