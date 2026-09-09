@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MobileBottomNav from "@/components/MobileBottomNav";
 import FloatingContactButtons from "@/components/FloatingContactButtons";
+import AutoCampaignPopup from "@/components/common/AutoCampaignPopup";
 import Script from "next/script";
 
 export const metadata: Metadata = {
@@ -44,6 +45,7 @@ export default function RootLayout({
         <Footer />
         <MobileBottomNav />
         <FloatingContactButtons />
+        <AutoCampaignPopup />
         
         <Script src="https://code.jquery.com/jquery-3.6.0.min.js" strategy="beforeInteractive" />
         <Script src="/assets/js/plugins/swiper-bundle.min.js" strategy="lazyOnload" />
