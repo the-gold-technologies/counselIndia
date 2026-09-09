@@ -77,7 +77,11 @@ const DEFAULT_COUNTRIES: CountryOption[] = [
   { id: 242, name: "New Zealand", phonecode: "+64" },
 ];
 
-export default function BookSessionModal({ counselor, isOpen, onClose }: ModalProps) {
+export default function BookSessionModal({
+  counselor,
+  isOpen,
+  onClose,
+}: ModalProps) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -91,7 +95,8 @@ export default function BookSessionModal({ counselor, isOpen, onClose }: ModalPr
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   // Dynamic dropdown lists
-  const [countries, setCountries] = useState<CountryOption[]>(DEFAULT_COUNTRIES);
+  const [countries, setCountries] =
+    useState<CountryOption[]>(DEFAULT_COUNTRIES);
   const [states, setStates] = useState<StateOption[]>(DEFAULT_STATES);
   const [cities, setCities] = useState<CityOption[]>([]);
   const [isLoadingStates, setIsLoadingStates] = useState(false);
@@ -109,8 +114,12 @@ export default function BookSessionModal({ counselor, isOpen, onClose }: ModalPr
               data.map((c: any) => ({
                 id: c.id,
                 name: c.name,
-                phonecode: c.phonecode ? (c.phonecode.startsWith("+") ? c.phonecode : `+${c.phonecode}`) : "",
-              }))
+                phonecode: c.phonecode
+                  ? c.phonecode.startsWith("+")
+                    ? c.phonecode
+                    : `+${c.phonecode}`
+                  : "",
+              })),
             );
           }
         }
@@ -132,11 +141,16 @@ export default function BookSessionModal({ counselor, isOpen, onClose }: ModalPr
     async function fetchStates() {
       setIsLoadingStates(true);
       try {
-        const res = await fetch(`https://counselindia.com/api/countries/${formData.country}/states`);
+        const res = await fetch(
+          `https://counselindia.com/api/countries/${formData.country}/states`,
+        );
         if (res.ok) {
           const data = await res.json();
           if (Array.isArray(data) && data.length > 0) {
-            const fetchedStates = data.map((s: any) => ({ id: s.id, name: s.name }));
+            const fetchedStates = data.map((s: any) => ({
+              id: s.id,
+              name: s.name,
+            }));
             fetchedStates.push({ id: "other", name: "Other" });
             setStates(fetchedStates);
           } else {
@@ -165,11 +179,16 @@ export default function BookSessionModal({ counselor, isOpen, onClose }: ModalPr
     async function fetchCities() {
       setIsLoadingCities(true);
       try {
-        const res = await fetch(`https://counselindia.com/api/states/${formData.state}/city`);
+        const res = await fetch(
+          `https://counselindia.com/api/states/${formData.state}/city`,
+        );
         if (res.ok) {
           const data = await res.json();
           if (Array.isArray(data) && data.length > 0) {
-            const fetchedCities = data.map((c: any) => ({ id: c.id, name: c.name }));
+            const fetchedCities = data.map((c: any) => ({
+              id: c.id,
+              name: c.name,
+            }));
             fetchedCities.push({ id: "other", name: "Other" });
             setCities(fetchedCities);
           } else {
@@ -213,7 +232,7 @@ export default function BookSessionModal({ counselor, isOpen, onClose }: ModalPr
   const inputStyle: React.CSSProperties = {
     boxShadow: "0px 0px 4px rgba(0, 0, 0, 0.2)",
     border: "1px solid #1e293b",
-    borderRadius: "8px",
+    borderRadius: "5px",
     padding: "10px 14px",
     fontSize: "14.5px",
     width: "100%",
@@ -256,16 +275,17 @@ export default function BookSessionModal({ counselor, isOpen, onClose }: ModalPr
       <div
         style={{
           backgroundColor: "#ffffff",
-          borderRadius: "14px",
+          borderRadius: "8px",
           boxShadow: "0 20px 50px rgba(0, 0, 0, 0.3)",
           position: "relative",
           maxWidth: "520px",
           width: "100%",
-          maxHeight: "80vh",
+          maxHeight: "90vh",
           overflowY: "auto",
           padding: "44px 28px 28px",
           boxSizing: "border-box",
-          animation: "modalSlideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+          animation:
+            "modalSlideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards",
         }}
       >
         {/* Close (✕) Button */}
@@ -315,9 +335,24 @@ export default function BookSessionModal({ counselor, isOpen, onClose }: ModalPr
               >
                 <i className="fas fa-check"></i>
               </div>
-              <h4 style={{ fontWeight: 700, color: "#1e293b", marginBottom: "8px" }}>Booking Request Sent!</h4>
-              <p style={{ color: "#64748b", fontSize: "14.5px", marginBottom: "20px" }}>
-                Thank you, <strong>{formData.name}</strong>. Our team will reach out to you shortly.
+              <h4
+                style={{
+                  fontWeight: 700,
+                  color: "#1e293b",
+                  marginBottom: "8px",
+                }}
+              >
+                Booking Request Sent!
+              </h4>
+              <p
+                style={{
+                  color: "#64748b",
+                  fontSize: "14.5px",
+                  marginBottom: "20px",
+                }}
+              >
+                Thank you, <strong>{formData.name}</strong>. Our team will reach
+                out to you shortly.
               </p>
               <button
                 onClick={handleResetAndClose}
@@ -347,7 +382,9 @@ export default function BookSessionModal({ counselor, isOpen, onClose }: ModalPr
                   placeholder="Full Name"
                   required
                   value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, name: e.target.value })
+                  }
                   style={inputStyle}
                 />
               </div>
@@ -362,7 +399,9 @@ export default function BookSessionModal({ counselor, isOpen, onClose }: ModalPr
                   placeholder="Your Email"
                   required
                   value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
                   style={inputStyle}
                 />
               </div>
@@ -370,7 +409,8 @@ export default function BookSessionModal({ counselor, isOpen, onClose }: ModalPr
               {/* Select Country With Country Code */}
               <div style={{ marginBottom: "18px" }}>
                 <label style={labelStyle}>
-                  Select Country With Country Code<span style={{ color: "#ef4444" }}>*</span>
+                  Select Country With Country Code
+                  <span style={{ color: "#ef4444" }}>*</span>
                 </label>
                 <select
                   required
@@ -404,7 +444,9 @@ export default function BookSessionModal({ counselor, isOpen, onClose }: ModalPr
                   placeholder="Your Number"
                   required
                   value={formData.mobile}
-                  onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, mobile: e.target.value })
+                  }
                   style={inputStyle}
                 />
               </div>
@@ -427,7 +469,9 @@ export default function BookSessionModal({ counselor, isOpen, onClose }: ModalPr
                   style={inputStyle}
                 >
                   <option value="">
-                    {isLoadingStates ? "Loading states..." : "Please Select State"}
+                    {isLoadingStates
+                      ? "Loading states..."
+                      : "Please Select State"}
                   </option>
                   {states.map((s) => (
                     <option key={s.id} value={s.id}>
@@ -446,11 +490,15 @@ export default function BookSessionModal({ counselor, isOpen, onClose }: ModalPr
                   <select
                     required
                     value={formData.city}
-                    onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, city: e.target.value })
+                    }
                     style={inputStyle}
                   >
                     <option value="">
-                      {isLoadingCities ? "Loading cities..." : "Please Select City"}
+                      {isLoadingCities
+                        ? "Loading cities..."
+                        : "Please Select City"}
                     </option>
                     {cities.map((city) => (
                       <option key={city.id} value={city.name}>
@@ -464,7 +512,9 @@ export default function BookSessionModal({ counselor, isOpen, onClose }: ModalPr
                     placeholder="Please Enter City"
                     required
                     value={formData.city}
-                    onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, city: e.target.value })
+                    }
                     style={inputStyle}
                   />
                 )}
@@ -473,12 +523,15 @@ export default function BookSessionModal({ counselor, isOpen, onClose }: ModalPr
               {/* How Did You Hear About Us */}
               <div style={{ marginBottom: "20px" }}>
                 <label style={labelStyle}>
-                  How Did You Hear About Us.<span style={{ color: "#ef4444" }}>*</span>
+                  How Did You Hear About Us.
+                  <span style={{ color: "#ef4444" }}>*</span>
                 </label>
                 <select
                   required
                   value={formData.hearAboutUs}
-                  onChange={(e) => setFormData({ ...formData, hearAboutUs: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, hearAboutUs: e.target.value })
+                  }
                   style={inputStyle}
                 >
                   <option value="">Please Select</option>
@@ -496,13 +549,22 @@ export default function BookSessionModal({ counselor, isOpen, onClose }: ModalPr
               </div>
 
               {/* Terms Checkbox */}
-              <div style={{ display: "flex", alignItems: "flex-start", gap: "10px", marginBottom: "22px" }}>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: "10px",
+                  marginBottom: "22px",
+                }}
+              >
                 <input
                   type="checkbox"
                   id="agreeTerms"
                   required
                   checked={formData.agreed}
-                  onChange={(e) => setFormData({ ...formData, agreed: e.target.checked })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, agreed: e.target.checked })
+                  }
                   style={{
                     width: "18px",
                     height: "18px",
@@ -514,14 +576,34 @@ export default function BookSessionModal({ counselor, isOpen, onClose }: ModalPr
                 />
                 <label
                   htmlFor="agreeTerms"
-                  style={{ fontSize: "14px", color: "#475569", cursor: "pointer", lineHeight: "1.5", margin: 0 }}
+                  style={{
+                    fontSize: "14px",
+                    color: "#475569",
+                    cursor: "pointer",
+                    lineHeight: "1.5",
+                    margin: 0,
+                  }}
                 >
                   By submitting this form, I agree to Counsel India&apos;s{" "}
-                  <a href="/terms-and-conditions" style={{ color: "#07a64b", fontWeight: 600, textDecoration: "none" }}>
+                  <a
+                    href="/terms-and-conditions"
+                    style={{
+                      color: "#07a64b",
+                      fontWeight: 600,
+                      textDecoration: "none",
+                    }}
+                  >
                     Terms &amp; Conditions
                   </a>{" "}
                   and{" "}
-                  <a href="/privacy-policy" style={{ color: "#1e293b", fontWeight: 600, textDecoration: "none" }}>
+                  <a
+                    href="/privacy-policy"
+                    style={{
+                      color: "#1e293b",
+                      fontWeight: 600,
+                      textDecoration: "none",
+                    }}
+                  >
                     Privacy Policy.
                   </a>
                   <span style={{ color: "#ef4444" }}> *</span>

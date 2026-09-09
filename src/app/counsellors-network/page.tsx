@@ -26,8 +26,8 @@ export default function CounsellorsNetworkPage() {
           {/* Page Banner with Shapes (matches PHP page-banner) */}
           <NetworkBanner />
 
-          {/* Heading - uses the exact same class as PHP */}
-          <h2 className="page-banner__main-title-02" style={{ textAlign: "center", marginTop: "5%" }}>
+          {/* Heading */}
+          <h2 className="page-banner__main-title-02" style={{ textAlign: "center", marginTop: "5%", color: "#08A64B" }}>
             Counsellors Network
           </h2>
 
@@ -40,27 +40,6 @@ export default function CounsellorsNetworkPage() {
                   <p style={{ margin: 0 }}>
                     We found <span><strong>{COUNSELLORS_DATA.length}</strong></span> counsellors for you
                   </p>
-                </div>
-                <div>
-                  <a
-                    href="/mentor-registration"
-                    className="btn btn-hover-primary"
-                    style={{
-                      backgroundColor: "#07a64b",
-                      borderColor: "#07a64b",
-                      color: "#ffffff",
-                      borderRadius: "5px",
-                      padding: "8px 18px",
-                      fontSize: "13.5px",
-                      fontWeight: 600,
-                      textDecoration: "none",
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "6px",
-                    }}
-                  >
-                    <span>+</span> Be a Counsellor
-                  </a>
                 </div>
               </div>
 

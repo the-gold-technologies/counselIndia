@@ -24,9 +24,9 @@ export default function CounsellorDetailsPage({ params }: PageProps) {
   const parts = slug.split("-");
   const parsedId = parseInt(parts[parts.length - 1], 10);
 
-  // Find counselor by ID or matching name
-  let counselor: CounselorItem | undefined;
-  if (!isNaN(parsedId)) {
+  // Find counselor by exact slug, ID, or matching name
+  let counselor: CounselorItem | undefined = COUNSELLORS_DATA.find((c) => c.slug === slug);
+  if (!counselor && !isNaN(parsedId)) {
     counselor = COUNSELLORS_DATA.find((c) => c.id === parsedId);
   }
 
@@ -125,7 +125,7 @@ export default function CounsellorDetailsPage({ params }: PageProps) {
                   style={{
                     color: "#1e293b",
                     fontSize: "22px",
-                    fontWeight: 700,
+                    fontWeight: 600,
                     marginBottom: "4px",
                     fontFamily: "'Montserrat', 'Inter', sans-serif",
                   }}
@@ -134,20 +134,22 @@ export default function CounsellorDetailsPage({ params }: PageProps) {
                 </h3>
 
                 {/* Designation in Green */}
-                <p
-                  style={{
-                    color: "#00a651",
-                    fontSize: "12px",
-                    fontWeight: 700,
-                    letterSpacing: "0.5px",
-                    textTransform: "uppercase",
-                    marginBottom: "8px",
-                  }}
-                >
-                  {counselor.designation || "COUNSELLING PSYCHOLOGIST"}
-                </p>
+                {counselor.designation && (
+                  <p
+                    style={{
+                      color: "#08A64B",
+                      fontSize: "12.5px",
+                      fontWeight: 600,
+                      letterSpacing: "0.5px",
+                      textTransform: "uppercase",
+                      marginBottom: "8px",
+                    }}
+                  >
+                    {counselor.designation}
+                  </p>
+                )}
 
-                {/* Star Rating (Centered) */}
+                {/* Star Rating (Centered, 4 stars) */}
                 <div
                   style={{
                     display: "flex",
@@ -162,7 +164,7 @@ export default function CounsellorDetailsPage({ params }: PageProps) {
                   {[1, 2, 3, 4, 5].map((star) => (
                     <i
                       key={star}
-                      className={star <= (counselor.rating || 4) ? "fas fa-star" : "far fa-star"}
+                      className={star <= 4 ? "fas fa-star" : "far fa-star"}
                     ></i>
                   ))}
                 </div>

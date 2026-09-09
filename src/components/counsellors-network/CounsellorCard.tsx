@@ -11,8 +11,8 @@ interface CardProps {
 export default function CounsellorCard({ counselor, onBookSession }: CardProps) {
   const [isBookmarked, setIsBookmarked] = useState(false);
 
-  // Generate slug matching PHP: Str::slug(name-designation-id)
-  const slug = `${counselor.name}-${counselor.designation || "counselling-psychologist"}-${counselor.id}`
+  // Use exact slug from scraped data
+  const slug = counselor.slug || `${counselor.name}-${counselor.designation || "counselling-psychologist"}-${counselor.id}`
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
@@ -156,18 +156,35 @@ export default function CounsellorCard({ counselor, onBookSession }: CardProps) 
           {/* Name */}
           <h3
             style={{
-              fontSize: "24px",
-              fontWeight: 700,
+              fontSize: "22px",
+              fontWeight: 600,
               color: "#1e293b",
               fontFamily: "'Montserrat', 'Inter', -apple-system, sans-serif",
-              margin: "0 0 6px 0",
-              lineHeight: 1.2,
+              margin: "0 0 4px 0",
+              lineHeight: 1.25,
             }}
           >
             {counselor.name}
           </h3>
 
-          {/* Star Rating (Left-Aligned) */}
+          {/* Designation (Green Uppercase, if available) */}
+          {counselor.designation && (
+            <p
+              style={{
+                color: "#08A64B",
+                fontSize: "12.5px",
+                fontWeight: 600,
+                letterSpacing: "0.5px",
+                textTransform: "uppercase",
+                margin: "0 0 8px 0",
+                lineHeight: 1.3,
+              }}
+            >
+              {counselor.designation}
+            </p>
+          )}
+
+          {/* Star Rating (Left-Aligned, 4 stars) */}
           <div
             style={{
               display: "flex",
@@ -181,7 +198,7 @@ export default function CounsellorCard({ counselor, onBookSession }: CardProps) 
             {[1, 2, 3, 4, 5].map((star) => (
               <i
                 key={star}
-                className={star <= (counselor.rating || 4) ? "fas fa-star" : "far fa-star"}
+                className={star <= 4 ? "fas fa-star" : "far fa-star"}
               ></i>
             ))}
           </div>
