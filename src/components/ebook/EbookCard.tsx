@@ -20,27 +20,22 @@ export default function EbookCard({ ebook, onDownload }: CardProps) {
       className="blog-item-02"
       style={{
         backgroundColor: "#ffffff",
-        borderRadius: "10px",
+        borderRadius: "8px",
         overflow: "hidden",
-        border: "1px solid #1e293b",
-        boxShadow: "0 15px 35px rgba(0, 0, 0, 0.18)",
+        boxShadow: "0 4px 20px rgba(0, 0, 0, 0.15)",
         display: "flex",
         flexDirection: "column",
         height: "100%",
-        minHeight: "430px",
         transition: "transform 0.25s ease, box-shadow 0.25s ease",
       }}
     >
-      {/* 1. Cover Image Graphic Area */}
+      {/* 1. Full-Width Cover Image (No Padding) */}
       <div
         style={{
+          width: "100%",
           height: "220px",
           overflow: "hidden",
-          backgroundColor: "#ffffff",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          padding: "12px 12px 0",
+          backgroundColor: "#f1f5f9",
         }}
       >
         <img
@@ -49,9 +44,8 @@ export default function EbookCard({ ebook, onDownload }: CardProps) {
           style={{
             width: "100%",
             height: "100%",
-            objectFit: "contain",
+            objectFit: "cover",
             display: "block",
-            borderRadius: "6px",
           }}
           onError={(e) => {
             e.currentTarget.onerror = null;
@@ -60,11 +54,11 @@ export default function EbookCard({ ebook, onDownload }: CardProps) {
         />
       </div>
 
-      {/* 2. Content with robust text wrapping and clean spacing */}
+      {/* 2. Content Section */}
       <div
         className="blog-item-02__content"
         style={{
-          padding: "20px 22px 24px",
+          padding: "15px 30px 30px",
           flex: 1,
           display: "flex",
           flexDirection: "column",
@@ -76,20 +70,19 @@ export default function EbookCard({ ebook, onDownload }: CardProps) {
           boxSizing: "border-box",
         }}
       >
-        <div style={{ width: "100%", marginBottom: "20px" }}>
+        <div style={{ width: "100%", marginBottom: "22px" }}>
           <h3
             className="blog-item-02__title"
             style={{
-              fontFamily: "Georgia, 'Playfair Display', serif",
-              fontSize: "18.5px",
-              fontWeight: 700,
-              color: "#1e293b",
-              lineHeight: 1.4,
+              fontFamily: "'Playfair Display', Georgia, serif",
+              fontSize: "16px",
+              fontWeight: 600,
+              color: "#232937",
+              lineHeight: 1.45,
               margin: 0,
               textAlign: "left",
               wordBreak: "break-word",
               overflowWrap: "break-word",
-              minHeight: "52px",
             }}
           >
             {ebook.name}
@@ -101,12 +94,12 @@ export default function EbookCard({ ebook, onDownload }: CardProps) {
             onClick={() => onDownload(ebook)}
             className="blog-item-02__more"
             style={{
-              backgroundColor: "#f3f4f6",
-              color: "#1e293b",
+              backgroundColor: "#F5F5F5",
+              color: "#232937",
               border: "none",
               borderRadius: "6px",
-              padding: "10px 22px",
-              fontSize: "14.5px",
+              padding: "8px 20px",
+              fontSize: "14px",
               fontWeight: 500,
               cursor: "pointer",
               boxShadow: "0 1px 3px rgba(0, 0, 0, 0.05)",
@@ -116,16 +109,20 @@ export default function EbookCard({ ebook, onDownload }: CardProps) {
               transition: "all 0.2s ease",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = "#e5e7eb";
+              e.currentTarget.style.backgroundColor = "#ffffff";
+              e.currentTarget.style.color = "#08A64B";
+              e.currentTarget.style.boxShadow = "0 4px 12px rgba(0, 0, 0, 0.1)";
               e.currentTarget.style.transform = "translateY(-1px)";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = "#f3f4f6";
+              e.currentTarget.style.backgroundColor = "#F5F5F5";
+              e.currentTarget.style.color = "#232937";
+              e.currentTarget.style.boxShadow = "0 1px 3px rgba(0, 0, 0, 0.05)";
               e.currentTarget.style.transform = "translateY(0)";
             }}
           >
             <span>Download Now</span>
-            <span style={{ fontSize: "15px", lineHeight: 1 }}>→</span>
+            <span style={{ fontSize: "14px", lineHeight: 1 }}>→</span>
           </button>
         </div>
       </div>

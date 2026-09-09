@@ -62,27 +62,37 @@ export default function MentalHealthTestCard({ test, onExplore }: CardProps) {
         className="blog-item-02__content"
         style={{
           backgroundColor: "#b8d7a1",
-          padding: "26px 20px 30px",
+          padding: "26px 20px 26px",
           textAlign: "center",
           flex: 1,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          justifyContent: "space-between",
+          justifyContent: "center",
+          gap: "-4px",
         }}
       >
         <h3
           className="blog-item-02__title"
+          onClick={() => onExplore(test)}
           style={{
             fontFamily: "Georgia, 'Playfair Display', serif",
-            fontSize: "25px",
+            fontSize: "20px",
             fontWeight: 700,
             color: "#1e293b",
-            margin: "0 0 18px",
+            margin: "0",
             lineHeight: 1.25,
             textAlign: "center",
             wordBreak: "break-word",
             overflowWrap: "break-word",
+            cursor: "pointer",
+            transition: "color 0.2s ease",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.color = "#08A64B";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.color = "#1e293b";
           }}
         >
           {test.title}
@@ -92,33 +102,34 @@ export default function MentalHealthTestCard({ test, onExplore }: CardProps) {
           onClick={() => onExplore(test)}
           className="blog-item-02__more"
           style={{
-            backgroundColor: "#ffffff",
+            backgroundColor: "#F5F5F5",
             color: "#242a37",
             border: "none",
             borderRadius: "6px",
             padding: "8px 24px",
-            fontSize: "15px",
+            fontSize: "14px",
             fontWeight: 500,
             cursor: "pointer",
             boxShadow: "0 2px 6px rgba(0, 0, 0, 0.06)",
             display: "inline-flex",
             alignItems: "center",
-            gap: "2px",
+            gap: "4px",
             transition: "all 0.2s ease",
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = "#f8fafc";
+            e.currentTarget.style.color = "#08A64B";
             e.currentTarget.style.transform = "translateY(-1px)";
             e.currentTarget.style.boxShadow = "0 4px 12px rgba(0, 0, 0, 0.1)";
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = "#ffffff";
+            e.currentTarget.style.color = "#242a37";
+            e.currentTarget.style.backgroundColor = "#F5F5F5";
             e.currentTarget.style.transform = "translateY(0)";
             e.currentTarget.style.boxShadow = "0 2px 6px rgba(0, 0, 0, 0.06)";
           }}
         >
           <span>Explore Now</span>
-          <span style={{ fontSize: "16px", lineHeight: 1 }}>→</span>
+          <span style={{ fontSize: "14px", lineHeight: 1 }}>→</span>
         </button>
       </div>
     </div>

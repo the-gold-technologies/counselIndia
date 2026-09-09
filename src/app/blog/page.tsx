@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import BlogCard from "@/components/blog/BlogCard";
 import BlogSidebar from "@/components/blog/BlogSidebar";
 import { BLOGS_DATA, BLOG_CATEGORIES } from "@/components/blog/data/blogsData";
@@ -8,6 +8,7 @@ export default function BlogPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [visibleCount, setVisibleCount] = useState(12);
+  const observerRef = useRef<HTMLDivElement | null>(null);
 
   const handleCategorySelect = (slug: string | null) => {
     setSelectedCategory(slug);
@@ -41,6 +42,29 @@ export default function BlogPage() {
     return matchesSearch && matchesCategory;
   });
 
+  // Infinite Scroll Trigger
+  useEffect(() => {
+    const currentTarget = observerRef.current;
+    if (!currentTarget) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && visibleCount < filteredBlogs.length) {
+          setVisibleCount((prev) => Math.min(prev + 12, filteredBlogs.length));
+        }
+      },
+      { rootMargin: "300px" }
+    );
+
+    observer.observe(currentTarget);
+
+    return () => {
+      if (currentTarget) {
+        observer.unobserve(currentTarget);
+      }
+    };
+  }, [visibleCount, filteredBlogs.length]);
+
   return (
     <div className="main-wrapper" style={{ backgroundColor: "#ffffff", minHeight: "100vh" }}>
       {/* Main Content Area matching PHP layout */}
@@ -64,37 +88,34 @@ export default function BlogPage() {
                 <>
                   <div className="row g-4">
                     {filteredBlogs.slice(0, visibleCount).map((blog) => (
-                      <div key={blog.id} className="col-xl-4 col-md-6">
+                      <div key={blog.id} className="col-xl-4 col-md-6 d-flex justify-content-center">
                         <BlogCard blog={blog} />
                       </div>
                     ))}
                   </div>
 
+                  {/* Infinite Scroll Sentinel Target (Auto loads next articles when scrolled into view) */}
                   {visibleCount < filteredBlogs.length && (
-                    <div style={{ textAlign: "center", marginTop: "45px" }}>
-                      <button
-                        onClick={() => setVisibleCount((prev) => prev + 12)}
+                    <div
+                      ref={observerRef}
+                      style={{
+                        height: "40px",
+                        margin: "30px 0",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <div
                         style={{
-                          backgroundColor: "#00a651",
-                          color: "#ffffff",
-                          border: "none",
-                          borderRadius: "6px",
-                          padding: "12px 36px",
-                          fontSize: "15px",
-                          fontWeight: 700,
-                          cursor: "pointer",
-                          boxShadow: "0 4px 14px rgba(0, 166, 81, 0.2)",
-                          transition: "all 0.2s ease",
+                          width: "24px",
+                          height: "24px",
+                          border: "3px solid #e2e8f0",
+                          borderTopColor: "#00a651",
+                          borderRadius: "50%",
+                          animation: "spin 0.8s linear infinite",
                         }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.backgroundColor = "#008f45";
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.backgroundColor = "#00a651";
-                        }}
-                      >
-                        Load More Articles ({filteredBlogs.length - visibleCount} remaining)
-                      </button>
+                      />
                     </div>
                   )}
                 </>
@@ -138,6 +159,17 @@ export default function BlogPage() {
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes spin {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+      `}</style>
     </div>
   );
 }

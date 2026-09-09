@@ -6,12 +6,12 @@ export default function EbookBanner() {
     <div style={{ textAlign: "center", paddingTop: "60px", paddingBottom: "40px" }}>
       <h1
         style={{
-          fontFamily: "Georgia, 'Playfair Display', serif",
-          fontSize: "44px",
-          fontWeight: 700,
-          color: "#07a64b",
+          fontFamily: "'Playfair Display', Georgia, serif",
+          fontSize: "40px",
+          lineHeight: 1.3,
+          fontWeight: 600,
+          color: "#08A64B",
           margin: 0,
-          letterSpacing: "-0.5px",
         }}
       >
         Ebooks

@@ -23,8 +23,9 @@ export default function BlogSidebar({
       <div style={{ marginBottom: "35px" }}>
         <h4
           style={{
-            fontSize: "20px",
-            fontWeight: 600,
+            fontFamily: "'Poppins', sans-serif",
+            fontSize: "18px",
+            fontWeight: 400,
             color: "#212529",
             margin: "0 0 16px",
             borderBottom: "1px solid #e5e7eb",
@@ -91,8 +92,9 @@ export default function BlogSidebar({
       <div>
         <h4
           style={{
-            fontSize: "20px",
-            fontWeight: 600,
+            fontFamily: "'Poppins', sans-serif",
+            fontSize: "18px",
+            fontWeight: 400,
             color: "#212529",
             margin: "0 0 16px",
             borderBottom: "1px solid #e5e7eb",
