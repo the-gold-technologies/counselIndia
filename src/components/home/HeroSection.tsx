@@ -1,14 +1,32 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 
 export default function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsPlaying(true);
+      if (videoRef.current) {
+        // Attempt unmuted play first; if browser blocks it, mute and play
+        videoRef.current.play().catch(() => {
+          if (videoRef.current) {
+            videoRef.current.muted = true;
+            videoRef.current.play().catch(() => {});
+          }
+        });
+      }
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   const handlePlayClick = () => {
     setIsPlaying(true);
     if (videoRef.current) {
+      videoRef.current.muted = false;
       videoRef.current.play().catch(() => {});
     }
   };

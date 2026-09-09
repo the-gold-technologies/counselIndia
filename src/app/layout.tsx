@@ -9,7 +9,17 @@ import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Counsel India - Online Psychology Courses & Therapy",
-  description: "Counsel India is the best place for Online psychology & psychology therapist. Get an internship in psychology from a top psychologist in India and a career as a psychologist in India.",
+  description:
+    "Counsel India is the best place for Online psychology & psychology therapist. Get an internship in psychology from a top psychologist in India and a career as a psychologist in India.",
+  icons: {
+    icon: [
+      { url: "/favicon.png", type: "image/png" },
+      { url: "/favicon_new.png", type: "image/png" },
+      { url: "/favicon.ico" },
+    ],
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
@@ -20,7 +30,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="no-js">
       <head>
-        <link rel="shortcut icon" type="image/x-icon" href="/favicon_new.png" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <link rel="shortcut icon" type="image/png" href="/favicon.png" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
         <link rel="stylesheet" href="/assets/css/vendor/fontawesome-all.min.css" />
         <link rel="stylesheet" href="/assets/css/vendor/edumall-icon.css" />
         <link rel="stylesheet" href="/assets/css/vendor/bootstrap.min.css" />
