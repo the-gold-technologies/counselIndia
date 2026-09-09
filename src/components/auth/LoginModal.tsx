@@ -1,178 +1,65 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import Script from "next/script";
 
 interface LoginModalProps {
   isOpen: boolean;
   onClose: () => void;
-  initialMode?: "login" | "signup" | "forgot";
   onSuccess?: () => void;
 }
 
 export default function LoginModal({
   isOpen,
   onClose,
-  initialMode = "login",
   onSuccess,
 }: LoginModalProps) {
-  const [modalMode, setModalMode] = useState<
-    "login" | "register" | "forgot"
-  >(initialMode === "signup" ? "register" : initialMode === "forgot" ? "forgot" : "login");
+  const [activeTab, setActiveTab] = useState<"password" | "otp">("password");
+  const [emailOrPhone, setEmailOrPhone] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [otp, setOtp] = useState("");
+  const [otpSent, setOtpSent] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Dynamically load lord-icon for animated waving avatar
   useEffect(() => {
-    if (isOpen) {
-      if (initialMode === "signup") {
-        setModalMode("register");
-      } else if (initialMode === "forgot") {
-        setModalMode("forgot");
-      } else {
-        setModalMode("login");
-      }
-      setErrorMessage("");
-      setSuccessMessage("");
-      setLoginIdentifier("");
-      setRegName("");
-      setRegEmail("");
-      setRegMobile("");
+    if (
+      typeof window !== "undefined" &&
+      !document.getElementById("lord-icon-script")
+    ) {
+      const script = document.createElement("script");
+      script.id = "lord-icon-script";
+      script.src = "https://cdn.lordicon.com/lordicon.js";
+      script.async = true;
+      document.body.appendChild(script);
     }
-  }, [isOpen, initialMode]);
-
-  const [loginIdentifier, setLoginIdentifier] = useState("");
-  const [regName, setRegName] = useState("");
-  const [regEmail, setRegEmail] = useState("");
-  const [regMobile, setRegMobile] = useState("");
-
-  const [isLoading, setIsLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && isOpen) {
-        onClose();
-      }
-    };
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-      window.addEventListener("keydown", handleKeyDown);
-    }
-    return () => {
-      document.body.style.overflow = "";
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [isOpen, onClose]);
+  }, []);
 
   if (!isOpen) return null;
 
-  const inputStyle: React.CSSProperties = {
-    width: "100%",
-    height: "50px",
-    padding: "10px 16px",
-    border: "0.8px solid black",
-    borderRadius: "5px",
-    boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.5)",
-    fontSize: "14.5px",
-    backgroundColor: "#ffffff",
-    color: "#212529",
-    outline: "none",
-    boxSizing: "border-box",
-    fontFamily: "'Poppins', sans-serif",
-    fontWeight: 400,
-  };
-
-  const labelStyle: React.CSSProperties = {
-    display: "block",
-    fontSize: "14px",
-    fontWeight: 400,
-    color: "#212529",
-    marginBottom: "8px",
-    textAlign: "left",
-    fontFamily: "'Poppins', sans-serif",
-  };
-
-  const buttonStyle: React.CSSProperties = {
-    width: "100%",
-    height: "50px",
-    backgroundColor: "#07a64b",
-    color: "#ffffff",
-    border: "none",
-    borderRadius: "5px",
-    fontSize: "15px",
-    fontWeight: 600,
-    cursor: "pointer",
-    marginTop: "24px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    transition: "background-color 0.2s ease",
-    fontFamily: "'Poppins', sans-serif",
-  };
-
-  const handleLoginSubmit = (e: React.FormEvent) => {
+  const handlePasswordLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    setErrorMessage("");
-
-    if (!loginIdentifier.trim()) {
-      setErrorMessage("Please enter your email or phone number.");
-      return;
-    }
-
-    setIsLoading(true);
+    setIsSubmitting(true);
     setTimeout(() => {
-      setIsLoading(false);
-      setSuccessMessage("Logged in successfully!");
-      setTimeout(() => {
-        if (onSuccess) onSuccess();
-        onClose();
-      }, 700);
-    }, 800);
+      setIsSubmitting(false);
+      if (onSuccess) onSuccess();
+      onClose();
+    }, 600);
   };
 
-  const handleRegisterSubmit = (e: React.FormEvent) => {
+  const handleSendOtp = (e: React.FormEvent) => {
     e.preventDefault();
-    setErrorMessage("");
-
-    if (!regName.trim()) {
-      setErrorMessage("Please enter your full name.");
-      return;
-    }
-    if (!regEmail.trim()) {
-      setErrorMessage("Please enter your email address.");
-      return;
-    }
-    if (!regMobile.trim()) {
-      setErrorMessage("Please enter your mobile number.");
-      return;
-    }
-
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      setSuccessMessage("Account created successfully!");
-      setTimeout(() => {
-        if (onSuccess) onSuccess();
-        onClose();
-      }, 700);
-    }, 800);
+    setOtpSent(true);
   };
 
-  const handleForgotSubmit = (e: React.FormEvent) => {
+  const handleOtpLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    setErrorMessage("");
-
-    if (!loginIdentifier.trim()) {
-      setErrorMessage("Please enter your email or phone number.");
-      return;
-    }
-
-    setIsLoading(true);
+    setIsSubmitting(true);
     setTimeout(() => {
-      setIsLoading(false);
-      setSuccessMessage("Password reset instructions sent successfully.");
-      setTimeout(() => {
-        setModalMode("login");
-        setSuccessMessage("");
-      }, 1500);
-    }, 800);
+      setIsSubmitting(false);
+      if (onSuccess) onSuccess();
+      onClose();
+    }, 600);
   };
 
   return (
@@ -181,16 +68,16 @@ export default function LoginModal({
         position: "fixed",
         top: 0,
         left: 0,
-        width: "100vw",
-        height: "100vh",
-        backgroundColor: "rgba(0, 0, 0, 0.75)",
-        zIndex: 999999,
+        width: "100%",
+        height: "100%",
+        backgroundColor: "rgba(0, 0, 0, 0.65)",
+        zIndex: 99999,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         padding: "20px 15px",
-        overflowY: "auto",
-        boxSizing: "border-box",
+        overflow: "hidden",
+        animation: "modalFadeIn 0.25s ease-out forwards",
       }}
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
@@ -198,332 +85,443 @@ export default function LoginModal({
     >
       <div
         style={{
-          position: "relative",
-          width: "100%",
-          maxWidth: "460px",
           backgroundColor: "#ffffff",
-          borderRadius: "8px",
-          padding: "40px 36px 36px",
-          boxShadow: "0 20px 50px rgba(0, 0, 0, 0.3)",
+          borderRadius: "5px",
+          boxShadow: "0 15px 45px rgba(0, 0, 0, 0.35)",
+          position: "relative",
+          maxWidth: "470px",
+          width: "100%",
+          animation:
+            "modalSlideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+          maxHeight: "92vh",
+          overflowY: "auto",
+          padding: "36px 42px 42px",
           boxSizing: "border-box",
         }}
-        onClick={(e) => e.stopPropagation()}
       >
-        {/* Close Button */}
+        {/* Close Button (✕) */}
         <button
           onClick={onClose}
-          type="button"
           style={{
             position: "absolute",
-            top: "18px",
-            right: "20px",
-            background: "transparent",
+            top: "12px",
+            right: "16px",
+            background: "none",
             border: "none",
+            fontSize: "26px",
+            fontWeight: 400,
+            color: "#000000",
             cursor: "pointer",
-            padding: "4px",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            color: "#000000",
+            width: "36px",
+            height: "36px",
+            padding: 0,
+            lineHeight: 1,
+            zIndex: 10,
           }}
           aria-label="Close"
         >
-          <svg
-            width="22"
-            height="22"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#000000"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
+          ✕
         </button>
 
-        {/* Feedback Messages */}
-        {errorMessage && (
+        {/* Top Header: Official Logo (Left) + Avatar */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "flex-start",
+            gap: "40px",
+            marginBottom: "20px",
+          }}
+        >
+          {/* Logo (Anchored to Left) */}
+          <div>
+            <img
+              src="/assets/images/dark-logo.png"
+              alt="Counsel India"
+              style={{
+                width: "200px",
+                maxWidth: "100%",
+                height: "auto",
+                display: "block",
+              }}
+              onError={(e) => {
+                e.currentTarget.src = "/assets/images/index/logo_img.png";
+              }}
+            />
+          </div>
+
+          {/* Avatar Character */}
           <div
             style={{
-              backgroundColor: "#fee2e2",
-              border: "1px solid #fca5a5",
-              color: "#991b1b",
-              padding: "10px 14px",
-              borderRadius: "5px",
-              marginBottom: "16px",
-              fontSize: "13.5px",
-              textAlign: "center",
+              width: "100px",
+              height: "100px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexShrink: 0,
             }}
           >
-            {errorMessage}
+            {/* Lordicon Animated Avatar */}
+            {React.createElement("lord-icon", {
+              src: "https://cdn.lordicon.com/mebvgwrs.json",
+              trigger: "hover",
+              state: "hover-wave",
+              style: { width: "100px", height: "100px" },
+            })}
           </div>
-        )}
+        </div>
 
-        {successMessage && (
-          <div
+        {/* Modal Title */}
+        <h5
+          style={{
+            fontSize: "32px",
+            fontWeight: 500,
+            color: "#1a202c",
+            textAlign: "center",
+            margin: "0 0 8px",
+            lineHeight: 1.3,
+            fontFamily: "'Montserrat', 'Poppins', sans-serif",
+          }}
+        >
+          Login
+        </h5>
+
+        {/* Subtitle with Underlined Link */}
+        <p
+          style={{
+            fontSize: "14.5px",
+            color: "#4a5568",
+            textAlign: "center",
+            margin: "0 0 24px",
+          }}
+        >
+          Don&apos;t have an account yet?{" "}
+          <a
+            href="/signup"
             style={{
-              backgroundColor: "#dcfce7",
-              border: "1px solid #86efac",
-              color: "#166534",
-              padding: "10px 14px",
-              borderRadius: "5px",
-              marginBottom: "16px",
-              fontSize: "13.5px",
-              textAlign: "center",
+              color: "#1a202c",
+              fontWeight: 600,
+              textDecoration: "none",
+              borderBottom: "1px solid #cbd5e1",
+              paddingBottom: "2px",
+              cursor: "pointer",
             }}
           >
-            {successMessage}
-          </div>
-        )}
+            Sign up for free
+          </a>
+        </p>
 
-        {/* ======================= LOGIN VIEW ======================= */}
-        {modalMode === "login" && (
-          <div>
-            <h2
-              style={{
-                fontSize: "32px",
-                fontWeight: 500,
-                color: "#212529",
-                textAlign: "center",
-                margin: "0 0 8px 0",
-                fontFamily: "'Poppins', sans-serif",
-              }}
-            >
-              Login
-            </h2>
-            <p
-              style={{
-                fontSize: "14.5px",
-                color: "#555555",
-                textAlign: "center",
-                margin: "0 0 24px 0",
-                fontFamily: "'Poppins', sans-serif",
-                fontWeight: 400,
-              }}
-            >
-              Don&apos;t have an account yet?{" "}
-              <button
-                type="button"
-                onClick={() => {
-                  setModalMode("register");
-                  setErrorMessage("");
-                  setSuccessMessage("");
-                }}
+        {/* Tabs: Login with Password vs Login with OTP */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "12px",
+            marginBottom: "24px",
+          }}
+        >
+          <button
+            type="button"
+            onClick={() => setActiveTab("password")}
+            style={{
+              backgroundColor:
+                activeTab === "password" ? "#00a651" : "transparent",
+              color: activeTab === "password" ? "#ffffff" : "#0d6efd",
+              borderRadius: "4px",
+              padding: "10px 18px",
+              fontSize: "14px",
+              fontWeight: 500,
+              border: "none",
+              cursor: "pointer",
+              transition: "all 0.2s ease",
+            }}
+          >
+            Login with Password
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setActiveTab("otp")}
+            style={{
+              backgroundColor: activeTab === "otp" ? "#00a651" : "transparent",
+              color: activeTab === "otp" ? "#ffffff" : "#0d6efd",
+              borderRadius: "4px",
+              padding: "10px 18px",
+              fontSize: "14px",
+              fontWeight: 500,
+              border: "none",
+              cursor: "pointer",
+              transition: "all 0.2s ease",
+            }}
+          >
+            Login with OTP
+          </button>
+        </div>
+
+        {/* Password Tab Form */}
+        {activeTab === "password" ? (
+          <form onSubmit={handlePasswordLogin}>
+            {/* Email Or Phone */}
+            <div style={{ marginBottom: "18px" }}>
+              <label
                 style={{
+                  fontSize: "14px",
+                  fontWeight: 600,
                   color: "#212529",
-                  fontWeight: 500,
-                  textDecoration: "underline",
-                  background: "none",
-                  border: "none",
-                  cursor: "pointer",
-                  padding: 0,
-                  fontSize: "14.5px",
+                  marginBottom: "6px",
+                  display: "block",
                 }}
               >
-                Sign up
-              </button>
-            </p>
-
-            <form onSubmit={handleLoginSubmit}>
-              <div style={{ marginBottom: "16px" }}>
-                <label style={labelStyle}>
-                  Email Or Phone<span style={{ color: "#ef4444" }}>*</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Your email or phone"
-                  value={loginIdentifier}
-                  onChange={(e) => setLoginIdentifier(e.target.value)}
-                  style={inputStyle}
-                  required
-                />
-              </div>
-
-              <button
-                type="submit"
-                disabled={isLoading}
-                style={buttonStyle}
-              >
-                {isLoading ? "Logging in..." : "Log In"}
-              </button>
-            </form>
-          </div>
-        )}
-
-        {/* ======================= SIGN UP VIEW ======================= */}
-        {modalMode === "register" && (
-          <div>
-            <h2
-              style={{
-                fontSize: "32px",
-                fontWeight: 500,
-                color: "#212529",
-                textAlign: "center",
-                margin: "0 0 8px 0",
-                fontFamily: "'Poppins', sans-serif",
-              }}
-            >
-              Sign Up
-            </h2>
-            <p
-              style={{
-                fontSize: "14.5px",
-                color: "#555555",
-                textAlign: "center",
-                margin: "0 0 24px 0",
-                fontFamily: "'Poppins', sans-serif",
-                fontWeight: 400,
-              }}
-            >
-              Already have an account?{" "}
-              <button
-                type="button"
-                onClick={() => {
-                  setModalMode("login");
-                  setErrorMessage("");
-                  setSuccessMessage("");
-                }}
+                Email Or Phone<span style={{ color: "#ef4444" }}>*</span>
+              </label>
+              <input
+                type="text"
+                placeholder="Your email or phone"
+                required
+                value={emailOrPhone}
+                onChange={(e) => setEmailOrPhone(e.target.value)}
                 style={{
-                  color: "#212529",
-                  fontWeight: 500,
-                  textDecoration: "underline",
-                  background: "none",
-                  border: "none",
-                  cursor: "pointer",
-                  padding: 0,
+                  borderRadius: "5px",
+                  boxShadow: "0 0 5px rgba(0, 0, 0, 0.3)",
+                  border: "0.8px solid black",
+                  padding: "10px 14px",
                   fontSize: "14.5px",
+                  width: "100%",
+                  height: "46px",
+                  color: "#1e293b",
+                  backgroundColor: "#ffffff",
+                  outline: "none",
+                  boxSizing: "border-box",
+                }}
+              />
+            </div>
+
+            {/* Password */}
+            <div style={{ marginBottom: "8px" }}>
+              <label
+                style={{
+                  fontSize: "14px",
+                  fontWeight: 600,
+                  color: "#212529",
+                  marginBottom: "6px",
+                  display: "block",
                 }}
               >
-                Log in
-              </button>
-            </p>
-
-            <form onSubmit={handleRegisterSubmit}>
-              <div style={{ marginBottom: "14px" }}>
-                <label style={labelStyle}>
-                  Full Name<span style={{ color: "#ef4444" }}>*</span>
-                </label>
+                Password
+              </label>
+              <div style={{ display: "flex" }}>
                 <input
-                  type="text"
-                  placeholder="Your Full Name"
-                  value={regName}
-                  onChange={(e) => setRegName(e.target.value)}
-                  style={inputStyle}
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Password"
                   required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  style={{
+                    borderRadius: "5px 0 0 5px",
+                    boxShadow: "0 0 5px rgba(0, 0, 0, 0.3)",
+                    border: "0.8px solid black",
+                    borderRight: "none",
+                    padding: "10px 14px",
+                    fontSize: "14.5px",
+                    flex: 1,
+                    height: "46px",
+                    color: "#1e293b",
+                    backgroundColor: "#ffffff",
+                    outline: "none",
+                    boxSizing: "border-box",
+                  }}
                 />
-              </div>
-
-              <div style={{ marginBottom: "14px" }}>
-                <label style={labelStyle}>
-                  Email Address<span style={{ color: "#ef4444" }}>*</span>
-                </label>
-                <input
-                  type="email"
-                  placeholder="Your Email Address"
-                  value={regEmail}
-                  onChange={(e) => setRegEmail(e.target.value)}
-                  style={inputStyle}
-                  required
-                />
-              </div>
-
-              <div style={{ marginBottom: "14px" }}>
-                <label style={labelStyle}>
-                  Mobile Number<span style={{ color: "#ef4444" }}>*</span>
-                </label>
-                <input
-                  type="tel"
-                  placeholder="Your Mobile Number"
-                  value={regMobile}
-                  onChange={(e) => setRegMobile(e.target.value)}
-                  style={inputStyle}
-                  required
-                />
-              </div>
-
-              <button
-                type="submit"
-                disabled={isLoading}
-                style={buttonStyle}
-              >
-                {isLoading ? "Signing up..." : "Sign Up"}
-              </button>
-            </form>
-          </div>
-        )}
-
-        {/* ======================= FORGOT PASSWORD VIEW ======================= */}
-        {modalMode === "forgot" && (
-          <div>
-            <h2
-              style={{
-                fontSize: "28px",
-                fontWeight: 500,
-                color: "#212529",
-                textAlign: "center",
-                margin: "0 0 8px 0",
-                fontFamily: "'Poppins', sans-serif",
-              }}
-            >
-              Forgot Password
-            </h2>
-            <p
-              style={{
-                fontSize: "14px",
-                color: "#555555",
-                textAlign: "center",
-                margin: "0 0 24px 0",
-                fontWeight: 400,
-              }}
-            >
-              Enter your registered Email or Mobile No.
-            </p>
-
-            <form onSubmit={handleForgotSubmit}>
-              <div style={{ marginBottom: "16px" }}>
-                <label style={labelStyle}>
-                  Email Or Phone<span style={{ color: "#ef4444" }}>*</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Your email or phone"
-                  value={loginIdentifier}
-                  onChange={(e) => setLoginIdentifier(e.target.value)}
-                  style={inputStyle}
-                  required
-                />
-              </div>
-
-              <button
-                type="submit"
-                disabled={isLoading}
-                style={buttonStyle}
-              >
-                {isLoading ? "Sending..." : "Reset Password"}
-              </button>
-
-              <div style={{ textAlign: "center", marginTop: "16px" }}>
                 <button
                   type="button"
-                  onClick={() => setModalMode("login")}
+                  onClick={() => setShowPassword(!showPassword)}
                   style={{
-                    background: "none",
-                    border: "none",
-                    color: "#555555",
-                    fontSize: "14px",
+                    width: "56px",
+                    height: "46px",
+                    backgroundColor: "#ffffff",
+                    border: "0.8px solid black",
+                    borderLeft: "none",
+                    borderRadius: "0 5px 5px 0",
+                    boxShadow: "0 0 5px rgba(0, 0, 0, 0.3)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
                     cursor: "pointer",
-                    textDecoration: "underline",
+                    color: "#212529",
+                    padding: 0,
                   }}
                 >
-                  Back to Login
+                  <i
+                    className={showPassword ? "fas fa-eye-slash" : "fas fa-eye"}
+                  ></i>
                 </button>
               </div>
-            </form>
-          </div>
+            </div>
+
+            {/* Forgot Password Link */}
+            <div style={{ marginBottom: "22px" }}>
+              <a
+                href="/forgot-password"
+                style={{
+                  fontSize: "13.5px",
+                  color: "#0d6efd",
+                  textDecoration: "none",
+                  fontWeight: 500,
+                }}
+              >
+                Forgot Password?
+              </a>
+            </div>
+
+            {/* Log In Submit Button */}
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              style={{
+                width: "100%",
+                height: "48px",
+                backgroundColor: "#00a651",
+                color: "#ffffff",
+                borderRadius: "5px",
+                fontSize: "16px",
+                fontWeight: 700,
+                border: "none",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                boxShadow: "0 4px 12px rgba(0, 166, 81, 0.2)",
+                transition: "background-color 0.2s ease",
+              }}
+            >
+              {isSubmitting ? "Logging in..." : "Log In"}
+            </button>
+          </form>
+        ) : (
+          /* OTP Tab Form */
+          <form onSubmit={otpSent ? handleOtpLogin : handleSendOtp}>
+            <div style={{ marginBottom: "18px" }}>
+              <label
+                style={{
+                  fontSize: "14px",
+                  fontWeight: 600,
+                  color: "#212529",
+                  marginBottom: "6px",
+                  display: "block",
+                }}
+              >
+                Mobile Number<span style={{ color: "#ef4444" }}>*</span>
+              </label>
+              <input
+                type="tel"
+                placeholder="Your mobile number"
+                required
+                value={emailOrPhone}
+                onChange={(e) => setEmailOrPhone(e.target.value)}
+                style={{
+                  borderRadius: "5px",
+                  boxShadow: "0 0 5px rgba(0, 0, 0, 0.3)",
+                  border: "0.8px solid black",
+                  padding: "10px 14px",
+                  fontSize: "14.5px",
+                  width: "100%",
+                  height: "46px",
+                  color: "#1e293b",
+                  backgroundColor: "#ffffff",
+                  outline: "none",
+                  boxSizing: "border-box",
+                }}
+              />
+            </div>
+
+            {otpSent && (
+              <div style={{ marginBottom: "18px" }}>
+                <label
+                  style={{
+                    fontSize: "14px",
+                    fontWeight: 600,
+                    color: "#212529",
+                    marginBottom: "6px",
+                    display: "block",
+                  }}
+                >
+                  Enter OTP<span style={{ color: "#ef4444" }}>*</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Enter 6-digit OTP"
+                  required
+                  value={otp}
+                  onChange={(e) => setOtp(e.target.value)}
+                  style={{
+                    borderRadius: "5px",
+                    boxShadow: "0 0 5px rgba(0, 0, 0, 0.3)",
+                    border: "0.8px solid black",
+                    padding: "10px 14px",
+                    fontSize: "14.5px",
+                    width: "100%",
+                    height: "46px",
+                    color: "#1e293b",
+                    backgroundColor: "#ffffff",
+                    outline: "none",
+                    boxSizing: "border-box",
+                  }}
+                />
+              </div>
+            )}
+
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              style={{
+                width: "100%",
+                height: "48px",
+                backgroundColor: "#00a651",
+                color: "#ffffff",
+                borderRadius: "5px",
+                fontSize: "16px",
+                fontWeight: 700,
+                border: "none",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                boxShadow: "0 4px 12px rgba(0, 166, 81, 0.2)",
+                transition: "background-color 0.2s ease",
+              }}
+            >
+              {isSubmitting
+                ? "Verifying..."
+                : otpSent
+                  ? "Verify & Log In"
+                  : "Send OTP"}
+            </button>
+          </form>
         )}
       </div>
+
+      <style jsx>{`
+        @keyframes modalFadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+        @keyframes modalSlideDown {
+          from {
+            opacity: 0;
+            transform: scale(0.95) translateY(-20px);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+          }
+        }
+      `}</style>
     </div>
   );
 }

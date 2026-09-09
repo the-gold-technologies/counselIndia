@@ -1,7 +1,10 @@
 "use client";
 import React, { useState, use } from "react";
 import Link from "next/link";
-import { COUNSELLORS_DATA, CounselorItem } from "@/components/counsellors-network/data/counsellorsData";
+import {
+  COUNSELLORS_DATA,
+  CounselorItem,
+} from "@/components/counsellors-network/data/counsellorsData";
 import BookSessionModal from "@/components/counsellors-network/BookSessionModal";
 import LoginModal from "@/components/auth/LoginModal";
 import SuccessStoriesCarousel from "@/components/counsellors-network/SuccessStoriesCarousel";
@@ -25,7 +28,9 @@ export default function CounsellorDetailsPage({ params }: PageProps) {
   const parsedId = parseInt(parts[parts.length - 1], 10);
 
   // Find counselor by exact slug, ID, or matching name
-  let counselor: CounselorItem | undefined = COUNSELLORS_DATA.find((c) => c.slug === slug);
+  let counselor: CounselorItem | undefined = COUNSELLORS_DATA.find(
+    (c) => c.slug === slug,
+  );
   if (!counselor && !isNaN(parsedId)) {
     counselor = COUNSELLORS_DATA.find((c) => c.id === parsedId);
   }
@@ -33,7 +38,7 @@ export default function CounsellorDetailsPage({ params }: PageProps) {
   if (!counselor) {
     const normalizedSlug = slug.toLowerCase();
     counselor = COUNSELLORS_DATA.find((c) =>
-      normalizedSlug.includes(c.name.toLowerCase().replace(/[^a-z0-9]+/g, "-"))
+      normalizedSlug.includes(c.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")),
     );
   }
 
@@ -42,9 +47,19 @@ export default function CounsellorDetailsPage({ params }: PageProps) {
   }
 
   return (
-    <div className="main-wrapper" style={{ backgroundColor: "#f8fafc", minHeight: "100vh" }}>
+    <div
+      className="main-wrapper"
+      style={{ backgroundColor: "#f8fafc", minHeight: "100vh" }}
+    >
       {/* 1. Header Banner: Learn from the best */}
-      <div className="edumall-box-section section-padding-01" style={{ paddingTop: "60px", paddingBottom: "25px" }}>
+      <div
+        className="edumall-box-section section-padding-01"
+        style={{
+          backgroundColor: "#FFFFFF",
+          paddingTop: "60px",
+          paddingBottom: "35px",
+        }}
+      >
         <div className="container custom-container">
           <div className="row justify-content-center">
             <div className="col-lg-8">
@@ -64,12 +79,20 @@ export default function CounsellorDetailsPage({ params }: PageProps) {
                     best
                   </mark>
                 </h2>
-                <p style={{ color: "#64748b", lineHeight: "1.7", fontSize: "15px" }}>
-                  Counsel India is aiming to be India&apos;s biggest employer for mental health
-                  professionals and has already employed top-notch RCI recognized psychologists for its
-                  55+ products and services. Here are the list of some psychologists for its one of the
-                  educational products. It has its own network of mental health professionals with close
-                  to 2000+ in numbers and increasing everyday. Counsel India has aim to offer stage and
+                <p
+                  style={{
+                    color: "#333333",
+                    lineHeight: "1.7",
+                    fontSize: "15px",
+                  }}
+                >
+                  Counsel India is aiming to be India&apos;s biggest employer
+                  for mental health professionals and has already employed
+                  top-notch RCI recognized psychologists for its 55+ products
+                  and services. Here are the list of some psychologists for its
+                  one of the educational products. It has its own network of
+                  mental health professionals with close to 2000+ in numbers and
+                  increasing everyday. Counsel India has aim to offer stage and
                   career these professionals deserve.
                 </p>
               </div>
@@ -82,12 +105,13 @@ export default function CounsellorDetailsPage({ params }: PageProps) {
       <div
         className="event-section section-padding-01"
         style={{
-          paddingTop: "40px",
-          paddingBottom: "70px",
+          backgroundColor: "#F8F8F8",
+          paddingTop: "55px",
+          paddingBottom: "55px",
         }}
       >
         <div className="container custom-container">
-          <div className="row g-5 align-items-start">
+          <div className="row g-5 align-items-center">
             {/* Left Column: Counselor Profile Card */}
             <div className="col-lg-4 col-md-5">
               <div
@@ -96,12 +120,18 @@ export default function CounsellorDetailsPage({ params }: PageProps) {
                   borderRadius: "12px",
                   boxShadow: "0 6px 25px rgba(0, 0, 0, 0.07)",
                   border: "1px solid #edf2f7",
-                  padding: "32px 24px 28px",
+                  padding: "37px 24px 24px",
                   textAlign: "center",
                 }}
               >
                 {/* Speaker Image */}
-                <div style={{ marginBottom: "16px", display: "flex", justifyContent: "center" }}>
+                <div
+                  style={{
+                    marginBottom: "16px",
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
                   <img
                     src={counselor.image}
                     alt={counselor.name}
@@ -115,7 +145,8 @@ export default function CounsellorDetailsPage({ params }: PageProps) {
                     }}
                     onError={(e) => {
                       e.currentTarget.onerror = null;
-                      e.currentTarget.src = "/assets/images/avatar-placeholder.jpg";
+                      e.currentTarget.src =
+                        "/assets/images/avatar-placeholder.jpg";
                     }}
                   />
                 </div>
@@ -189,11 +220,27 @@ export default function CounsellorDetailsPage({ params }: PageProps) {
                       fontSize: "14.5px",
                     }}
                   >
-                    <span style={{ display: "flex", alignItems: "center", gap: "10px", color: "#475569" }}>
-                      <i className="fas fa-graduation-cap" style={{ width: "18px", color: "#1e293b", fontSize: "15px" }}></i>
+                    <span
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "10px",
+                        color: "#475569",
+                      }}
+                    >
+                      <i
+                        className="fas fa-graduation-cap"
+                        style={{
+                          width: "18px",
+                          color: "#1e293b",
+                          fontSize: "15px",
+                        }}
+                      ></i>
                       Experience
                     </span>
-                    <span style={{ color: "#1e293b", fontWeight: 500 }}>{counselor.experience}</span>
+                    <span style={{ color: "#1e293b", fontWeight: 500 }}>
+                      {counselor.experience}
+                    </span>
                   </div>
 
                   {/* Language */}
@@ -205,11 +252,32 @@ export default function CounsellorDetailsPage({ params }: PageProps) {
                       fontSize: "14.5px",
                     }}
                   >
-                    <span style={{ display: "flex", alignItems: "center", gap: "10px", color: "#475569" }}>
-                      <i className="fas fa-globe" style={{ width: "18px", color: "#1e293b", fontSize: "15px" }}></i>
+                    <span
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "10px",
+                        color: "#475569",
+                      }}
+                    >
+                      <i
+                        className="fas fa-globe"
+                        style={{
+                          width: "18px",
+                          color: "#1e293b",
+                          fontSize: "15px",
+                        }}
+                      ></i>
                       Language
                     </span>
-                    <span style={{ color: "#1e293b", fontWeight: 500, maxWidth: "160px", textAlign: "right" }}>
+                    <span
+                      style={{
+                        color: "#1e293b",
+                        fontWeight: 500,
+                        maxWidth: "160px",
+                        textAlign: "right",
+                      }}
+                    >
                       {counselor.language}
                     </span>
                   </div>
@@ -223,11 +291,31 @@ export default function CounsellorDetailsPage({ params }: PageProps) {
                       fontSize: "14.5px",
                     }}
                   >
-                    <span style={{ display: "flex", alignItems: "center", gap: "10px", color: "#475569" }}>
-                      <i className="fas fa-rupee-sign" style={{ width: "18px", color: "#1e293b", fontSize: "15px" }}></i>
+                    <span
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "10px",
+                        color: "#475569",
+                      }}
+                    >
+                      <i
+                        className="fas fa-rupee-sign"
+                        style={{
+                          width: "18px",
+                          color: "#1e293b",
+                          fontSize: "15px",
+                        }}
+                      ></i>
                       Fee
                     </span>
-                    <span style={{ color: "#00a651", fontWeight: 700, fontSize: "15px" }}>
+                    <span
+                      style={{
+                        color: "#00a651",
+                        fontWeight: 700,
+                        fontSize: "15px",
+                      }}
+                    >
                       Rs. {counselor.fees}
                     </span>
                   </div>
@@ -241,17 +329,38 @@ export default function CounsellorDetailsPage({ params }: PageProps) {
                       fontSize: "14.5px",
                     }}
                   >
-                    <span style={{ display: "flex", alignItems: "center", gap: "10px", color: "#475569" }}>
-                      <i className="fas fa-map-marker-alt" style={{ width: "18px", color: "#1e293b", fontSize: "15px" }}></i>
+                    <span
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "10px",
+                        color: "#475569",
+                      }}
+                    >
+                      <i
+                        className="fas fa-map-marker-alt"
+                        style={{
+                          width: "18px",
+                          color: "#1e293b",
+                          fontSize: "15px",
+                        }}
+                      ></i>
                       Location
                     </span>
-                    <span style={{ color: "#1e293b", fontWeight: 500, maxWidth: "150px", textAlign: "right" }}>
+                    <span
+                      style={{
+                        color: "#1e293b",
+                        fontWeight: 500,
+                        maxWidth: "150px",
+                        textAlign: "right",
+                      }}
+                    >
                       {counselor.location}
                     </span>
                   </div>
                 </div>
 
-                {/* Book a Session Button (Opens Login Modal matching PHP) */}
+                {/* Book a Session Button (Opens Navigation Bar Login Modal) */}
                 <button
                   onClick={() => setIsLoginModalOpen(true)}
                   style={{
@@ -279,76 +388,106 @@ export default function CounsellorDetailsPage({ params }: PageProps) {
             {/* Right Column: Clean Content Typography (Direct on Page Background) */}
             <div className="col-lg-8 col-md-7 ps-lg-4">
               {/* What I Bring */}
-              <div style={{ marginBottom: "26px" }}>
+              <div style={{ marginBottom: "24px" }}>
                 <h3
                   style={{
                     fontFamily: "Georgia, 'Playfair Display', serif",
                     color: "#1e293b",
-                    fontSize: "22px",
-                    fontWeight: 700,
+                    fontSize: "20px",
+                    fontWeight: 600,
                     marginBottom: "8px",
                   }}
                 >
                   What I bring to you.
                 </h3>
-                <p style={{ color: "#4b5563", lineHeight: "1.75", fontSize: "14.5px", margin: 0 }}>
+                <p
+                  style={{
+                    color: "#4b5563",
+                    lineHeight: "1.75",
+                    fontSize: "14px",
+                    margin: 0,
+                  }}
+                >
                   {counselor.whatBringsYou ||
                     "If I may work with the company i would like to offer all my dedication and loyalty for the benefit and betterment of the company by being a usefull counsellor for the clients ."}
                 </p>
               </div>
 
               {/* About */}
-              <div style={{ marginBottom: "26px" }}>
+              <div style={{ marginBottom: "24px" }}>
                 <h3
                   style={{
                     fontFamily: "Georgia, 'Playfair Display', serif",
                     color: "#1e293b",
-                    fontSize: "22px",
-                    fontWeight: 700,
+                    fontSize: "20px",
+                    fontWeight: 600,
                     marginBottom: "8px",
                   }}
                 >
                   About
                 </h3>
-                <p style={{ color: "#4b5563", lineHeight: "1.75", fontSize: "14.5px", margin: 0 }}>
+                <p
+                  style={{
+                    color: "#4b5563",
+                    lineHeight: "1.75",
+                    fontSize: "14px",
+                    margin: 0,
+                  }}
+                >
                   {counselor.about ||
                     "I m a dedicated psychologist.I m very passionate about my work and career. I have 1 year of experience in field of counselling and psychology"}
                 </p>
               </div>
 
               {/* Education */}
-              <div style={{ marginBottom: "26px" }}>
+              <div style={{ marginBottom: "24px" }}>
                 <h3
                   style={{
                     fontFamily: "Georgia, 'Playfair Display', serif",
                     color: "#1e293b",
-                    fontSize: "22px",
-                    fontWeight: 700,
+                    fontSize: "20px",
+                    fontWeight: 600,
                     marginBottom: "8px",
                   }}
                 >
                   Education
                 </h3>
-                <p style={{ color: "#4b5563", lineHeight: "1.75", fontSize: "14.5px", margin: 0 }}>
+                <p
+                  style={{
+                    color: "#4b5563",
+                    lineHeight: "1.75",
+                    fontSize: "14px",
+                    margin: 0,
+                  }}
+                >
                   {counselor.education || "Post Graduate"}
                 </p>
               </div>
 
               {/* Experience */}
-              <div style={{ marginBottom: "26px" }}>
+              <div style={{ marginBottom: "24px" }}>
                 <h3
                   style={{
                     fontFamily: "Georgia, 'Playfair Display', serif",
                     color: "#1e293b",
-                    fontSize: "22px",
-                    fontWeight: 700,
+                    fontSize: "20px",
+                    fontWeight: 600,
                     marginBottom: "8px",
                   }}
                 >
                   Experience
                 </h3>
-                <p style={{ color: "#4b5563", lineHeight: "1.75", fontSize: "14.5px", margin: 0 }}>
-                  {counselor.experienceDetails || counselor.experience || "1 Years"}
+                <p
+                  style={{
+                    color: "#4b5563",
+                    lineHeight: "1.75",
+                    fontSize: "14px",
+                    margin: 0,
+                  }}
+                >
+                  {counselor.experienceDetails ||
+                    counselor.experience ||
+                    "1 Years"}
                 </p>
               </div>
 
@@ -358,14 +497,21 @@ export default function CounsellorDetailsPage({ params }: PageProps) {
                   style={{
                     fontFamily: "Georgia, 'Playfair Display', serif",
                     color: "#1e293b",
-                    fontSize: "22px",
-                    fontWeight: 700,
+                    fontSize: "20px",
+                    fontWeight: 600,
                     marginBottom: "8px",
                   }}
                 >
                   Achievements
                 </h3>
-                <p style={{ color: "#4b5563", lineHeight: "1.75", fontSize: "14.5px", margin: 0 }}>
+                <p
+                  style={{
+                    color: "#4b5563",
+                    lineHeight: "1.75",
+                    fontSize: "14px",
+                    margin: 0,
+                  }}
+                >
                   {counselor.achievements ||
                     "I have done my masters in psychology. I have also done practical internship in counseling."}
                 </p>
@@ -378,14 +524,14 @@ export default function CounsellorDetailsPage({ params }: PageProps) {
       {/* 3. Testimonial / Success Stories Section (Smoothly Animated Carousel) */}
       <SuccessStoriesCarousel />
 
-      {/* Login Modal (Opens on Click matching PHP) */}
+      {/* Login & Sign Up Modal (Exact Same as Navigation Bar Login) */}
       <LoginModal
         isOpen={isLoginModalOpen}
         onClose={() => setIsLoginModalOpen(false)}
         onSuccess={() => setIsBookingModalOpen(true)}
       />
 
-      {/* Booking Form Modal */}
+      {/* Booking Form Modal (Opens after Login) */}
       <BookSessionModal
         counselor={counselor}
         isOpen={isBookingModalOpen}

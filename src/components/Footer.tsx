@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import LoginModal from "./auth/LoginModal";
+import CounselorLoginModal from "./auth/CounselorLoginModal";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -448,7 +448,7 @@ export default function Footer() {
       </footer>
 
       {/* Counselor Login Modal */}
-      <LoginModal
+      <CounselorLoginModal
         isOpen={showLoginModal}
         onClose={() => setShowLoginModal(false)}
       />
