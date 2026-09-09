@@ -521,7 +521,7 @@ export default function BookSessionModal({ counselor, isOpen, onClose }: ModalPr
                     Terms &amp; Conditions
                   </a>{" "}
                   and{" "}
-                  <a href="/privacy" style={{ color: "#1e293b", fontWeight: 600, textDecoration: "none" }}>
+                  <a href="/privacy-policy" style={{ color: "#1e293b", fontWeight: 600, textDecoration: "none" }}>
                     Privacy Policy.
                   </a>
                   <span style={{ color: "#ef4444" }}> *</span>

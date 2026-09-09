@@ -120,43 +120,26 @@ export default function FaqsView() {
   return (
     <div className="main-wrapper" style={{ backgroundColor: "#ffffff" }}>
       {/* Page Banner Section Start */}
-      <div
-        className="page-banner bg-color-04"
-        style={{
-          position: "relative",
-          overflow: "hidden",
-          padding: "41px 0 53px",
-          backgroundColor: "#f8f8f8",
-        }}
-      >
+      <div className="page-banner bg-color-04">
         <div className="page-banner__wrapper">
           <div className="page-banner__shape-01" />
           <div className="page-banner__shape-02" />
           <div className="page-banner__shape-03" />
 
-          <div
-            className="container custom-container"
-            style={{ maxWidth: "1170px", margin: "0 auto", padding: "0 16px" }}
-          >
+          <div className="container custom-container">
+            {/* Page Breadcrumb Start */}
+            <div className="page-breadcrumb">
+              <ul className="breadcrumb">
+                <li className="breadcrumb-item"><a href="#"></a></li>
+                <li className="breadcrumb-item"><a href="#"></a></li>
+                <li className="breadcrumb-item active"></li>
+              </ul>
+            </div>
+            {/* Page Breadcrumb End */}
+
             {/* Page Banner Caption Start */}
-            <div
-              className="page-banner__caption-02"
-              style={{ padding: "8px 0 16px", textAlign: "left" }}
-            >
-              <h2
-                className="page-banner__main-title-02"
-                style={{
-                  fontFamily: "'Playfair Display', serif",
-                  fontSize: "38px",
-                  fontWeight: 700,
-                  color: "#07a64b",
-                  lineHeight: 1.2,
-                  margin: 0,
-                  textAlign: "left",
-                }}
-              >
-                FAQ&apos;s
-              </h2>
+            <div className="page-banner__caption-02">
+              <h2 className="page-banner__main-title-02">FAQ&apos;s</h2>
             </div>
             {/* Page Banner Caption End */}
           </div>
@@ -165,10 +148,7 @@ export default function FaqsView() {
       {/* Page Banner Section End */}
 
       {/* FAQ Section Start */}
-      <div
-        className="faq-section section-padding-01"
-        style={{ padding: "60px 0 80px" }}
-      >
+      <div className="faq-section section-padding-01">
         <style>{`
           /* Hide broken pseudo-element icons from style.css */
           .faq-accordion .accordion-button::after {
