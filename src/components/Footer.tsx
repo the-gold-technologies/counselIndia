@@ -181,7 +181,7 @@ export default function Footer() {
                       </Link>
                     </li>
                     <li>
-                      <Link href="/grievance" className="text-white hover-text-primary text-decoration-none">
+                      <Link href="/grievance-from" className="text-white hover-text-primary text-decoration-none">
                         Grievance Form
                       </Link>
                     </li>
