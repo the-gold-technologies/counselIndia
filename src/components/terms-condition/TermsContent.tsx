@@ -315,13 +315,26 @@ export default function TermsContent() {
                 <p>a. by post, by using the address available on our website ;</p>
                 <p>b. [using our website contact form];</p>
                 <p>
-                  c. by telephone, on <a href="#">+91-8279936203</a>, <a href="#">+91-8930804054</a>{" "}
+                  c. by telephone, on{" "}
+                  <a href="tel:+918279936203" style={{ color: "inherit", textDecoration: "none" }}>
+                    +91-8279936203
+                  </a>
+                  ,{" "}
+                  <a href="tel:+918930804054" style={{ color: "inherit", textDecoration: "none" }}>
+                    +91-8930804054
+                  </a>{" "}
                   [published on our website from time to time]; or
                 </p>
                 <p>
-                  d. [by email, using <a href="#">info@counselindia.com</a>,{" "}
-                  <a href="#">business@counselindia.com</a> [published on our website from time to
-                  time].
+                  d. [by email, using{" "}
+                  <a href="mailto:info@counselindia.com" style={{ color: "inherit", textDecoration: "none" }}>
+                    info@counselindia.com
+                  </a>
+                  ,{" "}
+                  <a href="mailto:business@counselindia.com" style={{ color: "inherit", textDecoration: "none" }}>
+                    business@counselindia.com
+                  </a>{" "}
+                  [published on our website from time to time].
                 </p>
               </div>
             </div>
