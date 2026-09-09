@@ -7,21 +7,41 @@ export default function HeroSection() {
   const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
+    // Attempt unmuted auto-play after 2 seconds
     const timer = setTimeout(() => {
-      setIsPlaying(true);
       if (videoRef.current) {
-        // Attempt unmuted play first; if browser blocks it, mute and play
-        videoRef.current.play().catch(() => {
-          if (videoRef.current) {
-            videoRef.current.muted = true;
-            videoRef.current.play().catch(() => {});
-          }
-        });
+        videoRef.current.muted = false;
+        videoRef.current
+          .play()
+          .then(() => {
+            setIsPlaying(true);
+          })
+          .catch(() => {
+            // Browser prevented unmuted auto-play without user gesture; keep cover ready for 1-click play
+          });
       }
-    }, 1500);
+    }, 2000);
 
-    return () => clearTimeout(timer);
-  }, []);
+    // If user clicks anywhere on the page, try unmuted play
+    const handleFirstInteraction = () => {
+      if (videoRef.current && !isPlaying) {
+        videoRef.current.muted = false;
+        videoRef.current
+          .play()
+          .then(() => {
+            setIsPlaying(true);
+          })
+          .catch(() => {});
+      }
+    };
+
+    window.addEventListener("click", handleFirstInteraction, { once: true });
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("click", handleFirstInteraction);
+    };
+  }, [isPlaying]);
 
   const handlePlayClick = () => {
     setIsPlaying(true);
