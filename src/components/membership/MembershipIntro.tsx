@@ -5,8 +5,14 @@ export default function MembershipIntro() {
   const roadmapItems = [
     { title: "Mental Health Routine", desc: "to keep your emotions in check" },
     { title: "Self-help Videos", desc: "to empower your personal development" },
-    { title: "An Emotional Meter", desc: "to keep a track of your mental health" },
-    { title: "Tailor Made Tips", desc: "to improve your current mental health score" },
+    {
+      title: "An Emotional Meter",
+      desc: "to keep a track of your mental health",
+    },
+    {
+      title: "Tailor Made Tips",
+      desc: "to improve your current mental health score",
+    },
     {
       title: "Recommended By Experts Section",
       desc: "Must Watch Movies & Books: Psychology Thrillers, Feel Good, Psychodrama & more",
@@ -37,99 +43,220 @@ export default function MembershipIntro() {
   return (
     <>
       {/* 1. Hey Fellow Human Section */}
-      <div className="section-2nd" style={{ marginTop: "5%", marginBottom: "5%" }}>
+      <div
+        className="section-2nd"
+        style={{
+          paddingTop: "5%",
+          paddingBottom: "2%",
+          backgroundColor: "#eeeeee",
+        }}
+      >
         <div className="container custom-container">
           <div className="row justify-content-center">
             <div className="col-lg-10">
-              <div className="section-title text-center">
-                <h2 className="section-title__title-03">
-                  Hey, Fellow Human!
-                </h2>
+              {/* Section Title Start */}
+              <div className="section-title text-center" data-aos="fade-up">
+                <h2 className="section-title__title-03">Hey, Fellow Human!</h2>
                 <h2 className="section-title__title-03">
                   Ready to <mark>meet the best version of yourself?</mark>
                 </h2>
-                <h6
-                  className="mt-2"
-                  style={{
-                    color: "#212529",
-                    fontSize: "16px",
-                    fontWeight: 400,
-                    lineHeight: "1.7",
-                    maxWidth: "920px",
-                    margin: "15px auto 0",
-                  }}
-                >
-                  Feeling stressed, anxious, or down is a natural part of our everyday life. But
-                  what if we told you there’s a friend who can guide you through it all, helping you manage your
-                  emotions to live a life you’ve always wanted?
+                <h6 className="mt-2">
+                  Feeling stressed, anxious, or down is a natural part of our
+                  everyday life. But what if we told you there&apos;s a friend
+                  who can guide you through it all, helping you manage your
+                  emotions to live a life you&apos;ve always wanted?
                 </h6>
 
                 <h5 className="mb-4 fw-bold" style={{ marginTop: "5%" }}>
-                  <span
-                    className="primary-text-color"
-                    style={{
-                      color: "#07a64b !important",
-                      fontSize: "24px",
-                      fontWeight: 700,
-                    }}
-                  >
-                    Believe in yourself, and you’re halfway there.
+                  <span className="primary-text-color">
+                    Believe in yourself, and you&apos;re halfway there.
                   </span>
                 </h5>
-                <h6
-                  className="mt-2"
-                  style={{
-                    color: "#212529",
-                    fontSize: "16px",
-                    fontWeight: 400,
-                    lineHeight: "1.7",
-                    maxWidth: "920px",
-                    margin: "15px auto 0",
-                  }}
-                >
+                <h6 className="mt-2">
                   Our team of expert psychologists has carefully curated a
-                  wellbeing routine designed to infuse your life with hope, emotional stability,
-                  and confidence for lasting wellbeing and personal growth.
+                  wellbeing routine designed to infuse your life with hope,
+                  emotional stability, and confidence for lasting wellbeing and
+                  personal growth.
                 </h6>
               </div>
+              {/* Section Title End */}
             </div>
           </div>
         </div>
       </div>
 
       {/* 2. Live a life that's truly yours - Numbered Checklist & Image */}
-      <div className="countdown-signup-section section-padding-01 scene" style={{ backgroundColor: "#E6F0E2" }}>
+      <div
+        className="countdown-signup-section section-padding-01 scene"
+        style={{ backgroundColor: "#E6F0E2" }}
+      >
         <div className="container">
           <div className="row gy-10 align-items-center justify-content-center">
             <div className="col-md-6">
-              <div className="countdown-widget">
+              {/* Countdown Widget Start */}
+              <div
+                className="countdown-widget"
+                data-aos="fade-up"
+                data-aos-duration="1000"
+              >
+                {/* Countdown Title Start */}
                 <div className="countdown-title">
-                  <h2 className="countdown-title__title" style={{ fontSize: "38px", fontWeight: 700, color: "#212529" }}>
+                  <h2 className="countdown-title__title">
                     Live a life that&apos;s truly yours <br />
-                    <mark>Let’s get started: </mark>
+                    <mark>Let&apos;s get started: </mark>
                   </h2>
 
                   <main>
                     <ol className="gradient-list">
-                      {roadmapItems.map((item, idx) => (
-                        <li key={idx}>
-                          <strong
-                            className="primary-text-color"
-                            style={{ color: "#07a64b", fontWeight: 600 }}
-                          >
-                            {item.title}{" "}
-                          </strong>
-                          {item.desc}
-                        </li>
-                      ))}
+                      <li>
+                        <strong
+                          className="primary-text-color"
+                          style={{ fontWeight: 400 }}
+                        >
+                          Mental Health Routine{" "}
+                        </strong>
+                        to keep your emotions in check
+                      </li>
+                      <li>
+                        <strong
+                          className="primary-text-color"
+                          style={{ fontWeight: 400 }}
+                        >
+                          Self-help Videos{" "}
+                        </strong>
+                        to empower your personal development
+                      </li>
+                      <li>
+                        <strong
+                          className="primary-text-color"
+                          style={{ fontWeight: 400 }}
+                        >
+                          An Emotional Meter{" "}
+                        </strong>
+                        to keep a track of your mental health
+                      </li>
+                      <li>
+                        <strong
+                          className="primary-text-color"
+                          style={{ fontWeight: 400 }}
+                        >
+                          Tailor Made Tips{" "}
+                        </strong>
+                        to improve your current mental health score
+                      </li>
+                      <li>
+                        <strong
+                          className="primary-text-color"
+                          style={{ fontWeight: 400 }}
+                        >
+                          Recommended By Experts Section{" "}
+                        </strong>
+                        Must Watch Movies &amp; Books: Psychology Thrillers,
+                        Feel Good, Psychodrama &amp; more
+                      </li>
+                      <li>
+                        <strong
+                          className="primary-text-color"
+                          style={{ fontWeight: 400 }}
+                        >
+                          Healing Hands{" "}
+                        </strong>
+                        Help One person around you from everything you have
+                        gathered from Counsel India
+                      </li>
+                      <li>
+                        <strong
+                          className="primary-text-color"
+                          style={{ fontWeight: 400 }}
+                        >
+                          A Curated Podcast Library{" "}
+                        </strong>
+                        for Mental fitness
+                      </li>
+                      <li>
+                        <strong
+                          className="primary-text-color"
+                          style={{ fontWeight: 400 }}
+                        >
+                          20 Case Study Videos{" "}
+                        </strong>
+                        to learn from real life stories
+                      </li>
+                      <li>
+                        <strong
+                          className="primary-text-color"
+                          style={{ fontWeight: 400 }}
+                        >
+                          Handy Workbook{" "}
+                        </strong>
+                        for Journaling therapy
+                      </li>
+                      <li>
+                        <strong
+                          className="primary-text-color"
+                          style={{ fontWeight: 400 }}
+                        >
+                          FREE Self-paced Courses{" "}
+                        </strong>
+                      </li>
+                      <li>
+                        <strong
+                          className="primary-text-color"
+                          style={{ fontWeight: 400 }}
+                        >
+                          Monthly Newsletter{" "}
+                        </strong>
+                        to stay updated with the latest trends in mental health
+                      </li>
+                      <li>
+                        <strong
+                          className="primary-text-color"
+                          style={{ fontWeight: 400 }}
+                        >
+                          LIVE Healing Session{" "}
+                        </strong>
+                        with experts
+                      </li>
+                      <li>
+                        <strong
+                          className="primary-text-color"
+                          style={{ fontWeight: 400 }}
+                        >
+                          Additional 1000 rupee Discount{" "}
+                        </strong>
+                        on Counsel India Programs
+                      </li>
+                      <li>
+                        <strong
+                          className="primary-text-color"
+                          style={{ fontWeight: 400 }}
+                        >
+                          Refer &amp; Grow{" "}
+                        </strong>
+                        Gift/Refer Counsel India membership to 5 friends &amp;
+                        get 1 month of membership FREE{" "}
+                        <strong
+                          className="primary-text-color"
+                          style={{ fontWeight: 400 }}
+                        >
+                          worth Rs. 199.
+                        </strong>
+                      </li>
                     </ol>
                   </main>
                 </div>
+                {/* Countdown Title End */}
               </div>
+              {/* Countdown Widget End */}
             </div>
 
             <div className="col-md-6">
-              <div className="countdown-image text-center scene">
+              {/* Countdown Image Start */}
+              <div
+                className="countdown-image text-center scene"
+                data-aos="fade-up"
+                data-aos-duration="1000"
+              >
                 <div className="countdown-image__image">
                   <img
                     className="lifeimg"
@@ -140,6 +267,7 @@ export default function MembershipIntro() {
                   />
                 </div>
               </div>
+              {/* Countdown Image End */}
             </div>
           </div>
         </div>
@@ -150,21 +278,19 @@ export default function MembershipIntro() {
           height: 1300px;
           object-fit: cover;
           width: auto;
-          border-radius: 8px;
         }
 
         .countdown-image__image {
           max-height: 1600px;
           overflow: hidden;
           width: 550px;
-          margin: 0 auto;
         }
 
         main {
           display: block;
           margin: 0 auto;
           max-width: 40rem;
-          padding: 1rem 0;
+          padding: 1rem;
         }
 
         ol.gradient-list {
@@ -182,7 +308,8 @@ export default function MembershipIntro() {
           min-height: 3rem;
           padding: 1rem 1rem 1rem 2rem;
           position: relative;
-          box-shadow: 0.25rem 0.25rem 0.6rem rgba(0, 0, 0, 0.05),
+          box-shadow:
+            0.25rem 0.25rem 0.6rem rgba(0, 0, 0, 0.05),
             0 0.5rem 1.125rem rgba(75, 0, 0, 0.05);
           font-size: 14px;
           color: #212529;
@@ -207,10 +334,7 @@ export default function MembershipIntro() {
           content: counter(gradient-counter);
           color: #1d1f20;
           display: flex;
-          font-family: var(--font-heading, "Inter", sans-serif);
-          font-weight: 900;
-          font-size: 1.4em;
-          line-height: 1;
+          font: 900 1.5em/1 "Montserrat";
           justify-content: flex-end;
           padding: 0.125em 0.25em;
           z-index: 1;

@@ -3,7 +3,14 @@ import React from "react";
 
 export default function MembershipWhyJoin() {
   return (
-    <div className="section-2nd" style={{ marginTop: "5%", marginBottom: "5%" }}>
+    <div
+      className="section-2nd"
+      style={{
+        paddingTop: "5%",
+        paddingBottom: "5%",
+        backgroundColor: "#eeeeee",
+      }}
+    >
       <div className="container custom-container">
         <div className="row justify-content-center">
           <div className="col-lg-10">
@@ -11,7 +18,12 @@ export default function MembershipWhyJoin() {
             <div className="section-title text-center">
               <h2
                 className="section-title__title-03"
-                style={{ fontSize: "42px", fontWeight: 700, color: "#1a2638", marginBottom: "15px" }}
+                style={{
+                  fontSize: "42px",
+                  fontWeight: 700,
+                  color: "#1a2638",
+                  marginBottom: "15px",
+                }}
               >
                 Why should I join?
               </h2>
@@ -26,8 +38,10 @@ export default function MembershipWhyJoin() {
                   margin: "0 auto",
                 }}
               >
-                Because life is too long to not be your best self, and we understand this. This membership is a workout for your mind,
-                just like a good consistent workout keeps you happy and healthy for longer.
+                Because life is too long to not be your best self, and we
+                understand this. This membership is a workout for your mind,
+                just like a good consistent workout keeps you happy and healthy
+                for longer.
               </h6>
               <a
                 className="btn btn-primary btn-hover-primary"

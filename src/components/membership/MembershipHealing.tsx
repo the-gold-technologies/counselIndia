@@ -2,124 +2,172 @@
 import React from "react";
 
 export default function MembershipHealing() {
-  const cards = [
-    "You will experience significant growth both personally and professionally!",
-    "Yes. You will build your professional competence & learn from the finest experts!",
-    "Yes. You will get HOURS & HOURS of empowerment!",
-    "Yes. You will get a massive toolkit of personalized resources.",
-  ];
-
   return (
     <>
-      <div className="section-2nd healing-section" style={{ padding: "70px 0 60px", backgroundColor: "#f0eded" }}>
-        <div className="container custom-container" style={{ maxWidth: "1140px" }}>
+      <div
+        className="section-2nd"
+        style={{ marginTop: "5%", marginBottom: "5%" }}
+      >
+        <div className="container custom-container">
           <div className="row justify-content-center">
-            <div className="col-lg-12">
-              <div className="section-title text-center mb-5">
-                <h2 className="section-title__title-03" style={{ fontSize: "44px", fontWeight: 700, color: "#1a2638", marginBottom: "20px" }}>
+            <div className="col-lg-10">
+              {/* Section Title Start */}
+              <div
+                className="section-title text-center"
+                data-aos="fade-up"
+                data-aos-duration="1000"
+              >
+                <h2 className="section-title__title-03">
                   We Are Here For Healing!!
                 </h2>
 
-                <h5
-                  className="mb-5 fw-bold"
-                  style={{
-                    fontSize: "17px",
-                    lineHeight: "1.7",
-                    color: "#212529",
-                    maxWidth: "960px",
-                    marginLeft: "auto",
-                    marginRight: "auto",
-                  }}
-                >
-                  This community is your safe place for healing and self-growth. No,{" "}
-                  <span style={{ color: "#07a64b" }}>
+                <h5 className="mb-4 fw-bold" style={{ marginTop: "5%" }}>
+                  This community is your safe place for healing and self-growth.
+                  No,{" "}
+                  <span className="primary-text-color">
                     <strong>
-                      it is NOT limited to self-healers but open to both professionals and clients like yourself!
+                      {" "}
+                      it is NOT limited to self-healers but open to both
+                      professionals and clients like yourself!{" "}
                     </strong>
-                  </span>{" "}
-                  Feel free to expose your vulnerable selves as this space is judgement-free.
+                  </span>
+                  Feel free to expose your vulnerable selves as this space is
+                  judgement-free.
                 </h5>
 
-                <div className="healing-cards-container">
-                  <div className="row g-4 justify-content-center">
-                    {cards.map((title, idx) => (
-                      <div className="col-md-6" key={idx}>
-                        <div className="healing-card">
-                          <div className="healing-corner-bg"></div>
-                          <div className="healing-card-text">{title}</div>
+                <div className="ag-format-container">
+                  <div className="ag-courses_box">
+                    <div className="ag-courses_item">
+                      <a href="#" className="ag-courses-item_link">
+                        <div className="ag-courses-item_bg"></div>
+                        <div className="ag-courses-item_title">
+                          You will experience significant growth both personally
+                          and professionally!
                         </div>
-                      </div>
-                    ))}
+                      </a>
+                    </div>
+
+                    <div className="ag-courses_item">
+                      <a href="#" className="ag-courses-item_link">
+                        <div className="ag-courses-item_bg"></div>
+                        <div className="ag-courses-item_title">
+                          Yes. You will build your professional competence &amp;
+                          learn from the finest experts!
+                        </div>
+                      </a>
+                    </div>
+
+                    <div className="ag-courses_item">
+                      <a href="#" className="ag-courses-item_link">
+                        <div className="ag-courses-item_bg"></div>
+                        <div className="ag-courses-item_title">
+                          Yes. You will get HOURS &amp; HOURS of empowerment!
+                        </div>
+                      </a>
+                    </div>
+
+                    <div className="ag-courses_item">
+                      <a href="#" className="ag-courses-item_link">
+                        <div className="ag-courses-item_bg"></div>
+                        <div className="ag-courses-item_title">
+                          Yes. You will get a massive toolkit of personalized
+                          resources.
+                        </div>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
+              {/* Section Title End */}
             </div>
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        .healing-cards-container {
-          width: 100%;
+      <style>{`
+        .ag-format-container {
+          width: 90%;
           margin: 0 auto;
         }
-
-        .healing-card {
-          background-color: #227827;
-          border-radius: 22px;
-          padding: 45px 30px;
-          min-height: 165px;
+        .ag-courses_box {
           display: flex;
-          align-items: center;
-          justify-content: center;
-          position: relative;
+          flex-wrap: wrap;
+          padding: 30px 0;
+        }
+        .ag-courses_item {
+          flex-basis: calc(50% - 20px);
+          margin: 0 10px 20px;
           overflow: hidden;
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-          cursor: pointer;
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          border-radius: 20px;
+          display: flex;
+          flex-direction: column;
         }
-
-        .healing-card:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 8px 25px rgba(34, 120, 39, 0.25);
-        }
-
-        .healing-corner-bg {
-          width: 100px;
-          height: 100px;
-          background-color: rgba(0, 0, 0, 0.12);
-          position: absolute;
-          top: -45px;
-          right: -45px;
-          border-radius: 50%;
-          z-index: 1;
-          transition: transform 0.5s ease;
-        }
-
-        .healing-card:hover .healing-corner-bg {
-          transform: scale(7);
-        }
-
-        .healing-card-text {
-          color: #ffffff;
-          font-size: 22px;
-          font-weight: 700;
-          line-height: 1.45;
-          text-align: center;
+        .ag-courses-item_link {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding: 20px 15px;
+          background-color: #2d8325;
+          overflow: hidden;
           position: relative;
-          z-index: 2;
-          margin: 0;
-          font-family: inherit;
+          flex: 1;
         }
+        .ag-courses-item_link:hover,
+        .ag-courses-item_link:hover .ag-courses-item_date {
+          text-decoration: none;
+          color: #FFF;
+        }
+        .ag-courses-item_link:hover .ag-courses-item_bg {
+          transform: scale(6);
+        }
+        .ag-courses-item_title {
+          min-height: 72px;
+          margin: 0 0 20px;
+          overflow: hidden;
+          font-weight: bold;
+          font-size: 24px;
+          color: #FFF;
+          z-index: 2;
+          position: relative;
+        }
+        .ag-courses-item_date-box {
+          font-size: 16px;
+          color: #FFF;
+          z-index: 2;
+          position: relative;
+        }
+        .ag-courses-item_date {
+          font-weight: bold;
+          color: #0d751c;
+          transition: color .5s ease;
+        }
+        .ag-courses-item_bg {
+          height: 100px;
+          width: 100px;
+          background-color: #0000001f;
+          z-index: 1;
+          position: absolute;
+          top: -50px;
+          right: -50px;
+          border-radius: 50%;
+          transition: all .5s ease;
+        }
+        .ag-courses_item:nth-child(2n) .ag-courses-item_bg { background-color: #0000001f; }
+        .ag-courses_item:nth-child(3n) .ag-courses-item_bg { background-color: #0000001f; }
+        .ag-courses_item:nth-child(4n) .ag-courses-item_bg { background-color: #0000001f; }
 
-        @media (max-width: 768px) {
-          .healing-card {
-            padding: 35px 20px;
-            min-height: 140px;
-          }
-          .healing-card-text {
-            font-size: 18px;
-          }
+        @media only screen and (max-width: 979px) {
+          .ag-courses_item { flex-basis: calc(50% - 20px); }
+          .ag-courses-item_title { font-size: 20px; }
+        }
+        @media only screen and (max-width: 767px) {
+          .ag-format-container { width: 96%; }
+          .campus-image { margin-right: 0 !important; }
+        }
+        @media only screen and (max-width: 639px) {
+          .ag-courses_item { flex-basis: 100%; }
+          .ag-courses-item_title { min-height: 60px; line-height: 1.2; font-size: 20px; }
+          .ag-courses-item_link { padding: 18px 15px; }
+          .ag-courses-item_date-box { font-size: 14px; }
         }
       `}</style>
     </>
