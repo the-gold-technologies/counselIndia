@@ -1,53 +1,14 @@
 "use client";
 import React, { useState } from "react";
 import NewsletterHero from "@/components/newsletter/NewsletterHero";
-import NewsletterFeaturedArticles from "@/components/newsletter/NewsletterFeaturedArticles";
+import NewsletterFeaturedArticles, {
+  FEATURED_NEWSLETTERS,
+  NewsletterItem,
+} from "@/components/newsletter/NewsletterFeaturedArticles";
 import NewsletterBenefits from "@/components/newsletter/NewsletterBenefits";
 import NewsletterTestimonials from "@/components/newsletter/NewsletterTestimonials";
 import NewsletterBottomCTA from "@/components/newsletter/NewsletterBottomCTA";
 import NewsletterDownloadModal from "@/components/newsletter/NewsletterDownloadModal";
-
-interface NewsletterItem {
-  id: number;
-  name: string;
-  monthTitle?: string;
-  image: string;
-}
-
-const FEATURED_NEWSLETTERS: NewsletterItem[] = [
-  {
-    id: 1,
-    name: "Counsel India's",
-    monthTitle: "February Newsletter",
-    image:
-      "https://prod-s3.counselindia.com/blog/Color Theory Presentation In Colorful Simple Style (1)_1741849717.jpg",
-  },
-  {
-    id: 2,
-    name: "Counsel India's",
-    monthTitle: "January Newsletter",
-    image:
-      "https://prod-s3.counselindia.com/blog/Art Therapy for Kids. (3)_1741849646.jpg",
-  },
-  {
-    id: 3,
-    name: "Counsel India",
-    monthTitle: "November Newsletter",
-    image: "/assets/images/blog/blog-01.jpg",
-  },
-  {
-    id: 4,
-    name: "Counsel India's",
-    monthTitle: "December Newsletter",
-    image: "/assets/images/blog/blog-04.jpg",
-  },
-  {
-    id: 5,
-    name: "Counsel India's",
-    monthTitle: "October Newsletter",
-    image: "/assets/images/blog/blog-05.jpg",
-  },
-];
 
 export default function NewsletterPage() {
   const [selectedNewsletter, setSelectedNewsletter] = useState<NewsletterItem | null>(null);

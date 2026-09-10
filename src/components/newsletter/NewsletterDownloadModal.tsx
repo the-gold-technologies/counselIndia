@@ -1,12 +1,7 @@
 "use client";
 import React, { useState } from "react";
 
-interface NewsletterItem {
-  id: number;
-  name: string;
-  monthTitle?: string;
-  image: string;
-}
+import { NewsletterItem } from "./data/newslettersData";
 
 interface Props {
   newsletter: NewsletterItem | null;

@@ -1,47 +1,10 @@
 "use client";
 import React, { useState, useEffect } from "react";
 
-export interface NewsletterItem {
-  id: number;
-  name: string;
-  monthTitle?: string;
-  image: string;
-}
+import { NewsletterItem, FEATURED_NEWSLETTERS } from "./data/newslettersData";
 
-const NEWSLETTERS: NewsletterItem[] = [
-  {
-    id: 1,
-    name: "Counsel India's",
-    monthTitle: "February Newsletter",
-    image:
-      "https://prod-s3.counselindia.com/blog/Color Theory Presentation In Colorful Simple Style (1)_1741849717.jpg",
-  },
-  {
-    id: 2,
-    name: "Counsel India's",
-    monthTitle: "January Newsletter",
-    image:
-      "https://prod-s3.counselindia.com/blog/Art Therapy for Kids. (3)_1741849646.jpg",
-  },
-  {
-    id: 3,
-    name: "Counsel India",
-    monthTitle: "November Newsletter",
-    image: "/assets/images/blog/blog-01.jpg",
-  },
-  {
-    id: 4,
-    name: "Counsel India's",
-    monthTitle: "December Newsletter",
-    image: "/assets/images/blog/blog-04.jpg",
-  },
-  {
-    id: 5,
-    name: "Counsel India's",
-    monthTitle: "October Newsletter",
-    image: "/assets/images/blog/blog-05.jpg",
-  },
-];
+export { FEATURED_NEWSLETTERS };
+export type { NewsletterItem };
 
 interface Props {
   newsletters?: NewsletterItem[];
@@ -50,7 +13,7 @@ interface Props {
 }
 
 export default function NewsletterFeaturedArticles({
-  newsletters = NEWSLETTERS,
+  newsletters = FEATURED_NEWSLETTERS,
   onDownloadClick,
   onSubscribeClick,
 }: Props) {
@@ -75,14 +38,6 @@ export default function NewsletterFeaturedArticles({
   }, []);
 
   const maxIndex = Math.max(0, newsletters.length - itemsPerView);
-
-  const handlePrev = () => {
-    setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
-  };
-
-  const handleNext = () => {
-    setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
-  };
 
   // Optional Autoplay
   useEffect(() => {
@@ -267,7 +222,9 @@ export default function NewsletterFeaturedArticles({
           font-size: 14.5px;
           font-weight: 600;
           cursor: pointer;
-          transition: background-color 0.2s ease, transform 0.15s ease;
+          transition:
+            background-color 0.2s ease,
+            transform 0.15s ease;
         }
 
         .featured-subscribe-btn:hover {
@@ -306,7 +263,9 @@ export default function NewsletterFeaturedArticles({
           padding: 16px;
           display: flex;
           flex-direction: column;
-          transition: transform 0.2s ease, box-shadow 0.2s ease;
+          transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
         }
 
         .newsletter-card:hover {

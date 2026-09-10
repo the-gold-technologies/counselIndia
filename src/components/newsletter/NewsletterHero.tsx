@@ -349,6 +349,7 @@ export default function NewsletterHero() {
           .subscription-form {
             width: 90% !important;
             top: 72% !important;
+            left: 50% !important;
             padding: 0 !important;
           }
 
@@ -362,6 +363,19 @@ export default function NewsletterHero() {
             text-align: left !important;
             width: 100% !important;
             font-size: 14px !important;
+          }
+
+          .hero-input-wrapper {
+            width: 100% !important;
+            flex: 1 1 auto !important;
+          }
+
+          .hero-form-input {
+            width: 100% !important;
+          }
+
+          .hero-submit-btn {
+            width: 100% !important;
           }
 
           .banner-image {
@@ -657,9 +671,9 @@ export default function NewsletterHero() {
         .subscription-form {
           position: absolute;
           top: 68%;
-          left: 50%;
+          left: calc(50% - 50px);
           transform: translate(-50%, -50%);
-          width: 530px;
+          width: fit-content;
           max-width: 92%;
           z-index: 4;
         }
@@ -694,11 +708,12 @@ export default function NewsletterHero() {
         }
 
         .hero-input-wrapper {
-          flex: 1;
+          width: 405px;
+          flex: 0 0 405px;
         }
 
         .hero-form-input {
-          width: 100%;
+          width: 405px;
           height: 48px;
           background-color: #ffffff;
           border: 1.2px solid #2d3748;
@@ -708,7 +723,10 @@ export default function NewsletterHero() {
           color: #1e293b;
           outline: none;
           box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
-          transition: border-color 0.2s ease, box-shadow 0.2s ease;
+          transition:
+            border-color 0.2s ease,
+            box-shadow 0.2s ease;
+          box-sizing: border-box;
         }
 
         .hero-form-input:focus {
@@ -723,7 +741,7 @@ export default function NewsletterHero() {
         }
 
         .hero-submit-btn {
-          width: 100%;
+          width: 405px;
           height: 50px;
           color: #ffffff;
           border: none;
@@ -732,11 +750,15 @@ export default function NewsletterHero() {
           cursor: pointer;
           background: linear-gradient(90deg, #008000 0%, #00e000 100%);
           border-radius: 6px;
-          transition: transform 0.15s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+          transition:
+            transform 0.15s ease,
+            opacity 0.2s ease,
+            box-shadow 0.2s ease;
           display: flex;
           align-items: center;
           justify-content: center;
           box-shadow: 0 4px 12px rgba(0, 128, 0, 0.25);
+          box-sizing: border-box;
         }
 
         .hero-submit-btn:hover {

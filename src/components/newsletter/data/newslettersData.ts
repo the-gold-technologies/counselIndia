@@ -1,112 +1,128 @@
 export interface NewsletterItem {
   id: number;
-  title: string;
-  month: string;
-  year: number;
-  edition: string;
+  name: string;
+  monthTitle?: string;
   image: string;
-  description: string;
-  highlights: string[];
-  readTime: string;
-  pdfUrl?: string;
-  category: "Clinical" | "Mindfulness" | "Career" | "Trends" | "Corporate";
 }
 
-export const NEWSLETTERS_DATA: NewsletterItem[] = [
+export const FEATURED_NEWSLETTERS: NewsletterItem[] = [
   {
-    id: 1,
-    title: "Navigating Cognitive Overload & Digital Fatigue in 2025",
-    month: "March",
-    year: 2025,
-    edition: "Vol. 28 - Issue 03",
-    image: "/assets/images/blog/blog-01.jpg",
-    description: "An evidence-based deep dive into the psychological effects of constant connectivity and practical clinical tools for digital detox.",
-    highlights: [
-      "Neuroscience of attention fragmentation",
-      "Actionable micro-boundaries for remote workers",
-      "Case studies from corporate counseling practitioners",
-    ],
-    readTime: "6 min read",
-    category: "Trends",
+    id: 70,
+    name: "Counsel India's",
+    monthTitle: "February Newsletter",
+    image:
+      "https://prod-s3.counselindia.com/newsletter/Newsletter Thumbnail Feb_1739252016.jpg",
   },
   {
-    id: 2,
-    title: "Emotional Regulation Strategies for Clinical Practitioners",
-    month: "February",
-    year: 2025,
-    edition: "Vol. 28 - Issue 02",
-    image: "/assets/images/blog/blog-04.jpg",
-    description: "Therapeutic frameworks combining CBT and Dialectical Behavioral techniques for managing high-stress client breakthroughs.",
-    highlights: [
-      "Somatic grounding vs. cognitive reframing",
-      "Practitioner self-care & vicarious trauma prevention",
-      "Interactive practitioner worksheet included",
-    ],
-    readTime: "8 min read",
-    category: "Clinical",
+    id: 69,
+    name: "Counsel India's",
+    monthTitle: "January Newsletter",
+    image:
+      "https://prod-s3.counselindia.com/newsletter/Thumbnails_1736579514.jpg",
   },
   {
-    id: 3,
-    title: "The Rise of Mental Health Awareness in Indian Workplaces",
-    month: "January",
-    year: 2025,
-    edition: "Vol. 28 - Issue 01",
-    image: "/assets/images/blog/blog-05.jpg",
-    description: "Analyzing survey data from over 500 corporate organizations across India on employee assistance programs and psychological safety.",
-    highlights: [
-      "Key workplace mental health metrics for 2025",
-      "ROI of organizational wellbeing programs",
-      "Executive interview with leading CI psychologists",
-    ],
-    readTime: "7 min read",
-    category: "Corporate",
+    id: 68,
+    name: "Counsel India",
+    monthTitle: "November Newsletter",
+    image:
+      "https://prod-s3.counselindia.com/newsletter/Newsletter Thumbnail_1730971341.jpg",
   },
   {
-    id: 4,
-    title: "Child & Adolescent Behavior in the Post-Screen Age",
-    month: "December",
-    year: 2024,
-    edition: "Vol. 27 - Issue 12",
-    image: "/assets/images/blog/blog-06.jpg",
-    description: "Modern parenting paradigms and school psychology interventions for attention, peer dynamics, and emotional resilience.",
-    highlights: [
-      "Identifying early signs of childhood anxiety",
-      "Collaborative parent-counselor intervention models",
-      "Practical developmental milestones checklist",
-    ],
-    readTime: "5 min read",
-    category: "Mindfulness",
+    id: 67,
+    name: "Counsel India Spotlight",
+    monthTitle: "September Edition",
+    image:
+      "https://prod-s3.counselindia.com/newsletter/image_1715248895_1728286977.png",
   },
   {
-    id: 5,
-    title: "Building a Sustainable Career as a Licensed Psychologist in India",
-    month: "November",
-    year: 2024,
-    edition: "Vol. 27 - Issue 11",
-    image: "/assets/images/blog/career.jpg",
-    description: "A comprehensive roadmap from postgraduate studies and RCI certifications to building an ethical private practice.",
-    highlights: [
-      "Licensing updates & regulatory compliance",
-      "Tele-therapy best practices and client acquisition",
-      "Alumni spotlight & career transition journeys",
-    ],
-    readTime: "9 min read",
-    category: "Career",
+    id: 66,
+    name: "Counsel India Spotlight",
+    monthTitle: "August Edition",
+    image:
+      "https://prod-s3.counselindia.com/newsletter/WhatsApp Image 2024-09-06 at 17.38.54_06b22724_1725624852.jpg",
   },
   {
-    id: 6,
-    title: "The Neurobiology of Resilience & Habit Formation",
-    month: "October",
-    year: 2024,
-    edition: "Vol. 27 - Issue 10",
-    image: "/assets/images/blog/research.jpg",
-    description: "How neuroplasticity shapes emotional endurance, habit loops, and long-term behavioral change in therapeutic settings.",
-    highlights: [
-      "Dopamine pathways & reward feedback loops",
-      "Evidence-based habit stacking for clients",
-      "Recommended research reading list",
-    ],
-    readTime: "6 min read",
-    category: "Clinical",
+    id: 65,
+    name: "Counsel India Spotlight",
+    monthTitle: "June Edition",
+    image:
+      "https://prod-s3.counselindia.com/newsletter/WhatsApp Image 2024-07-18 at 16.22.16_1721300352.jpeg",
+  },
+  {
+    id: 63,
+    name: "Newsletter,",
+    monthTitle: "May 2024",
+    image:
+      "https://prod-s3.counselindia.com/newsletter/Thumbnail for Newsletter_1718017207.jpg",
+  },
+  {
+    id: 62,
+    name: "Newsletter,",
+    monthTitle: "April 2024",
+    image:
+      "https://prod-s3.counselindia.com/newsletter/image_1715248895.png",
+  },
+  {
+    id: 61,
+    name: "Newsletter,",
+    monthTitle: "March 2024",
+    image:
+      "https://prod-s3.counselindia.com/newsletter/March edition of our newsletter_11zon_1710481537.jpg",
+  },
+  {
+    id: 60,
+    name: "Newsletter,",
+    monthTitle: "February 2024",
+    image:
+      "https://prod-s3.counselindia.com/newsletter/WhatsApp Image 2024-03-11 at 5.03.39 PM_1710307347.jpg",
+  },
+  {
+    id: 59,
+    name: "Newsletter,",
+    monthTitle: "January 2024",
+    image:
+      "https://prod-s3.counselindia.com/newsletter/news_newsletter_1706686801.png",
+  },
+  {
+    id: 54,
+    name: "Newsletter,",
+    monthTitle: "September 2023",
+    image:
+      "https://prod-s3.counselindia.com/newsletter/news_September_1702453893.png",
+  },
+  {
+    id: 58,
+    name: "Newsletter,",
+    monthTitle: "August 2023",
+    image:
+      "https://prod-s3.counselindia.com/newsletter/news_august_1702557980.png",
+  },
+  {
+    id: 52,
+    name: "Newsletter,",
+    monthTitle: "July 2023",
+    image:
+      "https://prod-s3.counselindia.com/newsletter/news_july_1702453639.png",
+  },
+  {
+    id: 53,
+    name: "Newsletter,",
+    monthTitle: "June 2023",
+    image:
+      "https://prod-s3.counselindia.com/newsletter/news_june_1702453726.png",
+  },
+  {
+    id: 57,
+    name: "Newsletter,",
+    monthTitle: "May 2023",
+    image:
+      "https://prod-s3.counselindia.com/newsletter/news_may_1702557756.png",
+  },
+  {
+    id: 51,
+    name: "Newsletter,",
+    monthTitle: "March 2023",
+    image:
+      "https://prod-s3.counselindia.com/newsletter/news_MicrosoftTeams-image (1)_1702446784.png",
   },
 ];
