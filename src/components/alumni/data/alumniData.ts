@@ -87,27 +87,29 @@ export const ALUMNI_SERVICES: AlumniService[] = [
 ];
 
 export const ALUMNI_NETWORK_ROW_1: string[] = [
+  "https://prod-s3.counselindia.com/mastergalaxyimages/IMG_20241122_112616%20(2)_1732514338.jpg",
+  "https://prod-s3.counselindia.com/mastergalaxyimages/IMG_4047%20(1)_1732514350.JPEG",
+  "https://prod-s3.counselindia.com/mastergalaxyimages/IMG-20241101-WA0017%20(1)_1732514366.jpg",
   "https://prod-s3.counselindia.com/mastergalaxyimages/Inu%20Photo%20(2)_1732514379.jpg",
   "https://prod-s3.counselindia.com/mastergalaxyimages/1000250655%20(1)_1732514392.jpg",
   "https://prod-s3.counselindia.com/mastergalaxyimages/1638087948533%20(1)_1732514411.jpg",
   "https://prod-s3.counselindia.com/mastergalaxyimages/IMG_20241121_124818%20(1)_1732514325.jpg",
-  "https://prod-s3.counselindia.com/mastergalaxyimages/20241112_125559%20(1)_1732514169.jpg",
-  "https://prod-s3.counselindia.com/mastergalaxyimages/GANDHI%20%20HARSHADA%20(1)_1732514193.jpg",
+  "https://prod-s3.counselindia.com/mastergalaxyimages/IMG_20241119_104207~2_1732514298.jpg",
   "https://prod-s3.counselindia.com/mastergalaxyimages/IMG_20241117_155327%20(1)_1732514284.jpg",
   "https://prod-s3.counselindia.com/mastergalaxyimages/IMG_20191020_101242561%20(1)_1732514231.jpg",
-  "https://prod-s3.counselindia.com/mastergalaxyimages/IMG_20241119_104207~2_1732514298.jpg",
-  "https://prod-s3.counselindia.com/mastergalaxyimages/IMG_4047%20(1)_1732514350.JPEG",
+  "https://prod-s3.counselindia.com/mastergalaxyimages/image_50433793%20(2)_1732514219.JPG",
 ];
 
 export const ALUMNI_NETWORK_ROW_2: string[] = [
-  "https://prod-s3.counselindia.com/mastergalaxyimages/e79f9e36-3066-459b-a9b7-d47eb431ba29%20(2)_1732514181.jpeg",
-  "https://prod-s3.counselindia.com/mastergalaxyimages/IMG_20241122_112616%20(2)_1732514338.jpg",
-  "https://prod-s3.counselindia.com/mastergalaxyimages/Guneet%20Gill%20(1)_1732514205.jpg",
-  "https://prod-s3.counselindia.com/mastergalaxyimages/IMG_20241117_155327%20(1)_1732514284.jpg",
-  "https://prod-s3.counselindia.com/mastergalaxyimages/IMG-20241101-WA0017%20(1)_1732514366.jpg",
-  "https://prod-s3.counselindia.com/mastergalaxyimages/20240611_112640%20(1)_1732514155.jpg",
   "https://prod-s3.counselindia.com/mastergalaxyimages/16519223050%20(2)_1732514102.jpeg",
   "https://prod-s3.counselindia.com/mastergalaxyimages/1732354277418%20(1)_1732514116.jpg",
   "https://prod-s3.counselindia.com/mastergalaxyimages/2018-10-06%2012.01.02%20(1)_1732514132.jpg",
+  "https://prod-s3.counselindia.com/mastergalaxyimages/20240611_112640%20(1)_1732514155.jpg",
+  "https://prod-s3.counselindia.com/mastergalaxyimages/20241112_125559%20(1)_1732514169.jpg",
+  "https://prod-s3.counselindia.com/mastergalaxyimages/e79f9e36-3066-459b-a9b7-d47eb431ba29%20(2)_1732514181.jpeg",
+  "https://prod-s3.counselindia.com/mastergalaxyimages/IMG_4047%20(1)_1732514350.JPEG",
+  "https://prod-s3.counselindia.com/mastergalaxyimages/Guneet%20Gill%20(1)_1732514205.jpg",
   "https://prod-s3.counselindia.com/mastergalaxyimages/image_50433793%20(2)_1732514219.JPG",
+  "https://prod-s3.counselindia.com/mastergalaxyimages/Inu%20Photo%20(2)_1732514379.jpg",
+  "https://prod-s3.counselindia.com/mastergalaxyimages/GANDHI%20%20HARSHADA%20(1)_1732514193.jpg",
 ];

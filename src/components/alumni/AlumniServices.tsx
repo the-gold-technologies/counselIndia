@@ -4,83 +4,119 @@ import { ALUMNI_SERVICES } from "./data/alumniData";
 
 export default function AlumniServices() {
   return (
-    <div className="services-section section-padding-01 py-5 bg-white border-top">
-      <div className="container custom-container py-3">
+    <div className="services py-4" style={{ marginTop: "0%" }}>
+      <div className="container custom-container py-2">
         {/* Section Title */}
-        <div className="section-title text-center mb-5">
-          <h2 className="section-title__title font-size-36 fw-bold text-dark text-uppercase mb-0">
+        <div className="col-sm-12 text-center mb-4">
+          <h2 className="section-title__title text-center text-uppercase">
             SERVICES
           </h2>
         </div>
 
-        {/* 4 Cards Grid */}
-        <div className="row g-4 justify-content-center">
+        {/* 4 Cards Section */}
+        <section className="containeralumni">
           {ALUMNI_SERVICES.map((item) => (
-            <div key={item.id} className="col-xl-3 col-lg-3 col-md-6 col-12">
-              <div className="alumni-service-card bg-white h-100 d-flex flex-column text-center">
-                {/* Inset Image with Rounded Corners */}
-                <div className="alumni-service-card__img-container p-2 pb-0">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    width={320}
-                    height={210}
-                    className="w-100 d-block"
-                    style={{
-                      height: "210px",
-                      objectFit: "cover",
-                      borderRadius: "8px",
-                    }}
-                  />
-                </div>
-
-                {/* Content */}
-                <div className="alumni-service-card__body p-4 pt-3 d-flex flex-column flex-grow-1">
-                  <h3 className="alumni-service-card__title font-size-20 fw-bold mb-3">
-                    {item.title}
-                  </h3>
-                  <p className="alumni-service-card__desc font-size-15 lh-base mb-0 flex-grow-1">
-                    {item.description}
-                  </p>
-                </div>
+            <div key={item.id} className="card">
+              <img
+                src={item.image}
+                alt={item.title}
+                width={300}
+                height={200}
+                className="card-image"
+              />
+              <div className="card-description p-3 pt-0">
+                <h5 style={{ margin: "5% 0" }}>{item.title}</h5>
+                <p className="mb-0 text-muted-dark">{item.description}</p>
               </div>
             </div>
           ))}
-        </div>
+        </section>
       </div>
 
       <style jsx>{`
+        .services {
+          background: linear-gradient(to top, #ffffff, #ffffff);
+        }
+
         .section-title__title {
           font-family: Georgia, "Playfair Display", "Times New Roman", serif;
           font-size: 36px;
           color: #212529;
           letter-spacing: 0.5px;
+          margin-bottom: 2rem;
         }
 
-        .alumni-service-card {
-          border: 1px solid #e5e7eb;
-          border-radius: 12px;
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .containeralumni {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          gap: 20px;
+          max-width: 1200px;
+          margin: 0 auto;
         }
 
-        .alumni-service-card:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+        .card {
+          background-color: #fff;
+          border: 1px solid #ddd;
+          width: calc(25% - 20px);
+          text-align: center;
+          border-radius: 8px;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+          overflow: hidden;
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .alumni-service-card__title {
-          font-family: var(--font-inter), sans-serif;
-          color: #1e293b;
-          font-size: 20px;
-          font-weight: 700;
+        .card:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
         }
 
-        .alumni-service-card__desc {
-          font-family: var(--font-inter), sans-serif;
-          color: #374151;
+        .card-image {
+          width: 100%;
+          height: 200px;
+          object-fit: cover;
+          border-radius: 5px 5px 0 0;
+          display: block;
+        }
+
+        .card-description {
+          margin-top: 10px;
           font-size: 15px;
-          line-height: 1.65;
+          line-height: 1.6;
+          color: #333;
+        }
+
+        .card-description h5 {
+          font-family: var(--font-inter), sans-serif;
+          font-size: 19px;
+          font-weight: 700;
+          color: #111827;
+        }
+
+        .text-muted-dark {
+          color: #4b5563;
+        }
+
+        @media (min-width: 1024px) {
+          .card {
+            width: calc(25% - 20px);
+          }
+        }
+
+        @media (max-width: 1023px) {
+          .card {
+            width: calc(50% - 20px);
+          }
+        }
+
+        @media (max-width: 768px) {
+          .card {
+            width: 100%;
+          }
+
+          .containeralumni {
+            margin: 2%;
+          }
         }
       `}</style>
     </div>

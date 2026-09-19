@@ -6,7 +6,7 @@ import AlumniServices from "@/components/alumni/AlumniServices";
 import AlumniNetworkShowcase from "@/components/alumni/AlumniNetworkShowcase";
 
 export const metadata: Metadata = {
-  title: "Alumni Network | Counsel India",
+  title: "Counsel India Alumni | Join the Community of Learners",
   description:
     "Join the Counsel India Alumni Network - a thriving community of over 200,000+ psychology learners, professionals, and counsellors worldwide.",
 };
