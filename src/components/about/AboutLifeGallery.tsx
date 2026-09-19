@@ -3,39 +3,39 @@ import React from "react";
 import { GALAXY_GALLERY } from "./data/aboutData";
 
 export default function AboutLifeGallery() {
-  // Duplicate the array to create a seamless, continuous infinite marquee
   const duplicatedGallery = [...GALAXY_GALLERY, ...GALAXY_GALLERY];
 
   return (
-    <div className="testimonial-section galaxy section-padding-01 py-5 bg-white border-top">
-      <div className="container custom-container py-3">
+    <div className="testimonial-section galaxy section-padding-01 scene">
+      <div className="container">
         {/* Section Title */}
-        <div className="section-title mb-4">
-          <h2 className="section-title__title font-size-34 fw-bold text-dark">
-            <mark>Life at Counsel India</mark>
+        <div
+          className="section-title"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+        >
+          <h2 className="section-title__title">
+            Life at <mark>Counsel India</mark>
           </h2>
         </div>
 
-        {/* Smooth Auto Sliding Marquee Track contained inside standard container padding */}
+        {/* Gallery Slider / Marquee */}
         <div className="gallery-marquee-container">
           <div className="gallery-marquee-track">
             {duplicatedGallery.map((imgSrc, idx) => (
               <div key={idx} className="gallery-item-wrapper px-2">
-                <div className="galaxy-frame p-1 rounded-1 shadow-sm">
-                  <img
-                    src={imgSrc}
-                    alt={`Life at Counsel India ${idx + 1}`}
-                    width={360}
-                    height={240}
-                    className="d-block"
-                    style={{
-                      width: "350px",
-                      height: "230px",
-                      objectFit: "cover",
-                      borderRadius: "2px",
-                    }}
-                  />
-                </div>
+                <img
+                  src={imgSrc}
+                  alt={`Life at Counsel India ${idx + 1}`}
+                  width={360}
+                  height={240}
+                  className="d-block"
+                  style={{
+                    width: "350px",
+                    height: "230px",
+                    objectFit: "cover",
+                  }}
+                />
               </div>
             ))}
           </div>
@@ -43,21 +43,54 @@ export default function AboutLifeGallery() {
       </div>
 
       <style jsx>{`
+        .section-padding-01 {
+          padding-top: 50px;
+          padding-bottom: 50px;
+        }
+
+        .section-title {
+          margin-bottom: 37px;
+        }
+
         .section-title__title {
-          font-family: Georgia, "Playfair Display", "Times New Roman", serif;
-          font-size: 34px;
-          color: #212529;
-          line-height: 1.3;
+          font-family: "Playfair Display", serif;
+          font-size: 28px;
+          line-height: 1.5;
+          font-weight: 700;
+          color: #232937;
         }
 
-        .galaxy-frame {
-          border: 1.5px solid #07a64b;
-          background-color: #ffffff;
-          transition: transform 0.3s ease;
+        .section-title__title mark {
+          position: relative;
+          z-index: 0;
+          padding: 0 0 10px;
+          color: inherit;
+          background-color: transparent;
+          display: inline-block;
         }
 
-        .galaxy-frame:hover {
-          transform: translateY(-4px);
+        .section-title__title mark::after {
+          content: "";
+          position: absolute;
+          width: 91px;
+          height: 12px;
+          bottom: 0;
+          left: 50%;
+          z-index: -1;
+          transform: translate(-45px);
+          background-color: #07a64b;
+          mask-repeat: no-repeat;
+          mask-size: contain;
+          mask-image: url("https://www.counselindia.com/assets/images/headline-curve-02.svg");
+          -webkit-mask-repeat: no-repeat;
+          -webkit-mask-size: contain;
+          -webkit-mask-image: url("https://www.counselindia.com/assets/images/headline-curve-02.svg");
+        }
+
+        .galaxy img {
+          padding: 5px;
+          border: 1px solid #07a64b;
+          background: #fff;
         }
 
         .gallery-marquee-container {

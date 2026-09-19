@@ -36,69 +36,109 @@ const COUNTERS_DATA = [
 
 export default function AboutImpactCounters() {
   return (
-    <div className="why-choose-section py-5 bg-white border-top border-bottom">
-      <div className="container custom-container py-3">
-        <div className="row g-4 justify-content-center align-items-start text-center">
-          {COUNTERS_DATA.map((item) => (
-            <div key={item.id} className="col-lg col-md-4 col-sm-6 col-12">
-              <div className="counter-item-03 px-2 py-2">
-                <div className="counter-item-03__icon mb-3">
-                  <img
-                    src={item.icon}
-                    alt={item.count}
-                    width={65}
-                    height={65}
-                    style={{ objectFit: "contain", display: "inline-block" }}
-                  />
+    <div className="why-choose-section">
+      <div className="why-choose-section section-padding-01">
+        <div className="container">
+          {/* Counter Start */}
+          <div className="counter">
+            <div className="row banner-active justify-content-center">
+              {COUNTERS_DATA.map((item) => (
+                <div
+                  key={item.id}
+                  className="col-lg col-md-4 col-sm-6 col-12 mb-4 mb-lg-0"
+                >
+                  <div className="counter-item-03">
+                    <div className="counter-item-03__icon">
+                      <img
+                        src={item.icon}
+                        alt={item.count}
+                        style={{
+                          height: "65px",
+                          width: "auto",
+                          display: "inline-block",
+                        }}
+                      />
+                    </div>
+                    <div className="counter-item-03__content">
+                      <span className="counter-item-03__count">
+                        {item.count}
+                      </span>
+                      <p className="counter-item-03__text">
+                        {item.text.split("\n").map((line, idx) => (
+                          <React.Fragment key={idx}>
+                            {line}
+                            {idx < item.text.split("\n").length - 1 && <br />}
+                          </React.Fragment>
+                        ))}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <div className="counter-item-03__content">
-                  <span className="counter-item-03__count d-block mb-1">
-                    {item.count}
-                  </span>
-                  <p className="counter-item-03__text mb-0">
-                    {item.text.split("\n").map((line, idx) => (
-                      <React.Fragment key={idx}>
-                        {line}
-                        {idx < item.text.split("\n").length - 1 && <br />}
-                      </React.Fragment>
-                    ))}
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
-          ))}
+          </div>
+          {/* Counter End */}
         </div>
       </div>
 
       <style jsx>{`
+        .section-padding-01 {
+          padding-top: 50px;
+          padding-bottom: 50px;
+        }
+
         .counter-item-03 {
+          padding: 31px 15px;
+          border-radius: 8px;
           text-align: center;
+          transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
         }
 
         .counter-item-03__icon {
-          height: 70px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+          font-size: 82px;
+          line-height: 1;
+          margin-bottom: 24px;
         }
 
         .counter-item-03__count {
-          color: #07a64b;
-          font-size: 32px;
-          font-weight: 700;
+          font-size: 34px;
           line-height: 1.2;
+          font-weight: 500;
+          color: #07a64b;
+          display: block;
         }
 
         .counter-item-03__text {
-          color: #334155;
+          color: rgba(3, 31, 66, 0.7);
           font-size: 14px;
           font-weight: 500;
-          line-height: 1.45;
+          line-height: 1.7;
+          max-width: 215px;
+          margin: 11px auto 0;
         }
 
-        @media (max-width: 991px) {
+        @media only screen and (min-width: 768px) and (max-width: 991px) {
+          .counter-item-03 {
+            padding: 21px 10px;
+          }
+          .counter-item-03__icon {
+            font-size: 70px;
+          }
           .counter-item-03__count {
             font-size: 28px;
+          }
+        }
+
+        @media only screen and (max-width: 767px) {
+          .counter-item-03 {
+            padding: 15px;
+          }
+          .counter-item-03__icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+          }
+          .counter-item-03__count {
+            font-size: 20px;
           }
           .counter-item-03__text {
             font-size: 13px;

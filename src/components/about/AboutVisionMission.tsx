@@ -3,79 +3,94 @@ import React from "react";
 
 export default function AboutVisionMission() {
   return (
-    <div className="academics-section bg-color-05 section-padding-01 py-5">
-      <div className="container custom-container py-4">
-        <div className="row g-4 justify-content-center">
-          {/* Vision Card */}
-          <div className="col-lg-4 col-md-5 col-12">
-            <div className="academics-item text-center">
-              <a
-                href="javascript:void(0)"
-                className="academics-item__link text-decoration-none"
-              >
-                <div className="academics-item__image position-relative overflow-hidden rounded-2">
+    <div className="academics-section bg-color-05 section-padding-01 scene">
+      <div className="container custom-container">
+        <div className="row g-6 justify-content-center">
+          <div className="col-md-4 col-sm-6 col-12 mb-4 mb-md-0">
+            {/* Academics Start */}
+            <div
+              className="academics-item text-center"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+            >
+              <a href="javascript:void(0)" className="academics-item__link">
+                <div className="academics-item__image position-relative overflow-hidden">
                   <img
                     src="https://prod-s3.counselindia.com/images/academics/vision.jpg"
                     alt="Vision"
                     width={370}
                     height={269}
-                    className="w-100 img-fluid"
-                    style={{ height: "260px", objectFit: "cover" }}
+                    className="img-fluid w-100"
                   />
-                  <h3 className="academics-item__title mb-0">Vision</h3>
+                  <h3 className="academics-item__title">Vision</h3>
                 </div>
-                <div className="academics-item__description mt-3">
-                  <p className="font-size-15 text-muted mb-0">
-                    To make &ldquo;Har Ghar Counselor&rdquo; a reality.
-                  </p>
+                <div className="academics-item__description">
+                  <p>To make &ldquo;Har Ghar Counselor&rdquo; a reality.</p>
                 </div>
               </a>
             </div>
+            {/* Academics End */}
           </div>
 
-          {/* Mission Card */}
-          <div className="col-lg-4 col-md-5 col-12">
-            <div className="academics-item text-center">
-              <a
-                href="javascript:void(0)"
-                className="academics-item__link text-decoration-none"
-              >
-                <div className="academics-item__image position-relative overflow-hidden rounded-2">
+          <div className="col-md-4 col-sm-6 col-12">
+            {/* Academics Start */}
+            <div
+              className="academics-item text-center"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+            >
+              <a href="javascript:void(0)" className="academics-item__link">
+                <div className="academics-item__image position-relative overflow-hidden">
                   <img
                     src="https://prod-s3.counselindia.com/images/academics/mission.jpg"
                     alt="Mission"
                     width={370}
                     height={269}
-                    className="w-100 img-fluid"
-                    style={{ height: "260px", objectFit: "cover" }}
+                    className="img-fluid w-100"
                   />
-                  <h3 className="academics-item__title mb-0">Mission</h3>
+                  <h3 className="academics-item__title">Mission</h3>
                 </div>
-                <div className="academics-item__description mt-3">
-                  <p className="font-size-15 text-muted mb-0">
-                    To provide practical psychology education and counseling skills, empowering at least one
-                    person in every home.
+                <div className="academics-item__description">
+                  <p>
+                    To provide practical psychology education and counseling
+                    skills, empowering at least one person in every home.
                   </p>
                 </div>
               </a>
             </div>
+            {/* Academics End */}
           </div>
         </div>
       </div>
 
       <style jsx>{`
         .bg-color-05 {
-          background-color: #f7f9f8;
+          background-color: #f8f8f8;
+        }
+
+        .section-padding-01 {
+          padding-top: 50px;
+          padding-bottom: 50px;
+        }
+
+        .custom-container {
+          max-width: 1200px;
+          padding-left: 15px;
+          padding-right: 15px;
+          margin-left: auto;
+          margin-right: auto;
         }
 
         .academics-item__link {
           display: block;
+          color: inherit;
+          text-decoration: none;
         }
 
         .academics-item__image {
           position: relative;
           overflow: hidden;
-          border-radius: 6px;
+          border-radius: 5px;
         }
 
         .academics-item__image::before {
@@ -85,46 +100,52 @@ export default function AboutVisionMission() {
           height: 100%;
           top: 0;
           left: 0;
-          background-image: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.85));
+          background-image: linear-gradient(
+            180deg,
+            transparent 40%,
+            rgba(0, 0, 0, 0.8)
+          );
           z-index: 1;
         }
 
         .academics-item__image img {
-          transition: transform 1.2s cubic-bezier(0, 0, 0.2, 1);
-          width: 100%;
+          transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
         }
 
         .academics-item:hover .academics-item__image img {
-          transform: scale(1.08);
+          transform: scale(1.1);
         }
 
         .academics-item__title {
-          font-family: Georgia, "Playfair Display", "Times New Roman", serif;
-          font-size: 26px;
-          line-height: 1.4;
+          font-family: "Playfair Display", serif;
+          font-weight: 700;
+          font-size: 24px;
+          line-height: 1.2;
           position: absolute;
           bottom: 20px;
           left: 15px;
           right: 15px;
           z-index: 2;
-          color: #ffffff;
-          font-weight: 700;
-          text-align: center;
+          color: #fff;
+          margin: 0;
         }
 
         .academics-item__description {
-          margin-top: 20px;
+          margin-top: 28px;
         }
 
         .academics-item__description p {
-          color: #475569;
-          font-size: 15px;
-          line-height: 1.5;
+          color: #333;
+          font-family: "Poppins", sans-serif;
+          font-size: 14px;
+          font-weight: 300;
+          line-height: 1.75;
+          margin: 0;
         }
 
-        @media (max-width: 767px) {
+        @media only screen and (max-width: 767px) {
           .academics-item__title {
-            font-size: 20px;
+            font-size: 16px;
           }
         }
       `}</style>
