@@ -59,21 +59,28 @@ export default function HarGharFollowJourney() {
       </div>
 
       <style jsx>{`
+        .image-container {
+          display: flex;
+          gap: 20px;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          margin: 40px auto;
+        }
+
         .responsive-image {
-          width: 520px;
-          height: 580px;
+          width: 500px;
+          height: 600px;
           object-fit: cover;
           display: block;
-          border: 1px solid #111827;
-          box-shadow: 5px 5px 18px rgba(0, 0, 0, 0.55);
-          transition:
-            transform 0.3s ease,
-            box-shadow 0.3s ease;
+          border-radius: 10px;
+          border: 1px solid #000000;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .responsive-image:hover {
-          transform: translateY(-6px);
-          box-shadow: 8px 12px 28px rgba(0, 0, 0, 0.7);
+          transform: translateY(-4px);
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
 
         @media (max-width: 768px) {
