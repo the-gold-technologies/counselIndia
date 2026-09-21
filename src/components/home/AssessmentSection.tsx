@@ -1,5 +1,6 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
 
 interface TestQuestion {
   id: number;
@@ -8,6 +9,7 @@ interface TestQuestion {
 
 interface TestConfig {
   id: string;
+  slug: string;
   title: string;
   image: string;
   questions: TestQuestion[];
@@ -16,9 +18,10 @@ interface TestConfig {
 const TESTS: TestConfig[] = [
   {
     id: "test1",
+    slug: "emotional-well-being",
     title: "Emotional Well-Being Test",
     image:
-      "https://counselindiastudymaterial.s3.ap-south-1.amazonaws.com/mastergalaxyimages/second-cover_converted.webp",
+      "https://prod-s3.counselindia.com/mastergalaxyimages/second-cover_converted.webp",
     questions: [
       { id: 1, question: "How often do you feel overwhelmed by your daily responsibilities?" },
       { id: 2, question: "Do you find it easy to recover from minor setbacks or disappointments?" },
@@ -29,6 +32,7 @@ const TESTS: TestConfig[] = [
   },
   {
     id: "test2",
+    slug: "quality-of-life",
     title: "Quality of Life Test",
     image:
       "https://prod-s3.counselindia.com/mastergalaxyimages/cover22_1730113051.png",
@@ -42,9 +46,10 @@ const TESTS: TestConfig[] = [
   },
   {
     id: "test3",
+    slug: "general-health",
     title: "General Health Test",
     image:
-      "https://counselindiastudymaterial.s3.ap-south-1.amazonaws.com/mastergalaxyimages/coverr_converted.webp",
+      "https://prod-s3.counselindia.com/mastergalaxyimages/coverr_converted.webp",
     questions: [
       { id: 1, question: "Have you felt tired or had low energy over the past two weeks?" },
       { id: 2, question: "How regularly do you experience undisturbed and restorative sleep?" },
@@ -57,7 +62,8 @@ const TESTS: TestConfig[] = [
 
 export default function AssessmentSection() {
   const [activeTest, setActiveTest] = useState<TestConfig | null>(null);
-  const [step, setStep] = useState<"quiz" | "lead" | "otp" | "result">("quiz");
+  // Default step when opened is "lead" to match the user screenshot form
+  const [step, setStep] = useState<"lead" | "otp" | "quiz" | "result">("lead");
   const [answers, setAnswers] = useState<Record<number, number>>({});
   const [formData, setFormData] = useState({
     name: "",
@@ -65,21 +71,39 @@ export default function AssessmentSection() {
     mobile: "",
     terms: true,
   });
-  const [otp, setOtp] = useState("");
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
+  const [otp, setOtp] = useState("");
+  const [resendTimer, setResendTimer] = useState(30);
+  const [isResendActive, setIsResendActive] = useState(false);
   const [score, setScore] = useState<number>(0);
+
+  // Timer for OTP resend countdown
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (step === "otp" && isResendActive && resendTimer > 0) {
+      interval = setInterval(() => {
+        setResendTimer((prev) => prev - 1);
+      }, 1000);
+    } else if (resendTimer === 0) {
+      setIsResendActive(false);
+    }
+    return () => clearInterval(interval);
+  }, [step, isResendActive, resendTimer]);
 
   const openTest = (test: TestConfig) => {
     setActiveTest(test);
-    setStep("quiz");
+    setStep("lead"); // Immediately open the lead capture form modal
     setAnswers({});
     setOtp("");
     setFormErrors({});
+    setResendTimer(30);
+    setIsResendActive(false);
   };
 
   const closeTest = () => {
     setActiveTest(null);
-    setStep("quiz");
+    setStep("lead");
+    setFormErrors({});
   };
 
   const handleAnswerSelect = (qId: number, val: number) => {
@@ -90,30 +114,29 @@ export default function AssessmentSection() {
     activeTest &&
     activeTest.questions.every((q) => answers[q.id] !== undefined);
 
-  const proceedToLead = () => {
-    if (!isQuizComplete) {
-      alert("Please answer all questions before proceeding.");
-      return;
-    }
+  const calculateScore = () => {
+    if (!activeTest) return;
     const totalScore = Object.values(answers).reduce((acc, curr) => acc + curr, 0);
     const calculatedPercentage = Math.round(
       (totalScore / (activeTest.questions.length * 5)) * 100
     );
     setScore(calculatedPercentage);
-    setStep("lead");
+    setStep("result");
   };
 
   const validateLeadForm = () => {
     const errors: Record<string, string> = {};
-    if (!formData.name.trim()) errors.name = "Please enter your full name.";
+    if (!formData.name.trim()) {
+      errors.name = "Please enter your full name.";
+    }
 
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (!emailRegex.test(formData.email)) {
+    if (!emailRegex.test(formData.email.trim())) {
       errors.email = "Please enter a valid email address.";
     }
 
     const mobileRegex = /^[6-9]\d{9}$/;
-    if (!mobileRegex.test(formData.mobile)) {
+    if (!mobileRegex.test(formData.mobile.trim())) {
       errors.mobile = "Please enter a valid 10-digit Indian mobile number.";
     }
 
@@ -129,16 +152,47 @@ export default function AssessmentSection() {
     e.preventDefault();
     if (validateLeadForm()) {
       setStep("otp");
+      setIsResendActive(true);
+      setResendTimer(30);
     }
   };
 
   const handleOtpVerify = (e: React.FormEvent) => {
     e.preventDefault();
-    if (otp.length >= 4) {
-      setStep("result");
+    if (otp.trim().length >= 4) {
+      setStep("quiz");
     } else {
-      setFormErrors({ otp: "Please enter a valid 4-digit OTP code." });
+      setFormErrors({ otp: "Please enter a valid 4 or 6 digit OTP." });
     }
+  };
+
+  const handleResendOtp = () => {
+    setResendTimer(30);
+    setIsResendActive(true);
+    setOtp("");
+    setFormErrors({});
+  };
+
+  const inputStyle: React.CSSProperties = {
+    border: "0.8px solid black",
+    borderRadius: "5px",
+    boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.3)",
+    width: "100%",
+    height: "48px",
+    padding: "0 16px",
+    fontSize: "15px",
+    color: "#212529",
+    backgroundColor: "#ffffff",
+    outline: "none",
+    boxSizing: "border-box",
+  };
+
+  const labelStyle: React.CSSProperties = {
+    fontSize: "15px",
+    fontWeight: 600,
+    color: "#212529",
+    marginBottom: "8px",
+    display: "block",
   };
 
   return (
@@ -150,314 +204,760 @@ export default function AssessmentSection() {
       </div>
 
       <div className="content-text">
-        <div className="blog-section section-padding-01">
-          <div className="container custom-container">
-            <div className="row gy-10">
-              <div className="col-lg-12">
-                <div className="row gy-10">
-                  {TESTS.map((test) => (
-                    <div className="col-xl-4 col-md-6" key={test.id}>
-                      {/* Blog Item Start */}
-                      <div className="blog-item-02">
-                        <div className="blog-item-02__image">
-                          <a
-                            href="#"
-                            onClick={(e) => {
-                              e.preventDefault();
-                              openTest(test);
-                            }}
-                          >
-                            <img
-                              src={test.image}
-                              alt={test.title}
-                              width="370"
-                              height="201"
-                            />
-                          </a>
-                        </div>
-                        <div className="blog-item-02__content text-center">
-                          <h3 className="blog-item-02__title text-center">
-                            <a
-                              href="#"
-                              onClick={(e) => {
-                                e.preventDefault();
-                                openTest(test);
-                              }}
-                            >
-                              {test.title}
-                            </a>
-                          </h3>
-                          <a
-                            href="#"
-                            className="blog-item-02__more btn btn-light btn-hover-white d-inline-block"
-                            onClick={(e) => {
-                              e.preventDefault();
-                              openTest(test);
-                            }}
-                          >
-                            Explore Now <i className="fas fa-long-arrow-alt-right ms-1"></i>
-                          </a>
-                        </div>
-                      </div>
-                      {/* Blog Item End */}
+        <div className="blog-section section-padding-01" style={{ paddingTop: "20px", paddingBottom: "70px" }}>
+          <div className="container custom-container" style={{ maxWidth: "1170px", margin: "0 auto", padding: "0 15px" }}>
+            <div className="row g-4 justify-content-center">
+              {TESTS.map((test) => (
+                <div className="col-xl-4 col-md-6" key={test.id}>
+                  {/* Card matching Image 2 */}
+                  <div
+                    style={{
+                      backgroundColor: "#ffffff",
+                      borderRadius: "10px",
+                      overflow: "hidden",
+                      boxShadow: "0 4px 20px rgba(0, 0, 0, 0.08)",
+                      display: "flex",
+                      flexDirection: "column",
+                      height: "100%",
+                      transition: "transform 0.25s ease, box-shadow 0.25s ease",
+                    }}
+                    className="test-card-hover"
+                  >
+                    {/* Card Image */}
+                    <div
+                      style={{
+                        position: "relative",
+                        width: "100%",
+                        aspectRatio: "16/9",
+                        overflow: "hidden",
+                        backgroundColor: "#f0f4f2",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => openTest(test)}
+                    >
+                      <img
+                        src={test.image}
+                        alt={test.title}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
+                          display: "block",
+                          transition: "transform 0.4s ease",
+                        }}
+                      />
                     </div>
-                  ))}
+
+                    {/* Card Content */}
+                    <div
+                      style={{
+                        padding: "24px 20px 28px",
+                        textAlign: "center",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        flexGrow: 1,
+                      }}
+                    >
+                      <h3
+                        style={{
+                          margin: "0 0 20px",
+                          fontFamily: "'Playfair Display', Georgia, serif",
+                          fontSize: "22px",
+                          fontWeight: 600,
+                          color: "#1c2d3a",
+                          lineHeight: "1.35",
+                          cursor: "pointer",
+                        }}
+                        onClick={() => openTest(test)}
+                      >
+                        {test.title}
+                      </h3>
+
+                      {/* Explore Now Button matching Image 2 */}
+                      <button
+                        type="button"
+                        onClick={() => openTest(test)}
+                        style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          gap: "10px",
+                          backgroundColor: "#f3f4f6",
+                          color: "#1c2d3a",
+                          fontSize: "14.5px",
+                          fontWeight: 500,
+                          padding: "10px 24px",
+                          borderRadius: "6px",
+                          border: "none",
+                          cursor: "pointer",
+                          transition: "background-color 0.2s ease, transform 0.15s ease",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = "#e5e7eb";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = "#f3f4f6";
+                        }}
+                      >
+                        Explore Now
+                        <svg
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2.2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <line x1="5" y1="12" x2="19" y2="12"></line>
+                          <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
       </div>
 
-      {/* Interactive Modal */}
+      {/* Modal Popup: Opens immediately when clicking 'Explore Now' */}
       {activeTest && (
         <div
-          className="modal fade show d-block"
-          style={{ backgroundColor: "rgba(0,0,0,0.6)", zIndex: 1050 }}
-          tabIndex={-1}
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(0, 0, 0, 0.65)",
+            zIndex: 99999,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "20px 15px",
+            overflow: "hidden",
+            animation: "modalFadeIn 0.25s ease-out forwards",
+          }}
+          onClick={(e) => {
+            if (e.target === e.currentTarget) closeTest();
+          }}
         >
-          <div className="modal-dialog modal-dialog-centered modal-lg">
-            <div className="modal-content border-0 shadow-lg rounded-3">
-              <div className="modal-header bg-success text-white py-3">
-                <h5 className="modal-title text-white fw-bold">
-                  {activeTest.title}
+          {/* STEP 1: LEAD FORM MODAL (Matching Image 1 Pixel-for-Pixel) */}
+          {step === "lead" && (
+            <div
+              style={{
+                backgroundColor: "#ffffff",
+                borderRadius: "8px",
+                border: "0.8px solid black",
+                boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)",
+                maxWidth: "460px",
+                width: "100%",
+                padding: "36px 32px 32px",
+                position: "relative",
+                boxSizing: "border-box",
+                animation: "modalSlideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+              }}
+            >
+              {/* Close Button '✕' in Top-Right Corner */}
+              <button
+                type="button"
+                onClick={closeTest}
+                style={{
+                  position: "absolute",
+                  top: "16px",
+                  right: "18px",
+                  background: "none",
+                  border: "none",
+                  fontSize: "24px",
+                  fontWeight: 400,
+                  color: "#000000",
+                  cursor: "pointer",
+                  padding: 0,
+                  lineHeight: 1,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "28px",
+                  height: "28px",
+                }}
+                aria-label="Close"
+              >
+                ✕
+              </button>
+
+              <form onSubmit={handleLeadSubmit}>
+                {/* 1. Full Name */}
+                <div style={{ marginBottom: "18px" }}>
+                  <label style={labelStyle}>
+                    Full Name<span style={{ color: "#ef4444" }}>*</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Your Full Name"
+                    required
+                    value={formData.name}
+                    onChange={(e) =>
+                      setFormData({ ...formData, name: e.target.value })
+                    }
+                    style={inputStyle}
+                  />
+                  {formErrors.name && (
+                    <div style={{ color: "#dc2626", fontSize: "12px", marginTop: "4px" }}>
+                      {formErrors.name}
+                    </div>
+                  )}
+                </div>
+
+                {/* 2. Email */}
+                <div style={{ marginBottom: "18px" }}>
+                  <label style={labelStyle}>
+                    Email<span style={{ color: "#ef4444" }}>*</span>
+                  </label>
+                  <input
+                    type="email"
+                    placeholder="Your Email Address"
+                    required
+                    value={formData.email}
+                    onChange={(e) =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
+                    style={inputStyle}
+                  />
+                  {formErrors.email && (
+                    <div style={{ color: "#dc2626", fontSize: "12px", marginTop: "4px" }}>
+                      {formErrors.email}
+                    </div>
+                  )}
+                </div>
+
+                {/* 3. Mobile No. */}
+                <div style={{ marginBottom: "20px" }}>
+                  <label style={labelStyle}>
+                    Mobile No.<span style={{ color: "#ef4444" }}>*</span>
+                  </label>
+                  <input
+                    type="tel"
+                    placeholder="Your Mobile Number"
+                    maxLength={10}
+                    required
+                    value={formData.mobile}
+                    onChange={(e) =>
+                      setFormData({ ...formData, mobile: e.target.value })
+                    }
+                    style={inputStyle}
+                  />
+                  {formErrors.mobile && (
+                    <div style={{ color: "#dc2626", fontSize: "12px", marginTop: "4px" }}>
+                      {formErrors.mobile}
+                    </div>
+                  )}
+                </div>
+
+                {/* 4. Terms Checkbox */}
+                <div
+                  style={{
+                    marginBottom: "24px",
+                    display: "flex",
+                    alignItems: "flex-start",
+                    gap: "10px",
+                  }}
+                >
+                  <input
+                    type="checkbox"
+                    id="homeLeadTerms"
+                    required
+                    checked={formData.terms}
+                    onChange={(e) =>
+                      setFormData({ ...formData, terms: e.target.checked })
+                    }
+                    style={{
+                      marginTop: "3px",
+                      width: "16px",
+                      height: "16px",
+                      accentColor: "#07a64b",
+                      cursor: "pointer",
+                      flexShrink: 0,
+                    }}
+                  />
+                  <label
+                    htmlFor="homeLeadTerms"
+                    style={{
+                      fontSize: "13.5px",
+                      color: "#212529",
+                      lineHeight: "1.5",
+                      margin: 0,
+                      cursor: "pointer",
+                    }}
+                  >
+                    By submitting this form, I agree to Counsel India&apos;s{" "}
+                    <Link
+                      href="/terms-and-conditions"
+                      target="_blank"
+                      style={{ color: "#07a64b", textDecoration: "none", fontWeight: 500 }}
+                    >
+                      Terms &amp; Conditions
+                    </Link>{" "}
+                    and{" "}
+                    <Link
+                      href="/privacy-policy"
+                      target="_blank"
+                      style={{ color: "#07a64b", textDecoration: "none", fontWeight: 500 }}
+                    >
+                      Privacy Policy
+                    </Link>
+                    .<span style={{ color: "#ef4444" }}>*</span>
+                  </label>
+                </div>
+
+                {/* 5. Left-Aligned Green Submit Button */}
+                <div style={{ display: "flex", justifyContent: "flex-start" }}>
+                  <button
+                    type="submit"
+                    style={{
+                      border: "0.8px solid black",
+                      borderRadius: "5px",
+                      boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.3)",
+                      backgroundColor: "#07a64b",
+                      color: "#ffffff",
+                      padding: "0 38px",
+                      height: "44px",
+                      fontSize: "16px",
+                      fontWeight: 700,
+                      cursor: "pointer",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      transition: "background-color 0.2s ease, transform 0.15s ease",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.backgroundColor = "#069342";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.backgroundColor = "#07a64b";
+                    }}
+                  >
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </div>
+          )}
+
+          {/* STEP 2: OTP VERIFICATION MODAL */}
+          {step === "otp" && (
+            <div
+              style={{
+                backgroundColor: "#ffffff",
+                borderRadius: "5px",
+                border: "0.8px solid black",
+                boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.3)",
+                maxWidth: "460px",
+                width: "100%",
+                padding: "24px 28px 28px",
+                position: "relative",
+                boxSizing: "border-box",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  borderBottom: "1px solid #e5e7eb",
+                  paddingBottom: "12px",
+                  marginBottom: "20px",
+                }}
+              >
+                <h5 style={{ margin: 0, fontSize: "18px", fontWeight: 600, color: "#1c2d3a" }}>
+                  OTP Verification
                 </h5>
                 <button
                   type="button"
-                  className="btn-close btn-close-white"
                   onClick={closeTest}
-                  aria-label="Close"
-                ></button>
+                  style={{
+                    background: "none",
+                    border: "none",
+                    fontSize: "20px",
+                    color: "#000000",
+                    cursor: "pointer",
+                    padding: 0,
+                    lineHeight: 1,
+                  }}
+                >
+                  ✕
+                </button>
               </div>
 
-              <div className="modal-body p-4">
-                {/* STEP 1: QUIZ QUESTIONS */}
-                {step === "quiz" && (
-                  <div>
-                    <p className="text-muted mb-4">
-                      Please rate the following questions based on your experience over the past 2 weeks (1 = Rarely, 5 = Almost Always):
+              <form onSubmit={handleOtpVerify}>
+                <div style={{ marginBottom: "14px" }}>
+                  <label style={{ fontSize: "14px", fontWeight: 600, color: "#212529", display: "block", marginBottom: "4px" }}>
+                    Enter OTP
+                  </label>
+                  <p style={{ fontSize: "12px", color: "#6b7280", margin: "0 0 10px" }}>
+                    OTP sent to your Mobile (+91 {formData.mobile}), WhatsApp and Email
+                  </p>
+                  <input
+                    type="text"
+                    maxLength={6}
+                    placeholder="Enter your OTP here"
+                    required
+                    value={otp}
+                    onChange={(e) => setOtp(e.target.value)}
+                    style={inputStyle}
+                    autoFocus
+                  />
+                </div>
+
+                <div style={{ textAlign: "right", marginBottom: "20px" }}>
+                  {isResendActive ? (
+                    <span style={{ fontSize: "12.5px", color: "#6b7280" }}>
+                      (Resend in {resendTimer} sec)
+                    </span>
+                  ) : (
+                    <span
+                      onClick={handleResendOtp}
+                      style={{
+                        fontSize: "13px",
+                        color: "#07a64b",
+                        fontWeight: 500,
+                        cursor: "pointer",
+                        textDecoration: "underline",
+                      }}
+                    >
+                      Resend OTP
+                    </span>
+                  )}
+                </div>
+
+                {formErrors.otp && (
+                  <div style={{ color: "#dc2626", fontSize: "13px", textAlign: "center", marginBottom: "14px" }}>
+                    {formErrors.otp}
+                  </div>
+                )}
+
+                <div style={{ display: "flex", justifyContent: "center", gap: "12px" }}>
+                  <button
+                    type="button"
+                    onClick={() => setStep("lead")}
+                    style={{
+                      border: "0.8px solid #6b7280",
+                      borderRadius: "5px",
+                      backgroundColor: "#f3f4f6",
+                      color: "#374151",
+                      padding: "0 20px",
+                      height: "42px",
+                      fontSize: "14px",
+                      fontWeight: 600,
+                      cursor: "pointer",
+                    }}
+                  >
+                    Back
+                  </button>
+                  <button
+                    type="submit"
+                    style={{
+                      border: "0.8px solid black",
+                      borderRadius: "5px",
+                      boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.3)",
+                      backgroundColor: "#07a64b",
+                      color: "#ffffff",
+                      padding: "0 34px",
+                      height: "42px",
+                      fontSize: "15px",
+                      fontWeight: 700,
+                      cursor: "pointer",
+                    }}
+                  >
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </div>
+          )}
+
+          {/* STEP 3: INTERACTIVE QUIZ QUESTIONS */}
+          {step === "quiz" && (
+            <div
+              style={{
+                backgroundColor: "#ffffff",
+                borderRadius: "8px",
+                border: "0.8px solid #07a64b",
+                boxShadow: "0 15px 45px rgba(0, 0, 0, 0.4)",
+                maxWidth: "680px",
+                width: "100%",
+                maxHeight: "90vh",
+                overflowY: "auto",
+                padding: "28px 30px",
+                position: "relative",
+                boxSizing: "border-box",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  borderBottom: "1px solid #e5e7eb",
+                  paddingBottom: "14px",
+                  marginBottom: "20px",
+                }}
+              >
+                <div>
+                  <h4 style={{ margin: 0, fontSize: "20px", fontWeight: 700, color: "#1c2d3a" }}>
+                    {activeTest.title}
+                  </h4>
+                  <p style={{ margin: "4px 0 0", fontSize: "13px", color: "#6b7280" }}>
+                    Candidate: <strong>{formData.name}</strong> (+91 {formData.mobile})
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={closeTest}
+                  style={{
+                    background: "none",
+                    border: "none",
+                    fontSize: "22px",
+                    color: "#000000",
+                    cursor: "pointer",
+                    padding: 0,
+                    lineHeight: 1,
+                  }}
+                >
+                  ✕
+                </button>
+              </div>
+
+              <p style={{ fontSize: "14px", color: "#4b5563", marginBottom: "20px" }}>
+                Please rate the following questions based on your experience over the past 2 weeks:
+              </p>
+
+              <div style={{ display: "flex", flexDirection: "column", gap: "16px", marginBottom: "24px" }}>
+                {activeTest.questions.map((q, idx) => (
+                  <div
+                    key={q.id}
+                    style={{
+                      padding: "16px",
+                      borderRadius: "8px",
+                      backgroundColor: "#f9fafb",
+                      border: "1px solid #e5e7eb",
+                    }}
+                  >
+                    <p style={{ margin: "0 0 12px", fontWeight: 600, fontSize: "14.5px", color: "#1f2937" }}>
+                      {idx + 1}. {q.question}
                     </p>
-                    <div className="d-flex flex-column gap-4">
-                      {activeTest.questions.map((q, idx) => (
-                        <div key={q.id} className="p-3 rounded bg-light border">
-                          <p className="fw-semibold mb-2">
-                            {idx + 1}. {q.question}
-                          </p>
-                          <div className="d-flex justify-content-between align-items-center flex-wrap gap-2 pt-1">
-                            <span className="font-size-12 text-muted">Rarely (1)</span>
-                            <div className="btn-group" role="group">
-                              {[1, 2, 3, 4, 5].map((val) => (
-                                <button
-                                  key={val}
-                                  type="button"
-                                  onClick={() => handleAnswerSelect(q.id, val)}
-                                  className={`btn btn-sm ${
-                                    answers[q.id] === val
-                                      ? "btn-success text-white fw-bold"
-                                      : "btn-outline-secondary"
-                                  }`}
-                                  style={{ minWidth: "40px" }}
-                                >
-                                  {val}
-                                </button>
-                              ))}
-                            </div>
-                            <span className="font-size-12 text-muted">Always (5)</span>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="mt-4 text-end">
-                      <button
-                        onClick={proceedToLead}
-                        disabled={!isQuizComplete}
-                        className="btn btn-success px-4"
-                      >
-                        Continue to Get Score <i className="fas fa-arrow-right ms-1"></i>
-                      </button>
-                    </div>
-                  </div>
-                )}
-
-                {/* STEP 2: LEAD CAPTURE */}
-                {step === "lead" && (
-                  <form onSubmit={handleLeadSubmit}>
-                    <div className="text-center mb-4">
-                      <h4 className="fw-bold text-dark">Almost Done!</h4>
-                      <p className="text-muted font-size-14">
-                        Enter your details to generate your customized mental health report and counseling recommendations.
-                      </p>
-                    </div>
-
-                    <div className="mb-3">
-                      <label className="form-label fw-semibold font-size-14">Full Name</label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Enter your name"
-                        value={formData.name}
-                        onChange={(e) =>
-                          setFormData({ ...formData, name: e.target.value })
-                        }
-                      />
-                      {formErrors.name && (
-                        <div className="text-danger font-size-12 mt-1">{formErrors.name}</div>
-                      )}
-                    </div>
-
-                    <div className="mb-3">
-                      <label className="form-label fw-semibold font-size-14">Email Address</label>
-                      <input
-                        type="email"
-                        className="form-control"
-                        placeholder="name@example.com"
-                        value={formData.email}
-                        onChange={(e) =>
-                          setFormData({ ...formData, email: e.target.value })
-                        }
-                      />
-                      {formErrors.email && (
-                        <div className="text-danger font-size-12 mt-1">{formErrors.email}</div>
-                      )}
-                    </div>
-
-                    <div className="mb-3">
-                      <label className="form-label fw-semibold font-size-14">Mobile Number (+91)</label>
-                      <input
-                        type="tel"
-                        maxLength={10}
-                        className="form-control"
-                        placeholder="9876543210"
-                        value={formData.mobile}
-                        onChange={(e) =>
-                          setFormData({ ...formData, mobile: e.target.value })
-                        }
-                      />
-                      {formErrors.mobile && (
-                        <div className="text-danger font-size-12 mt-1">{formErrors.mobile}</div>
-                      )}
-                    </div>
-
-                    <div className="form-check mb-4">
-                      <input
-                        type="checkbox"
-                        className="form-check-input"
-                        id="termsCheck"
-                        checked={formData.terms}
-                        onChange={(e) =>
-                          setFormData({ ...formData, terms: e.target.checked })
-                        }
-                      />
-                      <label className="form-check-label font-size-12 text-muted" htmlFor="termsCheck">
-                        I agree to the Terms &amp; Conditions and Privacy Policy of CounselIndia.
-                      </label>
-                      {formErrors.terms && (
-                        <div className="text-danger font-size-12 mt-1">{formErrors.terms}</div>
-                      )}
-                    </div>
-
-                    <div className="d-flex justify-content-between">
-                      <button
-                        type="button"
-                        onClick={() => setStep("quiz")}
-                        className="btn btn-outline-secondary"
-                      >
-                        Back
-                      </button>
-                      <button type="submit" className="btn btn-success px-4">
-                        Send OTP &amp; View Result
-                      </button>
-                    </div>
-                  </form>
-                )}
-
-                {/* STEP 3: OTP VERIFICATION */}
-                {step === "otp" && (
-                  <form onSubmit={handleOtpVerify} className="text-center py-3">
-                    <div className="mb-3">
-                      <i className="fas fa-shield-alt fa-3x text-success mb-3"></i>
-                      <h4 className="fw-bold">Enter Verification Code</h4>
-                      <p className="text-muted font-size-14">
-                        We sent a 4-digit verification code to <strong>+91 {formData.mobile}</strong>.
-                      </p>
-                    </div>
-
-                    <div className="d-flex justify-content-center mb-3">
-                      <input
-                        type="text"
-                        maxLength={6}
-                        className="form-control text-center fw-bold fs-4"
-                        style={{ maxWidth: "200px", letterSpacing: "8px" }}
-                        placeholder="••••"
-                        value={otp}
-                        onChange={(e) => setOtp(e.target.value)}
-                        autoFocus
-                      />
-                    </div>
-                    {formErrors.otp && (
-                      <div className="text-danger font-size-12 mb-3">{formErrors.otp}</div>
-                    )}
-
-                    <div className="d-flex justify-content-center gap-3">
-                      <button
-                        type="button"
-                        onClick={() => setStep("lead")}
-                        className="btn btn-outline-secondary"
-                      >
-                        Change Number
-                      </button>
-                      <button type="submit" className="btn btn-success px-4">
-                        Verify &amp; Unlock Score
-                      </button>
-                    </div>
-                  </form>
-                )}
-
-                {/* STEP 4: RESULT SCREEN */}
-                {step === "result" && (
-                  <div className="text-center py-4">
-                    <div className="mb-3">
-                      <i className="fas fa-check-circle fa-4x text-success mb-3"></i>
-                      <h3 className="fw-bold">Assessment Completed!</h3>
-                      <p className="text-muted">
-                        Hello <strong>{formData.name}</strong>, your well-being score has been calculated:
-                      </p>
-                    </div>
-
-                    <div className="my-4 p-4 bg-light rounded-3 d-inline-block shadow-sm" style={{ minWidth: "280px" }}>
-                      <div className="display-4 fw-bold text-success mb-1">
-                        {score}%
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "8px" }}>
+                      <span style={{ fontSize: "12px", color: "#6b7280" }}>Rarely (1)</span>
+                      <div style={{ display: "flex", gap: "6px" }}>
+                        {[1, 2, 3, 4, 5].map((val) => (
+                          <button
+                            key={val}
+                            type="button"
+                            onClick={() => handleAnswerSelect(q.id, val)}
+                            style={{
+                              minWidth: "42px",
+                              height: "36px",
+                              borderRadius: "4px",
+                              fontSize: "14px",
+                              fontWeight: answers[q.id] === val ? 700 : 500,
+                              backgroundColor: answers[q.id] === val ? "#07a64b" : "#ffffff",
+                              color: answers[q.id] === val ? "#ffffff" : "#374151",
+                              border: answers[q.id] === val ? "1px solid #07a64b" : "1px solid #d1d5db",
+                              cursor: "pointer",
+                              transition: "all 0.15s ease",
+                            }}
+                          >
+                            {val}
+                          </button>
+                        ))}
                       </div>
-                      <span className="badge bg-success-subtle text-success px-3 py-2 font-size-14 fw-semibold">
-                        {score >= 70
-                          ? "Optimal Well-Being"
-                          : score >= 45
-                          ? "Moderate Resilience"
-                          : "Needs Support & Guidance"}
-                      </span>
-                    </div>
-
-                    <div className="d-flex justify-content-center gap-3">
-                      <button
-                        onClick={closeTest}
-                        className="btn btn-outline-secondary"
-                      >
-                        Close
-                      </button>
-                      <a
-                        href="/counsellors-network"
-                        className="btn btn-success"
-                      >
-                        Book Counselor Session
-                      </a>
+                      <span style={{ fontSize: "12px", color: "#6b7280" }}>Always (5)</span>
                     </div>
                   </div>
-                )}
+                ))}
+              </div>
+
+              <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                <button
+                  type="button"
+                  onClick={calculateScore}
+                  disabled={!isQuizComplete}
+                  style={{
+                    backgroundColor: isQuizComplete ? "#07a64b" : "#9ca3af",
+                    color: "#ffffff",
+                    border: "none",
+                    borderRadius: "6px",
+                    padding: "12px 28px",
+                    fontSize: "15px",
+                    fontWeight: 700,
+                    cursor: isQuizComplete ? "pointer" : "not-allowed",
+                    boxShadow: isQuizComplete ? "0 4px 12px rgba(7, 166, 75, 0.3)" : "none",
+                  }}
+                >
+                  View Assessment Score →
+                </button>
               </div>
             </div>
-          </div>
+          )}
+
+          {/* STEP 4: ASSESSMENT RESULT */}
+          {step === "result" && (
+            <div
+              style={{
+                backgroundColor: "#ffffff",
+                borderRadius: "8px",
+                border: "0.8px solid #07a64b",
+                boxShadow: "0 15px 45px rgba(0, 0, 0, 0.4)",
+                maxWidth: "500px",
+                width: "100%",
+                padding: "36px 30px",
+                textAlign: "center",
+                position: "relative",
+                boxSizing: "border-box",
+              }}
+            >
+              <button
+                type="button"
+                onClick={closeTest}
+                style={{
+                  position: "absolute",
+                  top: "16px",
+                  right: "18px",
+                  background: "none",
+                  border: "none",
+                  fontSize: "22px",
+                  color: "#000000",
+                  cursor: "pointer",
+                  padding: 0,
+                  lineHeight: 1,
+                }}
+              >
+                ✕
+              </button>
+
+              <div
+                style={{
+                  width: "64px",
+                  height: "64px",
+                  borderRadius: "50%",
+                  backgroundColor: "#ecfdf5",
+                  color: "#07a64b",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: "30px",
+                  marginBottom: "16px",
+                }}
+              >
+                ✓
+              </div>
+
+              <h3 style={{ margin: "0 0 8px", fontSize: "22px", fontWeight: 700, color: "#1c2d3a" }}>
+                Assessment Complete!
+              </h3>
+              <p style={{ margin: "0 0 20px", fontSize: "14px", color: "#6b7280" }}>
+                Hello <strong>{formData.name}</strong>, your well-being score:
+              </p>
+
+              <div
+                style={{
+                  backgroundColor: "#f9fafb",
+                  border: "1px solid #e5e7eb",
+                  borderRadius: "8px",
+                  padding: "24px",
+                  marginBottom: "24px",
+                }}
+              >
+                <div style={{ fontSize: "48px", fontWeight: 800, color: "#07a64b", lineHeight: 1, marginBottom: "8px" }}>
+                  {score}%
+                </div>
+                <div
+                  style={{
+                    display: "inline-block",
+                    backgroundColor: "#ecfdf5",
+                    color: "#07a64b",
+                    padding: "4px 14px",
+                    borderRadius: "20px",
+                    fontSize: "13.5px",
+                    fontWeight: 600,
+                  }}
+                >
+                  {score >= 70
+                    ? "Optimal Well-Being"
+                    : score >= 45
+                    ? "Moderate Resilience"
+                    : "Needs Professional Guidance"}
+                </div>
+              </div>
+
+              <div style={{ display: "flex", justifyContent: "center", gap: "12px", flexWrap: "wrap" }}>
+                <button
+                  type="button"
+                  onClick={closeTest}
+                  style={{
+                    border: "1px solid #d1d5db",
+                    borderRadius: "6px",
+                    backgroundColor: "#ffffff",
+                    color: "#374151",
+                    padding: "10px 20px",
+                    fontSize: "14px",
+                    fontWeight: 600,
+                    cursor: "pointer",
+                  }}
+                >
+                  Close
+                </button>
+                <Link
+                  href="/counsellors-network"
+                  style={{
+                    backgroundColor: "#07a64b",
+                    color: "#ffffff",
+                    border: "none",
+                    borderRadius: "6px",
+                    padding: "10px 22px",
+                    fontSize: "14px",
+                    fontWeight: 700,
+                    textDecoration: "none",
+                    display: "inline-flex",
+                    alignItems: "center",
+                  }}
+                >
+                  Book Counselor Session
+                </Link>
+              </div>
+            </div>
+          )}
         </div>
       )}
+
+      <style jsx>{`
+        .test-card-hover:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12) !important;
+        }
+        @keyframes modalFadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+        @keyframes modalSlideDown {
+          from {
+            opacity: 0;
+            transform: scale(0.96) translateY(-16px);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+          }
+        }
+      `}</style>
     </>
   );
 }
