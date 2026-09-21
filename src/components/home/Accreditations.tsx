@@ -8,28 +8,39 @@ export default function Accreditations() {
   const accreditationCards = [
     {
       id: 1,
-      image: "/assets/images/counsel2.jpg",
-      alt: "IAOTH Accredited Training Provider",
+      image: "/assets/images/accredited/mit_university.jpg",
+      link: "https://mituniversitysikkim.com/",
+      alt: "MIT University Sikkim - Psychology Accreditation",
     },
     {
       id: 2,
-      image: "/assets/images/counsel5.jpg",
-      alt: "Counsel India Academic Council",
+      image: "/assets/images/accredited/iaoth.webp",
+      link: "https://iaoth.com/author/counsel-india/",
+      alt: "IAOTH Accredited Training Provider",
     },
     {
       id: 3,
-      image: "/assets/images/counselindia11.jpg",
-      alt: "K.R. Mangalam University",
+      image: "/assets/images/accredited/vgu.png",
+      link: "https://vgu.ac.in",
+      alt: "Vivekananda Global University - Psychology Accreditation",
     },
     {
       id: 4,
-      image: "/assets/images/counsel1.jpg",
-      alt: "MEPSC & Skill India Accreditation",
+      image: "/assets/images/accredited/jgu.png",
+      link: "https://jgu.edu.in/",
+      alt: "O.P. Jindal Global University - Psychology Accreditation",
     },
     {
       id: 5,
-      image: "/assets/images/counsel3.jpg",
-      alt: "Medhavi Skills University",
+      image: "/assets/images/accredited/eimt.png",
+      link: "https://www.eimt.ch/",
+      alt: "EIMT Switzerland - Psychology Accreditation",
+    },
+    {
+      id: 6,
+      image: "/assets/images/accredited/apa.png",
+      link: "https://www.apa.org/",
+      alt: "American Psychological Association - Psychology Accreditation",
     },
   ];
 
@@ -67,6 +78,10 @@ export default function Accreditations() {
             576: {
               slidesPerView: 2,
               spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 25,
             },
             992: {
               slidesPerView: 3,
@@ -121,7 +136,7 @@ export default function Accreditations() {
       <div className="container custom-container">
         <div className="row gy-10 flex-row-reverse">
           <div className="col-lg-12">
-            <div className="section-title text-center mb-5">
+            <div className="section-title mb-5">
               <h2 className="section-title__title-03">
                 <mark>Accreditations and Associations by World’s Top and Best</mark>
               </h2>
@@ -136,22 +151,29 @@ export default function Accreditations() {
                 <div className="swiper-wrapper py-3">
                   {slides.map((card, idx) => (
                     <div className="swiper-slide" key={`${card.id}-${idx}`}>
-                      <div className="partner-logo w-100">
-                        <div className="partner-logo__logo w-100">
-                          <img
-                            src={card.image}
-                            alt={card.alt}
-                            style={{
-                              width: "100%",
-                              height: "auto",
-                              display: "block",
-                              borderRadius: "8px",
-                              boxShadow: "0 6px 25px rgba(0, 0, 0, 0.08)",
-                              transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                            }}
-                          />
+                      <a
+                        href={card.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="d-block w-100 text-decoration-none"
+                      >
+                        <div className="partner-logo w-100">
+                          <div className="partner-logo__logo w-100">
+                            <img
+                              src={card.image}
+                              alt={card.alt}
+                              style={{
+                                width: "100%",
+                                height: "auto",
+                                display: "block",
+                                borderRadius: "8px",
+                                boxShadow: "0 6px 25px rgba(0, 0, 0, 0.08)",
+                                transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                              }}
+                            />
+                          </div>
                         </div>
-                      </div>
+                      </a>
                     </div>
                   ))}
                 </div>

@@ -445,7 +445,7 @@ export default function AssessmentSection() {
                         Close
                       </button>
                       <a
-                        href="/counselling"
+                        href="/counsellors-network"
                         className="btn btn-success"
                       >
                         Book Counselor Session
