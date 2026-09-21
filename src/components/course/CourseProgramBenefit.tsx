@@ -34,45 +34,27 @@ export default function CourseProgramBenefit({ programBenefit }: Props) {
         </h3>
 
         <div className="tutor-course-segment__content-wrap">
-          <ul
-            style={{
-              paddingLeft: "22px",
-              margin: 0,
-              display: "flex",
-              flexDirection: "column",
-              gap: "12px",
-              listStyleType: "disc",
-            }}
-          >
-            {programBenefit.map((item, idx) => {
-              const colonIndex = item.indexOf(":");
-              let title = "";
-              let desc = item;
-              if (colonIndex !== -1 && colonIndex < 60) {
-                title = item.substring(0, colonIndex + 1);
-                desc = item.substring(colonIndex + 1).trim();
-              }
-              return (
-                <li
-                  key={idx}
-                  style={{
-                    fontSize: "15px",
-                    color: "#555555",
-                    lineHeight: "1.75",
-                  }}
-                >
-                  {title ? (
-                    <>
-                      <strong style={{ color: "#212529" }}>{title} </strong>
-                      {desc}
-                    </>
-                  ) : (
-                    <span>{item}</span>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
+          {programBenefit.map((item, idx) => {
+            const isBold =
+              item.startsWith("Upon completion") || item.startsWith("<strong>");
+            const cleanText = item.replace(/^<strong>|<\/strong>$/g, "");
+
+            return (
+              <p
+                key={idx}
+                style={{
+                  fontSize: "15px",
+                  color: "#495057",
+                  lineHeight: "1.8",
+                  marginBottom: idx === programBenefit.length - 1 ? 0 : "16px",
+                  fontWeight: isBold ? 700 : 400,
+                  textAlign: "justify",
+                }}
+              >
+                {cleanText}
+              </p>
+            );
+          })}
         </div>
       </div>
     </section>

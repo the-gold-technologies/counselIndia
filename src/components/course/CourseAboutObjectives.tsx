@@ -4,9 +4,17 @@ import React from "react";
 interface Props {
   about: string[];
   learningObjectives: string[];
+  skillIndiaAdvantage?: {
+    title: string;
+    text: string;
+  };
 }
 
-export default function CourseAboutObjectives({ about, learningObjectives }: Props) {
+export default function CourseAboutObjectives({
+  about,
+  learningObjectives,
+  skillIndiaAdvantage,
+}: Props) {
   return (
     <div className="tutor-course-main-content" style={{ padding: "30px 0 20px", backgroundColor: "#ffffff" }}>
       <div className="container custom-container" style={{ maxWidth: "1170px", margin: "0 auto", padding: "0 16px" }}>
@@ -40,6 +48,34 @@ export default function CourseAboutObjectives({ about, learningObjectives }: Pro
             ))}
           </div>
         </div>
+
+        {/* MEPSC - Skill India Advantage */}
+        {skillIndiaAdvantage && (
+          <div className="tutor-course-segment" style={{ marginBottom: "36px" }}>
+            <h4
+              className="tutor-course-segment__title"
+              style={{
+                fontSize: "24px",
+                fontWeight: 700,
+                color: "#212529",
+                lineHeight: "1.3",
+                margin: "0 0 16px",
+              }}
+            >
+              {skillIndiaAdvantage.title}
+            </h4>
+            <p
+              style={{
+                margin: 0,
+                fontSize: "15px",
+                color: "#555555",
+                lineHeight: "1.7",
+              }}
+            >
+              {skillIndiaAdvantage.text}
+            </p>
+          </div>
+        )}
 
         {/* Learning Objectives */}
         {learningObjectives && learningObjectives.length > 0 && (

@@ -33,7 +33,15 @@ export interface CourseDetailData {
     }[];
   };
   programBenefit?: string[];
-  whoCanJoin: string[];
+  courseOverview?: {
+    title: string;
+    text: string;
+  }[];
+  skillIndiaAdvantage?: {
+    title: string;
+    text: string;
+  };
+  whoCanJoin?: string[];
   scholarship: {
     title: string;
     subtitle: string;
@@ -58,6 +66,7 @@ export interface CourseDetailData {
     image: string;
   }[];
   partners: string[];
+  learnersWorkAt?: string[];
   faqs: {
     question: string;
     answer: string[];
@@ -319,25 +328,31 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       {
         question: "What is a Practical and activity based session?",
         answer: [
-          "a) You will love each and every class as all sessions are practically conducted and participation in psychology activities is very easy and effective. b) You will get practical exposure on how to deal with real life clients and not just cover the theory part. c) Online training sessions will also help you to understand how to take online sessions as a counsellor across the globe and not just limit your client base in your area which is a big challenge for offline mode of training.",
+          "a) You will love each and every class as all sessions are practically conducted and participation in psychology activities is very easy and effective.",
+          "b) You will get practical exposure on how to deal with real life clients and not just cover the theory part.",
+          "c) Online training sessions will also help you to understand how to take online sessions as a counsellor across the globe and not just limit your client base in your area which is a big challenge for offline mode of training.",
         ],
       },
       {
         question: "What is Marketing and branding support?",
         answer: [
-          "a) Thousands of people get to know about you with the help of marketing sessions. b) You reach to needy people by learning Marketing tactics. c) You can never get clients till the time you master the skills of marketing and self branding",
+          "a) Thousands of people get to know about you with the help of marketing sessions.",
+          "b) You reach to needy people by learning Marketing tactics.",
+          "c) You can never get clients till the time you master the skills of marketing and self branding",
         ],
       },
       {
         question: "What kind of Study Material I will get?",
         answer: [
-          "a) You can read notes over a soft copy at your comfort which is accessible on your phone, laptop or desktop. b) You will also receive Hard copies of the study material at your doorstep after the completion of the course for lifetime reference and support.",
+          "a) You can read notes over a soft copy at your comfort which is accessible on your phone, laptop or desktop.",
+          "b) You will also receive Hard copies of the study material at your doorstep after the completion of the course for lifetime reference and support.",
         ],
       },
       {
         question: "What is Western style of learning?",
         answer: [
-          "a) You take one class every week and start applying it for the rest of your week days. b) Free yourself from the burden of being disturbed in your working schedule.",
+          "a) You take one class every week and start applying it for the rest of your week days.",
+          "b) Free yourself from the burden of being disturbed in your working schedule.",
         ],
       },
     ],
@@ -637,12 +652,12 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       },
     ],
     benefits: [
-      "Comprehensive Professional Credentials: Earn a recognized certification from ICPEM and Counsel India, validating advanced competence in child psychology.",
-      "In-Depth Child Psychology Mastery: Gain specialized knowledge covering cognitive, emotional, and social development, behavioral disorders, and therapeutic interventions.",
-      "Hands-on Practical Training: Experience experiential learning through case studies, psychology lab assessments, and real-world project work.",
-      "Diverse Career Pathways: Prepare for fulfilling roles in schools, pediatric clinics, child welfare NGOs, and private counseling centers.",
-      "Stackable Credit System: Earn academic credits enabling seamless pathway advancement towards higher diplomas and specialized degrees.",
-      "Co-branded certificate from a UGC-recognized and international university with ICPEM support.",
+      "Psychological theories covered: psychodynamic, cognitive-behavioral, humanistic, and systemic approaches.",
+      "Counseling techniques taught: active listening, empathy building, reflective questioning, etc.",
+      "Clinical assessment methods: intake interviews, mental status examinations, etc.",
+      "Emphasis on building a therapeutic alliance: trust, empathy, rapport, and boundaries.",
+      "Study of psychological disorders: mood disorders, anxiety disorders, etc.",
+      "Exploration of cultural diversity: cultural competence, sensitivity, awareness.",
     ],
     about: [
       "Gain expertise in specialized topics such as behavioral disorders, learning disabilities, and effective therapeutic interventions, setting you apart in child psychology. Understand the intricacies of child psychology with our comprehensive program designed to equip you with advanced knowledge and skills.",
@@ -707,58 +722,30 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       ],
       modules: [
         {
-          title: "Subject 1: Employability Skills & Introduction to Psychology",
+          title: "Subjects",
           topics: [
-            "Employability Skills & Professional Conduct",
-            "Introduction to Psychology & Psychological Dynamics",
-            "Ethical Frameworks, Client Confidentiality & Child Rights",
-          ],
-        },
-        {
-          title: "Subject 2: Overview of Child Development",
-          topics: [
-            "Physical, Cognitive, and Socio-Emotional Milestones",
-            "Environmental, Family, and Neurological Influences on Development",
-            "Early Identification of Developmental Delays and Behavioral Anomalies",
-          ],
-        },
-        {
-          title: "Subject 3: Developmental Approaches in Children",
-          topics: [
-            "Behavioral and Cognitive-Behavioral Interventions for Children",
-            "Addressing Childhood Anxiety, Trauma, and Bullying",
-            "Collaborative Counselling Strategies with Parents and Educators",
-          ],
-        },
-        {
-          title: "Subject 4: Psychology Lab - Attitude Towards Emotions",
-          topics: [
-            "Psychology Lab - Practical Attitude Towards Emotions Assessment",
-            "Standardized Behavioral & Affective Assessment Tools",
-            "Supervised Case Conceptualization and Roleplay Simulations",
-          ],
-        },
-        {
-          title: "Subject 5: Project Work & OJL (On-the-Job Learning)",
-          topics: [
-            "Supervised Applied Project Work (180 Hours)",
-            "Clinical On-the-Job Learning & Practical Apprenticeship (270 Hours)",
-            "Comprehensive Case Reporting, Review, and Viva Presentation",
+            "Employability Skills ",
+            "Introduction to Psychology ",
+            "Overview of Child Development ",
+            "Developmental Approaches in Children",
+            "Psychology Lab - Attitude Towards Emotions",
+            "Project Work",
+            "OJL",
           ],
         },
       ],
     },
     whoCanJoin: [
-      "Business Professionals",
-      "HR Professionals",
-      "Managers and Executives",
-      "Consultants",
-      "Entrepreneurs",
-      "Psychology Graduates",
-      "Career Changers",
-      "Government and Nonprofit Professionals",
-      "Those Interested in Organizational Improvement",
-      "Global Business Leaders",
+      "Aspiring Child Psychologists",
+      "Educators and Teachers",
+      "Parents and Caregivers",
+      "Mental Health Professionals",
+      "Social Workers",
+      "Students Pursuing Psychology or Related Fields",
+      "Childcare Professionals",
+      "Child Welfare Professionals",
+      "Psychology Graduates seeking specialization",
+      "Anyone Interested in Child Development",
     ],
     scholarship: {
       title: "Scholarship & Practical Learning Support",
@@ -1205,14 +1192,8 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         desc: "8 Modules",
       },
     ],
-    benefits: [
-      "Live Interactive Classes by Senior Psychologists & Industry Experts",
-      "Supervised Case Discussions & Hands-on Clinical Roleplay",
-      "Practical Assessment Tools & Psychological Test Training",
-      "1-on-1 Mentorship and Career Guidance Support",
-      "Lifetime Access to Alumni Network and Community Forums",
-      "Recognized Certification with National & International Accreditations",
-    ],
+    // REMOVED: live page has no "Course Overview" section
+    benefits: [],
     about: [
       "This course is specifically designed for professionals in the mental health space who want to blend their counseling expertise with entrepreneurial skills.",
       "Through a step-by-step process, you'll learn how to effectively market yourself, build a brand, and grow a sustainable business, all without compromising on your core mission of helping people.",
@@ -1415,8 +1396,9 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
           "https://prod-s3.counselindia.com/success_stories/image_1658507699678__01%20-%20Muskan%20Maan%20(2)_1693906710.jpeg",
       },
       {
+        // UPDATED to match live page
         quote:
-          "Amazing Session. To the point Conversation, all questions answered with real life examples and beautifully conveyed. Personalized guidance provided is the best thing. Very thankful to Counsel India and specially trainers.",
+          "Amazing Session. To the point Conversation, all questions answered with real life examples and beautifully conveyed. Personally, learned quite a lot in just few sessions of the Course. Feeling not only satisfied with the course overall but also, somewhat wise mentally, emotionally and spiritually.",
         name: "Balwan Singh",
         city: "Gurgaon",
         image:
@@ -1430,48 +1412,63 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         image: "https://prod-s3.counselindia.com/success_stories/garry.jpg",
       },
       {
+        // UPDATED to match live page
         quote:
-          "I started helping my own kids, I understand them in better way.Counsel india has changed my entire level of thinking and understanding behaviour.",
+          "I started helping my own kids, I understand them in better way.Counsel india has changed my entire level of thinking and living as thank you sooo much for being all time supportive team",
         name: "Riya",
         city: "Delhi",
         image: "https://prod-s3.counselindia.com/success_stories/riyaa.jpg",
       },
       {
+        // UPDATED to match live page
         quote:
-          "I have done the child psychology course under council india. Very good and well efficient organization. Short time course. Loved being here. Gained lots of knowledge.",
+          "I have done the child psychology course under council india. Very good and well efficient organization. Short time course but very helpful. I will try to join another course in future",
         name: "Anyasa saha",
         city: "Bangalore",
         image:
           "https://prod-s3.counselindia.com/success_stories/anyasa-saha.jpg",
       },
       {
+        // UPDATED to match live page
         quote:
-          "It was awesome to learn more about the subject, that is Psychology, from the experts here. It was such an refreshing experience. Looking forward to more such courses.",
+          "It was awesome to learn more about the subject, that is Psychology, from the experts here. It was such an refreshing experience to learn with practical case studies rather than the theory based learning...",
         name: "Lisha Rao",
         city: "Chennai",
         image: "https://prod-s3.counselindia.com/success_stories/lisha-rao.jpg",
       },
       {
+        // UPDATED to match live page
         quote:
-          "I had opted for Child Psychology Certification Program. The coaching was really good, coaches also were very understanding and was clearing our doubts. Thanks Counsel India!",
+          "I had opted for Child Psychology Certification Program. The coaching was really good, coaches also were very understanding and they cleared all the doubts. I had a wonderful experience all together. The knowledge I gained was remarkable. Thanks to Counsel India.",
         name: "Gurpreet Kaur",
         city: "Chandigarh",
         image:
           "https://prod-s3.counselindia.com/success_stories/gurpreet-kaur.jpg",
       },
       {
+        // UPDATED to match live page
         quote:
-          "I had a really good time during the internship and the case studies were very knowledgeable. The assignments were interesting and easy to follow. It was a really good session and I recommend all the aspiring psychologist to try Counsel India once.",
+          "I had a really good time during the internship and the case studies were very knowledgeable. The assignments were interesting as well.",
         name: "Sneh Kochar",
         city: "Jammu",
         image: "https://prod-s3.counselindia.com/success_stories/sneh.jpg",
       },
     ],
+    // UPDATED to match live page ("Our Learners Work At" section)
     partners: [
-      "https://www.counselindia.com/assets/images/logo/GU_logo.png",
-      "https://www.counselindia.com/assets/images/logo/msu_logo.png",
-      "https://www.counselindia.com/assets/images/logo/icpemci.png",
-      "https://www.counselindia.com/assets/images/logo/VGU.png",
+      "https://www.counselindia.com/assets/images/partners-logo/partner1.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner2.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner3.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner4.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner5.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner6.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner7.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner8.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner9.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner10.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner11.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner12.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner13.jpg",
     ],
     faqs: [
       {
@@ -1551,6 +1548,7 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         desc: "26 September 2026",
       },
     ],
+    // NOT FOUND on live page - kept as is
     benefits: [
       "Comprehensive Academic Rigor: In-depth study covering clinical psychology, counselling modalities, organizational behavior, and neurocognitive frameworks.",
       "Dual Embedded Internships & Apprenticeships: 375 live hours, 480 project hours, and 900 on-the-job learning (OJL) hours for practical immersion.",
@@ -1559,10 +1557,59 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       "Academic Bank of Credits (ABC): Fully compliant with UGC guidelines and NEP 2020 for seamless credit accumulation and inter-institutional transfer.",
       "Advanced Clinical & Corporate Readiness: Comprehensive training in psychological assessments, diagnostic psychometrics, and structured therapy protocols.",
     ],
-    about: [
-      "(Internship/Apprenticeship Embedded) - Our Masters in Psychology program is designed to help you understand human behavior more effectively, look at the mental processes, and comprehend emotional well-being. With advanced coursework ensuring the highest standards, hands-on training, and research potential, you will gain the skills needed to succeed in diverse areas of psychology, such as counselling and organizational behavior.",
-      "Explore the complexities of the human mind and build a rewarding career in psychology. This course, in partnership with IPA (International Psychology Association) & Skill India, provides you a strong foundation for a successful career in mental health across clinical, corporate, educational, and research sectors.",
+    // NEW - "Course Overview" section on live page (not present in previous data)
+    courseOverview: [
+      {
+        title: "Comprehensive Curriculum",
+        text: "The program offers a broad study of psychology, covering key areas such as clinical psychology, counseling, organizational behavior, and psychological research. Students will gain both foundational knowledge and advanced insights, preparing them to excel in various fields of psychology.",
+      },
+      {
+        title: "Expert-Led Classes",
+        text: "Classes are delivered by seasoned psychologists and industry professionals who bring their practical experiences into the classroom, ensuring students receive an education that is both academically robust and relevant to the modern psychological landscape.",
+      },
+      {
+        title: "Hands-On Training",
+        text: "Students will engage in practical experiences through internships, live case studies, and hands-on workshops. This real-world training equips them with essential skills to apply psychological theories and methods in clinical, organizational, and research settings.",
+      },
+      {
+        title: "Research Opportunities",
+        text: "The program provides multiple opportunities for students to undertake advanced research projects. These projects help students develop critical thinking, problem-solving skills, and a deeper understanding of psychological phenomena, preparing them for future roles in academia, research, or professional practice.",
+      },
+      {
+        title: "Career-Ready Skills",
+        text: "Graduates will emerge with skills essential for careers in mental health counseling, clinical psychology, corporate psychology, and academic research. The program emphasizes psychological assessments, therapy techniques, and organizational behavior analysis to ensure students are ready for a diverse range of professional roles.",
+      },
+      {
+        title: "Specialization Options",
+        text: "Students can personalize their education by selecting from various specializations in psychology, such as clinical counseling, corporate psychology, or advanced research. This allows them to focus on areas that align with their career goals and interests.",
+      },
+      {
+        title: "Focus on Practical Application",
+        text: "Beyond theory, the program stresses practical application, equipping students to address real-world mental health challenges, improve organizational performance, and contribute to psychological research. Case-based learning ensures students can immediately apply what they learn.",
+      },
+      {
+        title: "Academic Bank of Credits (ABC)",
+        text: "The program follows UGC guidelines and allows students to earn credit points that can be added to their Academic Bank of Credits (ABC). This feature gives students the flexibility to accumulate, store, and transfer their credits across institutions, making the learning process more adaptable to their professional and academic growth.",
+      },
+      {
+        title: "Credit Points",
+        text: "Each course within the program earns students valuable credit points that contribute toward their overall degree. These points can be used to build their Academic Bank of Credits, enabling them to continue their education in other UGC-approved programs or institutions if they choose to pursue further studies.",
+      },
+      {
+        title: "Flexible Learning Environment",
+        text: "The MA in Psychology offers a blend of online and on-campus learning options, accommodating the needs of working professionals and full-time students. Interactive workshops, peer discussions, and hands-on projects make learning engaging and practical.",
+      },
     ],
+    // UPDATED to match live page ("About this Course")
+    about: [
+      "Our Masters in Psychology program is designed to provide an in-depth understanding of human behavior, mental processes, and emotional well-being. Combining advanced coursework with hands-on training and research, this program equips you with the expertise to thrive in diverse areas of psychology, such as counseling, clinical psychology, organizational behavior, and more. Join us to dive into the complexities of the human mind and build a fulfilling career in psychology, guided by experienced faculty and cutting-edge practices.",
+    ],
+    // NEW - "MEPSC - Skill India Advantage" section on live page
+    skillIndiaAdvantage: {
+      title: "MEPSC - Skill India Advantage",
+      text: "Counsel India is proud to be officially associated and recognized by the Micro Enterprises Promotion & Support Enterprise (MEPSE) — a prestigious organization committed to empowering and supporting enterprises across India. This recognition reflects our dedication to delivering world-class mental health, career counseling, and psychology education services with integrity, innovation, and measurable impact. Through this association, we strengthen our mission to create skilled professionals, expand access to quality mental health resources, and contribute to the nation’s socio-economic growth by fostering education, awareness, and professional excellence.",
+    },
+    // NOT FOUND on live page - kept as is
     learningObjectives: [
       "Master core domains of cognitive, social, developmental, biological, and abnormal psychology with evidence-based frameworks.",
       "Develop expertise in psychological assessment batteries, clinical psychometrics, and standardized diagnostic systems (DSM-5 / ICD).",
@@ -1577,16 +1624,18 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
           "https://prod-s3.counselindia.com/credential/Screenshot%202025-08-04%20114105_1754288577.png",
       },
       {
+        // UPDATED to match live page
         id: "tab204",
         label: "MEPSC Certificate",
-        text: "After the successful training and assessment, the Management & Entrepreneurship and Professional Skills Council (MEPSC) will issue a skill certificate and add your credentials to the central qualification database valid across G20 nations.",
+        text: "After the successful training and assessment, the Management & Entrepreneurship and Professionals Skills Council (MEPSC) will issue a skill certificate, add your database in the central skills qualification database which can be accessed online for verification and due-diligence by employers. This skills certification will be valid across all G20 nations.",
         image:
           "https://prod-s3.counselindia.com/credential/Certificate%20Template%20-%20Job%20Role%20%281%29_1753183761.jpg",
       },
       {
+        // UPDATED to match live page
         id: "tab195",
         label: "Certificate of Completion",
-        text: "This certificate honors your dedication, hard work, and mastery of essential skills and specializations. It celebrates your commitment to excellence and acknowledges your achievement in making a meaningful impact in your field.",
+        text: "This certificate honors your dedication, hard work, and mastery of essential skills and specializations. It celebrates your commitment to excellence and acknowledges your achievement in making a meaningful impact in your field moving forward.",
         image:
           "https://prod-s3.counselindia.com/credential/Advanced%20Certificate%20in%20Child%20Psychology-2_1728648469.png",
       },
@@ -1629,44 +1678,307 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       ],
       modules: [
         {
-          title: "Semester 1: Foundations of Psychology & Biological Bases",
+          title: "Introduction to Human Psychology",
           topics: [
-            "Introduction to Human Psychology & Lifespan Development",
-            "Biological Bases of Behavior: Nervous System, Neurotransmitters & Brain Chemistry",
-            "Sensation, Perception, and Perceptual Illusions",
-            "Learning Theories: Classical Conditioning, Operant Conditioning & Observational Learning",
+            "Basic principles of development across the lifespan",
+            "Stages of development (infancy, childhood, adolescence, adulthood)",
+            "Key theories of human development (e.g., Piaget, Erikson)",
+            "The impact of genetics, environment, and culture on development",
           ],
         },
         {
-          title: "Semester 2: Cognitive, Developmental & Social Psychology",
+          title: "Definition and Scope of Cognitive Psychology",
           topics: [
-            "Cognitive Psychology: Working Memory, Attention, Problem Solving & Decision Making",
-            "Developmental Psychology: Cognitive & Socio-Emotional Milestones (Piaget, Erikson)",
-            "Social Psychology: Social Influence, Group Dynamics, Attitudes & Persuasion",
-            "Psychological Assessment & Testing: Psychometrics, Reliability & Validity",
+            "Definition of Cognitive Psychology: Understanding cognition as mental activities related to knowledge acquisition, processing, and application.",
+            "Scope: Overview of key areas of cognitive psychology, including perception, memory, problem-solving, decision- making, and language.",
+            "Historical Context: Emergence of cognitive psychology from behaviorism, the cognitive revolution in the 1950s-60s, and key contributors like Neisser and Chomsky.",
           ],
         },
         {
-          title: "Semester 3: Psychopathology, Clinical Psychology & Therapies",
+          title: "Biological Bases of Behavior",
           topics: [
-            "Psychopathology: DSM-5 Mental Disorders, Etiology & Diagnostic Frameworks",
-            "Abnormal Psychology: Psychotic, Mood, and Anxiety Disorders",
-            "Therapeutic Approaches: Psychoanalysis, CBT, Humanistic & Family Systems Therapy",
-            "Role of Clinical Psychologists, Interviewing Skills & Mental Health Diagnostics",
+            "Structure and Function of the Nervous System",
+            "Neurotransmitters and Brain Chemistry",
+            "The Endocrine System",
+            "The Role of Genetics in Behavior",
           ],
         },
         {
-          title:
-            "Semester 4: Health, Neuropsychology, Aging & Applied Projects",
+          title: "Sensation and Perception",
           topics: [
-            "Health Psychology: Biopsychosocial Model, Stress, Coping & Chronic Illness",
-            "Neuropsychology: Brain-Behavior Relationships & Neurodegenerative Disorders",
-            "Psychology of Aging: Cognitive Aging, Theories & Quality of Life",
-            "Master Thesis Project Work (480 Hours) & Supervised OJL Apprenticeship (900 Hours)",
+            "The Sensory Systems: Vision, Hearing, Touch, etc.",
+            "Sensory Processing and Perception",
+            "Perceptual Illusions and Cognitive Biases",
+            "Theories of Perception",
+          ],
+        },
+        {
+          title: "Learning Theories",
+          topics: [
+            "Classical Conditioning (Pavlov)",
+            "Operant Conditioning (Skinner)",
+            "Observational Learning (Bandura)",
+            "Cognitive Learning Theories",
+          ],
+        },
+        {
+          title: "Cognitive Psychology",
+          topics: [
+            "Attention and Perception",
+            "Memory Models (Working Memory, Long-term Memory)",
+            "Problem Solving and Decision Making",
+            "Cognitive Biases and Heuristics",
+          ],
+        },
+        {
+          title: "Developmental Psychology",
+          topics: [
+            "Stages of Human Development (Piaget, Erikson)",
+            "Cognitive Development in Children",
+            "Social and Emotional Development",
+            "Adult and Aging Development",
+          ],
+        },
+        {
+          title: "Social Psychology",
+          topics: [
+            "Social Influence and Obedience",
+            "Group Dynamics and Group Behavior",
+            "Attitudes and Persuasion",
+            "Prejudice and Discrimination",
+          ],
+        },
+        {
+          title: "Psychological Assessment and Testing",
+          topics: [
+            "Types of Psychological Tests (IQ, Personality, etc.)",
+            "Psychometrics and Reliability/Validity",
+            "Ethical Issues in Psychological Testing",
+            "Applications of Psychological Assessments",
+          ],
+        },
+        {
+          title: "Psychopathology",
+          topics: [
+            "Classification of Mental Disorders (DSM-5)",
+            "Common Psychological Disorders (Anxiety, Depression, etc.)",
+            "Etiology of Psychological Disorders",
+            "Assessment and Diagnosis of Mental Health Disorders",
+          ],
+        },
+        {
+          title: "Therapeutic Approaches",
+          topics: [
+            "Psychoanalysis and Psychodynamic Therapy",
+            "Cognitive Behavioral Therapy (CBT)",
+            "Humanistic and Client-Centered Therapy",
+            "Family Therapy and Systemic Therapy",
+          ],
+        },
+        {
+          title: "Abnormal Psychology",
+          topics: [
+            "Theories and Models of Abnormal Behavior",
+            "Psychotic Disorders (Schizophrenia)",
+            "Mood Disorders (Bipolar, Depression)",
+            "Anxiety and Stress-Related Disorders",
+          ],
+        },
+        {
+          title: "Clinical Psychology",
+          topics: [
+            "Role of a Clinical Psychologist",
+            "Therapeutic Techniques and Approaches",
+            "Psychological Assessment in Clinical Practice",
+            "Ethical and Legal Issues in Clinical Psychology",
+          ],
+        },
+        {
+          title: "Health Psychology",
+          topics: [
+            "The Biopsychosocial Model of Health",
+            "Stress and Coping Mechanisms",
+            "Psychological Interventions in Health",
+            "Psychological Aspects of Chronic Illness and Pain",
+          ],
+        },
+        {
+          title: "Neuropsychology",
+          topics: [
+            "Brain-Behavior Relationships",
+            "Neuropsychological Assessments",
+            "Cognitive and Emotional Effects of Brain Injury",
+            "Neurodegenerative Disorders (Alzheimer's, Parkinson's)",
+          ],
+        },
+        {
+          title: "Psychology of Aging",
+          topics: [
+            "Cognitive and Social Aging",
+            "Theories of Aging",
+            "Mental Health in Older Adults",
+            "Aging and Quality of Life",
+          ],
+        },
+        {
+          title: "Psychology of Learning Disabilities",
+          topics: [
+            "Common Learning Disabilities (Dyslexia, ADHD, etc.)",
+            "Cognitive and Behavioral Interventions",
+            "Social and Emotional Impact of Learning Disabilities",
+            "Educational Strategies for Learning Disabilities",
+          ],
+        },
+        {
+          title: "Psychology of Motivation",
+          topics: [
+            "Intrinsic vs Extrinsic Motivation",
+            "Motivation in Education",
+            "Self-Determination Theory",
+            "Goal-Setting and Achievement",
+          ],
+        },
+        {
+          title: "Psychology of Stress",
+          topics: [
+            "Theories of Stress (Transactional Model, General Adaptation Syndrome)",
+            "Physiological and Psychological Effects of Stress",
+            "Coping Mechanisms and Resilience",
+            "Stress Management Interventions",
+          ],
+        },
+        {
+          title: "Psychological Interventions in Substance Abuse",
+          topics: [
+            "Substance Use and Addiction Models",
+            "Cognitive Behavioral Therapy for Addiction",
+            "Motivational Interviewing in Substance Abuse Treatment",
+            "Relapse Prevention Strategies",
+          ],
+        },
+        {
+          title: "Psychology of Trauma",
+          topics: [
+            "Types of Trauma (Physical, Emotional, Childhood)",
+            "PTSD and Trauma Responses",
+            "Trauma-Focused Cognitive Behavioral Therapy (TF-CBT)",
+            "Trauma and Recovery",
+          ],
+        },
+        {
+          title: "Forensic Psychology",
+          topics: [
+            "Psychological Aspects of Crime and Criminal Behavior",
+            "Forensic Assessments and Profiling",
+            "Victimology and Psychological Impact of Crime",
+            "Ethical Considerations in Forensic Psychology",
+          ],
+        },
+        {
+          title: "Industrial and Organizational Psychology",
+          topics: [
+            "Motivation in the Workplace",
+            "Employee Selection and Recruitment",
+            "Organizational Behavior and Change",
+            "Job Satisfaction and Performance",
+          ],
+        },
+        {
+          title: "Counseling Psychology",
+          topics: [
+            "Theories of Counseling (Cognitive-Behavioral, Person-Centered)",
+            "Counseling Techniques and Approaches",
+            "Crisis Counseling and Intervention",
+            "Ethical Considerations in Counseling",
+          ],
+        },
+        {
+          title: "Psychology of Relationships",
+          topics: [
+            "Attachment Theory and Relationships",
+            "Relationship Satisfaction and Conflict",
+            "Marriage and Family Therapy",
+            "Social Support and Relationship Dynamics",
+          ],
+        },
+        {
+          title: "Psychology of Gender",
+          topics: [
+            "Gender Identity and Development",
+            "Gender Roles and Stereotypes",
+            "Theories of Gender (Social Learning, Cognitive Development)",
+            "Psychological Impact of Gender Inequality",
+          ],
+        },
+        {
+          title: "Psychology of Parenting",
+          topics: [
+            "Parenting Styles and Child Development",
+            "Emotional and Cognitive Development in Children",
+            "Parenting and Child Mental Health",
+            "Parenting Interventions",
+          ],
+        },
+        {
+          title: "Psychology of Culture and Diversity",
+          topics: [
+            "Cross-Cultural Psychology",
+            "Cultural Influences on Behavior",
+            "Diversity and Inclusion in Psychology",
+            "The Role of Acculturation in Psychological Health",
+          ],
+        },
+        {
+          title: "Social Cognition",
+          topics: [
+            "Theories of Social Cognition",
+            "Stereotypes, Prejudices, and Discrimination",
+            "The Role of Social Influence and Persuasion",
+            "Self-concept and Identity in Social Contexts",
+          ],
+        },
+        {
+          title: "Psychology of Religion",
+          topics: [
+            "Theories of Religion (Jungian, Freud, etc.)",
+            "Religion, Spirituality, and Psychological Well-being",
+            "Religious Coping and Mental Health",
+            "Religion's Impact on Behavior",
+          ],
+        },
+        {
+          title: "Psychology of Law",
+          topics: [
+            "Psychological Assessment in Legal Contexts",
+            "Eyewitness Testimony and Memory",
+            "Forensic Psychology in the Court System",
+            "The Psychology of Jury Decision-Making",
+          ],
+        },
+        {
+          title: "Psychology of Human Sexuality",
+          topics: [
+            "Theories of Sexual Behavior",
+            "Sexual Orientation and Identity",
+            "Sexual Health and Psychological Well-being",
+            "Gender and Sexuality in Psychological Research",
+          ],
+        },
+        {
+          title: "Educational Psychology",
+          topics: [
+            "Learning Theories in Education",
+            "Motivation and Academic Achievement",
+            "Classroom Management Techniques",
+            "Psychological Assessment in Education",
           ],
         },
       ],
     },
+    // NEW - "How will this program benefit you?" section on live page
+    programBenefit: [
+      "This program offers a wealth of benefits designed to boost both your professional and personal growth. You'll gain advanced knowledge in psychological theories and practices, along with hands-on experience through internships and real-world case studies. Whether you’re aiming for a career in counseling, clinical psychology, or organizational behavior, this program opens doors to numerous opportunities. With specialized electives, you can focus on areas that align with your interests while developing essential skills like communication, emotional intelligence, and interpersonal relations. Networking with professionals and peers will help expand your connections, and exposure to cutting-edge research and diverse global perspectives will equip you to work effectively in today’s interconnected world. Plus, earning an accredited degree enhances your credibility and makes you more competitive in the job market.",
+    ],
     whoCanJoin: [
       "Graduates in Psychology or Related Fields",
       "Educators and School Professionals",
@@ -1676,23 +1988,33 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       "Career Changers",
       "Aspiring Researchers and Academics",
     ],
+    // UPDATED to match live page
     scholarship: {
-      title: "Scholarship & Practical Learning Support",
+      title: "Get Upto 30% Scholarship",
       subtitle:
-        "Guaranteed practical internship & training support under our Har Ghar Counsellor initiative.",
-      image: "https://www.counselindia.com/assets/images/about/about-13.png",
+        '"Avail up to a 30% scholarship and receive exclusive additional benefits."',
+      image:
+        "https://prod-s3.counselindia.com/mastergalaxyimages/Untitled%20design-23_1734162900.png",
       points: [
         {
-          label: "Direct Mentorship",
-          desc: "One-on-one supervision by senior counselling psychologists.",
+          label: "Alumni Network of 12,500+ Members",
+          desc: "Gain access to a vast network of over 12,500 alumni who can support and guide you in your professional ventures.",
         },
         {
-          label: "Hands-on Practice",
-          desc: "Live case discussions and clinical roleplay sessions.",
+          label: "90+ Hiring Partners",
+          desc: "Benefit from dedicated job assistance through our extensive network of over 90 hiring partners, ensuring you have the best opportunities in the industry.",
         },
         {
-          label: "Fee Assistance",
-          desc: "Flexible installment plans and merit-based fee support.",
+          label: "Exclusive Membership",
+          desc: "Enroll now and enjoy a complimentary membership, providing access to valuable resources and opportunities.",
+        },
+        {
+          label: "Personalized Mentoring Sessions",
+          desc: "Receive multiple one-on-one mentoring sessions with industry professionals throughout the course, helping you navigate your career path.",
+        },
+        {
+          label: "Workshops, Events, and Bootcamps",
+          desc: "Get free access to a wide range of workshops, events, bootcamps, and networking meetings, designed to enhance your skills and expand your professional network.",
         },
       ],
     },
@@ -1716,11 +2038,12 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
           "https://prod-s3.counselindia.com/counsellor/9626930401698298591.jpeg",
       },
     ],
+    // UPDATED to match live page
     referEarn: {
-      title: "Refer & Earn with Counsel India",
-      subtitle:
-        "Help your peers discover transformative psychology programs and earn exciting referral rewards.",
-      buttonText: "Refer a Friend",
+      title:
+        "Refer someone and Earn upto INR 12,000 Cashback/Vouchers, on every successful enrollment",
+      subtitle: "Your friend also gets an instant scholarship!",
+      buttonText: "Start Referring",
       buttonLink: "/refer-and-earn?course_id=64",
     },
     reviews: [
@@ -1755,25 +2078,37 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         image: "https://prod-s3.counselindia.com/success_stories/sneh.jpg",
       },
       {
+        // UPDATED to match live page
         quote:
-          "An amazing experience with Counsel India. I did my Industrial Internship with the help of experienced mentors of Counsel India. Sessions were theoretical as well as practical. A good platform to learn more about psychology.",
+          "An amazing experience with Counsel India. I did my Industrial Internship with the help of experienced mentors of Counsel India. Sessions were theoretical as well as practical. A good platform to learn more about psychology. I wish for more practical sessions.",
         name: "Pragun Sharma",
         city: "Shimla",
         image: "https://prod-s3.counselindia.com/success_stories/pragun.jpg",
       },
       {
+        // UPDATED to match live page
         quote:
-          "The moment I joined the course, I felt the positive vibe. The level of details that this course offered was tremendous. Overall the experience was excellent and up to the mark.",
+          "The moment I joined the course, I felt the positive vibe. The level of details that this course offered was tremendous. Overall the experience was excellent and up to the mark. Love to know more about such courses.",
         name: "Megha Singh",
         city: "Ahmedabad",
         image: "https://prod-s3.counselindia.com/success_stories/megha.jpg",
       },
     ],
+    // UPDATED to match live page ("Our Learners Work At" section)
     partners: [
-      "https://www.counselindia.com/assets/images/logo/GU_logo.png",
-      "https://www.counselindia.com/assets/images/logo/msu_logo.png",
-      "https://www.counselindia.com/assets/images/logo/icpemci.png",
-      "https://www.counselindia.com/assets/images/logo/VGU.png",
+      "https://www.counselindia.com/assets/images/partners-logo/partner1.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner2.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner3.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner4.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner5.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner6.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner7.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner8.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner9.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner10.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner11.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner12.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner13.jpg",
     ],
     faqs: [
       {
@@ -2173,12 +2508,12 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
           text: "Core Modules",
         },
         {
-          count: "13",
-          text: "Specializations",
+          count: "3+",
+          text: "Counselling Skills",
         },
         {
-          count: "24",
-          text: "Live Sessions",
+          count: "10+",
+          text: "Case Studies",
         },
       ],
       modules: [
@@ -2867,43 +3202,266 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       ],
       modules: [
         {
-          title:
-            "Semester 1: Foundations of Child Development & Biological Bases",
+          title: "Introduction to Human Psychology",
           topics: [
-            "Introduction to Human Psychology & Lifespan Developmental Principles",
-            "Genetics, Chromosomal Patterns & Childhood Biological Vulnerabilities",
-            "Prenatal Development, Teratogens & Newborn Reflexive Adaptations",
-            "Attachment Theory (Bowlby, Ainsworth) & Cross-Cultural Variations",
+            "Basic principles of development across the lifespan",
+            "Stages of development (infancy, childhood, adolescence, adulthood)",
+            "Key theories of human development (e.g., Piaget, Erikson)",
+            "The impact of genetics, environment, and culture on development",
           ],
         },
         {
-          title:
-            "Semester 2: Cognitive, Language, Temperament & Moral Development",
+          title: "Psychological Disorders in Children",
           topics: [
-            "Cognitive Development in Infancy & Childhood (Piaget, Vygotsky)",
-            "Language Acquisition, Environmental Influences & Multilingualism",
-            "Temperament, Emotional Regulation & Personality Foundations",
-            "Social Play, Peer Interactions & Moral Development (Kohlberg)",
+            "Anxiety Disorders in Children",
+            "Attention-Deficit Hyperactivity Disorder (ADHD)",
+            "Autism Spectrum Disorder (ASD)",
+            "Depression and Mood Disorders in Children",
+            "Conduct and Oppositional Defiant Disorders",
+            "Eating Disorders in Children and Adolescents",
           ],
         },
         {
-          title:
-            "Semester 3: Pediatric Psychopathology & Developmental Disorders",
+          title: "Domains of Child Development",
           topics: [
-            "Childhood Anxiety, Phobias, and Mood Disturbances",
-            "Attention-Deficit Hyperactivity Disorder (ADHD) & Behavioral Management",
-            "Autism Spectrum Disorder (ASD) & Neurodivergent Interventions",
-            "Research Methodologies & Psychometric Assessment in Child Development",
+            "Physical Development",
+            "Cognitive Development",
+            "Emotional Development",
+            "Social Development",
           ],
         },
         {
-          title:
-            "Semester 4: Advanced Child Interventions, Practicum & Master's Thesis",
+          title: "Research Methods in Child Development",
           topics: [
-            "Child-Centered Counseling, Play Therapy & Expressive Arts Modalities",
-            "Parent-Child Relationship Counseling & Behavioral Modification Plans",
-            "Supervised OJL Clinical Apprenticeship (900 Hours)",
-            "Master's Dissertation / Capstone Research Project & Viva (840 Hours)",
+            "Observational Studies",
+            "Case Studies",
+            "Experimental Designs",
+            "Ethical Considerations",
+          ],
+        },
+        {
+          title: "Genetics and Child Behavior",
+          topics: [
+            "Basics of Genetics",
+            "Chromosomal Patterns",
+            "Inheritance and Behavior",
+            "Genetic Disorders",
+          ],
+        },
+        {
+          title: "Prenatal Development Stages",
+          topics: [
+            "Zygote Stage",
+            "Embryo Development",
+            "Fetal Growth",
+            "Maternal Influences",
+          ],
+        },
+        {
+          title: "Teratogens and Prenatal Risks",
+          topics: [
+            "Definition of Teratogens",
+            "Common Teratogenic Effects",
+            "Maternal Health Impact",
+            "Prevention Strategies",
+          ],
+        },
+        {
+          title: "Birth and Newborn Adaptation",
+          topics: [
+            "Types of Childbirth",
+            "Newborn Reflexes",
+            "Early Screening",
+            "Parental Adjustments",
+          ],
+        },
+        {
+          title: "Attachment Theory",
+          topics: [
+            "Bowlby's Attachment Theory",
+            "Types of Attachment",
+            "Factors Influencing Attachment",
+            "Cross-Cultural Variations",
+          ],
+        },
+        {
+          title: "Cognitive Development in Infancy",
+          topics: [
+            "Sensorimotor Stage (Piaget)",
+            "Object Permanence",
+            "Role of Exploration",
+            "Influence of Caregivers",
+          ],
+        },
+        {
+          title: "Personality Psychology",
+          topics: [
+            "Theories of Personality (Freud, Jung, Rogers)",
+            "Trait Theory and Personality Assessments",
+            "The Role of Genetics in Personality",
+            "Personality Development Over the Lifespan",
+          ],
+        },
+        {
+          title: "Temperament in Early Childhood",
+          topics: [
+            "Types of Temperament",
+            "Measuring Temperament",
+            "Impact on Behavior",
+            "Stability Over Tim",
+          ],
+        },
+        {
+          title: "Language Development in Early Childhood",
+          topics: [
+            "Components of Language",
+            "Stages of Language Acquisition",
+            "Role of Family Environment",
+            "Multilingualis",
+          ],
+        },
+        {
+          title: "Social Play and Peer Interactions",
+          topics: [
+            "Types of Play (Solitary, Parallel, Cooperative)",
+            "Role of Play in Learning",
+            "Gender Differences in Play",
+            "Social Skills Development",
+          ],
+        },
+        {
+          title: "Moral Development in Children",
+          topics: [
+            "Kohlberg's Stages",
+            "Social Learning Theory",
+            "Role of Empathy",
+            "Cultural Influences",
+          ],
+        },
+        {
+          title: "Parenting Styles and Child Outcomes",
+          topics: [
+            "Authoritative, Permissive, Authoritarian",
+            "Impact on Behavior",
+            "Role of Cultural Context",
+            "Long-Term Effects",
+          ],
+        },
+        {
+          title: "Emotional Regulation in Infants",
+          topics: [
+            "Development of Basic Emotions",
+            "Self-Conscious Emotions",
+            "Emotional Self-Regulation",
+            "Parental Influence",
+          ],
+        },
+        {
+          title: "Early Childhood Education Models",
+          topics: [
+            "Montessori Method",
+            "Reggio Emilia Approach",
+            "Play-Based Learning",
+            "Impact on Cognitive Growth",
+          ],
+        },
+        {
+          title: "The Role of Family in Child Development",
+          topics: [
+            "Family Dynamics",
+            "Sibling Relationships",
+            "Parenting Practices",
+            "Extended Family Influence",
+          ],
+        },
+        {
+          title: "Peer Influence on Child Behavior",
+          topics: [
+            "Peer Pressure",
+            "Development of Friendships",
+            "Social Learning in Groups",
+            "Role of Peers in Identity Formation",
+          ],
+        },
+        {
+          title: "Physical Growth Milestones",
+          topics: [
+            "Growth Patterns",
+            "Motor Skill Development",
+            "Gross vs. Fine Motor Skills",
+            "Influences on Physical Growth",
+          ],
+        },
+        {
+          title: "Sensory Development in Infants",
+          topics: [
+            "Vision and Hearing",
+            "Taste, Smell, and Touch",
+            "Sensory Preferences",
+            "Impact on Cognitive Development",
+          ],
+        },
+        {
+          title: "Adolescent Brain Development",
+          topics: [
+            "Changes in Brain Structure",
+            "Role of Hormones",
+            "Impact on Decision-Making",
+            "Implications for Behavior",
+          ],
+        },
+        {
+          title: "Identity Formation in Adolescence",
+          topics: [
+            "Erikson's Identity vs. Role Confusion",
+            "Peer Influence",
+            "Role of Family",
+            "Impact on Mental Health",
+          ],
+        },
+        {
+          title: "Gender Identity and Roles",
+          topics: [
+            "Gender Identity Development",
+            "Cultural Influences",
+            "Gender Dysphoria",
+            "Impact of Media",
+          ],
+        },
+        {
+          title: "Developmental Psychopathology",
+          topics: [
+            "Autism Spectrum Disorder",
+            "ADHD Overview",
+            "Early Intervention Strategies",
+            "Role of Family Support",
+          ],
+        },
+        {
+          title: "Nutrition and Its Impact on Growth",
+          topics: [
+            "Importance of Balanced Diet",
+            "Nutritional Deficiencies",
+            "Childhood Obesity",
+            "Role of Diet in Cognitive Development",
+          ],
+        },
+        {
+          title: "Sleep and Child Development",
+          topics: [
+            "Importance of Sleep",
+            "Sleep Patterns in Children",
+            "Impact of Sleep Deprivation",
+            "Parental Strategies for Healthy Sleep",
+          ],
+        },
+        {
+          title: "Language Disorders in Childhood",
+          topics: [
+            "Common Language Delays",
+            "Dyslexia and Reading Challenges",
+            "Assessment of Language Disorders",
+            "Intervention Strategies",
           ],
         },
       ],
@@ -3437,22 +3995,112 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
           text: "Core Modules",
         },
         {
-          count: "23",
-          text: "Specializations",
+          count: "84",
+          text: "Core Module Session",
         },
         {
-          count: "84+",
-          text: "Live Sessions",
+          count: "35+",
+          text: "Case Studies Sessions",
         },
       ],
       modules: [
         {
+          title: "Depression Counselling",
+          topics: [
+            "Understanding Depression : Types, causes, and symptoms.",
+            "Therapeutic Approaches : CBT, MBCT, and psychodynamic methods.",
+            "Coping Strategies : Healthy routines, stress management, and support systems.",
+            "Crisis Intervention : Managing suicidal ideation, safety planning, and relapse prevention.",
+          ],
+        },
+        {
+          title: "Addiction Counselling",
+          topics: [
+            "Types of Addiction",
+            "Causes and Risk Factors",
+            "Addiction Treatment Models",
+            "Developing Treatment Plans",
+          ],
+        },
+        {
+          title: "Anxiety Counselling",
+          topics: [
+            "Understanding Anxiety : Types, causes, and triggers of anxiety disorders.",
+            "Cognitive Behavioral Techniques : Identifying negative thoughts and developing coping strategies.",
+            "Mindfulness and Stress Management : Techniques like deep breathing and mindfulness-based stress reduction (MBSR).",
+            "Building Resilience and Support Systems : Lifestyle changes, exercise, sleep hygiene, and social support.",
+          ],
+        },
+        {
+          title: "Stress Counselling",
+          topics: [
+            "Identifying Stressors",
+            "Stress Reduction Techniques",
+            "Cognitive Behavioral Strategies for Stress",
+            "Relaxation Techniques",
+          ],
+        },
+        {
+          title: "Anger Counseling",
+          topics: [
+            "Understanding Anger : Identifying triggers and the role of anger in emotional regulation.",
+            "Cognitive Behavioral Techniques : Using CBT to challenge negative thoughts and manage impulsive reactions.",
+            "Mindfulness & Relaxation : Practicing mindfulness, breathing exercises, and relaxation to manage anger.",
+            "Improving Communication : Enhancing assertiveness, active listening, and conflict resolution skills.",
+          ],
+        },
+        {
+          title: "Life Rebuilding Counseling",
+          topics: [
+            "Core Values & Strengths : Reconnect with personal beliefs for growth.",
+            "SMART Goals : Set achievable goals for transformation.",
+            "Emotional Resilience : Build coping strategies for challenges.",
+            "Self-Identity & Purpose : Redefine identity and find meaning.",
+          ],
+        },
+        {
+          title: "Career Counseling",
+          topics: [
+            "Importance of Career Counseling",
+            "Assessing Career Interests",
+            "Career Path Planning",
+            "Techniques for Career Guidance",
+          ],
+        },
+        {
+          title: "Work-Life Balance Counseling",
+          topics: [
+            "Time Management : Techniques for prioritizing tasks and reducing stress.",
+            "Setting Boundaries : Creating clear work-life boundaries to avoid burnout.",
+            "Stress Management : Using mindfulness and relaxation to handle work stress.",
+            "Self-Care : Importance of physical and emotional self-care for well-being.",
+          ],
+        },
+        {
+          title: "Focus and Memory Counseling",
+          topics: [
+            "Attention and Focus : Types of attention (selective, sustained) and techniques to improve concentration.",
+            "Memory Systems : Understanding short-term, long-term, and working memory processes.",
+            "Memory Improvement : Visualization, mnemonics, and chunking for better recall.",
+            "CBT for Focus : Using mindfulness and stress management to enhance attention.",
+          ],
+        },
+        {
+          title: "Grief and Loss Counseling",
+          topics: [
+            "Understanding Grief : Theories of grief (e.g., Kubler-Ross stages) and factors influencing the grieving process.",
+            "Grief Counseling Techniques : Approaches like empathy, active listening, and creative therapies (journaling, art).",
+            "Complicated Grief : Identifying and treating prolonged grief disorder, including therapeutic methods.",
+            "Grief in Special Populations : Supporting children, adolescents, and those facing sudden or traumatic loss.",
+          ],
+        },
+        {
           title: "Counseling in Spirituality",
           topics: [
-            "Integrating Spirituality and Mental Health: Connecting spiritual beliefs with psychological well-being and addressing spiritual crises in therapy.",
-            "Spiritual Assessment in Counseling: Techniques for assessing a client’s spiritual needs and history in therapy.",
-            "Spiritual Coping Mechanisms: Exploring how spiritual practices help clients cope with stress and trauma.",
-            "Ethical Considerations in Spiritual Counseling: Maintaining boundaries between spiritual guidance and psychological therapy while respecting client beliefs.",
+            "Integrating Spirituality and Mental Health : Connecting spiritual beliefs with psychological well-being and addressing spiritual crises in therapy.",
+            "Spiritual Assessment in Counseling : Techniques for assessing a client\u2019s spiritual needs and history in therapy.",
+            "Spiritual Coping Mechanisms : Exploring how spiritual practices help clients cope with stress and trauma.",
+            "Ethical Considerations in Spiritual Counseling : Maintaining boundaries between spiritual guidance and psychological therapy while respecting client beliefs.",
           ],
         },
         {
@@ -3467,64 +4115,64 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         {
           title: "Relationship Counseling",
           topics: [
-            "Communication: Verbal/non-verbal communication, active listening, and overcoming barriers.",
-            "Conflict Resolution: Different conflict styles and techniques for healthy resolution.",
-            "Trust and Intimacy: Building trust, emotional intimacy, and setting boundaries.",
-            "Expectations: Managing unrealistic expectations and aligning relationship goals.",
+            "Communication : Verbal/non-verbal communication, active listening, and overcoming barriers.",
+            "Conflict Resolution : Different conflict styles and techniques for healthy resolution.",
+            "Trust and Intimacy : Building trust, emotional intimacy, and setting boundaries.",
+            "Expectations : Managing unrealistic expectations and aligning relationship goals.",
           ],
         },
         {
           title: "Couple Counseling",
           topics: [
-            "Effective Communication: Improving listening and expression in relationships.",
-            "Conflict Resolution: Strategies to resolve disagreements constructively.",
-            "Intimacy and Emotional Connection: Strengthening emotional bonds and intimacy.",
-            "Trust and Forgiveness: Rebuilding trust and practicing forgiveness.",
+            "Effective Communication : Improving listening and expression in relationships.",
+            "Conflict Resolution : Strategies to resolve disagreements constructively.",
+            "Intimacy and Emotional Connection : Strengthening emotional bonds and intimacy.",
+            "Trust and Forgiveness : Rebuilding trust and practicing forgiveness.",
           ],
         },
         {
           title: "Behavior Counseling",
           topics: [
-            "Behavior Therapy Principles: Modifying behavior using reinforcement and punishment.",
-            "Cognitive-Behavioral Techniques (CBT): Combining cognitive and behavioral methods to change thoughts and behaviors.",
-            "Behavior Modification: Using reinforcement and desensitization to alter behavior.",
-            "Counselor’s Role: Identifying behaviors and developing intervention plans.",
+            "Behavior Therapy Principles : Modifying behavior using reinforcement and punishment.",
+            "Cognitive-Behavioral Techniques (CBT) : Combining cognitive and behavioral methods to change thoughts and behaviors.",
+            "Behavior Modification : Using reinforcement and desensitization to alter behavior.",
+            "Counselor\u2019s Role : Identifying behaviors and developing intervention plans.",
           ],
         },
         {
           title: "Phobia Counseling",
           topics: [
-            "Types and Causes of Phobias: Different phobias (e.g., specific, social) and their causes (genetic, environmental).",
-            "CBT for Phobias: Techniques like exposure therapy and cognitive restructuring to reduce anxiety.",
-            "Mindfulness and Relaxation: Deep breathing and mindfulness to manage phobic reactions.",
-            "Addressing Triggers and Trauma: Identifying and addressing triggers, using trauma-informed approaches.",
+            "Types and Causes of Phobias : Different phobias (e.g., specific, social) and their causes (genetic, environmental).",
+            "CBT for Phobias : Techniques like exposure therapy and cognitive restructuring to reduce anxiety.",
+            "Mindfulness and Relaxation : Deep breathing and mindfulness to manage phobic reactions.",
+            "Addressing Triggers and Trauma : Identifying and addressing triggers, using trauma-informed approaches.",
           ],
         },
         {
           title: "Workplace Counseling",
           topics: [
-            "Employee Stress Management: Techniques for coping with work-related stress (e.g., mindfulness, time management).",
-            "Conflict Resolution: Approaches to resolving workplace conflicts through communication and mediation.",
-            "Work-Life Balance: Strategies to help employees balance personal and professional life.",
-            "Career Development: Counseling for career growth, skill development, and transitions.",
+            "Employee Stress Management : Techniques for coping with work-related stress (e.g., mindfulness, time management).",
+            "Conflict Resolution : Approaches to resolving workplace conflicts through communication and mediation.",
+            "Work-Life Balance : Strategies to help employees balance personal and professional life.",
+            "Career Development : Counseling for career growth, skill development, and transitions.",
           ],
         },
         {
           title: "Parental Counseling",
           topics: [
-            "Effective Communication: Active listening, open dialogue, and emotional expression.",
-            "Parenting Styles: Authoritative, authoritarian, permissive, and their impact.",
-            "Discipline Strategies: Positive reinforcement, setting boundaries, and consistent expectations.",
-            "Managing Parental Stress: Coping strategies, self-care, and seeking support.",
+            "Effective Communication : Active listening, open dialogue, and emotional expression.",
+            "Parenting Styles : Authoritative, authoritarian, permissive, and their impact.",
+            "Discipline Strategies : Positive reinforcement, setting boundaries, and consistent expectations.",
+            "Managing Parental Stress : Coping strategies, self-care, and seeking support.",
           ],
         },
         {
           title: "Sexual Counseling",
           topics: [
-            "Sexual Health: Focus on physical and emotional well-being, STIs, contraception, and sexual dysfunction.",
-            "Communication in Relationships: Techniques for discussing desires, boundaries, and consent openly.",
-            "Sexual Identity and Orientation: Understanding and supporting diverse sexual orientations and gender identities.",
-            "Sexual Dysfunction: Addressing common dysfunctions like erectile dysfunction and treatment options.",
+            "Sexual Health : Focus on physical and emotional well-being, STIs, contraception, and sexual dysfunction.",
+            "Communication in Relationships : Techniques for discussing desires, boundaries, and consent openly.",
+            "Sexual Identity and Orientation : Understanding and supporting diverse sexual orientations and gender identities.",
+            "Sexual Dysfunction : Addressing common dysfunctions like erectile dysfunction and treatment options.",
           ],
         },
         {
@@ -3539,28 +4187,28 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         {
           title: "Adult Counseling",
           topics: [
-            "Life Transitions: Coping with major life changes like career shifts or aging.",
-            "Stress Management: Techniques for handling stress and work-life balance.",
-            "Relationship Counseling: Improving communication and resolving conflicts in relationships.",
-            "Mental Health Issues: Addressing anxiety, depression, grief, and trauma through therapy.",
+            "Life Transitions : Coping with major life changes like career shifts or aging.",
+            "Stress Management : Techniques for handling stress and work-life balance.",
+            "Relationship Counseling : Improving communication and resolving conflicts in relationships.",
+            "Mental Health Issues : Addressing anxiety, depression, grief, and trauma through therapy.",
           ],
         },
         {
           title: "Geriatric Counseling",
           topics: [
-            "Mental Health in Aging: Addressing depression, anxiety, and cognitive decline in older adults.",
-            "Grief and Loss: Coping with loss of loved ones, health, or independence.",
-            "Healthy Aging: Promoting physical and mental well-being through self-care.",
-            "Life Transitions: Adjusting to retirement and new life roles.",
+            "Mental Health in Aging : Addressing depression, anxiety, and cognitive decline in older adults.",
+            "Grief and Loss : Coping with loss of loved ones, health, or independence.",
+            "Healthy Aging : Promoting physical and mental well-being through self-care.",
+            "Life Transitions : Adjusting to retirement and new life roles.",
           ],
         },
         {
           title: "Rehabilitation Counseling",
           topics: [
-            "Introduction to Rehabilitation Counseling: Overview, role of counselor, ethical/legal aspects.",
-            "Types of Disabilities: Physical, sensory, cognitive, and developmental disabilities.",
-            "Assessment and Evaluation: Psychological, vocational, and functional assessments.",
-            "Counseling Techniques and Interventions: CBT, vocational guidance, emotional support strategies.",
+            "Introduction to Rehabilitation Counseling : Overview, role of counselor, ethical/legal aspects.",
+            "Types of Disabilities : Physical, sensory, cognitive, and developmental disabilities.",
+            "Assessment and Evaluation : Psychological, vocational, and functional assessments.",
+            "Counseling Techniques and Interventions : CBT, vocational guidance, emotional support strategies.",
           ],
         },
         {
@@ -3575,13 +4223,13 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         {
           title: "Trauma Counseling",
           topics: [
-            "Understanding Trauma: Types: Acute, chronic, complex",
+            "Understanding Trauma : Types: Acute, chronic, complex",
             "Causes: Abuse, accidents, violence",
-            "Psychological Impact: Effects: Anxiety, PTSD, depression",
+            "Psychological Impact : Effects: Anxiety, PTSD, depression",
             "Cognitive and relational changes",
-            "Trauma-Informed Care: Principles: Safety, trust, empowerment",
+            "Trauma-Informed Care : Principles: Safety, trust, empowerment",
             "Creating a safe environment, cultural sensitivity",
-            "Therapeutic Approaches: CBT, EMDR, somatic therapies",
+            "Therapeutic Approaches : CBT, EMDR, somatic therapies",
           ],
         },
         {
@@ -3597,42 +4245,42 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
           title: "Introduction to Psychology",
           topics: [
             "Definition and Scope of Psychology",
-            "Key Areas of Psychology: Clinical, Cognitive, Behavioral, Developmental",
-            "Importance of Studying Psychology: Understanding human behavior",
-            "Applications of Psychology: Real-life scenarios and settings",
+            "Key Areas of Psychology : Clinical, Cognitive, Behavioral, Developmental",
+            "Importance of Studying Psychology : Understanding human behavior",
+            "Applications of Psychology : Real-life scenarios and settings",
           ],
         },
         {
           title: "Mental Health and Common Issues",
           topics: [
             "Definition of Mental Health and Mental Illness",
-            "Common Mental Health Issues: Depression, anxiety, stress, PTSD",
-            "Risk Factors and Causes: Biological, environmental, psychological",
-            "Stigma and Its Impact: How stigma affects mental health awareness and treatment",
+            "Common Mental Health Issues : Depression, anxiety, stress, PTSD",
+            "Risk Factors and Causes : Biological, environmental, psychological",
+            "Stigma and Its Impact : How stigma affects mental health awareness and treatment",
           ],
         },
         {
           title: "Counseling Skills",
           topics: [
-            "Cognitive Behavioral Therapy (CBT): Focus on changing negative thought patterns",
-            "Psychodynamic Therapy: Exploring unconscious processes",
-            "Humanistic Therapy: Emphasizing self-actualization and personal growth",
-            "Other Therapies: Solution-Focused Therapy, Dialectical Behavior Therapy (DBT)",
+            "Cognitive Behavioral Therapy (CBT) : Focus on changing negative thought patterns",
+            "Psychodynamic Therapy : Exploring unconscious processes",
+            "Humanistic Therapy : Emphasizing self-actualization and personal growth",
+            "Other Therapies : Solution-Focused Therapy, Dialectical Behavior Therapy (DBT)",
           ],
         },
         {
           title: "Overview of Common Therapies",
           topics: [
             "Active Listening and Empathy",
-            "Questioning Techniques: Open-ended, reflective, and probing questions",
+            "Questioning Techniques : Open-ended, reflective, and probing questions",
             "Building Rapport and Trust with Clients",
-            "Non-Verbal Communication: Significance in counseling",
+            "Non-Verbal Communication : Significance in counseling",
           ],
         },
         {
           title: "The Counseling Process",
           topics: [
-            "Stages of Counseling: Assessment, treatment planning, intervention, and evaluation",
+            "Stages of Counseling : Assessment, treatment planning, intervention, and evaluation",
             "Establishing Rapport and Trust",
             "Ethical Considerations in Counseling",
             "Confidentiality and Boundaries",
@@ -3641,19 +4289,19 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         {
           title: "Understanding the Mind vs. Brain",
           topics: [
-            "Mind vs. Brain: Psychological vs. biological understanding",
-            "Key Brain Structures: Prefrontal cortex, amygdala, and their roles in behavior",
+            "Mind vs. Brain : Psychological vs. biological understanding",
+            "Key Brain Structures : Prefrontal cortex, amygdala, and their roles in behavior",
             "Mental Health and Brain Function",
-            "Neuroplasticity: How the brain adapts and changes",
+            "Neuroplasticity : How the brain adapts and changes",
           ],
         },
         {
           title: "Thoughts and Emotions",
           topics: [
             "Connection Between Thoughts, Feelings, and Behavior",
-            "Cognitive Distortions: Their impact on emotional well-being",
-            "Emotional Regulation: Techniques for managing emotions",
-            "Mindfulness: Role in managing thoughts and emotions",
+            "Cognitive Distortions : Their impact on emotional well-being",
+            "Emotional Regulation : Techniques for managing emotions",
+            "Mindfulness : Role in managing thoughts and emotions",
           ],
         },
       ],
@@ -3679,17 +4327,6 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       "Ongoing support after program completion for any difficulties, with support validity equal to the program duration.",
       "Opportunity to study in a diverse class environment where peers may include doctors, engineers, IAS officers, scientists, housewives, counselors, etc.",
       "Offline One Day at Counsel India invite.",
-    ],
-    whoCanJoin: [
-      "All Manager",
-      "All Professionals",
-      "Coordinators",
-      "VPs / VCs",
-      "Government Officers",
-      "Entrepreneur",
-      "Psychology Aspirants",
-      "Health / Wellness Experts",
-      "Psychology Students/Professionals",
     ],
     scholarship: {
       title: "Get Upto 30% Scholarship",
@@ -3783,10 +4420,23 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       },
     ],
     partners: [
-      "https://www.counselindia.com/assets/images/logo/GU_logo.png",
-      "https://www.counselindia.com/assets/images/logo/msu_logo.png",
       "https://www.counselindia.com/assets/images/logo/icpemci.png",
-      "https://www.counselindia.com/assets/images/logo/VGU.png",
+      "https://www.counselindia.com/assets/images/icon/VGU.png",
+    ],
+    learnersWorkAt: [
+      "https://www.counselindia.com/assets/images/partners-logo/partner1.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner2.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner3.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner4.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner5.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner6.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner7.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner8.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner9.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner10.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner11.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner12.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner13.jpg",
     ],
     faqs: [
       {
@@ -3874,14 +4524,13 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       "Whether you\u2019re working within a corporation or launching your own venture, this course explores entrepreneurial skills in both settings. You\u2019ll learn how to identify and develop your leadership skills, fostering an entrepreneurial mindset within your organization. Topics include project management, innovation, and leadership development, all of which are essential for driving organizational change and success.",
     ],
     about: [
-      "The Masters in Industrial/Organizational Psychology is designed for those who want to bridge the gap between human behavior and business success. This course combines the fundamentals of psychology with essential business management skills, empowering you to optimize organizational performance, enhance employee well-being, and create thriving workplace cultures. You\u2019ll gain deep insights into workplace dynamics, improve decision-making through data analytics, and develop leadership skills to manage change and foster collaboration. With a strong foundation in finance, economics, and marketing, you\u2019ll be equipped to handle the complexities of organizational challenges. Whether you're aiming to advance in leadership or pursue a career in consulting, this course prepares you to make a tangible impact by applying psychological principles to real-world business scenarios.",
+      "The Masters in Industrial/Organizational Psychology is designed for those who want to bridge the gap between human behavior and business success. This course combines the fundamentals of psychology with essential business management skills, empowering you to optimize organizational performance, enhance employee well-being, and create thriving workplace cultures. You’ll gain deep insights into workplace dynamics, improve decision-making through data analytics, and develop leadership skills to manage change and foster collaboration. With a strong foundation in finance, economics, and marketing, you’ll be equipped to handle the complexities of organizational challenges. Whether you're aiming to advance in leadership or pursue a career in consulting, this course prepares you to make a tangible impact by applying psychological principles to real-world business scenarios.",
     ],
-    learningObjectives: [
-      "Apply evidence-based psychological principles and behavioral insights to optimize organizational productivity, talent retention, and corporate culture.",
-      "Master quantitative analytical tools, managerial economics, statistics, and financial decision-making frameworks tailored for organizational leaders.",
-      "Design and execute strategic change management interventions, team leadership protocols, and conflict resolution mechanisms in diverse corporate environments.",
-      "Lead human resources consulting, organizational development, executive coaching, and talent development programs across global enterprise settings.",
-    ],
+    skillIndiaAdvantage: {
+      title: "MEPSC - Skill India Advantage",
+      text: "Counsel India is proud to be officially associated and recognized by the Micro Enterprises Promotion & Support Enterprise (MEPSE) — a prestigious organization committed to empowering and supporting enterprises across India. This recognition reflects our dedication to delivering world-class mental health, career counseling, and psychology education services with integrity, innovation, and measurable impact. Through this association, we strengthen our mission to create skilled professionals, expand access to quality mental health resources, and contribute to the nation’s socio-economic growth by fostering education, awareness, and professional excellence.",
+    },
+    learningObjectives: [],
     credentials: [
       {
         id: "tab202",
@@ -3932,71 +4581,127 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       ],
       modules: [
         {
-          title: "Semester 1: Foundations of Business & Quantitative Methods",
+          title: "PRINCIPLES OF ECONOMICS AND FINANCE",
           topics: [
-            "PRINCIPLES OF ECONOMICS AND FINANCE: This foundation course helps students to understand the practicality and relevance of economics and finance with a variety of real-world applications. Topics include classical vs. modern economic thought, supply and demand, inflation, unemployment, the Federal Reserve, interest rates, and financial markets.",
-            "PRINCIPLES OF ACCOUNTING: This foundation course teaches fundamental accounting procedures and the uses of accounting information. Topics include cash flow analysis, balance sheet and income statement interpretation, and managerial accounting tools.",
-            "MANAGERIAL STATISTICS: This foundation course prepares students for working in courses that require the use of mathematics and descriptive and inferential statistics for business decision-making.",
-            "MANAGERIAL ACCOUNTING: This course provides fundamental concepts and tools in accounting that business managers need to manage financial resources, capital budgeting, risk and return, and investment decision-making.",
+            "This foundation course helps students to understand the practicality and relevance of economics and finance with a variety of illustrations and insights. Economics topics include classical Vs. modern economic thought, supply and demand, elasticity, competition and monopoly, inflation and unemployment. Finance topics include: the federal reserve system, FOMC and the money market, interest rates, financial structure, and investment decisions.",
           ],
         },
         {
-          title: "Semester 2: Management, Marketing & Data Systems",
+          title: "PRINCIPLES OF ACCOUNTING",
           topics: [
-            "INTRA AND ENTREPRENEURSHIP: Focuses on intrapreneurship within corporate enterprises and applying entrepreneurial skills, leadership identification, project management, innovation, and corporate venturing.",
-            "INFORMATION DATA MANAGEMENT: Theoretical, managerial, and hands-on approaches to the study of computers and information technologies for business problem solving and data-driven management.",
-            "MANAGERIAL ECONOMICS: The application of economic theory and methodology to strategic management decisions, market structure analysis, pricing strategies, demand forecasting, and profit maximization.",
-            "MANAGERIAL MARKETING: Practical tools and techniques for delivering goods and services in a global economy, consumer psychology, brand positioning, and market analysis.",
+            "This foundation course teaches fundamental accounting procedures and the uses of accounting information. Topics include developing and understanding of the basic concepts that underpin financial accounting information, understanding the fundamentals of recording accounting information using the accounting equation, and familiarizing students with the four basic statements: balance sheet, income statement, statement of cash flow, and statement of changes in retained earnings.",
           ],
         },
         {
-          title: "Semester 3: Law, Corporate Finance & Organizational Change",
+          title: "MANAGERIAL STATISTICS",
           topics: [
-            "BUSINESS LAW AND ETHICS: Commercial transactions, legal responsibilities of business entities, regulatory compliance, corporate governance, and ethical decision-making frameworks.",
-            "MANAGERIAL FINANCE: Corporate financing decisions, long-term capital investments, working capital management, valuation, and capital market dynamics.",
-            "ORGANIZATIONAL CHANGE MANAGEMENT: In-depth study of corporate culture, organizational structure, employee behavior during transitions, change models, and organizational development interventions.",
-            "PROJECT TEAM MANAGEMENT: Advanced project management and leadership on strategic change, team formation, cross-functional collaboration, and performance tracking.",
+            "This foundation course prepares students for working in those courses that require the use of mathematics and /or statistics. The material includes an examination of four functions: a) linear, b) power, c) exponential and d) log. It also includes an introduction to calculus and basic descriptive and experiential statistics",
           ],
         },
         {
-          title: "Semester 4: Negotiation, Advanced Management & Capstone",
+          title: "MANAGERIAL ACCOUNTING",
           topics: [
-            "PEOPLE, CONFLICT, NEGOTIATION & RESOLUTION: Essential negotiation strategies, workplace mediation, conflict de-escalation models, and stakeholder alignment techniques in high-stakes business environments.",
-            "ADVANCED PROJECT MANAGEMENT: In-depth project execution methodologies integrating financial control, risk management, agile workflows, and stakeholder communication systems.",
-            "CAPSTONE PROJECT: Comprehensive real-world applied consulting project addressing complex industrial and organizational challenges in actual enterprise organizations.",
+            "This course provides fundamental concepts and tools in accounting, that business managers need to manage financial resources of a company effectively and purposefully. Starting from basic concepts including cash flow analysis, financial statement interpretation and ratio analysis, the course builds the foundation of knowledge and progresses toward more advance topics such as capital budgeting, risk and returns, and various investment decision making techniques. The course concludes by discussion about how a company funds itself in short-term and long-term horizons and how capital market can help in such financing process utilizing case analysis.",
+          ],
+        },
+        {
+          title: "INTRA AND ENTREPRENEURSHIP",
+          topics: [
+            "In this course, students will focus on intra and entrepreneurship and how to also apply entrepreneurial skill in the corporate environment. Focus will be on students identifying their own leadership skills and how to shape these to intra and entrepreneurship activities. This course provides students with the knowledge and tools they need to launch a business so that it has the greatest chance for success. Student will learn step by step process of turning an idea into a profitable finished product either as an entrepreneur starting a new business venture, or as an intrapreneur taking direct responsibility within a large corporation.",
+          ],
+        },
+        {
+          title: "INFORMATION DATA MANAGEMENT",
+          topics: [
+            "Theoretical, managerial and hands-on approaches to the study of computers and information technologies for problem solving and decision making. Topics include: Business intelligence, Web 2.0, Web 3.0 and beyond, mobile and electronic commerce, search engine and social media analytics, information systems, system components and properties, and types of information useful to end users, strategic uses of computers and computer networks in organizations, to analyze systems, information flows, transaction processing, applications of database management, major trends, concepts, applications and technical alternatives in telecommunications. Students will work with standard applications software packages including Microsoft Office, spreadsheet applications, database management, graphics, as well as software specific to their respective areas of specialization.",
+          ],
+        },
+        {
+          title: "MANAGERIAL ECONOMICS",
+          topics: [
+            "Managerial economics is the application of economic theory and methodology to management decisions for the development, operations, and planning of the firm and nonprofit organization. As effective managers, it is necessary to understand how economic variables such as output, interest rates, unemployment, pricing, production efficiencies and exchange rates affect companies and organizations in arriving at optimal solutions for growth and profitability. Specifically, topics to be examined in this course are the evaluation of choices and alternatives, profit measurement, economic optimization, demand and supply estimation, profitability forecasting, production and competitive markets, competition, and long-term investment decisions.",
+          ],
+        },
+        {
+          title: "MANAGERIAL MARKETING",
+          topics: [
+            "This marketing course focuses on how to apply tools and techniques to delivering goods and services in a global economy as well as in a non-profit environment. Topics include consumer behavior, market research, product planning and development, pricing, advertising strategies; budgeting, personal selling, media cross-marketing, advertising regulation, strategic planning for international markets, special events sales promotion, public relations and publicity.",
+          ],
+        },
+        {
+          title: "BUSINESS LAW AND ETHICS",
+          topics: [
+            "Our system of commerce is fundamental to our structure as a nation. Every day we participate or encounter commercial transactions be they as simple and obvious as the purchase of a cup of coffee, as subtle and passive as observing a television advertisement, or as interactive as ordering on-line a product produced half-a-world away. Intrinsic to this system of commerce are the regulations and laws that moderate how businesses operate. Knowing how the legal system interacts with business is key to a successful business. Just as important for the student/business owner is how to conduct transactions ethically within the legal system. Drawing upon a review of the fundamentals of our legal system, this course will provide the student with an introduction to basic concepts of our system of jurisprudence, legal processes and procedures, the methods for establishing and ending business relationships and the laws regulating our business transactions. Within each section we will explore ethical and legal considerations as the student learns how to conduct business in order to be successful and not just avoid legal issues.",
+          ],
+        },
+        {
+          title: "MANAGERIAL FINANCE",
+          topics: [
+            "This course provides fundamental concepts and tools in finance that business managers need to obtain in order to manage financial resources of a company effectively and purposefully. Starting from basic concepts including cash flow analysis, financial statement interpretation and ratio analysis, the course builds the foundation of knowledge and progresses toward more advance topics such as capital budgeting, risk and returns, and various investment decision-making techniques. Basic financial securities, namely equity and bonds, are discussed during the course along with valuation methods of such instruments. The course concludes by discussion about how a company funds itself in short-term and long-term horizons and how capital market can help in such financing process utilizing case analysis. This course will require students to apply these tools in the planning and development of their Constructive Action projects.",
+          ],
+        },
+        {
+          title: "ORGANIZATIONAL CHANGE MANAGEMENT",
+          topics: [
+            "This course focuses on the study of corporate culture, organizational structure, and human behavior in organizational contexts. Students study techniques for designing and developing a highly productive, effective, and socially responsive workplace. Topics include work motivation, learning theory, conflict resolution, leadership, managerial styles, job design, performance evaluation and feedback, group dynamics, and issues of organizational power and politics. A broad spectrum of actual management case studies will be used to demonstrate effective approaches and strategies for dealing with organizational problems and opportunities.",
+          ],
+        },
+        {
+          title: "PROJECT TEAM MANAGEMENT",
+          topics: [
+            "This is an advanced course in project management and leadership on strategic change. The course emphasizes the use of project management software and sound management principles in cost control, resource and staffing planning, project finances, and schedule management. Topics include organizational strategy, portfolio management, scope management, risk management, cost estimation and budgeting, project scheduling management. Topics include organizational strategy, portfolio management, scope management, risk management, cost estimation and budgeting, project scheduling.",
+          ],
+        },
+        {
+          title: "PEOPLE, CONFLICT, NEGOTIATION & RESOLUTION",
+          topics: [
+            "This course will provide the student with the ability to develop various negotiation skills that can be used in multiple business contexts. Business owners, executives, officers, managers, supervisors, salespersons, and others that are in control of staff or interact with employees, customers, suppliers, retailers, wholesalers, or any other third parties will inevitably find themselves having to manage a workplace situation. In the course, we will explore negotiation theory and the advantages and disadvantages of different negotiation styles and strategies. The coursework will then explore how the skilled businessperson can utilize dispute prevention techniques and if unsuccessful, then weigh the various legal options of alternate dispute resolution options versus following the traditional litigation process. Arbitration, mediation, and additional methods of ADR will be investigated, as well as the benefits and detriments of litigation, and the procedure of trials and appeals process involving individuals, multiple parties, coalitions, or teams. Students will acquire the skills of pre-negotiation preparation and techniques how to develop a personal negotiation style, how to engage in cross-cultural negotiations and how to develop trust and build beneficial professional relationships.",
+          ],
+        },
+        {
+          title: "ADVANCED PROJECT MANAGEMENT",
+          topics: [
+            "This course is designed to give the students a more in-depth knowledge of Project Management and to integrate financial statements, ratios, and data into the management of their projects. In this course, students will further develop their working knowledge of the field by using the Project Management Body of Knowledge (PMBOK), which will also help to prepare them for the Certified Associate Project Management (CAPM). This course will build on the students' knowledge previously gained knowledge of project management. This course explores the latest theoretical, practical, and strategic developments in the management of modem projects. Among other things, it discusses management styles, management strategies, systems engineering, and various functional areas in project management, usually not covered in a basic course. The idea is to explore the state-of-the-art in project management and develop additional insights. The emphasis in this course is on the latest managerial concepts and on possible research areas for advanced studies.",
+          ],
+        },
+        {
+          title: "CAPSTONE PROJECT",
+          topics: [
+            "Consumer's tastes and preferences are converging, which require firms to operate in a global environment by making their goods and services accessible across the globe. This course exposes students to this global environment and highlights the necessity to develop the skills and expertise to operate in this changing global competitive environment. The course has a dual purpose: to familiarize and understand the theories and practices of international business, along with the geographic, demographic, technological, political, economic, and sociocultural forces that impact cross-cultural, and the influence of national/international media related to business management. Students will study the principles and problems that individuals, companies, and institutions encounter in their business practices. The course will illustrate the changing nature of alliances, industries, and government intervention.",
           ],
         },
       ],
     },
-    whoCanJoin: [
-      "Aspiring Business Leaders",
-      "Human Resources Professionals",
-      "Mid-Career Professionals",
-      "Entrepreneurs and Small Business Owners",
-      "Psychology Graduates",
-      "Marketing and Sales Professionals",
-      "Corporate Trainers",
-      "Consultants and Coaches",
-      "Government and Nonprofit Leaders",
-      "Individuals Seeking Career Change",
+    programBenefit: [
+      "The Masters in Industrial/Organizational Psychology will empower you with a unique blend of psychological insights and business acumen, setting you up for success in a variety of leadership roles. You'll gain the skills to make data-driven decisions, enhance organizational performance, and improve employee well-being, all while developing key leadership abilities like change management and conflict resolution. With a comprehensive understanding of finance, economics, and marketing, you'll be well-equipped to tackle real-world business challenges. The program's focus on practical application through case studies and hands-on projects ensures that you'll not only learn the theory but also how to apply it effectively in the workplace. Whether you're looking to advance in HR, management, or consulting, this program provides the tools and expertise to transform your career and make a significant impact on any organization.",
     ],
+    whoCanJoin: [],
     scholarship: {
-      title: "Scholarship & Practical Learning Support",
+      title: "Get Upto 30% Scholarship",
       subtitle:
-        "Guaranteed practical internship & training support under our Har Ghar Counsellor initiative.",
-      image: "https://www.counselindia.com/assets/images/about/about-13.png",
+        "Avail up to a 30% scholarship and receive exclusive additional benefits.",
+      image:
+        "https://prod-s3.counselindia.com/mastergalaxyimages/Untitled%20design-23_1734162900.png",
       points: [
         {
-          label: "Direct Mentorship",
-          desc: "One-on-one supervision by senior organizational psychologists and HR leaders.",
+          label: "Alumni Network of 12,500+ Members",
+          desc: "Gain access to a vast network of over 12,500 alumni who can support and guide you in your professional ventures.",
         },
         {
-          label: "Hands-on Practice",
-          desc: "Live case studies, real company consulting projects, and corporate simulations.",
+          label: "90+ Hiring Partners",
+          desc: "Benefit from dedicated job assistance through our extensive network of over 90 hiring partners, ensuring you have the best opportunities in the industry.",
         },
         {
-          label: "Fee Assistance",
-          desc: "Flexible EMI options and merit scholarships for deserving candidates.",
+          label: "Exclusive Membership",
+          desc: "Enroll now and enjoy a complimentary membership, providing access to valuable resources and opportunities.",
+        },
+        {
+          label: "Personalized Mentoring Sessions",
+          desc: "Receive multiple one-on-one mentoring sessions with industry professionals throughout the course, helping you navigate your career path.",
+        },
+        {
+          label: "Workshops, Events, and Bootcamps",
+          desc: "Get free access to a wide range of workshops, events, bootcamps, and networking meetings, designed to enhance your skills and expand your professional network.",
         },
       ],
     },
@@ -4039,10 +4744,10 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       },
     ],
     referEarn: {
-      title: "Refer & Earn with Counsel India",
-      subtitle:
-        "Help your peers discover transformative psychology programs and earn exciting referral rewards.",
-      buttonText: "Refer a Friend",
+      title:
+        "Refer someone and Earn upto INR 12,000 Cashback/Vouchers, on every successful enrollment",
+      subtitle: "Your friend also gets an instant scholarship!",
+      buttonText: "Start Referring",
       buttonLink: "/refer-and-earn?course_id=37",
     },
     reviews: [
@@ -4092,9 +4797,21 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
           "https://prod-s3.counselindia.com/success_stories/anyasa-saha.jpg",
       },
     ],
-    partners: [
-      "https://www.counselindia.com/assets/images/logo/icpemci.png",
-      "https://www.counselindia.com/assets/images/logo/VGU.png",
+    partners: ["https://www.counselindia.com/assets/images/logo/icpemci.png"],
+    learnersWorkAt: [
+      "https://www.counselindia.com/assets/images/partners-logo/partner1.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner2.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner3.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner4.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner5.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner6.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner7.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner8.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner9.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner10.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner11.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner12.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner13.jpg",
     ],
     faqs: [
       {
@@ -4897,7 +5614,7 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
     scholarship: {
       title: "Get Upto 30% Scholarship",
       subtitle:
-        '"Avail up to a 30% scholarship and receive exclusive additional benefits."',
+        "Avail up to a 30% scholarship and receive exclusive additional benefits.",
       image:
         "https://prod-s3.counselindia.com/mastergalaxyimages/Untitled%20design-23_1734162900.png",
       points: [
@@ -4989,11 +5706,21 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
           "https://prod-s3.counselindia.com/success_stories/image_1658507699678__01%20-%20Muskan%20Maan%20(2)_1693906710.jpeg",
       },
     ],
-    partners: [
-      "https://www.counselindia.com/assets/images/logo/GU_logo.png",
-      "https://www.counselindia.com/assets/images/logo/msu_logo.png",
-      "https://www.counselindia.com/assets/images/logo/icpemci.png",
-      "https://www.counselindia.com/assets/images/logo/VGU.png",
+    partners: ["https://www.counselindia.com/assets/images/logo/icpemci.png"],
+    learnersWorkAt: [
+      "https://www.counselindia.com/assets/images/partners-logo/partner1.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner2.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner3.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner4.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner5.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner6.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner7.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner8.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner9.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner10.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner11.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner12.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner13.jpg",
     ],
     faqs: [
       {
@@ -5076,38 +5803,26 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
     highlights: [
       {
         title: "Duration",
-        desc: "1 Year",
+        desc: "1 year",
       },
       {
         title: "Eligibility",
-        desc: "Graduation & Above",
+        desc: "Graduation and above",
       },
       {
-        title: "Dual Credentials",
-        desc: "CI Certificate, Grade Sheet & LOR",
+        title: "Dual credentials",
+        desc: "CI certificate, Grade Sheet & Letter of Recommendation",
       },
       {
-        title: "Program Start Date",
-        desc: "26 September 2026",
+        title: "Modules",
+        desc: "7",
       },
     ],
-    benefits: [
-      "Specialized Childhood Mental Health Expertise: Gain deep insights to address, evaluate, and manage a wide range of childhood psychological issues.",
-      "Parenting Dynamics & Behavioral Management: Master modern evidence-based parenting frameworks, behavior modification plans, and positive reinforcement strategies.",
-      "Dual Hands-on Clinical Internships: Intensive practical training in both Counselling Psychology and Clinical Psychology with case history taking and MSE.",
-      "Extensive Practical Training: 630 live session hours, 204 project hours, 270 OJL hours, and 156 theory hours for real-world mastery.",
-      "Industry-Recognized Credentials: Earn prestigious credentials including CI Diploma Certificate, Grade Sheets, and an official Letter of Recommendation.",
-      "Practice & Business Launchpad: Acquire practical coaching on ethical guidelines, private practice setup, and attracting international clients.",
-    ],
+    benefits: [],
     about: [
-      "Counsel India's Diploma in Child Psychology offers an unparalleled opportunity for educators, parents, aspiring child psychologists, and professionals working with children to deepen their understanding of childhood development and behavior.",
-      "This program stands out with its expert-led curriculum, practical hands-on learning, and cutting-edge content tailored to contemporary needs. You'll gain valuable skills to support and guide children effectively, whether in educational settings, counseling, or personal interactions.",
+      "Diploma in Child Psychology and Parenting is a bundle program combining multiple Psychology programs by Counsel India —Advanced Certificate in Child Psychology and Parenting Master Program, Internship in Counselling Psychology & Internship in Clinical Psychology—with an integrated focus on unparalleled opportunity for educators, parents, aspiring child psychologists, and professionals working with children to deepen their understanding of childhood development and behavior.",
     ],
-    learningObjectives: [
-      "Understand developmental milestones, emotional regulation, and psychological assessment methodologies for children.",
-      "Learn practical intervention and counseling techniques for parent-child relationship dynamics, behavioral problems, and school challenges.",
-      "Conduct clinical case history taking, MSE, and standardized developmental tests during structured internship rotations.",
-    ],
+    learningObjectives: [],
     credentials: [
       {
         id: "tab186",
@@ -5118,7 +5833,7 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       },
       {
         id: "tab188",
-        label: "Letter of Recommendation",
+        label: "LOR",
         text: "This Letter of Recommendation acknowledges your successful completion of this program, demonstrating exceptional commitment and skill in your field. This certificate reflects the high standards and rigorous training of this program.",
         image:
           "https://prod-s3.counselindia.com/credential/Letter%20of%20recommendation%20for%20Jon%20Doe%20(1)_1755835645.png",
@@ -5155,70 +5870,91 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       ],
       modules: [
         {
-          title: "Module 1: Foundations of Child Development & Psychology Lab",
+          title: "Module-1",
           topics: [
-            "Employability Skills (Basic) & Introduction to Psychology",
-            "Overview of Child Development & Milestone Tracking",
-            "Developmental Approaches in Children & Behavioral Observation",
-            "Psychology Lab - Attitude Towards Emotions Assessment",
-            "Supervised Project Work - 1 & OJL - 1",
+            "Employability Skills (basic)",
+            "Introduction to Psychology",
+            "Overview of Child Development",
+            "Developmental Approaches in Children",
+            "Psychology Lab - Attitude Towards Emotions",
+            "Project Work- 1",
+            "OJL-1",
           ],
         },
         {
-          title: "Module 2: Parenting Pathways & Advanced Psychology",
+          title: "Module-2",
           topics: [
-            "Parenting Pathways & Family System Dynamics",
-            "Advanced Parenting Psychology & Styles of Attachment",
-            "Parenting Dynamics: Behavior Management & Everyday Reinforcement Strategies",
-            "Dealing with Screen Addiction, Sibling Rivalry, and Adolescent Transition",
+            "Parenting Pathways",
+            "Advanced Parenting Psychology",
+            "Parenting Dynamics: Behavior Management, and Everyday Strategies",
           ],
         },
         {
-          title: "Module 3: Internship in Counselling Psychology",
+          title: "Module 3 : Internship in Counselling Psychology",
           topics: [
-            "Case History Taking & MSE (Mental Status Examination)",
-            "SWOT Analysis & Ethical Standards in Child Counselling",
-            "Assessment Batteries: VSMS, SPM, CPM, MISIC & SFBT Approaches",
-            "CBT & Behavioral Therapies for Children and Families",
-            "Role Plays, Thematic Apperception Test (TAT) & Practical Projects",
+            "History taking & MSE SWOT Analysis & Counselling Ethics",
+            "Counselling skills",
+            "VSMS & SFBT",
+            "SPM/CPM/MISIC",
+            "CBT",
+            "Behavioral Therapies",
+            "TAT",
+            "Practical Class (Role Plays and Dummy sessions)",
+            "Practical Class (Projects and Doubt clearing)",
           ],
         },
         {
           title: "Module 4: Internship in Clinical Psychology",
           topics: [
-            "Clinical Diagnostic Criteria: Childhood Schizophrenia & Somatoform Disorders",
-            "Autism Spectrum Disorder (ASD) & Neurodivergence Management",
-            "Mindfulness-Based Techniques for Childhood Emotional Regulation",
-            "Anxiety Disorders (GAD, Panic, Phobias) & Childhood Mood Disorders",
-            "Clinical Case Study Reporting, Formulation & Doubt Clearing",
+            "Schizophrenia (Symptoms, Diagnostic Criteria, Types, Clinical Picture)",
+            "Somatoform Disorder",
+            "Autism",
+            "Spectrum Disorder",
+            "Mindfulness based techniques",
+            "Anxiety Disorder (GAD, Panic, Phobias)",
+            "Mood-Disorders (Symptoms, Diagnostics, Criteria, Types, Clinical Picture)",
+            "Case Study",
+            "Practical Classes",
           ],
         },
       ],
     },
+    programBenefit: [
+      "Enrolling in Counsel India's \"Diploma in Child Psychology\" will profoundly benefit you both professionally and personally. Professionally, you will gain specialized skills to address and manage a wide range of childhood psychological issues, enhancing your effectiveness in roles such as education, counseling, or therapy. The practical knowledge and hands-on experience you'll acquire will open doors to advanced career opportunities and elevate your expertise in child development. Personally, you’ll develop a deeper understanding of children's needs, improving your interactions with young individuals and their families. This enriched perspective will enable you to foster healthier relationships and provide more impactful support, ultimately leading to greater job satisfaction and a more rewarding career.",
+    ],
     whoCanJoin: [
-      "Aspiring Counsellors & Child Therapists",
-      "Therapists Seeking Additional Practice & Income",
-      "Counsellors Starting a Dedicated Venture",
-      "Educators, Teachers & School Counsellors Aspiring to Upskill",
-      "Child Care Practitioners & Therapists Building a Personal Brand",
+      "Aspiring Counsellors/Therapists",
+      "Therapists Individuals Seeking Additional Income",
+      "Counsellors/Therapists Starting a Venture",
+      "Counsellors/Therapists Aspiring to Upskill",
+      "Counsellors/Therapists Building a Personal Brand",
     ],
     scholarship: {
-      title: "Scholarship & Practical Learning Support",
+      title: "Get Upto 30% Scholarship",
       subtitle:
-        "Guaranteed practical internship & training support under our Har Ghar Counsellor initiative.",
-      image: "https://www.counselindia.com/assets/images/about/about-13.png",
+        "Avail up to a 30% scholarship and receive exclusive additional benefits.",
+      image:
+        "https://prod-s3.counselindia.com/mastergalaxyimages/Untitled%20design-23_1734162900.png",
       points: [
         {
-          label: "Direct Mentorship",
-          desc: "One-on-one supervision by senior counselling psychologists.",
+          label: "Alumni Network of 12,500+ Members",
+          desc: "Gain access to a vast network of over 12,500 alumni who can support and guide you in your professional ventures.",
         },
         {
-          label: "Hands-on Practice",
-          desc: "Live case discussions and clinical roleplay sessions.",
+          label: "90+ Hiring Partners",
+          desc: "Benefit from dedicated job assistance through our extensive network of over 90 hiring partners, ensuring you have the best opportunities in the industry.",
         },
         {
-          label: "Fee Assistance",
-          desc: "Flexible installment plans and merit-based fee support.",
+          label: "Exclusive Membership",
+          desc: "Enroll now and enjoy a complimentary membership, providing access to valuable resources and opportunities.",
+        },
+        {
+          label: "Personalized Mentoring Sessions",
+          desc: "Receive multiple one-on-one mentoring sessions with industry professionals throughout the course, helping you navigate your career path.",
+        },
+        {
+          label: "Workshops, Events, and Bootcamps",
+          desc: "Get free access to a wide range of workshops, events, bootcamps, and networking meetings, designed to enhance your skills and expand your professional network.",
         },
       ],
     },
@@ -5236,23 +5972,17 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
           "https://prod-s3.counselindia.com/counsellor/13255525301703679728.jpg",
       },
       {
-        name: "Himanshi Singh",
-        title: "Clinical Psychologist",
+        name: "Sarika Narula",
+        title: "Counsellor",
         image:
-          "https://prod-s3.counselindia.com/counsellor/counsellor_Himanshi%20Singh_1673871256.png",
-      },
-      {
-        name: "VARNICA KOTNALA",
-        title: "Clinical Psychologist",
-        image:
-          "https://prod-s3.counselindia.com/counsellor/16451453501691141457.jpg",
+          "https://prod-s3.counselindia.com/counsellor/IMG_5537_1721993543.jpeg",
       },
     ],
     referEarn: {
-      title: "Refer & Earn with Counsel India",
-      subtitle:
-        "Help your peers discover transformative psychology programs and earn exciting referral rewards.",
-      buttonText: "Refer a Friend",
+      title:
+        "Refer someone and Earn upto INR 12,000 Cashback/Vouchers, on every successful enrollment",
+      subtitle: "Your friend also gets an instant scholarship!",
+      buttonText: "Start Referring",
       buttonLink: "/refer-and-earn?course_id=58",
     },
     reviews: [
@@ -5260,7 +5990,7 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         quote:
           "Counsel India helped with my growth and progress. It enhanced my knowledge and also it was helpful along with my Post Graduation. I was been cherished because of the knowledge i had through the course.",
         name: "Shivani Kumari",
-        city: "Delhi, India",
+        city: "Delhi,India",
         image: "https://prod-s3.counselindia.com/success_stories/shivani.jpg",
       },
       {
@@ -5275,7 +6005,7 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         quote:
           "I recently had the privilege of enrolling in this psychology Course that left me utterly impressed and profoundly enriched. This course was nothing short of exceptional, and I would like to share my glowing review to encourage others to embark on this enlightening journey.",
         name: "Muskan Maan",
-        city: "Delhi",
+        city: "delhi",
         image:
           "https://prod-s3.counselindia.com/success_stories/image_1658507699678__01%20-%20Muskan%20Maan%20(2)_1693906710.jpeg",
       },
@@ -5288,11 +6018,21 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
           "https://prod-s3.counselindia.com/success_stories/image_passport%20size%20photo_1693906790.jpeg",
       },
     ],
-    partners: [
-      "https://www.counselindia.com/assets/images/logo/GU_logo.png",
-      "https://www.counselindia.com/assets/images/logo/msu_logo.png",
-      "https://www.counselindia.com/assets/images/logo/icpemci.png",
-      "https://www.counselindia.com/assets/images/logo/VGU.png",
+    partners: ["https://www.counselindia.com/assets/images/logo/icpemci.png"],
+    learnersWorkAt: [
+      "https://www.counselindia.com/assets/images/partners-logo/partner1.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner2.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner3.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner4.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner5.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner6.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner7.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner8.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner9.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner10.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner11.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner12.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner13.jpg",
     ],
     faqs: [
       {
@@ -5306,19 +6046,42 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       {
         question: "Who all can attend this Event?",
         answer: [
-          "BA/MA I/O Psychology Students, Practicing psychologists, Counsellors, NLP Trainers, Managers, Leaders, Entrepreneurs, Research Scholars, Psychology Masters Students, Counselling Students, Management Professionals, Teachers and Principals.",
+          "• BA/MA I/O Psychology Students,",
+          "• Practicing psychologists,",
+          "• Counsellors,",
+          "• NLP Trainers,",
+          "• Managers,",
+          "• Leaders,",
+          "• Entrepreneurs,",
+          "• Research Scholars",
+          "• Psychology Masters Students of I/O",
+          "• Counselling Students",
+          "• Management Professionals",
+          "• Teachers/Principals",
         ],
       },
       {
         question: "Who all can attend this Workshop?",
         answer: [
-          "BA/MA I/O Psychology Students, Practicing psychologists, NLP Trainers, HR Professionals, Managers, Executives, Leaders, Entrepreneurs, Research Scholars, Psychology Masters Students, Counselling Students, Management Professionals, Teachers and Principals.",
+          "• BA/MA I/O Psychology Students,",
+          "• Practicing psychologists,",
+          "• NLP Trainers,",
+          "• HR Professionals,",
+          "• Managers,",
+          "• Executives,",
+          "• Leaders,",
+          "• Entrepreneurs,",
+          "• Research Scholars",
+          "• Psychology Masters Students of I/O",
+          "• Counselling Students",
+          "• Management Professionals",
+          "• Teachers/Principals",
         ],
       },
       {
         question: "Who is this program designed for?",
         answer: [
-          "This program is designed for a variety of individuals, including recent psychology graduates, HR professionals, managers, educators, parents, and anyone interested in pursuing a career related to child psychology, parenting guidance, and behavioral support.",
+          "This program is designed for a variety of individuals, including recent psychology graduates, HR professionals, managers, and anyone interested in pursuing a career related to improving workplace behavior and performance.",
         ],
       },
     ],
@@ -5359,10 +6122,11 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       "15 core therapy sessions with a comprehensive course roadmap and milestones.",
       "Key therapy skills and learning objectives defined.",
       "All sessions to be conducted live online by RCI certified trainers and industry experts.",
-      "Personalized Mentorship with experienced mental health practitioners.",
-      "Job Support and career transition guidance in clinical and counselling settings.",
-      "Western Style of Psychology Learning combining evidence-based theory and practical roleplays.",
-      "Support to start your own practice or business setup.",
+      "Personalized Mentorship",
+      "Personalized Mentorship",
+      "Job Support",
+      "Western Style of Psychology Learning",
+      "Support to start your own practice or business setup",
       "4 Core Modules + Practical Assignments, Assessments, Role Plays and Case Studies for each module.",
       "Attendance will be recorded at each session. Students must meet the 75% threshold to qualify for the full 10 marks.",
     ],
@@ -5405,186 +6169,248 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       totalHours: "96 Hours",
       stats: [
         {
-          count: "36",
-          text: "Sessions",
-        },
-        {
-          count: "96",
-          text: "Hours",
-        },
-        {
-          count: "15",
-          text: "Therapies Covered",
+          count: "6",
+          text: "Months",
         },
         {
           count: "4",
           text: "Core Modules",
         },
+        {
+          count: "48",
+          text: "Sessions",
+        },
+        {
+          count: "30+",
+          text: "Therapy Sessions",
+        },
+        {
+          count: "",
+          text: "Marketing & Branding Training",
+        },
       ],
       modules: [
         {
-          title: "Module 1: Existential Therapy & Philosophy",
+          title: "Existential Therapy",
           topics: [
-            "Proposition Concerns & Existentialism: What is Existential Philosophy? Dimension of the human condition.",
-            "Strands of Existential Therapy: Quality of the Existential Therapist, Phases of Treatment.",
-            "Historical Background in Philosophy and Existentialism, Contemporary Existential Psychotherapist.",
-            "What is Existential Therapy? Aim of the therapy, Client's Experience in therapy, Shortcomings of Existential therapy.",
+            "Proposition Concerns",
+            "Existentialism, What is Existential Philosophy? Dimension of the human condition",
+            "Strands of Existential therapy, Quality of the Existential Therapist, Phases of Treatment",
+            "Historical background in Philosophy and Existentialism, Contemporary Existential Psychotherapist",
+            "What is Existential Therapy?",
+            "Aim of the therapy, Client's Experience in the therapy, Shortcomings of Existential therapy",
           ],
         },
         {
-          title: "Module 2: Exposure Therapy & Habituation",
+          title: "Exposure Therapy",
           topics: [
-            "Meaning of Exposure Therapy and Systematic Desensitization.",
-            "Virtual reality exposure, Interceptive exposure, and Imaginary exposure.",
-            "Therapy case examples, Precautions for therapists, and Clinical variations of Exposure Therapy.",
+            "Virtual reality exposure,",
+            "Interceptive exposure",
+            "Imaginary exposure Example of therapy,",
+            "Precautions for a therapist",
+            "Variations of Exposure Therapy",
+            "Meaning of Exposure Therapy",
           ],
         },
         {
-          title: "Module 3: Music Therapy & Expressive Modalities",
+          title: "Music Therapy",
           topics: [
-            "What is Music Therapy and key clinical application areas.",
-            "Step-by-step Process of Music Therapy in clinical and non-clinical populations.",
-            "Psychological and biological effects of music as Mind-Body Medicine.",
+            "What is Music Therapy and what areas where Music Therapy is used",
+            "Process of Music Therapy",
+            "Psychological effects of music",
+            "Music Therapy as Mind-Body Medicine",
+            "Biological effects of music",
           ],
         },
         {
-          title: "Module 4: Behavioral Therapy & Conditioning",
+          title: "Behavioral Therapy",
           topics: [
-            "Introduction, Key Definitions, and Classical & Operant Behavioral Perspectives.",
-            "Role of a Psychologist, Antecedent-Behavior-Consequence (ABC) model, and Functions of Behavior.",
-            "Behavioral Modification Techniques: Shaping, Chaining, Token Economy, and Reinforcement Schedules.",
+            "Introduction Key Definitions",
+            "Behavioral Perspective",
+            "Role of a psychologist, Functions of behavior",
+            "Behavioral Techniques",
           ],
         },
         {
-          title: "Module 5: Gestalt Therapy & Experiential Awareness",
+          title: "Gestalt Therapy",
           topics: [
-            "What is Gestalt Therapy, Here-and-Now Awareness, and Neurotic Behavior.",
-            "5 Layers of Neurosis and Self-Theoretical Principles.",
-            "Therapeutic Techniques: Empty Chair, Top Dog vs Underdog, and Two-Chair Dialogue.",
-            "Strengths, Contributions, and Limitations of Gestalt Therapy.",
+            "What is Gestalt Therapy and Neurotic Behaviour",
+            "5 Layers of Neurosis and Self-Theoretical Principles",
+            "Therapeutic Techniques Strengths and Contributions of Gestalt Therapy",
+            "Limitations and Criticisms",
+            "Therapeutic function and roles",
           ],
         },
         {
-          title: "Module 6: Art Therapy & Creative Expression",
+          title: "Art Therapy",
           topics: [
-            "What is Art Therapy, Historical Background, and Becoming an Art Therapist in India.",
-            "When to consult an Art Therapist: Clinical scopes and indications.",
-            "Difference between Expressive Arts Therapy and Art Therapy.",
-            "Psychological assessment and interpretation of projective client artwork.",
+            "What is Art Therapy and its Background",
+            "How to be an Art Therapist in India?",
+            "When to consult with an art therapist",
+            "What art therapy can do? Difference between Expressive Arts Therapy and Art Therapy",
+            "Where art therapy can be used?",
+            "What could art possibly have to do with psychotherapy?",
+            "Interpretation based on a sample.",
           ],
         },
         {
-          title: "Module 7: Client Centered Therapy (Rogerian)",
+          title: "Client Centered Therapy",
           topics: [
-            "Origin, Definition, Objective, and Humanistic Core Purpose.",
-            "Concept of Self, Ideal Self vs Real Self, and Congruence.",
-            "Six Essential Conditions required for therapeutic personality change.",
-            "Unconditional Positive Regard, Empathy, Congruence, and Non-Directive Active Listening.",
+            "Origin, Definition, Objective, and Purpose",
+            "Concept of Self, Main Components",
+            "Frequency of Therapy,",
+            "Expected results Conclusion",
+            "Process of Therapy",
+            "Techniques used, Applications",
+            "Six Conditions required for therapeutic change",
           ],
         },
         {
-          title: "Module 8: Psychoanalytic Therapy & Dynamic Structures",
+          title: "Psychoanalytic Therapy",
           topics: [
-            "Overview of Psychoanalysis and Sigmund Freud's View of Human Nature.",
-            "Structure of Mind: Conscious, Subconscious, and Unconscious.",
-            "Structure of Personality: Id, Ego, and Superego dynamics.",
-            "Psychosexual Stages: Oral, Anal, Phallic, Latency, and Genital.",
-            "Ego Defense Mechanisms: Repression, Projection, Displacement, Rationalization, and Sublimation.",
+            "Overview of Psychoanalysis and View of human nature,",
+            "Structure of Mind",
+            "Structure of Personality Ego,",
+            "Psychosexual stages, Oral Stage, Anal Stage,",
+            "Latency Stage, Genital Stage,",
+            "Defense Mechanism",
+            "Repression and Superego",
           ],
         },
         {
-          title: "Module 9: Rational Emotive Behavior Therapy (REBT)",
+          title: "Rational Emotive Behavior Therapy",
           topics: [
-            "History and Basics of Albert Ellis's REBT and ABCDE Model.",
-            "Characteristics of Irrational Beliefs vs Rational Beliefs.",
-            "Exposure, Risk Taking, Paradoxical Behavior, and Postponing Gratification.",
-            "10 Happiness-Producing Rational Beliefs, Cognitive Restructuring, and Disputation Techniques.",
+            "History and basics of REBT,",
+            "Characteristics and propositions of REBT,",
+            "Exposure and Risk Taking",
+            "Paradoxical Behaviour, Postponing Gratification, Strengths, and Contributions",
+            "Limitations and Criticisms",
+            "Goals of the counselling and 10 happiness-producing Rational Beliefs,",
+            "Where might these beliefs have originated?",
+            "Role of the counsellor, Core Beliefs and outcomes",
+            "Applications of REBT,",
+            "General Irrational Beliefs and Specific Irrational Beliefs,",
+            "Counselling Techniques,",
           ],
         },
         {
-          title: "Module 10: Exposure and Response Prevention Therapy (ERP)",
+          title: "Exposure and Response Prevention Therapy",
           topics: [
-            "Introduction to OCD Spectrum, Obsessions, Compulsions, and ERP Protocols.",
-            "Analysis of Self-Awareness, Johari Window model of blind and open spots.",
-            "Developing Fear Hierarchies, In-vivo Exposure, and Response Prevention Management.",
+            "Introduction and Transactional Analysis meaning Analysis of self-awareness,",
+            "Johari Window",
+            "Analysis of ego stages, Stages of ego",
           ],
         },
         {
-          title: "Module 11: Transactional Analysis (TA)",
+          title: "Transactional Analysis Therapy",
           topics: [
-            "Introduction to Eric Berne's Transactional Analysis and PAC Ego States (Parent, Adult, Child).",
-            "Analysis of Transactions: Complementary, Crossed, and Ulterior Transactions.",
-            "Life Positions (I'm OK, You're OK), Psychological Games, Stroking Patterns, and Script Analysis.",
+            "Introduction and Transactional Analysis meaning",
+            "Analysis of self-awareness,",
+            "Johari Window",
+            "Analysis of ego stages, Stages of ego",
+            "Analysis of Transactions, Script Analysis, Analysis of life positions",
+            "Stroking, Games Analysis, Benefits, and Utility",
           ],
         },
         {
-          title: "Module 12: Cognitive Behavioural Therapy (CBT)",
+          title: "CBT (Cognitive Behavioural Therapy)",
           topics: [
-            "The Comprehensive Framework for Successful CBT: Thoughts, Feelings, and Behaviors.",
-            "Cognitive Distortions: Catastrophizing, Black-and-White Thinking, Mind Reading, and Overgeneralization.",
-            "Behavioral Activation, Thought Records, Cognitive Restructuring, and Homework Assignments.",
-            "Biological and Social Factors in CBT Formulation.",
+            "The framework for successful CBT.",
+            "Treatments based on Behavioural factors and approaches.",
+            "Treatment techniques based on Cognitions and Thinking style.",
+            "Treatment techniques based on Biological factors.",
+            "Treatments based on the Surroundings, especially Social ones.",
           ],
         },
         {
-          title: "Module 13: Hypnotherapy & Subconscious Alignment",
+          title: "Hypnotherapy",
           topics: [
-            "What is Clinical Hypnotherapy? Dispelling Myths and Understanding Trance States.",
-            "Induction Techniques, Progressive Muscle Relaxation, and Therapeutic Suggestion.",
-            "Exploration of Past Experiences, Cognitive Reframing, and Stress Management Under Hypnosis.",
+            "What Is Hypnotherapy?",
+            "Techniques: Relaxation, Suggestion, Coping skills, Exploration of past experiences",
+            "What Hypnotherapy Can Help With.",
+            "Benefits of Hypnotherapy: Awareness, Focus, Relaxation, Effectiveness",
           ],
         },
         {
-          title: "Module 14: Dialectical Behavior Therapy (DBT)",
+          title: "Dialectical Behavior Therapy (DBT)",
           topics: [
-            "Defining Marsha Linehan's DBT, Biosocial Theory, and Treatment Hierarchy.",
-            "The Four Core Modules of DBT: Mindfulness Skills, Distress Tolerance Skills, Emotion Regulation Skills, and Interpersonal Effectiveness Skills (DEAR MAN).",
-            "Radical Acceptance, Opposite Action, and Chain Analysis in Clinical Crises.",
+            "Defining DBT",
+            "The four Modules of DBT",
+            "Core Beliefs",
+            "Locus of Control",
+            "DBT Treatment Flow",
+            "Distress Tolerance Skills",
+            "Mindfulness Skills",
+            "Emotional Regulation Skills",
+            "Interpersonal Effectiveness Skills",
           ],
         },
         {
-          title: "Module 15: Yoga Therapy & Mind-Body Regulation",
+          title: "Yoga Therapy",
           topics: [
-            "History and Philosophical Foundations of Yoga in Mental Health.",
-            "Patanjali Yoga Sutras and the Eight Limbs of Yoga (Ashtanga).",
-            "Pranayama (Breath Regulation), Asanas for Somatic Stress Relief, and Mindfulness Meditation Protocols.",
+            "History of Yoga",
+            "Philosophy of Yoga",
+            "Paths of Yoga",
+            "Patanjali Yoga Sutras",
+            "Different Forms of Asanas",
+            "Meditation techniques",
           ],
         },
       ],
     },
+    programBenefit: [
+      "Your success as a therapist is not in how many therapies you know but in how many of them you practice, master, and popularize with their results. With LIVE practice sessions and flexible timings for online learning, this is the program tailor-made for your passion for learning therapy. This course offers learners valuable opportunities to gain practical skills and industry connections through both on-campus and online programs.",
+      "Participants will be exposed to practical LIVE learning for understanding therapy in excruciating detail. Our practical learning is unique because the mentors are RCI Certified, field psychologists who bring actual practical knowledge to the table. Special features of this program include Counselling Procedure Class, case study discussions, Lifetime access to a psychology E-library (5000+ books), and volunteer participation in mental health awareness campaigns.",
+      "Upon completion, you also receive a Learning Certificate endorsed by EIMT and CI to add to your professional portfolio.",
+    ],
     whoCanJoin: [
-      "All Managers & Corporate Leaders",
-      "All Working Professionals",
-      "Coordinators & Academic Administrators",
-      "VPs / VCs & Senior Executives",
-      "Government Officers & Social Service Workers",
-      "Entrepreneurs & Business Owners",
-      "Psychology Aspirants & Enthusiasts",
-      "Health & Wellness Experts",
-      "Psychology Students & Mental Health Professionals",
-      "HODs & Team Leaders",
+      "All Manager",
+      "All Professionals",
+      "Coordinators",
+      "VPs / VCs",
+      "Government Officers",
+      "Entrepreneur",
+      "Psychology Aspirants",
+      "Health / Wellness Experts",
+      "Psychology Students/Professionals",
+      "HOD's/Team Leaders",
     ],
     scholarship: {
-      title: "Scholarship & Practical Learning Support",
+      title: "Get Upto 30% Scholarship",
       subtitle:
-        "Guaranteed practical internship & training support under our Har Ghar Counsellor initiative.",
-      image: "https://www.counselindia.com/assets/images/about/about-13.png",
+        "Avail up to a 30% scholarship and receive exclusive additional benefits.",
+      image:
+        "https://prod-s3.counselindia.com/mastergalaxyimages/Untitled%20design-23_1734162900.png",
       points: [
         {
-          label: "Direct Mentorship",
-          desc: "One-on-one supervision by senior counselling psychologists.",
+          label: "Alumni Network of 12,500+ Members",
+          desc: "Gain access to a vast network of over 12,500 alumni who can support and guide you in your professional ventures.",
         },
         {
-          label: "Hands-on Practice",
-          desc: "Live case discussions and clinical roleplay sessions.",
+          label: "90+ Hiring Partners",
+          desc: "Benefit from dedicated job assistance through our extensive network of over 90 hiring partners, ensuring you have the best opportunities in the industry.",
         },
         {
-          label: "Fee Assistance",
-          desc: "Flexible installment plans and merit-based fee support.",
+          label: "Exclusive Membership",
+          desc: "Enroll now and enjoy a complimentary membership, providing access to valuable resources and opportunities.",
+        },
+        {
+          label: "Personalized Mentoring Sessions",
+          desc: "Receive multiple one-on-one mentoring sessions with industry professionals throughout the course, helping you navigate your career path.",
+        },
+        {
+          label: "Workshops, Events, and Bootcamps",
+          desc: "Get free access to a wide range of workshops, events, bootcamps, and networking meetings, designed to enhance your skills and expand your professional network.",
         },
       ],
     },
     faculty: [
+      {
+        name: "Rishabh Singh Sengar",
+        title: "Psychologist",
+        image:
+          "https://prod-s3.counselindia.com/counsellor/7564953381703873617.jpg",
+      },
       {
         name: "Sweta A. Gorania",
         title: "Psychologist",
@@ -5611,16 +6437,16 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       },
     ],
     referEarn: {
-      title: "Refer & Earn with Counsel India",
-      subtitle:
-        "Help your peers discover transformative psychology programs and earn exciting referral rewards.",
-      buttonText: "Refer a Friend",
-      buttonLink: "/refer-and-earn?course_id=11",
+      title:
+        "Refer someone and Earn upto INR 12,000 Cashback/Vouchers, on every successful enrollment",
+      subtitle: "Your friend also gets an instant scholarship!",
+      buttonText: "Start Referring",
+      buttonLink: "https://www.counselindia.com/refer-and-earn?course_id=11",
     },
     reviews: [
       {
         quote:
-          "Counsel India is a good organization and they helped us in every part of life. The sessions and mentors are very supportive.",
+          "Counsel India is a good organization and they helped us in every part of life. They helped me to remove my confusion about the counselling profession because I was misguided about this field. The course they offer is really helpful and inspiring.",
         name: "Suhani Batra",
         city: "Noida",
         image:
@@ -5628,7 +6454,7 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       },
       {
         quote:
-          "Understanding background of the child psychology and therapeutic modalities was an excellent experience. Very engaging curriculum.",
+          "Understanding background of the child psychology was an excellent experience, Treating children with love and care.Accepting children as they are. Providing an atmosphere suitable to them is something that I learnt from this course.",
         name: "Kritika Raut",
         city: "Bhopal",
         image:
@@ -5636,7 +6462,7 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       },
       {
         quote:
-          "I am a mental health practitioner working as a counselling psychologist. This course gave me practical modalities to use with real clients immediately.",
+          "I am a mental health practitioner working as a counselling psychologist this course has helpful develop my knowledge in such a good direction and by this, I am doing very well in my professional practice. The trainers at Counsel India are very knowledgeable, professional, and helpful. They shape the course according to the trainee.",
         name: "Dr. Hiteshi",
         city: "Gwalior",
         image:
@@ -5644,14 +6470,14 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       },
       {
         quote:
-          "I have learned a lot from their course. The practical techniques like CBT and REBT are structured so clearly and effectively.",
+          "I have learned a lot from their course. Yet to be incorporated/utilized in my career. But I am very sure that these sessions will definitely come in handy in enhancing my career.",
         name: "Shruti K",
         city: "Pune",
         image: "https://prod-s3.counselindia.com/success_stories/shruti-k.jpg",
       },
       {
         quote:
-          "I took up Therapy Masters Course and learnt so many therapies. It was interesting and helped build my private practice with confidence.",
+          "I took up Therapy Masters Course and learnt so many therapies. It was interesting to interact with a new bunch of people from various backgrounds and the trainers explained it well. Thank you Counsel India.",
         name: "Archana Raghav",
         city: "Madurai",
         image:
@@ -5659,16 +6485,28 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       },
       {
         quote:
-          "The therapy master class was good. It gave a decent overview of each therapy. Practical roleplays helped solidify the learning.",
+          "The therapy master class was good. It gave a decent overview of each therapy. Practical exposure was also very useful.",
         name: "Puneet Singh",
         city: "Delhi",
         image:
           "https://prod-s3.counselindia.com/success_stories/puneet-singh.jpg",
       },
     ],
-    partners: [
-      "https://www.counselindia.com/assets/images/logo/icpemci.png",
-      "https://www.counselindia.com/assets/images/logo/VGU.png",
+    partners: ["https://www.counselindia.com/assets/images/logo/icpemci.png"],
+    learnersWorkAt: [
+      "https://www.counselindia.com/assets/images/partners-logo/partner1.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner2.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner3.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner4.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner5.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner6.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner7.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner8.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner9.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner10.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner11.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner12.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner13.jpg",
     ],
     faqs: [
       {

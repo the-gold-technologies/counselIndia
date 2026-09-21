@@ -2,7 +2,7 @@
 import React from "react";
 
 interface Props {
-  audience: string[];
+  audience?: string[];
 }
 
 export default function CourseWhoCanJoin({ audience }: Props) {

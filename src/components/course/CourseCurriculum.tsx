@@ -66,7 +66,7 @@ export default function CourseCurriculum({ curriculum }: Props) {
                 {curriculum.stats.map((st, idx) => (
                   <div key={idx} className="course-curriculum-stat-item">
                     <div className="course-curriculum-stat-count">
-                      {st.count}
+                      {st.count || <span style={{ visibility: "hidden" }}>-</span>}
                     </div>
                     <div className="course-curriculum-stat-text">
                       {st.text}

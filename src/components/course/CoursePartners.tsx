@@ -1,8 +1,12 @@
 "use client";
 import React from "react";
 
-export default function CoursePartners() {
-  const partners = [
+interface Props {
+  logos?: string[];
+}
+
+export default function CoursePartners({ logos }: Props) {
+  const defaultPartners = [
     { name: "Accenture", logo: "/assets/images/partners-logo/partner13.jpg" },
     { name: "Amity University", logo: "/assets/images/partners-logo/partner12.jpg" },
     { name: "Teach For India", logo: "/assets/images/partners-logo/partner11.jpg" },
@@ -18,8 +22,13 @@ export default function CoursePartners() {
     { name: "Partner 8", logo: "/assets/images/partners-logo/partner8.jpg" },
   ];
 
+  const listToUse =
+    logos && logos.length > 0
+      ? logos.map((url, i) => ({ name: `Partner ${i + 1}`, logo: url }))
+      : defaultPartners;
+
   // Double the list for seamless infinite marquee loop
-  const allPartners = [...partners, ...partners];
+  const allPartners = [...listToUse, ...listToUse];
 
   return (
     <section

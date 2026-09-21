@@ -48,6 +48,7 @@ export default function CourseDetailView({ course }: Props) {
       <CourseAboutObjectives
         about={course.about}
         learningObjectives={course.learningObjectives}
+        skillIndiaAdvantage={course.skillIndiaAdvantage}
       />
 
       {/* 6. Certification & Recommendation Letter Tabs */}
@@ -75,7 +76,7 @@ export default function CourseDetailView({ course }: Props) {
       <CourseTestimonials reviews={course.reviews} />
 
       {/* 13. Placement & Hiring Partners */}
-      <CoursePartners />
+      <CoursePartners logos={course.learnersWorkAt} />
 
       {/* 14. Frequently Asked Questions */}
       <CourseFaq faqs={course.faqs} />
