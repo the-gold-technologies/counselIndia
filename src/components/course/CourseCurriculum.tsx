@@ -61,41 +61,64 @@ export default function CourseCurriculum({ curriculum }: Props) {
 
           {/* Stats Row */}
           {curriculum.stats && curriculum.stats.length > 0 && (
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(4, minmax(100px, 1fr))",
-                maxWidth: "700px",
-                gap: "16px",
-                marginBottom: "30px",
-                marginTop: "10px",
-              }}
-            >
-              {curriculum.stats.map((st, idx) => (
-                <div key={idx} style={{ textAlign: "center" }}>
-                  <div
-                    style={{
-                      fontSize: "20px",
-                      fontWeight: 700,
-                      color: "#212529",
-                      lineHeight: "1.2",
-                      marginBottom: "4px",
-                    }}
-                  >
-                    {st.count}
+            <>
+              <div className="course-curriculum-stats">
+                {curriculum.stats.map((st, idx) => (
+                  <div key={idx} className="course-curriculum-stat-item">
+                    <div className="course-curriculum-stat-count">
+                      {st.count}
+                    </div>
+                    <div className="course-curriculum-stat-text">
+                      {st.text}
+                    </div>
                   </div>
-                  <div
-                    style={{
-                      fontSize: "13.5px",
-                      fontWeight: 600,
-                      color: "#555555",
-                    }}
-                  >
-                    {st.text}
-                  </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+
+              <style>{`
+                .course-curriculum-stats {
+                  display: flex;
+                  flex-wrap: wrap;
+                  align-items: flex-start;
+                  gap: 16px 44px;
+                  margin-top: 10px;
+                  margin-bottom: 30px;
+                }
+                .course-curriculum-stat-item {
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  text-align: center;
+                  min-width: 80px;
+                }
+                .course-curriculum-stat-count {
+                  font-size: 20px;
+                  font-weight: 700;
+                  color: #212529;
+                  line-height: 1.2;
+                  margin-bottom: 4px;
+                }
+                .course-curriculum-stat-text {
+                  font-size: 13.5px;
+                  font-weight: 600;
+                  color: #555555;
+                  white-space: nowrap;
+                }
+                @media (max-width: 767px) {
+                  .course-curriculum-stats {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 16px 12px;
+                  }
+                  .course-curriculum-stat-item {
+                    min-width: unset;
+                  }
+                  .course-curriculum-stat-text {
+                    white-space: normal;
+                  }
+                }
+              `}</style>
+            </>
           )}
 
           {/* Modules Accordion */}

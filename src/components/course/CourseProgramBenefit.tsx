@@ -33,21 +33,46 @@ export default function CourseProgramBenefit({ programBenefit }: Props) {
           How will this program benefit you?
         </h3>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
-          {programBenefit.map((paragraph, idx) => (
-            <p
-              key={idx}
-              style={{
-                margin: 0,
-                fontSize: "15px",
-                color: "#555555",
-                lineHeight: "1.75",
-                fontWeight: 400,
-              }}
-            >
-              {paragraph}
-            </p>
-          ))}
+        <div className="tutor-course-segment__content-wrap">
+          <ul
+            style={{
+              paddingLeft: "22px",
+              margin: 0,
+              display: "flex",
+              flexDirection: "column",
+              gap: "12px",
+              listStyleType: "disc",
+            }}
+          >
+            {programBenefit.map((item, idx) => {
+              const colonIndex = item.indexOf(":");
+              let title = "";
+              let desc = item;
+              if (colonIndex !== -1 && colonIndex < 60) {
+                title = item.substring(0, colonIndex + 1);
+                desc = item.substring(colonIndex + 1).trim();
+              }
+              return (
+                <li
+                  key={idx}
+                  style={{
+                    fontSize: "15px",
+                    color: "#555555",
+                    lineHeight: "1.75",
+                  }}
+                >
+                  {title ? (
+                    <>
+                      <strong style={{ color: "#212529" }}>{title} </strong>
+                      {desc}
+                    </>
+                  ) : (
+                    <span>{item}</span>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </div>
     </section>

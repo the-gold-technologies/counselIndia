@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 
 interface ReferEarnData {
   title: string;
@@ -84,34 +85,63 @@ export default function CourseReferEarn({ referEarn }: Props) {
 
           {/* Right action button */}
           <div style={{ flexShrink: 0 }}>
-            <a
-              href={buttonLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                backgroundColor: "#07a64b",
-                color: "#ffffff",
-                padding: "14px 36px",
-                borderRadius: "6px",
-                fontSize: "16px",
-                fontWeight: 600,
-                textDecoration: "none",
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                boxShadow: "0 4px 14px rgba(7, 166, 75, 0.25)",
-                transition: "all 0.2s ease",
-                whiteSpace: "nowrap",
-              }}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.backgroundColor = "#068f40")
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.backgroundColor = "#07a64b")
-              }
-            >
-              {buttonText}
-            </a>
+            {buttonLink.startsWith("/") ? (
+              <Link
+                href={buttonLink}
+                style={{
+                  backgroundColor: "#07a64b",
+                  color: "#ffffff",
+                  padding: "14px 36px",
+                  borderRadius: "6px",
+                  fontSize: "16px",
+                  fontWeight: 600,
+                  textDecoration: "none",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  boxShadow: "0 4px 14px rgba(7, 166, 75, 0.25)",
+                  transition: "all 0.2s ease",
+                  whiteSpace: "nowrap",
+                }}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.backgroundColor = "#068f40")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.backgroundColor = "#07a64b")
+                }
+              >
+                {buttonText}
+              </Link>
+            ) : (
+              <a
+                href={buttonLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  backgroundColor: "#07a64b",
+                  color: "#ffffff",
+                  padding: "14px 36px",
+                  borderRadius: "6px",
+                  fontSize: "16px",
+                  fontWeight: 600,
+                  textDecoration: "none",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  boxShadow: "0 4px 14px rgba(7, 166, 75, 0.25)",
+                  transition: "all 0.2s ease",
+                  whiteSpace: "nowrap",
+                }}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.backgroundColor = "#068f40")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.backgroundColor = "#07a64b")
+                }
+              >
+                {buttonText}
+              </a>
+            )}
           </div>
         </div>
       </div>

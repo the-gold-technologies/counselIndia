@@ -42,68 +42,70 @@ export default function CourseAboutObjectives({ about, learningObjectives }: Pro
         </div>
 
         {/* Learning Objectives */}
-        <div className="tutor-course-segment">
-          <h4
-            className="tutor-course-segment__title"
-            style={{
-              fontSize: "24px",
-              fontWeight: 700,
-              color: "#212529",
-              lineHeight: "1.3",
-              margin: "0 0 16px",
-            }}
-          >
-            Learning Objectives
-          </h4>
-          <ul
-            style={{
-              margin: 0,
-              paddingLeft: 0,
-              listStyle: "none",
-              display: "flex",
-              flexDirection: "column",
-              gap: "12px",
-            }}
-          >
-            {learningObjectives.map((obj, idx) => (
-              <li
-                key={idx}
-                style={{
-                  fontSize: "15px",
-                  color: "#555555",
-                  lineHeight: "1.6",
-                  display: "flex",
-                  alignItems: "flex-start",
-                  gap: "12px",
-                }}
-              >
-                <span
+        {learningObjectives && learningObjectives.length > 0 && (
+          <div className="tutor-course-segment">
+            <h4
+              className="tutor-course-segment__title"
+              style={{
+                fontSize: "24px",
+                fontWeight: 700,
+                color: "#212529",
+                lineHeight: "1.3",
+                margin: "0 0 16px",
+              }}
+            >
+              Learning Objectives
+            </h4>
+            <ul
+              style={{
+                margin: 0,
+                paddingLeft: 0,
+                listStyle: "none",
+                display: "flex",
+                flexDirection: "column",
+                gap: "12px",
+              }}
+            >
+              {learningObjectives.map((obj, idx) => (
+                <li
+                  key={idx}
                   style={{
-                    color: "#07a64b",
-                    fontSize: "16px",
-                    fontWeight: 700,
-                    lineHeight: "1.5",
-                    flexShrink: 0,
+                    fontSize: "15px",
+                    color: "#555555",
+                    lineHeight: "1.6",
+                    display: "flex",
+                    alignItems: "flex-start",
+                    gap: "12px",
                   }}
                 >
-                  <svg
-                    width="15"
-                    height="15"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="#07a64b"
-                    strokeWidth="3.2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+                  <span
+                    style={{
+                      color: "#07a64b",
+                      fontSize: "16px",
+                      fontWeight: 700,
+                      lineHeight: "1.5",
+                      flexShrink: 0,
+                    }}
                   >
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                </span>
-                <span>{obj}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+                    <svg
+                      width="15"
+                      height="15"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#07a64b"
+                      strokeWidth="3.2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </span>
+                  <span>{obj}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );
