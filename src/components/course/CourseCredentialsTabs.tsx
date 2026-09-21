@@ -5,6 +5,7 @@ interface CredentialItem {
   id: string;
   label: string;
   text: string;
+  points?: string[];
   image: string;
 }
 
@@ -37,8 +38,10 @@ export default function CourseCredentialsTabs({ credentials }: Props) {
             justifyContent: "center",
             borderBottom: "1px solid #e2e8f0",
             marginBottom: "40px",
-            gap: "36px",
-            flexWrap: "wrap",
+            gap: "clamp(12px, 2.5vw, 28px)",
+            flexWrap: "nowrap",
+            overflowX: "auto",
+            scrollbarWidth: "none",
           }}
         >
           {credentials.map((tab) => {
@@ -48,16 +51,18 @@ export default function CourseCredentialsTabs({ credentials }: Props) {
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 style={{
-                  padding: "6px 12px 14px",
-                  fontSize: "22px",
+                  padding: "6px 8px 14px",
+                  fontSize: "18px",
                   fontWeight: isActive ? 700 : 600,
                   cursor: "pointer",
                   border: "none",
                   backgroundColor: "transparent",
-                  color: isActive ? "#212529" : "#c4c4c4",
+                  color: isActive ? "#212529" : "#a0aec0",
                   borderBottom: isActive ? "3px solid #07a64b" : "3px solid transparent",
                   marginBottom: "-1px",
                   transition: "all 0.2s ease",
+                  whiteSpace: "nowrap",
+                  flexShrink: 0,
                 }}
               >
                 {tab.label}
@@ -78,16 +83,42 @@ export default function CourseCredentialsTabs({ credentials }: Props) {
           >
             {/* Left Caption Description */}
             <div style={{ paddingRight: "15px", paddingTop: "10px" }}>
-              <p
-                style={{
-                  margin: 0,
-                  fontSize: "15px",
-                  lineHeight: "1.75",
-                  color: "#555555",
-                }}
-              >
-                {current.text}
-              </p>
+              {current.points && current.points.length > 0 ? (
+                <ul
+                  style={{
+                    margin: 0,
+                    paddingLeft: "20px",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "12px",
+                    listStyleType: "disc",
+                  }}
+                >
+                  {current.points.map((pt, idx) => (
+                    <li
+                      key={idx}
+                      style={{
+                        fontSize: "16px",
+                        lineHeight: "1.75",
+                        color: "#555555",
+                      }}
+                    >
+                      {pt}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p
+                  style={{
+                    margin: 0,
+                    fontSize: "15px",
+                    lineHeight: "1.75",
+                    color: "#555555",
+                  }}
+                >
+                  {current.text}
+                </p>
+              )}
             </div>
 
             {/* Right Certificate / Full Tall Letter Preview (natural aspect ratio) */}

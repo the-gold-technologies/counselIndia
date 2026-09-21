@@ -122,100 +122,102 @@ export default function CourseCurriculum({ curriculum }: Props) {
           )}
 
           {/* Modules Accordion */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-            {curriculum.modules.map((mod, idx) => {
-              const isOpen = openIndex === idx;
-              return (
-                <div
-                  key={idx}
-                  style={{
-                    border: "1px solid #eeeeee",
-                    borderRadius: "4px",
-                    overflow: "hidden",
-                    backgroundColor: "#ffffff",
-                  }}
-                >
-                  <button
-                    onClick={() => toggleAccordion(idx)}
-                    style={{
-                      width: "100%",
-                      padding: "16px 24px",
-                      backgroundColor: "#ffffff",
-                      border: "none",
-                      cursor: "pointer",
-                      display: "flex",
-                      alignItems: "center",
-                      textAlign: "left",
-                      gap: "12px",
-                      outline: "none",
-                    }}
-                  >
-                    {/* Small Square Outline Icon — original design */}
-                    <span
-                      style={{
-                        width: "12px",
-                        height: "12px",
-                        border: "1.5px solid #07a64b",
-                        borderRadius: "1px",
-                        display: "inline-block",
-                        flexShrink: 0,
-                      }}
-                    />
-                    <span
-                      style={{
-                        fontSize: "15px",
-                        fontWeight: 500,
-                        color: "#07a64b",
-                      }}
-                    >
-                      {mod.title}
-                    </span>
-                  </button>
-
-                  {/* Animated body — always rendered, max-height drives smooth expand/collapse */}
+          {curriculum.modules && curriculum.modules.length > 0 && (
+            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+              {curriculum.modules.map((mod, idx) => {
+                const isOpen = openIndex === idx;
+                return (
                   <div
+                    key={idx}
                     style={{
-                      maxHeight: isOpen ? "800px" : "0px",
+                      border: "1px solid #eeeeee",
+                      borderRadius: "4px",
                       overflow: "hidden",
-                      transition: "max-height 0.35s ease",
+                      backgroundColor: "#ffffff",
                     }}
                   >
-                    <div
+                    <button
+                      onClick={() => toggleAccordion(idx)}
                       style={{
-                        padding: "12px 28px 20px 48px",
-                        backgroundColor: "#f8f8f8",
-                        borderTop: "1px solid #f0f0f0",
+                        width: "100%",
+                        padding: "16px 24px",
+                        backgroundColor: "#ffffff",
+                        border: "none",
+                        cursor: "pointer",
+                        display: "flex",
+                        alignItems: "center",
+                        textAlign: "left",
+                        gap: "12px",
+                        outline: "none",
                       }}
                     >
-                      <ul
+                      {/* Small Square Outline Icon — original design */}
+                      <span
                         style={{
-                          margin: 0,
-                          paddingLeft: "16px",
-                          listStyleType: "disc",
-                          display: "flex",
-                          flexDirection: "column",
-                          gap: "8px",
+                          width: "12px",
+                          height: "12px",
+                          border: "1.5px solid #07a64b",
+                          borderRadius: "1px",
+                          display: "inline-block",
+                          flexShrink: 0,
+                        }}
+                      />
+                      <span
+                        style={{
+                          fontSize: "15px",
+                          fontWeight: 500,
+                          color: "#07a64b",
                         }}
                       >
-                        {mod.topics.map((topic, tIdx) => (
-                          <li
-                            key={tIdx}
-                            style={{
-                              fontSize: "14px",
-                              color: "#444444",
-                              lineHeight: "1.8",
-                            }}
-                          >
-                            {topic}
-                          </li>
-                        ))}
-                      </ul>
+                        {mod.title}
+                      </span>
+                    </button>
+
+                    {/* Accordion Content */}
+                    <div
+                      style={{
+                        maxHeight: isOpen ? "1000px" : "0",
+                        overflow: "hidden",
+                        transition: "all 0.3s ease-in-out",
+                        backgroundColor: "#fafafa",
+                      }}
+                    >
+                      <div
+                        style={{
+                          padding: isOpen ? "16px 24px 20px" : "0 24px",
+                          borderTop: isOpen ? "1px solid #eeeeee" : "none",
+                        }}
+                      >
+                        <ul
+                          style={{
+                            margin: 0,
+                            paddingLeft: "20px",
+                            display: "flex",
+                            flexDirection: "column",
+                            gap: "8px",
+                            listStyleType: "disc",
+                          }}
+                        >
+                          {mod.topics.map((topic, tidx) => (
+                            <li
+                              key={tidx}
+                              style={{
+                                fontSize: "14px",
+                                color: "#444444",
+                                lineHeight: "1.8",
+                              }}
+                            >
+                              {topic}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
-          </div>
+                );
+              })}
+            </div>
+          )}
         </div>
       </div>
     </div>

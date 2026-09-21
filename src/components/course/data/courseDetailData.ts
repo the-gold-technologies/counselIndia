@@ -21,6 +21,7 @@ export interface CourseDetailData {
     id: string;
     label: string;
     text: string;
+    points?: string[];
     image: string;
   }[];
   curriculum: {
@@ -660,14 +661,9 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       "Exploration of cultural diversity: cultural competence, sensitivity, awareness.",
     ],
     about: [
-      "Gain expertise in specialized topics such as behavioral disorders, learning disabilities, and effective therapeutic interventions, setting you apart in child psychology. Understand the intricacies of child psychology with our comprehensive program designed to equip you with advanced knowledge and skills.",
-      "This course is supported by the Indian Council for Professional Education Mission (ICPEM), which enables Counsel India's learners to access skill-focused programs designed for immediate private sector employment, offering excellent job opportunities with strong career prospects across education, healthcare, and clinical wellness settings.",
+      "Gain in-depth expertise in specialized areas such as behavioral disorders, learning disabilities, and effective therapeutic interventions, providing you with a competitive edge in the field of Child Psychology. Our comprehensive program delves into the complexities of child development, helping you understand the psychological, emotional, and social factors that impact children’s mental health. You'll be equipped with advanced knowledge and practical skills to address these challenges through evidence-based strategies. This specialized focus not only broadens your understanding but also enhances your ability to make a meaningful impact in the lives of children and families.",
     ],
-    learningObjectives: [
-      "Master advanced behavioral and cognitive intervention strategies for childhood psychological, emotional, and developmental challenges.",
-      "Conduct comprehensive psychological assessments including developmental tracking, emotional screening, and specialized child assessments.",
-      "Synthesize clinical findings into individualized care plans while collaborating with families, educators, and multidisciplinary healthcare teams.",
-    ],
+    learningObjectives: [],
     credentials: [
       {
         id: "tab143",
@@ -735,35 +731,51 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         },
       ],
     },
+    programBenefit: [
+      "This program offers a comprehensive range of benefits that will enhance your personal and professional growth in the field of psychology.",
+      "Upon completion, you'll earn a valuable certificate from the Indian Council for Professional Education Mission (ICPEM), strengthening your professional credentials.",
+      "The curriculum provides in-depth knowledge of child psychology, covering key areas like cognitive and emotional development, behavioral disorders, and therapeutic interventions.",
+      "Through hands-on learning, including case studies and research projects, you'll gain practical skills to tackle real-world challenges in child mental health.",
+      "This program also opens diverse career opportunities in mental health, education, and counseling, preparing you for roles in schools, clinics, and child welfare organizations.",
+    ],
     whoCanJoin: [
-      "Aspiring Child Psychologists",
-      "Educators and Teachers",
-      "Parents and Caregivers",
-      "Mental Health Professionals",
-      "Social Workers",
-      "Students Pursuing Psychology or Related Fields",
-      "Childcare Professionals",
-      "Child Welfare Professionals",
-      "Psychology Graduates seeking specialization",
-      "Anyone Interested in Child Development",
+      "Business Professionals",
+      "HR",
+      "Managers and Executives",
+      "Consultants",
+      "Entrepreneurs",
+      "Psychology Graduates",
+      "Career Changers",
+      "Government and Nonprofit Professionals",
+      "Those Interested in Organizational Improvement",
+      "Global Business Leaders",
     ],
     scholarship: {
-      title: "Scholarship & Practical Learning Support",
+      title: "Get Upto 30% Scholarship",
       subtitle:
-        "Guaranteed practical internship & training support under our Har Ghar Counsellor initiative.",
-      image: "https://www.counselindia.com/assets/images/about/about-13.png",
+        '"Avail up to a 30% scholarship and receive exclusive additional benefits."',
+      image:
+        "https://prod-s3.counselindia.com/mastergalaxyimages/Untitled%20design-23_1734162900.png",
       points: [
         {
-          label: "Direct Mentorship",
-          desc: "One-on-one supervision by senior counselling psychologists.",
+          label: "Alumni Network of 12,500+ Members",
+          desc: "Gain access to a vast network of over 12,500 alumni who can support and guide you in your professional ventures.",
         },
         {
-          label: "Hands-on Practice",
-          desc: "Live case discussions and clinical roleplay sessions.",
+          label: "90+ Hiring Partners",
+          desc: "Benefit from dedicated job assistance through our extensive network of over 90 hiring partners, ensuring you have the best opportunities in the industry.",
         },
         {
-          label: "Fee Assistance",
-          desc: "Flexible installment plans and merit-based fee support.",
+          label: "Exclusive Membership",
+          desc: "Enroll now and enjoy a complimentary membership, providing access to valuable resources and opportunities.",
+        },
+        {
+          label: "Personalized Mentoring Sessions",
+          desc: "Receive multiple one-on-one mentoring sessions with industry professionals throughout the course, helping you navigate your career path.",
+        },
+        {
+          label: "Workshops, Events, and Bootcamps",
+          desc: "Get free access to a wide range of workshops, events, bootcamps, and networking meetings, designed to enhance your skills and expand your professional network.",
         },
       ],
     },
@@ -788,10 +800,10 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       },
     ],
     referEarn: {
-      title: "Refer & Earn with Counsel India",
-      subtitle:
-        "Help your peers discover transformative psychology programs and earn exciting referral rewards.",
-      buttonText: "Refer a Friend",
+      title:
+        "Refer someone and Earn upto INR 12,000 Cashback/Vouchers, on every successful enrollment",
+      subtitle: "Your friend also gets an instant scholarship!",
+      buttonText: "Start Referring",
       buttonLink: "/refer-and-earn?course_id=52",
     },
     reviews: [
@@ -820,7 +832,7 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       },
       {
         quote:
-          "It was super session to me & I learned many things regarding child psychology like developmental milestones, learning disability and preventions and more about it... Thanks to counsel India for conducting these type of work shops to acquire more knowledge.",
+          "It was super session to me & I learned many things regarding child psychology like developmental milestones, learning disability and preventions and more about it... Thanks to counsel India for conducting these type of work shops to acquire more knowledge ....once again Thanks ?",
         name: "Naveen",
         city: "Mumbai",
         image: "https://prod-s3.counselindia.com/success_stories/naveen.jpg",
@@ -830,7 +842,22 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       "https://www.counselindia.com/assets/images/logo/GU_logo.png",
       "https://www.counselindia.com/assets/images/logo/msu_logo.png",
       "https://www.counselindia.com/assets/images/logo/icpemci.png",
-      "https://www.counselindia.com/assets/images/logo/VGU.png",
+      "https://www.counselindia.com/assets/images/icon/VGU.png",
+    ],
+    learnersWorkAt: [
+      "https://www.counselindia.com/assets/images/partners-logo/partner1.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner2.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner3.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner4.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner5.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner6.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner7.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner8.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner9.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner10.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner11.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner12.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner13.jpg",
     ],
     faqs: [
       {
@@ -887,7 +914,7 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       "https://prod-s3.counselindia.com/courses/background_image/Counselling%20psychology%20and%20clinical%20skills_1722430554.jpg",
     partnerLogo: "https://www.counselindia.com/assets/images/logo/icpemci.png",
     description:
-      "The PG Diploma in Counselling Psychology & Clinical Skills at Counsel India offers a holistic, one-year program bringing together theoretical knowledge with hands-on clinical training. Equip yourself with specialized expertise in psychotherapy modalities, psychological assessment tools, crisis intervention, and client case formulation.",
+      "The PG Diploma in Counselling Psychology & Clinical Skills at Counsel India offers a holistic, one-year program bringing together theoretical knowledge with hands-on clinical training.",
     rating: 5,
     enrollUrl: "https://rzp.io/rzp/X5Q7xhF",
     phone: "+918031320449",
@@ -909,28 +936,16 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         desc: "26 September 2026",
       },
     ],
-    benefits: [
-      "Holistic Clinical Capabilities: Master psychological assessment, clinical interviewing, evidence-based psychotherapeutic techniques, and ethical intervention design.",
-      "Dual Specialized Internships: Comprehensive hands-on internships in both Counselling Psychology and Clinical Psychology with case history taking and MSE.",
-      "Extensive Practical Exposure: 570 live session hours, 120 project hours, and 270 on-the-job learning (OJL) hours for real-world mastery.",
-      "Supervised Case Discussions & Labs: Hands-on emotional intelligence assessments, projective testing, and simulated psychiatric case formulations.",
-      "Industry Recognition & Credentials: Earn prestigious credentials from Counsel India and ICPEM, opening doors to clinics, hospitals, schools, and private practice.",
-      "Marketing & Self-Branding Mastery: Practical coaching on establishing your mental health practice and connecting with clients globally.",
-    ],
+    benefits: [],
     about: [
-      "The PG Diploma in Counselling Psychology & Clinical Skills at Counsel India offers a holistic, one-year program bringing together theoretical knowledge with hands-on clinical training.",
-      "Enrolling in this PG Diploma significantly enhances your professional capabilities and career prospects. You will gain a comprehensive understanding of psychological assessment, therapeutic techniques, and ethical practices, equipped with the skills to design innovative interventions, manage crises effectively, and work with diverse populations with cultural sensitivity.",
+      "PG DIPLOMA IN COUNSELLING PSYCHOLOGY & CLINICAL SKILLS is a bundle program combining multiple Psychology programs by Counsel India—Advance Certificate in Psychopathology, Therapy Master Course, 2 Internships (Counselling & Clinical)—with an integrated focus on one-year program bringing together theoretical knowledge with hands-on clinical training.",
     ],
-    learningObjectives: [
-      "Gain comprehensive mastery of major counseling and clinical theories, ethical standards, and legal issues in mental health practice.",
-      "Acquire proficiency in clinical interviewing, mental status examination (MSE), diagnostic frameworks, and psychological assessments.",
-      "Master diverse therapeutic modalities (Gestalt, MBCT, Existential, Music, Art, Transactional Analysis) and execute supervised clinical cases.",
-    ],
+    learningObjectives: [],
     credentials: [
       {
         id: "tab177",
         label: "Certificate of Completion",
-        text: "This certificate acknowledges your sincere dedication and mastery of key skills throughout the program. Your commitment to excellence is truly commendable, and we are confident that you will make a significant impact in the mental health field.",
+        text: "This certificate acknowledges your sincere dedication and mastery of key skills throughout the program. Your commitment to excellence is truly commendable, and we are confident that you will make a significant impact in your professional endeavors.",
         image:
           "https://prod-s3.counselindia.com/credential/Diploma%20in%20CPCS_1728552271.png",
       },
@@ -969,43 +984,76 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       ],
       modules: [
         {
-          title: "Module 1: Foundations, Skills & Psychology Lab",
+          title: "Module 1",
           topics: [
-            "Introduction to Counselling Psychology & Employability Skills (Basics)",
-            "Counseling Skills and Core Micro-Techniques",
-            "Ethical and Professional Issues in Mental Health",
-            "Psychology Lab - 1 (Emotional Intelligence Assessment), Project Work - 1 & OJL - 1",
+            "Introduction to Counselling Psychology",
+            "Employability skills (Basics)",
+            "Counseling skills and Techniques.",
+            "Ethical and Professional Issues",
+            "Psychology Lab - 1 (Emotional Intelligence Assessment)",
+            "Project Work- 1",
+            "OJL - 1",
           ],
         },
         {
-          title: "Module 2: Advanced Psychotherapies & Expressive Modalities",
+          title: "Module 2",
           topics: [
-            "Understanding Psychology and Therapeutic Processes",
-            "Existential Therapy & Gestalt Therapy in Practice",
-            "Psychoanalytic Therapy & Transactional Analysis (TA)",
-            "Expressive Therapies: Music Therapy & Art Therapy Applications",
+            "Understanding Psychology and Therapy",
+            "Therapies and its Practices",
+            "Existential Therapy",
+            "Gestalt Therapy",
+            "Music Therapy",
+            "Psychoanalytic Therapy",
+            "Transactional Analysis Therapy",
+            "Art Therapy",
+            "Hypnotherapy",
+            "Exposure and Response Prevention Therapy",
+            "Client-Centered Therapy",
+            "Behavioral Therapy",
+            "Cognitive Behavioural Therapy",
+            "Rational Emotive Behavior Therapy",
+            "Dialectical Behavior Therapy (DBT)",
+            "Mindfulness-Based Cognitive Therapy",
+            "Yoga Therapy",
+            "Marketing and Customer Acquisition",
           ],
         },
         {
-          title: "Module 3: Internship in Counselling Psychology",
+          title: "Module 3: Internship Counselling Psychology",
           topics: [
-            "Counselling Fundamentals, Case History Taking & Mental Status Examination (MSE)",
-            "Counseling Ethics, Boundaries & Confidentiality",
-            "Distinguishing Counseling vs. Clinical Psychology Practices",
-            "Mindfulness-Based Cognitive Therapy (MBCT) & Projective Assessment Techniques",
+            "Counselling",
+            "Case History & MSE",
+            "Counseling Ethics",
+            "Counseling v/s Clinical Psychologists",
+            "Mindfulness based cognitive therapy",
+            "Psychological Assessments",
+            "Projective Techniques in Counseling",
+            "Sentence Completion Test",
+            "Stress Assessment",
+            "Emotion & Self Esteem Scale",
+            "Practical Class",
           ],
         },
         {
-          title: "Module 4: Internship in Clinical Psychology",
+          title: "Module 4: Internship Clinical Psychology",
           topics: [
-            "Introduction to Clinical Psychology & Major Diagnostic Classifications",
-            "Clinical Assessment & Diagnosis: Mood, Anxiety, and Personality Disorders",
-            "Clinical Interviewing Skills, Mental Health Formulations & Rapport Building",
-            "Supervised Clinical Psychological Assessments & Report Writing",
+            "What is Clinical Psychology?",
+            "Major Approaches",
+            "Clinical Assessment & Diagnosis",
+            "Mood Disorders",
+            "Anxiety Disorders",
+            "Personality Disorders",
+            "Clinical Interviewing Skills",
+            "Psychological Assessment",
+            "Case Formulation and Treatment Planning",
           ],
         },
       ],
     },
+    programBenefit: [
+      "Enrolling in the PG Diploma in Counselling Psychology & Clinical Skills will significantly enhance your professional capabilities and career prospects. You will gain a comprehensive understanding of psychological assessment, therapeutic techniques, and ethical practices and be equipped with the skills to design innovative interventions, manage crises effectively, and work with diverse populations with cultural sensitivity.",
+      "Get a significant boost to your credentials that opens doors to advanced roles in mental health, therapeutic practices, and beyond.",
+    ],
     whoCanJoin: [
       "Mental Health Professionals",
       "Educators and School Counsellors",
@@ -1015,22 +1063,31 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       "Career Changers",
     ],
     scholarship: {
-      title: "Scholarship & Practical Learning Support",
+      title: "Get Upto 30% Scholarship",
       subtitle:
-        "Guaranteed practical internship & training support under our Har Ghar Counsellor initiative.",
-      image: "https://www.counselindia.com/assets/images/about/about-13.png",
+        '"Avail up to a 30% scholarship and receive exclusive additional benefits."',
+      image:
+        "https://prod-s3.counselindia.com/mastergalaxyimages/Untitled%20design-23_1734162900.png",
       points: [
         {
-          label: "Direct Mentorship",
-          desc: "One-on-one supervision by senior counselling psychologists.",
+          label: "Alumni Network of 12,500+ Members",
+          desc: "Gain access to a vast network of over 12,500 alumni who can support and guide you in your professional ventures.",
         },
         {
-          label: "Hands-on Practice",
-          desc: "Live case discussions and clinical roleplay sessions.",
+          label: "90+ Hiring Partners",
+          desc: "Benefit from dedicated job assistance through our extensive network of over 90 hiring partners, ensuring you have the best opportunities in the industry.",
         },
         {
-          label: "Fee Assistance",
-          desc: "Flexible installment plans and merit-based fee support.",
+          label: "Exclusive Membership",
+          desc: "Enroll now and enjoy a complimentary membership, providing access to valuable resources and opportunities.",
+        },
+        {
+          label: "Personalized Mentoring Sessions",
+          desc: "Receive multiple one-on-one mentoring sessions with industry professionals throughout the course, helping you navigate your career path.",
+        },
+        {
+          label: "Workshops, Events, and Bootcamps",
+          desc: "Get free access to a wide range of workshops, events, bootcamps, and networking meetings, designed to enhance your skills and expand your professional network.",
         },
       ],
     },
@@ -1079,10 +1136,10 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       },
     ],
     referEarn: {
-      title: "Refer & Earn with Counsel India",
-      subtitle:
-        "Help your peers discover transformative psychology programs and earn exciting referral rewards.",
-      buttonText: "Refer a Friend",
+      title:
+        "Refer someone and Earn upto INR 12,000 Cashback/Vouchers, on every successful enrollment",
+      subtitle: "Your friend also gets an instant scholarship!",
+      buttonText: "Start Referring",
       buttonLink: "/refer-and-earn?course_id=57",
     },
     reviews: [
@@ -1121,7 +1178,22 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       "https://www.counselindia.com/assets/images/logo/GU_logo.png",
       "https://www.counselindia.com/assets/images/logo/msu_logo.png",
       "https://www.counselindia.com/assets/images/logo/icpemci.png",
-      "https://www.counselindia.com/assets/images/logo/VGU.png",
+      "https://www.counselindia.com/assets/images/icon/VGU.png",
+    ],
+    learnersWorkAt: [
+      "https://www.counselindia.com/assets/images/partners-logo/partner1.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner2.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner3.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner4.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner5.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner6.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner7.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner8.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner9.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner10.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner11.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner12.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner13.jpg",
     ],
     faqs: [
       {
@@ -1195,8 +1267,7 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
     // REMOVED: live page has no "Course Overview" section
     benefits: [],
     about: [
-      "This course is specifically designed for professionals in the mental health space who want to blend their counseling expertise with entrepreneurial skills.",
-      "Through a step-by-step process, you'll learn how to effectively market yourself, build a brand, and grow a sustainable business, all without compromising on your core mission of helping people.",
+      "This course is specifically designed for professionals in the mental health space who want to blend their counseling expertise with entrepreneurial skills. Through a step-by-step process, you'll learn how to effectively market yourself, build a brand, and grow a sustainable business, all without compromising on your core mission of helping people.",
     ],
     learningObjectives: [
       "100+ AI Tools Training for Marketing",
@@ -1344,26 +1415,7 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         },
       ],
     },
-    faculty: [
-      {
-        name: "Shelly Ahuja",
-        title: "Psychologist",
-        image:
-          "https://prod-s3.counselindia.com/counsellor/17150178581701751946.jpg",
-      },
-      {
-        name: "Sarita Shukla",
-        title: "Psychologist",
-        image:
-          "https://prod-s3.counselindia.com/counsellor/14618756601696371739.jpeg",
-      },
-      {
-        name: "Nazima Sayyed",
-        title: "Psychologist",
-        image:
-          "https://prod-s3.counselindia.com/counsellor/2906292291693329244.jpg",
-      },
-    ],
+    faculty: [],
     referEarn: {
       title:
         "Refer someone and Earn upto INR 12,000 Cashback/Vouchers, on every successful enrollment",
@@ -1454,8 +1506,10 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         image: "https://prod-s3.counselindia.com/success_stories/sneh.jpg",
       },
     ],
-    // UPDATED to match live page ("Our Learners Work At" section)
     partners: [
+      "https://www.counselindia.com/assets/images/logo/icpemci.png",
+    ],
+    learnersWorkAt: [
       "https://www.counselindia.com/assets/images/partners-logo/partner1.jpg",
       "https://www.counselindia.com/assets/images/partners-logo/partner2.jpg",
       "https://www.counselindia.com/assets/images/partners-logo/partner3.jpg",
@@ -1548,73 +1602,26 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         desc: "26 September 2026",
       },
     ],
-    // NOT FOUND on live page - kept as is
     benefits: [
-      "Comprehensive Academic Rigor: In-depth study covering clinical psychology, counselling modalities, organizational behavior, and neurocognitive frameworks.",
-      "Dual Embedded Internships & Apprenticeships: 375 live hours, 480 project hours, and 900 on-the-job learning (OJL) hours for practical immersion.",
-      "Global Certification & Affiliations: Prestigious co-branded certification from IPA, MEPSC Skill India, and university-recognized degree pathways.",
-      "G20 Nation Skills Portability: MEPSC qualification database registration valid across G20 nations for verified global employer due-diligence.",
-      "Academic Bank of Credits (ABC): Fully compliant with UGC guidelines and NEP 2020 for seamless credit accumulation and inter-institutional transfer.",
-      "Advanced Clinical & Corporate Readiness: Comprehensive training in psychological assessments, diagnostic psychometrics, and structured therapy protocols.",
+      "Comprehensive Curriculum: The program offers a broad study of psychology, covering key areas such as clinical psychology, counseling, organizational behavior, and psychological research. Students will gain both foundational knowledge and advanced insights, preparing them to excel in various fields of psychology.",
+      "Expert-Led Classes: Classes are delivered by seasoned psychologists and industry professionals who bring their practical experiences into the classroom, ensuring students receive an education that is both academically robust and relevant to the modern psychological landscape.",
+      "Hands-On Training: Students will engage in practical experiences through internships, live case studies, and hands-on workshops. This real-world training equips them with essential skills to apply psychological theories and methods in clinical, organizational, and research settings.",
+      "Research Opportunities: The program provides multiple opportunities for students to undertake advanced research projects. These projects help students develop critical thinking, problem-solving skills, and a deeper understanding of psychological phenomena, preparing them for future roles in academia, research, or professional practice.",
+      "Career-Ready Skills: Graduates will emerge with skills essential for careers in mental health counseling, clinical psychology, corporate psychology, and academic research. The program emphasizes psychological assessments, therapy techniques, and organizational behavior analysis to ensure students are ready for a diverse range of professional roles.",
+      "Specialization Options: Students can personalize their education by selecting from various specializations in psychology, such as clinical counseling, corporate psychology, or advanced research. This allows them to focus on areas that align with their career goals and interests.",
+      "Focus on Practical Application: Beyond theory, the program stresses practical application, equipping students to address real-world mental health challenges, improve organizational performance, and contribute to psychological research. Case-based learning ensures students can immediately apply what they learn.",
+      "Academic Bank of Credits (ABC): The program follows UGC guidelines and allows students to earn credit points that can be added to their Academic Bank of Credits (ABC). This feature gives students the flexibility to accumulate, store, and transfer their credits across institutions, making the learning process more adaptable to their professional and academic growth.",
+      "Credit Points: Each course within the program earns students valuable credit points that contribute toward their overall degree. These points can be used to build their Academic Bank of Credits, enabling them to continue their education in other UGC-approved programs or institutions if they choose to pursue further studies.",
+      "Flexible Learning Environment: The MA in Psychology offers a blend of online and on-campus learning options, accommodating the needs of working professionals and full-time students. Interactive workshops, peer discussions, and hands-on projects make learning engaging and practical.",
     ],
-    // NEW - "Course Overview" section on live page (not present in previous data)
-    courseOverview: [
-      {
-        title: "Comprehensive Curriculum",
-        text: "The program offers a broad study of psychology, covering key areas such as clinical psychology, counseling, organizational behavior, and psychological research. Students will gain both foundational knowledge and advanced insights, preparing them to excel in various fields of psychology.",
-      },
-      {
-        title: "Expert-Led Classes",
-        text: "Classes are delivered by seasoned psychologists and industry professionals who bring their practical experiences into the classroom, ensuring students receive an education that is both academically robust and relevant to the modern psychological landscape.",
-      },
-      {
-        title: "Hands-On Training",
-        text: "Students will engage in practical experiences through internships, live case studies, and hands-on workshops. This real-world training equips them with essential skills to apply psychological theories and methods in clinical, organizational, and research settings.",
-      },
-      {
-        title: "Research Opportunities",
-        text: "The program provides multiple opportunities for students to undertake advanced research projects. These projects help students develop critical thinking, problem-solving skills, and a deeper understanding of psychological phenomena, preparing them for future roles in academia, research, or professional practice.",
-      },
-      {
-        title: "Career-Ready Skills",
-        text: "Graduates will emerge with skills essential for careers in mental health counseling, clinical psychology, corporate psychology, and academic research. The program emphasizes psychological assessments, therapy techniques, and organizational behavior analysis to ensure students are ready for a diverse range of professional roles.",
-      },
-      {
-        title: "Specialization Options",
-        text: "Students can personalize their education by selecting from various specializations in psychology, such as clinical counseling, corporate psychology, or advanced research. This allows them to focus on areas that align with their career goals and interests.",
-      },
-      {
-        title: "Focus on Practical Application",
-        text: "Beyond theory, the program stresses practical application, equipping students to address real-world mental health challenges, improve organizational performance, and contribute to psychological research. Case-based learning ensures students can immediately apply what they learn.",
-      },
-      {
-        title: "Academic Bank of Credits (ABC)",
-        text: "The program follows UGC guidelines and allows students to earn credit points that can be added to their Academic Bank of Credits (ABC). This feature gives students the flexibility to accumulate, store, and transfer their credits across institutions, making the learning process more adaptable to their professional and academic growth.",
-      },
-      {
-        title: "Credit Points",
-        text: "Each course within the program earns students valuable credit points that contribute toward their overall degree. These points can be used to build their Academic Bank of Credits, enabling them to continue their education in other UGC-approved programs or institutions if they choose to pursue further studies.",
-      },
-      {
-        title: "Flexible Learning Environment",
-        text: "The MA in Psychology offers a blend of online and on-campus learning options, accommodating the needs of working professionals and full-time students. Interactive workshops, peer discussions, and hands-on projects make learning engaging and practical.",
-      },
-    ],
-    // UPDATED to match live page ("About this Course")
     about: [
       "Our Masters in Psychology program is designed to provide an in-depth understanding of human behavior, mental processes, and emotional well-being. Combining advanced coursework with hands-on training and research, this program equips you with the expertise to thrive in diverse areas of psychology, such as counseling, clinical psychology, organizational behavior, and more. Join us to dive into the complexities of the human mind and build a fulfilling career in psychology, guided by experienced faculty and cutting-edge practices.",
     ],
-    // NEW - "MEPSC - Skill India Advantage" section on live page
     skillIndiaAdvantage: {
       title: "MEPSC - Skill India Advantage",
       text: "Counsel India is proud to be officially associated and recognized by the Micro Enterprises Promotion & Support Enterprise (MEPSE) — a prestigious organization committed to empowering and supporting enterprises across India. This recognition reflects our dedication to delivering world-class mental health, career counseling, and psychology education services with integrity, innovation, and measurable impact. Through this association, we strengthen our mission to create skilled professionals, expand access to quality mental health resources, and contribute to the nation’s socio-economic growth by fostering education, awareness, and professional excellence.",
     },
-    // NOT FOUND on live page - kept as is
-    learningObjectives: [
-      "Master core domains of cognitive, social, developmental, biological, and abnormal psychology with evidence-based frameworks.",
-      "Develop expertise in psychological assessment batteries, clinical psychometrics, and standardized diagnostic systems (DSM-5 / ICD).",
-      "Apply advanced therapeutic approaches (CBT, psychodynamic, humanistic, family systemic) through supervised client cases and research theses.",
-    ],
+    learningObjectives: [],
     credentials: [
       {
         id: "tab201",
@@ -2094,8 +2101,13 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         image: "https://prod-s3.counselindia.com/success_stories/megha.jpg",
       },
     ],
-    // UPDATED to match live page ("Our Learners Work At" section)
     partners: [
+      "https://www.counselindia.com/assets/images/logo/GU_logo.png",
+      "https://www.counselindia.com/assets/images/logo/msu_logo.png",
+      "https://www.counselindia.com/assets/images/logo/icpemci.png",
+      "https://www.counselindia.com/assets/images/logo/VGU.png",
+    ],
+    learnersWorkAt: [
       "https://www.counselindia.com/assets/images/partners-logo/partner1.jpg",
       "https://www.counselindia.com/assets/images/partners-logo/partner2.jpg",
       "https://www.counselindia.com/assets/images/partners-logo/partner3.jpg",
@@ -2151,7 +2163,7 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       "https://prod-s3.counselindia.com/courses/background_image/ma2_1784655771.jpg",
     partnerLogo: "https://www.counselindia.com/assets/images/logo/icpemci.png",
     description:
-      "(Internship/Apprenticeship Embedded) - Our Masters In Clinical Psychology program is designed to help you understand human behavior more effectively, look at the mental processes, and comprehend emotional well-being. With advanced coursework ensuring the highest standards, hands-on training, and research potential, you will gain the skills needed to succeed in diverse areas of psychology, such as counselling and clinical practice. Explore the complexities of the human mind and build a rewarding career in mental healthcare. This course, in partnership with IPA (International Psychology Association) & Skill India, provides you a strong foundation for a successful career in clinical psychology.",
+      "(Internship/Apprenticeship Embedded) - Our Masters In Clinical Psychology program is designed to help you understand human behavior more effectively, look at the mental processes, and comprehend emotional well-being. With advanced coursework ensuring the highest standards, hands-on training, and research potential, you will gain the skills needed to succeed in diverse areas of psychology, such as counselling and organizational behavior. Explore the complexities of the human mind and build a rewarding career in psychology. This course, In partnership with IPA(International Psychology Association) & Skill India,  provides you a strong foundation for a successful career in mental health.",
     rating: 5,
     enrollUrl: "https://rzp.io/rzp/X5Q7xhF",
     phone: "+918031320449",
@@ -2177,46 +2189,16 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         desc: "26 September 2026",
       },
     ],
-    benefits: [
-      "Specialized Clinical Psychology Mastery: Advanced coursework in psychopathology, diagnostic psychometrics, psychiatric symptomology, and clinical neuroscience.",
-      "Extensive Hands-on Practicum: 375 live clinical session hours, 900 hours of structured On-the-Job Learning (OJL), and 4 comprehensive clinical capstone projects.",
-      "Standardized Diagnostic Tool Training: Hands-on mastery of WAIS, WISC, MMPI, 16PF, Rorschach Inkblot, and TAT diagnostic administration.",
-      "Dual Global Certification: Prestigious degree credentials co-branded with IPA (International Psychology Association) and MEPSC Skill India.",
-      "Academic Bank of Credits (ABC) Integration: UGC-compliant credit points enabling flexible storage and national academic mobility.",
-      "Clinical Career Launchpad: Dedicated placement guidance and mentoring for hospitals, psychiatric units, private clinics, and rehabilitation centers.",
-    ],
+    benefits: [],
     about: [
-      "(Internship/Apprenticeship Embedded) - Our Masters In Clinical Psychology program is designed to help you understand human behavior more effectively, look at the mental processes, and comprehend emotional well-being. With advanced coursework ensuring the highest standards, hands-on training, and research potential, you will gain the skills needed to succeed in diverse areas of psychology, such as counselling and clinical practice.",
-      "This program offers a wealth of benefits designed to boost both your professional and personal growth. You'll gain advanced knowledge in psychological theories and practices, along with hands-on experience through internships and real-world case studies across clinical institutions.",
+      "Our Masters in Clinical Psychology program is designed to provide an in-depth understanding of human behavior, mental processes, and emotional well-being. Combining advanced coursework with hands-on training and research, this program equips you with the expertise to thrive in diverse areas of psychology, such as counseling, clinical psychology, organizational behavior, and more. Join us to dive into the complexities of the human mind and build a fulfilling career in psychology, guided by experienced faculty and cutting-edge practices.",
     ],
-    learningObjectives: [
-      "Acquire rigorous understanding of psychopathology, diagnostic criteria (DSM-5 & ICD-11), and psychiatric differential diagnoses.",
-      "Master the administration, scoring, and clinical interpretation of intelligence, personality, and neuropsychological assessment batteries.",
-      "Formulate evidence-based therapeutic treatment plans across diverse clinical populations with supervised clinical case reporting.",
-    ],
-    credentials: [
-      {
-        id: "tab201",
-        label: "IPA Certificate",
-        text: "Upon successful completion of the course, you will be awarded a prestigious certificate from IPA (International Psychology Association).",
-        image:
-          "https://prod-s3.counselindia.com/credential/Screenshot%202025-08-04%20114105_1754288577.png",
-      },
-      {
-        id: "tab204",
-        label: "MEPSC Skill India Certificate",
-        text: "After successful training and assessment, the Management & Entrepreneurship and Professional Skills Council (MEPSC) will issue a skill certificate and add your qualifications to the central database valid across G20 nations.",
-        image:
-          "https://prod-s3.counselindia.com/credential/Certificate%20Template%20-%20Job%20Role%20%281%29_1753183761.jpg",
-      },
-      {
-        id: "tab196",
-        label: "Letter of Recommendation",
-        text: "This globally recognized credential showcases your expertise, clinical competencies, and commitment to the field of mental healthcare.",
-        image:
-          "https://prod-s3.counselindia.com/credential/Letter%20of%20recommendation%20for%20Jon%20Doe%20(1)_1755835833.png",
-      },
-    ],
+    skillIndiaAdvantage: {
+      title: "MEPSC - Skill India Advantage",
+      text: "Counsel India is proud to be officially associated and recognized by the Micro Enterprises Promotion & Support Enterprise (MEPSE) — a prestigious organization committed to empowering and supporting enterprises across India. This recognition reflects our dedication to delivering world-class mental health, career counseling, and psychology education services with integrity, innovation, and measurable impact. Through this association, we strengthen our mission to create skilled professionals, expand access to quality mental health resources, and contribute to the nation’s socio-economic growth by fostering education, awareness, and professional excellence.",
+    },
+    learningObjectives: [],
+    credentials: [],
     curriculum: {
       totalSessions: "320 Sessions",
       totalHours: "2160 hr",
@@ -2242,75 +2224,45 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
           text: "Projects",
         },
       ],
-      modules: [
-        {
-          title:
-            "Semester 1: Foundations of Clinical Psychology & Psychopathology",
-          topics: [
-            "Introduction to Clinical Psychology & Theoretical Frameworks",
-            "Diagnostic Systems: DSM-5, ICD-11 & Clinical Psychopathology",
-            "Clinical Assessment: Case History, Mental Status Examination (MSE) & Behavioral Observation",
-            "Ethics, Confidentiality, and Professional Boundaries in Clinical Practice",
-          ],
-        },
-        {
-          title:
-            "Semester 2: Psychometrics, Neuropsychology & Diagnostic Testing",
-          topics: [
-            "Standardized Psychometric Batteries: Intelligence (WAIS, WISC) & Personality (MMPI, 16PF)",
-            "Neuropsychological Assessment & Cognitive Screening",
-            "Projective Diagnostic Techniques: Rorschach, TAT & Sentence Completion",
-            "Clinical Report Writing, Formulation & Diagnostic Feedback",
-          ],
-        },
-        {
-          title:
-            "Semester 3: Psychotherapeutic Interventions & Clinical Specialties",
-          topics: [
-            "Cognitive Behavioral Therapy (CBT) & Rational Emotive Behavior Therapy (REBT)",
-            "Psychodynamic, Humanistic & Emotion-Focused Therapies",
-            "Child & Adolescent Clinical Psychology & Neurodevelopmental Disorders",
-            "Addictions, Trauma-Informed Care & Crisis Intervention",
-          ],
-        },
-        {
-          title:
-            "Semester 4: Advanced Clinical Practicum, OJL & Master's Thesis",
-          topics: [
-            "Advanced Psychopathology: Psychotic, Severe Mood & Complex Personality Disorders",
-            "Supervised Clinical Rotations & Case Conferences (375 Live Hours)",
-            "On-the-Job Learning (OJL) Internship (900 Hours)",
-            "Master's Clinical Research Project / Dissertation & Final Viva",
-          ],
-        },
-      ],
+      modules: [],
     },
+    programBenefit: [
+      "This program offers a wealth of benefits designed to boost both your professional and personal growth. You'll gain advanced knowledge in psychological theories and practices, along with hands-on experience through internships and real-world case studies. Whether you’re aiming for a career in counseling, clinical psychology, or organizational behavior, this program opens doors to numerous opportunities. With specialized electives, you can focus on areas that align with your interests while developing essential skills like communication, emotional intelligence, and interpersonal relations. Networking with professionals and peers will help expand your connections, and exposure to cutting-edge research and diverse global perspectives will equip you to work effectively in today’s interconnected world. Plus, earning an accredited degree enhances your credibility and makes you more competitive in the job market.",
+    ],
     whoCanJoin: [
       "Graduates In Psychology",
       "Educators And School Professionals",
-      "Healthcare And Socialwork Professionals",
+      "Healthcare And Socialwork Professinals",
       "Parents And Caregivers",
       "Early Childhood Practitioners",
       "Career Changers",
       "Aspiring Researchers And Academics",
     ],
     scholarship: {
-      title: "Scholarship & Practical Learning Support",
+      title: "Get Upto 30% Scholarship",
       subtitle:
-        "Guaranteed practical internship & training support under our Har Ghar Counsellor initiative.",
+        "Avail up to a 30% scholarship and receive exclusive additional benefits.",
       image: "https://www.counselindia.com/assets/images/about/about-13.png",
       points: [
         {
-          label: "Direct Mentorship",
-          desc: "One-on-one supervision by senior counselling psychologists.",
+          label: "Alumni Network of 12,500+ Members",
+          desc: "Gain access to a vast network of over 12,500 alumni who can support and guide you in your professional ventures.",
         },
         {
-          label: "Hands-on Practice",
-          desc: "Live case discussions and clinical roleplay sessions.",
+          label: "90+ Hiring Partners",
+          desc: "Benefit from dedicated job assistance through our extensive network of over 90 hiring partners, ensuring you have the best opportunities in the industry.",
         },
         {
-          label: "Fee Assistance",
-          desc: "Flexible installment plans and merit-based fee support.",
+          label: "Exclusive Membership",
+          desc: "Enroll now and enjoy a complimentary membership, providing access to valuable resources and opportunities.",
+        },
+        {
+          label: "Personalized Mentoring Sessions",
+          desc: "Receive multiple one-on-one mentoring sessions with industry professionals throughout the course, helping you navigate your career path.",
+        },
+        {
+          label: "Workshops, Events, and Bootcamps",
+          desc: "Get free access to a wide range of workshops, events, bootcamps, and networking meetings, designed to enhance your skills and expand your professional network.",
         },
       ],
     },
@@ -2335,18 +2287,25 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       },
     ],
     referEarn: {
-      title: "Refer & Earn with Counsel India",
-      subtitle:
-        "Help your peers discover transformative psychology programs and earn exciting referral rewards.",
-      buttonText: "Refer a Friend",
+      title:
+        "Refer someone and Earn upto INR 12,000 Cashback/Vouchers, on every successful enrollment",
+      subtitle: "Your friend also gets an instant scholarship!",
+      buttonText: "Start Referring",
       buttonLink: "/refer-and-earn?course_id=80",
     },
     reviews: [
       {
         quote:
+          "Counsel India helped with my growth and progress. It enhanced my knowledge and also it was helpful along with my Post Graduation. I was been cherished because of the knowledge i had through the course.",
+        name: "Shivani Kumari",
+        city: "",
+        image: "https://prod-s3.counselindia.com/success_stories/shivani.jpg",
+      },
+      {
+        quote:
           "The instructors were not just teachers; they were true mentors. Their deep passion for psychology was evident in every lecture, making complex theories and concepts accessible and engrossing, so I would highly recommend this course to everyone.",
         name: "Anushka Ghosh",
-        city: "Noida",
+        city: "",
         image:
           "https://prod-s3.counselindia.com/success_stories/image_20221207_163301%20-%20Anushka%20Ghosh%20(2)_1693906637.jpeg",
       },
@@ -2354,37 +2313,123 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         quote:
           "I recently had the privilege of enrolling in this psychology Course that left me utterly impressed and profoundly enriched. This course was nothing short of exceptional, and I would like to share my glowing review to encourage others to embark on this enlightening journey.",
         name: "Muskan Maan",
-        city: "Delhi",
+        city: "",
         image:
           "https://prod-s3.counselindia.com/success_stories/image_1658507699678__01%20-%20Muskan%20Maan%20(2)_1693906710.jpeg",
       },
       {
+        quote: "I started helping my own kids, I understand them in better way.",
+        name: "Riya Raizada",
+        city: "",
+        image: "https://prod-s3.counselindia.com/success_stories/riya.jpg",
+      },
+      {
         quote:
-          "Counsel India has changed my entire level of thinking and living, thank you sooo much for being an all-time supportive team.",
+          "Counsel india has changed my entire level of thinking and living as thank you sooo much for being all time supportive team",
         name: "Sachin Soni",
-        city: "Jaipur",
+        city: "",
         image: "https://prod-s3.counselindia.com/success_stories/sachin.jpg",
       },
       {
         quote:
-          "I am a mental health practitioner working as a counselling psychologist. This course was helpful to develop my knowledge in such a good direction, and because of this I am doing very well in my professional practice.",
+          "Amazing Session. To the point Conversation, all questions answered with real life examples and beautifully conveyed. Personally, learned quite a lot in just few sessions of the Course. Feeling not only satisfied with the course overall but also, somewhat wise mentally, emotionally and spiritually.",
+        name: "Balwan Singh",
+        city: "",
+        image:
+          "https://prod-s3.counselindia.com/success_stories/image_passport%20size%20photo_1693906790.jpeg",
+      },
+      {
+        quote:
+          "The learning process was amazing and also enjoyable. Various resources shared by the Trainers, discussions of Case studies, providing creative participation, techniques etc. Gave in depth understanding about the concepts and how to connect and applying the real world.",
+        name: "Ishika Nigam",
+        city: "",
+        image:
+          "https://prod-s3.counselindia.com/success_stories/image_WhatsApp%20Image%202023-09-05%20at%203.10.29%20PMsdfghjkl_1693906908.jpeg",
+      },
+      {
+        quote:
+          "I am a mental health practitioner working as counselling psychologist this course was helpful to develop my knowledge in such a good direction and by this I am doing very well in my professional practice. The trainers at Counsel India are very knowledgeable, professional and helpful. They shape the course according to the trainee.",
         name: "Shelly John",
-        city: "South Africa",
+        city: "",
         image: "https://prod-s3.counselindia.com/success_stories/shelly.jpg",
       },
       {
         quote:
-          "It was awesome to learn more about the subject, that is Psychology, from the experts here. It was such a refreshing experience to learn with practical case studies rather than theory-based learning.",
+          "When I join counsel india I was unknown to the most of things of psychology and segment wise I understand and step by step also to this situation and most of the time RCI illusion create by the surrounding people but counsel india solve my problem ,No need for this only knowledge and experience basis you can start this.",
+        name: "Garry",
+        city: "",
+        image: "https://prod-s3.counselindia.com/success_stories/garry.jpg",
+      },
+      {
+        quote:
+          "The trainer was really good and well organized, this helped me to learn fast and apply the knowledge. I was able to understand how organizations operate and the importance of job satisfaction among workers.",
+        name: "Shikha Sharma",
+        city: "",
+        image: "https://prod-s3.counselindia.com/success_stories/shikha.jpg",
+      },
+      {
+        quote:
+          "Child Psychology sessions helped me comprehend the world of psyche in more depth to a particular topic. Children are like a melted wax and that stage of life can be moulded appropriately if treated properly. Thank you Counsel India for sharing your insights.",
+        name: "Shivanjali Sharma",
+        city: "",
+        image:
+          "https://prod-s3.counselindia.com/success_stories/shivanjali-sharma.jpg",
+      },
+      {
+        quote:
+          "I started helping my own kids, I understand them in better way.Counsel india has changed my entire level of thinking and living as thank you sooo much for being all time supportive team",
+        name: "Riya",
+        city: "",
+        image: "https://prod-s3.counselindia.com/success_stories/riyaa.jpg",
+      },
+      {
+        quote:
+          "I have done the child psychology course under council india. Very good and well efficient organization. Short time course but very helpful. I will try to join another course in future",
+        name: "Anyasa saha",
+        city: "",
+        image:
+          "https://prod-s3.counselindia.com/success_stories/anyasa-saha.jpg",
+      },
+      {
+        quote:
+          "It was super session to me & I learned many things regarding child psychology like developmental milestones, learning disability and preventions and more about it... Thanks to counsel India for conducting these type of work shops to acquire more knowledge ....once again Thanks ?",
+        name: "Naveen",
+        city: "",
+        image: "https://prod-s3.counselindia.com/success_stories/naveen.jpg",
+      },
+      {
+        quote:
+          "I had d taken up Child Psychology course.The coaching was really good, coaches also were very understanding and they cleared all the doubts. I had a wonderful experience all together of course the knowledge i gained was remarkable.Thanks to Counsel India for bringing up such short courses which anyone could afford for.??",
+        name: "Sumalatha M",
+        city: "",
+        image: "https://prod-s3.counselindia.com/success_stories/sumalatha.jpg",
+      },
+      {
+        quote:
+          "It was awesome to learn more about the subject, that is Psychology, from the experts here. It was such an refreshing experience to learn with practical case studies rather than the theory based learning...",
         name: "Lisha Rao",
-        city: "Bangalore",
+        city: "",
         image: "https://prod-s3.counselindia.com/success_stories/lisha-rao.jpg",
       },
     ],
     partners: [
-      "https://www.counselindia.com/assets/images/logo/GU_logo.png",
-      "https://www.counselindia.com/assets/images/logo/msu_logo.png",
       "https://www.counselindia.com/assets/images/logo/icpemci.png",
-      "https://www.counselindia.com/assets/images/logo/VGU.png",
+      "https://www.counselindia.com/assets/images/icon/VGU.png",
+    ],
+    learnersWorkAt: [
+      "https://www.counselindia.com/assets/images/partners-logo/partner1.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner2.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner3.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner4.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner5.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner6.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner7.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner8.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner9.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner10.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner11.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner12.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner13.jpg",
     ],
     faqs: [
       {
@@ -2405,14 +2450,14 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         question:
           "Is the program accredited, and will it meet licensure requirements?",
         answer: [
-          "The accreditation status of the Masters in Psychology program may vary by institution. It\u2019s essential to verify that the program is accredited by a recognized accrediting body. Additionally, while many programs provide a strong foundation for licensure, specific licensure requirements vary by state or country, so it's important to research the requirements in your desired location.",
+          "The accreditation status of the Masters in Psychology program may vary by institution. It’s essential to verify that the program is accredited by a recognized accrediting body. Additionally, while many programs provide a strong foundation for licensure, specific licensure requirements vary by state or country, so it's important to research the requirements in your desired location.",
         ],
       },
       {
         question:
           "What career pathways can I pursue after completing this program?",
         answer: [
-          "Graduates of the Masters in Clinical Psychology program can pursue various career paths, including roles in psychiatric hospitals, mental health clinics, counseling centers, rehabilitation facilities, organizational wellness, and clinical research. They are equipped to conduct assessments, deliver evidence-based therapies, and collaborate with multidisciplinary healthcare teams.",
+          "Graduates of the Advanced Certificate in IO Psychology program can pursue various career paths, including roles in human resources management, organizational development, talent management, training and development, and consulting. They are well-equipped to work in a wide range of industries and organizational settings, contributing to positive organizational outcomes.",
         ],
       },
     ],
@@ -2574,8 +2619,8 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
           title: "Life rebuilding counseling",
           topics: [
             "Core Values & Strengths : Reconnect with personal beliefs for growth.",
-            "Self-Identity & Purpose : Redefine identity and find meaning.",
-            "Emotional Resilience : Build coping strategies for challenges.",
+            "s v f o r c h a l lenges. Self-Identity & Purpose : Redefine identity and find meaning.",
+            "Emotional Resilience : Build coping strategie",
             "SMART Goals : Set achievable goals for transformation.",
           ],
         },
@@ -2594,7 +2639,7 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
             "Time Management: Techniques for prioritizing tasks and reducing stress.",
             "Setting Boundaries: Creating clear work-life boundaries to avoid burnout.",
             "Stress Management: Using mindfulness and relaxation to handle work stress.",
-            "Self-Care: Importance of physical and emotional self-care for well-being.",
+            "Self-Care: Importance of physical and emotional self-care for well- being.",
           ],
         },
         {
@@ -2618,8 +2663,8 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         {
           title: "Workplace counseling",
           topics: [
-            "Employee Stress Management: Techniques for coping with work-related stress (e.g., mindfulness, time management).",
-            "Conflict Resolution: Approaches to resolving workplace conflicts through communication and mediation.",
+            "Employee Stress Management: Techniques for coping with work- related stress (e.g., mindfulness, time management).",
+            "Conflict Resolution: Approaches to resolving workplace conflictsthrough V communcation and mediation.",
             "Work-Life Balance: Strategies to help employees balance personal and professional life.",
             "Career Development: Counseling for career growth, skill development, and transitions.",
           ],
@@ -2627,10 +2672,10 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         {
           title: "Adult counseling",
           topics: [
-            "Psychological Assessment – Tools for diagnosing adult mental health issues (e.g., depression, anxiety).",
-            "CBT for Adults – Using Cognitive Behavioral Therapy to address stress, anxiety, and depression.",
-            "Relationship Counseling – Improving communication and resolving conflicts in adult relationships.",
-            "Career Counseling – Helping adults navigate career transitions and work-life balance.",
+            "Psychological Assessment \u2013 Tools for diagnosing adult mental health issues (e.g., depression, anxiety).",
+            "CBT for Adults \u2013 Using Cognitive Behavioral Therapy to address stress, anxiety, and depression.",
+            "Relationship Counseling \u2013 Improving communication and resolving conflicts in adult relationships.",
+            "Career Counseling \u2013 Helping adults navigate career transitions and work-life balance.",
           ],
         },
       ],
@@ -2655,7 +2700,7 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
     scholarship: {
       title: "Get Upto 30% Scholarship",
       subtitle:
-        '"Avail up to a 30% scholarship and receive exclusive additional benefits."',
+        "\"Avail up to a 30% scholarship and receive exclusive additional benefits.\"",
       image:
         "https://prod-s3.counselindia.com/mastergalaxyimages/Untitled%20design-23_1734162900.png",
       points: [
@@ -2765,10 +2810,23 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       },
     ],
     partners: [
-      "https://www.counselindia.com/assets/images/logo/GU_logo.png",
-      "https://www.counselindia.com/assets/images/logo/msu_logo.png",
       "https://www.counselindia.com/assets/images/logo/icpemci.png",
-      "https://www.counselindia.com/assets/images/logo/VGU.png",
+      "https://www.counselindia.com/assets/images/icon/VGU.png",
+    ],
+    learnersWorkAt: [
+      "https://www.counselindia.com/assets/images/partners-logo/partner1.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner2.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner3.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner4.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner5.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner6.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner7.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner8.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner9.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner10.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner11.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner12.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner13.jpg",
     ],
     faqs: [
       {
@@ -2844,8 +2902,8 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
     ],
     about: [
       "Our live internship program is focused on providing psychology students with the required skills and exposure to excel in their field of specialization. Our structured program will give the students a conducive environment to learn and understand aspects of mental health apart from their curriculum.",
-      "We understand that your area of focus is pivotal, therefore, we bring to our participants three kinds of internship programs available at Counsel India to choose from. For the Clinical Internship Program, the focus is on various disorders, their symptoms, and the mechanism of recovery in a clinical set-up. Participants can opt for a 1-month or a 3-month duration of the internship.",
-      "Key aspects of learning shall include Mood disorders, case studies, PTSD, neurotic spectrum, and management strategies for disorders.",
+      "We understand that your area of focus is pivotal, therefore, we bring to our participants three kids of internship programs available at Counsel India to choose from.",
+      "For the Clinical Internship Program, the focus is on various disorders, their symptoms, and the mechanism of recovery in a clinical set-up. Participants can opt for a 1-month or a 3-month duration of the internship. Key aspects of learning shall include, Mood disorders, case studies, PTSD, neurotic spectrum, and management strategies for disorders.",
     ],
     learningObjectives: [
       "Letter of Appreciation & Certificate of Internship",
@@ -2857,7 +2915,12 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       {
         id: "tab172",
         label: "certificate",
-        text: "Psychology Internship (Clinical Psychology), Letter of Recommendation. These certificates will get you recognized as a certified counsellor and start your career as a primary counsellor anywhere in the world.",
+        text: "Psychology Internship (Clinical Psychology) Letter of Recommendation These certificates will get you recognized as a certified counsellor and start your career as a primary counsellor anywhere in the world.",
+        points: [
+          "Psychology Internship (Clinical Psychology)",
+          "Letter of Recommendation",
+          "These certificates will get you recognized as a certified counsellor and start your career as a primary counsellor anywhere in the world.",
+        ],
         image:
           "https://prod-s3.counselindia.com/credential/Psychology%20Internship%20%28Clinical%20Psychology%29_1728552630.png",
       },
@@ -2893,7 +2956,7 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       ],
       modules: [
         {
-          title: "Clinical Psychology Internship Curriculum",
+          title: "Course Curriculum",
           topics: [
             "Schizophrenia (Symptoms, Diagnostic Criteria, Types, Clinical Picture)",
             "Somatoform Disorder",
@@ -2928,7 +2991,7 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
     scholarship: {
       title: "Get Upto 30% Scholarship",
       subtitle:
-        '"Avail up to a 30% scholarship and receive exclusive additional benefits."',
+        "\"Avail up to a 30% scholarship and receive exclusive additional benefits.\"",
       image:
         "https://prod-s3.counselindia.com/mastergalaxyimages/Untitled%20design-23_1734162900.png",
       points: [
@@ -3032,10 +3095,23 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       },
     ],
     partners: [
-      "https://www.counselindia.com/assets/images/logo/GU_logo.png",
-      "https://www.counselindia.com/assets/images/logo/msu_logo.png",
       "https://www.counselindia.com/assets/images/logo/icpemci.png",
-      "https://www.counselindia.com/assets/images/logo/VGU.png",
+      "https://www.counselindia.com/assets/images/icon/VGU.png",
+    ],
+    learnersWorkAt: [
+      "https://www.counselindia.com/assets/images/partners-logo/partner1.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner2.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner3.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner4.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner5.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner6.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner7.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner8.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner9.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner10.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner11.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner12.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner13.jpg",
     ],
     faqs: [
       {
@@ -3088,10 +3164,10 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       },
     ],
   },
-  "masters-in-child-psychology-work-integrated-skill-based-program%29": {
+  "masters-in-child-psychology-work-integrated-skill-based-program": {
     id: 35,
     name: "Masters in Child Psychology",
-    slug: "masters-in-child-psychology-work-integrated-skill-based-program%29",
+    slug: "masters-in-child-psychology-work-integrated-skill-based-program",
     badgeSale: "40% OFF",
     category: "Course",
     bgImage:
@@ -3125,22 +3201,24 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       },
     ],
     benefits: [
-      "Comprehensive Developmental Mastery: Deeply explore physical, cognitive, social, and emotional milestones across all stages of childhood.",
-      "Dual Embedded Internships & Practical Training: 480 live hours, 840 project hours, and 900 on-the-job learning (OJL) hours for practical competence.",
-      "Global Certification & Affiliations: Co-branded certification with IPA (International Psychology Association) and MEPSC Skill India.",
-      "Specialized Pediatric Clinical Frameworks: Hands-on diagnostic assessment for autism spectrum disorder (ASD), ADHD, and behavioral challenges.",
-      "Family Systems & Parenting Counseling: Intervene effectively in family dynamics, attachment security, school adjustment, and adolescent behavioral issues.",
-      "Academic Bank of Credits (ABC) Transferable: UGC-recognized stackable credit system supporting nationwide institutional transfer.",
+      "Learn about the multiple aspects of a child’s growth, covering physical, cognitive, social, and emotional aspects, to develop an overall understanding of their developmental phase.",
+      "Explore the sequential milestones that show the key stages of development in childhood, examining the behavioral patterns, abilities in children, and challenges they encounter at each phase, providing important insights for observation and effective intervention.",
+      "Learn about the underlying factors which influence children's behaviors, including environmental, social, and biological factors, and master countless evidence-based techniques to help manage and redirect behavior positively, and foster healthy development.",
+      "Examine the interplay of family dynamics, parenting styles, socioeconomic factors, and cultural influences which impact the development of children, recognizing the significant role played by families in shaping their experiences and outcomes.",
+      "Access a diverse toolkit of intervention strategies to address diverse challenges that are commonly encountered by children, like academic difficulties, emotional disturbances, or social adjustment issues, and help promote resilience and well-being.",
+      "Build observational abilities and assess and interpret children's behaviors, interactions, and developmental progress accurately, by employing systematic observation techniques and assessment tools and develop tailored interventions.",
+      "Get practical training, including supervised internships, hands-on exercises, or fieldwork, to apply theoretical insights in real-world settings, developing and enhancing practical skills and building your professional competency.",
+      "Stay updated about latest research and empirical findings in the field, critically evaluating research material to make use of evidence-based practices and innovative approaches to promoting children's well-being.",
+      "Explore diverse career pathways in education, counselling, clinical psychology, social work, or child advocacy, and get equipped with a strong foundation of knowledge, practical skills, and ethical principles to make meaningful contributions to children's lives and society.",
     ],
     about: [
-      "(Internship/Apprenticeship Embedded) - Essentially designed for individuals passionate about understanding and nurturing children, this comprehensive, detailed program combines theoretical insights with practical training. It covers a broad range of topics, starting from cognitive development to social and emotional well-being. Learners will gain an in-depth understanding of the complexities of Child Psychology.",
-      "Engage in ground-breaking research initiatives that ultimately contribute to Child Psychology. Recognized by the IPA (International Psychology Association) & Skill India, this program provides learners with a solid foundation for a successful career in mental health, schools, pediatric clinics, and child welfare institutions.",
+      "This course , in partnership with IPA(International Psychology Association) & Skill India , is carefully designed for individuals passionate about pursuing a career in psychology, with a particular focus on child development and mental health. Through a blend of theoretical frameworks and hands-on training, learners will explore essential concepts like cognitive development, emotional regulation, and social well-being in children. The program emphasizes practical learning, including research opportunities and case studies, ensuring students gain a deep understanding of child psychology. By the end of the course, participants will be equipped with the relevant knowledge and skills to make a meaningful impact in the field of mental health.",
     ],
-    learningObjectives: [
-      "Understand developmental milestones, emotional regulation, and neurobiological foundations across infancy, childhood, and adolescence.",
-      "Acquire hands-on mastery in screening, diagnosing, and assessing pediatric conditions like ADHD, ASD, anxiety, and learning difficulties.",
-      "Design evidence-based intervention plans, parent-child counseling frameworks, and behavioral therapies under expert supervision.",
-    ],
+    skillIndiaAdvantage: {
+      title: "MEPSC - Skill India Advantage",
+      text: "Counsel India is proud to be officially associated and recognized by the Micro Enterprises Promotion & Support Enterprise (MEPSE) — a prestigious organization committed to empowering and supporting enterprises across India. This recognition reflects our dedication to delivering world-class mental health, career counseling, and psychology education services with integrity, innovation, and measurable impact. Through this association, we strengthen our mission to create skilled professionals, expand access to quality mental health resources, and contribute to the nation’s socio-economic growth by fostering education, awareness, and professional excellence.",
+    },
+    learningObjectives: [],
     credentials: [
       {
         id: "tab85",
@@ -3152,7 +3230,7 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       {
         id: "tab86",
         label: "MEPSC Certificate",
-        text: "After successful training and assessment, the Management & Entrepreneurship and Professional Skills Council (MEPSC) will issue a skill certificate and add your qualifications to the central database valid across G20 nations.",
+        text: "After the successful training and assessment, the Management & Entrepreneurship and Professionals Skills Council (MEPSC) will issue a skill certificate, add your database in the central skills qualification database which can be accessed online for verification and due-diligence by employers. This skills certification will be valid across all G20 nations.",
         image:
           "https://prod-s3.counselindia.com/credential/Certificate%20Template%20-%20Job%20Role%20%281%29_1753182320.jpg",
       },
@@ -3168,7 +3246,7 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         label: "Letter of Recommendation",
         text: "This globally recognized credential showcases your expertise and commitment in your field.",
         image:
-          "https://prod-s3.counselindia.com/credential/Letter%20of%20recommendation%20for%20Jon%20Doe%20(1)_1755835795.png",
+          "https://prod-s3.counselindia.com/credential/Letter%20of%20recommendation%20for%20Jon%20Doe%20%281%29_1755835795.png",
       },
     ],
     curriculum: {
@@ -3278,7 +3356,7 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         {
           title: "Attachment Theory",
           topics: [
-            "Bowlby's Attachment Theory",
+            "Bowlby\u2019s Attachment Theory",
             "Types of Attachment",
             "Factors Influencing Attachment",
             "Cross-Cultural Variations",
@@ -3332,7 +3410,7 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         {
           title: "Moral Development in Children",
           topics: [
-            "Kohlberg's Stages",
+            "Kohlberg\u2019s Stages",
             "Social Learning Theory",
             "Role of Empathy",
             "Cultural Influences",
@@ -3413,7 +3491,7 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         {
           title: "Identity Formation in Adolescence",
           topics: [
-            "Erikson's Identity vs. Role Confusion",
+            "Erikson\u2019s Identity vs. Role Confusion",
             "Peer Influence",
             "Role of Family",
             "Impact on Mental Health",
@@ -3466,6 +3544,9 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
         },
       ],
     },
+    programBenefit: [
+      "This program offers significant personal and professional benefits for anyone looking to build a career in psychology. This course , in partnership with IPA(International Psychology Association) & Skill India provides important credentials that enhance your academic profile. You'll gain an in-depth understanding of Child Psychology, covering cognitive and emotional development, while also engaging in hands-on experiences through case studies and research opportunities. This practical approach equips you with real-world expertise , helping you stand out in fields like counseling, therapy, education, and mental health services. Guided by experienced professionals, the program ensures you stay up to date with the latest insights, preparing you to confidently navigate and address the challenges of child psychology.",
+    ],
     whoCanJoin: [
       "Graduates in Psychology or Related Fields",
       "Educators and School Professionals",
@@ -3476,22 +3557,31 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       "Aspiring Researchers and Academics",
     ],
     scholarship: {
-      title: "Scholarship & Practical Learning Support",
+      title: "Get Upto 30% Scholarship",
       subtitle:
-        "Guaranteed practical internship & training support under our Har Ghar Counsellor initiative.",
-      image: "https://www.counselindia.com/assets/images/about/about-13.png",
+        '"Avail up to a 30% scholarship and receive exclusive additional benefits."',
+      image:
+        "https://prod-s3.counselindia.com/mastergalaxyimages/Untitled%20design-23_1734162900.png",
       points: [
         {
-          label: "Direct Mentorship",
-          desc: "One-on-one supervision by senior counselling psychologists.",
+          label: "Alumni Network of 12,500+ Members",
+          desc: "Gain access to a vast network of over 12,500 alumni who can support and guide you in your professional ventures.",
         },
         {
-          label: "Hands-on Practice",
-          desc: "Live case discussions and clinical roleplay sessions.",
+          label: "90+ Hiring Partners",
+          desc: "Benefit from dedicated job assistance through our extensive network of over 90 hiring partners, ensuring you have the best opportunities in the industry.",
         },
         {
-          label: "Fee Assistance",
-          desc: "Flexible installment plans and merit-based fee support.",
+          label: "Exclusive Membership",
+          desc: "Enroll now and enjoy a complimentary membership, providing access to valuable resources and opportunities.",
+        },
+        {
+          label: "Personalized Mentoring Sessions",
+          desc: "Receive multiple one-on-one mentoring sessions with industry professionals throughout the course, helping you navigate your career path.",
+        },
+        {
+          label: "Workshops, Events, and Bootcamps",
+          desc: "Get free access to a wide range of workshops, events, bootcamps, and networking meetings, designed to enhance your skills and expand your professional network.",
         },
       ],
     },
@@ -3522,10 +3612,10 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       },
     ],
     referEarn: {
-      title: "Refer & Earn with Counsel India",
-      subtitle:
-        "Help your peers discover transformative psychology programs and earn exciting referral rewards.",
-      buttonText: "Refer a Friend",
+      title:
+        "Refer someone and Earn upto INR 12,000 Cashback/Vouchers, on every successful enrollment",
+      subtitle: "Your friend also gets an instant scholarship!",
+      buttonText: "Start Referring",
       buttonLink: "/refer-and-earn?course_id=35",
     },
     reviews: [
@@ -3561,303 +3651,23 @@ export const COURSE_DETAILS_MAP: Record<string, CourseDetailData> = {
       },
     ],
     partners: [
-      "https://www.counselindia.com/assets/images/logo/GU_logo.png",
-      "https://www.counselindia.com/assets/images/logo/msu_logo.png",
       "https://www.counselindia.com/assets/images/logo/icpemci.png",
-      "https://www.counselindia.com/assets/images/logo/VGU.png",
+      "https://www.counselindia.com/assets/images/icon/VGU.png",
     ],
-    faqs: [
-      {
-        question:
-          "Is it mandatory to complete the Psychology Foundation Course, and what are the details?",
-        answer: [
-          "Yes, completing the Psychology Foundation Course is mandatory and complimentary for all enrolled learners. This foundational course must be completed within 3 months to qualify for the final certificate. It is designed to strengthen your basics in psychology, ensuring you have a solid understanding to excel in advanced modules of the program.",
-        ],
-      },
-      {
-        question:
-          "How does this program prepare graduates to work with children with special needs or developmental disabilities?",
-        answer: [
-          "This program includes coursework and practical training in assessing and supporting children with a wide range of developmental challenges, including autism spectrum disorder, learning disabilities, ADHD, emotional and behavioral disorders, and trauma-related difficulties. Students learn evidence-based interventions and strategies to promote positive outcomes for children with special needs.",
-        ],
-      },
-      {
-        question:
-          "How does this program address ethical considerations in working with children and families?",
-        answer: [
-          "Ethical principles and guidelines are integrated into the curriculum to ensure that students develop a strong understanding of professional ethics and legal standards in child psychology practice. Students learn about informed consent, confidentiality, boundary issues, cultural competence, and ethical decision-making in their interactions with children and families.",
-        ],
-      },
-      {
-        question:
-          "Can the credits earned in this program be transferred to other academic programs or institutions?",
-        answer: [
-          "Yes, our program follows a stackable system of education, allowing students to earn credits that may be transferable to other academic programs or institutions. This flexibility enables students to build upon their existing qualifications and pursue further education or specialization in Career Counselling and Child Psychology.",
-        ],
-      },
-      {
-        question:
-          "Can the credits earned in this program be transferred to other academic institutions for higher specializations?",
-        answer: [
-          "Yes, our program follows a stackable system of education, allowing students to earn credits that may be transferable to other academic programs or institutions. This flexibility enables students to build upon their existing qualifications and pursue further education or specialization in Masters in Child Psychology and Development.",
-        ],
-      },
-    ],
-  },
-  "masters-in-child-psychology-work-integrated-skill-based-program": {
-    id: 35,
-    name: "Masters in Child Psychology",
-    slug: "masters-in-child-psychology-work-integrated-skill-based-program%29",
-    badgeSale: "40% OFF",
-    category: "Course",
-    bgImage:
-      "https://prod-s3.counselindia.com/courses/background_image/New%20Project%20%2841%29_1713437634.webp",
-    partnerLogo: "https://www.counselindia.com/assets/images/logo/icpemci.png",
-    description:
-      "(Internship/Apprenticeship Embedded) - Essentially designed for individuals passionate about understanding and nurturing children, this comprehensive, detailed program combines theoretical insights with practical training. It covers a broad range of topics, starting from cognitive development to social and emotional well-being. Learners will gain an in-depth understanding of the complexities of Child Psychology. Engage in ground-breaking research initiatives that ultimately contribute to Child Psychology. Recognised by the IPA (International Psychology Association) & Skill India, provides learners with a solid foundation for a successful career in mental health.",
-    rating: 5,
-    enrollUrl: "https://rzp.io/rzp/X5Q7xhF",
-    phone: "+918031320449",
-    highlights: [
-      {
-        title: "Duration",
-        desc: "24 Months",
-      },
-      {
-        title: "Eligibility",
-        desc: "Graduation & above",
-      },
-      {
-        title: "Semesters",
-        desc: "4",
-      },
-      {
-        title: "Program Credits",
-        desc: "Standard",
-      },
-      {
-        title: "Program start date",
-        desc: "26 September 2026",
-      },
-    ],
-    benefits: [
-      "Comprehensive Developmental Mastery: Deeply explore physical, cognitive, social, and emotional milestones across all stages of childhood.",
-      "Dual Embedded Internships & Practical Training: 480 live hours, 840 project hours, and 900 on-the-job learning (OJL) hours for practical competence.",
-      "Global Certification & Affiliations: Co-branded certification with IPA (International Psychology Association) and MEPSC Skill India.",
-      "Specialized Pediatric Clinical Frameworks: Hands-on diagnostic assessment for autism spectrum disorder (ASD), ADHD, and behavioral challenges.",
-      "Family Systems & Parenting Counseling: Intervene effectively in family dynamics, attachment security, school adjustment, and adolescent behavioral issues.",
-      "Academic Bank of Credits (ABC) Transferable: UGC-recognized stackable credit system supporting nationwide institutional transfer.",
-    ],
-    about: [
-      "(Internship/Apprenticeship Embedded) - Essentially designed for individuals passionate about understanding and nurturing children, this comprehensive, detailed program combines theoretical insights with practical training. It covers a broad range of topics, starting from cognitive development to social and emotional well-being. Learners will gain an in-depth understanding of the complexities of Child Psychology.",
-      "Engage in ground-breaking research initiatives that ultimately contribute to Child Psychology. Recognized by the IPA (International Psychology Association) & Skill India, this program provides learners with a solid foundation for a successful career in mental health, schools, pediatric clinics, and child welfare institutions.",
-    ],
-    learningObjectives: [
-      "Understand developmental milestones, emotional regulation, and neurobiological foundations across infancy, childhood, and adolescence.",
-      "Acquire hands-on mastery in screening, diagnosing, and assessing pediatric conditions like ADHD, ASD, anxiety, and learning difficulties.",
-      "Design evidence-based intervention plans, parent-child counseling frameworks, and behavioral therapies under expert supervision.",
-    ],
-    credentials: [
-      {
-        id: "tab85",
-        label: "IPA Certificate",
-        text: "Upon successful completion of the course, you will be awarded a prestigious certificate from IPA (International Psychology Association).",
-        image:
-          "https://prod-s3.counselindia.com/credential/Screenshot%202025-08-04%20114105_1754288852.png",
-      },
-      {
-        id: "tab86",
-        label: "MEPSC Certificate",
-        text: "After successful training and assessment, the Management & Entrepreneurship and Professional Skills Council (MEPSC) will issue a skill certificate and add your qualifications to the central database valid across G20 nations.",
-        image:
-          "https://prod-s3.counselindia.com/credential/Certificate%20Template%20-%20Job%20Role%20%281%29_1753182320.jpg",
-      },
-      {
-        id: "tab194",
-        label: "Certificate of Completion",
-        text: "This certificate honors your dedication, hard work, and mastery of essential skills and specializations. It celebrates your commitment to excellence and acknowledges your achievement in making a meaningful impact in your field.",
-        image:
-          "https://prod-s3.counselindia.com/credential/M.A%20Child%20Psychology%20%26%20Developemnt_1728551938.png",
-      },
-      {
-        id: "tab84",
-        label: "Letter of Recommendation",
-        text: "This globally recognized credential showcases your expertise and commitment in your field.",
-        image:
-          "https://prod-s3.counselindia.com/credential/Letter%20of%20recommendation%20for%20Jon%20Doe%20(1)_1755835795.png",
-      },
-    ],
-    curriculum: {
-      totalSessions: "480 Sessions",
-      totalHours: "2220 Hrs",
-      stats: [
-        {
-          count: "Standard",
-          text: "Program Credits",
-        },
-        {
-          count: "21",
-          text: "Subjects",
-        },
-        {
-          count: "480",
-          text: "Live Session Hours",
-        },
-        {
-          count: "840",
-          text: "Project Hours",
-        },
-        {
-          count: "900",
-          text: "OJL Hours",
-        },
-        {
-          count: "3",
-          text: "Projects",
-        },
-      ],
-      modules: [
-        {
-          title:
-            "Semester 1: Foundations of Child Development & Biological Bases",
-          topics: [
-            "Introduction to Human Psychology & Lifespan Developmental Principles",
-            "Genetics, Chromosomal Patterns & Childhood Biological Vulnerabilities",
-            "Prenatal Development, Teratogens & Newborn Reflexive Adaptations",
-            "Attachment Theory (Bowlby, Ainsworth) & Cross-Cultural Variations",
-          ],
-        },
-        {
-          title:
-            "Semester 2: Cognitive, Language, Temperament & Moral Development",
-          topics: [
-            "Cognitive Development in Infancy & Childhood (Piaget, Vygotsky)",
-            "Language Acquisition, Environmental Influences & Multilingualism",
-            "Temperament, Emotional Regulation & Personality Foundations",
-            "Social Play, Peer Interactions & Moral Development (Kohlberg)",
-          ],
-        },
-        {
-          title:
-            "Semester 3: Pediatric Psychopathology & Developmental Disorders",
-          topics: [
-            "Childhood Anxiety, Phobias, and Mood Disturbances",
-            "Attention-Deficit Hyperactivity Disorder (ADHD) & Behavioral Management",
-            "Autism Spectrum Disorder (ASD) & Neurodivergent Interventions",
-            "Research Methodologies & Psychometric Assessment in Child Development",
-          ],
-        },
-        {
-          title:
-            "Semester 4: Advanced Child Interventions, Practicum & Master's Thesis",
-          topics: [
-            "Child-Centered Counseling, Play Therapy & Expressive Arts Modalities",
-            "Parent-Child Relationship Counseling & Behavioral Modification Plans",
-            "Supervised OJL Clinical Apprenticeship (900 Hours)",
-            "Master's Dissertation / Capstone Research Project & Viva (840 Hours)",
-          ],
-        },
-      ],
-    },
-    whoCanJoin: [
-      "Graduates in Psychology or Related Fields",
-      "Educators and School Professionals",
-      "Healthcare and Social Work Professionals",
-      "Parents and Caregivers",
-      "Early Childhood Practitioners",
-      "Career Changers",
-      "Aspiring Researchers and Academics",
-    ],
-    scholarship: {
-      title: "Scholarship & Practical Learning Support",
-      subtitle:
-        "Guaranteed practical internship & training support under our Har Ghar Counsellor initiative.",
-      image: "https://www.counselindia.com/assets/images/about/about-13.png",
-      points: [
-        {
-          label: "Direct Mentorship",
-          desc: "One-on-one supervision by senior counselling psychologists.",
-        },
-        {
-          label: "Hands-on Practice",
-          desc: "Live case discussions and clinical roleplay sessions.",
-        },
-        {
-          label: "Fee Assistance",
-          desc: "Flexible installment plans and merit-based fee support.",
-        },
-      ],
-    },
-    faculty: [
-      {
-        name: "Gunjan Sandhani",
-        title: "Clinical Psychologist",
-        image:
-          "https://prod-s3.counselindia.com/counsellor/11928981881684153375.jpeg",
-      },
-      {
-        name: "Himanshi Singh",
-        title: "Clinical Psychologist",
-        image:
-          "https://prod-s3.counselindia.com/counsellor/counsellor_Himanshi%20Singh_1673871256.png",
-      },
-      {
-        name: "VARNICA KOTNALA",
-        title: "Clinical Psychologist",
-        image:
-          "https://prod-s3.counselindia.com/counsellor/16451453501691141457.jpg",
-      },
-      {
-        name: "Durga Gupta",
-        title: "Psychologist",
-        image:
-          "https://prod-s3.counselindia.com/counsellor/9626930401698298591.jpeg",
-      },
-    ],
-    referEarn: {
-      title: "Refer & Earn with Counsel India",
-      subtitle:
-        "Help your peers discover transformative psychology programs and earn exciting referral rewards.",
-      buttonText: "Refer a Friend",
-      buttonLink: "/refer-and-earn?course_id=35",
-    },
-    reviews: [
-      {
-        quote:
-          "Counsel India helped with my growth and progress. It enhanced my knowledge and also it was helpful along with my Post Graduation. I was been cherished because of the knowledge i had through the course.",
-        name: "Shivani Kumari",
-        city: "Delhi, India",
-        image: "https://prod-s3.counselindia.com/success_stories/shivani.jpg",
-      },
-      {
-        quote:
-          "The instructors were not just teachers; they were true mentors. Their deep passion for psychology was evident in every lecture, making complex theories and concepts accessible and engrossing, so I would highly recommend this course to everyone.",
-        name: "Anushka Ghosh",
-        city: "Noida",
-        image:
-          "https://prod-s3.counselindia.com/success_stories/image_20221207_163301%20-%20Anushka%20Ghosh%20(2)_1693906637.jpeg",
-      },
-      {
-        quote:
-          "I recently had the privilege of enrolling in this psychology Course that left me utterly impressed and profoundly enriched. This course was nothing short of exceptional, and I would like to share my glowing review to encourage others to embark on this enlightening journey.",
-        name: "Muskan Maan",
-        city: "Delhi",
-        image:
-          "https://prod-s3.counselindia.com/success_stories/image_1658507699678__01%20-%20Muskan%20Maan%20(2)_1693906710.jpeg",
-      },
-      {
-        quote:
-          "I started helping my own kids, I understand them in better way.",
-        name: "Riya Raizada",
-        city: "Nagpur",
-        image: "https://prod-s3.counselindia.com/success_stories/riya.jpg",
-      },
-    ],
-    partners: [
-      "https://www.counselindia.com/assets/images/logo/GU_logo.png",
-      "https://www.counselindia.com/assets/images/logo/msu_logo.png",
-      "https://www.counselindia.com/assets/images/logo/icpemci.png",
-      "https://www.counselindia.com/assets/images/logo/VGU.png",
+    learnersWorkAt: [
+      "https://www.counselindia.com/assets/images/partners-logo/partner1.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner2.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner3.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner4.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner5.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner6.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner7.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner8.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner9.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner10.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner11.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner12.jpg",
+      "https://www.counselindia.com/assets/images/partners-logo/partner13.jpg",
     ],
     faqs: [
       {

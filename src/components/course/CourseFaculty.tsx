@@ -13,7 +13,6 @@ interface Props {
 
 export default function CourseFaculty({ faculty }: Props) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
   const [visibleCount, setVisibleCount] = useState(5);
   const touchStartX = useRef<number | null>(null);
 
@@ -51,16 +50,16 @@ export default function CourseFaculty({ faculty }: Props) {
     }
   }, [maxIndex, currentIndex]);
 
-  // Auto scroll timer
+  // Continuous auto-slider timer
   useEffect(() => {
-    if (!shouldScroll || isPaused) return;
+    if (!shouldScroll) return;
 
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
-    }, 3500);
+    }, 2800);
 
     return () => clearInterval(timer);
-  }, [shouldScroll, isPaused, maxIndex]);
+  }, [shouldScroll, maxIndex]);
 
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
@@ -89,8 +88,6 @@ export default function CourseFaculty({ faculty }: Props) {
         backgroundColor: "#ffffff",
         fontFamily: "'Poppins', sans-serif",
       }}
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
     >
       <div
         className="container custom-container"
@@ -115,76 +112,6 @@ export default function CourseFaculty({ faculty }: Props) {
           >
             Course Faculty
           </h3>
-
-          {/* Previous / Next Arrows when scrollable */}
-          {shouldScroll && (
-            <div style={{ display: "flex", gap: "8px" }}>
-              <button
-                onClick={() =>
-                  setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1))
-                }
-                style={{
-                  width: "36px",
-                  height: "36px",
-                  borderRadius: "50%",
-                  border: "1px solid #e2e8f0",
-                  backgroundColor: "#ffffff",
-                  color: "#1c2d3a",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  cursor: "pointer",
-                  transition: "all 0.2s ease",
-                  outline: "none",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = "#07a64b";
-                  e.currentTarget.style.color = "#ffffff";
-                  e.currentTarget.style.borderColor = "#07a64b";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = "#ffffff";
-                  e.currentTarget.style.color = "#1c2d3a";
-                  e.currentTarget.style.borderColor = "#e2e8f0";
-                }}
-                aria-label="Previous Faculty"
-              >
-                <i className="fal fa-chevron-left" style={{ fontSize: "13px" }} />
-              </button>
-              <button
-                onClick={() =>
-                  setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1))
-                }
-                style={{
-                  width: "36px",
-                  height: "36px",
-                  borderRadius: "50%",
-                  border: "1px solid #e2e8f0",
-                  backgroundColor: "#ffffff",
-                  color: "#1c2d3a",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  cursor: "pointer",
-                  transition: "all 0.2s ease",
-                  outline: "none",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = "#07a64b";
-                  e.currentTarget.style.color = "#ffffff";
-                  e.currentTarget.style.borderColor = "#07a64b";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = "#ffffff";
-                  e.currentTarget.style.color = "#1c2d3a";
-                  e.currentTarget.style.borderColor = "#e2e8f0";
-                }}
-                aria-label="Next Faculty"
-              >
-                <i className="fal fa-chevron-right" style={{ fontSize: "13px" }} />
-              </button>
-            </div>
-          )}
         </div>
 
         {/* Viewport for carousel / grid */}
@@ -206,7 +133,7 @@ export default function CourseFaculty({ faculty }: Props) {
                 ? `translateX(calc(-${currentIndex} * ((100% + ${gap}px) / ${visibleCount})))`
                 : "none",
               transition: "transform 0.45s ease-in-out",
-              justifyContent: shouldScroll ? "flex-start" : "center",
+              justifyContent: "flex-start",
             }}
           >
             {faculty.map((f, idx) => (
