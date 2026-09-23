@@ -28,6 +28,7 @@ export default function Footer() {
           color: "#ffffff",
           position: "relative",
           zIndex: 10,
+          paddingBottom: "60px",
         }}
       >
         {/* Footer Widget Area Start */}
@@ -37,35 +38,60 @@ export default function Footer() {
               {/* Col 1: Products */}
               <div className="col-lg-2 col-md-4 col-6">
                 <div className="footer-widget">
-                  <h4 className="footer-widget__title text-white font-size-16 fw-bold mb-3">Products</h4>
-                  <ul className="footer-widget__link footer-widget__link-02 list-unstyled ps-0 font-size-14" style={{ lineHeight: "2.1" }}>
+                  <h4 className="footer-widget__title text-white font-size-16 fw-bold mb-3">
+                    Products
+                  </h4>
+                  <ul
+                    className="footer-widget__link footer-widget__link-02 list-unstyled ps-0 font-size-14"
+                    style={{ lineHeight: "2.1" }}
+                  >
                     <li>
-                      <Link href="/all-courses-list" className="text-white hover-text-primary text-decoration-none">
+                      <Link
+                        href="/all-courses-list"
+                        className="text-white hover-text-primary text-decoration-none"
+                      >
                         Courses
                       </Link>
                     </li>
                     <li>
-                      <Link href="/counsellors-network" className="text-white hover-text-primary text-decoration-none">
+                      <Link
+                        href="/counsellors-network"
+                        className="text-white hover-text-primary text-decoration-none"
+                      >
                         Counselling
                       </Link>
                     </li>
                     <li>
-                      <Link href="/ci-business" className="text-white hover-text-primary text-decoration-none">
+                      <Link
+                        href="/ci-business"
+                        className="text-white hover-text-primary text-decoration-none"
+                      >
                         CI for Business
                       </Link>
                     </li>
                     <li>
-                      <Link href="/counsellors-network" className="text-white hover-text-primary text-decoration-none">
+                      <Link
+                        href="/counsellors-network"
+                        className="text-white hover-text-primary text-decoration-none"
+                      >
                         Counsellors Network
                       </Link>
                     </li>
                     <li>
-                      <Link href="/membership" className="text-white hover-text-primary text-decoration-none">
-                        Memberships/<br />Registrations
+                      <Link
+                        href="/membership"
+                        className="text-white hover-text-primary text-decoration-none"
+                      >
+                        Memberships/
+                        <br />
+                        Registrations
                       </Link>
                     </li>
                     <li>
-                      <Link href="/eligibility-test" className="text-white hover-text-primary text-decoration-none">
+                      <Link
+                        href="/eligibility-test"
+                        className="text-white hover-text-primary text-decoration-none"
+                      >
                         Check Your Eligibility
                       </Link>
                     </li>
@@ -76,40 +102,66 @@ export default function Footer() {
               {/* Col 2: Company */}
               <div className="col-lg-2 col-md-4 col-6">
                 <div className="footer-widget">
-                  <h4 className="footer-widget__title text-white font-size-16 fw-bold mb-3">Company</h4>
-                  <ul className="footer-widget__link footer-widget__link-02 list-unstyled ps-0 font-size-14" style={{ lineHeight: "2.1" }}>
+                  <h4 className="footer-widget__title text-white font-size-16 fw-bold mb-3">
+                    Company
+                  </h4>
+                  <ul
+                    className="footer-widget__link footer-widget__link-02 list-unstyled ps-0 font-size-14"
+                    style={{ lineHeight: "2.1" }}
+                  >
                     <li>
-                      <Link href="/about" className="text-white hover-text-primary text-decoration-none">
+                      <Link
+                        href="/about"
+                        className="text-white hover-text-primary text-decoration-none"
+                      >
                         About
                       </Link>
                     </li>
                     <li>
-                      <Link href="/events" className="text-white hover-text-primary text-decoration-none">
+                      <Link
+                        href="/events"
+                        className="text-white hover-text-primary text-decoration-none"
+                      >
                         Events
                       </Link>
                     </li>
                     <li>
-                      <Link href="/success-stories" className="text-white hover-text-primary text-decoration-none">
+                      <Link
+                        href="/success-stories"
+                        className="text-white hover-text-primary text-decoration-none"
+                      >
                         Success Stories
                       </Link>
                     </li>
                     <li>
-                      <Link href="/careers" className="text-white hover-text-primary text-decoration-none">
+                      <Link
+                        href="/careers"
+                        className="text-white hover-text-primary text-decoration-none"
+                      >
                         Careers
                       </Link>
                     </li>
                     <li>
-                      <Link href="/contact" className="text-white hover-text-primary text-decoration-none">
+                      <Link
+                        href="/contact"
+                        className="text-white hover-text-primary text-decoration-none"
+                      >
                         Contact Us
                       </Link>
                     </li>
                     <li>
-                      <Link href="/alumni" className="text-white hover-text-primary text-decoration-none">
+                      <Link
+                        href="/alumni"
+                        className="text-white hover-text-primary text-decoration-none"
+                      >
                         Alumni Network
                       </Link>
                     </li>
                     <li>
-                      <Link href="/mentor-registration" className="text-white hover-text-primary text-decoration-none">
+                      <Link
+                        href="/mentor-registration"
+                        className="text-white hover-text-primary text-decoration-none"
+                      >
                         Be a Counsellor
                       </Link>
                     </li>
@@ -120,35 +172,60 @@ export default function Footer() {
               {/* Col 3: Resources */}
               <div className="col-lg-2 col-md-4 col-6">
                 <div className="footer-widget">
-                  <h4 className="footer-widget__title text-white font-size-16 fw-bold mb-3">Resources</h4>
-                  <ul className="footer-widget__link footer-widget__link-02 list-unstyled ps-0 font-size-14" style={{ lineHeight: "2.1" }}>
+                  <h4 className="footer-widget__title text-white font-size-16 fw-bold mb-3">
+                    Resources
+                  </h4>
+                  <ul
+                    className="footer-widget__link footer-widget__link-02 list-unstyled ps-0 font-size-14"
+                    style={{ lineHeight: "2.1" }}
+                  >
                     <li>
-                      <Link href="/blog" className="text-white hover-text-primary text-decoration-none">
+                      <Link
+                        href="/blog"
+                        className="text-white hover-text-primary text-decoration-none"
+                      >
                         Blog
                       </Link>
                     </li>
                     <li>
-                      <Link href="/newsletter" className="text-white hover-text-primary text-decoration-none">
+                      <Link
+                        href="/newsletter"
+                        className="text-white hover-text-primary text-decoration-none"
+                      >
                         Newsletter
                       </Link>
                     </li>
                     <li>
-                      <Link href="/news" className="text-white hover-text-primary text-decoration-none">
+                      <Link
+                        href="/news"
+                        className="text-white hover-text-primary text-decoration-none"
+                      >
                         News/Media
                       </Link>
                     </li>
                     <li>
-                      <Link href="/ebook" className="text-white hover-text-primary text-decoration-none">
+                      <Link
+                        href="/ebook"
+                        className="text-white hover-text-primary text-decoration-none"
+                      >
                         eBooks
                       </Link>
                     </li>
                     <li>
-                      <a href="https://rzp.io/l/counselindiapayment" target="_blank" rel="noopener noreferrer" className="text-white hover-text-primary text-decoration-none">
+                      <a
+                        href="https://rzp.io/l/counselindiapayment"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white hover-text-primary text-decoration-none"
+                      >
                         Online Payment
                       </a>
                     </li>
                     <li>
-                      <Link href="/faqs" className="text-white hover-text-primary text-decoration-none">
+                      <Link
+                        href="/faqs"
+                        className="text-white hover-text-primary text-decoration-none"
+                      >
                         FAQs
                       </Link>
                     </li>
@@ -159,35 +236,58 @@ export default function Footer() {
               {/* Col 4: Support */}
               <div className="col-lg-2 col-md-4 col-6">
                 <div className="footer-widget">
-                  <h4 className="footer-widget__title text-white font-size-16 fw-bold mb-3">Support</h4>
-                  <ul className="footer-widget__link footer-widget__link-02 list-unstyled ps-0 font-size-14" style={{ lineHeight: "2.1" }}>
+                  <h4 className="footer-widget__title text-white font-size-16 fw-bold mb-3">
+                    Support
+                  </h4>
+                  <ul
+                    className="footer-widget__link footer-widget__link-02 list-unstyled ps-0 font-size-14"
+                    style={{ lineHeight: "2.1" }}
+                  >
                     <li>
-                      <Link href="/terms-and-conditions" className="text-white hover-text-primary text-decoration-none">
+                      <Link
+                        href="/terms-and-conditions"
+                        className="text-white hover-text-primary text-decoration-none"
+                      >
                         Terms &amp; Conditions
                       </Link>
                     </li>
                     <li>
-                      <Link href="/refund-policy" className="text-white hover-text-primary text-decoration-none">
+                      <Link
+                        href="/refund-policy"
+                        className="text-white hover-text-primary text-decoration-none"
+                      >
                         Refund Policy
                       </Link>
                     </li>
                     <li>
-                      <Link href="/privacy-policy" className="text-white hover-text-primary text-decoration-none">
+                      <Link
+                        href="/privacy-policy"
+                        className="text-white hover-text-primary text-decoration-none"
+                      >
                         Privacy Policy
                       </Link>
                     </li>
                     <li>
-                      <Link href="/academic-policy" className="text-white hover-text-primary text-decoration-none">
+                      <Link
+                        href="/academic-policy"
+                        className="text-white hover-text-primary text-decoration-none"
+                      >
                         Academic Policy
                       </Link>
                     </li>
                     <li>
-                      <Link href="/grievance-from" className="text-white hover-text-primary text-decoration-none">
+                      <Link
+                        href="/grievance-from"
+                        className="text-white hover-text-primary text-decoration-none"
+                      >
                         Grievance Form
                       </Link>
                     </li>
                     <li>
-                      <Link href="/ask-question" className="text-white hover-text-primary text-decoration-none">
+                      <Link
+                        href="/ask-question"
+                        className="text-white hover-text-primary text-decoration-none"
+                      >
                         Ask a Question
                       </Link>
                     </li>
@@ -207,9 +307,17 @@ export default function Footer() {
               {/* Col 5: Company Info & Address */}
               <div className="col-lg-4 col-md-8 col-12">
                 <div className="footer-widget">
-                  <p className="footer-widget__description mb-2 font-size-13 text-white" style={{ lineHeight: "1.6" }}>
-                    Counsel India is India&apos;s fastest growing network of Counsellors and Psychologists delivering practical learning and transformative programs in{" "}
-                    <Link href="/about" className="primary-text-color text-success text-decoration-underline fw-bold">
+                  <p
+                    className="footer-widget__description mb-2 font-size-13 text-white"
+                    style={{ lineHeight: "1.6" }}
+                  >
+                    Counsel India is India&apos;s fastest growing network of
+                    Counsellors and Psychologists delivering practical learning
+                    and transformative programs in{" "}
+                    <Link
+                      href="/about"
+                      className="primary-text-color text-success text-decoration-underline fw-bold"
+                    >
                       More
                     </Link>
                   </p>
@@ -222,15 +330,22 @@ export default function Footer() {
                       GST : 09AAICC6447N1Z0
                     </span>
 
-                    <address className="text-white font-size-13 mt-2 mb-0" style={{ lineHeight: "1.6" }}>
+                    <address
+                      className="text-white font-size-13 mt-2 mb-0"
+                      style={{ lineHeight: "1.6" }}
+                    >
                       <div className="d-flex align-items-start gap-2 mb-1">
                         <i className="fas fa-map-marker-alt text-white mt-1"></i>
-                        <span>12A20, 13th Floor, E-Square , Sector 96, Noida, Uttar Pradesh 201301</span>
+                        <span>
+                          12A20, 13th Floor, E-Square , Sector 96, Noida, Uttar
+                          Pradesh 201301
+                        </span>
                       </div>
                       <div className="d-flex align-items-start gap-2">
                         <i className="fas fa-map-marker-alt text-white mt-1"></i>
                         <span>
-                          For Client Visit : Office no 12A20, Floor No-13, E-Square sector 96, Noida, Uttar Pradesh 201301
+                          For Client Visit : Office no 12A20, Floor No-13,
+                          E-Square sector 96, Noida, Uttar Pradesh 201301
                         </span>
                       </div>
                     </address>
@@ -294,7 +409,12 @@ export default function Footer() {
                     <img
                       src="/assets/images/counsel2.jpg"
                       alt="IAOTH Accredited"
-                      style={{ width: "46px", height: "46px", objectFit: "contain", borderRadius: "50%" }}
+                      style={{
+                        width: "46px",
+                        height: "46px",
+                        objectFit: "contain",
+                        borderRadius: "50%",
+                      }}
                     />
                   </div>
                   <div
@@ -304,7 +424,12 @@ export default function Footer() {
                     <img
                       src="/assets/images/counsel1.jpg"
                       alt="Skill India Accreditation"
-                      style={{ width: "46px", height: "46px", objectFit: "contain", borderRadius: "50%" }}
+                      style={{
+                        width: "46px",
+                        height: "46px",
+                        objectFit: "contain",
+                        borderRadius: "50%",
+                      }}
                     />
                   </div>
                   <div
@@ -314,7 +439,12 @@ export default function Footer() {
                     <img
                       src="/assets/images/logo/msu_logo.png"
                       alt="Medhavi Skills University"
-                      style={{ width: "46px", height: "46px", objectFit: "contain", borderRadius: "50%" }}
+                      style={{
+                        width: "46px",
+                        height: "46px",
+                        objectFit: "contain",
+                        borderRadius: "50%",
+                      }}
                     />
                   </div>
                   <div
@@ -324,7 +454,12 @@ export default function Footer() {
                     <img
                       src="/assets/images/logo/GU_logo.png"
                       alt="Galgotias University"
-                      style={{ width: "46px", height: "46px", objectFit: "contain", borderRadius: "50%" }}
+                      style={{
+                        width: "46px",
+                        height: "46px",
+                        objectFit: "contain",
+                        borderRadius: "50%",
+                      }}
                     />
                   </div>
                 </div>
@@ -335,7 +470,10 @@ export default function Footer() {
                   <h6 className="text-white font-size-15 fw-bold mb-0">
                     Subscribe to our Newsletter
                   </h6>
-                  <Link href="/newsletter" className="text-white-50 font-size-12 hover-text-white text-decoration-none">
+                  <Link
+                    href="/newsletter"
+                    className="text-white-50 font-size-12 hover-text-white text-decoration-none"
+                  >
                     View Newsletter Page &rarr;
                   </Link>
                 </div>
@@ -355,7 +493,11 @@ export default function Footer() {
                   <button
                     type="submit"
                     className="btn btn-success px-4 font-size-14 fw-semibold rounded-2 flex-shrink-0"
-                    style={{ backgroundColor: "#07a64b", borderColor: "#07a64b", color: "#fff" }}
+                    style={{
+                      backgroundColor: "#07a64b",
+                      borderColor: "#07a64b",
+                      color: "#fff",
+                    }}
                   >
                     Subscribe
                   </button>
@@ -369,65 +511,131 @@ export default function Footer() {
             </div>
 
             {/* Horizontal Line Divider */}
-            <div style={{ borderBottom: "1px solid rgba(255, 255, 255, 0.2)", paddingTop: "30px", marginBottom: "30px" }}></div>
+            <div
+              style={{
+                borderBottom: "1px solid rgba(255, 255, 255, 0.2)",
+                paddingTop: "30px",
+                marginBottom: "30px",
+              }}
+            ></div>
 
             {/* SEO Categorized Course Directory Links */}
             <div className="font-size-13" style={{ lineHeight: "1.9" }}>
               <div className="mb-3">
-                <h6 className="text-white fw-bold mb-1 font-size-14">Trending MBA Programs</h6>
+                <h6 className="text-white fw-bold mb-1 font-size-14">
+                  Trending MBA Programs
+                </h6>
                 <div>
-                  <Link href="/courses/masters-industrial-organizational-psychology" className="text-decoration-none hover-text-white" style={{ color: "#969696" }}>
+                  <Link
+                    href="/courses/masters-industrial-organizational-psychology"
+                    className="text-decoration-none hover-text-white"
+                    style={{ color: "#969696" }}
+                  >
                     Masters in Industrial &amp; Organizational Psychology
                   </Link>
                 </div>
               </div>
 
               <div className="mb-3">
-                <h6 className="text-white fw-bold mb-1 font-size-14">Master&apos;s Programs</h6>
+                <h6 className="text-white fw-bold mb-1 font-size-14">
+                  Master&apos;s Programs
+                </h6>
                 <div>
-                  <Link href="/courses/counselling-master-course-advanced" className="text-decoration-none hover-text-white" style={{ color: "#969696" }}>
+                  <Link
+                    href="/courses/counselling-master-course-advanced"
+                    className="text-decoration-none hover-text-white"
+                    style={{ color: "#969696" }}
+                  >
                     Counselling Master Course- Advanced
                   </Link>
-                  <span className="mx-2" style={{ color: "#969696" }}>|</span>
-                  <Link href="/courses/counselling-master-course-intermediate" className="text-decoration-none hover-text-white" style={{ color: "#969696" }}>
+                  <span className="mx-2" style={{ color: "#969696" }}>
+                    |
+                  </span>
+                  <Link
+                    href="/courses/counselling-master-course-intermediate"
+                    className="text-decoration-none hover-text-white"
+                    style={{ color: "#969696" }}
+                  >
                     Counselling Master Course - Intermediate
                   </Link>
-                  <span className="mx-2" style={{ color: "#969696" }}>|</span>
-                  <Link href="/courses/counselling-master-course-foundation" className="text-decoration-none hover-text-white" style={{ color: "#969696" }}>
+                  <span className="mx-2" style={{ color: "#969696" }}>
+                    |
+                  </span>
+                  <Link
+                    href="/courses/counselling-master-course-foundation"
+                    className="text-decoration-none hover-text-white"
+                    style={{ color: "#969696" }}
+                  >
                     Counselling Master Course- Foundation
                   </Link>
                 </div>
               </div>
 
               <div className="mb-3">
-                <h6 className="text-white fw-bold mb-1 font-size-14">PG Diploma Programs</h6>
+                <h6 className="text-white fw-bold mb-1 font-size-14">
+                  PG Diploma Programs
+                </h6>
                 <div>
-                  <Link href="/courses/pg-diploma-clinical-psychology" className="text-decoration-none hover-text-white" style={{ color: "#969696" }}>
+                  <Link
+                    href="/courses/pg-diploma-clinical-psychology"
+                    className="text-decoration-none hover-text-white"
+                    style={{ color: "#969696" }}
+                  >
                     PG Diploma in Clinical Psychology
                   </Link>
-                  <span className="mx-2" style={{ color: "#969696" }}>|</span>
-                  <Link href="/courses/pg-diploma-child-psychology" className="text-decoration-none hover-text-white" style={{ color: "#969696" }}>
+                  <span className="mx-2" style={{ color: "#969696" }}>
+                    |
+                  </span>
+                  <Link
+                    href="/courses/pg-diploma-child-psychology"
+                    className="text-decoration-none hover-text-white"
+                    style={{ color: "#969696" }}
+                  >
                     PG Diploma in Child Psychology
                   </Link>
-                  <span className="mx-2" style={{ color: "#969696" }}>|</span>
-                  <Link href="/courses/pg-diploma-counselling-psychology" className="text-decoration-none hover-text-white" style={{ color: "#969696" }}>
+                  <span className="mx-2" style={{ color: "#969696" }}>
+                    |
+                  </span>
+                  <Link
+                    href="/courses/pg-diploma-counselling-psychology"
+                    className="text-decoration-none hover-text-white"
+                    style={{ color: "#969696" }}
+                  >
                     PG Diploma in Counselling Psychology
                   </Link>
                 </div>
               </div>
 
               <div className="mb-3">
-                <h6 className="text-white fw-bold mb-1 font-size-14">Certification Programs</h6>
+                <h6 className="text-white fw-bold mb-1 font-size-14">
+                  Certification Programs
+                </h6>
                 <div>
-                  <Link href="/courses/certificate-cbt" className="text-decoration-none hover-text-white" style={{ color: "#969696" }}>
+                  <Link
+                    href="/courses/certificate-cbt"
+                    className="text-decoration-none hover-text-white"
+                    style={{ color: "#969696" }}
+                  >
                     Certificate in Cognitive Behavioural Therapy (CBT)
                   </Link>
-                  <span className="mx-2" style={{ color: "#969696" }}>|</span>
-                  <Link href="/courses/certificate-art-therapy" className="text-decoration-none hover-text-white" style={{ color: "#969696" }}>
+                  <span className="mx-2" style={{ color: "#969696" }}>
+                    |
+                  </span>
+                  <Link
+                    href="/courses/certificate-art-therapy"
+                    className="text-decoration-none hover-text-white"
+                    style={{ color: "#969696" }}
+                  >
                     Certificate in Art Therapy
                   </Link>
-                  <span className="mx-2" style={{ color: "#969696" }}>|</span>
-                  <Link href="/courses/certificate-rebt" className="text-decoration-none hover-text-white" style={{ color: "#969696" }}>
+                  <span className="mx-2" style={{ color: "#969696" }}>
+                    |
+                  </span>
+                  <Link
+                    href="/courses/certificate-rebt"
+                    className="text-decoration-none hover-text-white"
+                    style={{ color: "#969696" }}
+                  >
                     Certificate in Rational Emotive Behaviour Therapy (REBT)
                   </Link>
                 </div>
@@ -437,11 +645,18 @@ export default function Footer() {
         </div>
 
         {/* Footer Copyright */}
-        <div className="footer-copyright py-3" style={{ borderTop: "1px solid rgba(255, 255, 255, 0.1)", backgroundColor: "#171c26" }}>
+        <div
+          className="footer-copyright py-3"
+          style={{
+            borderTop: "1px solid rgba(255, 255, 255, 0.1)",
+          }}
+        >
           <div className="container">
             <p className="text-center mb-0 font-size-13 text-white">
               &copy; {new Date().getFullYear()}{" "}
-              <span className="text-white">CounselIndia Services Private Limited. All Rights Reserved</span>
+              <span className="text-white">
+                CounselIndia Services Private Limited. All Rights Reserved
+              </span>
             </p>
           </div>
         </div>
