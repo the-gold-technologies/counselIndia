@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 
 export default function FloatingContactButtons() {
   return (
@@ -12,10 +13,21 @@ export default function FloatingContactButtons() {
           rel="noreferrer"
           className="dropup-btn"
           aria-label="Call or WhatsApp Support"
+          style={{
+            borderRadius: "50%",
+            overflow: "hidden",
+          }}
         >
           <img
             src="https://prod-s3.counselindia.com/mastergalaxyimages/call-support_1729317848.png"
             alt="Support Image"
+            style={{
+              width: "100%",
+              height: "100%",
+              borderRadius: "50%",
+              objectFit: "cover",
+              display: "block",
+            }}
             onError={(e) => {
               e.currentTarget.src = "/assets/images/call-wa3.png";
             }}
@@ -25,16 +37,28 @@ export default function FloatingContactButtons() {
 
       {/* Right Floating Customer Support Button */}
       <div className="support-wrapper">
-        <a
-          href="tel:+918448519298"
+        <Link
+          href="/support"
           className="support"
           aria-label="Customer Support"
+          style={{
+            borderRadius: "50%",
+            overflow: "hidden",
+            display: "inline-block",
+          }}
         >
           <img
             src="https://prod-s3.counselindia.com/mastergalaxyimages/Customer-Support_1729317867.png"
             alt="Support chat"
+            style={{
+              width: "100%",
+              height: "100%",
+              borderRadius: "50%",
+              objectFit: "cover",
+              display: "block",
+            }}
           />
-        </a>
+        </Link>
       </div>
 
       <style jsx>{`
@@ -52,7 +76,8 @@ export default function FloatingContactButtons() {
           background-color: #25d366;
           color: #fff;
           border: none;
-          border-radius: 50px;
+          border-radius: 50%;
+          overflow: hidden;
           text-align: center;
           cursor: pointer;
           display: flex;
@@ -87,6 +112,7 @@ export default function FloatingContactButtons() {
           width: 60px;
           height: 60px;
           border-radius: 50%;
+          overflow: hidden;
           box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
           transition:
             transform 0.25s ease,
