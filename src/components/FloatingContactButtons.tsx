@@ -7,7 +7,7 @@ export default function FloatingContactButtons() {
       {/* Left Floating Call Support Button */}
       <div className="dropup">
         <a
-          href="https://wa.me/917065922160"
+          href="https://api.whatsapp.com/send?phone=+918448519298&text=Hi."
           target="_blank"
           rel="noreferrer"
           className="dropup-btn"
@@ -26,7 +26,7 @@ export default function FloatingContactButtons() {
       {/* Right Floating Customer Support Button */}
       <div className="support-wrapper">
         <a
-          href="tel:+917065922160"
+          href="tel:+918448519298"
           className="support"
           aria-label="Customer Support"
         >
@@ -59,7 +59,9 @@ export default function FloatingContactButtons() {
           align-items: center;
           justify-content: center;
           box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-          transition: transform 0.25s ease, box-shadow 0.25s ease;
+          transition:
+            transform 0.25s ease,
+            box-shadow 0.25s ease;
         }
 
         .dropup-btn:hover,
@@ -86,7 +88,9 @@ export default function FloatingContactButtons() {
           height: 60px;
           border-radius: 50%;
           box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-          transition: transform 0.25s ease, box-shadow 0.25s ease;
+          transition:
+            transform 0.25s ease,
+            box-shadow 0.25s ease;
         }
 
         .support img {

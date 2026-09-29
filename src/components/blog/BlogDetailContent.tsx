@@ -46,24 +46,25 @@ export default function BlogDetailContent({ blog, relatedBlogs }: DetailProps) {
   };
 
   // Static related posts matching exact screenshots
+  // Static related posts matching live Counsel India post
   const topRelatedPosts = [
     {
       title: "Frequently confused terms in psychology: Important differences you must know",
       date: "27 Jun 2022",
-      image: "/assets/images/blog/skills.jpg",
-      slug: "what-is-colour-psychology",
+      image: "https://prod-s3.counselindia.com/blog/1681892189WhatsAppImage2023-04-19at1.43.11PM(1).jpeg",
+      slug: "frequently-confused-terms-in-psychology-important-differences-you-must-know",
     },
     {
       title: "The importance of knowing the human mind: How does studying psychology benefit your life",
       date: "11 Jul 2022",
-      image: "/assets/images/blog/skills.jpg",
-      slug: "what-is-colour-psychology",
+      image: "https://prod-s3.counselindia.com/blog/1681892958WhatsAppImage2023-04-19at1.43.11PM.jpeg",
+      slug: "the-importance-of-knowing-the-human-mind-how-does-studying-psychology-benefit-your-life",
     },
     {
       title: "Top 10 reasons: Why do people choose psychology as a career?",
       date: "06 Oct 2022",
-      image: "/assets/images/blog/skills.jpg",
-      slug: "what-is-colour-psychology",
+      image: "https://prod-s3.counselindia.com/blog/1681893094WhatsAppImage2023-04-19at1.43.11PM(3).jpeg",
+      slug: "top-10-reasons-why-do-people-choose-psychology-as-a-career",
     },
   ];
 
