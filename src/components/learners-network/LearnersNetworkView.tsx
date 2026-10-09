@@ -1,57 +1,103 @@
 "use client";
-import React, { useState, useMemo, useEffect } from "react";
-import { LEARNERS_DATA, LearnerItem } from "./data/learnersData";
+import React, { useState, useMemo, useEffect, useRef } from "react";
+import { LearnerItem } from "@/types/alumni";
 import LearnerCard from "./LearnerCard";
 import SkillsModal from "./SkillsModal";
+import { getActiveAlumni } from "@/services/alumniService";
 
-const ITEMS_PER_PAGE = 18;
+const BATCH_SIZE = 18;
 
 export default function LearnersNetworkView() {
   const [searchTerm, setSearchTerm] = useState("");
   const [activeSearch, setActiveSearch] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
+  const [visibleCount, setVisibleCount] = useState(BATCH_SIZE);
   const [selectedLearner, setSelectedLearner] = useState<LearnerItem | null>(
-    null
+    null,
   );
   const [isSkillsModalOpen, setIsSkillsModalOpen] = useState(false);
+  const [learners, setLearners] = useState<LearnerItem[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const sentinelRef = useRef<HTMLDivElement | null>(null);
+
+  // Dynamic fetch from Admin API service
+  useEffect(() => {
+    let isMounted = true;
+    async function loadData() {
+      try {
+        setIsLoading(true);
+        const data = await getActiveAlumni();
+        if (isMounted) {
+          setLearners(data);
+        }
+      } catch (err) {
+        console.error("Failed to load alumni from Admin API:", err);
+      } finally {
+        if (isMounted) {
+          setIsLoading(false);
+        }
+      }
+    }
+
+    loadData();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   // Handle Search Submission
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setActiveSearch(searchTerm.trim());
-    setCurrentPage(1);
+    setVisibleCount(BATCH_SIZE);
   };
 
   const handleClearSearch = () => {
     setSearchTerm("");
     setActiveSearch("");
-    setCurrentPage(1);
+    setVisibleCount(BATCH_SIZE);
   };
 
   // Filtered List
   const filteredLearners = useMemo(() => {
-    if (!activeSearch) return LEARNERS_DATA;
+    if (!activeSearch) return learners;
     const lower = activeSearch.toLowerCase();
-    return LEARNERS_DATA.filter(
+    return learners.filter(
       (item) =>
         item.name.toLowerCase().includes(lower) ||
         item.rci_number.toLowerCase().includes(lower) ||
         item.programname.toLowerCase().includes(lower) ||
-        (item.profession && item.profession.toLowerCase().includes(lower))
+        (item.profession && item.profession.toLowerCase().includes(lower)),
     );
-  }, [activeSearch]);
+  }, [activeSearch, learners]);
 
-  // Pagination Slice
-  const totalPages = Math.ceil(filteredLearners.length / ITEMS_PER_PAGE);
-  const paginatedLearners = useMemo(() => {
-    const start = (currentPage - 1) * ITEMS_PER_PAGE;
-    return filteredLearners.slice(start, start + ITEMS_PER_PAGE);
-  }, [filteredLearners, currentPage]);
+  // Infinite Scroll Slice
+  const displayedLearners = useMemo(() => {
+    return filteredLearners.slice(0, visibleCount);
+  }, [filteredLearners, visibleCount]);
 
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-    window.scrollTo({ top: 200, behavior: "smooth" });
-  };
+  // Infinite Scroll Observer
+  useEffect(() => {
+    const target = sentinelRef.current;
+    if (!target) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (
+          entries[0].isIntersecting &&
+          visibleCount < filteredLearners.length
+        ) {
+          setVisibleCount((prev) =>
+            Math.min(prev + BATCH_SIZE, filteredLearners.length),
+          );
+        }
+      },
+      { threshold: 0.1, rootMargin: "300px" },
+    );
+
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, [visibleCount, filteredLearners.length]);
 
   const handleOpenSkills = (learner: LearnerItem) => {
     setSelectedLearner(learner);
@@ -77,7 +123,7 @@ export default function LearnersNetworkView() {
                 setSearchTerm(e.target.value);
                 if (e.target.value === "") {
                   setActiveSearch("");
-                  setCurrentPage(1);
+                  setVisibleCount(BATCH_SIZE);
                 }
               }}
               style={{
@@ -135,10 +181,23 @@ export default function LearnersNetworkView() {
         )}
 
         {/* Alumni Cards Grid */}
-        {paginatedLearners.length > 0 ? (
+        {isLoading ? (
+          <div className="text-center py-5 my-5">
+            <div
+              className="spinner-border"
+              role="status"
+              style={{ width: "3rem", height: "3rem", color: "#07a64b" }}
+            >
+              <span className="visually-hidden">Loading...</span>
+            </div>
+            <p className="mt-3 text-muted fw-semibold">
+              Loading Verified Counselors Directory...
+            </p>
+          </div>
+        ) : displayedLearners.length > 0 ? (
           <>
             <div className="row g-4">
-              {paginatedLearners.map((learner) => (
+              {displayedLearners.map((learner) => (
                 <LearnerCard
                   key={learner.id}
                   learner={learner}
@@ -147,63 +206,27 @@ export default function LearnersNetworkView() {
               ))}
             </div>
 
-            {/* Pagination Controls */}
-            {totalPages > 1 && (
-              <div className="d-flex justify-content-center align-items-center gap-2 mt-5 pt-3">
-                <button
-                  type="button"
-                  disabled={currentPage === 1}
-                  onClick={() => handlePageChange(currentPage - 1)}
-                  className="btn btn-sm btn-outline-secondary px-3"
-                  style={{ borderRadius: "6px", height: "38px" }}
-                >
-                  &larr; Prev
-                </button>
-
-                <div className="d-flex gap-1">
-                  {Array.from({ length: Math.min(totalPages, 7) }, (_, idx) => {
-                    let pageNum = idx + 1;
-                    if (totalPages > 7 && currentPage > 4) {
-                      pageNum = currentPage - 4 + idx;
-                      if (pageNum > totalPages) pageNum = totalPages - (6 - idx);
-                    }
-                    return (
-                      <button
-                        key={pageNum}
-                        type="button"
-                        onClick={() => handlePageChange(pageNum)}
-                        className={`btn btn-sm ${
-                          currentPage === pageNum
-                            ? "btn-success text-white fw-bold"
-                            : "btn-outline-secondary"
-                        }`}
-                        style={{
-                          width: "38px",
-                          height: "38px",
-                          borderRadius: "6px",
-                          backgroundColor:
-                            currentPage === pageNum ? "#07a64b" : "transparent",
-                          borderColor:
-                            currentPage === pageNum ? "#07a64b" : "#d1d5db",
-                        }}
-                      >
-                        {pageNum}
-                      </button>
-                    );
-                  })}
+            {/* Sentinel for Infinite Scroll */}
+            <div ref={sentinelRef} className="w-100 py-3 text-center">
+              {visibleCount < filteredLearners.length && (
+                <div className="d-flex justify-content-center align-items-center gap-2 py-4">
+                  <div
+                    className="spinner-border"
+                    role="status"
+                    style={{
+                      width: "1.75rem",
+                      height: "1.75rem",
+                      color: "#07a64b",
+                    }}
+                  >
+                    <span className="visually-hidden">Loading more...</span>
+                  </div>
+                  <span className="text-muted font-size-14 font-medium">
+                    Loading more counselors...
+                  </span>
                 </div>
-
-                <button
-                  type="button"
-                  disabled={currentPage === totalPages}
-                  onClick={() => handlePageChange(currentPage + 1)}
-                  className="btn btn-sm btn-outline-secondary px-3"
-                  style={{ borderRadius: "6px", height: "38px" }}
-                >
-                  Next &rarr;
-                </button>
-              </div>
-            )}
+              )}
+            </div>
           </>
         ) : (
           <div className="text-center py-5 my-5 bg-white rounded-3 shadow-sm border p-5">

@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { LearnerItem } from "./data/learnersData";
+import { LearnerItem } from "@/types/alumni";
 
 interface LearnerCardProps {
   learner: LearnerItem;

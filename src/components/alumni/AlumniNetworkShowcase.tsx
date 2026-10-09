@@ -33,10 +33,8 @@ export default function AlumniNetworkShowcase() {
 
         {/* Marquee Rows Linking to /learners-network */}
         <div className="partners-active swiper-dots-style">
-          <a
-            href="https://www.counselindia.com/learners-network"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/learners-network"
             style={{ display: "block", textDecoration: "none" }}
           >
             <div
@@ -131,14 +129,12 @@ export default function AlumniNetworkShowcase() {
                 </div>
               </div>
             </div>
-          </a>
+          </Link>
 
           {/* Button Container */}
           <div className="button-container text-center py-4">
-            <a
-              href="https://www.counselindia.com/learners-network"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/learners-network"
               className="btn btn-secondary btn-hover-primary btn-bold text-white text-decoration-none shadow-sm"
               style={{
                 backgroundColor: "#07a64b",
@@ -155,7 +151,7 @@ export default function AlumniNetworkShowcase() {
               }}
             >
               Explore Entire Alumni Network
-            </a>
+            </Link>
           </div>
         </div>
       </div>

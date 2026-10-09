@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
-import { LearnerItem } from "./data/learnersData";
+import { LearnerItem } from "@/types/alumni";
 
 interface SkillsModalProps {
   learner: LearnerItem | null;
