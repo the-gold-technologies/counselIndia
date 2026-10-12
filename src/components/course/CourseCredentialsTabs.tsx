@@ -137,11 +137,7 @@ export default function CourseCredentialsTabs({ credentials }: Props) {
                     backgroundColor: "#ffffff",
                   }}
                   onError={(e) => {
-                    const target = e.currentTarget;
-                    const fallback = "https://prod-s3.counselindia.com/credential/%20CMC%20Foundation-3_1728552205.png";
-                    if (target.src !== fallback) {
-                      target.src = fallback;
-                    }
+                    e.currentTarget.style.display = "none";
                   }}
                 />
               </div>

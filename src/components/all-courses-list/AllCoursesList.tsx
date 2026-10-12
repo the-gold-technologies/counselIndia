@@ -284,8 +284,7 @@ export default function AllCoursesList() {
                         src={encodeURI(decodeURI(d.cover_image))}
                         alt={d.name}
                         onError={(e) => {
-                          (e.currentTarget as HTMLImageElement).src =
-                            "https://www.counselindia.com/assets/images/courses/courses-01.jpg";
+                          (e.currentTarget as HTMLImageElement).style.display = "none";
                         }}
                       />
                     </Link>

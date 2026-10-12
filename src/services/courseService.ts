@@ -202,7 +202,7 @@ export function mapDbToCourseDetail(c: any): CourseDetailData {
     ? encodeURI(decodeURI(c.backgroundImage))
     : c.coverImage
     ? encodeURI(decodeURI(c.coverImage))
-    : "https://prod-s3.counselindia.com/courses/background_image/counselling-master-course-basic_1687158429.webp";
+    : "";
 
   return {
     id: sNo,
@@ -211,7 +211,7 @@ export function mapDbToCourseDetail(c: any): CourseDetailData {
     badgeSale: c.totalDiscountPercent ? `${c.totalDiscountPercent}% OFF` : undefined,
     category: c.category || "Course",
     bgImage: bgImg,
-    partnerLogo: "https://www.counselindia.com/assets/images/logo/icpemci.png",
+    partnerLogo: undefined,
     description: cleanDesc,
     rating: Number(c.rating) || 5,
     enrollUrl: c.paymentLink || "",
@@ -317,7 +317,7 @@ export async function getActiveCourses(
 
       const coverImg = c.coverImage
         ? encodeURI(decodeURI(c.coverImage))
-        : "https://www.counselindia.com/assets/images/courses/courses-01.jpg";
+        : "";
 
       return {
         id: sNo,
