@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { submitLead } from "@/services/leadService";
 
 export default function NewsletterHero() {
   const [formData, setFormData] = useState({
@@ -42,13 +43,21 @@ export default function NewsletterHero() {
     }, 1000);
   };
 
-  const handleVerifyOtp = () => {
+  const handleVerifyOtp = async () => {
     if (!otp.trim()) {
       setOtpError("Please enter the OTP to proceed.");
       return;
     }
     setOtpError("");
     setOtpSuccess(true);
+    await submitLead({
+      category: "newsletter",
+      name: formData.fullName.trim(),
+      email: formData.email.trim(),
+      mobile: formData.phoneNo.trim(),
+      medium: "Website Newsletter Hero",
+      source: "Newsletter Hero Section",
+    });
     setTimeout(() => {
       setShowOtpModal(false);
       setOtpSuccess(false);

@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { CounselorItem } from "@/types/counselor";
+import { submitLead } from "@/services/leadService";
 
 interface ModalProps {
   counselor: CounselorItem | null;
@@ -209,8 +210,24 @@ export default function BookSessionModal({
 
   if (!isOpen || !counselor) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    await submitLead({
+      category: "book-session",
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      mobile: formData.mobile.trim(),
+      state: formData.state,
+      city: formData.city,
+      hearFrom: formData.hearAboutUs,
+      content: `Counselor: ${counselor.name || "Assigned Counselor"}`,
+      medium: "Website Book Session Modal",
+      source: "Counsellors Network",
+      extraData: {
+        counselorId: counselor.id,
+        counselorName: counselor.name,
+      },
+    });
     setIsSubmitted(true);
   };
 

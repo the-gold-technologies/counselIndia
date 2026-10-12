@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { submitLead } from "@/services/leadService";
 
 export default function AutoCampaignPopup() {
   const [isOpen, setIsOpen] = useState(false);
@@ -54,7 +55,7 @@ export default function AutoCampaignPopup() {
     }, 300);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage("");
 
@@ -72,13 +73,19 @@ export default function AutoCampaignPopup() {
     }
 
     setIsSubmitting(true);
+    await submitLead({
+      category: "exit-intent",
+      name: name.trim(),
+      email: email.trim(),
+      mobile: mobile.trim(),
+      medium: "Website Exit Intent / Auto Popup",
+      source: "Auto Campaign Popup",
+    });
+    setIsSubmitting(false);
+    setIsSubmitted(true);
     setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      setTimeout(() => {
-        handleClose();
-      }, 2000);
-    }, 600);
+      handleClose();
+    }, 2000);
   };
 
   if (!isOpen) return null;

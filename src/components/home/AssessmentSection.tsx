@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { submitLead } from "@/services/leadService";
 
 interface TestQuestion {
   id: number;
@@ -151,6 +152,14 @@ export default function AssessmentSection() {
   const handleLeadSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validateLeadForm()) {
+      submitLead({
+        category: "landing-page",
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        mobile: formData.mobile.trim(),
+        medium: "Website Assessment Modal",
+        source: `Assessment: ${activeTest?.title || "Self-Assessment"}`,
+      }).catch(console.error);
       setStep("otp");
       setIsResendActive(true);
       setResendTimer(30);

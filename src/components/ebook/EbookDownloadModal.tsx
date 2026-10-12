@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { EbookItem } from "./EbookCard";
+import { submitLead } from "@/services/leadService";
 
 interface ModalProps {
   ebook: EbookItem | null;
@@ -63,7 +64,7 @@ export default function EbookDownloadModal({ ebook, isOpen, onClose }: ModalProp
 
   const availableCities = formData.state && INDIAN_STATES[formData.state] ? INDIAN_STATES[formData.state] : [];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage("");
 
@@ -113,10 +114,25 @@ export default function EbookDownloadModal({ ebook, isOpen, onClose }: ModalProp
     }
 
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSuccess(true);
-    }, 700);
+    await submitLead({
+      category: "ebook",
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      mobile: formData.mobile.trim(),
+      countryCode: formData.country,
+      state: formData.state,
+      city: formData.city,
+      hearFrom: formData.hearAbout,
+      content: ebook.name,
+      medium: "Website Ebook Modal",
+      source: `Ebook: ${ebook.name}`,
+      extraData: {
+        ebookId: ebook.id,
+        ebookName: ebook.name,
+      },
+    });
+    setIsSubmitting(false);
+    setIsSuccess(true);
   };
 
   const handleCloseAll = () => {

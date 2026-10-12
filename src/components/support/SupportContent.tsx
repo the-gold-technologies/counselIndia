@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { submitLead } from "@/services/leadService";
 
 interface EnquiryFormData {
   name: string;
@@ -46,9 +47,19 @@ export default function SupportContent() {
     return Object.keys(errs).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
+    await submitLead({
+      category: "ask-question",
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      mobile: formData.mobile.trim(),
+      content: formData.enquiry_type,
+      message: `Enquiry Type: ${formData.enquiry_type} | Message: ${formData.message}`,
+      medium: "Website Support Modal",
+      source: "Support Page",
+    });
     setIsSubmitted(true);
   };
 

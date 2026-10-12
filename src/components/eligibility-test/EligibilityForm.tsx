@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { submitLead } from "@/services/leadService";
 
 interface Country {
   id: string | number;
@@ -176,7 +177,7 @@ export default function EligibilityForm() {
     fetchCities();
   }, [formData.state]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage("");
 
@@ -203,10 +204,21 @@ export default function EligibilityForm() {
     }
 
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitSuccess(true);
-    }, 700);
+    await submitLead({
+      category: "personality-test",
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      mobile: formData.mobile.trim(),
+      countryCode: formData.country,
+      state: formData.state,
+      city: formData.city,
+      hearFrom: formData.hearabout,
+      content: `Background: ${formData.proBackground || "N/A"} | Purpose: ${formData.purposeGiveTest || "N/A"} | Age: ${formData.age || "N/A"} | Gender: ${formData.gender || "N/A"}`,
+      medium: "Website Eligibility Test Form",
+      source: "Eligibility Test Page",
+    });
+    setIsSubmitting(false);
+    setSubmitSuccess(true);
   };
 
   return (

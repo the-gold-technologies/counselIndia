@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
+import { submitLead } from "@/services/leadService";
 
 interface FormData {
   question: string;
@@ -177,15 +178,28 @@ export default function AskQuestionFormSection() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
 
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-    }, 1000);
+    const finalState = formData.state === "other" ? customState : formData.state;
+    const finalCity = formData.city === "other" ? customCity : formData.city;
+    await submitLead({
+      category: "ask-question",
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      mobile: formData.mobile.trim(),
+      countryCode: formData.country,
+      state: finalState,
+      city: finalCity,
+      hearFrom: formData.hearabout,
+      message: formData.question.trim(),
+      medium: "Website Ask Question",
+      source: "Ask Question Form",
+    });
+    setIsSubmitting(false);
+    setIsSubmitted(true);
   };
 
   const handleReset = () => {

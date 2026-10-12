@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
+import { submitLead } from "@/services/leadService";
 
 interface ExperienceItem {
   id: string;
@@ -168,7 +169,7 @@ export default function MentorRegistrationForm() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage("");
 
@@ -178,11 +179,31 @@ export default function MentorRegistrationForm() {
     }
 
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSuccess(true);
-      window.scrollTo({ top: 100, behavior: "smooth" });
-    }, 800);
+    await submitLead({
+      category: "course-registration",
+      name: name.trim(),
+      email: email.trim(),
+      mobile: mobile.trim(),
+      content: `Experience: ${experience} | Qualification: ${qualification} | Expertise: ${expertise} | RCI: ${rciNumber} | Language: ${language}`,
+      message: `Mentor Registration | Expected Charges: ${expectedCharges} | Address: ${address}`,
+      medium: "Website Mentor Registration",
+      source: "Counsellor/Mentor Registration Form",
+      extraData: {
+        experience,
+        qualification,
+        expertise,
+        rciNumber,
+        address,
+        language,
+        expectedCharges,
+        bankName,
+        accountType,
+        experienceList,
+      },
+    });
+    setIsSubmitting(false);
+    setIsSuccess(true);
+    window.scrollTo({ top: 100, behavior: "smooth" });
   };
 
   return (

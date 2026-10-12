@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { submitLead } from "@/services/leadService";
 
 export const REFERRAL_COURSES = [
   { id: "8", name: "Counselling Master Course- Advanced" },
@@ -188,7 +189,7 @@ export default function ReferAndEarnView() {
     setOtpError("");
   };
 
-  const handleOtpVerify = (e: React.FormEvent) => {
+  const handleOtpVerify = async (e: React.FormEvent) => {
     e.preventDefault();
     if (otpValue.trim().length < 4) {
       setOtpError("Please enter a valid OTP.");
@@ -196,6 +197,29 @@ export default function ReferAndEarnView() {
     }
     setOtpSuccess(true);
     setOtpError("");
+    await submitLead({
+      category: "refer-enquiry",
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      mobile: formData.mobile.trim(),
+      countryCode: formData.country,
+      state: formData.state === "other" ? formData.stateOther : formData.state,
+      city: formData.city,
+      courseName: formData.course_refer,
+      content: `Referred: ${formData.person_refer_name} (${formData.person_refer_email}, ${formData.person_refer_phone})`,
+      message: `Referrer: ${formData.name} (${formData.email}, ${formData.mobile}) | Referred Person: ${formData.person_refer_name} | Phone: ${formData.person_refer_phone} | Email: ${formData.person_refer_email}`,
+      medium: "Website Refer & Earn",
+      source: "Refer & Earn Page",
+      extraData: {
+        referrerName: formData.name,
+        referrerEmail: formData.email,
+        referrerMobile: formData.mobile,
+        referredName: formData.person_refer_name,
+        referredPhone: formData.person_refer_phone,
+        referredEmail: formData.person_refer_email,
+        courseRefer: formData.course_refer,
+      },
+    });
     setTimeout(() => {
       setIsOtpOpen(false);
       setOtpSuccess(false);

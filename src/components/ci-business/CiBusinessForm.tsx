@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
+import { submitLead } from "@/services/leadService";
 
 export default function CiBusinessForm() {
   const [formData, setFormData] = useState({
@@ -19,12 +20,31 @@ export default function CiBusinessForm() {
 
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.agreed) {
       alert("Please agree to the Terms & Conditions and Privacy Policy.");
       return;
     }
+    await submitLead({
+      category: "ci-business",
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      mobile: formData.mobile.trim(),
+      countryCode: formData.country,
+      state: formData.state,
+      city: formData.city,
+      hearFrom: formData.hearAbout,
+      content: formData.purpose,
+      message: `Company: ${formData.companyName} | Size: ${formData.companySize} | Purpose: ${formData.purpose}`,
+      medium: "Website CI Business Form",
+      source: "CI For Business",
+      extraData: {
+        companyName: formData.companyName,
+        companySize: formData.companySize,
+        purpose: formData.purpose,
+      },
+    });
     setSubmitted(true);
   };
 

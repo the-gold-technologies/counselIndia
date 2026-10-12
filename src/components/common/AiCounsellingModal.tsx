@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { submitLead } from "@/services/leadService";
 
 interface AiModalProps {
   isOpen: boolean;
@@ -13,7 +14,7 @@ export default function AiCounsellingModal({ isOpen, onClose }: AiModalProps) {
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage("");
 
@@ -32,6 +33,13 @@ export default function AiCounsellingModal({ isOpen, onClose }: AiModalProps) {
     }
 
     setIsSubmitting(true);
+    await submitLead({
+      category: "app-data",
+      name: nameTrimmed,
+      mobile: mobileTrimmed,
+      medium: "Website AI Counselling Modal",
+      source: "AI Counsellor",
+    });
 
     // Matching PHP AJAX submit and redirect
     setTimeout(() => {

@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { submitLead } from "@/services/leadService";
 
 import { NewsletterItem } from "./data/newslettersData";
 
@@ -93,12 +94,28 @@ export default function NewsletterDownloadModal({ newsletter, isOpen, onClose }:
     }, 1000);
   };
 
-  const handleVerifyOtp = () => {
+  const handleVerifyOtp = async () => {
     if (!otp.trim()) {
       setErrorMessage("Please enter the OTP to proceed.");
       return;
     }
     setOtpSuccess(true);
+    await submitLead({
+      category: "newsletter",
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      mobile: formData.mobile.trim(),
+      state: formData.state,
+      city: formData.city,
+      hearFrom: formData.hearabout,
+      content: newsletter?.name || "Newsletter Download",
+      medium: "Website Newsletter Modal",
+      source: "Newsletter Download Modal",
+      extraData: {
+        newsletterName: newsletter?.name,
+        monthTitle: newsletter?.monthTitle,
+      },
+    });
     setTimeout(() => {
       setShowOtpModal(false);
       setOtpSuccess(false);

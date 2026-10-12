@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { useSiteSettings } from "@/hooks/useSiteSettings";
+import { submitLead } from "@/services/leadService";
 
 const COUNTRIES = [
   { name: "Please Select Country", code: "" },
@@ -204,7 +205,7 @@ export default function ContactUsView() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name.trim()) {
       setErrorMsg("Please enter your name.");
@@ -226,6 +227,19 @@ export default function ContactUsView() {
     }
 
     setErrorMsg("");
+    await submitLead({
+      category: "contact-us",
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      mobile: formData.mobile.trim(),
+      countryCode: formData.country,
+      state: formData.state,
+      city: formData.city,
+      hearFrom: formData.hearabout,
+      message: formData.message,
+      medium: "Website Contact Us",
+      source: "Contact Us Page",
+    });
     setSubmitted(true);
   };
 

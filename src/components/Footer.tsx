@@ -4,15 +4,23 @@ import Link from "next/link";
 import { useSiteSettings } from "@/hooks/useSiteSettings";
 import CounselorLoginModal from "./auth/CounselorLoginModal";
 
+import { submitLead } from "@/services/leadService";
+
 export default function Footer() {
   const { settings } = useSiteSettings();
   const [email, setEmail] = useState("");
   const [newsletterSubscribed, setNewsletterSubscribed] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
     if (email) {
+      await submitLead({
+        category: "subscription",
+        email: email.trim(),
+        source: "Footer Newsletter",
+        medium: "Website Footer",
+      });
       setNewsletterSubscribed(true);
       setTimeout(() => {
         setNewsletterSubscribed(false);

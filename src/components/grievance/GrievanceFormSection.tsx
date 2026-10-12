@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { submitLead } from "@/services/leadService";
 
 interface FormData {
   name: string;
@@ -77,15 +78,30 @@ export default function GrievanceFormSection() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
 
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-    }, 1000);
+    await submitLead({
+      category: "contact-us",
+      name: formData.name.trim(),
+      mobile: formData.mobile.trim(),
+      email: formData.email.trim(),
+      courseName: formData.coursename,
+      message: formData.question,
+      content: `Grievance Request: ${formData.request2} | RM: ${formData.rmname}`,
+      medium: "Website Grievance Form",
+      source: "Grievance Portal",
+      extraData: {
+        rmName: formData.rmname,
+        requestType: formData.request2,
+        courseName: formData.coursename,
+        issue: formData.question,
+      },
+    });
+    setIsSubmitting(false);
+    setIsSubmitted(true);
   };
 
   const handleReset = () => {

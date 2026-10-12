@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { TestData } from "./MentalHealthTestCard";
+import { submitLead } from "@/services/leadService";
 
 interface ModalProps {
   test: TestData | null;
@@ -43,6 +44,20 @@ export default function MentalHealthLeadModal({ test, isOpen, onClose, onStart }
       setErrorMessage("Please accept the terms to proceed.");
       return;
     }
+
+    submitLead({
+      category: "personality-test",
+      name,
+      email,
+      mobile,
+      content: test.title,
+      medium: "Website Personality / Mental Health Test",
+      source: `Personality Test: ${test.title}`,
+      extraData: {
+        testId: test.id,
+        testTitle: test.title,
+      },
+    }).catch(console.error);
 
     onStart({ name, email, mobile });
   };

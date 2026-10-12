@@ -1,13 +1,20 @@
 "use client";
 import React, { useState } from "react";
+import { submitLead } from "@/services/leadService";
 
 export default function NewsletterBanner() {
   const [email, setEmail] = useState("");
   const [isSubscribed, setIsSubscribed] = useState(false);
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
     if (email.trim()) {
+      await submitLead({
+        category: "newsletter",
+        email: email.trim(),
+        medium: "Website Newsletter Banner",
+        source: "Newsletter Page Banner",
+      });
       setIsSubscribed(true);
       setTimeout(() => {
         setIsSubscribed(false);

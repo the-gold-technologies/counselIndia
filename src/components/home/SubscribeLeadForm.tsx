@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { submitLead } from "@/services/leadService";
 
 export default function SubscribeLeadForm() {
   const [formData, setFormData] = useState({
@@ -33,16 +34,22 @@ export default function SubscribeLeadForm() {
     return Object.keys(errs).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
 
     setLoading(true);
-    // Simulate async submission
-    setTimeout(() => {
-      setLoading(false);
-      setSubmitted(true);
-    }, 800);
+    await submitLead({
+      category: "subscription",
+      name: formData.fullName.trim(),
+      email: formData.email.trim(),
+      mobile: formData.phoneNo.trim(),
+      courseName: formData.courseInterest,
+      source: "Home Page Consultation / Subscribe Form",
+      medium: "Website Home",
+    });
+    setLoading(false);
+    setSubmitted(true);
   };
 
   return (

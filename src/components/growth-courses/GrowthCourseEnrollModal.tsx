@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { GrowthCourse } from "./data/growthCoursesData";
+import { submitLead } from "@/services/leadService";
 
 interface Props {
   course: GrowthCourse | null;
@@ -22,17 +23,15 @@ export default function GrowthCourseEnrollModal({ course, isOpen, onClose }: Pro
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const adminUrl = process.env.NEXT_PUBLIC_ADMIN_API_URL || "http://localhost:3001";
-      await fetch(`${adminUrl}/api/course-leads`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: formData.fullName,
-          email: formData.email,
-          mobile: formData.phone,
-          courseName: course?.title || "Growth Course Enquiry",
-          source: `Growth Course Enrollment (${formData.state || "India"})`,
-        }),
+      await submitLead({
+        category: "courses-enquiry",
+        name: formData.fullName.trim(),
+        email: formData.email.trim(),
+        mobile: formData.phone.trim(),
+        state: formData.state,
+        courseName: course?.title || "Growth Course Enquiry",
+        medium: "Website Growth Courses",
+        source: `Growth Course Enrollment (${formData.state || "India"})`,
       });
     } catch (err) {
       console.error("Course lead submission error:", err);
