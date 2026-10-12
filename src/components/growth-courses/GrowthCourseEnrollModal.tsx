@@ -19,8 +19,24 @@ export default function GrowthCourseEnrollModal({ course, isOpen, onClose }: Pro
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    try {
+      const adminUrl = process.env.NEXT_PUBLIC_ADMIN_API_URL || "http://localhost:3001";
+      await fetch(`${adminUrl}/api/course-leads`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.fullName,
+          email: formData.email,
+          mobile: formData.phone,
+          courseName: course?.title || "Growth Course Enquiry",
+          source: `Growth Course Enrollment (${formData.state || "India"})`,
+        }),
+      });
+    } catch (err) {
+      console.error("Course lead submission error:", err);
+    }
     setIsSubmitted(true);
     setTimeout(() => {
       setIsSubmitted(false);

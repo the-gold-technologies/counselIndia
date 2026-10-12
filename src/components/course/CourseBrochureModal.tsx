@@ -100,8 +100,25 @@ export default function CourseBrochureModal({ isOpen, onClose }: ModalProps) {
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    try {
+      const adminUrl = process.env.NEXT_PUBLIC_ADMIN_API_URL || "http://localhost:3001";
+      await fetch(`${adminUrl}/api/course-leads`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          mobile: `${formData.country ? `(${formData.country}) ` : ""}${formData.mobile}`.trim(),
+          courseName: courseName || "General Course Enquiry",
+          source: `Course Brochure (${formData.city ? `${formData.city}, ` : ""}${formData.state || "Website"})`,
+          notes: `Heard about via: ${formData.hearAbout || "Website"}`,
+        }),
+      });
+    } catch (err) {
+      console.error("Course lead submission error:", err);
+    }
     setSubmitted(true);
     setTimeout(() => {
       setSubmitted(false);
