@@ -122,20 +122,30 @@ export default function CourseCredentialsTabs({ credentials }: Props) {
             </div>
 
             {/* Right Certificate / Full Tall Letter Preview (natural aspect ratio) */}
-            <div style={{ display: "flex", justifyContent: "center" }}>
-              <img
-                src={current.image}
-                alt={current.label}
-                style={{
-                  width: "100%",
-                  maxWidth: "560px",
-                  height: "auto",
-                  borderRadius: "4px",
-                  boxShadow: "0 6px 20px rgba(0, 0, 0, 0.06)",
-                  backgroundColor: "#ffffff",
-                }}
-              />
-            </div>
+            {current.image && (
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <img
+                  src={current.image}
+                  alt={current.label}
+                  loading="lazy"
+                  style={{
+                    width: "100%",
+                    maxWidth: "560px",
+                    height: "auto",
+                    borderRadius: "4px",
+                    boxShadow: "0 6px 20px rgba(0, 0, 0, 0.06)",
+                    backgroundColor: "#ffffff",
+                  }}
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    const fallback = "https://prod-s3.counselindia.com/credential/%20CMC%20Foundation-3_1728552205.png";
+                    if (target.src !== fallback) {
+                      target.src = fallback;
+                    }
+                  }}
+                />
+              </div>
+            )}
           </div>
         </div>
       </div>

@@ -146,31 +146,51 @@ export default function CourseCurriculum({ curriculum }: Props) {
                         cursor: "pointer",
                         display: "flex",
                         alignItems: "center",
+                        justifyContent: "space-between",
                         textAlign: "left",
                         gap: "12px",
                         outline: "none",
                       }}
                     >
-                      {/* Small Square Outline Icon — original design */}
-                      <span
+                      <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                        {/* Small Square Outline Icon — original design */}
+                        <span
+                          style={{
+                            width: "12px",
+                            height: "12px",
+                            border: "1.5px solid #07a64b",
+                            borderRadius: "1px",
+                            display: "inline-block",
+                            flexShrink: 0,
+                          }}
+                        />
+                        <span
+                          style={{
+                            fontSize: "15px",
+                            fontWeight: 500,
+                            color: "#07a64b",
+                          }}
+                        >
+                          {mod.title}
+                        </span>
+                      </div>
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#07a64b"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                         style={{
-                          width: "12px",
-                          height: "12px",
-                          border: "1.5px solid #07a64b",
-                          borderRadius: "1px",
-                          display: "inline-block",
+                          transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+                          transition: "transform 0.2s ease",
                           flexShrink: 0,
                         }}
-                      />
-                      <span
-                        style={{
-                          fontSize: "15px",
-                          fontWeight: 500,
-                          color: "#07a64b",
-                        }}
                       >
-                        {mod.title}
-                      </span>
+                        <polyline points="6 9 12 15 18 9" />
+                      </svg>
                     </button>
 
                     {/* Accordion Content */}
@@ -188,29 +208,42 @@ export default function CourseCurriculum({ curriculum }: Props) {
                           borderTop: isOpen ? "1px solid #eeeeee" : "none",
                         }}
                       >
-                        <ul
-                          style={{
-                            margin: 0,
-                            paddingLeft: "20px",
-                            display: "flex",
-                            flexDirection: "column",
-                            gap: "8px",
-                            listStyleType: "disc",
-                          }}
-                        >
-                          {mod.topics.map((topic, tidx) => (
-                            <li
-                              key={tidx}
-                              style={{
-                                fontSize: "14px",
-                                color: "#444444",
-                                lineHeight: "1.8",
-                              }}
-                            >
-                              {topic}
-                            </li>
-                          ))}
-                        </ul>
+                        {mod.topics && mod.topics.length > 0 ? (
+                          <ul
+                            style={{
+                              margin: 0,
+                              paddingLeft: "20px",
+                              display: "flex",
+                              flexDirection: "column",
+                              gap: "8px",
+                              listStyleType: "disc",
+                            }}
+                          >
+                            {mod.topics.map((topic, tidx) => (
+                              <li
+                                key={tidx}
+                                style={{
+                                  fontSize: "14px",
+                                  color: "#444444",
+                                  lineHeight: "1.8",
+                                }}
+                              >
+                                {topic}
+                              </li>
+                            ))}
+                          </ul>
+                        ) : (
+                          <p
+                            style={{
+                              margin: 0,
+                              fontSize: "14px",
+                              color: "#555555",
+                              lineHeight: "1.6",
+                            }}
+                          >
+                            {mod.title}
+                          </p>
+                        )}
                       </div>
                     </div>
                   </div>

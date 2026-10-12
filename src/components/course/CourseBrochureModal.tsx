@@ -85,7 +85,11 @@ const INDIAN_STATES = [
   "Puducherry",
 ];
 
-export default function CourseBrochureModal({ isOpen, onClose }: ModalProps) {
+export default function CourseBrochureModal({
+  isOpen,
+  onClose,
+  courseName,
+}: ModalProps) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",

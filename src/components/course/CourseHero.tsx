@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { CourseDetailData } from "./data/courseDetailData";
+import { CourseDetailData } from "@/types/course";
 
 interface Props {
   course: CourseDetailData;
