@@ -216,6 +216,13 @@ export default function EligibilityForm() {
       content: `Background: ${formData.proBackground || "N/A"} | Purpose: ${formData.purposeGiveTest || "N/A"} | Age: ${formData.age || "N/A"} | Gender: ${formData.gender || "N/A"}`,
       medium: "Website Eligibility Test Form",
       source: "Eligibility Test Page",
+      extraData: {
+        gender: formData.gender,
+        age: formData.age,
+        proBackground: formData.proBackground,
+        purpose: formData.purposeGiveTest,
+        marks: "Eligible",
+      },
     });
     setIsSubmitting(false);
     setSubmitSuccess(true);

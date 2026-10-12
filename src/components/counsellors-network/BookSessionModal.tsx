@@ -212,13 +212,20 @@ export default function BookSessionModal({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const selectedCountry = countries.find((c) => String(c.id) === String(formData.country));
+    const selectedState = states.find((s) => String(s.id) === String(formData.state));
+    const stateName = selectedState?.name || formData.state || "";
+    const cityName = formData.city || "";
+    const countryCode = selectedCountry?.phonecode || "+91";
+
     await submitLead({
       category: "book-session",
       name: formData.name.trim(),
       email: formData.email.trim(),
       mobile: formData.mobile.trim(),
-      state: formData.state,
-      city: formData.city,
+      countryCode,
+      state: stateName,
+      city: cityName,
       hearFrom: formData.hearAboutUs,
       content: `Counselor: ${counselor.name || "Assigned Counselor"}`,
       medium: "Website Book Session Modal",
@@ -226,6 +233,9 @@ export default function BookSessionModal({
       extraData: {
         counselorId: counselor.id,
         counselorName: counselor.name,
+        countryName: selectedCountry?.name || "India",
+        state: stateName,
+        city: cityName,
       },
     });
     setIsSubmitted(true);

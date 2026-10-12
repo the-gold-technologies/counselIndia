@@ -197,13 +197,16 @@ export default function ReferAndEarnView() {
     }
     setOtpSuccess(true);
     setOtpError("");
+    const stateVal = formData.state === "other" ? formData.stateOther : formData.state;
+
+    // 1. Submit referrer record to refer-enquiry
     await submitLead({
       category: "refer-enquiry",
       name: formData.name.trim(),
       email: formData.email.trim(),
       mobile: formData.mobile.trim(),
       countryCode: formData.country,
-      state: formData.state === "other" ? formData.stateOther : formData.state,
+      state: stateVal,
       city: formData.city,
       courseName: formData.course_refer,
       content: `Referred: ${formData.person_refer_name} (${formData.person_refer_email}, ${formData.person_refer_phone})`,
@@ -217,7 +220,31 @@ export default function ReferAndEarnView() {
         referredName: formData.person_refer_name,
         referredPhone: formData.person_refer_phone,
         referredEmail: formData.person_refer_email,
+        referByName: formData.name,
+        referByEmail: formData.email,
+        referByPhone: formData.mobile,
         courseRefer: formData.course_refer,
+      },
+    });
+
+    // 2. Submit referred candidate to leadform-data (Lead Information Data)
+    await submitLead({
+      category: "leadform-data",
+      name: formData.person_refer_name.trim(),
+      email: formData.person_refer_email.trim(),
+      mobile: formData.person_refer_phone.trim(),
+      countryCode: formData.country,
+      state: stateVal,
+      city: formData.city,
+      courseName: formData.course_refer,
+      content: `Referred by: ${formData.name} (${formData.email})`,
+      medium: "Website Refer & Earn",
+      source: "Refer & Earn Page",
+      extraData: {
+        referByName: formData.name,
+        referByEmail: formData.email,
+        referByPhone: formData.mobile,
+        leadName: formData.person_refer_name,
       },
     });
     setTimeout(() => {

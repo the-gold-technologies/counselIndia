@@ -100,6 +100,7 @@ export default function NewsletterDownloadModal({ newsletter, isOpen, onClose }:
       return;
     }
     setOtpSuccess(true);
+    const nName = newsletter?.name || newsletter?.monthTitle || "Counsel India Newsletter";
     await submitLead({
       category: "newsletter",
       name: formData.name.trim(),
@@ -108,11 +109,12 @@ export default function NewsletterDownloadModal({ newsletter, isOpen, onClose }:
       state: formData.state,
       city: formData.city,
       hearFrom: formData.hearabout,
-      content: newsletter?.name || "Newsletter Download",
+      courseName: nName,
+      content: nName,
       medium: "Website Newsletter Modal",
       source: "Newsletter Download Modal",
       extraData: {
-        newsletterName: newsletter?.name,
+        newsletterName: nName,
         monthTitle: newsletter?.monthTitle,
       },
     });

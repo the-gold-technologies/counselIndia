@@ -20,10 +20,23 @@ const COUNTRIES = [
 ];
 
 const INDIAN_STATES: { [key: string]: string[] } = {
-  Delhi: ["New Delhi", "North Delhi", "South Delhi", "West Delhi", "East Delhi"],
+  Delhi: [
+    "New Delhi",
+    "North Delhi",
+    "South Delhi",
+    "West Delhi",
+    "East Delhi",
+  ],
   Maharashtra: ["Mumbai", "Pune", "Nagpur", "Thane", "Nashik"],
   Karnataka: ["Bengaluru", "Mysuru", "Hubli", "Mangaluru"],
-  "Uttar Pradesh": ["Noida", "Lucknow", "Kanpur", "Ghaziabad", "Varanasi", "Agra"],
+  "Uttar Pradesh": [
+    "Noida",
+    "Lucknow",
+    "Kanpur",
+    "Ghaziabad",
+    "Varanasi",
+    "Agra",
+  ],
   Haryana: ["Gurugram", "Faridabad", "Panipat", "Ambala"],
   "Tamil Nadu": ["Chennai", "Coimbatore", "Madurai", "Salem"],
   "West Bengal": ["Kolkata", "Howrah", "Durgapur", "Siliguri"],
@@ -43,7 +56,11 @@ const HEAR_ABOUT_OPTIONS = [
   "Other",
 ];
 
-export default function EbookDownloadModal({ ebook, isOpen, onClose }: ModalProps) {
+export default function EbookDownloadModal({
+  ebook,
+  isOpen,
+  onClose,
+}: ModalProps) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -62,7 +79,10 @@ export default function EbookDownloadModal({ ebook, isOpen, onClose }: ModalProp
 
   if (!isOpen || !ebook) return null;
 
-  const availableCities = formData.state && INDIAN_STATES[formData.state] ? INDIAN_STATES[formData.state] : [];
+  const availableCities =
+    formData.state && INDIAN_STATES[formData.state]
+      ? INDIAN_STATES[formData.state]
+      : [];
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -123,12 +143,15 @@ export default function EbookDownloadModal({ ebook, isOpen, onClose }: ModalProp
       state: formData.state,
       city: formData.city,
       hearFrom: formData.hearAbout,
+      courseType: ebook.category || "Psychology",
+      courseName: ebook.name,
       content: ebook.name,
       medium: "Website Ebook Modal",
       source: `Ebook: ${ebook.name}`,
       extraData: {
         ebookId: ebook.id,
         ebookName: ebook.name,
+        courseType: ebook.category,
       },
     });
     setIsSubmitting(false);
@@ -207,7 +230,8 @@ export default function EbookDownloadModal({ ebook, isOpen, onClose }: ModalProp
           padding: "36px 30px 32px",
           position: "relative",
           boxSizing: "border-box",
-          animation: "modalSlideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+          animation:
+            "modalSlideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards",
         }}
       >
         {/* Close Button */}
@@ -262,7 +286,9 @@ export default function EbookDownloadModal({ ebook, isOpen, onClose }: ModalProp
                 placeholder="Your Full Name"
                 required
                 value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
                 style={inputStyle}
               />
             </div>
@@ -277,7 +303,9 @@ export default function EbookDownloadModal({ ebook, isOpen, onClose }: ModalProp
                 placeholder="Your Email Address"
                 required
                 value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
                 style={inputStyle}
               />
             </div>
@@ -285,12 +313,15 @@ export default function EbookDownloadModal({ ebook, isOpen, onClose }: ModalProp
             {/* 3. Select Country With Country Code */}
             <div style={{ marginBottom: "16px" }}>
               <label style={labelStyle}>
-                Select Country With Country Code<span style={{ color: "#ef4444" }}>*</span>
+                Select Country With Country Code
+                <span style={{ color: "#ef4444" }}>*</span>
               </label>
               <select
                 required
                 value={formData.country}
-                onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, country: e.target.value })
+                }
                 style={inputStyle}
               >
                 <option value="">Please Select Country</option>
@@ -313,7 +344,9 @@ export default function EbookDownloadModal({ ebook, isOpen, onClose }: ModalProp
                 maxLength={10}
                 required
                 value={formData.mobile}
-                onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, mobile: e.target.value })
+                }
                 style={inputStyle}
               />
             </div>
@@ -326,7 +359,9 @@ export default function EbookDownloadModal({ ebook, isOpen, onClose }: ModalProp
               <select
                 required
                 value={formData.state}
-                onChange={(e) => setFormData({ ...formData, state: e.target.value, city: "" })}
+                onChange={(e) =>
+                  setFormData({ ...formData, state: e.target.value, city: "" })
+                }
                 style={inputStyle}
               >
                 <option value="">Please Select State</option>
@@ -346,7 +381,9 @@ export default function EbookDownloadModal({ ebook, isOpen, onClose }: ModalProp
               <select
                 required
                 value={formData.city}
-                onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, city: e.target.value })
+                }
                 style={inputStyle}
               >
                 <option value="">Please Select City</option>
@@ -361,12 +398,15 @@ export default function EbookDownloadModal({ ebook, isOpen, onClose }: ModalProp
             {/* 7. How Did You Hear About Us */}
             <div style={{ marginBottom: "18px" }}>
               <label style={labelStyle}>
-                How Did You Hear About Us.<span style={{ color: "#ef4444" }}>*</span>
+                How Did You Hear About Us.
+                <span style={{ color: "#ef4444" }}>*</span>
               </label>
               <select
                 required
                 value={formData.hearAbout}
-                onChange={(e) => setFormData({ ...formData, hearAbout: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, hearAbout: e.target.value })
+                }
                 style={inputStyle}
               >
                 <option value="">Please Select</option>
@@ -392,7 +432,9 @@ export default function EbookDownloadModal({ ebook, isOpen, onClose }: ModalProp
                 id="ebLiveTerms"
                 required
                 checked={formData.terms}
-                onChange={(e) => setFormData({ ...formData, terms: e.target.checked })}
+                onChange={(e) =>
+                  setFormData({ ...formData, terms: e.target.checked })
+                }
                 style={{
                   marginTop: "4px",
                   accentColor: "#00a651",
@@ -412,7 +454,11 @@ export default function EbookDownloadModal({ ebook, isOpen, onClose }: ModalProp
                 <a
                   href="/terms-and-conditions"
                   target="_blank"
-                  style={{ color: "#00a651", textDecoration: "none", fontWeight: 500 }}
+                  style={{
+                    color: "#00a651",
+                    textDecoration: "none",
+                    fontWeight: 500,
+                  }}
                 >
                   Terms &amp; Conditions
                 </a>{" "}
@@ -420,7 +466,11 @@ export default function EbookDownloadModal({ ebook, isOpen, onClose }: ModalProp
                 <a
                   href="/privacy-policy"
                   target="_blank"
-                  style={{ color: "#00a651", textDecoration: "none", fontWeight: 500 }}
+                  style={{
+                    color: "#00a651",
+                    textDecoration: "none",
+                    fontWeight: 500,
+                  }}
                 >
                   Privacy Policy
                 </a>
@@ -457,7 +507,12 @@ export default function EbookDownloadModal({ ebook, isOpen, onClose }: ModalProp
                   type="checkbox"
                   checked={captchaChecked}
                   onChange={(e) => setCaptchaChecked(e.target.checked)}
-                  style={{ width: "20px", height: "20px", cursor: "pointer", accentColor: "#00a651" }}
+                  style={{
+                    width: "20px",
+                    height: "20px",
+                    cursor: "pointer",
+                    accentColor: "#00a651",
+                  }}
                 />
                 <span>I&apos;m not a robot</span>
               </label>
@@ -466,9 +521,22 @@ export default function EbookDownloadModal({ ebook, isOpen, onClose }: ModalProp
                 <img
                   src="https://www.gstatic.com/recaptcha/api2/logo_48.png"
                   alt="reCAPTCHA"
-                  style={{ width: "26px", height: "26px", display: "block", margin: "0 auto" }}
+                  style={{
+                    width: "26px",
+                    height: "26px",
+                    display: "block",
+                    margin: "0 auto",
+                  }}
                 />
-                <span style={{ fontSize: "9px", color: "#6b7280", display: "block" }}>reCAPTCHA</span>
+                <span
+                  style={{
+                    fontSize: "9px",
+                    color: "#6b7280",
+                    display: "block",
+                  }}
+                >
+                  reCAPTCHA
+                </span>
               </div>
             </div>
 
@@ -517,14 +585,32 @@ export default function EbookDownloadModal({ ebook, isOpen, onClose }: ModalProp
             >
               ✓
             </div>
-            <h3 style={{ fontSize: "24px", fontWeight: 800, color: "#1e293b", marginBottom: "8px" }}>
+            <h3
+              style={{
+                fontSize: "24px",
+                fontWeight: 800,
+                color: "#1e293b",
+                marginBottom: "8px",
+              }}
+            >
               Thank You!
             </h3>
-            <p style={{ fontSize: "14px", color: "#475569", lineHeight: "1.6", marginBottom: "20px" }}>
-              Your e-book <strong>&quot;{ebook.name}&quot;</strong> has been prepared for download. A copy has also been sent to <strong>{formData.email}</strong>.
+            <p
+              style={{
+                fontSize: "14px",
+                color: "#475569",
+                lineHeight: "1.6",
+                marginBottom: "20px",
+              }}
+            >
+              Your e-book <strong>&quot;{ebook.name}&quot;</strong> has been
+              prepared for download. A copy has also been sent to{" "}
+              <strong>{formData.email}</strong>.
             </p>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+            <div
+              style={{ display: "flex", flexDirection: "column", gap: "10px" }}
+            >
               <a
                 href={ebook.image}
                 download={`${ebook.name}.jpg`}
