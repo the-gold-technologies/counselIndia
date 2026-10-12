@@ -1,10 +1,8 @@
 "use client";
-import React, { useState, use } from "react";
+import React, { useState, useEffect, use } from "react";
 import Link from "next/link";
-import {
-  COUNSELLORS_DATA,
-  CounselorItem,
-} from "@/components/counsellors-network/data/counsellorsData";
+import { CounselorItem } from "@/types/counselor";
+import { getCounselorByIdOrSlug } from "@/services/counselorService";
 import BookSessionModal from "@/components/counsellors-network/BookSessionModal";
 import LoginModal from "@/components/auth/LoginModal";
 import SuccessStoriesCarousel from "@/components/counsellors-network/SuccessStoriesCarousel";
@@ -23,27 +21,52 @@ export default function CounsellorDetailsPage({ params }: PageProps) {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
-  // Extract ID from slug
-  const parts = slug.split("-");
-  const parsedId = parseInt(parts[parts.length - 1], 10);
+  // Dynamic Counselor Profile State
+  const [counselor, setCounselor] = useState<CounselorItem | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  // Find counselor by exact slug, ID, or matching name
-  let counselor: CounselorItem | undefined = COUNSELLORS_DATA.find(
-    (c) => c.slug === slug,
-  );
-  if (!counselor && !isNaN(parsedId)) {
-    counselor = COUNSELLORS_DATA.find((c) => c.id === parsedId);
-  }
+  useEffect(() => {
+    let isMounted = true;
+    async function loadData() {
+      try {
+        setIsLoading(true);
+        const data = await getCounselorByIdOrSlug(slug);
+        if (isMounted) {
+          setCounselor(data);
+        }
+      } catch (err) {
+        console.error("Failed to load counsellor details from Admin API:", err);
+      } finally {
+        if (isMounted) {
+          setIsLoading(false);
+        }
+      }
+    }
 
-  if (!counselor) {
-    const normalizedSlug = slug.toLowerCase();
-    counselor = COUNSELLORS_DATA.find((c) =>
-      normalizedSlug.includes(c.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")),
+    loadData();
+    return () => {
+      isMounted = false;
+    };
+  }, [slug]);
+
+  if (isLoading || !counselor) {
+    return (
+      <div
+        className="main-wrapper d-flex justify-content-center align-items-center"
+        style={{ minHeight: "80vh", backgroundColor: "#f8fafc" }}
+      >
+        <div className="text-center">
+          <div
+            className="spinner-border text-success"
+            role="status"
+            style={{ width: "3rem", height: "3rem" }}
+          >
+            <span className="visually-hidden">Loading counsellor...</span>
+          </div>
+          <p className="mt-3 text-muted">Loading profile details...</p>
+        </div>
+      </div>
     );
-  }
-
-  if (!counselor) {
-    counselor = COUNSELLORS_DATA[0];
   }
 
   return (

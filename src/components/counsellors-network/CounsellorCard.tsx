@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import { CounselorItem } from "./data/counsellorsData";
+import { CounselorItem } from "@/types/counselor";
 
 interface CardProps {
   counselor: CounselorItem;

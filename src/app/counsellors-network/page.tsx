@@ -1,15 +1,77 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import NetworkAnimatedBackground from "@/components/counsellors-network/NetworkAnimatedBackground";
 import NetworkBanner from "@/components/counsellors-network/NetworkBanner";
 import CounsellorCard from "@/components/counsellors-network/CounsellorCard";
 import BookSessionModal from "@/components/counsellors-network/BookSessionModal";
-import { COUNSELLORS_DATA, CounselorItem } from "@/components/counsellors-network/data/counsellorsData";
+import { CounselorItem } from "@/types/counselor";
+import { getVerifiedCounselors } from "@/services/counselorService";
+
+const BATCH_SIZE = 12;
 
 export default function CounsellorsNetworkPage() {
+  const [counselors, setCounselors] = useState<CounselorItem[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [visibleCount, setVisibleCount] = useState(BATCH_SIZE);
+
   // Booking Modal State
   const [selectedCounselor, setSelectedCounselor] = useState<CounselorItem | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Infinite Scroll Sentinel
+  const sentinelRef = useRef<HTMLDivElement | null>(null);
+
+  // Dynamic fetch directly from Admin API
+  useEffect(() => {
+    let isMounted = true;
+    async function loadData() {
+      try {
+        setIsLoading(true);
+        const data = await getVerifiedCounselors();
+        if (isMounted) {
+          setCounselors(data);
+        }
+      } catch (err) {
+        console.error("Failed to load counsellors from Admin API:", err);
+      } finally {
+        if (isMounted) {
+          setIsLoading(false);
+        }
+      }
+    }
+
+    loadData();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  // Infinite Scroll Observer
+  useEffect(() => {
+    const target = sentinelRef.current;
+    if (!target) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && visibleCount < counselors.length) {
+          setVisibleCount((prev) => Math.min(prev + BATCH_SIZE, counselors.length));
+        }
+      },
+      {
+        root: null,
+        rootMargin: "300px",
+        threshold: 0.1,
+      },
+    );
+
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, [visibleCount, counselors.length]);
+
+  // Displayed slice for infinite scroll
+  const displayedCounselors = useMemo(() => {
+    return counselors.slice(0, visibleCount);
+  }, [counselors, visibleCount]);
 
   const handleOpenBooking = (counselor: CounselorItem) => {
     setSelectedCounselor(counselor);
@@ -23,7 +85,7 @@ export default function CounsellorsNetworkPage() {
         <NetworkAnimatedBackground />
 
         <main className="counsellors-network-main-page position-relative" style={{ zIndex: 1 }}>
-          {/* Page Banner with Shapes (matches PHP page-banner) */}
+          {/* Page Banner with Shapes */}
           <NetworkBanner />
 
           {/* Heading */}
@@ -38,14 +100,24 @@ export default function CounsellorsNetworkPage() {
               <div className="archive-filter-bars" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "15px", marginBottom: "25px" }}>
                 <div className="archive-filter-bar">
                   <p style={{ margin: 0 }}>
-                    We found <span><strong>{COUNSELLORS_DATA.length}</strong></span> counsellors for you
+                    We found <span><strong>{counselors.length}</strong></span> counsellors for you
                   </p>
                 </div>
               </div>
 
+              {/* Initial Loading Skeleton */}
+              {isLoading && counselors.length === 0 && (
+                <div style={{ textAlign: "center", padding: "80px 0" }}>
+                  <div className="spinner-border text-success" role="status" style={{ width: "3rem", height: "3rem" }}>
+                    <span className="visually-hidden">Loading verified counsellors...</span>
+                  </div>
+                  <p className="mt-3 text-muted">Loading counsellors directly from directory...</p>
+                </div>
+              )}
+
               {/* Counsellor Cards Grid (3 Columns) */}
               <div className="row">
-                {COUNSELLORS_DATA.map((counselor) => (
+                {displayedCounselors.map((counselor) => (
                   <CounsellorCard
                     key={counselor.id}
                     counselor={counselor}
@@ -53,12 +125,30 @@ export default function CounsellorsNetworkPage() {
                   />
                 ))}
               </div>
+
+              {/* Infinite Scroll Bottom Sentinel */}
+              <div
+                ref={sentinelRef}
+                style={{
+                  height: "60px",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  marginTop: "20px",
+                }}
+              >
+                {visibleCount < counselors.length && !isLoading && (
+                  <div className="spinner-border text-success" role="status" style={{ width: "2rem", height: "2rem" }}>
+                    <span className="visually-hidden">Loading more...</span>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </main>
       </div>
 
-      {/* Booking Modal (Outside main-wrapper) */}
+      {/* Booking Modal */}
       <BookSessionModal
         counselor={selectedCounselor}
         isOpen={isModalOpen}

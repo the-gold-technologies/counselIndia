@@ -1,0 +1,64 @@
+export interface CounselorItem {
+  id: number;
+  slug: string;
+  name: string;
+  designation: string;
+  image: string;
+  experience: string;
+  language: string;
+  fees: string;
+  location: string;
+  rating: number;
+  isAvailable: boolean;
+  whatBringsYou: string;
+  about: string;
+  education: string;
+  experienceDetails: string;
+  achievements: string;
+}
+
+export interface DbCounselor {
+  id: string;
+  sNo?: number;
+  liveId?: string;
+  name: string;
+  email: string;
+  mobile: string;
+  address?: string;
+  city?: string;
+  country?: string;
+  designation?: string;
+  language?: string;
+  education?: string;
+  experience?: string;
+  specialty?: string;
+  specialty2?: string;
+  expertise?: string;
+  rciNumber?: string;
+  image?: string;
+  identityImage?: string;
+  qualificationProof?: string;
+  cvUrl?: string;
+  isApproved: boolean;
+  isOnline: boolean;
+  videoStatus?: boolean;
+  videoPrice?: number;
+  audioStatus?: boolean;
+  audioPrice?: number;
+  chatStatus?: boolean;
+  chatPrice?: number;
+  expectedCharges?: number;
+  councellFees?: number;
+  commission?: number;
+  position?: number;
+  about?: string;
+  achievements?: string;
+  whatBringsYou?: string;
+  status: string;
+  forCourse?: string;
+  personalCounselling?: string;
+  addedOn?: string;
+  updatedOn?: string;
+  createdAt?: string;
+  updatedAt?: string;
+}

@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { CounselorItem } from "./data/counsellorsData";
+import { CounselorItem } from "@/types/counselor";
 
 interface ModalProps {
   counselor: CounselorItem | null;
