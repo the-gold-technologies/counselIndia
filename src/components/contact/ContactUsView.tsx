@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { useSiteSettings } from "@/hooks/useSiteSettings";
 
 const COUNTRIES = [
   { name: "Please Select Country", code: "" },
@@ -167,6 +168,7 @@ const labelStyle: React.CSSProperties = {
 };
 
 export default function ContactUsView() {
+  const { settings } = useSiteSettings();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -437,8 +439,7 @@ export default function ContactUsView() {
                     <span style={{ fontWeight: 700, color: "#212529" }}>
                       Address:
                     </span>{" "}
-                    Office no 12A20, Floor No-13, E-Square sector 96, Noida,
-                    Uttar Pradesh 201301
+                    {settings.contactUsHeadOffice}
                   </p>
 
                   <div>

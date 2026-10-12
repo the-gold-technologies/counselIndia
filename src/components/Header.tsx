@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
+import { useSiteSettings } from "@/hooks/useSiteSettings";
 import AiCounsellingModal from "./common/AiCounsellingModal";
 import LoginModal from "./auth/LoginModal";
 
@@ -172,6 +173,8 @@ export const NAV_COURSE_CATEGORIES: NavCategory[] = [
 ];
 
 export default function Header() {
+  const { settings } = useSiteSettings();
+  const logoSrc = settings.logo;
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [expandedMenu, setExpandedMenu] = useState<string | null>(null);
   const [isAiModalOpen, setIsAiModalOpen] = useState(false);
@@ -286,10 +289,11 @@ export default function Header() {
                 style={{ display: "block" }}
               >
                 <img
-                  src="/assets/images/dark-logo.png"
+                  src={logoSrc}
                   width="248"
                   height="54"
-                  alt="Counsel India Logo"
+                  alt={settings.title}
+                  onError={(e) => { (e.target as HTMLImageElement).src = "/assets/images/dark-logo.png"; }}
                   style={{
                     maxHeight: "54px",
                     width: "auto",
@@ -976,8 +980,9 @@ export default function Header() {
                     onClick={closeMobileMenu}
                   >
                     <img
-                      src="/assets/images/dark-logo.png"
-                      alt="Counsel India"
+                      src={logoSrc}
+                      alt={settings.title}
+                      onError={(e) => { (e.target as HTMLImageElement).src = "/assets/images/dark-logo.png"; }}
                       style={{ width: "150px", height: "auto", display: "block" }}
                     />
                   </Link>

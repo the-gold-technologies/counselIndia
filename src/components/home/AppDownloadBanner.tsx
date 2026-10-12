@@ -1,8 +1,10 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import { useSiteSettings } from "@/hooks/useSiteSettings";
 
 export default function AppDownloadBanner() {
+  const { settings } = useSiteSettings();
   return (
     <>
       {/* 1. Download Start */}
@@ -112,7 +114,7 @@ export default function AppDownloadBanner() {
                   </a>
 
                   <Link
-                    href="/contact"
+                    href="/contact-us"
                     className="btn btn-primary btn-hover-primary get_in px-4 py-2 fw-semibold rounded-2"
                     style={{
                       backgroundColor: "#07a64b",
@@ -168,17 +170,17 @@ export default function AppDownloadBanner() {
                       </h3>
                       <p className="text-white mb-2 font-size-15">
                         Talk to our team :{" "}
-                        <a href="tel:9560477488" className="text-white fw-bold text-decoration-underline">
-                          +91 95604 77488
+                        <a href={`tel:${settings.helplineNumber}`} className="text-white fw-bold text-decoration-underline">
+                          {settings.helplineNumber}
                         </a>
                       </p>
                       <p className="text-white-50 font-size-14 mb-0">
                         Or write to us on{" "}
                         <a
-                          href="mailto:wecare@counselindiaservices.in"
+                          href={`mailto:${settings.supportEmail}`}
                           className="text-white fw-semibold text-decoration-underline"
                         >
-                          wecare@counselindiaservices.in
+                          {settings.supportEmail}
                         </a>
                         , our Program Advisor will reach out to you shortly.
                       </p>

@@ -1,14 +1,16 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import { useSiteSettings } from "@/hooks/useSiteSettings";
 
 export default function FloatingContactButtons() {
+  const { settings } = useSiteSettings();
   return (
     <>
       {/* Left Floating Call Support Button */}
       <div className="dropup">
         <a
-          href="https://api.whatsapp.com/send?phone=+918448519298&text=Hi."
+          href={`https://api.whatsapp.com/send?phone=${settings.whatsNumber}&text=Hi.`}
           target="_blank"
           rel="noreferrer"
           className="dropup-btn"

@@ -1,9 +1,11 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
+import { useSiteSettings } from "@/hooks/useSiteSettings";
 import CounselorLoginModal from "./auth/CounselorLoginModal";
 
 export default function Footer() {
+  const { settings } = useSiteSettings();
   const [email, setEmail] = useState("");
   const [newsletterSubscribed, setNewsletterSubscribed] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
@@ -143,7 +145,7 @@ export default function Footer() {
                     </li>
                     <li>
                       <Link
-                        href="/contact"
+                        href="/contact-us"
                         className="text-white hover-text-primary text-decoration-none"
                       >
                         Contact Us
@@ -311,9 +313,7 @@ export default function Footer() {
                     className="footer-widget__description mb-2 font-size-13 text-white"
                     style={{ lineHeight: "1.6" }}
                   >
-                    Counsel India is India&apos;s fastest growing network of
-                    Counsellors and Psychologists delivering practical learning
-                    and transformative programs in{" "}
+                    {settings.footerTitle}{" "}
                     <Link
                       href="/about"
                       className="primary-text-color text-success text-decoration-underline fw-bold"
@@ -324,10 +324,10 @@ export default function Footer() {
 
                   <div className="footer-widget__info font-size-13 mb-3">
                     <span className="text-white fw-bold d-block">
-                      COUNSELINDIA SERVICES PRIVATE LIMITED
+                      {settings.footerCompanyName}
                     </span>
                     <span className="text-white fw-semibold d-block mt-1">
-                      GST : 09AAICC6447N1Z0
+                      GST : {settings.gstNumber}
                     </span>
 
                     <address
@@ -337,8 +337,7 @@ export default function Footer() {
                       <div className="d-flex align-items-start gap-2 mb-1">
                         <i className="fas fa-map-marker-alt text-white mt-1"></i>
                         <span>
-                          12A20, 13th Floor, E-Square , Sector 96, Noida, Uttar
-                          Pradesh 201301
+                          {settings.footerAddress}
                         </span>
                       </div>
                       <div className="d-flex align-items-start gap-2">
@@ -354,42 +353,47 @@ export default function Footer() {
                   {/* Social Icons */}
                   <div className="footer-widget__social d-flex align-items-center gap-3 mt-3">
                     <a
-                      href="https://twitter.com/counselindia1?lang=en"
+                      href={settings.footerTwitterLink}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-white hover-text-primary font-size-16"
+                      aria-label="Twitter Profile"
                     >
                       <i className="fab fa-twitter"></i>
                     </a>
                     <a
-                      href="https://www.facebook.com/counselindia/"
+                      href={settings.footerFbLink}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-white hover-text-primary font-size-16"
+                      aria-label="Facebook Page"
                     >
                       <i className="fab fa-facebook-f"></i>
                     </a>
                     <a
-                      href="https://www.instagram.com/counsel_india_/"
+                      href={settings.instaLink}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-white hover-text-primary font-size-16"
+                      aria-label="Instagram Profile"
                     >
                       <i className="fab fa-instagram"></i>
                     </a>
                     <a
-                      href="https://www.youtube.com/channel/UCWnALe3hLVdGJzVOuEgGoYg"
+                      href={settings.footerYoutubeLink}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-white hover-text-primary font-size-16"
+                      aria-label="YouTube Channel"
                     >
                       <i className="fab fa-youtube"></i>
                     </a>
                     <a
-                      href="https://www.linkedin.com/company/28905636/admin/"
+                      href={settings.footerLinkedinLink}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-white hover-text-primary font-size-16"
+                      aria-label="LinkedIn Page"
                     >
                       <i className="fab fa-linkedin-in"></i>
                     </a>
@@ -655,7 +659,7 @@ export default function Footer() {
             <p className="text-center mb-0 font-size-13 text-white">
               &copy; {new Date().getFullYear()}{" "}
               <span className="text-white">
-                CounselIndia Services Private Limited. All Rights Reserved
+                {settings.footerCompanyName}. All Rights Reserved
               </span>
             </p>
           </div>
