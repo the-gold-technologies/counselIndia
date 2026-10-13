@@ -220,8 +220,8 @@ export default function EligibilityForm() {
         gender: formData.gender,
         age: formData.age,
         proBackground: formData.proBackground,
-        purpose: formData.purposeGiveTest,
-        marks: "Eligible",
+        purposeGiveTest: formData.purposeGiveTest,
+        result: "Eligible",
       },
     });
     setIsSubmitting(false);
@@ -274,7 +274,7 @@ export default function EligibilityForm() {
                     Form Submitted Successfully!
                   </h4>
                   <p className="text-muted mb-4 font-size-14">
-                    Redirecting to the assessment questions...
+                    Thank you for submitting your eligibility details. Our counselling team will connect with you shortly.
                   </p>
                   <button
                     onClick={() => setSubmitSuccess(false)}

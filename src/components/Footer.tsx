@@ -317,6 +317,22 @@ export default function Footer() {
               {/* Col 5: Company Info & Address */}
               <div className="col-lg-4 col-md-8 col-12">
                 <div className="footer-widget">
+                  <div className="footer-widget__logo mb-3">
+                    <Link href="/" className="d-inline-block">
+                      <img
+                        src="/assets/images/logo-light.png"
+                        alt="Counsel India"
+                        width={148}
+                        height={54}
+                        style={{
+                          width: "148px",
+                          height: "54.06px",
+                          objectFit: "contain",
+                          display: "block",
+                        }}
+                      />
+                    </Link>
+                  </div>
                   <p
                     className="footer-widget__description mb-2 font-size-13 text-white"
                     style={{ lineHeight: "1.6" }}
