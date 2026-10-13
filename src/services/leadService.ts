@@ -1,6 +1,6 @@
 /**
  * Lead Submission Service for Counsel India
- * Submits public website leads to the centralized Admin Panel API (http://localhost:3001/api/leads)
+ * Submits public website leads to the centralized Admin Panel API
  * Each form maps strictly to its respective leads table/category.
  */
 
@@ -43,10 +43,9 @@ export interface LeadSubmissionPayload {
 }
 
 export async function submitLead(
-  payload: LeadSubmissionPayload
+  payload: LeadSubmissionPayload,
 ): Promise<{ success: boolean; data?: any; message?: string; error?: string }> {
-  const adminUrl =
-    process.env.NEXT_PUBLIC_ADMIN_API_URL || "http://localhost:3001";
+  const adminUrl = process.env.NEXT_PUBLIC_ADMIN_API_URL;
 
   try {
     const res = await fetch(`${adminUrl}/api/leads`, {
@@ -72,7 +71,7 @@ export async function submitLead(
   } catch (error: any) {
     console.error(
       `[LeadService] Error submitting lead to category '${payload.category}':`,
-      error
+      error,
     );
     return {
       success: false,

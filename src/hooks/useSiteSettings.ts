@@ -10,8 +10,7 @@ export function useSiteSettings() {
 
   useEffect(() => {
     let isMounted = true;
-    const adminUrl =
-      process.env.NEXT_PUBLIC_ADMIN_API_URL || "http://localhost:3001";
+    const adminUrl = process.env.NEXT_PUBLIC_ADMIN_API_URL;
 
     fetch(`${adminUrl}/api/settings`)
       .then((res) => res.json())
