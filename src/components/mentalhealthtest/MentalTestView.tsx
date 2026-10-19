@@ -169,20 +169,15 @@ export default function MentalTestView({ testNumber, initialUser }: MentalTestVi
     try {
       if (activeId) {
         // Update the existing lead that was created by the modal
-        await updatePersonalityTestResult(
-          String(activeId),
-          finalScore,
-          formattedAnswers,
-          {
-            name: candidateName.trim(),
-            email: candidateEmail.trim(),
-            mobile: candidateMobile.trim(),
-            state: candidateState.trim() || undefined,
-            score: calculatedScore,
-            marks: finalScore,
-            courseName: config.title,
-          }
-        );
+        await updatePersonalityTestResult(String(activeId), finalScore, formattedAnswers, {
+          name: candidateName.trim(),
+          email: candidateEmail.trim(),
+          mobile: candidateMobile.trim(),
+          state: candidateState.trim() || undefined,
+          score: calculatedScore,
+          marks: finalScore,
+          courseName: config.title,
+        });
       } else {
         // Only if no lead was created previously, create one with complete details
         const res = await submitLead({

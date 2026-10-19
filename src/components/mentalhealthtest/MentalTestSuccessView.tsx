@@ -278,7 +278,10 @@ export default function MentalTestSuccessView({
           borderBottom: "1px solid rgba(0, 0, 0, 0.05)",
         }}
       >
-        <div className="container" style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 20px" }}>
+        <div
+          className="container"
+          style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 20px" }}
+        >
           {/* Main Assessment Title with Serif Typography and Hand-Drawn Squiggle Underline */}
           <div className="text-center mb-4">
             <h1
@@ -424,7 +427,10 @@ export default function MentalTestSuccessView({
           paddingBottom: "90px",
         }}
       >
-        <div className="container" style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 20px" }}>
+        <div
+          className="container"
+          style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 20px" }}
+        >
           {/* Centered Heading with Squiggle Underline */}
           <div className="text-center mb-5">
             <h2
@@ -478,7 +484,14 @@ export default function MentalTestSuccessView({
                     }}
                   >
                     {/* Card Image */}
-                    <div style={{ position: "relative", width: "100%", height: "240px", overflow: "hidden" }}>
+                    <div
+                      style={{
+                        position: "relative",
+                        width: "100%",
+                        height: "240px",
+                        overflow: "hidden",
+                      }}
+                    >
                       <img
                         src={
                           prog.cover_image ||
@@ -538,7 +551,9 @@ export default function MentalTestSuccessView({
                             marginBottom: "14px",
                           }}
                         >
-                          <span style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}>
+                          <span
+                            style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}
+                          >
                             <svg
                               width="15"
                               height="15"
@@ -552,7 +567,9 @@ export default function MentalTestSuccessView({
                             </svg>
                             {prog.list_duration || "6 months"}
                           </span>
-                          <span style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}>
+                          <span
+                            style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}
+                          >
                             <svg
                               width="15"
                               height="15"

@@ -42,7 +42,7 @@ export default async function MentalTest3Page({ params, searchParams }: PageProp
         ? decodeURIComponent(slug[1])
         : "";
   let state = typeof sParams.state === "string" ? decodeURIComponent(sParams.state) : "";
-  
+
   if (leadId && (!name || !email || !mobile)) {
     try {
       const entry = await getPersonalityEntry(leadId);
