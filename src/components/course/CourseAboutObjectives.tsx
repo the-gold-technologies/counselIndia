@@ -47,6 +47,7 @@ export default function CourseAboutObjectives({
                   fontSize: "15px",
                   color: "#555555",
                   lineHeight: "1.7",
+                  whiteSpace: "pre-line",
                 }}
               >
                 {p}
@@ -76,6 +77,7 @@ export default function CourseAboutObjectives({
                 fontSize: "15px",
                 color: "#555555",
                 lineHeight: "1.7",
+                whiteSpace: "pre-line",
               }}
             >
               {skillIndiaAdvantage.text}

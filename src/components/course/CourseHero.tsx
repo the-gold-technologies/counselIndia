@@ -39,7 +39,7 @@ export default function CourseHero({ course, onOpenBrochure }: Props) {
                 {/* Description */}
                 <div className="tutor-course-top-info__meta">
                   <div className="tutor-course-top-info__meta-update text-white">
-                    <p>{course.description}</p>
+                    <p style={{ whiteSpace: "pre-line" }}>{course.description}</p>
                   </div>
                 </div>
 

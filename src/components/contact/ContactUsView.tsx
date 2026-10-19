@@ -388,6 +388,7 @@ export default function ContactUsView() {
                       fontFamily: "'Poppins', sans-serif",
                       lineHeight: "1.6",
                       textAlign: "left",
+                      whiteSpace: "pre-line",
                     }}
                   >
                     <span style={{ fontWeight: 700, color: "#212529" }}>Address:</span>{" "}

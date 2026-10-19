@@ -409,6 +409,7 @@ export default function AllCoursesList() {
                         margin: "0 0 18px",
                         fontFamily: "'Poppins', sans-serif",
                         maxWidth: "580px",
+                        whiteSpace: "pre-line",
                       }}
                     >
                       {d.subdescription}

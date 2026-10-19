@@ -420,6 +420,7 @@ export default function CounsellorDetailsPage({ params }: PageProps) {
                     lineHeight: "1.75",
                     fontSize: "14px",
                     margin: 0,
+                    whiteSpace: "pre-line",
                   }}
                 >
                   {counselor.whatBringsYou ||
@@ -446,6 +447,7 @@ export default function CounsellorDetailsPage({ params }: PageProps) {
                     lineHeight: "1.75",
                     fontSize: "14px",
                     margin: 0,
+                    whiteSpace: "pre-line",
                   }}
                 >
                   {counselor.about ||
@@ -472,6 +474,7 @@ export default function CounsellorDetailsPage({ params }: PageProps) {
                     lineHeight: "1.75",
                     fontSize: "14px",
                     margin: 0,
+                    whiteSpace: "pre-line",
                   }}
                 >
                   {counselor.education || "Post Graduate"}
@@ -497,6 +500,7 @@ export default function CounsellorDetailsPage({ params }: PageProps) {
                     lineHeight: "1.75",
                     fontSize: "14px",
                     margin: 0,
+                    whiteSpace: "pre-line",
                   }}
                 >
                   {counselor.experienceDetails || counselor.experience || "1 Years"}
@@ -522,6 +526,7 @@ export default function CounsellorDetailsPage({ params }: PageProps) {
                     lineHeight: "1.75",
                     fontSize: "14px",
                     margin: 0,
+                    whiteSpace: "pre-line",
                   }}
                 >
                   {counselor.achievements ||
