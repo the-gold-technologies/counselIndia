@@ -108,7 +108,8 @@ export default function GrowthCourseEnrollModal({ course, isOpen, onClose }: Pro
                   type="text"
                   required
                   placeholder="Enter your full name"
-                  className="form-control rounded-3 py-2 px-3 font-size-14 border"
+                  className="form-control rounded-3 py-2 px-3 font-size-14"
+                  style={{ backgroundColor: "#ffffff", border: "1px solid #d1d5db" }}
                   value={formData.fullName}
                   onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                 />
@@ -122,7 +123,8 @@ export default function GrowthCourseEnrollModal({ course, isOpen, onClose }: Pro
                   type="email"
                   required
                   placeholder="name@example.com"
-                  className="form-control rounded-3 py-2 px-3 font-size-14 border"
+                  className="form-control rounded-3 py-2 px-3 font-size-14"
+                  style={{ backgroundColor: "#ffffff", border: "1px solid #d1d5db" }}
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 />
@@ -136,7 +138,8 @@ export default function GrowthCourseEnrollModal({ course, isOpen, onClose }: Pro
                   type="tel"
                   required
                   placeholder="10-digit mobile number"
-                  className="form-control rounded-3 py-2 px-3 font-size-14 border"
+                  className="form-control rounded-3 py-2 px-3 font-size-14"
+                  style={{ backgroundColor: "#ffffff", border: "1px solid #d1d5db" }}
                   value={formData.phone}
                   onChange={(e) =>
                     setFormData({ ...formData, phone: e.target.value.replace(/\D/g, "") })
@@ -145,13 +148,12 @@ export default function GrowthCourseEnrollModal({ course, isOpen, onClose }: Pro
               </div>
 
               <div className="mb-4">
-                <label className="form-label font-size-13 fw-semibold text-dark">
-                  State / City
-                </label>
+                <label className="form-label font-size-13 fw-semibold text-dark">Enter City</label>
                 <input
                   type="text"
-                  placeholder="Enter your State or City"
-                  className="form-control rounded-3 py-2 px-3 font-size-14 border"
+                  placeholder="Enter your City"
+                  className="form-control rounded-3 py-2 px-3 font-size-14"
+                  style={{ backgroundColor: "#ffffff", border: "1px solid #d1d5db" }}
                   value={formData.state}
                   onChange={(e) => setFormData({ ...formData, state: e.target.value })}
                 />

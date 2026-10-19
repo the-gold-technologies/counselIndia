@@ -31,6 +31,17 @@ export default function GrowthCoursesCountdownCTA({ onCtaClick }: Props) {
     return () => clearInterval(interval);
   }, []);
 
+  const handleCtaClick = () => {
+    if (onCtaClick) {
+      onCtaClick();
+    } else {
+      const el = document.getElementById("growth-courses-grid");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+
   return (
     <div className="countdown-signup-section py-5">
       <div className="container custom-container py-4">
@@ -51,18 +62,19 @@ export default function GrowthCoursesCountdownCTA({ onCtaClick }: Props) {
                 it!
               </p>
 
-              {/* Coral CTA Pill Button */}
+              {/* Coral Urgency CTA Button */}
               <div className="pt-2">
                 <button
                   type="button"
-                  onClick={onCtaClick}
+                  onClick={handleCtaClick}
                   className="countdown-btn border-0 text-decoration-none"
+                  title="Browse growth courses"
                 >
-                  <span className="btn-prefix me-2">HURRY! ONLY</span>
+                  <span className="btn-prefix me-2">Hurry! Only</span>
                   <span className="btn-time">
                     {!timeLeft.isEnded
-                      ? `${timeLeft.minutes}M ${timeLeft.seconds < 10 ? `0${timeLeft.seconds}` : timeLeft.seconds}S LEFT!`
-                      : "OFFER ENDED!"}
+                      ? `${timeLeft.minutes}m ${timeLeft.seconds < 10 ? `0${timeLeft.seconds}` : timeLeft.seconds}s left!`
+                      : "Offer has ended!"}
                   </span>
                 </button>
               </div>
@@ -117,25 +129,57 @@ export default function GrowthCoursesCountdownCTA({ onCtaClick }: Props) {
         }
 
         .countdown-btn {
-          background-color: #f85d5d;
+          background-color: #f55353;
           color: #ffffff;
           border-radius: 50px;
-          padding: 16px 36px;
+          padding: 14px 34px;
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          box-shadow: 0 10px 24px rgba(248, 93, 93, 0.4);
+          box-shadow: 0 4px 12px rgba(245, 83, 83, 0.3);
           cursor: pointer;
+          position: relative;
+          overflow: hidden;
           transition:
-            transform 0.2s ease,
-            background-color 0.2s ease,
-            box-shadow 0.2s ease;
+            transform 0.25s ease,
+            background-color 0.25s ease,
+            box-shadow 0.25s ease;
         }
 
         .countdown-btn:hover {
-          background-color: #ef4444;
-          transform: translateY(-2px);
-          box-shadow: 0 14px 28px rgba(248, 93, 93, 0.5);
+          background-color: #ff6f61;
+          transform: translateY(-2px) scale(1.02);
+          box-shadow: 0 8px 20px rgba(245, 83, 83, 0.45);
+        }
+
+        .countdown-btn:before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 300%;
+          height: 300%;
+          background-color: rgba(255, 255, 255, 0.2);
+          border-radius: 50%;
+          transform: translate(-50%, -50%);
+          animation: pulse-animation 2s infinite;
+          opacity: 0;
+          pointer-events: none;
+        }
+
+        @keyframes pulse-animation {
+          0% {
+            transform: translate(-50%, -50%) scale(0.8);
+            opacity: 0.6;
+          }
+          50% {
+            transform: translate(-50%, -50%) scale(1.2);
+            opacity: 0;
+          }
+          100% {
+            transform: translate(-50%, -50%) scale(0.8);
+            opacity: 0.6;
+          }
         }
 
         .btn-prefix {

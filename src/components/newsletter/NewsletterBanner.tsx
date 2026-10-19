@@ -10,7 +10,7 @@ export default function NewsletterBanner() {
     e.preventDefault();
     if (email.trim()) {
       await submitLead({
-        category: "newsletter",
+        category: "subscription",
         email: email.trim(),
         medium: "Website Newsletter Banner",
         source: "Newsletter Page Banner",

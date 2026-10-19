@@ -9,14 +9,20 @@ import NewsletterBenefits from "@/components/newsletter/NewsletterBenefits";
 import NewsletterTestimonials from "@/components/newsletter/NewsletterTestimonials";
 import NewsletterBottomCTA from "@/components/newsletter/NewsletterBottomCTA";
 import NewsletterDownloadModal from "@/components/newsletter/NewsletterDownloadModal";
+import NewsletterSubscribeModal from "@/components/newsletter/NewsletterSubscribeModal";
 
 export default function NewsletterPage() {
   const [selectedNewsletter, setSelectedNewsletter] = useState<NewsletterItem | null>(null);
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
+  const [isSubscribeModalOpen, setIsSubscribeModalOpen] = useState(false);
 
   const handleOpenDownloadModal = (item?: NewsletterItem) => {
     setSelectedNewsletter(item || FEATURED_NEWSLETTERS[0]);
     setIsDownloadModalOpen(true);
+  };
+
+  const handleOpenSubscribeModal = () => {
+    setIsSubscribeModalOpen(true);
   };
 
   return (
@@ -28,7 +34,7 @@ export default function NewsletterPage() {
       <NewsletterFeaturedArticles
         newsletters={FEATURED_NEWSLETTERS}
         onDownloadClick={handleOpenDownloadModal}
-        onSubscribeClick={() => handleOpenDownloadModal()}
+        onSubscribeClick={handleOpenSubscribeModal}
       />
 
       {/* 3. Benefits Infographic Banner */}
@@ -38,9 +44,15 @@ export default function NewsletterPage() {
       <NewsletterTestimonials />
 
       {/* 5. Bottom Frame-716 CTA with Subscriber Badges */}
-      <NewsletterBottomCTA onSubscribeClick={() => handleOpenDownloadModal()} />
+      <NewsletterBottomCTA onSubscribeClick={handleOpenSubscribeModal} />
 
-      {/* 6. Lead Capture Download Modal (#viewModal) & OTP Verification (#otpModal2) */}
+      {/* 6. Newsletter Subscription Modal (Clean 3-field form, strictly no download) */}
+      <NewsletterSubscribeModal
+        isOpen={isSubscribeModalOpen}
+        onClose={() => setIsSubscribeModalOpen(false)}
+      />
+
+      {/* 7. Lead Capture Download Modal for specific newsletter editions */}
       <NewsletterDownloadModal
         newsletter={selectedNewsletter}
         isOpen={isDownloadModalOpen}

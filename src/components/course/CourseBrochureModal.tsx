@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { submitLead } from "@/services/leadService";
 import { useSiteSettings } from "@/hooks/useSiteSettings";
+import { getCitiesForState } from "@/data/indianLocations";
 
 interface ModalProps {
   isOpen: boolean;
@@ -108,6 +109,8 @@ export default function CourseBrochureModal({
     hearAbout: "",
     terms: false,
   });
+
+  const availableCities = getCitiesForState(formData.state);
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
@@ -485,7 +488,7 @@ export default function CourseBrochureModal({
               <select
                 required
                 value={formData.state}
-                onChange={(e) => setFormData({ ...formData, state: e.target.value })}
+                onChange={(e) => setFormData({ ...formData, state: e.target.value, city: "" })}
                 style={{
                   ...inputStyle,
                   cursor: "pointer",
@@ -504,19 +507,30 @@ export default function CourseBrochureModal({
               </select>
             </div>
 
-            {/* Enter City */}
+            {/* Select City */}
             <div>
               <label style={labelStyle}>
-                Enter City<span style={{ color: "#ef4444" }}>*</span>
+                Select City<span style={{ color: "#ef4444" }}>*</span>
               </label>
-              <input
-                type="text"
+              <select
                 required
-                placeholder="Enter City"
                 value={formData.city}
                 onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                style={inputStyle}
-              />
+                style={{
+                  ...inputStyle,
+                  cursor: "pointer",
+                  color: formData.city ? "#212529" : "#6c757d",
+                }}
+              >
+                <option value="" disabled hidden>
+                  Please Select City
+                </option>
+                {availableCities.map((c) => (
+                  <option key={c} value={c}>
+                    {c}
+                  </option>
+                ))}
+              </select>
             </div>
 
             {/* How Did You Hear About Us */}

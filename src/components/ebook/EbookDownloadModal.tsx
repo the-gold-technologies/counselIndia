@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { EbookItem } from "./EbookCard";
 import { submitLead } from "@/services/leadService";
+import { ALL_INDIAN_STATES, getCitiesForState } from "@/data/indianLocations";
 
 interface ModalProps {
   ebook: EbookItem | null;
@@ -68,8 +69,7 @@ export default function EbookDownloadModal({ ebook, isOpen, onClose }: ModalProp
     .trim()
     .replace(/\s+/g, "_");
 
-  const availableCities =
-    formData.state && INDIAN_STATES[formData.state] ? INDIAN_STATES[formData.state] : [];
+  const availableCities = getCitiesForState(formData.state);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -358,14 +358,21 @@ export default function EbookDownloadModal({ ebook, isOpen, onClose }: ModalProp
                 required
                 value={formData.state}
                 onChange={(e) => setFormData({ ...formData, state: e.target.value, city: "" })}
-                style={inputStyle}
+                style={{
+                  ...inputStyle,
+                  cursor: "pointer",
+                  color: formData.state ? "#212529" : "#6c757d",
+                }}
               >
-                <option value="">Please Select State</option>
-                {Object.keys(INDIAN_STATES).map((st) => (
+                <option value="" disabled hidden>
+                  Please Select State
+                </option>
+                {ALL_INDIAN_STATES.map((st) => (
                   <option key={st} value={st}>
                     {st}
                   </option>
                 ))}
+                <option value="Other / Outside India">Other / Outside India</option>
               </select>
             </div>
 
@@ -378,9 +385,15 @@ export default function EbookDownloadModal({ ebook, isOpen, onClose }: ModalProp
                 required
                 value={formData.city}
                 onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                style={inputStyle}
+                style={{
+                  ...inputStyle,
+                  cursor: "pointer",
+                  color: formData.city ? "#212529" : "#6c757d",
+                }}
               >
-                <option value="">Please Select City</option>
+                <option value="" disabled hidden>
+                  Please Select City
+                </option>
                 {availableCities.map((ct) => (
                   <option key={ct} value={ct}>
                     {ct}

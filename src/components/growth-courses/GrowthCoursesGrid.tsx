@@ -9,7 +9,7 @@ interface Props {
 
 export default function GrowthCoursesGrid({ onSelectCourse }: Props) {
   return (
-    <div className="blog-section section-padding-01 py-5 bg-white">
+    <div id="growth-courses-grid" className="blog-section section-padding-01 py-5 bg-white">
       <div className="container custom-container py-3">
         <div className="row gy-5">
           {GROWTH_COURSES.map((course) => (

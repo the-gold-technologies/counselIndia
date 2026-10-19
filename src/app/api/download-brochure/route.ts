@@ -13,6 +13,16 @@ export async function GET(request: Request) {
       .trim()
       .replace(/\s+/g, "_");
 
+    const type = searchParams.get("type");
+    const customFilename = searchParams.get("filename");
+    const downloadFilename = customFilename
+      ? customFilename.endsWith(".pdf")
+        ? customFilename
+        : `${customFilename}.pdf`
+      : type === "newsletter"
+        ? `${cleanFilename}.pdf`
+        : `${cleanFilename}_Brochure.pdf`;
+
     // 1. If fileUrl was not provided in the request, look up the course brochure dynamically from the CMS Admin API
     if (!fileUrl && name) {
       try {
@@ -51,7 +61,7 @@ export async function GET(request: Request) {
           return new NextResponse(arrayBuffer, {
             headers: {
               "Content-Type": "application/pdf",
-              "Content-Disposition": `attachment; filename="${cleanFilename}_Brochure.pdf"`,
+              "Content-Disposition": `attachment; filename="${downloadFilename}"`,
             },
           });
         }

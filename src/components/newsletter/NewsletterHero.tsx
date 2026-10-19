@@ -8,59 +8,56 @@ export default function NewsletterHero() {
     email: "",
     phoneNo: "",
   });
-  const [showOtpModal, setShowOtpModal] = useState(false);
-  const [otp, setOtp] = useState("");
-  const [otpSuccess, setOtpSuccess] = useState(false);
-  const [otpError, setOtpError] = useState("");
-  const [resendTimer, setResendTimer] = useState(30);
-  const [timerActive, setTimerActive] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.fullName.trim() || !formData.email.trim() || !formData.phoneNo.trim()) {
+    setErrorMessage("");
+
+    const name = formData.fullName.trim();
+    const email = formData.email.trim();
+    const mobile = formData.phoneNo.trim();
+
+    if (!name) {
+      setErrorMessage("Please enter your full name.");
       return;
     }
-    setShowOtpModal(true);
-    startTimer();
-  };
 
-  const startTimer = () => {
-    setTimerActive(true);
-    setResendTimer(30);
-    const interval = setInterval(() => {
-      setResendTimer((prev) => {
-        if (prev <= 1) {
-          clearInterval(interval);
-          setTimerActive(false);
-          return 30;
-        }
-        return prev - 1;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(email)) {
+      setErrorMessage("Please enter a valid email address.");
+      return;
+    }
+
+    const phoneRegex = /^[6-9]\d{9}$/;
+    if (!phoneRegex.test(mobile)) {
+      setErrorMessage("Please enter a valid 10-digit mobile number starting with 6, 7, 8, or 9.");
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      await submitLead({
+        category: "subscription",
+        name,
+        email,
+        mobile,
+        medium: "Website Newsletter Hero",
+        source: "Newsletter Hero Section",
       });
-    }, 1000);
-  };
-
-  const handleVerifyOtp = async () => {
-    if (!otp.trim()) {
-      setOtpError("Please enter the OTP to proceed.");
-      return;
-    }
-    setOtpError("");
-    setOtpSuccess(true);
-    await submitLead({
-      category: "newsletter",
-      name: formData.fullName.trim(),
-      email: formData.email.trim(),
-      mobile: formData.phoneNo.trim(),
-      medium: "Website Newsletter Hero",
-      source: "Newsletter Hero Section",
-    });
-    setTimeout(() => {
-      setShowOtpModal(false);
-      setOtpSuccess(false);
+      setIsSuccess(true);
       setFormData({ fullName: "", email: "", phoneNo: "" });
-      setOtp("");
-      alert("Subscription successful! Thank you for subscribing.");
-    }, 1500);
+      setTimeout(() => {
+        setIsSuccess(false);
+      }, 5000);
+    } catch (err) {
+      console.error("Hero subscription error:", err);
+      setErrorMessage("Failed to submit subscription. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -129,20 +126,66 @@ export default function NewsletterHero() {
                   type="tel"
                   name="phoneNo"
                   id="phoneNo"
-                  placeholder="Your Mobile Number"
+                  placeholder="Your 10-digit Mobile Number"
                   className="hero-form-input"
                   value={formData.phoneNo}
-                  onChange={(e) => setFormData({ ...formData, phoneNo: e.target.value })}
+                  maxLength={10}
+                  inputMode="numeric"
+                  pattern="[6-9][0-9]{9}"
+                  onChange={(e) => {
+                    const cleaned = e.target.value.replace(/\D/g, "").slice(0, 10);
+                    setFormData({ ...formData, phoneNo: cleaned });
+                    if (errorMessage) setErrorMessage("");
+                  }}
                   required
                 />
               </div>
             </div>
 
+            {errorMessage && (
+              <div
+                style={{
+                  backgroundColor: "#fee2e2",
+                  color: "#991b1b",
+                  padding: "8px 12px",
+                  borderRadius: "5px",
+                  fontSize: "13px",
+                  fontWeight: 600,
+                  marginBottom: "8px",
+                  textAlign: "center",
+                }}
+              >
+                {errorMessage}
+              </div>
+            )}
+
+            {isSuccess && (
+              <div
+                style={{
+                  backgroundColor: "#dcfce7",
+                  color: "#166534",
+                  padding: "8px 12px",
+                  borderRadius: "5px",
+                  fontSize: "13px",
+                  fontWeight: 600,
+                  marginBottom: "8px",
+                  textAlign: "center",
+                }}
+              >
+                ✓ Thank you for subscribing!
+              </div>
+            )}
+
             <div className="hero-form-row">
               <label className="hero-form-label d-none d-sm-block"></label>
               <div className="hero-input-wrapper">
-                <button type="submit" id="submit-hero" className="hero-submit-btn">
-                  Subscribe
+                <button
+                  type="submit"
+                  id="submit-hero"
+                  className="hero-submit-btn"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Subscribing..." : "Subscribe"}
                 </button>
               </div>
             </div>
@@ -166,160 +209,6 @@ export default function NewsletterHero() {
           </h3>
         </div>
       </div>
-
-      {/* OTP Verification Modal from PHP */}
-      {showOtpModal && (
-        <div
-          className="modal fade show"
-          style={{
-            display: "flex",
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            backgroundColor: "rgba(0,0,0,0.5)",
-            zIndex: 99999,
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <div className="modal-dialog" style={{ width: "100%", maxWidth: "420px" }}>
-            <div
-              className="modal-content"
-              style={{
-                border: "0.8px solid black",
-                borderRadius: "5px",
-                boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.3)",
-                backgroundColor: "#fff",
-                padding: "20px",
-                position: "relative",
-              }}
-            >
-              <button
-                type="button"
-                onClick={() => setShowOtpModal(false)}
-                style={{
-                  position: "absolute",
-                  top: "10px",
-                  right: "12px",
-                  background: "none",
-                  border: "none",
-                  fontSize: "18px",
-                  cursor: "pointer",
-                }}
-              >
-                ✕
-              </button>
-
-              <div className="modal-header" style={{ border: "none", paddingBottom: "10px" }}>
-                <h5
-                  className="modal-title"
-                  style={{
-                    width: "100%",
-                    textAlign: "center",
-                    fontWeight: 600,
-                  }}
-                >
-                  OTP Verification
-                </h5>
-              </div>
-
-              <div className="modal-body">
-                {otpSuccess ? (
-                  <div
-                    style={{
-                      color: "green",
-                      textAlign: "center",
-                      fontWeight: 600,
-                      padding: "10px 0",
-                    }}
-                  >
-                    OTP verified successfully.
-                  </div>
-                ) : (
-                  <div>
-                    <div className="mb-3">
-                      <label
-                        htmlFor="otpnewspage"
-                        className="form-label"
-                        style={{ fontWeight: 500 }}
-                      >
-                        Enter OTP
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="otpnewspage"
-                        style={{
-                          border: "0.8px solid black",
-                          borderRadius: "5px",
-                          boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.3)",
-                        }}
-                        name="otpnewspage"
-                        placeholder="Enter your OTP here"
-                        value={otp}
-                        onChange={(e) => setOtp(e.target.value.replace(/\D/g, ""))}
-                        required
-                      />
-                    </div>
-                    <div
-                      style={{
-                        textAlign: "right",
-                        marginTop: "10px",
-                        marginBottom: "15px",
-                      }}
-                    >
-                      {!timerActive ? (
-                        <span
-                          id="resendOTPText"
-                          style={{
-                            cursor: "pointer",
-                            color: "#006400",
-                            fontWeight: 500,
-                          }}
-                          onClick={startTimer}
-                        >
-                          Resend OTP
-                        </span>
-                      ) : (
-                        <span id="resendOTPTimer">
-                          (Resend in <span id="resendTimerValue">{resendTimer}</span> sec)
-                        </span>
-                      )}
-                    </div>
-                    {otpError && (
-                      <div
-                        id="otpError22"
-                        style={{
-                          textAlign: "center",
-                          color: "red",
-                          marginBottom: "10px",
-                        }}
-                      >
-                        {otpError}
-                      </div>
-                    )}
-                    <div style={{ textAlign: "center" }}>
-                      <button
-                        type="button"
-                        className="btn btn-primary"
-                        style={{
-                          backgroundColor: "#07a64b",
-                          borderColor: "#07a64b",
-                        }}
-                        onClick={handleVerifyOtp}
-                      >
-                        Verify OTP
-                      </button>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
 
       <style jsx>{`
         @media only screen and (max-width: 600px) {
