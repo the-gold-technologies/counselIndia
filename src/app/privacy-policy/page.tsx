@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import PrivacyView from "@/components/privacy-policy/PrivacyView";
+import { getSiteSettings } from "@/services/settingsService";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | Counsel India",
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function PrivacyPolicyPage() {
-  return <PrivacyView />;
+export default async function PrivacyPolicyPage() {
+  const settings = await getSiteSettings();
+  return <PrivacyView content={settings.privacy} />;
 }

@@ -3,11 +3,15 @@ import React from "react";
 import RefundHero from "./RefundHero";
 import RefundContent from "./RefundContent";
 
-export default function RefundView() {
+interface RefundViewProps {
+  content?: string;
+}
+
+export default function RefundView({ content }: RefundViewProps) {
   return (
     <div className="main-wrapper" style={{ backgroundColor: "#ffffff" }}>
       <RefundHero />
-      <RefundContent />
+      <RefundContent content={content} />
     </div>
   );
 }

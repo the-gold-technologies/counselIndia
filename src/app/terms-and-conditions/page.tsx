@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import TermsView from "@/components/terms-condition/TermsView";
+import { getSiteSettings } from "@/services/settingsService";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions | Counsel India",
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function TermsAndConditionsPage() {
-  return <TermsView />;
+export default async function TermsAndConditionsPage() {
+  const settings = await getSiteSettings();
+  return <TermsView content={settings.termsCondition} />;
 }

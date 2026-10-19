@@ -31,6 +31,15 @@ export const DEFAULT_SETTINGS: SiteSettingData = {
     "1. Evolve Work Studio , 3rd floor , Raj Pinnacle (Behind Teleradiology Solution) , Doddanekundi Industrial Area, Bangalore Karnataka - 560048\n2. Yesssworks Andheri, 3rd Floor, Ackruti Softech Park, Shree Krishna Nagar, Marol Midc Industry Estate, Andheri East, Mumbai, Maharashtra 400093",
   contactUsHoursOperation: "Monday - Friday: 09:00 - 20:00\nSunday & Saturday: 10:30 - 22:00",
 
+  aboutUs: "",
+  ourVision: "",
+  privacy: "",
+  termsCondition: "",
+  howCanSignup: "",
+  refundPolicy: "",
+  academicPolicy: "",
+  contactUsContent: "",
+
   footerTitle:
     "Counsel India is the only practical e-learning platform for psychology and counselling programs in India.",
   footerCompanyName: "COUNSELINDIA SERVICES PRIVATE LIMITED",

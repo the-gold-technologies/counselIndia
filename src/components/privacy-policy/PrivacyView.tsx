@@ -3,11 +3,15 @@ import React from "react";
 import PrivacyHero from "./PrivacyHero";
 import PrivacyContent from "./PrivacyContent";
 
-export default function PrivacyView() {
+interface PrivacyViewProps {
+  content?: string;
+}
+
+export default function PrivacyView({ content }: PrivacyViewProps) {
   return (
     <div className="main-wrapper" style={{ backgroundColor: "#ffffff" }}>
       <PrivacyHero />
-      <PrivacyContent />
+      <PrivacyContent content={content} />
     </div>
   );
 }

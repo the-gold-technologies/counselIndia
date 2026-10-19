@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import RefundView from "@/components/refund-policy/RefundView";
+import { getSiteSettings } from "@/services/settingsService";
 
 export const metadata: Metadata = {
   title: "Refund Policy | Counsel India",
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RefundPolicyPage() {
-  return <RefundView />;
+export default async function RefundPolicyPage() {
+  const settings = await getSiteSettings();
+  return <RefundView content={settings.refundPolicy} />;
 }
