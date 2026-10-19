@@ -91,7 +91,7 @@ export default function AppDownloadBanner() {
 
                 <div className="download-content-02__btn d-flex flex-wrap align-items-center justify-content-center justify-content-md-start gap-3 position-relative pt-2">
                   <a
-                    href="https://apps.apple.com"
+                    href={settings.iosAppLink || "https://apps.apple.com"}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="ios_img_but"
@@ -106,7 +106,10 @@ export default function AppDownloadBanner() {
                   </a>
 
                   <a
-                    href="https://play.google.com/store/apps/details?id=co.alicia.qcmiv&pli=1"
+                    href={
+                      settings.googlePlayAppLink ||
+                      "https://play.google.com/store/apps/details?id=co.alicia.qcmiv&pli=1"
+                    }
                     target="_blank"
                     rel="noopener noreferrer"
                   >

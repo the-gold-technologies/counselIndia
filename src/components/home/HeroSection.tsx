@@ -1,8 +1,10 @@
 "use client";
 import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
+import { useSiteSettings } from "@/hooks/useSiteSettings";
 
 export default function HeroSection() {
+  const { settings } = useSiteSettings();
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -119,7 +121,12 @@ export default function HeroSection() {
                 </Link>
                 <div className="slider-search mt-8">
                   <div className="download-content-02__btn">
-                    <a href="#" className="ios_img_but mr-2">
+                    <a
+                      href={settings.iosAppLink || "https://apps.apple.com"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ios_img_but mr-2"
+                    >
                       <img
                         src="/assets/images/ios.png"
                         alt="Psychology App iOS"
@@ -128,7 +135,10 @@ export default function HeroSection() {
                       />
                     </a>
                     <a
-                      href="https://play.google.com/store/apps/details?id=co.alicia.qcmiv&pli=1"
+                      href={
+                        settings.googlePlayAppLink ||
+                        "https://play.google.com/store/apps/details?id=co.alicia.qcmiv&pli=1"
+                      }
                       target="_blank"
                       rel="noreferrer"
                     >

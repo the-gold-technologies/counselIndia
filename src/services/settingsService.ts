@@ -22,6 +22,8 @@ export const DEFAULT_SETTINGS: SiteSettingData = {
   twitterLink: "https://twitter.com/counselindia1?lang=en",
   youtubeLink: "https://www.youtube.com/channel/UCWnALe3hLVdGJzVOuEgGoYg",
   pinterestLink: "https://in.pinterest.com/counselindia",
+  googlePlayAppLink: "https://play.google.com/store/apps/details?id=co.alicia.qcmiv&pli=1",
+  iosAppLink: "https://apps.apple.com",
 
   contactUsMobile: "+91-9518241200",
   contactUsMail: "admissions@counselindiaservices.in",
