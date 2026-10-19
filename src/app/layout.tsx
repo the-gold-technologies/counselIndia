@@ -36,7 +36,7 @@ export default function RootLayout({
         <link rel="stylesheet" href="/assets/css/vendor/fontawesome-all.min.css" />
         <link rel="stylesheet" href="/assets/css/vendor/edumall-icon.css" />
         <link rel="stylesheet" href="/assets/css/vendor/bootstrap.min.css" />
-        
+
         <link rel="stylesheet" href="/assets/css/plugins/aos.css" />
         <link rel="stylesheet" href="/assets/css/plugins/swiper-bundle.min.css" />
         <link rel="stylesheet" href="/assets/css/plugins/perfect-scrollbar.css" />
@@ -45,8 +45,11 @@ export default function RootLayout({
         <link rel="stylesheet" href="/assets/css/plugins/flatpickr.min.css" />
         <link rel="stylesheet" href="/assets/css/plugins/ion.rangeSlider.min.css" />
         <link rel="stylesheet" href="/assets/css/plugins/select2.min.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.8/css/intlTelInput.css" />
-        
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.8/css/intlTelInput.css"
+        />
+
         <link rel="stylesheet" href="/assets/css/style.css" />
         <link rel="stylesheet" href="/assets/css/style2.css" />
         <link rel="stylesheet" href="/assets/css/user.min.css" />
@@ -58,7 +61,7 @@ export default function RootLayout({
         <MobileBottomNav />
         <FloatingContactButtons />
         <AutoCampaignPopup />
-        
+
         <Script src="https://code.jquery.com/jquery-3.6.0.min.js" strategy="beforeInteractive" />
         <Script src="/assets/js/plugins/swiper-bundle.min.js" strategy="lazyOnload" />
         <Script src="/assets/js/plugins/aos.js" strategy="lazyOnload" />

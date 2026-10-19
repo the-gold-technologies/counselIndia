@@ -2,9 +2,7 @@
 import React, { useState } from "react";
 
 export default function PartnershipsNetwork() {
-  const [activeTab, setActiveTab] = useState<"corporate" | "mous" | "hiring">(
-    "corporate"
-  );
+  const [activeTab, setActiveTab] = useState<"corporate" | "mous" | "hiring">("corporate");
 
   const partners = {
     corporate: [
@@ -31,14 +29,13 @@ export default function PartnershipsNetwork() {
     <div className="section-padding-01 bg-light">
       <div className="container">
         <div className="section-title text-center mb-4">
-          <h4 className="section-title__sub-title text-success fw-bold">
-            EXPANDING HORIZONS
-          </h4>
+          <h4 className="section-title__sub-title text-success fw-bold">EXPANDING HORIZONS</h4>
           <h2 className="section-title__title-02">
             Institutional Alliances &amp; <mark>Hiring Network</mark>
           </h2>
           <p className="text-muted mt-2">
-            Collaborating with premier universities, global hospital chains, and employee wellness leaders.
+            Collaborating with premier universities, global hospital chains, and employee wellness
+            leaders.
           </p>
         </div>
 
@@ -57,9 +54,7 @@ export default function PartnershipsNetwork() {
           <button
             onClick={() => setActiveTab("mous")}
             className={`btn px-4 py-2 rounded-pill font-size-14 fw-semibold ${
-              activeTab === "mous"
-                ? "btn-success text-white"
-                : "btn-outline-secondary bg-white"
+              activeTab === "mous" ? "btn-success text-white" : "btn-outline-secondary bg-white"
             }`}
           >
             Signed MOUs
@@ -67,9 +62,7 @@ export default function PartnershipsNetwork() {
           <button
             onClick={() => setActiveTab("hiring")}
             className={`btn px-4 py-2 rounded-pill font-size-14 fw-semibold ${
-              activeTab === "hiring"
-                ? "btn-success text-white"
-                : "btn-outline-secondary bg-white"
+              activeTab === "hiring" ? "btn-success text-white" : "btn-outline-secondary bg-white"
             }`}
           >
             Global Hiring Partners
@@ -93,9 +86,7 @@ export default function PartnershipsNetwork() {
                     objectFit: "contain",
                   }}
                 />
-                <p className="text-muted font-size-14 mt-3 mb-0 fw-medium">
-                  {item.name}
-                </p>
+                <p className="text-muted font-size-14 mt-3 mb-0 fw-medium">{item.name}</p>
               </div>
             </div>
           ))}

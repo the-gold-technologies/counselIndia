@@ -24,7 +24,12 @@ export default function BlogDetailContent({ blog, relatedBlogs }: DetailProps) {
 
   const handleSubmitComment = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!commentForm.name || !commentForm.email || !commentForm.mobile || !commentForm.termsAgreed) {
+    if (
+      !commentForm.name ||
+      !commentForm.email ||
+      !commentForm.mobile ||
+      !commentForm.termsAgreed
+    ) {
       alert("Please fill in all required fields and accept the Terms & Conditions.");
       return;
     }
@@ -51,25 +56,32 @@ export default function BlogDetailContent({ blog, relatedBlogs }: DetailProps) {
     {
       title: "Frequently confused terms in psychology: Important differences you must know",
       date: "27 Jun 2022",
-      image: "https://prod-s3.counselindia.com/blog/1681892189WhatsAppImage2023-04-19at1.43.11PM(1).jpeg",
+      image:
+        "https://prod-s3.counselindia.com/blog/1681892189WhatsAppImage2023-04-19at1.43.11PM(1).jpeg",
       slug: "frequently-confused-terms-in-psychology-important-differences-you-must-know",
     },
     {
-      title: "The importance of knowing the human mind: How does studying psychology benefit your life",
+      title:
+        "The importance of knowing the human mind: How does studying psychology benefit your life",
       date: "11 Jul 2022",
-      image: "https://prod-s3.counselindia.com/blog/1681892958WhatsAppImage2023-04-19at1.43.11PM.jpeg",
+      image:
+        "https://prod-s3.counselindia.com/blog/1681892958WhatsAppImage2023-04-19at1.43.11PM.jpeg",
       slug: "the-importance-of-knowing-the-human-mind-how-does-studying-psychology-benefit-your-life",
     },
     {
       title: "Top 10 reasons: Why do people choose psychology as a career?",
       date: "06 Oct 2022",
-      image: "https://prod-s3.counselindia.com/blog/1681893094WhatsAppImage2023-04-19at1.43.11PM(3).jpeg",
+      image:
+        "https://prod-s3.counselindia.com/blog/1681893094WhatsAppImage2023-04-19at1.43.11PM(3).jpeg",
       slug: "top-10-reasons-why-do-people-choose-psychology-as-a-career",
     },
   ];
 
   return (
-    <div className="blog-section section-padding-01" style={{ padding: "40px 0 90px", backgroundColor: "#ffffff" }}>
+    <div
+      className="blog-section section-padding-01"
+      style={{ padding: "40px 0 90px", backgroundColor: "#ffffff" }}
+    >
       <div className="container custom-container">
         <div className="row gy-5">
           {/* ============================================================ */}
@@ -208,10 +220,14 @@ export default function BlogDetailContent({ blog, relatedBlogs }: DetailProps) {
                         margin: "0 0 16px",
                       }}
                     >
-                      Understanding Color Psychology: How Colors Influence Our Emotions and Decisions
+                      Understanding Color Psychology: How Colors Influence Our Emotions and
+                      Decisions
                     </h3>
                     <p style={{ marginBottom: "20px" }}>
-                      Color psychology is the study of how colors affect human behavior, emotions, and decision-making. It plays a significant role in our everyday choices, from the clothes we choose to wear to the products we buy and the environments we feel most comfortable in.
+                      Color psychology is the study of how colors affect human behavior, emotions,
+                      and decision-making. It plays a significant role in our everyday choices, from
+                      the clothes we choose to wear to the products we buy and the environments we
+                      feel most comfortable in.
                     </p>
 
                     <h3
@@ -226,18 +242,27 @@ export default function BlogDetailContent({ blog, relatedBlogs }: DetailProps) {
                       The Power of Color in Marketing and Branding
                     </h3>
                     <p style={{ marginBottom: "20px" }}>
-                      Colors evoke emotions and perceptions, which can significantly influence consumer behavior. For example, studies show that 85% of consumers base their purchasing decisions on color alone. This makes color psychology an essential tool for marketers and brand strategists.
+                      Colors evoke emotions and perceptions, which can significantly influence
+                      consumer behavior. For example, studies show that 85% of consumers base their
+                      purchasing decisions on color alone. This makes color psychology an essential
+                      tool for marketers and brand strategists.
                     </p>
 
                     <ol style={{ paddingLeft: "22px", marginBottom: "26px" }}>
                       <li style={{ marginBottom: "12px" }}>
-                        <strong>Red:</strong> This bold and energetic color is associated with excitement, passion, and urgency. Brands like Coca-Cola and YouTube use red to capture attention and stimulate action.
+                        <strong>Red:</strong> This bold and energetic color is associated with
+                        excitement, passion, and urgency. Brands like Coca-Cola and YouTube use red
+                        to capture attention and stimulate action.
                       </li>
                       <li style={{ marginBottom: "12px" }}>
-                        <strong>Blue:</strong> Often linked to trust, reliability, and calmness, blue is a popular choice for financial institutions and tech companies, such as Facebook and PayPal.
+                        <strong>Blue:</strong> Often linked to trust, reliability, and calmness,
+                        blue is a popular choice for financial institutions and tech companies, such
+                        as Facebook and PayPal.
                       </li>
                       <li style={{ marginBottom: "12px" }}>
-                        <strong>Yellow:</strong> This cheerful and warm color symbolizes happiness and optimism. Brands like McDonald&apos;s use yellow to create a sense of friendliness and positivity.
+                        <strong>Yellow:</strong> This cheerful and warm color symbolizes happiness
+                        and optimism. Brands like McDonald&apos;s use yellow to create a sense of
+                        friendliness and positivity.
                       </li>
                     </ol>
 
@@ -253,7 +278,12 @@ export default function BlogDetailContent({ blog, relatedBlogs }: DetailProps) {
                       Conclusion
                     </h3>
                     <p style={{ marginBottom: "20px" }}>
-                      Color psychology is a powerful tool that shapes how we perceive brands, products, and environments. By understanding the emotional and psychological effects of different colors, businesses can enhance customer engagement and drive sales. Whether you are designing a logo, creating a website, or planning an advertising campaign, leveraging color psychology can give you a competitive edge.
+                      Color psychology is a powerful tool that shapes how we perceive brands,
+                      products, and environments. By understanding the emotional and psychological
+                      effects of different colors, businesses can enhance customer engagement and
+                      drive sales. Whether you are designing a logo, creating a website, or planning
+                      an advertising campaign, leveraging color psychology can give you a
+                      competitive edge.
                     </p>
                   </>
                 )}
@@ -446,7 +476,9 @@ export default function BlogDetailContent({ blog, relatedBlogs }: DetailProps) {
                     <div style={{ marginBottom: "16px" }}>
                       <select
                         value={commentForm.country}
-                        onChange={(e) => setCommentForm({ ...commentForm, country: e.target.value })}
+                        onChange={(e) =>
+                          setCommentForm({ ...commentForm, country: e.target.value })
+                        }
                         style={{
                           width: "100%",
                           height: "48px",
@@ -464,7 +496,9 @@ export default function BlogDetailContent({ blog, relatedBlogs }: DetailProps) {
                         <option value="India (+91)">India (+91)</option>
                         <option value="United States (+1)">United States (+1)</option>
                         <option value="United Kingdom (+44)">United Kingdom (+44)</option>
-                        <option value="United Arab Emirates (+971)">United Arab Emirates (+971)</option>
+                        <option value="United Arab Emirates (+971)">
+                          United Arab Emirates (+971)
+                        </option>
                         <option value="Canada (+1)">Canada (+1)</option>
                         <option value="Australia (+61)">Australia (+61)</option>
                         <option value="Singapore (+65)">Singapore (+65)</option>
@@ -568,7 +602,9 @@ export default function BlogDetailContent({ blog, relatedBlogs }: DetailProps) {
                         rows={5}
                         required
                         value={commentForm.comment}
-                        onChange={(e) => setCommentForm({ ...commentForm, comment: e.target.value })}
+                        onChange={(e) =>
+                          setCommentForm({ ...commentForm, comment: e.target.value })
+                        }
                         style={{
                           width: "100%",
                           padding: "14px 16px",
@@ -586,13 +622,23 @@ export default function BlogDetailContent({ blog, relatedBlogs }: DetailProps) {
 
                     {/* How Did You Hear About Us */}
                     <div style={{ marginBottom: "18px" }}>
-                      <label style={{ fontSize: "14px", fontWeight: 500, color: "#334155", display: "block", marginBottom: "6px" }}>
+                      <label
+                        style={{
+                          fontSize: "14px",
+                          fontWeight: 500,
+                          color: "#334155",
+                          display: "block",
+                          marginBottom: "6px",
+                        }}
+                      >
                         How Did You Hear About Us.*
                       </label>
                       <select
                         required
                         value={commentForm.hearAbout}
-                        onChange={(e) => setCommentForm({ ...commentForm, hearAbout: e.target.value })}
+                        onChange={(e) =>
+                          setCommentForm({ ...commentForm, hearAbout: e.target.value })
+                        }
                         style={{
                           width: "100%",
                           height: "48px",
@@ -621,22 +667,51 @@ export default function BlogDetailContent({ blog, relatedBlogs }: DetailProps) {
                     </div>
 
                     {/* Terms Checkbox */}
-                    <div style={{ display: "flex", alignItems: "flex-start", gap: "10px", marginBottom: "24px" }}>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "flex-start",
+                        gap: "10px",
+                        marginBottom: "24px",
+                      }}
+                    >
                       <input
                         type="checkbox"
                         id="commentTerms"
                         required
                         checked={commentForm.termsAgreed}
-                        onChange={(e) => setCommentForm({ ...commentForm, termsAgreed: e.target.checked })}
-                        style={{ marginTop: "4px", width: "16px", height: "16px", accentColor: "#00a651", cursor: "pointer" }}
+                        onChange={(e) =>
+                          setCommentForm({ ...commentForm, termsAgreed: e.target.checked })
+                        }
+                        style={{
+                          marginTop: "4px",
+                          width: "16px",
+                          height: "16px",
+                          accentColor: "#00a651",
+                          cursor: "pointer",
+                        }}
                       />
-                      <label htmlFor="commentTerms" style={{ fontSize: "13.5px", color: "#334155", lineHeight: 1.5, cursor: "pointer" }}>
+                      <label
+                        htmlFor="commentTerms"
+                        style={{
+                          fontSize: "13.5px",
+                          color: "#334155",
+                          lineHeight: 1.5,
+                          cursor: "pointer",
+                        }}
+                      >
                         By submitting this form, I agree to Counsel India&apos;s{" "}
-                        <Link href="/terms-and-conditions" style={{ color: "#00a651", textDecoration: "none", fontWeight: 600 }}>
+                        <Link
+                          href="/terms-and-conditions"
+                          style={{ color: "#00a651", textDecoration: "none", fontWeight: 600 }}
+                        >
                           Terms &amp; Conditions
                         </Link>{" "}
                         and{" "}
-                        <Link href="/privacy-policy" style={{ color: "#00a651", textDecoration: "none", fontWeight: 600 }}>
+                        <Link
+                          href="/privacy-policy"
+                          style={{ color: "#00a651", textDecoration: "none", fontWeight: 600 }}
+                        >
                           Privacy Policy.
                         </Link>{" "}
                         <span style={{ color: "#ef4444" }}>*</span>
@@ -700,8 +775,7 @@ export default function BlogDetailContent({ blog, relatedBlogs }: DetailProps) {
                           e.currentTarget.style.color = "#334155";
                         }}
                       >
-                        <span>{c.name}</span>{" "}
-                        <span style={{ color: "#64748b" }}>({c.count})</span>
+                        <span>{c.name}</span> <span style={{ color: "#64748b" }}>({c.count})</span>
                       </Link>
                     </li>
                   ))}
@@ -748,7 +822,10 @@ export default function BlogDetailContent({ blog, relatedBlogs }: DetailProps) {
                           backgroundColor: "#f1f5f9",
                         }}
                       >
-                        <Link href={`/blog-detail/${rp.slug}`} style={{ display: "block", height: "100%" }}>
+                        <Link
+                          href={`/blog-detail/${rp.slug}`}
+                          style={{ display: "block", height: "100%" }}
+                        >
                           <img
                             src={rp.image}
                             alt={rp.title}

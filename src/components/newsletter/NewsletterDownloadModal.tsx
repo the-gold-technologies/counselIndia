@@ -11,14 +11,34 @@ interface Props {
 }
 
 const INDIAN_STATES = [
-  "Delhi", "Maharashtra", "Karnataka", "Uttar Pradesh", "Haryana",
-  "Tamil Nadu", "West Bengal", "Telangana", "Gujarat", "Rajasthan",
-  "Kerala", "Madhya Pradesh", "Punjab", "Bihar", "Odisha", "Other"
+  "Delhi",
+  "Maharashtra",
+  "Karnataka",
+  "Uttar Pradesh",
+  "Haryana",
+  "Tamil Nadu",
+  "West Bengal",
+  "Telangana",
+  "Gujarat",
+  "Rajasthan",
+  "Kerala",
+  "Madhya Pradesh",
+  "Punjab",
+  "Bihar",
+  "Odisha",
+  "Other",
 ];
 
 const HEAR_ABOUT_OPTIONS = [
-  "Google", "Facebook", "Instagram", "LinkedIn", "Blogs",
-  "Email", "Whatsapp", "reference", "YouTube"
+  "Google",
+  "Facebook",
+  "Instagram",
+  "LinkedIn",
+  "Blogs",
+  "Email",
+  "Whatsapp",
+  "reference",
+  "YouTube",
 ];
 
 export default function NewsletterDownloadModal({ newsletter, isOpen, onClose }: Props) {
@@ -382,7 +402,9 @@ export default function NewsletterDownloadModal({ newsletter, isOpen, onClose }:
                   required
                   style={{ marginTop: "3px" }}
                 />
-                <span>By submitting this form, I agree to receive communications from Counsel India.</span>
+                <span>
+                  By submitting this form, I agree to receive communications from Counsel India.
+                </span>
               </label>
             </div>
 
@@ -461,7 +483,14 @@ export default function NewsletterDownloadModal({ newsletter, isOpen, onClose }:
           </h4>
 
           {otpSuccess ? (
-            <div style={{ color: "#07a64b", textAlign: "center", fontWeight: "bold", padding: "12px 0" }}>
+            <div
+              style={{
+                color: "#07a64b",
+                textAlign: "center",
+                fontWeight: "bold",
+                padding: "12px 0",
+              }}
+            >
               ✓ OTP verified successfully. Starting download...
             </div>
           ) : (

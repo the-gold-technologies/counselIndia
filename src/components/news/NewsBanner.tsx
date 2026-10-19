@@ -17,8 +17,7 @@ export default function NewsBanner() {
             className="page-banner__main-title-02 m-0"
             style={{
               fontSize: "clamp(38px, 4.8vw, 56px)",
-              fontFamily:
-                "'Playfair Display', Georgia, 'Times New Roman', serif",
+              fontFamily: "'Playfair Display', Georgia, 'Times New Roman', serif",
               fontWeight: 500,
               color: "#07a64b",
               lineHeight: "1.2",

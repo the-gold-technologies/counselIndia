@@ -42,7 +42,14 @@ export default function MentalHealthTestRunner({
             }}
           >
             <div>
-              <span style={{ fontSize: "12px", color: "#07a64b", fontWeight: 700, textTransform: "uppercase" }}>
+              <span
+                style={{
+                  fontSize: "12px",
+                  color: "#07a64b",
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                }}
+              >
                 Assessment in Progress
               </span>
               <h2
@@ -91,10 +98,23 @@ export default function MentalHealthTestRunner({
                   border: "1px solid #edf2f7",
                 }}
               >
-                <p style={{ fontWeight: 700, fontSize: "16px", color: "#1e293b", marginBottom: "14px" }}>
+                <p
+                  style={{
+                    fontWeight: 700,
+                    fontSize: "16px",
+                    color: "#1e293b",
+                    marginBottom: "14px",
+                  }}
+                >
                   {q.text}
                 </p>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: "10px" }}>
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
+                    gap: "10px",
+                  }}
+                >
                   {q.options.map((opt) => {
                     const isSelected = answers[q.id] === opt.points;
                     return (

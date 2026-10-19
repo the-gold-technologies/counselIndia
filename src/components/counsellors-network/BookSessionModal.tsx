@@ -78,11 +78,7 @@ const DEFAULT_COUNTRIES: CountryOption[] = [
   { id: 242, name: "New Zealand", phonecode: "+64" },
 ];
 
-export default function BookSessionModal({
-  counselor,
-  isOpen,
-  onClose,
-}: ModalProps) {
+export default function BookSessionModal({ counselor, isOpen, onClose }: ModalProps) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -96,8 +92,7 @@ export default function BookSessionModal({
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   // Dynamic dropdown lists
-  const [countries, setCountries] =
-    useState<CountryOption[]>(DEFAULT_COUNTRIES);
+  const [countries, setCountries] = useState<CountryOption[]>(DEFAULT_COUNTRIES);
   const [states, setStates] = useState<StateOption[]>(DEFAULT_STATES);
   const [cities, setCities] = useState<CityOption[]>([]);
   const [isLoadingStates, setIsLoadingStates] = useState(false);
@@ -120,7 +115,7 @@ export default function BookSessionModal({
                     ? c.phonecode
                     : `+${c.phonecode}`
                   : "",
-              })),
+              }))
             );
           }
         }
@@ -143,7 +138,7 @@ export default function BookSessionModal({
       setIsLoadingStates(true);
       try {
         const res = await fetch(
-          `https://counselindia.com/api/countries/${formData.country}/states`,
+          `https://counselindia.com/api/countries/${formData.country}/states`
         );
         if (res.ok) {
           const data = await res.json();
@@ -180,9 +175,7 @@ export default function BookSessionModal({
     async function fetchCities() {
       setIsLoadingCities(true);
       try {
-        const res = await fetch(
-          `https://counselindia.com/api/states/${formData.state}/city`,
-        );
+        const res = await fetch(`https://counselindia.com/api/states/${formData.state}/city`);
         if (res.ok) {
           const data = await res.json();
           if (Array.isArray(data) && data.length > 0) {
@@ -311,8 +304,7 @@ export default function BookSessionModal({
           overflowY: "auto",
           padding: "44px 28px 28px",
           boxSizing: "border-box",
-          animation:
-            "modalSlideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+          animation: "modalSlideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards",
         }}
       >
         {/* Close (✕) Button */}
@@ -378,8 +370,7 @@ export default function BookSessionModal({
                   marginBottom: "20px",
                 }}
               >
-                Thank you, <strong>{formData.name}</strong>. Our team will reach
-                out to you shortly.
+                Thank you, <strong>{formData.name}</strong>. Our team will reach out to you shortly.
               </p>
               <button
                 onClick={handleResetAndClose}
@@ -409,9 +400,7 @@ export default function BookSessionModal({
                   placeholder="Full Name"
                   required
                   value={formData.name}
-                  onChange={(e) =>
-                    setFormData({ ...formData, name: e.target.value })
-                  }
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   style={inputStyle}
                 />
               </div>
@@ -426,9 +415,7 @@ export default function BookSessionModal({
                   placeholder="Your Email"
                   required
                   value={formData.email}
-                  onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
-                  }
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   style={inputStyle}
                 />
               </div>
@@ -471,9 +458,7 @@ export default function BookSessionModal({
                   placeholder="Your Number"
                   required
                   value={formData.mobile}
-                  onChange={(e) =>
-                    setFormData({ ...formData, mobile: e.target.value })
-                  }
+                  onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
                   style={inputStyle}
                 />
               </div>
@@ -496,9 +481,7 @@ export default function BookSessionModal({
                   style={inputStyle}
                 >
                   <option value="">
-                    {isLoadingStates
-                      ? "Loading states..."
-                      : "Please Select State"}
+                    {isLoadingStates ? "Loading states..." : "Please Select State"}
                   </option>
                   {states.map((s) => (
                     <option key={s.id} value={s.id}>
@@ -517,15 +500,11 @@ export default function BookSessionModal({
                   <select
                     required
                     value={formData.city}
-                    onChange={(e) =>
-                      setFormData({ ...formData, city: e.target.value })
-                    }
+                    onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                     style={inputStyle}
                   >
                     <option value="">
-                      {isLoadingCities
-                        ? "Loading cities..."
-                        : "Please Select City"}
+                      {isLoadingCities ? "Loading cities..." : "Please Select City"}
                     </option>
                     {cities.map((city) => (
                       <option key={city.id} value={city.name}>
@@ -539,9 +518,7 @@ export default function BookSessionModal({
                     placeholder="Please Enter City"
                     required
                     value={formData.city}
-                    onChange={(e) =>
-                      setFormData({ ...formData, city: e.target.value })
-                    }
+                    onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                     style={inputStyle}
                   />
                 )}
@@ -556,9 +533,7 @@ export default function BookSessionModal({
                 <select
                   required
                   value={formData.hearAboutUs}
-                  onChange={(e) =>
-                    setFormData({ ...formData, hearAboutUs: e.target.value })
-                  }
+                  onChange={(e) => setFormData({ ...formData, hearAboutUs: e.target.value })}
                   style={inputStyle}
                 >
                   <option value="">Please Select</option>
@@ -589,9 +564,7 @@ export default function BookSessionModal({
                   id="agreeTerms"
                   required
                   checked={formData.agreed}
-                  onChange={(e) =>
-                    setFormData({ ...formData, agreed: e.target.checked })
-                  }
+                  onChange={(e) => setFormData({ ...formData, agreed: e.target.checked })}
                   style={{
                     width: "18px",
                     height: "18px",

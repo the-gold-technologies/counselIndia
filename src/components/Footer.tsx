@@ -347,9 +347,7 @@ export default function Footer() {
                   </p>
 
                   <div className="footer-widget__info font-size-13 mb-3">
-                    <span className="text-white fw-bold d-block">
-                      {settings.footerCompanyName}
-                    </span>
+                    <span className="text-white fw-bold d-block">{settings.footerCompanyName}</span>
                     <span className="text-white fw-semibold d-block mt-1">
                       GST : {settings.gstNumber}
                     </span>
@@ -360,15 +358,13 @@ export default function Footer() {
                     >
                       <div className="d-flex align-items-start gap-2 mb-1">
                         <i className="fas fa-map-marker-alt text-white mt-1"></i>
-                        <span>
-                          {settings.footerAddress}
-                        </span>
+                        <span>{settings.footerAddress}</span>
                       </div>
                       <div className="d-flex align-items-start gap-2">
                         <i className="fas fa-map-marker-alt text-white mt-1"></i>
                         <span>
-                          For Client Visit : Office no 12A20, Floor No-13,
-                          E-Square sector 96, Noida, Uttar Pradesh 201301
+                          For Client Visit : Office no 12A20, Floor No-13, E-Square sector 96,
+                          Noida, Uttar Pradesh 201301
                         </span>
                       </div>
                     </address>
@@ -550,9 +546,7 @@ export default function Footer() {
             {/* SEO Categorized Course Directory Links */}
             <div className="font-size-13" style={{ lineHeight: "1.9" }}>
               <div className="mb-3">
-                <h6 className="text-white fw-bold mb-1 font-size-14">
-                  Trending MBA Programs
-                </h6>
+                <h6 className="text-white fw-bold mb-1 font-size-14">Trending MBA Programs</h6>
                 <div>
                   <Link
                     href="/courses/masters-industrial-organizational-psychology"
@@ -565,9 +559,7 @@ export default function Footer() {
               </div>
 
               <div className="mb-3">
-                <h6 className="text-white fw-bold mb-1 font-size-14">
-                  Master&apos;s Programs
-                </h6>
+                <h6 className="text-white fw-bold mb-1 font-size-14">Master&apos;s Programs</h6>
                 <div>
                   <Link
                     href="/courses/counselling-master-course-advanced"
@@ -600,9 +592,7 @@ export default function Footer() {
               </div>
 
               <div className="mb-3">
-                <h6 className="text-white fw-bold mb-1 font-size-14">
-                  PG Diploma Programs
-                </h6>
+                <h6 className="text-white fw-bold mb-1 font-size-14">PG Diploma Programs</h6>
                 <div>
                   <Link
                     href="/courses/pg-diploma-clinical-psychology"
@@ -635,9 +625,7 @@ export default function Footer() {
               </div>
 
               <div className="mb-3">
-                <h6 className="text-white fw-bold mb-1 font-size-14">
-                  Certification Programs
-                </h6>
+                <h6 className="text-white fw-bold mb-1 font-size-14">Certification Programs</h6>
                 <div>
                   <Link
                     href="/courses/certificate-cbt"
@@ -682,19 +670,14 @@ export default function Footer() {
           <div className="container">
             <p className="text-center mb-0 font-size-13 text-white">
               &copy; {new Date().getFullYear()}{" "}
-              <span className="text-white">
-                {settings.footerCompanyName}. All Rights Reserved
-              </span>
+              <span className="text-white">{settings.footerCompanyName}. All Rights Reserved</span>
             </p>
           </div>
         </div>
       </footer>
 
       {/* Counselor Login Modal */}
-      <CounselorLoginModal
-        isOpen={showLoginModal}
-        onClose={() => setShowLoginModal(false)}
-      />
+      <CounselorLoginModal isOpen={showLoginModal} onClose={() => setShowLoginModal(false)} />
     </>
   );
 }

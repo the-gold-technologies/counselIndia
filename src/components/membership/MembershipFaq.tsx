@@ -37,24 +37,14 @@ export default function MembershipFaq() {
   return (
     <>
       <div className="faqq" style={{ margin: "5%" }}>
-        <div
-          className="section-title text-center"
-          data-aos="fade-up"
-          data-aos-duration="1000"
-        >
-          <h2 className="section-title__title-03 mark-title">
-            Frequently Asked Questions
-          </h2>
+        <div className="section-title text-center" data-aos="fade-up" data-aos-duration="1000">
+          <h2 className="section-title__title-03 mark-title">Frequently Asked Questions</h2>
         </div>
 
         <div className="row gy-10 align-items-center">
           <div className="col-lg-10 offset-lg-1">
             {/* FAQ Accordion Start */}
-            <div
-              className="faq-accordion"
-              data-aos="fade-up"
-              data-aos-duration="1000"
-            >
+            <div className="faq-accordion" data-aos="fade-up" data-aos-duration="1000">
               <div className="accordion" id="accordionFAQ">
                 {faqs.map((faq, idx) => {
                   const isOpen = openFaq === idx;
@@ -78,14 +68,7 @@ export default function MembershipFaq() {
                             stroke="currentColor"
                             strokeWidth="40"
                           >
-                            <rect
-                              x="20"
-                              y="20"
-                              width="408"
-                              height="472"
-                              rx="40"
-                              ry="40"
-                            />
+                            <rect x="20" y="20" width="408" height="472" rx="40" ry="40" />
                           </svg>
                         </span>
                       </button>

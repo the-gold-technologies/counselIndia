@@ -52,16 +52,12 @@ export default function CiBusinessForm() {
     <div className="contact-section py-5 bg-white" id="member">
       <div className="container custom-container py-3">
         {/* About Title Section matching screenshot */}
-        <div
-          className="about-section-title text-center"
-          style={{ marginBottom: "50px" }}
-        >
+        <div className="about-section-title text-center" style={{ marginBottom: "50px" }}>
           <h2
             className="mb-3"
             style={{
               fontSize: "clamp(28px, 3.4vw, 38px)",
-              fontFamily:
-                "'Playfair Display', Georgia, 'Times New Roman', serif",
+              fontFamily: "'Playfair Display', Georgia, 'Times New Roman', serif",
               fontWeight: 700,
               color: "#1e2532",
             }}
@@ -78,15 +74,13 @@ export default function CiBusinessForm() {
               fontFamily: "Inter, 'Plus Jakarta Sans', system-ui, sans-serif",
             }}
           >
-            Counsel India is a leading platform that helps businesses to improve
-            the Mental Health of their employees, balance their work-life and
-            capability to manage stress and stay happy. We help companies
-            streamline their people happiness processes to make a better
-            workplace and understand employees behavioral patterns by providing
-            simplified and tailor made psychology training programs and
-            workshops. Our experts have years of experience in understanding
-            human behavior and solving their real life problems with simplified
-            process.
+            Counsel India is a leading platform that helps businesses to improve the Mental Health
+            of their employees, balance their work-life and capability to manage stress and stay
+            happy. We help companies streamline their people happiness processes to make a better
+            workplace and understand employees behavioral patterns by providing simplified and
+            tailor made psychology training programs and workshops. Our experts have years of
+            experience in understanding human behavior and solving their real life problems with
+            simplified process.
           </p>
         </div>
 
@@ -108,15 +102,13 @@ export default function CiBusinessForm() {
               className="m-0"
               style={{
                 fontSize: "clamp(20px, 2.4vw, 26px)",
-                fontFamily:
-                  "'Playfair Display', Georgia, 'Times New Roman', serif",
+                fontFamily: "'Playfair Display', Georgia, 'Times New Roman', serif",
                 fontWeight: 700,
                 color: "#1e2532",
                 lineHeight: "1.4",
               }}
             >
-              Fill the form below so we can get to know you and your needs
-              better.
+              Fill the form below so we can get to know you and your needs better.
             </h3>
           </div>
 
@@ -138,9 +130,7 @@ export default function CiBusinessForm() {
                     placeholder="Your Full Name"
                     className="form-control form-input-custom"
                     value={formData.name}
-                    onChange={(e) =>
-                      setFormData({ ...formData, name: e.target.value })
-                    }
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   />
                 </div>
                 <div className="col-md-6 col-12">
@@ -150,9 +140,7 @@ export default function CiBusinessForm() {
                     placeholder="Your Email Address"
                     className="form-control form-input-custom"
                     value={formData.email}
-                    onChange={(e) =>
-                      setFormData({ ...formData, email: e.target.value })
-                    }
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   />
                 </div>
 
@@ -162,17 +150,13 @@ export default function CiBusinessForm() {
                     required
                     className="form-select form-input-custom"
                     value={formData.country}
-                    onChange={(e) =>
-                      setFormData({ ...formData, country: e.target.value })
-                    }
+                    onChange={(e) => setFormData({ ...formData, country: e.target.value })}
                   >
                     <option value="">Please Select Country</option>
                     <option value="India">India</option>
                     <option value="United States">United States</option>
                     <option value="United Kingdom">United Kingdom</option>
-                    <option value="United Arab Emirates">
-                      United Arab Emirates
-                    </option>
+                    <option value="United Arab Emirates">United Arab Emirates</option>
                     <option value="Singapore">Singapore</option>
                     <option value="Canada">Canada</option>
                     <option value="Australia">Australia</option>
@@ -187,9 +171,7 @@ export default function CiBusinessForm() {
                     placeholder="Your Mobile Number"
                     className="form-control form-input-custom"
                     value={formData.mobile}
-                    onChange={(e) =>
-                      setFormData({ ...formData, mobile: e.target.value })
-                    }
+                    onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
                   />
                 </div>
 
@@ -199,9 +181,7 @@ export default function CiBusinessForm() {
                     required
                     className="form-select form-input-custom"
                     value={formData.state}
-                    onChange={(e) =>
-                      setFormData({ ...formData, state: e.target.value })
-                    }
+                    onChange={(e) => setFormData({ ...formData, state: e.target.value })}
                   >
                     <option value="">Please Select State</option>
                     <option value="Delhi">Delhi</option>
@@ -219,9 +199,7 @@ export default function CiBusinessForm() {
                     required
                     className="form-select form-input-custom"
                     value={formData.city}
-                    onChange={(e) =>
-                      setFormData({ ...formData, city: e.target.value })
-                    }
+                    onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                   >
                     <option value="">Please Select City</option>
                     <option value="New Delhi">New Delhi</option>
@@ -307,9 +285,7 @@ export default function CiBusinessForm() {
                     className="form-control form-input-custom"
                     style={{ minHeight: "130px", resize: "vertical" }}
                     value={formData.purpose}
-                    onChange={(e) =>
-                      setFormData({ ...formData, purpose: e.target.value })
-                    }
+                    onChange={(e) => setFormData({ ...formData, purpose: e.target.value })}
                   ></textarea>
                 </div>
 

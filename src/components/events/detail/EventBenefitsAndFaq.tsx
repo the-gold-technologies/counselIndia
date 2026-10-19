@@ -7,10 +7,7 @@ interface EventBenefitsAndFaqProps {
   faqs: FaqItem[];
 }
 
-export default function EventBenefitsAndFaq({
-  keyBenefits,
-  faqs,
-}: EventBenefitsAndFaqProps) {
+export default function EventBenefitsAndFaq({ keyBenefits, faqs }: EventBenefitsAndFaqProps) {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const toggleFaq = (index: number) => {

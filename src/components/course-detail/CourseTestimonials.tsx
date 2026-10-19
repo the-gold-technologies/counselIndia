@@ -72,8 +72,7 @@ export default function CourseTestimonials() {
             style={{
               fontSize: "clamp(34px, 4.2vw, 44px)",
               fontWeight: 700,
-              fontFamily:
-                "Georgia, 'Playfair Display', 'Times New Roman', serif",
+              fontFamily: "Georgia, 'Playfair Display', 'Times New Roman', serif",
               color: "#1e293b",
             }}
           >

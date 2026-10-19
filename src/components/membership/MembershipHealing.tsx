@@ -4,10 +4,7 @@ import React from "react";
 export default function MembershipHealing() {
   return (
     <>
-      <div
-        className="section-2nd"
-        style={{ marginTop: "5%", marginBottom: "5%" }}
-      >
+      <div className="section-2nd" style={{ marginTop: "5%", marginBottom: "5%" }}>
         <div className="container custom-container">
           <div className="row justify-content-center">
             <div className="col-lg-10">
@@ -17,22 +14,18 @@ export default function MembershipHealing() {
                 data-aos="fade-up"
                 data-aos-duration="1000"
               >
-                <h2 className="section-title__title-03">
-                  We Are Here For Healing!!
-                </h2>
+                <h2 className="section-title__title-03">We Are Here For Healing!!</h2>
 
                 <h5 className="mb-4 fw-bold" style={{ marginTop: "5%" }}>
-                  This community is your safe place for healing and self-growth.
-                  No,{" "}
+                  This community is your safe place for healing and self-growth. No,{" "}
                   <span className="primary-text-color">
                     <strong>
                       {" "}
-                      it is NOT limited to self-healers but open to both
-                      professionals and clients like yourself!{" "}
+                      it is NOT limited to self-healers but open to both professionals and clients
+                      like yourself!{" "}
                     </strong>
                   </span>
-                  Feel free to expose your vulnerable selves as this space is
-                  judgement-free.
+                  Feel free to expose your vulnerable selves as this space is judgement-free.
                 </h5>
 
                 <div className="ag-format-container">
@@ -41,8 +34,7 @@ export default function MembershipHealing() {
                       <a href="#" className="ag-courses-item_link">
                         <div className="ag-courses-item_bg"></div>
                         <div className="ag-courses-item_title">
-                          You will experience significant growth both personally
-                          and professionally!
+                          You will experience significant growth both personally and professionally!
                         </div>
                       </a>
                     </div>
@@ -51,8 +43,8 @@ export default function MembershipHealing() {
                       <a href="#" className="ag-courses-item_link">
                         <div className="ag-courses-item_bg"></div>
                         <div className="ag-courses-item_title">
-                          Yes. You will build your professional competence &amp;
-                          learn from the finest experts!
+                          Yes. You will build your professional competence &amp; learn from the
+                          finest experts!
                         </div>
                       </a>
                     </div>
@@ -70,8 +62,7 @@ export default function MembershipHealing() {
                       <a href="#" className="ag-courses-item_link">
                         <div className="ag-courses-item_bg"></div>
                         <div className="ag-courses-item_title">
-                          Yes. You will get a massive toolkit of personalized
-                          resources.
+                          Yes. You will get a massive toolkit of personalized resources.
                         </div>
                       </a>
                     </div>

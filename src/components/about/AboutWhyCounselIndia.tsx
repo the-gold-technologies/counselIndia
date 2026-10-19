@@ -7,22 +7,14 @@ export default function AboutWhyCounselIndia() {
     <div className="campus-section section-padding-01">
       <div className="container custom-container">
         {/* Section Title */}
-        <div
-          className="section-title"
-          data-aos="fade-up"
-          data-aos-duration="1000"
-        >
+        <div className="section-title" data-aos="fade-up" data-aos-duration="1000">
           <h2 className="section-title__title-03">
             <mark>Why</mark> Counsel India
           </h2>
         </div>
 
         {/* Campus Wrapper */}
-        <div
-          className="campus-wrapper"
-          data-aos="fade-up"
-          data-aos-duration="1000"
-        >
+        <div className="campus-wrapper" data-aos="fade-up" data-aos-duration="1000">
           <div className="campus">
             <div className="campus-widget">
               {WHY_PILLARS.map((pillar) => (

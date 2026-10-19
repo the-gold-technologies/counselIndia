@@ -54,53 +54,43 @@ export const successImages: SuccessImageItem[] = [
   },
   {
     id: 8,
-    image:
-      "https://prod-s3.counselindia.com/mastersuccessimages/1_1719409425.jpg",
+    image: "https://prod-s3.counselindia.com/mastersuccessimages/1_1719409425.jpg",
   },
   {
     id: 9,
-    image:
-      "https://prod-s3.counselindia.com/mastersuccessimages/2_1719409439.jpg",
+    image: "https://prod-s3.counselindia.com/mastersuccessimages/2_1719409439.jpg",
   },
   {
     id: 10,
-    image:
-      "https://prod-s3.counselindia.com/mastersuccessimages/3_1719409452.jpg",
+    image: "https://prod-s3.counselindia.com/mastersuccessimages/3_1719409452.jpg",
   },
   {
     id: 11,
-    image:
-      "https://prod-s3.counselindia.com/mastersuccessimages/4_1719409465.jpg",
+    image: "https://prod-s3.counselindia.com/mastersuccessimages/4_1719409465.jpg",
   },
   {
     id: 12,
-    image:
-      "https://prod-s3.counselindia.com/mastersuccessimages/5_1719409478.jpg",
+    image: "https://prod-s3.counselindia.com/mastersuccessimages/5_1719409478.jpg",
   },
   {
     id: 13,
-    image:
-      "https://prod-s3.counselindia.com/mastersuccessimages/6_1719409491.jpg",
+    image: "https://prod-s3.counselindia.com/mastersuccessimages/6_1719409491.jpg",
   },
   {
     id: 14,
-    image:
-      "https://prod-s3.counselindia.com/mastersuccessimages/7_1719409503.jpg",
+    image: "https://prod-s3.counselindia.com/mastersuccessimages/7_1719409503.jpg",
   },
   {
     id: 15,
-    image:
-      "https://prod-s3.counselindia.com/mastersuccessimages/8_1719409514.jpg",
+    image: "https://prod-s3.counselindia.com/mastersuccessimages/8_1719409514.jpg",
   },
   {
     id: 16,
-    image:
-      "https://prod-s3.counselindia.com/mastersuccessimages/9_1719409526.jpg",
+    image: "https://prod-s3.counselindia.com/mastersuccessimages/9_1719409526.jpg",
   },
   {
     id: 17,
-    image:
-      "https://prod-s3.counselindia.com/mastersuccessimages/10_1719409536.jpg",
+    image: "https://prod-s3.counselindia.com/mastersuccessimages/10_1719409536.jpg",
   },
 ];
 
@@ -130,8 +120,7 @@ export const col1Testimonials: SuccessStoryItem[] = [
     id: 2,
     name: "Riya Raizada",
     image: "https://prod-s3.counselindia.com/success_stories/riya.jpg",
-    description:
-      "I started helping my own kids, I understand them in better way.",
+    description: "I started helping my own kids, I understand them in better way.",
   },
   {
     id: 3,

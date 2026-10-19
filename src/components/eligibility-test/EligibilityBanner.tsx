@@ -72,8 +72,7 @@ export default function EligibilityBanner() {
               style={{
                 fontSize: "clamp(30px, 3.8vw, 38px)",
                 fontWeight: 700,
-                fontFamily:
-                  "Georgia, 'Playfair Display', 'Times New Roman', serif",
+                fontFamily: "Georgia, 'Playfair Display', 'Times New Roman', serif",
                 color: "#07a64b",
                 lineHeight: "1.2",
               }}

@@ -8,11 +8,7 @@ interface SkillsModalProps {
   onClose: () => void;
 }
 
-export default function SkillsModal({
-  learner,
-  isOpen,
-  onClose,
-}: SkillsModalProps) {
+export default function SkillsModal({ learner, isOpen, onClose }: SkillsModalProps) {
   // Close on Escape key press
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {

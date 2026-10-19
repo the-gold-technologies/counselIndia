@@ -61,10 +61,9 @@ export default function MembershipIntro() {
                   Ready to <mark>meet the best version of yourself?</mark>
                 </h2>
                 <h6 className="mt-2">
-                  Feeling stressed, anxious, or down is a natural part of our
-                  everyday life. But what if we told you there&apos;s a friend
-                  who can guide you through it all, helping you manage your
-                  emotions to live a life you&apos;ve always wanted?
+                  Feeling stressed, anxious, or down is a natural part of our everyday life. But
+                  what if we told you there&apos;s a friend who can guide you through it all,
+                  helping you manage your emotions to live a life you&apos;ve always wanted?
                 </h6>
 
                 <h5 className="mb-4 fw-bold" style={{ marginTop: "5%" }}>
@@ -73,10 +72,9 @@ export default function MembershipIntro() {
                   </span>
                 </h5>
                 <h6 className="mt-2">
-                  Our team of expert psychologists has carefully curated a
-                  wellbeing routine designed to infuse your life with hope,
-                  emotional stability, and confidence for lasting wellbeing and
-                  personal growth.
+                  Our team of expert psychologists has carefully curated a wellbeing routine
+                  designed to infuse your life with hope, emotional stability, and confidence for
+                  lasting wellbeing and personal growth.
                 </h6>
               </div>
               {/* Section Title End */}
@@ -94,11 +92,7 @@ export default function MembershipIntro() {
           <div className="row gy-10 align-items-center justify-content-center">
             <div className="col-md-6">
               {/* Countdown Widget Start */}
-              <div
-                className="countdown-widget"
-                data-aos="fade-up"
-                data-aos-duration="1000"
-              >
+              <div className="countdown-widget" data-aos="fade-up" data-aos-duration="1000">
                 {/* Countdown Title Start */}
                 <div className="countdown-title">
                   <h2 className="countdown-title__title">
@@ -109,136 +103,91 @@ export default function MembershipIntro() {
                   <main>
                     <ol className="gradient-list">
                       <li>
-                        <strong
-                          className="primary-text-color"
-                          style={{ fontWeight: 400 }}
-                        >
+                        <strong className="primary-text-color" style={{ fontWeight: 400 }}>
                           Mental Health Routine{" "}
                         </strong>
                         to keep your emotions in check
                       </li>
                       <li>
-                        <strong
-                          className="primary-text-color"
-                          style={{ fontWeight: 400 }}
-                        >
+                        <strong className="primary-text-color" style={{ fontWeight: 400 }}>
                           Self-help Videos{" "}
                         </strong>
                         to empower your personal development
                       </li>
                       <li>
-                        <strong
-                          className="primary-text-color"
-                          style={{ fontWeight: 400 }}
-                        >
+                        <strong className="primary-text-color" style={{ fontWeight: 400 }}>
                           An Emotional Meter{" "}
                         </strong>
                         to keep a track of your mental health
                       </li>
                       <li>
-                        <strong
-                          className="primary-text-color"
-                          style={{ fontWeight: 400 }}
-                        >
+                        <strong className="primary-text-color" style={{ fontWeight: 400 }}>
                           Tailor Made Tips{" "}
                         </strong>
                         to improve your current mental health score
                       </li>
                       <li>
-                        <strong
-                          className="primary-text-color"
-                          style={{ fontWeight: 400 }}
-                        >
+                        <strong className="primary-text-color" style={{ fontWeight: 400 }}>
                           Recommended By Experts Section{" "}
                         </strong>
-                        Must Watch Movies &amp; Books: Psychology Thrillers,
-                        Feel Good, Psychodrama &amp; more
+                        Must Watch Movies &amp; Books: Psychology Thrillers, Feel Good, Psychodrama
+                        &amp; more
                       </li>
                       <li>
-                        <strong
-                          className="primary-text-color"
-                          style={{ fontWeight: 400 }}
-                        >
+                        <strong className="primary-text-color" style={{ fontWeight: 400 }}>
                           Healing Hands{" "}
                         </strong>
-                        Help One person around you from everything you have
-                        gathered from Counsel India
+                        Help One person around you from everything you have gathered from Counsel
+                        India
                       </li>
                       <li>
-                        <strong
-                          className="primary-text-color"
-                          style={{ fontWeight: 400 }}
-                        >
+                        <strong className="primary-text-color" style={{ fontWeight: 400 }}>
                           A Curated Podcast Library{" "}
                         </strong>
                         for Mental fitness
                       </li>
                       <li>
-                        <strong
-                          className="primary-text-color"
-                          style={{ fontWeight: 400 }}
-                        >
+                        <strong className="primary-text-color" style={{ fontWeight: 400 }}>
                           20 Case Study Videos{" "}
                         </strong>
                         to learn from real life stories
                       </li>
                       <li>
-                        <strong
-                          className="primary-text-color"
-                          style={{ fontWeight: 400 }}
-                        >
+                        <strong className="primary-text-color" style={{ fontWeight: 400 }}>
                           Handy Workbook{" "}
                         </strong>
                         for Journaling therapy
                       </li>
                       <li>
-                        <strong
-                          className="primary-text-color"
-                          style={{ fontWeight: 400 }}
-                        >
+                        <strong className="primary-text-color" style={{ fontWeight: 400 }}>
                           FREE Self-paced Courses{" "}
                         </strong>
                       </li>
                       <li>
-                        <strong
-                          className="primary-text-color"
-                          style={{ fontWeight: 400 }}
-                        >
+                        <strong className="primary-text-color" style={{ fontWeight: 400 }}>
                           Monthly Newsletter{" "}
                         </strong>
                         to stay updated with the latest trends in mental health
                       </li>
                       <li>
-                        <strong
-                          className="primary-text-color"
-                          style={{ fontWeight: 400 }}
-                        >
+                        <strong className="primary-text-color" style={{ fontWeight: 400 }}>
                           LIVE Healing Session{" "}
                         </strong>
                         with experts
                       </li>
                       <li>
-                        <strong
-                          className="primary-text-color"
-                          style={{ fontWeight: 400 }}
-                        >
+                        <strong className="primary-text-color" style={{ fontWeight: 400 }}>
                           Additional 1000 rupee Discount{" "}
                         </strong>
                         on Counsel India Programs
                       </li>
                       <li>
-                        <strong
-                          className="primary-text-color"
-                          style={{ fontWeight: 400 }}
-                        >
+                        <strong className="primary-text-color" style={{ fontWeight: 400 }}>
                           Refer &amp; Grow{" "}
                         </strong>
-                        Gift/Refer Counsel India membership to 5 friends &amp;
-                        get 1 month of membership FREE{" "}
-                        <strong
-                          className="primary-text-color"
-                          style={{ fontWeight: 400 }}
-                        >
+                        Gift/Refer Counsel India membership to 5 friends &amp; get 1 month of
+                        membership FREE{" "}
+                        <strong className="primary-text-color" style={{ fontWeight: 400 }}>
                           worth Rs. 199.
                         </strong>
                       </li>
@@ -409,11 +358,7 @@ export default function MembershipIntro() {
         }
 
         ol.gradient-list > li:nth-child(10n + 10):before {
-          background: linear-gradient(
-            135deg,
-            rgba(162, 237, 86, 0) 0%,
-            rgba(253, 220, 50, 0) 100%
-          );
+          background: linear-gradient(135deg, rgba(162, 237, 86, 0) 0%, rgba(253, 220, 50, 0) 100%);
         }
 
         ol.gradient-list > li + li {

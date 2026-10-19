@@ -53,8 +53,9 @@ export default function MembershipCertificate() {
                         <br />
                         <br />
                       </strong>
-                      As if being part of Counsel India wasn&apos;t already amazing enough, we&apos;re adding a cherry
-                      on top! Complete your membership journey with us, and you&apos;ll earn a certificate to show off.
+                      As if being part of Counsel India wasn&apos;t already amazing enough,
+                      we&apos;re adding a cherry on top! Complete your membership journey with us,
+                      and you&apos;ll earn a certificate to show off.
                     </h5>
                   </div>
                 </div>

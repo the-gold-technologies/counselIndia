@@ -30,8 +30,7 @@ export default function AutoCampaignPopup() {
     const handleMouseOut = (e: MouseEvent) => {
       if (
         !sessionStorage.getItem("exitIntentShown") &&
-        (e.clientY <= 0 ||
-          (e.relatedTarget === null && (e as any).toElement === null))
+        (e.clientY <= 0 || (e.relatedTarget === null && (e as any).toElement === null))
       ) {
         setIsOpen(true);
         sessionStorage.setItem("exitIntentShown", "true");

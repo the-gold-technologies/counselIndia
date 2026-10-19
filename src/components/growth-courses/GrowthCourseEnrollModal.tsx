@@ -40,7 +40,9 @@ export default function GrowthCourseEnrollModal({ course, isOpen, onClose }: Pro
     setTimeout(() => {
       setIsSubmitted(false);
       onClose();
-      alert("Thank you for your interest! Our academic counsellor will connect with you shortly with your special discount.");
+      alert(
+        "Thank you for your interest! Our academic counsellor will connect with you shortly with your special discount."
+      );
     }, 2000);
   };
 
@@ -136,7 +138,9 @@ export default function GrowthCourseEnrollModal({ course, isOpen, onClose }: Pro
                   placeholder="10-digit mobile number"
                   className="form-control rounded-3 py-2 px-3 font-size-14 border"
                   value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value.replace(/\D/g, "") })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, phone: e.target.value.replace(/\D/g, "") })
+                  }
                 />
               </div>
 

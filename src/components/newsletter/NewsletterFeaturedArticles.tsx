@@ -85,17 +85,12 @@ export default function NewsletterFeaturedArticles({
               </h2>
 
               <p className="featured-description">
-                &quot;Discover our latest featured article: an in-depth
-                exploration, offering valuable insights and practical
-                advice.&quot;
+                &quot;Discover our latest featured article: an in-depth exploration, offering
+                valuable insights and practical advice.&quot;
               </p>
 
               <div>
-                <button
-                  type="button"
-                  className="featured-subscribe-btn"
-                  onClick={onSubscribeClick}
-                >
+                <button type="button" className="featured-subscribe-btn" onClick={onSubscribeClick}>
                   Subscribe
                 </button>
               </div>
@@ -131,8 +126,7 @@ export default function NewsletterFeaturedArticles({
                             className="newsletter-card-img"
                             onError={(ev) => {
                               ev.currentTarget.onerror = null;
-                              ev.currentTarget.src =
-                                "/assets/images/blog/skills.jpg";
+                              ev.currentTarget.src = "/assets/images/blog/skills.jpg";
                             }}
                           />
                         </div>

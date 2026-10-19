@@ -31,9 +31,7 @@ export async function getActiveAlumni(search?: string): Promise<LearnerItem[]> {
     queryParams.set("search", search.trim());
   }
 
-  const res = await fetchFromAdmin<DbAlumni[]>(
-    `/api/alumni?${queryParams.toString()}`,
-  );
+  const res = await fetchFromAdmin<DbAlumni[]>(`/api/alumni?${queryParams.toString()}`);
 
   if (!res.success || !Array.isArray(res.data)) {
     return [];

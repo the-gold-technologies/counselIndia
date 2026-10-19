@@ -13,8 +13,12 @@ export default function AcademicHero() {
           {/* Page Breadcrumb Start */}
           <div className="page-breadcrumb">
             <ul className="breadcrumb">
-              <li className="breadcrumb-item"><a href="#"></a></li>
-              <li className="breadcrumb-item"><a href="#"></a></li>
+              <li className="breadcrumb-item">
+                <a href="#"></a>
+              </li>
+              <li className="breadcrumb-item">
+                <a href="#"></a>
+              </li>
               <li className="breadcrumb-item active"></li>
             </ul>
           </div>

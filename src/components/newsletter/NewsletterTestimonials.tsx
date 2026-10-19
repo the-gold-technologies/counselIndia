@@ -52,24 +52,21 @@ export default function NewsletterTestimonials() {
           } catch (e) {}
         }
 
-        swiperInstance = new (window as any).Swiper(
-          ".newsletter-testimonial-swiper",
-          {
-            slidesPerView: 3,
-            spaceBetween: 30,
-            loop: true,
-            autoplay: {
-              delay: 3000,
-              disableOnInteraction: false,
-            },
-            speed: 1000,
-            breakpoints: {
-              0: { slidesPerView: 1, spaceBetween: 15 },
-              768: { slidesPerView: 2, spaceBetween: 20 },
-              1200: { slidesPerView: 3, spaceBetween: 30 },
-            },
-          }
-        );
+        swiperInstance = new (window as any).Swiper(".newsletter-testimonial-swiper", {
+          slidesPerView: 3,
+          spaceBetween: 30,
+          loop: true,
+          autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+          },
+          speed: 1000,
+          breakpoints: {
+            0: { slidesPerView: 1, spaceBetween: 15 },
+            768: { slidesPerView: 2, spaceBetween: 20 },
+            1200: { slidesPerView: 3, spaceBetween: 30 },
+          },
+        });
       }
     };
 
@@ -97,7 +94,8 @@ export default function NewsletterTestimonials() {
             See What Our Subscribers Are Saying
           </h2>
           <h5 style={{ marginTop: "4%", color: "#6c757d", fontWeight: "normal" }}>
-            &quot;Discover Insights Directly from Our Clients about Their Experience with Our Services and Products.&quot;
+            &quot;Discover Insights Directly from Our Clients about Their Experience with Our
+            Services and Products.&quot;
           </h5>
         </div>
 
@@ -106,11 +104,7 @@ export default function NewsletterTestimonials() {
           <div className="swiper newsletter-testimonial-swiper">
             <div className="swiper-wrapper py-3">
               {TESTIMONIALS.map((item) => (
-                <div
-                  className="swiper-slide"
-                  style={{ height: "auto" }}
-                  key={item.id}
-                >
+                <div className="swiper-slide" style={{ height: "auto" }} key={item.id}>
                   <div className="testimonial-item bg-white h-100 d-flex flex-column justify-content-between">
                     <div className="testimonial-quote-icon">
                       <svg
@@ -127,9 +121,7 @@ export default function NewsletterTestimonials() {
 
                     <div className="testimonial-main-content d-flex flex-column justify-content-between flex-grow-1">
                       <div className="testimonial-caption">
-                        <h3 className="testimonial-caption__title">
-                          {item.title}
-                        </h3>
+                        <h3 className="testimonial-caption__title">{item.title}</h3>
                         <p>{item.comment}</p>
                       </div>
 
@@ -147,12 +139,8 @@ export default function NewsletterTestimonials() {
                           />
                         </div>
                         <div className="testimonial-info__caption">
-                          <h5 className="testimonial-info__name">
-                            {item.name}
-                          </h5>
-                          <p className="testimonial-info__designation">
-                            {item.designation}
-                          </p>
+                          <h5 className="testimonial-info__name">{item.name}</h5>
+                          <p className="testimonial-info__designation">{item.designation}</p>
                         </div>
                       </div>
                     </div>

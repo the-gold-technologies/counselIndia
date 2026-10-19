@@ -60,10 +60,7 @@ export default function AllCoursesList() {
       className="courses-section"
       style={{ backgroundColor: "#ffffff", padding: "35px 15px 60px" }}
     >
-      <div
-        className="container custom-container"
-        style={{ maxWidth: "1140px", margin: "0 auto" }}
-      >
+      <div className="container custom-container" style={{ maxWidth: "1140px", margin: "0 auto" }}>
         {/* Category Filters & Search Toolbar */}
         <div
           style={{
@@ -101,7 +98,8 @@ export default function AllCoursesList() {
                   fontSize: "13px",
                   fontWeight: 600,
                   fontFamily: "'Poppins', sans-serif",
-                  border: selectedCategory === tab.value ? "1.5px solid #00a651" : "1px solid #e2e8f0",
+                  border:
+                    selectedCategory === tab.value ? "1.5px solid #00a651" : "1px solid #e2e8f0",
                   backgroundColor: selectedCategory === tab.value ? "#00a651" : "#f8fafc",
                   color: selectedCategory === tab.value ? "#ffffff" : "#475569",
                   cursor: "pointer",
@@ -181,9 +179,7 @@ export default function AllCoursesList() {
             }}
           >
             We found{" "}
-            <span style={{ fontWeight: 800, color: "#1a1a1a" }}>
-              {filteredCourses.length}
-            </span>{" "}
+            <span style={{ fontWeight: 800, color: "#1a1a1a" }}>{filteredCourses.length}</span>{" "}
             courses available for you
           </p>
         </div>
@@ -298,8 +294,7 @@ export default function AllCoursesList() {
                         margin: "0 0 6px",
                         fontSize: "24px",
                         fontWeight: 700,
-                        fontFamily:
-                          "'Playfair Display', Georgia, 'Times New Roman', serif",
+                        fontFamily: "'Playfair Display', Georgia, 'Times New Roman', serif",
                         lineHeight: "1.25",
                         letterSpacing: "-0.3px",
                       }}
@@ -311,12 +306,8 @@ export default function AllCoursesList() {
                           textDecoration: "none",
                           transition: "color 0.2s",
                         }}
-                        onMouseEnter={(e) =>
-                          (e.currentTarget.style.color = "#00a651")
-                        }
-                        onMouseLeave={(e) =>
-                          (e.currentTarget.style.color = "#1b2537")
-                        }
+                        onMouseEnter={(e) => (e.currentTarget.style.color = "#00a651")}
+                        onMouseLeave={(e) => (e.currentTarget.style.color = "#1b2537")}
                       >
                         {d.name}
                       </Link>
@@ -477,12 +468,8 @@ export default function AllCoursesList() {
                           cursor: "pointer",
                           transition: "background-color 0.2s ease",
                         }}
-                        onMouseEnter={(e) =>
-                          (e.currentTarget.style.backgroundColor = "#068a3e")
-                        }
-                        onMouseLeave={(e) =>
-                          (e.currentTarget.style.backgroundColor = "#07a64b")
-                        }
+                        onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#068a3e")}
+                        onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#07a64b")}
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"

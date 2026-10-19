@@ -3,7 +3,14 @@ import React from "react";
 
 export default function MentalHealthBanner() {
   return (
-    <div style={{ position: "relative", width: "100%", overflow: "hidden", backgroundColor: "#0b132b" }}>
+    <div
+      style={{
+        position: "relative",
+        width: "100%",
+        overflow: "hidden",
+        backgroundColor: "#0b132b",
+      }}
+    >
       <img
         src="https://prod-s3.counselindia.com/mastergalaxyimages/mentaltestbanner_1729595813.png"
         alt="Mental Health Banner"
@@ -13,7 +20,10 @@ export default function MentalHealthBanner() {
           e.currentTarget.style.display = "none";
         }}
       />
-      <div className="container" style={{ position: "absolute", left: 0, top: 0, width: "100%", height: "100%" }}>
+      <div
+        className="container"
+        style={{ position: "absolute", left: 0, top: 0, width: "100%", height: "100%" }}
+      >
         <div
           style={{
             position: "absolute",
@@ -24,7 +34,14 @@ export default function MentalHealthBanner() {
             fontFamily: "Arial, sans-serif",
           }}
         >
-          <div style={{ fontSize: "20px", fontWeight: "bold", letterSpacing: "1px", marginBottom: "8px" }}>
+          <div
+            style={{
+              fontSize: "20px",
+              fontWeight: "bold",
+              letterSpacing: "1px",
+              marginBottom: "8px",
+            }}
+          >
             TAKE OUR
           </div>
           <div
@@ -63,7 +80,9 @@ export default function MentalHealthBanner() {
           >
             ASSESSMENT
           </div>
-          <div style={{ fontSize: "20px", fontWeight: "bold", letterSpacing: "1px", color: "#e2f9eb" }}>
+          <div
+            style={{ fontSize: "20px", fontWeight: "bold", letterSpacing: "1px", color: "#e2f9eb" }}
+          >
             DISCOVER DEEPER INSIGHTS
           </div>
         </div>

@@ -16,8 +16,14 @@ export default function CourseAboutObjectives({
   skillIndiaAdvantage,
 }: Props) {
   return (
-    <div className="tutor-course-main-content" style={{ padding: "30px 0 20px", backgroundColor: "#ffffff" }}>
-      <div className="container custom-container" style={{ maxWidth: "1170px", margin: "0 auto", padding: "0 16px" }}>
+    <div
+      className="tutor-course-main-content"
+      style={{ padding: "30px 0 20px", backgroundColor: "#ffffff" }}
+    >
+      <div
+        className="container custom-container"
+        style={{ maxWidth: "1170px", margin: "0 auto", padding: "0 16px" }}
+      >
         {/* About this Course */}
         <div className="tutor-course-segment" style={{ marginBottom: "36px" }}>
           <h4

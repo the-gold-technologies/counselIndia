@@ -6,10 +6,7 @@ export default function AboutOverview() {
     <div className="counter-section section-padding-02">
       <div className="container custom-container">
         {/* Main Section Header: About Us */}
-        <h2
-          className="about-section-title__main-title text-center"
-          style={{ marginBottom: "5%" }}
-        >
+        <h2 className="about-section-title__main-title text-center" style={{ marginBottom: "5%" }}>
           About Us{" "}
         </h2>
 
@@ -25,12 +22,11 @@ export default function AboutOverview() {
         </div>
 
         <p>
-          India’s favorite practical psychology learning platform, Counsel India
-          is simplifying counselling skills with comprehensive resources,
-          extensive training, and dedicated support for individuals seeking to
-          excel in Counselling and Psychology. With over 200,000 happy learners
-          and still counting, Counsel India has become one of the most trusted
-          and go-to platforms for Psychology learning.
+          India’s favorite practical psychology learning platform, Counsel India is simplifying
+          counselling skills with comprehensive resources, extensive training, and dedicated support
+          for individuals seeking to excel in Counselling and Psychology. With over 200,000 happy
+          learners and still counting, Counsel India has become one of the most trusted and go-to
+          platforms for Psychology learning.
         </p>
 
         <p style={{ marginTop: "2%" }}>
@@ -40,10 +36,7 @@ export default function AboutOverview() {
           </strong>
         </p>
 
-        <p>
-          Counsel India offers industry-driven psychology education with
-          practical application.
-        </p>
+        <p>Counsel India offers industry-driven psychology education with practical application.</p>
 
         <p style={{ margin: "0%" }}>
           <strong style={{ fontWeight: "bold", fontSize: "19px" }}>
@@ -59,8 +52,8 @@ export default function AboutOverview() {
                 {" "}
                 Empowering you with emotional intelligence:
               </strong>{" "}
-              Gain the skills to manage your emotions effectively, build strong
-              relationships, and cultivate self-awareness for a fulfilling life.
+              Gain the skills to manage your emotions effectively, build strong relationships, and
+              cultivate self-awareness for a fulfilling life.
             </p>
           </li>
           <li>
@@ -69,17 +62,16 @@ export default function AboutOverview() {
                 {" "}
                 Elevating your career in Psychology:{" "}
               </strong>{" "}
-              Master human behavior, hone interpersonal skills, and strengthen
-              your professional toolkit for a successful and impactful career. .
+              Master human behavior, hone interpersonal skills, and strengthen your professional
+              toolkit for a successful and impactful career. .
             </p>
           </li>
         </ul>
 
         <p>
-          Our support to our learners extends beyond the curriculum, where we
-          provide them with mentorship and placement opportunities with the help
-          of an expansive network of 50+ hiring partners &amp; 5000+
-          Psychologists and Counsellors.{" "}
+          Our support to our learners extends beyond the curriculum, where we provide them with
+          mentorship and placement opportunities with the help of an expansive network of 50+ hiring
+          partners &amp; 5000+ Psychologists and Counsellors.{" "}
         </p>
       </div>
 

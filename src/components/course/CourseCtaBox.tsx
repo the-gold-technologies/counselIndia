@@ -8,7 +8,10 @@ interface Props {
 export default function CourseCtaBox({ phone }: Props) {
   return (
     <div className="call-to-action" style={{ padding: "35px 0 25px", backgroundColor: "#ffffff" }}>
-      <div className="container custom-container" style={{ maxWidth: "1170px", margin: "0 auto", padding: "0 16px" }}>
+      <div
+        className="container custom-container"
+        style={{ maxWidth: "1170px", margin: "0 auto", padding: "0 16px" }}
+      >
         <div
           className="call-to-action__wrapper"
           style={{
@@ -110,7 +113,9 @@ export default function CourseCtaBox({ phone }: Props) {
                   margin: 0,
                 }}
               >
-                If you&apos;re feeling uncertain about whether this course is the right fit for you or have any questions, feel free to reach out to our &quot;Career Expert&quot;. We&apos;re here to help you find the best path forward.
+                If you&apos;re feeling uncertain about whether this course is the right fit for you
+                or have any questions, feel free to reach out to our &quot;Career Expert&quot;.
+                We&apos;re here to help you find the best path forward.
               </h3>
             </div>
 

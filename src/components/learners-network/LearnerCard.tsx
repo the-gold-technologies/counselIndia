@@ -7,14 +7,9 @@ interface LearnerCardProps {
   onOpenSkills: (learner: LearnerItem) => void;
 }
 
-export default function LearnerCard({
-  learner,
-  onOpenSkills,
-}: LearnerCardProps) {
+export default function LearnerCard({ learner, onOpenSkills }: LearnerCardProps) {
   const isSkillsLong = learner.skills && learner.skills.length > 22;
-  const truncatedSkills = isSkillsLong
-    ? `${learner.skills.substring(0, 22)}...`
-    : learner.skills;
+  const truncatedSkills = isSkillsLong ? `${learner.skills.substring(0, 22)}...` : learner.skills;
 
   return (
     <div className="col-lg-4 col-md-6 mb-4 d-flex">
@@ -126,10 +121,7 @@ export default function LearnerCard({
             }}
           >
             <img
-              src={
-                learner.image ||
-                "https://prod-s3.counselindia.com/images/profileimage.jpg"
-              }
+              src={learner.image || "https://prod-s3.counselindia.com/images/profileimage.jpg"}
               alt={learner.name}
               style={{
                 width: "100%",
@@ -138,8 +130,7 @@ export default function LearnerCard({
                 display: "block",
               }}
               onError={(e) => {
-                e.currentTarget.src =
-                  "https://prod-s3.counselindia.com/images/profileimage.jpg";
+                e.currentTarget.src = "https://prod-s3.counselindia.com/images/profileimage.jpg";
               }}
             />
           </div>
@@ -200,9 +191,7 @@ export default function LearnerCard({
                 }}
               ></i>
               <div>
-                <strong style={{ color: "#1e293b", fontWeight: 700 }}>
-                  Course Name:
-                </strong>{" "}
+                <strong style={{ color: "#1e293b", fontWeight: 700 }}>Course Name:</strong>{" "}
                 <span style={{ color: "#374151" }}>{learner.programname}</span>
               </div>
             </div>
@@ -228,9 +217,7 @@ export default function LearnerCard({
                 }}
               ></i>
               <div>
-                <strong style={{ color: "#1e293b", fontWeight: 700 }}>
-                  Unique ID:
-                </strong>{" "}
+                <strong style={{ color: "#1e293b", fontWeight: 700 }}>Unique ID:</strong>{" "}
                 <span style={{ color: "#374151" }}>{learner.rci_number}</span>
               </div>
             </div>
@@ -257,9 +244,7 @@ export default function LearnerCard({
                   }}
                 ></i>
                 <div>
-                  <strong style={{ color: "#1e293b", fontWeight: 700 }}>
-                    Profession:
-                  </strong>{" "}
+                  <strong style={{ color: "#1e293b", fontWeight: 700 }}>Profession:</strong>{" "}
                   <span style={{ color: "#374151" }}>{learner.profession}</span>
                 </div>
               </div>
@@ -293,9 +278,7 @@ export default function LearnerCard({
                   }}
                 ></i>
                 <div>
-                  <strong style={{ color: "#1e293b", fontWeight: 700 }}>
-                    Skills Learned:
-                  </strong>{" "}
+                  <strong style={{ color: "#1e293b", fontWeight: 700 }}>Skills Learned:</strong>{" "}
                   <span style={{ color: "#374151" }}>{truncatedSkills}</span>
                 </div>
               </div>

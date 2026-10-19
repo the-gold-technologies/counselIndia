@@ -73,8 +73,29 @@ const STATES = [
 
 const MAJOR_CITIES: Record<string, string[]> = {
   Delhi: ["New Delhi", "North Delhi", "South Delhi", "West Delhi", "East Delhi", "Other"],
-  "Uttar Pradesh": ["Noida", "Greater Noida", "Ghaziabad", "Lucknow", "Kanpur", "Varanasi", "Agra", "Prayagraj", "Meerut", "Bareilly", "Other"],
-  Maharashtra: ["Mumbai", "Pune", "Nagpur", "Thane", "Nashik", "Aurangabad", "Navi Mumbai", "Other"],
+  "Uttar Pradesh": [
+    "Noida",
+    "Greater Noida",
+    "Ghaziabad",
+    "Lucknow",
+    "Kanpur",
+    "Varanasi",
+    "Agra",
+    "Prayagraj",
+    "Meerut",
+    "Bareilly",
+    "Other",
+  ],
+  Maharashtra: [
+    "Mumbai",
+    "Pune",
+    "Nagpur",
+    "Thane",
+    "Nashik",
+    "Aurangabad",
+    "Navi Mumbai",
+    "Other",
+  ],
   Karnataka: ["Bengaluru", "Mysuru", "Hubli", "Mangaluru", "Belagavi", "Other"],
   Haryana: ["Gurugram", "Faridabad", "Panipat", "Ambala", "Karnal", "Hisar", "Other"],
   "Tamil Nadu": ["Chennai", "Coimbatore", "Madurai", "Tiruchirappalli", "Salem", "Other"],
@@ -148,8 +169,7 @@ export default function AskQuestionFormSection() {
     }
 
     if (!formData.agreeTerms) {
-      newErrors.agreeTerms =
-        "You must agree to our Terms & Conditions and Privacy Policy.";
+      newErrors.agreeTerms = "You must agree to our Terms & Conditions and Privacy Policy.";
     }
 
     setErrors(newErrors);
@@ -157,9 +177,7 @@ export default function AskQuestionFormSection() {
   };
 
   const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
     const { name, value, type } = e.target;
     if (type === "checkbox") {
@@ -246,8 +264,7 @@ export default function AskQuestionFormSection() {
           >
             <div className="section-title text-center">
               <h2 className="section-title__title">
-                Fill the form below so we can get to know you and your question
-                better.
+                Fill the form below so we can get to know you and your question better.
               </h2>
             </div>
 
@@ -278,12 +295,9 @@ export default function AskQuestionFormSection() {
                 <h4 className="fw-bold mb-2" style={{ color: "#1e293b" }}>
                   Question Submitted Successfully!
                 </h4>
-                <p
-                  className="text-muted mb-4"
-                  style={{ maxWidth: "450px", margin: "0 auto" }}
-                >
-                  Thank you for reaching out. Our team of expert counselors will
-                  review your question and reach out to you shortly.
+                <p className="text-muted mb-4" style={{ maxWidth: "450px", margin: "0 auto" }}>
+                  Thank you for reaching out. Our team of expert counselors will review your
+                  question and reach out to you shortly.
                 </p>
                 <button
                   type="button"
@@ -323,9 +337,7 @@ export default function AskQuestionFormSection() {
                       required
                     ></textarea>
                     {errors.question && (
-                      <div className="text-danger mt-1 small">
-                        {errors.question}
-                      </div>
+                      <div className="text-danger mt-1 small">{errors.question}</div>
                     )}
                   </div>
 
@@ -345,9 +357,7 @@ export default function AskQuestionFormSection() {
                       style={inputStyle}
                       required
                     />
-                    {errors.name && (
-                      <div className="text-danger mt-1 small">{errors.name}</div>
-                    )}
+                    {errors.name && <div className="text-danger mt-1 small">{errors.name}</div>}
                   </div>
 
                   {/* Email */}
@@ -366,9 +376,7 @@ export default function AskQuestionFormSection() {
                       style={inputStyle}
                       required
                     />
-                    {errors.email && (
-                      <div className="text-danger mt-1 small">{errors.email}</div>
-                    )}
+                    {errors.email && <div className="text-danger mt-1 small">{errors.email}</div>}
                   </div>
 
                   {/* Country */}
@@ -412,11 +420,7 @@ export default function AskQuestionFormSection() {
                       style={inputStyle}
                       required
                     />
-                    {errors.mobile && (
-                      <div className="text-danger mt-1 small">
-                        {errors.mobile}
-                      </div>
-                    )}
+                    {errors.mobile && <div className="text-danger mt-1 small">{errors.mobile}</div>}
                   </div>
 
                   {/* State */}
@@ -441,11 +445,7 @@ export default function AskQuestionFormSection() {
                           </option>
                         ))}
                       </select>
-                      {errors.state && (
-                        <div className="text-danger mt-1 small">
-                          {errors.state}
-                        </div>
-                      )}
+                      {errors.state && <div className="text-danger mt-1 small">{errors.state}</div>}
 
                       {formData.state === "Other" && (
                         <input
@@ -482,11 +482,7 @@ export default function AskQuestionFormSection() {
                           </option>
                         ))}
                       </select>
-                      {errors.city && (
-                        <div className="text-danger mt-1 small">
-                          {errors.city}
-                        </div>
-                      )}
+                      {errors.city && <div className="text-danger mt-1 small">{errors.city}</div>}
 
                       {formData.city === "Other" && (
                         <input
@@ -528,9 +524,7 @@ export default function AskQuestionFormSection() {
                         <option value="YouTube">YouTube</option>
                       </select>
                       {errors.hearabout && (
-                        <div className="text-danger mt-1 small">
-                          {errors.hearabout}
-                        </div>
+                        <div className="text-danger mt-1 small">{errors.hearabout}</div>
                       )}
                     </div>
                   </div>
@@ -561,19 +555,13 @@ export default function AskQuestionFormSection() {
                           Terms &amp; Conditions
                         </Link>{" "}
                         and{" "}
-                        <Link
-                          href="/privacy-policy"
-                          style={{ color: "#07a64b" }}
-                          target="_blank"
-                        >
+                        <Link href="/privacy-policy" style={{ color: "#07a64b" }} target="_blank">
                           Privacy Policy.
                         </Link>
                       </label>
                     </div>
                     {errors.agreeTerms && (
-                      <div className="text-danger mt-1 small">
-                        {errors.agreeTerms}
-                      </div>
+                      <div className="text-danger mt-1 small">{errors.agreeTerms}</div>
                     )}
                   </div>
 

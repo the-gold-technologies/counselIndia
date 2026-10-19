@@ -17,18 +17,11 @@ export default function EventDetailView({ event }: EventDetailViewProps) {
     <div className="event-detail-page-wrapper bg-white min-vh-100">
       <EventDetailHero banner={event.banner} name={event.name} />
       <div className="container custom-container">
-        <EventDetailHeader
-          address={event.address}
-          date={event.date}
-          time={event.time}
-        />
+        <EventDetailHeader address={event.address} date={event.date} time={event.time} />
         <EventDetailOverview event={event} />
       </div>
       <EventSpeakers speakers={event.speakers} />
-      <EventBenefitsAndFaq
-        keyBenefits={event.keyBenefits}
-        faqs={event.faqs}
-      />
+      <EventBenefitsAndFaq keyBenefits={event.keyBenefits} faqs={event.faqs} />
       <EventLimitedSeatsCTA
         speakerCount={event.speakers?.length || 2}
         price={event.price}

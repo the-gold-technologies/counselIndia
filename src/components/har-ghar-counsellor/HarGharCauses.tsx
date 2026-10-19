@@ -12,14 +12,12 @@ export default function HarGharCauses() {
     {
       title: "Community Mental Health Awareness Drives",
       desc: "Impactful initiatives in universities and govt. schools to raise mental health awareness and support.",
-      image:
-        "https://prod-s3.counselindia.com/mastergalaxyimages/DSC_1027_1725103580.JPG",
+      image: "https://prod-s3.counselindia.com/mastergalaxyimages/DSC_1027_1725103580.JPG",
     },
     {
       title: "Mental Health Conferences and Workshops",
       desc: "Interactive events fostering dialogue and finding personalized solutions to mental health challenges.",
-      image:
-        "https://prod-s3.counselindia.com/mastergalaxyimages/DSC_3284_1725103530.JPG",
+      image: "https://prod-s3.counselindia.com/mastergalaxyimages/DSC_3284_1725103530.JPG",
     },
   ];
 
@@ -36,8 +34,7 @@ export default function HarGharCauses() {
             style={{
               fontSize: "clamp(34px, 4.2vw, 44px)",
               fontWeight: 700,
-              fontFamily:
-                "Georgia, 'Playfair Display', 'Times New Roman', serif",
+              fontFamily: "Georgia, 'Playfair Display', 'Times New Roman', serif",
               color: "#07a64b",
               letterSpacing: "-0.5px",
             }}
@@ -85,8 +82,7 @@ export default function HarGharCauses() {
                     style={{
                       fontSize: "19px",
                       fontWeight: 700,
-                      fontFamily:
-                        "Georgia, 'Playfair Display', 'Times New Roman', serif",
+                      fontFamily: "Georgia, 'Playfair Display', 'Times New Roman', serif",
                       color: "#1e293b",
                       lineHeight: "1.35",
                       minHeight: "52px",

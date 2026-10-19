@@ -142,9 +142,7 @@ export default function CourseScholarship({ scholarship, phone }: Props) {
                     lineHeight: "1.65",
                   }}
                 >
-                  <strong style={{ color: "#1c2d3a", fontWeight: 700 }}>
-                    {pt.label} –{" "}
-                  </strong>
+                  <strong style={{ color: "#1c2d3a", fontWeight: 700 }}>{pt.label} – </strong>
                   <span>{pt.desc}</span>
                 </li>
               ))}
@@ -195,19 +193,10 @@ export default function CourseScholarship({ scholarship, phone }: Props) {
                   boxShadow: "0 4px 14px rgba(7, 166, 75, 0.25)",
                   transition: "all 0.2s ease",
                 }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.backgroundColor = "#068f40")
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.backgroundColor = "#07a64b")
-                }
+                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#068f40")}
+                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#07a64b")}
               >
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z" />
                 </svg>
                 Avail Now

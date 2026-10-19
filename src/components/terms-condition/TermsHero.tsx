@@ -21,8 +21,6 @@ export default function TermsHero() {
           className="container custom-container"
           style={{ maxWidth: "1170px", margin: "0 auto", padding: "0 16px" }}
         >
-
-
           {/* Page Banner Caption Start */}
           <div
             className="page-banner__caption-02"

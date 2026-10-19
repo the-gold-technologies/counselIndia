@@ -43,7 +43,7 @@ export interface LeadSubmissionPayload {
 }
 
 export async function submitLead(
-  payload: LeadSubmissionPayload,
+  payload: LeadSubmissionPayload
 ): Promise<{ success: boolean; data?: any; message?: string; error?: string }> {
   const adminUrl = process.env.NEXT_PUBLIC_ADMIN_API_URL;
 
@@ -69,10 +69,7 @@ export async function submitLead(
     const json = await res.json();
     return json;
   } catch (error: any) {
-    console.error(
-      `[LeadService] Error submitting lead to category '${payload.category}':`,
-      error,
-    );
+    console.error(`[LeadService] Error submitting lead to category '${payload.category}':`, error);
     return {
       success: false,
       error: error?.message || "Failed to submit lead",

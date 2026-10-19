@@ -15,14 +15,16 @@ export default function LatestNewsAndUpdates() {
       id: 2,
       image: "https://prod-s3.counselindia.com/news/Untitled%20design%20(4)_1752639280.png",
       date: "15 Jul 2025",
-      title: "Counsel India empowers 10,000+ professionals, aims to become India's largest psychology learning platform",
+      title:
+        "Counsel India empowers 10,000+ professionals, aims to become India's largest psychology learning platform",
       link: "https://ncrexpressnews.com/counsel-india-set-a-target-to-become-100000-professionals/",
     },
     {
       id: 3,
       image: "https://prod-s3.counselindia.com/news/Untitled%20design%20(11)_1728455491.png",
       date: "08 Oct 2024",
-      title: "Counsel India Partners with Galgotias University to Launch UGC-Approved Psychology Programs",
+      title:
+        "Counsel India Partners with Galgotias University to Launch UGC-Approved Psychology Programs",
       link: "https://taasir.com/2024/10/counsel-india-partners-with-galgotias-university-to-launch-ugc-approved-psychology-programs/#:~:text=Counsel%20India%20will%20now%20provide%20UGC-approved%20psychology%20programs%20as%20part",
     },
     {
@@ -36,12 +38,14 @@ export default function LatestNewsAndUpdates() {
       id: 5,
       image: "https://prod-s3.counselindia.com/news/passionate%20(1)_1720767393.png",
       date: "11 Jul 2024",
-      title: "The Path to Becoming a Counsellor: Examining Career Options in Different Specialisations",
+      title:
+        "The Path to Becoming a Counsellor: Examining Career Options in Different Specialisations",
       link: "https://www.aajtakcampus.in/news/the-path-to-becoming-a-counsellor-examining-career-options-in-different-specialisations",
     },
     {
       id: 6,
-      image: "https://prod-s3.counselindia.com/news/WhatsApp%20Image%202024-07-12%20at%2012.00.55_1720766201.jpeg",
+      image:
+        "https://prod-s3.counselindia.com/news/WhatsApp%20Image%202024-07-12%20at%2012.00.55_1720766201.jpeg",
       date: "10 Jul 2024",
       title: "News from the world of education - July 4, 2024",
       link: "https://www.thehindu.com/education/news-from-the-world-of-education-july-4-2024/article68366397.ece",

@@ -9,7 +9,8 @@ export default function EventsSpotlight() {
       badge: "START YOUR CAREER IN PSYCHOLOGY & 5X YOUR GROWTH",
       date: "19th September, 2023",
       location: "Noida",
-      image: "https://prod-s3.counselindia.com/mainevent/start-your-career-in-psychology-5x-your-growthcoverimage_1694686111.png",
+      image:
+        "https://prod-s3.counselindia.com/mainevent/start-your-career-in-psychology-5x-your-growthcoverimage_1694686111.png",
       link: "/events/skills-required-to-become-a-counsellor",
     },
     {
@@ -17,7 +18,8 @@ export default function EventsSpotlight() {
       badge: "3-DAY LIVE & ONLINE BOOTCAMP ON SELF-HEALING & LIVE A HAPPY LIFE!",
       date: "Oct 26th - 28th, 2024",
       location: "D-7, Fourth Floor , Sector-3, Noida",
-      image: "https://prod-s3.counselindia.com/mainevent/Boot Camp Instagram Post -min (2)_1728624901.jpg",
+      image:
+        "https://prod-s3.counselindia.com/mainevent/Boot Camp Instagram Post -min (2)_1728624901.jpg",
       link: "/events/3-day-live-online-bootcamp-on-self-healing-live-a-happy-life",
     },
     {
@@ -25,7 +27,8 @@ export default function EventsSpotlight() {
       badge: "SKILLS REQUIRED TO BECOME A COUNSELLOR",
       date: "September 18th & 19th, 2024",
       location: "D-7, Fourth Floor , Sector-3, Noida",
-      image: "https://prod-s3.counselindia.com/mainevent/WhatsApp Image 2024-09-10 at 20.30.23_bf5620ad (1)_1726142638.jpg",
+      image:
+        "https://prod-s3.counselindia.com/mainevent/WhatsApp Image 2024-09-10 at 20.30.23_bf5620ad (1)_1726142638.jpg",
       link: "/events/skills-required-to-become-a-counsellor",
     },
     {
@@ -33,7 +36,8 @@ export default function EventsSpotlight() {
       badge: "EMOTIONAL WELL-BEING AND HAPPINESS",
       date: "October, 15th & 16th, 2024",
       location: "1st Floor, C, 10, Block C, Noida Sector 3",
-      image: "https://prod-s3.counselindia.com/mainevent/Boot Camp Instagram Post  (1)_1731048278.jpg",
+      image:
+        "https://prod-s3.counselindia.com/mainevent/Boot Camp Instagram Post  (1)_1731048278.jpg",
       link: "/events/emotional-well-being-and-happiness",
     },
     {
@@ -41,7 +45,8 @@ export default function EventsSpotlight() {
       badge: "MASTERCLASS ON RELATIONSHIP PSYCHOLOGY",
       date: "16th January, 2024",
       location: "C 10, Noida sector 3, 1st floor",
-      image: "https://prod-s3.counselindia.com/mainevent/WhatsApp Image 2024-12-26 at 16.31.37_1735211013.jpg",
+      image:
+        "https://prod-s3.counselindia.com/mainevent/WhatsApp Image 2024-12-26 at 16.31.37_1735211013.jpg",
       link: "/events/masterclass-on-relationship-psychology",
     },
     {
@@ -65,7 +70,8 @@ export default function EventsSpotlight() {
       badge: "STEP BY STEP PROCESS TO BECOME COUNSELLOR & EARN 7 LPA",
       date: "23th - 24th Feb 2023",
       location: "Delhi",
-      image: "https://prod-s3.counselindia.com/mainevent/master-workshop-on-step-by-step-process-to-become-counsellor-and-earn-at-least-7-lpacoverimage_1675841298.jpeg",
+      image:
+        "https://prod-s3.counselindia.com/mainevent/master-workshop-on-step-by-step-process-to-become-counsellor-and-earn-at-least-7-lpacoverimage_1675841298.jpeg",
       link: "/events",
     },
     {
@@ -73,7 +79,8 @@ export default function EventsSpotlight() {
       badge: "COUNSELLOR SE CHARCHA - EPISODE 2",
       date: "26th March 2023",
       location: "C-106, Sector 2, Noida (UP)",
-      image: "https://prod-s3.counselindia.com/mainevent/counselor-se-charcha-episode-2coverimage_1678526494.jpeg",
+      image:
+        "https://prod-s3.counselindia.com/mainevent/counselor-se-charcha-episode-2coverimage_1678526494.jpeg",
       link: "/events",
     },
     {
@@ -134,7 +141,8 @@ export default function EventsSpotlight() {
                 <br /> <mark>Events Spotlight</mark>
               </h2>
               <p className="mt-2 text-muted">
-                Stay updated and enroll in our events and workshops for continuous learning and exposure
+                Stay updated and enroll in our events and workshops for continuous learning and
+                exposure
               </p>
             </div>
 

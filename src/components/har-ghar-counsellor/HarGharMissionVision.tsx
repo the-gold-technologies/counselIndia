@@ -34,8 +34,7 @@ export default function HarGharMissionVision() {
                 className="heading mb-3"
                 style={{
                   color: "rgb(6, 136, 26)",
-                  fontFamily:
-                    "Georgia, 'Playfair Display', 'Times New Roman', serif",
+                  fontFamily: "Georgia, 'Playfair Display', 'Times New Roman', serif",
                   fontSize: "clamp(34px, 4.2vw, 44px)",
                   fontWeight: 700,
                 }}
@@ -45,8 +44,7 @@ export default function HarGharMissionVision() {
               <p
                 style={{
                   color: "rgba(255, 255, 255, 0.75)",
-                  fontFamily:
-                    "Georgia, 'Playfair Display', 'Times New Roman', serif",
+                  fontFamily: "Georgia, 'Playfair Display', 'Times New Roman', serif",
                   fontSize: "clamp(17px, 1.8vw, 21px)",
                   lineHeight: "1.65",
                   textAlign: "left",
@@ -54,12 +52,11 @@ export default function HarGharMissionVision() {
                   maxWidth: "540px",
                 }}
               >
-                Our mission is to uplift and empower both the broader community
-                by weaving social impact into the heart of our educational
-                programs. Through this initiative, we aim to spark a deeper
-                awareness and place a trained counsellor in every home, ensuring
-                all families have immediate access to emotional and
-                psychological support to reduce stress and enhance well-being.
+                Our mission is to uplift and empower both the broader community by weaving social
+                impact into the heart of our educational programs. Through this initiative, we aim
+                to spark a deeper awareness and place a trained counsellor in every home, ensuring
+                all families have immediate access to emotional and psychological support to reduce
+                stress and enhance well-being.
               </p>
             </div>
           </div>
@@ -115,8 +112,7 @@ export default function HarGharMissionVision() {
                 className="heading mb-3"
                 style={{
                   color: "rgb(6, 136, 26)",
-                  fontFamily:
-                    "Georgia, 'Playfair Display', 'Times New Roman', serif",
+                  fontFamily: "Georgia, 'Playfair Display', 'Times New Roman', serif",
                   fontSize: "clamp(34px, 4.2vw, 44px)",
                   fontWeight: 700,
                 }}
@@ -128,8 +124,7 @@ export default function HarGharMissionVision() {
                 className="d-block mb-3"
                 style={{
                   color: "rgb(242, 234, 225)",
-                  fontFamily:
-                    "Georgia, 'Playfair Display', 'Times New Roman', serif",
+                  fontFamily: "Georgia, 'Playfair Display', 'Times New Roman', serif",
                   fontSize: "clamp(18px, 1.9vw, 22px)",
                   fontWeight: 700,
                 }}
@@ -140,8 +135,7 @@ export default function HarGharMissionVision() {
               <p
                 style={{
                   color: "rgba(255, 255, 255, 0.75)",
-                  fontFamily:
-                    "Georgia, 'Playfair Display', 'Times New Roman', serif",
+                  fontFamily: "Georgia, 'Playfair Display', 'Times New Roman', serif",
                   fontSize: "clamp(17px, 1.8vw, 21px)",
                   lineHeight: "1.65",
                   textAlign: "left",
@@ -149,11 +143,10 @@ export default function HarGharMissionVision() {
                   maxWidth: "540px",
                 }}
               >
-                Our vision is to create a world where everyone can thrive with
-                emotional well-being. We dream of building an emotionally
-                resilient society where people don’t just succeed
-                professionally, but also thrive in their personal lives by
-                overcoming mental health challenges.
+                Our vision is to create a world where everyone can thrive with emotional well-being.
+                We dream of building an emotionally resilient society where people don’t just
+                succeed professionally, but also thrive in their personal lives by overcoming mental
+                health challenges.
               </p>
             </div>
           </div>

@@ -24,34 +24,93 @@ const TESTS: TestData[] = [
     questions: [
       { id: 1, text: "1. I feel content and at peace with myself.", options: DEFAULT_OPTIONS },
       { id: 2, text: "2. I am able to manage stress in a healthy way.", options: DEFAULT_OPTIONS },
-      { id: 3, text: "3. I feel confident in my ability to handle daily challenges.", options: DEFAULT_OPTIONS },
-      { id: 4, text: "4. I have positive thoughts about myself and my future.", options: DEFAULT_OPTIONS },
-      { id: 5, text: "5. I am able to balance my work and personal life well.", options: DEFAULT_OPTIONS },
-      { id: 6, text: "6. I feel connected and supported by those around me.", options: DEFAULT_OPTIONS },
-      { id: 7, text: "7. I have a sense of purpose in my daily activities.", options: DEFAULT_OPTIONS },
-      { id: 8, text: "8. I experience a variety of emotions without feeling overwhelmed.", options: DEFAULT_OPTIONS },
-      { id: 9, text: "9. I can recover from setbacks or difficult situations fairly quickly.", options: DEFAULT_OPTIONS },
-      { id: 10, text: "10. I feel motivated to pursue my goals and dreams.", options: DEFAULT_OPTIONS },
+      {
+        id: 3,
+        text: "3. I feel confident in my ability to handle daily challenges.",
+        options: DEFAULT_OPTIONS,
+      },
+      {
+        id: 4,
+        text: "4. I have positive thoughts about myself and my future.",
+        options: DEFAULT_OPTIONS,
+      },
+      {
+        id: 5,
+        text: "5. I am able to balance my work and personal life well.",
+        options: DEFAULT_OPTIONS,
+      },
+      {
+        id: 6,
+        text: "6. I feel connected and supported by those around me.",
+        options: DEFAULT_OPTIONS,
+      },
+      {
+        id: 7,
+        text: "7. I have a sense of purpose in my daily activities.",
+        options: DEFAULT_OPTIONS,
+      },
+      {
+        id: 8,
+        text: "8. I experience a variety of emotions without feeling overwhelmed.",
+        options: DEFAULT_OPTIONS,
+      },
+      {
+        id: 9,
+        text: "9. I can recover from setbacks or difficult situations fairly quickly.",
+        options: DEFAULT_OPTIONS,
+      },
+      {
+        id: 10,
+        text: "10. I feel motivated to pursue my goals and dreams.",
+        options: DEFAULT_OPTIONS,
+      },
     ],
   },
   {
     id: "quality-of-life",
     title: "Quality of Life Test",
-    image:
-      "https://prod-s3.counselindia.com/mastergalaxyimages/cover22_1730113051.png",
+    image: "https://prod-s3.counselindia.com/mastergalaxyimages/cover22_1730113051.png",
     description:
       "Assess your satisfaction across key life domains including health, security, relationships, and purpose.",
     questions: [
       { id: 1, text: "1. I am satisfied with my overall health.", options: DEFAULT_OPTIONS },
       { id: 2, text: "2. I feel safe and secure in my daily life.", options: DEFAULT_OPTIONS },
-      { id: 3, text: "3. I am able to meet my daily financial needs comfortably.", options: DEFAULT_OPTIONS },
-      { id: 4, text: "4. I have fulfilling relationships with family and friends.", options: DEFAULT_OPTIONS },
-      { id: 5, text: "5. I enjoy my work/studies and find them meaningful.", options: DEFAULT_OPTIONS },
-      { id: 6, text: "6. I am able to participate in leisure activities I enjoy.", options: DEFAULT_OPTIONS },
-      { id: 7, text: "7. I have a sense of purpose and direction in life.", options: DEFAULT_OPTIONS },
+      {
+        id: 3,
+        text: "3. I am able to meet my daily financial needs comfortably.",
+        options: DEFAULT_OPTIONS,
+      },
+      {
+        id: 4,
+        text: "4. I have fulfilling relationships with family and friends.",
+        options: DEFAULT_OPTIONS,
+      },
+      {
+        id: 5,
+        text: "5. I enjoy my work/studies and find them meaningful.",
+        options: DEFAULT_OPTIONS,
+      },
+      {
+        id: 6,
+        text: "6. I am able to participate in leisure activities I enjoy.",
+        options: DEFAULT_OPTIONS,
+      },
+      {
+        id: 7,
+        text: "7. I have a sense of purpose and direction in life.",
+        options: DEFAULT_OPTIONS,
+      },
       { id: 8, text: "8. I feel comfortable with my living conditions.", options: DEFAULT_OPTIONS },
-      { id: 9, text: "9. I feel respected and valued in my social circles.", options: DEFAULT_OPTIONS },
-      { id: 10, text: "10. I generally feel happy and content with my life.", options: DEFAULT_OPTIONS },
+      {
+        id: 9,
+        text: "9. I feel respected and valued in my social circles.",
+        options: DEFAULT_OPTIONS,
+      },
+      {
+        id: 10,
+        text: "10. I generally feel happy and content with my life.",
+        options: DEFAULT_OPTIONS,
+      },
     ],
   },
   {
@@ -62,16 +121,48 @@ const TESTS: TestData[] = [
     description:
       "A quick psychological assessment to evaluate your concentration, sleep quality, and daily vitality.",
     questions: [
-      { id: 1, text: "1. I feel capable of making decisions about my daily life.", options: DEFAULT_OPTIONS },
-      { id: 2, text: "2. I have been feeling cheerful and in good spirits.", options: DEFAULT_OPTIONS },
-      { id: 3, text: "3. I have been able to concentrate on what I'm doing.", options: DEFAULT_OPTIONS },
-      { id: 4, text: "4. I feel capable of coping with daily strain or stress.", options: DEFAULT_OPTIONS },
+      {
+        id: 1,
+        text: "1. I feel capable of making decisions about my daily life.",
+        options: DEFAULT_OPTIONS,
+      },
+      {
+        id: 2,
+        text: "2. I have been feeling cheerful and in good spirits.",
+        options: DEFAULT_OPTIONS,
+      },
+      {
+        id: 3,
+        text: "3. I have been able to concentrate on what I'm doing.",
+        options: DEFAULT_OPTIONS,
+      },
+      {
+        id: 4,
+        text: "4. I feel capable of coping with daily strain or stress.",
+        options: DEFAULT_OPTIONS,
+      },
       { id: 5, text: "5. I feel optimistic and hopeful about my days.", options: DEFAULT_OPTIONS },
-      { id: 6, text: "6. I have been able to enjoy my normal day-to-day activities.", options: DEFAULT_OPTIONS },
-      { id: 7, text: "7. I feel confident about handling personal problems.", options: DEFAULT_OPTIONS },
-      { id: 8, text: "8. I feel physically healthy and able to carry out my daily tasks.", options: DEFAULT_OPTIONS },
+      {
+        id: 6,
+        text: "6. I have been able to enjoy my normal day-to-day activities.",
+        options: DEFAULT_OPTIONS,
+      },
+      {
+        id: 7,
+        text: "7. I feel confident about handling personal problems.",
+        options: DEFAULT_OPTIONS,
+      },
+      {
+        id: 8,
+        text: "8. I feel physically healthy and able to carry out my daily tasks.",
+        options: DEFAULT_OPTIONS,
+      },
       { id: 9, text: "9. I feel satisfied with my quality of sleep.", options: DEFAULT_OPTIONS },
-      { id: 10, text: "10. I feel that I have enough energy for daily activities.", options: DEFAULT_OPTIONS },
+      {
+        id: 10,
+        text: "10. I feel that I have enough energy for daily activities.",
+        options: DEFAULT_OPTIONS,
+      },
     ],
   },
 ];

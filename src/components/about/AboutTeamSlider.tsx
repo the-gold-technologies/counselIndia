@@ -10,11 +10,7 @@ export default function AboutTeamSlider() {
         <div className="container custom-container">
           <div className="row">
             <div className="col-md-12">
-              <div
-                className="section-title"
-                data-aos="fade-up"
-                data-aos-duration="1000"
-              >
+              <div className="section-title" data-aos="fade-up" data-aos-duration="1000">
                 <h2 className="section-title__title">
                   Meet <mark>Our Core Team</mark>
                 </h2>
@@ -24,10 +20,7 @@ export default function AboutTeamSlider() {
 
           <div className="row g-4 justify-content-start">
             {CORE_TEAM.map((member) => (
-              <div
-                key={member.id}
-                className="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12 mb-4"
-              >
+              <div key={member.id} className="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
                 <div className="speaker-item text-center">
                   <div className="speaker-item__thumbnail">
                     <img
@@ -45,9 +38,7 @@ export default function AboutTeamSlider() {
                   </div>
                   <div className="speaker-item__content">
                     <h6 className="speaker-item__name">{member.name}</h6>
-                    <p className="speaker-item__designation mb-0">
-                      {member.designation}
-                    </p>
+                    <p className="speaker-item__designation mb-0">{member.designation}</p>
                   </div>
                 </div>
               </div>
@@ -61,11 +52,7 @@ export default function AboutTeamSlider() {
         <div className="container custom-container">
           <div className="row">
             <div className="col-md-12">
-              <div
-                className="section-title"
-                data-aos="fade-up"
-                data-aos-duration="1000"
-              >
+              <div className="section-title" data-aos="fade-up" data-aos-duration="1000">
                 <h2 className="section-title__title">
                   Our <mark>Legal Team</mark>
                 </h2>
@@ -75,10 +62,7 @@ export default function AboutTeamSlider() {
 
           <div className="row g-4 justify-content-start">
             {LEGAL_TEAM.map((member) => (
-              <div
-                key={member.id}
-                className="col-lg-3 col-md-4 col-sm-6 col-12 mb-4"
-              >
+              <div key={member.id} className="col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
                 <div className="speaker-item text-center">
                   <div className="speaker-item__thumbnail">
                     <img
@@ -96,9 +80,7 @@ export default function AboutTeamSlider() {
                   </div>
                   <div className="speaker-item__content">
                     <h6 className="speaker-item__name">{member.name}</h6>
-                    <p className="speaker-item__designation mb-0">
-                      {member.designation}
-                    </p>
+                    <p className="speaker-item__designation mb-0">{member.designation}</p>
                   </div>
                 </div>
               </div>

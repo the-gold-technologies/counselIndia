@@ -98,7 +98,7 @@ export default function EligibilityForm() {
                     ? c.phonecode
                     : `+${c.phonecode}`
                   : "",
-              })),
+              }))
             );
           }
         }
@@ -119,7 +119,7 @@ export default function EligibilityForm() {
     async function fetchStates() {
       try {
         const res = await fetch(
-          `https://counselindia.com/api/countries/${formData.country}/states`,
+          `https://counselindia.com/api/countries/${formData.country}/states`
         );
         if (res.ok) {
           const data = await res.json();
@@ -152,9 +152,7 @@ export default function EligibilityForm() {
 
     async function fetchCities() {
       try {
-        const res = await fetch(
-          `https://counselindia.com/api/states/${formData.state}/cities`,
-        );
+        const res = await fetch(`https://counselindia.com/api/states/${formData.state}/cities`);
         if (res.ok) {
           const data = await res.json();
           if (Array.isArray(data) && data.length > 0) {
@@ -197,9 +195,7 @@ export default function EligibilityForm() {
     }
 
     if (!formData.terms) {
-      setErrorMessage(
-        "Please accept the Terms & Conditions and Privacy Policy.",
-      );
+      setErrorMessage("Please accept the Terms & Conditions and Privacy Policy.");
       return;
     }
 
@@ -247,8 +243,7 @@ export default function EligibilityForm() {
                 style={{
                   fontSize: "25px",
                   fontWeight: 800,
-                  fontFamily:
-                    "Inter, 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif",
+                  fontFamily: "Inter, 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif",
                   color: "#1e2532",
                   letterSpacing: "-0.5px",
                 }}
@@ -270,11 +265,10 @@ export default function EligibilityForm() {
                   >
                     ✓
                   </div>
-                  <h4 className="fw-bold text-dark mb-2">
-                    Form Submitted Successfully!
-                  </h4>
+                  <h4 className="fw-bold text-dark mb-2">Form Submitted Successfully!</h4>
                   <p className="text-muted mb-4 font-size-14">
-                    Thank you for submitting your eligibility details. Our counselling team will connect with you shortly.
+                    Thank you for submitting your eligibility details. Our counselling team will
+                    connect with you shortly.
                   </p>
                   <button
                     onClick={() => setSubmitSuccess(false)}
@@ -314,9 +308,7 @@ export default function EligibilityForm() {
                           className="form-control custom-input"
                           placeholder="Your Full Name"
                           value={formData.name}
-                          onChange={(e) =>
-                            setFormData({ ...formData, name: e.target.value })
-                          }
+                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                           required
                         />
                       </div>
@@ -344,9 +336,7 @@ export default function EligibilityForm() {
                           className="form-control custom-input"
                           placeholder="Your Email Address"
                           value={formData.email}
-                          onChange={(e) =>
-                            setFormData({ ...formData, email: e.target.value })
-                          }
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                           required
                         />
                       </div>
@@ -392,14 +382,7 @@ export default function EligibilityForm() {
                           strokeLinecap="round"
                           strokeLinejoin="round"
                         >
-                          <rect
-                            width="14"
-                            height="20"
-                            x="5"
-                            y="2"
-                            rx="2"
-                            ry="2"
-                          />
+                          <rect width="14" height="20" x="5" y="2" rx="2" ry="2" />
                           <path d="M12 18h.01" />
                         </svg>
                         <input
@@ -407,9 +390,7 @@ export default function EligibilityForm() {
                           className="form-control custom-input"
                           placeholder="Your Mobile Number"
                           value={formData.mobile}
-                          onChange={(e) =>
-                            setFormData({ ...formData, mobile: e.target.value })
-                          }
+                          onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
                           required
                         />
                       </div>
@@ -446,9 +427,7 @@ export default function EligibilityForm() {
                         <select
                           className="form-select custom-select"
                           value={formData.city}
-                          onChange={(e) =>
-                            setFormData({ ...formData, city: e.target.value })
-                          }
+                          onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                           required
                         >
                           <option value="">Please Select City</option>
@@ -475,14 +454,7 @@ export default function EligibilityForm() {
                           strokeLinecap="round"
                           strokeLinejoin="round"
                         >
-                          <rect
-                            width="18"
-                            height="18"
-                            x="3"
-                            y="4"
-                            rx="2"
-                            ry="2"
-                          />
+                          <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
                           <line x1="16" x2="16" y1="2" y2="6" />
                           <line x1="8" x2="8" y1="2" y2="6" />
                           <line x1="3" x2="21" y1="10" y2="10" />
@@ -494,9 +466,7 @@ export default function EligibilityForm() {
                           min={10}
                           max={100}
                           value={formData.age}
-                          onChange={(e) =>
-                            setFormData({ ...formData, age: e.target.value })
-                          }
+                          onChange={(e) => setFormData({ ...formData, age: e.target.value })}
                           required
                         />
                       </div>

@@ -12,15 +12,21 @@ const MembershipStories = dynamic(() => import("@/components/membership/Membersh
 const MembershipPrivileges = dynamic(() => import("@/components/membership/MembershipPrivileges"), {
   ssr: true,
 });
-const MembershipVideoCheers = dynamic(() => import("@/components/membership/MembershipVideoCheers"), {
-  ssr: true,
-});
+const MembershipVideoCheers = dynamic(
+  () => import("@/components/membership/MembershipVideoCheers"),
+  {
+    ssr: true,
+  }
+);
 const MembershipPricing = dynamic(() => import("@/components/membership/MembershipPricing"), {
   ssr: true,
 });
-const MembershipCertificate = dynamic(() => import("@/components/membership/MembershipCertificate"), {
-  ssr: true,
-});
+const MembershipCertificate = dynamic(
+  () => import("@/components/membership/MembershipCertificate"),
+  {
+    ssr: true,
+  }
+);
 const MembershipGuide = dynamic(() => import("@/components/membership/MembershipGuide"), {
   ssr: true,
 });

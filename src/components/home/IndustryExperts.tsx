@@ -36,7 +36,8 @@ export default function IndustryExperts() {
       name: "Darline Gonzalez",
       role: "Cognitive psychology",
       slug: "darline-gonzalez-psychoogist-20",
-      image: "https://prod-s3.counselindia.com/images/6564_8061E0FC-D47C-4E6C-8CAB-4AE815622A0A.png",
+      image:
+        "https://prod-s3.counselindia.com/images/6564_8061E0FC-D47C-4E6C-8CAB-4AE815622A0A.png",
       shortAbout:
         "Doctor of Philosophy in Psychology with an Emphasis in Cognition and Instruction (Ph.D.) – Grand Canyon University (GCU), Phoenix, Arizona (AZ)- 2021. Master of Science in Psychology with an Emphasis in General Psychology- 2015 GCU, Phoenix, AZ Bachelor",
     },
@@ -99,7 +100,8 @@ export default function IndustryExperts() {
       name: "Jyoti S Sharma",
       role: "Music Therapist & Psychologist",
       slug: "jyoti-s-sharma-music-therapist-and-psychologist45-26",
-      image: "https://prod-s3.counselindia.com/counsellor/counsellor_Jyoti S Sharma_1673870887.webp",
+      image:
+        "https://prod-s3.counselindia.com/counsellor/counsellor_Jyoti S Sharma_1673870887.webp",
       shortAbout:
         "Consultant music therapist and Psychologist at World Brain Centre Hospital, New Delhi. Esteemed Member of Indian Music Therapy Association (IMTA) with CSMT certification.",
     },
@@ -203,7 +205,9 @@ export default function IndustryExperts() {
             Learn from the leading <mark>industry Experts</mark>
           </h2>
           <p className="mt-2 text-muted" style={{ maxWidth: "800px" }}>
-            We partner with top-notch RCI-certified psychologists and global experts who teach 55+ courses and programs. With close to 1,000+ members, our extensive network of psychologists, counsellors, and mental health professionals is ever-growing.
+            We partner with top-notch RCI-certified psychologists and global experts who teach 55+
+            courses and programs. With close to 1,000+ members, our extensive network of
+            psychologists, counsellors, and mental health professionals is ever-growing.
           </p>
         </div>
         {/* Section Title End */}

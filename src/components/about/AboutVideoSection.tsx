@@ -31,19 +31,14 @@ export default function AboutVideoSection() {
       <div
         className="about-video-section"
         style={{
-          backgroundImage:
-            "url(https://prod-s3.counselindia.com/images/about-us-hero-bg.jpg)",
+          backgroundImage: "url(https://prod-s3.counselindia.com/images/about-us-hero-bg.jpg)",
         }}
       >
         <div className="container custom-container">
           <div className="row gy-10 justify-content-between align-items-center">
             {/* Left Title */}
             <div className="col-xl-9 col-lg-8">
-              <div
-                className="about-video-content"
-                data-aos="fade-up"
-                data-aos-duration="1000"
-              >
+              <div className="about-video-content" data-aos="fade-up" data-aos-duration="1000">
                 <h2 className="about-video-content__main-title">
                   <strong>Who Are We?</strong>
                 </h2>
@@ -52,11 +47,7 @@ export default function AboutVideoSection() {
 
             {/* Right Video Play Button & Text */}
             <div className="col-xl-3 col-lg-4">
-              <div
-                className="video-play"
-                data-aos="fade-up"
-                data-aos-duration="1000"
-              >
+              <div className="video-play" data-aos="fade-up" data-aos-duration="1000">
                 <a
                   href="https://www.youtube.com/embed/-c6bRVUmb-E"
                   className="glightbox video-play-btn"
@@ -153,7 +144,9 @@ export default function AboutVideoSection() {
           border: 1.5px solid rgba(255, 255, 255, 0.45);
           border-radius: 50%;
           pointer-events: none;
-          transition: border-color 0.25s ease, transform 0.25s ease;
+          transition:
+            border-color 0.25s ease,
+            transform 0.25s ease;
         }
 
         .video-play-btn:hover .video-play__ring {

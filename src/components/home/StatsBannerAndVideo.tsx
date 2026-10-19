@@ -132,7 +132,9 @@ export default function StatsBannerAndVideo() {
           border-radius: 8px;
           overflow: hidden;
           box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-          transition: box-shadow 0.3s ease, transform 0.3s ease;
+          transition:
+            box-shadow 0.3s ease,
+            transform 0.3s ease;
         }
 
         .videoTestimonials.new_video_wrp .videowrp:hover {
@@ -194,15 +196,8 @@ export default function StatsBannerAndVideo() {
             <div className="row">
               {videoItems.map((item) => (
                 <div className="col-lg-3" key={item.id}>
-                  <div
-                    className="videowrp"
-                    onClick={() => setActiveVideo(item.videoUrl)}
-                  >
-                    <img
-                      loading="lazy"
-                      alt="Psychology Success Stories"
-                      src={item.image}
-                    />
+                  <div className="videowrp" onClick={() => setActiveVideo(item.videoUrl)}>
+                    <img loading="lazy" alt="Psychology Success Stories" src={item.image} />
                     <div className="video_icon">
                       <img
                         loading="lazy"

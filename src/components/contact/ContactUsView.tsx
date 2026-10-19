@@ -57,14 +57,7 @@ const INDIAN_STATES = [
 ];
 
 const MAJOR_CITIES: Record<string, string[]> = {
-  Delhi: [
-    "New Delhi",
-    "North Delhi",
-    "South Delhi",
-    "West Delhi",
-    "East Delhi",
-    "Other",
-  ],
+  Delhi: ["New Delhi", "North Delhi", "South Delhi", "West Delhi", "East Delhi", "Other"],
   "Uttar Pradesh": [
     "Noida",
     "Greater Noida",
@@ -89,58 +82,14 @@ const MAJOR_CITIES: Record<string, string[]> = {
     "Other",
   ],
   Karnataka: ["Bengaluru", "Mysuru", "Hubli", "Mangaluru", "Belagavi", "Other"],
-  Haryana: [
-    "Gurugram",
-    "Faridabad",
-    "Panipat",
-    "Ambala",
-    "Karnal",
-    "Hisar",
-    "Other",
-  ],
-  "Tamil Nadu": [
-    "Chennai",
-    "Coimbatore",
-    "Madurai",
-    "Tiruchirappalli",
-    "Salem",
-    "Other",
-  ],
-  "West Bengal": [
-    "Kolkata",
-    "Howrah",
-    "Durgapur",
-    "Asansol",
-    "Siliguri",
-    "Other",
-  ],
+  Haryana: ["Gurugram", "Faridabad", "Panipat", "Ambala", "Karnal", "Hisar", "Other"],
+  "Tamil Nadu": ["Chennai", "Coimbatore", "Madurai", "Tiruchirappalli", "Salem", "Other"],
+  "West Bengal": ["Kolkata", "Howrah", "Durgapur", "Asansol", "Siliguri", "Other"],
   Gujarat: ["Ahmedabad", "Surat", "Vadodara", "Rajkot", "Bhavnagar", "Other"],
-  Rajasthan: [
-    "Jaipur",
-    "Jodhpur",
-    "Udaipur",
-    "Kota",
-    "Bikaner",
-    "Ajmer",
-    "Other",
-  ],
-  Punjab: [
-    "Chandigarh",
-    "Ludhiana",
-    "Amritsar",
-    "Jalandhar",
-    "Patiala",
-    "Other",
-  ],
+  Rajasthan: ["Jaipur", "Jodhpur", "Udaipur", "Kota", "Bikaner", "Ajmer", "Other"],
+  Punjab: ["Chandigarh", "Ludhiana", "Amritsar", "Jalandhar", "Patiala", "Other"],
   Bihar: ["Patna", "Gaya", "Bhagalpur", "Muzaffarpur", "Purnia", "Other"],
-  "Madhya Pradesh": [
-    "Bhopal",
-    "Indore",
-    "Gwalior",
-    "Jabalpur",
-    "Ujjain",
-    "Other",
-  ],
+  "Madhya Pradesh": ["Bhopal", "Indore", "Gwalior", "Jabalpur", "Ujjain", "Other"],
   Telangana: ["Hyderabad", "Warangal", "Nizamabad", "Karimnagar", "Other"],
 };
 
@@ -192,9 +141,7 @@ export default function ContactUsView() {
       : ["Please Select City", "Other"];
 
   const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >,
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
     const { name, value, type } = e.target;
     if (type === "checkbox") {
@@ -220,9 +167,7 @@ export default function ContactUsView() {
       return;
     }
     if (!formData.agree) {
-      setErrorMsg(
-        "You must agree to our Terms & Conditions and Privacy Policy.",
-      );
+      setErrorMsg("You must agree to our Terms & Conditions and Privacy Policy.");
       return;
     }
 
@@ -291,10 +236,7 @@ export default function ContactUsView() {
       {/* Page Banner Section End */}
 
       {/* Hero Panoramic Image */}
-      <div
-        className="hero-img-contact-us"
-        style={{ width: "100%", lineHeight: 0 }}
-      >
+      <div className="hero-img-contact-us" style={{ width: "100%", lineHeight: 0 }}>
         <img
           src="https://counselindiastudymaterial.s3.ap-south-1.amazonaws.com/media/CI_Full_team.png"
           alt="Counsel India Team"
@@ -337,9 +279,8 @@ export default function ContactUsView() {
                 lineHeight: "1.7",
               }}
             >
-              If you have any questions or need help, please fill in the details
-              below and our Success Manager will get in touch with you within 24
-              Hours.
+              If you have any questions or need help, please fill in the details below and our
+              Success Manager will get in touch with you within 24 Hours.
             </p>
           </div>
 
@@ -436,8 +377,7 @@ export default function ContactUsView() {
                       textAlign: "left",
                     }}
                   >
-                    <span style={{ color: "#07a64b" }}>Counselindia </span>:
-                    Noida Head Office
+                    <span style={{ color: "#07a64b" }}>Counselindia </span>: Noida Head Office
                   </h5>
 
                   <p
@@ -450,9 +390,7 @@ export default function ContactUsView() {
                       textAlign: "left",
                     }}
                   >
-                    <span style={{ fontWeight: 700, color: "#212529" }}>
-                      Address:
-                    </span>{" "}
+                    <span style={{ fontWeight: 700, color: "#212529" }}>Address:</span>{" "}
                     {settings.contactUsHeadOffice}
                   </p>
 
@@ -513,8 +451,7 @@ export default function ContactUsView() {
                   margin: 0,
                 }}
               >
-                Fill the form below so we can get to know you and your needs
-                better.
+                Fill the form below so we can get to know you and your needs better.
               </h2>
             </div>
 
@@ -542,8 +479,8 @@ export default function ContactUsView() {
                   Thank you for reaching out!
                 </h3>
                 <p style={{ margin: 0, fontSize: "14px" }}>
-                  Our Success Manager has received your details and will get in
-                  touch with you within 24 Hours.
+                  Our Success Manager has received your details and will get in touch with you
+                  within 24 Hours.
                 </p>
                 <button
                   type="button"
@@ -646,11 +583,7 @@ export default function ContactUsView() {
                       required
                     >
                       {COUNTRIES.map((c, idx) => (
-                        <option
-                          key={idx}
-                          value={c.code || c.name}
-                          style={{ color: "#212529" }}
-                        >
+                        <option key={idx} value={c.code || c.name} style={{ color: "#212529" }}>
                           {c.name}
                         </option>
                       ))}
@@ -690,11 +623,7 @@ export default function ContactUsView() {
                       required
                     >
                       {INDIAN_STATES.map((st, idx) => (
-                        <option
-                          key={idx}
-                          value={idx === 0 ? "" : st}
-                          style={{ color: "#212529" }}
-                        >
+                        <option key={idx} value={idx === 0 ? "" : st} style={{ color: "#212529" }}>
                           {st}
                         </option>
                       ))}
@@ -717,11 +646,7 @@ export default function ContactUsView() {
                       required
                     >
                       {citiesForState.map((ct, idx) => (
-                        <option
-                          key={idx}
-                          value={idx === 0 ? "" : ct}
-                          style={{ color: "#212529" }}
-                        >
+                        <option key={idx} value={idx === 0 ? "" : ct} style={{ color: "#212529" }}>
                           {ct}
                         </option>
                       ))}

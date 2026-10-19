@@ -9,8 +9,14 @@ export default function CourseBenefits({ benefits }: Props) {
   if (!benefits || benefits.length === 0) return null;
 
   return (
-    <div className="tutor-course-main-content" style={{ padding: "20px 0 35px", backgroundColor: "#ffffff" }}>
-      <div className="container custom-container" style={{ maxWidth: "1170px", margin: "0 auto", padding: "0 16px" }}>
+    <div
+      className="tutor-course-main-content"
+      style={{ padding: "20px 0 35px", backgroundColor: "#ffffff" }}
+    >
+      <div
+        className="container custom-container"
+        style={{ maxWidth: "1170px", margin: "0 auto", padding: "0 16px" }}
+      >
         <div className="tutor-course-segment">
           <h3
             style={{

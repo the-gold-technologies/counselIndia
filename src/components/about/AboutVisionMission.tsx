@@ -8,11 +8,7 @@ export default function AboutVisionMission() {
         <div className="row g-6 justify-content-center">
           <div className="col-md-4 col-sm-6 col-12 mb-4 mb-md-0">
             {/* Academics Start */}
-            <div
-              className="academics-item text-center"
-              data-aos="fade-up"
-              data-aos-duration="1000"
-            >
+            <div className="academics-item text-center" data-aos="fade-up" data-aos-duration="1000">
               <a href="javascript:void(0)" className="academics-item__link">
                 <div className="academics-item__image position-relative overflow-hidden">
                   <img
@@ -34,11 +30,7 @@ export default function AboutVisionMission() {
 
           <div className="col-md-4 col-sm-6 col-12">
             {/* Academics Start */}
-            <div
-              className="academics-item text-center"
-              data-aos="fade-up"
-              data-aos-duration="1000"
-            >
+            <div className="academics-item text-center" data-aos="fade-up" data-aos-duration="1000">
               <a href="javascript:void(0)" className="academics-item__link">
                 <div className="academics-item__image position-relative overflow-hidden">
                   <img
@@ -52,8 +44,8 @@ export default function AboutVisionMission() {
                 </div>
                 <div className="academics-item__description">
                   <p>
-                    To provide practical psychology education and counseling
-                    skills, empowering at least one person in every home.
+                    To provide practical psychology education and counseling skills, empowering at
+                    least one person in every home.
                   </p>
                 </div>
               </a>
@@ -100,11 +92,7 @@ export default function AboutVisionMission() {
           height: 100%;
           top: 0;
           left: 0;
-          background-image: linear-gradient(
-            180deg,
-            transparent 40%,
-            rgba(0, 0, 0, 0.8)
-          );
+          background-image: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.8));
           z-index: 1;
         }
 

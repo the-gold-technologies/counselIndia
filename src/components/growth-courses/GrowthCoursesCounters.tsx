@@ -52,9 +52,7 @@ export default function GrowthCoursesCounters() {
                   />
                 </div>
                 <div className="counter-item-03__content">
-                  <span className="counter-item-03__count d-block mb-1">
-                    {item.count}
-                  </span>
+                  <span className="counter-item-03__count d-block mb-1">{item.count}</span>
                   <p className="counter-item-03__text mb-0">
                     {item.text.split("\n").map((line, idx) => (
                       <React.Fragment key={idx}>

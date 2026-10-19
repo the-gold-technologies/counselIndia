@@ -43,10 +43,7 @@ export default function AboutImpactCounters() {
           <div className="counter">
             <div className="row banner-active justify-content-center">
               {COUNTERS_DATA.map((item) => (
-                <div
-                  key={item.id}
-                  className="col-lg col-md-4 col-sm-6 col-12 mb-4 mb-lg-0"
-                >
+                <div key={item.id} className="col-lg col-md-4 col-sm-6 col-12 mb-4 mb-lg-0">
                   <div className="counter-item-03">
                     <div className="counter-item-03__icon">
                       <img
@@ -60,9 +57,7 @@ export default function AboutImpactCounters() {
                       />
                     </div>
                     <div className="counter-item-03__content">
-                      <span className="counter-item-03__count">
-                        {item.count}
-                      </span>
+                      <span className="counter-item-03__count">{item.count}</span>
                       <p className="counter-item-03__text">
                         {item.text.split("\n").map((line, idx) => (
                           <React.Fragment key={idx}>

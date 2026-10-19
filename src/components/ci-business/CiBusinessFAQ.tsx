@@ -13,8 +13,7 @@ const FAQS = [
       "The corporate wellness program empowers your employees with skills including stress management, work life balance, interpersonal relationships, self-image and confidence and more. An emotionally healthy workforce is better productive, has increased focus and your company’s attrition rate is much reduced driving positive results.",
   },
   {
-    question:
-      "How can I register for Counsel India’s Corporate Wellness Programs?",
+    question: "How can I register for Counsel India’s Corporate Wellness Programs?",
     answer:
       "Fill in the form available on this page to make an enquiry and someone from our team will reach out to you.",
   },
@@ -41,8 +40,7 @@ export default function CiBusinessFAQ() {
             className="section-title__title-03 m-0 d-inline-block"
             style={{
               fontSize: "clamp(28px, 3.4vw, 38px)",
-              fontFamily:
-                "'Playfair Display', Georgia, 'Times New Roman', serif",
+              fontFamily: "'Playfair Display', Georgia, 'Times New Roman', serif",
               fontWeight: 700,
               color: "#1e2532",
             }}
@@ -75,9 +73,7 @@ export default function CiBusinessFAQ() {
                       style={{
                         backgroundColor: isOpen ? "#07a64b" : "#ffffff",
                         borderColor: isOpen ? "#07a64b" : "#e2e8f0",
-                        border: isOpen
-                          ? "1px solid #07a64b"
-                          : "1px solid #e2e8f0",
+                        border: isOpen ? "1px solid #07a64b" : "1px solid #e2e8f0",
                         color: isOpen ? "#ffffff" : "#1e2532",
                         borderTopLeftRadius: "6px",
                         borderTopRightRadius: "6px",
@@ -86,8 +82,7 @@ export default function CiBusinessFAQ() {
                         minHeight: "60px",
                         fontSize: "16px",
                         fontWeight: 600,
-                        fontFamily:
-                          "Inter, 'Plus Jakarta Sans', system-ui, sans-serif",
+                        fontFamily: "Inter, 'Plus Jakarta Sans', system-ui, sans-serif",
                         transition: "all 0.3s ease",
                         cursor: "pointer",
                       }}
@@ -100,9 +95,7 @@ export default function CiBusinessFAQ() {
                         style={{
                           width: "15px",
                           height: "15px",
-                          border: isOpen
-                            ? "1.8px solid #ffffff"
-                            : "1.8px solid #1e2532",
+                          border: isOpen ? "1.8px solid #ffffff" : "1.8px solid #1e2532",
                           borderRadius: "2px",
                           transition: "border-color 0.3s ease",
                         }}
@@ -141,8 +134,7 @@ export default function CiBusinessFAQ() {
                               fontSize: "14px",
                               color: "#475569",
                               lineHeight: "1.65",
-                              fontFamily:
-                                "Inter, 'Plus Jakarta Sans', system-ui, sans-serif",
+                              fontFamily: "Inter, 'Plus Jakarta Sans', system-ui, sans-serif",
                             }}
                           >
                             {faq.answer}

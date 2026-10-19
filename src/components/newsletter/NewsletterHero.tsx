@@ -17,11 +17,7 @@ export default function NewsletterHero() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (
-      !formData.fullName.trim() ||
-      !formData.email.trim() ||
-      !formData.phoneNo.trim()
-    ) {
+    if (!formData.fullName.trim() || !formData.email.trim() || !formData.phoneNo.trim()) {
       return;
     }
     setShowOtpModal(true);
@@ -100,9 +96,7 @@ export default function NewsletterHero() {
                   className="hero-form-input"
                   placeholder="Your Full Name"
                   value={formData.fullName}
-                  onChange={(e) =>
-                    setFormData({ ...formData, fullName: e.target.value })
-                  }
+                  onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                   required
                 />
               </div>
@@ -120,9 +114,7 @@ export default function NewsletterHero() {
                   placeholder="Your Email Address"
                   className="hero-form-input"
                   value={formData.email}
-                  onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
-                  }
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   required
                 />
               </div>
@@ -140,9 +132,7 @@ export default function NewsletterHero() {
                   placeholder="Your Mobile Number"
                   className="hero-form-input"
                   value={formData.phoneNo}
-                  onChange={(e) =>
-                    setFormData({ ...formData, phoneNo: e.target.value })
-                  }
+                  onChange={(e) => setFormData({ ...formData, phoneNo: e.target.value })}
                   required
                 />
               </div>
@@ -151,11 +141,7 @@ export default function NewsletterHero() {
             <div className="hero-form-row">
               <label className="hero-form-label d-none d-sm-block"></label>
               <div className="hero-input-wrapper">
-                <button
-                  type="submit"
-                  id="submit-hero"
-                  className="hero-submit-btn"
-                >
+                <button type="submit" id="submit-hero" className="hero-submit-btn">
                   Subscribe
                 </button>
               </div>
@@ -164,16 +150,8 @@ export default function NewsletterHero() {
         </div>
 
         {/* Background Canvas & Illustration from PHP */}
-        <img
-          src="https://i.ibb.co/z25bjyn/bg.png"
-          alt="bg-image"
-          className="bg-image"
-        />
-        <img
-          src="https://i.ibb.co/gdkRKbh/Illus.png"
-          alt="illus-image"
-          className="illus-image"
-        />
+        <img src="https://i.ibb.co/z25bjyn/bg.png" alt="bg-image" className="bg-image" />
+        <img src="https://i.ibb.co/gdkRKbh/Illus.png" alt="illus-image" className="illus-image" />
 
         {/* Text Container from PHP */}
         <div className="text-container">
@@ -184,8 +162,7 @@ export default function NewsletterHero() {
           </h2>
           <h3 className="slider-caption__sub-title">
             &quot;SPARK YOUR LOVE FOR PSYCHOLOGY WITH OUR EXPERT
-            <br className="d-none d-md-inline" /> INSIGHTS AND ENTERTAINING
-            WEEKLY NEWSLETTER!&quot;
+            <br className="d-none d-md-inline" /> INSIGHTS AND ENTERTAINING WEEKLY NEWSLETTER!&quot;
           </h3>
         </div>
       </div>
@@ -207,10 +184,7 @@ export default function NewsletterHero() {
             justifyContent: "center",
           }}
         >
-          <div
-            className="modal-dialog"
-            style={{ width: "100%", maxWidth: "420px" }}
-          >
+          <div className="modal-dialog" style={{ width: "100%", maxWidth: "420px" }}>
             <div
               className="modal-content"
               style={{
@@ -238,10 +212,7 @@ export default function NewsletterHero() {
                 ✕
               </button>
 
-              <div
-                className="modal-header"
-                style={{ border: "none", paddingBottom: "10px" }}
-              >
+              <div className="modal-header" style={{ border: "none", paddingBottom: "10px" }}>
                 <h5
                   className="modal-title"
                   style={{
@@ -288,9 +259,7 @@ export default function NewsletterHero() {
                         name="otpnewspage"
                         placeholder="Enter your OTP here"
                         value={otp}
-                        onChange={(e) =>
-                          setOtp(e.target.value.replace(/\D/g, ""))
-                        }
+                        onChange={(e) => setOtp(e.target.value.replace(/\D/g, ""))}
                         required
                       />
                     </div>
@@ -315,8 +284,7 @@ export default function NewsletterHero() {
                         </span>
                       ) : (
                         <span id="resendOTPTimer">
-                          (Resend in{" "}
-                          <span id="resendTimerValue">{resendTimer}</span> sec)
+                          (Resend in <span id="resendTimerValue">{resendTimer}</span> sec)
                         </span>
                       )}
                     </div>

@@ -20,8 +20,7 @@ const FAQ_LIST: FaqItem[] = [
   },
   {
     question: "How do I pay for this course?",
-    answer:
-      "Connect with our Business Development Manager to know about the Payment Process.",
+    answer: "Connect with our Business Development Manager to know about the Payment Process.",
   },
   {
     question: "What kind of job support is available for me?",
@@ -35,14 +34,12 @@ const FAQ_LIST: FaqItem[] = [
       "Sure, we can help you with the recording once we will receive email @ wecare@counselindia.in informing us for the same along with that first to attach the medical proof.",
   },
   {
-    question:
-      "Could you please provide me the study material in document format?",
+    question: "Could you please provide me the study material in document format?",
     answer:
       "Unfortunately we won’t be able to provide you the study material in the document format as per company’s policy to ensure privacy.<br><u>Clause 1:</u> If you want you can access the study material in PDF format please access it through our app.<br><u>Clause 2:</u> In other scenario the requirement of the study material will be with bold text, we can help you with google drive link to access the study material.<br>· Batch&gt; Announcement&gt; Drive link.",
   },
   {
-    question:
-      "I do not want to attend the classes kindly provide me the certificate?",
+    question: "I do not want to attend the classes kindly provide me the certificate?",
     answer:
       "Apologies this is not possible as per the policy as mental health is a very serious industry and we focus on quality counsellor. Hence, we don’t support in any kind of unethical fraud practices.",
   },
@@ -102,8 +99,7 @@ const FAQ_LIST: FaqItem[] = [
       "Ensure to include your details such as name, program enrolled in, and any relevant payment information. Additionally, clearly state the reason for your refund request or enrollment cancellation.",
   },
   {
-    question:
-      "Does Counsel India provide a degree from MIT University, Sikkim?",
+    question: "Does Counsel India provide a degree from MIT University, Sikkim?",
     answer:
       "Selected programs are offered in academic collaboration with MIT University, Sikkim. Learners are advised to check individual course details for certification and academic structure.",
   },
@@ -130,8 +126,12 @@ export default function FaqsView() {
             {/* Page Breadcrumb Start */}
             <div className="page-breadcrumb">
               <ul className="breadcrumb">
-                <li className="breadcrumb-item"><a href="#"></a></li>
-                <li className="breadcrumb-item"><a href="#"></a></li>
+                <li className="breadcrumb-item">
+                  <a href="#"></a>
+                </li>
+                <li className="breadcrumb-item">
+                  <a href="#"></a>
+                </li>
                 <li className="breadcrumb-item active"></li>
               </ul>
             </div>
@@ -173,10 +173,7 @@ export default function FaqsView() {
           style={{ maxWidth: "1170px", margin: "0 auto", padding: "0 16px" }}
         >
           {/* Section Title Start */}
-          <div
-            className="section-title text-center"
-            style={{ marginBottom: "40px" }}
-          >
+          <div className="section-title text-center" style={{ marginBottom: "40px" }}>
             <h2
               className="section-title__title-03 mark-title"
               style={{
@@ -270,9 +267,7 @@ export default function FaqsView() {
                             backgroundColor: "#ffffff",
                             borderBottomLeftRadius: "5px",
                             borderBottomRightRadius: "5px",
-                            boxShadow: isOpen
-                              ? "0 15px 50px rgba(51, 51, 51, 0.1)"
-                              : "none",
+                            boxShadow: isOpen ? "0 15px 50px rgba(51, 51, 51, 0.1)" : "none",
                             overflow: "hidden",
                           }}
                         >

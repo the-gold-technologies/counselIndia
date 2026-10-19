@@ -12,10 +12,7 @@ export default function GrowthCourseCard({ course }: Props) {
     <div className="blog-item-02 bg-white rounded-2 overflow-hidden d-flex flex-column h-100 shadow-sm border border-light-subtle">
       {/* Course Thumbnail */}
       <div className="blog-item-02__image position-relative overflow-hidden">
-        <Link
-          href={`/course-detail/${course.slug}`}
-          className="d-block overflow-hidden"
-        >
+        <Link href={`/course-detail/${course.slug}`} className="d-block overflow-hidden">
           <img
             src={course.coverimage}
             alt={course.title}
@@ -33,10 +30,7 @@ export default function GrowthCourseCard({ course }: Props) {
 
       {/* Course Body */}
       <div className="blog-item-02__content p-4 d-flex flex-column flex-grow-1">
-        <h3
-          className="blog-item-02__title mb-4"
-          style={{ height: "3.6em", lineHeight: "1.4" }}
-        >
+        <h3 className="blog-item-02__title mb-4" style={{ height: "3.6em", lineHeight: "1.4" }}>
           <Link
             href={`/course-detail/${course.slug}`}
             className="text-dark text-decoration-none hover-primary fw-bold"
@@ -48,26 +42,17 @@ export default function GrowthCourseCard({ course }: Props) {
         {/* 3 Meta Info Lines */}
         <div className="course-meta-rows mb-4">
           <h6 className="speaker-item__name font-size-14 text-start mb-2 d-flex align-items-center text-dark">
-            <i
-              className="fa fa-bar-chart me-3 text-dark"
-              style={{ width: "16px" }}
-            ></i>
+            <i className="fa fa-bar-chart me-3 text-dark" style={{ width: "16px" }}></i>
             <span className="fw-bold">{course.difficulty}</span>
           </h6>
 
           <h6 className="speaker-item__name font-size-14 text-start mb-2 d-flex align-items-center text-dark">
-            <i
-              className="far fa-clock me-3 text-dark"
-              style={{ width: "16px" }}
-            ></i>
+            <i className="far fa-clock me-3 text-dark" style={{ width: "16px" }}></i>
             <span className="fw-bold">{course.duration_course} Lessons</span>
           </h6>
 
           <h6 className="speaker-item__name font-size-14 text-start mb-0 d-flex align-items-center text-dark">
-            <i
-              className="fa fa-book me-3 text-dark"
-              style={{ width: "16px" }}
-            ></i>
+            <i className="fa fa-book me-3 text-dark" style={{ width: "16px" }}></i>
             <span className="fw-bold">{course.certificate}</span>
           </h6>
         </div>

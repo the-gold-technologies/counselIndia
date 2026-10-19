@@ -65,7 +65,8 @@ export default function SubscribeLeadForm() {
                 Ready to Start Your Career in Psychology?
               </h2>
               <p className="text-white-50 font-size-16 mb-4">
-                Speak with our senior academic counselors to find the right specialization, certification, and career transition roadmap tailored for you.
+                Speak with our senior academic counselors to find the right specialization,
+                certification, and career transition roadmap tailored for you.
               </p>
               <div className="d-flex flex-column gap-3 font-size-14 text-white">
                 <div className="d-flex align-items-center gap-2">
@@ -91,7 +92,9 @@ export default function SubscribeLeadForm() {
                   <i className="fas fa-check-circle fa-4x text-success mb-3"></i>
                   <h3 className="fw-bold text-dark mb-2">Thank You!</h3>
                   <p className="text-muted font-size-14 mb-4">
-                    Your consultation request has been received. Our senior psychology counselor will connect with you at <strong>+91 {formData.phoneNo}</strong> within 24 hours.
+                    Your consultation request has been received. Our senior psychology counselor
+                    will connect with you at <strong>+91 {formData.phoneNo}</strong> within 24
+                    hours.
                   </p>
                   <button
                     onClick={() => {
@@ -124,14 +127,10 @@ export default function SubscribeLeadForm() {
                       className="form-control"
                       placeholder="e.g. Rahul Sharma"
                       value={formData.fullName}
-                      onChange={(e) =>
-                        setFormData({ ...formData, fullName: e.target.value })
-                      }
+                      onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                     />
                     {errors.fullName && (
-                      <div className="text-danger font-size-12 mt-1">
-                        {errors.fullName}
-                      </div>
+                      <div className="text-danger font-size-12 mt-1">{errors.fullName}</div>
                     )}
                   </div>
 
@@ -144,14 +143,10 @@ export default function SubscribeLeadForm() {
                       className="form-control"
                       placeholder="e.g. rahul@example.com"
                       value={formData.email}
-                      onChange={(e) =>
-                        setFormData({ ...formData, email: e.target.value })
-                      }
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     />
                     {errors.email && (
-                      <div className="text-danger font-size-12 mt-1">
-                        {errors.email}
-                      </div>
+                      <div className="text-danger font-size-12 mt-1">{errors.email}</div>
                     )}
                   </div>
 
@@ -165,14 +160,10 @@ export default function SubscribeLeadForm() {
                       className="form-control"
                       placeholder="9876543210"
                       value={formData.phoneNo}
-                      onChange={(e) =>
-                        setFormData({ ...formData, phoneNo: e.target.value })
-                      }
+                      onChange={(e) => setFormData({ ...formData, phoneNo: e.target.value })}
                     />
                     {errors.phoneNo && (
-                      <div className="text-danger font-size-12 mt-1">
-                        {errors.phoneNo}
-                      </div>
+                      <div className="text-danger font-size-12 mt-1">{errors.phoneNo}</div>
                     )}
                   </div>
 
@@ -183,11 +174,11 @@ export default function SubscribeLeadForm() {
                     <select
                       className="form-select"
                       value={formData.courseInterest}
-                      onChange={(e) =>
-                        setFormData({ ...formData, courseInterest: e.target.value })
-                      }
+                      onChange={(e) => setFormData({ ...formData, courseInterest: e.target.value })}
                     >
-                      <option value="Psychology Diploma">Psychology Diploma (Clinical &amp; Counselling)</option>
+                      <option value="Psychology Diploma">
+                        Psychology Diploma (Clinical &amp; Counselling)
+                      </option>
                       <option value="Child Psychology">Child &amp; Adolescent Psychology</option>
                       <option value="Art Therapy">Expressive Art &amp; Play Therapy</option>
                       <option value="CBT Masterclass">CBT Specialist Certification</option>

@@ -35,8 +35,7 @@ export default function CourseProgramBenefit({ programBenefit }: Props) {
 
         <div className="tutor-course-segment__content-wrap">
           {programBenefit.map((item, idx) => {
-            const isBold =
-              item.startsWith("Upon completion") || item.startsWith("<strong>");
+            const isBold = item.startsWith("Upon completion") || item.startsWith("<strong>");
             const cleanText = item.replace(/^<strong>|<\/strong>$/g, "");
 
             return (

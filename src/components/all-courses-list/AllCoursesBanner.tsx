@@ -221,12 +221,8 @@ export default function AllCoursesBanner() {
                   border: "none",
                   cursor: "pointer",
                 }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.backgroundColor = "#068a3e")
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.backgroundColor = "#07a64b")
-                }
+                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#068a3e")}
+                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#07a64b")}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

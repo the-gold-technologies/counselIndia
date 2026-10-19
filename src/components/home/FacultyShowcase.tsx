@@ -37,14 +37,13 @@ export default function FacultyShowcase() {
     <div className="section-padding-01 bg-white">
       <div className="container">
         <div className="section-title text-center mb-5">
-          <h4 className="section-title__sub-title text-success fw-bold">
-            FACULTY &amp; MENTORS
-          </h4>
+          <h4 className="section-title__sub-title text-success fw-bold">FACULTY &amp; MENTORS</h4>
           <h2 className="section-title__title-02">
             Learn from the Leading <mark>Industry Experts</mark>
           </h2>
           <p className="text-muted mt-2">
-            Our esteemed faculty combines academic rigor with practical clinical casework to guide your journey.
+            Our esteemed faculty combines academic rigor with practical clinical casework to guide
+            your journey.
           </p>
         </div>
 
@@ -70,9 +69,7 @@ export default function FacultyShowcase() {
                   </span>
                 </div>
                 <div className="card-body p-3">
-                  <h4 className="card-title fw-bold text-dark font-size-18 mb-1">
-                    {f.name}
-                  </h4>
+                  <h4 className="card-title fw-bold text-dark font-size-18 mb-1">{f.name}</h4>
                   <p className="text-muted font-size-14 mb-2">{f.designation}</p>
                   <div className="pt-2 border-top">
                     <span className="badge bg-light text-dark font-size-12">

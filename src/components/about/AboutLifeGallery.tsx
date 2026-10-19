@@ -9,11 +9,7 @@ export default function AboutLifeGallery() {
     <div className="testimonial-section galaxy section-padding-01 scene">
       <div className="container">
         {/* Section Title */}
-        <div
-          className="section-title"
-          data-aos="fade-up"
-          data-aos-duration="1000"
-        >
+        <div className="section-title" data-aos="fade-up" data-aos-duration="1000">
           <h2 className="section-title__title">
             Life at <mark>Counsel India</mark>
           </h2>

@@ -20,9 +20,9 @@ export default function TermsContent() {
                 </p>
 
                 <p>
-                  1.2. If you [register with our website, submit any material to our website or
-                  use any of our website services], we will ask you to expressly agree to these
-                  terms and conditions.
+                  1.2. If you [register with our website, submit any material to our website or use
+                  any of our website services], we will ask you to expressly agree to these terms
+                  and conditions.
                 </p>
 
                 <p>
@@ -32,9 +32,9 @@ export default function TermsContent() {
                 </p>
 
                 <p>
-                  1.4. Our website uses cookies; by using our website or agreeing to these terms
-                  and conditions, you consent to our use of cookies in accordance with the terms of
-                  our [privacy and cookies policy].
+                  1.4. Our website uses cookies; by using our website or agreeing to these terms and
+                  conditions, you consent to our use of cookies in accordance with the terms of our
+                  [privacy and cookies policy].
                 </p>
 
                 <h5 className="pb-2">
@@ -50,9 +50,14 @@ export default function TermsContent() {
                   edit or otherwise modify any material on our website.
                 </p>
 
-                <p>2.3. Unless you own or control the relevant rights in the material, you must not:</p>
+                <p>
+                  2.3. Unless you own or control the relevant rights in the material, you must not:
+                </p>
 
-                <p>a. republish material from our website (including republication on another website);</p>
+                <p>
+                  a. republish material from our website (including republication on another
+                  website);
+                </p>
 
                 <p>b. sell, rent or sub-license material from our website;</p>
 
@@ -64,8 +69,8 @@ export default function TermsContent() {
 
                 <p>
                   2.3. We reserve the right to restrict access to areas of our website, or indeed
-                  our whole website, at our discretion; you must not circumvent or bypass, or attempt
-                  to circumvent or bypass, any access restriction measures on our website.
+                  our whole website, at our discretion; you must not circumvent or bypass, or
+                  attempt to circumvent or bypass, any access restriction measures on our website.
                 </p>
 
                 <h5 className="pb-2">
@@ -82,7 +87,8 @@ export default function TermsContent() {
 
                 <p>
                   b. use our website in any way that is unlawful, illegal, fraudulent or harmful, or
-                  in connection with any unlawful, illegal, fraudulent or harmful purpose or activity;
+                  in connection with any unlawful, illegal, fraudulent or harmful purpose or
+                  activity;
                 </p>
 
                 <p>
@@ -103,7 +109,9 @@ export default function TermsContent() {
                   automated means[, except for the purpose of [search engine indexing]]];
                 </p>
 
-                <p>f. [violate the directives set out in the robots.txt file for our website]; or</p>
+                <p>
+                  f. [violate the directives set out in the robots.txt file for our website]; or
+                </p>
 
                 <p>
                   g. [use data collected from our website for any direct marketing activity
@@ -132,7 +140,10 @@ export default function TermsContent() {
                   verification link in the email that the website will send to you].
                 </p>
 
-                <p>4.2. You must not allow any other person to use your account to access the website.</p>
+                <p>
+                  4.2. You must not allow any other person to use your account to access the
+                  website.
+                </p>
 
                 <p>
                   4.3. You must notify us in writing immediately if you become aware of any
@@ -149,8 +160,8 @@ export default function TermsContent() {
                 </h5>
 
                 <p>
-                  5.1. If you register for an account with our website, [we will provide you with] OR
-                  [you will be asked to choose] [a user ID and password].
+                  5.1. If you register for an account with our website, [we will provide you with]
+                  OR [you will be asked to choose] [a user ID and password].
                 </p>
 
                 <p>
@@ -182,8 +193,8 @@ export default function TermsContent() {
                 <p>b. [cancel your account]; and/or</p>
 
                 <p>
-                  c. [edit your account details],at any time in our sole discretion without notice or
-                  explanation.
+                  c. [edit your account details],at any time in our sole discretion without notice
+                  or explanation.
                 </p>
 
                 <p>
@@ -236,21 +247,22 @@ export default function TermsContent() {
 
                 <p>
                   8.2. [The revised terms and conditions shall apply to the use of our website from
-                  the date of publication of the revised terms and conditions on the website, and you
-                  hereby waive any right you may otherwise have to be notified of, or to consent to,
-                  revisions of these terms and conditions.] OR [We will give you written notice of any
-                  revision of these terms and conditions, and the revised terms and conditions will
-                  apply to the use of our website from the date that we give you such notice; if you
-                  do not agree to the revised terms and conditions, you must stop using our
-                  website.]
+                  the date of publication of the revised terms and conditions on the website, and
+                  you hereby waive any right you may otherwise have to be notified of, or to consent
+                  to, revisions of these terms and conditions.] OR [We will give you written notice
+                  of any revision of these terms and conditions, and the revised terms and
+                  conditions will apply to the use of our website from the date that we give you
+                  such notice; if you do not agree to the revised terms and conditions, you must
+                  stop using our website.]
                 </p>
 
                 <p>
                   8.3. If you have given your express agreement to these terms and conditions, we
                   will ask for your express agreement to any revision of these terms and conditions;
                   and if you do not give your express agreement to the revised terms and conditions
-                  within such period as we may specify, we will disable or delete your account on the
-                  website, and you must stop using the website.</p>
+                  within such period as we may specify, we will disable or delete your account on
+                  the website, and you must stop using the website.
+                </p>
 
                 <h5 className="pb-2">
                   <strong>9. Severability</strong>
@@ -287,10 +299,10 @@ export default function TermsContent() {
                 </h5>
 
                 <p>
-                  11.1. The terms and conditions[, together with [our privacy and cookies
-                  policy],] shall constitute the entire agreement between you and us in relation to
-                  your use of our website and shall supersede all previous agreements between you
-                  and us in relation to your use of our website.
+                  11.1. The terms and conditions[, together with [our privacy and cookies policy],]
+                  shall constitute the entire agreement between you and us in relation to your use
+                  of our website and shall supersede all previous agreements between you and us in
+                  relation to your use of our website.
                 </p>
 
                 <h5 className="pb-2">
@@ -327,11 +339,17 @@ export default function TermsContent() {
                 </p>
                 <p>
                   d. [by email, using{" "}
-                  <a href="mailto:info@counselindia.com" style={{ color: "inherit", textDecoration: "none" }}>
+                  <a
+                    href="mailto:info@counselindia.com"
+                    style={{ color: "inherit", textDecoration: "none" }}
+                  >
                     info@counselindia.com
                   </a>
                   ,{" "}
-                  <a href="mailto:business@counselindia.com" style={{ color: "inherit", textDecoration: "none" }}>
+                  <a
+                    href="mailto:business@counselindia.com"
+                    style={{ color: "inherit", textDecoration: "none" }}
+                  >
                     business@counselindia.com
                   </a>{" "}
                   [published on our website from time to time].

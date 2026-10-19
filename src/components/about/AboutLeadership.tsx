@@ -9,11 +9,7 @@ export default function AboutLeadership() {
         <div className="row">
           <div className="col-md-12">
             {/* Section Title Start */}
-            <div
-              className="section-title"
-              data-aos="fade-up"
-              data-aos-duration="1000"
-            >
+            <div className="section-title" data-aos="fade-up" data-aos-duration="1000">
               <h2 className="section-title__title">
                 <mark>Meet the Visionaries Behind Counsel India</mark>
               </h2>
@@ -30,11 +26,7 @@ export default function AboutLeadership() {
               style={{ marginRight: "100px" }}
             >
               {/* Team Item Start */}
-              <div
-                className="team-item"
-                data-aos="fade-up"
-                data-aos-duration="1000"
-              >
+              <div className="team-item" data-aos="fade-up" data-aos-duration="1000">
                 <div className="team-item__image position-relative overflow-hidden">
                   <img
                     src={leader.image}
@@ -56,9 +48,7 @@ export default function AboutLeadership() {
                 </div>
                 <div className="team-item__content">
                   <h3 className="team-item__name">{leader.name}</h3>
-                  <p className="team-item__position mt-0 mb-0">
-                    {leader.designation}
-                  </p>
+                  <p className="team-item__position mt-0 mb-0">{leader.designation}</p>
                 </div>
               </div>
               {/* Team Item End */}

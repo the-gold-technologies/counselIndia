@@ -8,10 +8,7 @@ export default function AboutHero() {
         {/* About Section Start */}
         <div className="about-section section-padding-01">
           <div className="container custom-container">
-            <h2
-              className="about-section-title__main-title"
-              style={{ textAlign: "center" }}
-            >
+            <h2 className="about-section-title__main-title" style={{ textAlign: "center" }}>
               Counsel India: Your Go-To Platform for
               <br />
               Practical Psychology Learning

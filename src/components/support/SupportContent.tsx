@@ -148,8 +148,8 @@ export default function SupportContent() {
                       </div>
                       <h5 className="fw-bold text-success mb-2">Thank you!</h5>
                       <p className="text-muted font-size-14 mb-4">
-                        Your query has been submitted successfully. Our support
-                        team will get in touch with you shortly.
+                        Your query has been submitted successfully. Our support team will get in
+                        touch with you shortly.
                       </p>
                       <button
                         type="button"
@@ -179,15 +179,12 @@ export default function SupportContent() {
                                   ...formData,
                                   name: e.target.value,
                                 });
-                                if (errors.name)
-                                  setErrors({ ...errors, name: undefined });
+                                if (errors.name) setErrors({ ...errors, name: undefined });
                               }}
                               required
                             />
                             {errors.name && (
-                              <div className="text-danger font-size-12 mt-1">
-                                {errors.name}
-                              </div>
+                              <div className="text-danger font-size-12 mt-1">{errors.name}</div>
                             )}
                           </div>
                         </div>
@@ -209,15 +206,12 @@ export default function SupportContent() {
                                   ...formData,
                                   email: e.target.value,
                                 });
-                                if (errors.email)
-                                  setErrors({ ...errors, email: undefined });
+                                if (errors.email) setErrors({ ...errors, email: undefined });
                               }}
                               required
                             />
                             {errors.email && (
-                              <div className="text-danger font-size-12 mt-1">
-                                {errors.email}
-                              </div>
+                              <div className="text-danger font-size-12 mt-1">{errors.email}</div>
                             )}
                           </div>
                         </div>
@@ -240,15 +234,12 @@ export default function SupportContent() {
                                   ...formData,
                                   mobile: e.target.value,
                                 });
-                                if (errors.mobile)
-                                  setErrors({ ...errors, mobile: undefined });
+                                if (errors.mobile) setErrors({ ...errors, mobile: undefined });
                               }}
                               required
                             />
                             {errors.mobile && (
-                              <div className="text-danger font-size-12 mt-1">
-                                {errors.mobile}
-                              </div>
+                              <div className="text-danger font-size-12 mt-1">{errors.mobile}</div>
                             )}
                           </div>
                         </div>
@@ -277,12 +268,8 @@ export default function SupportContent() {
                               required
                             >
                               <option value="">Select Enquiry Type</option>
-                              <option value="course_enquiry">
-                                New Course Enquiry
-                              </option>
-                              <option value="support">
-                                Existing customer needing support
-                              </option>
+                              <option value="course_enquiry">New Course Enquiry</option>
+                              <option value="support">Existing customer needing support</option>
                             </select>
                             {errors.enquiry_type && (
                               <div className="text-danger font-size-12 mt-1">
@@ -309,14 +296,11 @@ export default function SupportContent() {
                                   ...formData,
                                   message: e.target.value,
                                 });
-                                if (errors.message)
-                                  setErrors({ ...errors, message: undefined });
+                                if (errors.message) setErrors({ ...errors, message: undefined });
                               }}
                             ></textarea>
                             {errors.message && (
-                              <div className="text-danger font-size-12 mt-1">
-                                {errors.message}
-                              </div>
+                              <div className="text-danger font-size-12 mt-1">{errors.message}</div>
                             )}
                           </div>
                         </div>

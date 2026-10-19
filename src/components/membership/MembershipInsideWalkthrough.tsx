@@ -57,7 +57,13 @@ export default function MembershipInsideWalkthrough() {
               <div className="section-title text-center">
                 <h2
                   className="section-title__title-03"
-                  style={{ marginTop: "5%", marginBottom: "3%", fontSize: "38px", color: "#1a2638", fontWeight: 700 }}
+                  style={{
+                    marginTop: "5%",
+                    marginBottom: "3%",
+                    fontSize: "38px",
+                    color: "#1a2638",
+                    fontWeight: 700,
+                  }}
                 >
                   Inside The Membership
                 </h2>

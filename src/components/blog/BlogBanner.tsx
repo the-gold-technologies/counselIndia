@@ -49,8 +49,17 @@ export default function BlogBanner({ title = "Blog", categoryName }: BannerProps
           {title}
         </h1>
 
-        <p style={{ fontSize: "15.5px", color: "#cbd5e1", margin: 0, maxWidth: "600px", marginInline: "auto" }}>
-          Explore insightful articles, latest research, and expert practical guidance in psychology and mental health.
+        <p
+          style={{
+            fontSize: "15.5px",
+            color: "#cbd5e1",
+            margin: 0,
+            maxWidth: "600px",
+            marginInline: "auto",
+          }}
+        >
+          Explore insightful articles, latest research, and expert practical guidance in psychology
+          and mental health.
         </p>
       </div>
     </div>

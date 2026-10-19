@@ -74,7 +74,9 @@ export default function CourseSocialShare() {
           justify-content: center;
           margin-left: -14px;
           box-shadow: 2px 4px 14px rgba(0, 0, 0, 0.25);
-          transition: transform 0.2s, background-color 0.2s;
+          transition:
+            transform 0.2s,
+            background-color 0.2s;
           position: relative;
           z-index: 2;
         }

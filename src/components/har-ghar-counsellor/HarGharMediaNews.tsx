@@ -160,9 +160,7 @@ function NewsCardContent({
           className="date-badge position-absolute top-0 end-0 m-3 bg-white text-dark text-center px-3 py-2 rounded-2 shadow-sm"
           style={{ zIndex: 2, minWidth: "48px" }}
         >
-          <span className="d-block font-size-18 fw-bold leading-1">
-            {item.day}
-          </span>
+          <span className="d-block font-size-18 fw-bold leading-1">{item.day}</span>
           <span className="d-block font-size-11 fw-bold text-uppercase text-muted">
             {item.month}
           </span>

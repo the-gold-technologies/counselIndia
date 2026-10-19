@@ -28,8 +28,13 @@ export default function BlogCard({ blog }: CardProps) {
       }}
     >
       {/* 1. Cover Image (270px width) */}
-      <div style={{ width: "100%", height: "185px", overflow: "hidden", backgroundColor: "#f8fafc" }}>
-        <Link href={`/blog-detail/${blog.slug}`} style={{ display: "block", height: "100%", width: "100%" }}>
+      <div
+        style={{ width: "100%", height: "185px", overflow: "hidden", backgroundColor: "#f8fafc" }}
+      >
+        <Link
+          href={`/blog-detail/${blog.slug}`}
+          style={{ display: "block", height: "100%", width: "100%" }}
+        >
           <img
             src={blog.image}
             alt={blog.title}

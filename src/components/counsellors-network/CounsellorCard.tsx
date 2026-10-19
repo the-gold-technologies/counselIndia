@@ -12,10 +12,12 @@ export default function CounsellorCard({ counselor, onBookSession }: CardProps) 
   const [isBookmarked, setIsBookmarked] = useState(false);
 
   // Use exact slug from scraped data
-  const slug = counselor.slug || `${counselor.name}-${counselor.designation || "counselling-psychologist"}-${counselor.id}`
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
+  const slug =
+    counselor.slug ||
+    `${counselor.name}-${counselor.designation || "counselling-psychologist"}-${counselor.id}`
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
 
   return (
     <div className="col-lg-4 col-md-6 mb-4" style={{ display: "flex" }}>
@@ -196,10 +198,7 @@ export default function CounsellorCard({ counselor, onBookSession }: CardProps) 
             }}
           >
             {[1, 2, 3, 4, 5].map((star) => (
-              <i
-                key={star}
-                className={star <= 4 ? "fas fa-star" : "far fa-star"}
-              ></i>
+              <i key={star} className={star <= 4 ? "fas fa-star" : "far fa-star"}></i>
             ))}
           </div>
 
@@ -263,7 +262,13 @@ export default function CounsellorCard({ counselor, onBookSession }: CardProps) 
             >
               <i
                 className="fas fa-rupee-sign"
-                style={{ width: "20px", fontSize: "16px", color: "#1e293b", textAlign: "center", fontWeight: "bold" }}
+                style={{
+                  width: "20px",
+                  fontSize: "16px",
+                  color: "#1e293b",
+                  textAlign: "center",
+                  fontWeight: "bold",
+                }}
               ></i>
               <span style={{ fontSize: "16px" }}>{counselor.fees}</span>
             </li>

@@ -39,14 +39,13 @@ export default function AboutSection() {
                     <strong className="fw-bold text-dark">
                       Practical Psychology Learning Platform
                     </strong>{" "}
-                    for counsellors and psychologists to connect, learn, grow,
-                    and explore lifelong opportunities in psychology.
+                    for counsellors and psychologists to connect, learn, grow, and explore lifelong
+                    opportunities in psychology.
                   </p>
                   <p>
-                    We simplify learning psychology and emphasize practical
-                    application, helping you gain tangible skills. Our classes,
-                    led by experts, blend psychology&apos;s academic traditions
-                    with modern scientific applications, allowing you to
+                    We simplify learning psychology and emphasize practical application, helping you
+                    gain tangible skills. Our classes, led by experts, blend psychology&apos;s
+                    academic traditions with modern scientific applications, allowing you to
                     specialize in various concentrations.
                     <br />
                     Some of our popular courses include:
@@ -56,10 +55,7 @@ export default function AboutSection() {
                       <ul className="tutor-course-segment__list-style-03 font-size-16">
                         {popularCourses.slice(0, 3).map((item, idx) => (
                           <li key={idx}>
-                            <Link
-                              href={item.href}
-                              className="text-dark fw-medium"
-                            >
+                            <Link href={item.href} className="text-dark fw-medium">
                               {item.title}
                             </Link>
                           </li>
@@ -70,10 +66,7 @@ export default function AboutSection() {
                       <ul className="tutor-course-segment__list-style-03 font-size-16">
                         {popularCourses.slice(3).map((item, idx) => (
                           <li key={idx}>
-                            <Link
-                              href={item.href}
-                              className="text-dark fw-medium"
-                            >
+                            <Link href={item.href} className="text-dark fw-medium">
                               {item.title}
                             </Link>
                           </li>

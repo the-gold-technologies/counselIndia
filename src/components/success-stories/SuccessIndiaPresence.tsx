@@ -19,10 +19,7 @@ export default function SuccessIndiaPresence() {
             "linear-gradient(to bottom, transparent 0%, transparent 13.06%, #555B62 13.06%, #555B62 87.03%, transparent 87.03%, transparent 100%)",
         }}
       >
-        <div
-          className="w-100 d-flex justify-content-center"
-          style={{ maxWidth: "1440px" }}
-        >
+        <div className="w-100 d-flex justify-content-center" style={{ maxWidth: "1440px" }}>
           <img
             src="https://counselindiastudymaterial.s3.ap-south-1.amazonaws.com/images/india.svg"
             alt="Our learning community is truly national, with members from 20+ states across India"

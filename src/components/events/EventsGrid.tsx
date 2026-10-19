@@ -19,10 +19,7 @@ export default function EventsGrid() {
   };
 
   return (
-    <div
-      className="event-section overflow-visible py-5"
-      style={{ backgroundColor: "#ffffff" }}
-    >
+    <div className="event-section overflow-visible py-5" style={{ backgroundColor: "#ffffff" }}>
       <div className="container custom-container">
         {/* Archive Filter Bars */}
         <div className="archive-filter-bars mb-4 pb-1">
@@ -37,10 +34,8 @@ export default function EventsGrid() {
               }}
             >
               We found{" "}
-              <span style={{ color: "#252525", fontWeight: 700 }}>
-                {EVENTS_DATA.length}
-              </span>{" "}
-              events available for you
+              <span style={{ color: "#252525", fontWeight: 700 }}>{EVENTS_DATA.length}</span> events
+              available for you
             </p>
           </div>
         </div>
@@ -48,10 +43,7 @@ export default function EventsGrid() {
         {/* 3-Column Responsive Grid */}
         <div className="row gy-4 gx-4">
           {displayedEvents.map((event: EventItem) => (
-            <div
-              className="col-xl-4 col-lg-4 col-sm-6 col-12 grid-item"
-              key={event.id}
-            >
+            <div className="col-xl-4 col-lg-4 col-sm-6 col-12 grid-item" key={event.id}>
               <div
                 className="event-card-item h-100 d-flex flex-column overflow-hidden"
                 style={{
@@ -68,10 +60,7 @@ export default function EventsGrid() {
                     backgroundColor: "#f8fafc",
                   }}
                 >
-                  <Link
-                    href={`/events/${event.slug}`}
-                    className="d-block w-100 h-100"
-                  >
+                  <Link href={`/events/${event.slug}`} className="d-block w-100 h-100">
                     <img
                       src={event.image}
                       alt={event.title}

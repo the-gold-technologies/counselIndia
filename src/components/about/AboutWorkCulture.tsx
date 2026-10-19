@@ -3,20 +3,13 @@ import React from "react";
 import { WORK_CULTURE_TESTIMONIALS } from "./data/aboutData";
 
 export default function AboutWorkCulture() {
-  const duplicatedCards = [
-    ...WORK_CULTURE_TESTIMONIALS,
-    ...WORK_CULTURE_TESTIMONIALS,
-  ];
+  const duplicatedCards = [...WORK_CULTURE_TESTIMONIALS, ...WORK_CULTURE_TESTIMONIALS];
 
   return (
     <div className="testimonial-section bg-color-01 section-padding-01 scene">
       <div className="container custom-container">
         {/* Section Title */}
-        <div
-          className="section-title"
-          data-aos="fade-up"
-          data-aos-duration="1000"
-        >
+        <div className="section-title" data-aos="fade-up" data-aos-duration="1000">
           <h2 className="section-title__title">
             Progressive Work Culture at <mark>Counsel India </mark>
           </h2>
@@ -41,9 +34,7 @@ export default function AboutWorkCulture() {
                   </div>
                   <div className="testimonial-main-content">
                     <div className="testimonial-caption">
-                      <h3 className="testimonial-caption__title">
-                        {item.title}
-                      </h3>
+                      <h3 className="testimonial-caption__title">{item.title}</h3>
                       <p>{item.description}</p>
                     </div>
                     <div className="testimonial-info d-flex align-items-center mt-3">
@@ -62,9 +53,7 @@ export default function AboutWorkCulture() {
                         />
                       </div>
                       <div className="testimonial-info__caption">
-                        <h5 className="testimonial-info__name mb-0">
-                          {item.name}
-                        </h5>
+                        <h5 className="testimonial-info__name mb-0">{item.name}</h5>
                       </div>
                     </div>
                   </div>

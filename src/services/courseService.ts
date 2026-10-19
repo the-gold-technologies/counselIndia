@@ -78,9 +78,7 @@ function parseTopicsFromHtml(html?: string): string[] {
   if (!html) return [];
   const items = html.match(/<li[^>]*>([\s\S]*?)<\/li>/gi);
   if (items && items.length > 0) {
-    return items
-      .map((it) => stripHtml(it))
-      .filter((it) => it.length > 0);
+    return items.map((it) => stripHtml(it)).filter((it) => it.length > 0);
   }
   return parseTextToParagraphs(html);
 }
@@ -124,17 +122,13 @@ export function mapDbToCourseDetail(c: any): CourseDetailData {
     : [];
 
   const benefits = Array.isArray(c.overviewData)
-    ? c.overviewData
-        .map((o: any) => stripHtml(o.title || ""))
-        .filter(Boolean)
+    ? c.overviewData.map((o: any) => stripHtml(o.title || "")).filter(Boolean)
     : [];
 
   const about = parseTextToParagraphs(c.aboutUs || c.subdescription || c.description);
 
   const learningObjectives = Array.isArray(c.learnData)
-    ? c.learnData
-        .map((l: any) => stripHtml(l.title || ""))
-        .filter(Boolean)
+    ? c.learnData.map((l: any) => stripHtml(l.title || "")).filter(Boolean)
     : [];
 
   const credentials = Array.isArray(c.credentialData)
@@ -201,8 +195,8 @@ export function mapDbToCourseDetail(c: any): CourseDetailData {
   const bgImg = c.backgroundImage
     ? encodeURI(decodeURI(c.backgroundImage))
     : c.coverImage
-    ? encodeURI(decodeURI(c.coverImage))
-    : "";
+      ? encodeURI(decodeURI(c.coverImage))
+      : "";
 
   return {
     id: sNo,
@@ -236,21 +230,15 @@ export function mapDbToCourseDetail(c: any): CourseDetailData {
  * Fetches dynamic course detail directly from the Admin Panel API (PostgreSQL database).
  * Matches by slug or search, returning null if the course is not found.
  */
-export async function getCourseBySlug(
-  slug: string
-): Promise<CourseDetailData | null> {
+export async function getCourseBySlug(slug: string): Promise<CourseDetailData | null> {
   const decodedSlug = decodeURIComponent(slug).trim();
   const cleanedSlug = decodedSlug.replace(/[\)%29]+$/, "").trim();
 
-  const slugsToTry = Array.from(
-    new Set([decodedSlug, slug, cleanedSlug, `${cleanedSlug})`])
-  );
+  const slugsToTry = Array.from(new Set([decodedSlug, slug, cleanedSlug, `${cleanedSlug})`]));
 
   for (const s of slugsToTry) {
     try {
-      const raw = (await fetchFromAdmin<any>(
-        `/api/courses/${encodeURIComponent(s)}`
-      )) as any;
+      const raw = (await fetchFromAdmin<any>(`/api/courses/${encodeURIComponent(s)}`)) as any;
       const courseObj = (raw && raw.data) || raw;
       if (courseObj && courseObj.name && !courseObj.error) {
         return mapDbToCourseDetail(courseObj);
@@ -278,10 +266,7 @@ export async function getCourseBySlug(
 /**
  * Fetches active courses directly from the Admin Panel API (PostgreSQL database).
  */
-export async function getActiveCourses(
-  search?: string,
-  category?: string
-): Promise<CourseItem[]> {
+export async function getActiveCourses(search?: string, category?: string): Promise<CourseItem[]> {
   try {
     const queryParams = new URLSearchParams();
     queryParams.set("status", "Active");
@@ -293,13 +278,10 @@ export async function getActiveCourses(
       queryParams.set("category", category);
     }
 
-    const res = await fetchFromAdmin<any>(
-      `/api/courses?${queryParams.toString()}`
-    );
+    const res = await fetchFromAdmin<any>(`/api/courses?${queryParams.toString()}`);
 
     const rawRes = res as any;
-    const courseList: DbCourse[] =
-      (rawRes && (rawRes.courses || rawRes.data)) || [];
+    const courseList: DbCourse[] = (rawRes && (rawRes.courses || rawRes.data)) || [];
 
     if (!Array.isArray(courseList) || courseList.length === 0) {
       return [];
@@ -315,9 +297,7 @@ export async function getActiveCourses(
         desc = desc.slice(0, 172) + "...";
       }
 
-      const coverImg = c.coverImage
-        ? encodeURI(decodeURI(c.coverImage))
-        : "";
+      const coverImg = c.coverImage ? encodeURI(decodeURI(c.coverImage)) : "";
 
       return {
         id: sNo,

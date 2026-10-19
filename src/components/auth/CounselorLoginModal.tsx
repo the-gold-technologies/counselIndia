@@ -14,9 +14,9 @@ export default function CounselorLoginModal({
   initialMode = "login",
   onSuccess,
 }: CounselorLoginModalProps) {
-  const [modalMode, setModalMode] = useState<
-    "login" | "register" | "forgot"
-  >(initialMode === "signup" ? "register" : initialMode === "forgot" ? "forgot" : "login");
+  const [modalMode, setModalMode] = useState<"login" | "register" | "forgot">(
+    initialMode === "signup" ? "register" : initialMode === "forgot" ? "forgot" : "login"
+  );
 
   useEffect(() => {
     if (isOpen) {
@@ -341,11 +341,7 @@ export default function CounselorLoginModal({
                 />
               </div>
 
-              <button
-                type="submit"
-                disabled={isLoading}
-                style={buttonStyle}
-              >
+              <button type="submit" disabled={isLoading} style={buttonStyle}>
                 {isLoading ? "Logging in..." : "Log In"}
               </button>
             </form>
@@ -443,11 +439,7 @@ export default function CounselorLoginModal({
                 />
               </div>
 
-              <button
-                type="submit"
-                disabled={isLoading}
-                style={buttonStyle}
-              >
+              <button type="submit" disabled={isLoading} style={buttonStyle}>
                 {isLoading ? "Signing up..." : "Sign Up"}
               </button>
             </form>
@@ -496,11 +488,7 @@ export default function CounselorLoginModal({
                 />
               </div>
 
-              <button
-                type="submit"
-                disabled={isLoading}
-                style={buttonStyle}
-              >
+              <button type="submit" disabled={isLoading} style={buttonStyle}>
                 {isLoading ? "Sending..." : "Reset Password"}
               </button>
 

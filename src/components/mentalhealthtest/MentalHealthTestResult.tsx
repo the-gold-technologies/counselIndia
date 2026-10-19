@@ -15,7 +15,12 @@ export default function MentalHealthTestResult({ score, userName, onRetake }: Re
         level: "High Well-Being",
         color: "#07a64b",
         desc: "You possess a high quality of life and emotional well-being across various domains. Your health satisfaction and sense of purpose reflect positive emotional stability, fulfilling relationships, and strong resilience.",
-        strengths: ["Strong Support System", "Sense of Purpose", "Positive Self-Image", "Emotional Vitality"],
+        strengths: [
+          "Strong Support System",
+          "Sense of Purpose",
+          "Positive Self-Image",
+          "Emotional Vitality",
+        ],
         tips: [
           "Set new personal or professional goals to continuously expand your purpose.",
           "Expand your social circles and mentor others seeking emotional growth.",
@@ -27,7 +32,12 @@ export default function MentalHealthTestResult({ score, userName, onRetake }: Re
         level: "Moderate Well-Being",
         color: "#d97706",
         desc: "Your score reflects a state of healthy balance with occasional fluctuations. While you have strong baseline coping mechanisms, developing targeted mindfulness and stress regulation skills will help you thrive.",
-        strengths: ["Self-Awareness", "Adaptive Coping Skills", "Openness to Growth", "Relationship Awareness"],
+        strengths: [
+          "Self-Awareness",
+          "Adaptive Coping Skills",
+          "Openness to Growth",
+          "Relationship Awareness",
+        ],
         tips: [
           "Practice progressive muscle relaxation or breathwork when experiencing stress peaks.",
           "Establish healthy work-life boundaries to protect your energy.",
@@ -106,7 +116,9 @@ export default function MentalHealthTestResult({ score, userName, onRetake }: Re
               marginBottom: "26px",
             }}
           >
-            <h4 style={{ fontSize: "17px", fontWeight: 700, color: "#1e293b", marginBottom: "10px" }}>
+            <h4
+              style={{ fontSize: "17px", fontWeight: 700, color: "#1e293b", marginBottom: "10px" }}
+            >
               Clinical Overview
             </h4>
             <p style={{ fontSize: "14.5px", color: "#475569", lineHeight: "1.75", margin: 0 }}>
@@ -116,7 +128,9 @@ export default function MentalHealthTestResult({ score, userName, onRetake }: Re
 
           {/* Key Strengths */}
           <div style={{ marginBottom: "26px" }}>
-            <h4 style={{ fontSize: "17px", fontWeight: 700, color: "#07a64b", marginBottom: "12px" }}>
+            <h4
+              style={{ fontSize: "17px", fontWeight: 700, color: "#07a64b", marginBottom: "12px" }}
+            >
               Key Strengths:
             </h4>
             <ul style={{ paddingLeft: "20px", margin: 0 }}>
@@ -130,12 +144,22 @@ export default function MentalHealthTestResult({ score, userName, onRetake }: Re
 
           {/* Tips for Development */}
           <div style={{ marginBottom: "34px" }}>
-            <h4 style={{ fontSize: "17px", fontWeight: 700, color: "#07a64b", marginBottom: "12px" }}>
+            <h4
+              style={{ fontSize: "17px", fontWeight: 700, color: "#07a64b", marginBottom: "12px" }}
+            >
               Tips for Further Development:
             </h4>
             <ul style={{ paddingLeft: "20px", margin: 0 }}>
               {result.tips.map((tip, i) => (
-                <li key={i} style={{ fontSize: "14.5px", color: "#334155", marginBottom: "8px", lineHeight: "1.6" }}>
+                <li
+                  key={i}
+                  style={{
+                    fontSize: "14.5px",
+                    color: "#334155",
+                    marginBottom: "8px",
+                    lineHeight: "1.6",
+                  }}
+                >
                   {tip}
                 </li>
               ))}

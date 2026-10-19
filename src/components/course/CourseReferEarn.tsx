@@ -17,8 +17,7 @@ export default function CourseReferEarn({ referEarn }: Props) {
   const title =
     referEarn?.title ||
     "Refer someone and Earn upto INR 12,000 Cashback/Vouchers, on every successful enrollment";
-  const subtitle =
-    referEarn?.subtitle || "Your friend also gets an instant scholarship!";
+  const subtitle = referEarn?.subtitle || "Your friend also gets an instant scholarship!";
   const buttonText = referEarn?.buttonText || "Start Referring";
   const buttonLink = referEarn?.buttonLink || "https://www.counselindia.com/membership";
 
@@ -103,12 +102,8 @@ export default function CourseReferEarn({ referEarn }: Props) {
                   transition: "all 0.2s ease",
                   whiteSpace: "nowrap",
                 }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.backgroundColor = "#068f40")
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.backgroundColor = "#07a64b")
-                }
+                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#068f40")}
+                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#07a64b")}
               >
                 {buttonText}
               </Link>
@@ -132,12 +127,8 @@ export default function CourseReferEarn({ referEarn }: Props) {
                   transition: "all 0.2s ease",
                   whiteSpace: "nowrap",
                 }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.backgroundColor = "#068f40")
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.backgroundColor = "#07a64b")
-                }
+                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#068f40")}
+                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#07a64b")}
               >
                 {buttonText}
               </a>

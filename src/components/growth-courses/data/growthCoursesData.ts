@@ -24,8 +24,7 @@ export const GROWTH_COURSES: GrowthCourse[] = [
     slug: "psychology-for-everyday-struggles",
     coverimage:
       "https://prod-s3.counselindia.com/blog/Psychology for Everyday Struggles_1736508322.jpg",
-    videoUrl:
-      "https://www.youtube.com/embed/2vCP5F4YvIk?si=eIJ2oBEysUq8oVx0",
+    videoUrl: "https://www.youtube.com/embed/2vCP5F4YvIk?si=eIJ2oBEysUq8oVx0",
     difficulty: "beginner",
     duration_course: 6,
     certificate: "Certificate of Completion",
@@ -50,10 +49,8 @@ export const GROWTH_COURSES: GrowthCourse[] = [
     id: 2,
     title: "Counselling Booster Program",
     slug: "counselling-booster-program",
-    coverimage:
-      "https://prod-s3.counselindia.com/blog/Counselling Booster Program_1736508523.jpg",
-    videoUrl:
-      "https://www.youtube.com/embed/AVWfmDKaEPE?si=magCm3bHug41UolO",
+    coverimage: "https://prod-s3.counselindia.com/blog/Counselling Booster Program_1736508523.jpg",
+    videoUrl: "https://www.youtube.com/embed/AVWfmDKaEPE?si=magCm3bHug41UolO",
     difficulty: "Advance",
     duration_course: 12,
     certificate: "Certificate of Completion",
@@ -81,8 +78,7 @@ export const GROWTH_COURSES: GrowthCourse[] = [
     slug: "the-art-of-understanding-yourself",
     coverimage:
       "https://prod-s3.counselindia.com/blog/The Art of Understanding Yourself_1736508692.jpg",
-    videoUrl:
-      "https://www.youtube.com/embed/Fo9SJ1an5Kg?si=6GEVHg9U3FhTC0oX",
+    videoUrl: "https://www.youtube.com/embed/Fo9SJ1an5Kg?si=6GEVHg9U3FhTC0oX",
     difficulty: "Beginner",
     duration_course: 10,
     certificate: "Certificate of Completion",

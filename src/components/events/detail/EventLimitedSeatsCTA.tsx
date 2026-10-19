@@ -29,8 +29,7 @@ export default function EventLimitedSeatsCTA({
               className="banner-caption-03__title mb-2"
               style={{
                 fontSize: "clamp(24px, 3vw, 30px)",
-                fontFamily:
-                  "'Playfair Display', Georgia, 'Times New Roman', serif",
+                fontFamily: "'Playfair Display', Georgia, 'Times New Roman', serif",
                 fontWeight: 700,
                 color: "#1e2532",
                 lineHeight: "1.3",
@@ -48,11 +47,9 @@ export default function EventLimitedSeatsCTA({
                 fontFamily: "Poppins, 'Plus Jakarta Sans', sans-serif",
               }}
             >
-              All experts will take LIVE SESSIONS and sessions will be completely
-              practical.
+              All experts will take LIVE SESSIONS and sessions will be completely practical.
               <br />
-              Learn from {speakerCount > 0 ? speakerCount : 2} Experts in just Rs{" "}
-              {price}/-
+              Learn from {speakerCount > 0 ? speakerCount : 2} Experts in just Rs {price}/-
             </p>
 
             {/* Button with Hand-Drawn Curved Green Arrow */}

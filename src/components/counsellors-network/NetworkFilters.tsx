@@ -141,9 +141,16 @@ export default function NetworkFilters({
               <h6 className="fw-bold mb-3 text-dark border-bottom pb-2">
                 <i className="fas fa-brain text-success me-2"></i> Expertise
               </h6>
-              <div className="d-flex flex-column gap-2" style={{ maxHeight: "180px", overflowY: "auto" }}>
+              <div
+                className="d-flex flex-column gap-2"
+                style={{ maxHeight: "180px", overflowY: "auto" }}
+              >
                 {expertiseOptions.map((exp) => (
-                  <label key={exp} className="form-check d-flex align-items-center gap-2 mb-1" style={{ cursor: "pointer", fontSize: "14px" }}>
+                  <label
+                    key={exp}
+                    className="form-check d-flex align-items-center gap-2 mb-1"
+                    style={{ cursor: "pointer", fontSize: "14px" }}
+                  >
                     <input
                       type="checkbox"
                       className="form-check-input"
@@ -161,9 +168,16 @@ export default function NetworkFilters({
               <h6 className="fw-bold mb-3 text-dark border-bottom pb-2">
                 <i className="fas fa-language text-success me-2"></i> Languages
               </h6>
-              <div className="d-flex flex-column gap-2" style={{ maxHeight: "180px", overflowY: "auto" }}>
+              <div
+                className="d-flex flex-column gap-2"
+                style={{ maxHeight: "180px", overflowY: "auto" }}
+              >
                 {languageOptions.map((lang) => (
-                  <label key={lang} className="form-check d-flex align-items-center gap-2 mb-1" style={{ cursor: "pointer", fontSize: "14px" }}>
+                  <label
+                    key={lang}
+                    className="form-check d-flex align-items-center gap-2 mb-1"
+                    style={{ cursor: "pointer", fontSize: "14px" }}
+                  >
                     <input
                       type="checkbox"
                       className="form-check-input"
@@ -183,7 +197,11 @@ export default function NetworkFilters({
               </h6>
               <div className="d-flex flex-column gap-2">
                 {experienceOptions.map((opt, idx) => (
-                  <label key={idx} className="form-check d-flex align-items-center gap-2 mb-1" style={{ cursor: "pointer", fontSize: "14px" }}>
+                  <label
+                    key={idx}
+                    className="form-check d-flex align-items-center gap-2 mb-1"
+                    style={{ cursor: "pointer", fontSize: "14px" }}
+                  >
                     <input
                       type="radio"
                       name="experience-radio"
@@ -199,7 +217,10 @@ export default function NetworkFilters({
           </div>
 
           <div className="d-flex justify-content-end mt-3 pt-3 border-top">
-            <button className="btn btn-sm btn-link text-danger text-decoration-none" onClick={clearAllFilters}>
+            <button
+              className="btn btn-sm btn-link text-danger text-decoration-none"
+              onClick={clearAllFilters}
+            >
               <i className="fas fa-times-circle me-1"></i> Reset All Filters
             </button>
           </div>

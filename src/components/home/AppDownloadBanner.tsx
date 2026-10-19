@@ -58,28 +58,34 @@ export default function AppDownloadBanner() {
                   style={{ lineHeight: "1.8", color: "#444" }}
                 >
                   <li className="mb-2">
-                    <span className="fw-bold">• Adaptive Learning Technology</span> – Experience an engaging and
-                    personalized learning that’s tailored to your needs via our intuitive Mobile App and Web Platform.
+                    <span className="fw-bold">• Adaptive Learning Technology</span> – Experience an
+                    engaging and personalized learning that’s tailored to your needs via our
+                    intuitive Mobile App and Web Platform.
                   </li>
                   <li className="mb-2">
-                    <span className="fw-bold">• Practical Learning</span> – each of our course modules are attached
-                    with a practical and experiential learning assignment.
+                    <span className="fw-bold">• Practical Learning</span> – each of our course
+                    modules are attached with a practical and experiential learning assignment.
                   </li>
                   <li className="mb-2">
-                    <span className="fw-bold">• Cost-Effective Options</span> – We’re committed to helping you find the
-                    fastest and most affordable path to earning your skills and certifications.
+                    <span className="fw-bold">• Cost-Effective Options</span> – We’re committed to
+                    helping you find the fastest and most affordable path to earning your skills and
+                    certifications.
                   </li>
                   <li className="mb-2">
-                    <span className="fw-bold">• Ease</span> – Enjoy the flexibility of online learning that allows you
-                    work life balance.
+                    <span className="fw-bold">• Ease</span> – Enjoy the flexibility of online
+                    learning that allows you work life balance.
                   </li>
                   <li className="mb-2">
-                    <span className="fw-bold">• Interactive Learning Environment</span> – Our online classroom ensures
-                    students are engaged and learning with each course designed to promote maximum collaboration
+                    <span className="fw-bold">• Interactive Learning Environment</span> – Our online
+                    classroom ensures students are engaged and learning with each course designed to
+                    promote maximum collaboration
                   </li>
                   <li className="mb-2">
-                    <span className="fw-bold">• Professional Support to Help You Build a Career Plan</span> – Discuss
-                    your skills, strengths, goals, and how your new degree can help expand your career opportunities.
+                    <span className="fw-bold">
+                      • Professional Support to Help You Build a Career Plan
+                    </span>{" "}
+                    – Discuss your skills, strengths, goals, and how your new degree can help expand
+                    your career opportunities.
                   </li>
                 </ul>
 
@@ -170,7 +176,10 @@ export default function AppDownloadBanner() {
                       </h3>
                       <p className="text-white mb-2 font-size-15">
                         Talk to our team :{" "}
-                        <a href={`tel:${settings.helplineNumber}`} className="text-white fw-bold text-decoration-underline">
+                        <a
+                          href={`tel:${settings.helplineNumber}`}
+                          className="text-white fw-bold text-decoration-underline"
+                        >
                           {settings.helplineNumber}
                         </a>
                       </p>

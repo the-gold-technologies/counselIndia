@@ -53,9 +53,7 @@ export default function CourseHeroOverview({ course }: Props) {
 
             {/* Course Rating matching screenshot */}
             <div className="d-flex align-items-center gap-2 pt-2 mb-4">
-              <span className="fw-semibold text-dark font-size-15">
-                Course Rating
-              </span>
+              <span className="fw-semibold text-dark font-size-15">Course Rating</span>
               <span className="text-warning font-size-15">★★★★★</span>
               <span className="text-dark font-size-15">{course.rating}</span>
             </div>
@@ -93,40 +91,22 @@ export default function CourseHeroOverview({ course }: Props) {
                 className="mb-4 d-flex flex-column gap-3"
               >
                 <div className="d-flex align-items-center gap-3 font-size-15 text-dark">
-                  <i
-                    className="fa fa-bar-chart text-dark"
-                    style={{ width: "18px" }}
-                  ></i>
-                  <span className="fw-bold text-lowercase">
-                    {course.difficulty}
-                  </span>
+                  <i className="fa fa-bar-chart text-dark" style={{ width: "18px" }}></i>
+                  <span className="fw-bold text-lowercase">{course.difficulty}</span>
                 </div>
 
                 <div className="d-flex align-items-center gap-3 font-size-15 text-dark">
-                  <i
-                    className="far fa-clock text-dark"
-                    style={{ width: "18px" }}
-                  ></i>
-                  <span className="fw-bold">
-                    {course.duration_course} Lessons
-                  </span>
+                  <i className="far fa-clock text-dark" style={{ width: "18px" }}></i>
+                  <span className="fw-bold">{course.duration_course} Lessons</span>
                 </div>
 
                 <div className="d-flex align-items-center gap-3 font-size-15 text-dark">
-                  <i
-                    className="fa fa-address-book text-dark"
-                    style={{ width: "18px" }}
-                  ></i>
-                  <span className="fw-bold">
-                    {course.seats_left} Seats Left
-                  </span>
+                  <i className="fa fa-address-book text-dark" style={{ width: "18px" }}></i>
+                  <span className="fw-bold">{course.seats_left} Seats Left</span>
                 </div>
 
                 <div className="d-flex align-items-center gap-3 font-size-15 text-dark">
-                  <i
-                    className="fa fa-book text-dark"
-                    style={{ width: "18px" }}
-                  ></i>
+                  <i className="fa fa-book text-dark" style={{ width: "18px" }}></i>
                   <span className="fw-bold">{course.certificate}</span>
                 </div>
               </div>

@@ -19,8 +19,7 @@ export default function CourseCertificateSection() {
             style={{
               fontSize: "clamp(32px, 4vw, 46px)",
               color: "#1a3826",
-              fontFamily:
-                "Georgia, 'Playfair Display', 'Times New Roman', serif",
+              fontFamily: "Georgia, 'Playfair Display', 'Times New Roman', serif",
               fontWeight: 800,
               letterSpacing: "1.5px",
               textTransform: "uppercase",
@@ -34,10 +33,7 @@ export default function CourseCertificateSection() {
         <div className="row gy-5 gx-4 flex-row-reverse align-items-center">
           {/* Right Column: Certificate Image (Increased size) */}
           <div className="col-md-6">
-            <div
-              className="campus-image text-center text-md-end"
-              style={{ marginRight: "1%" }}
-            >
+            <div className="campus-image text-center text-md-end" style={{ marginRight: "1%" }}>
               <div
                 className="campus-image__image overflow-hidden"
                 style={{
@@ -79,9 +75,8 @@ export default function CourseCertificateSection() {
                   }}
                 >
                   <p className="mb-3">
-                    At Counsel India, we believe in recognizing your hard work
-                    and commitment to learning. Upon completing our self-paced
-                    courses, you will receive a{" "}
+                    At Counsel India, we believe in recognizing your hard work and commitment to
+                    learning. Upon completing our self-paced courses, you will receive a{" "}
                     <strong
                       style={{
                         fontSize: "18px",
@@ -103,24 +98,22 @@ export default function CourseCertificateSection() {
                         fontWeight: 800,
                       }}
                     >
-                      You will need to score at least 70% on the assessments
-                      assigned throughout the course.
+                      You will need to score at least 70% on the assessments assigned throughout the
+                      course.
                     </strong>{" "}
-                    These assessments are designed to help reinforce your
-                    understanding of the material and ensure you are gaining
-                    valuable knowledge.
+                    These assessments are designed to help reinforce your understanding of the
+                    material and ensure you are gaining valuable knowledge.
                   </p>
 
                   <p className="mb-3">
-                    Once you meet the requirement, your certificate will be
-                    issued, allowing you to showcase your accomplishment in your
-                    professional portfolio or share it with potential employers.
+                    Once you meet the requirement, your certificate will be issued, allowing you to
+                    showcase your accomplishment in your professional portfolio or share it with
+                    potential employers.
                   </p>
 
                   <p className="mb-0">
-                    We encourage you to take advantage of this opportunity to
-                    enhance your skills and add to your qualifications. Happy
-                    learning!
+                    We encourage you to take advantage of this opportunity to enhance your skills
+                    and add to your qualifications. Happy learning!
                   </p>
                 </div>
               </div>

@@ -33,8 +33,8 @@ export default function GrowthCoursesHero() {
                     </h6>
 
                     <h1 className="section-title__title-03 heroheading fw-bold mb-0">
-                      Growth Courses to Help You Think Like a Psychologist and
-                      Solve Minds Effortlessly!
+                      Growth Courses to Help You Think Like a Psychologist and Solve Minds
+                      Effortlessly!
                     </h1>
                   </div>
                 </div>

@@ -40,14 +40,13 @@ export default function CiBusinessPillars() {
             className="section-title__title-03 d-inline-block m-0"
             style={{
               fontSize: "clamp(26px, 3.4vw, 36px)",
-              fontFamily:
-                "'Playfair Display', Georgia, 'Times New Roman', serif",
+              fontFamily: "'Playfair Display', Georgia, 'Times New Roman', serif",
               fontWeight: 700,
               color: "#1e2532",
             }}
           >
-            Enhance your <mark className="pillars-mark">employee’s</mark>{" "}
-            performance with skills such as
+            Enhance your <mark className="pillars-mark">employee’s</mark> performance with skills
+            such as
           </h2>
         </div>
 
@@ -78,8 +77,7 @@ export default function CiBusinessPillars() {
                           className="campus-widget-item__title m-0 d-inline-flex align-items-center gap-2"
                           style={{
                             fontSize: "18.5px",
-                            fontFamily:
-                              "'Playfair Display', Georgia, 'Times New Roman', serif",
+                            fontFamily: "'Playfair Display', Georgia, 'Times New Roman', serif",
                             fontWeight: 700,
                             color: isHovered ? "#07a64b" : "#1e2532",
                             lineHeight: "1.6",
@@ -106,8 +104,7 @@ export default function CiBusinessPillars() {
                             color: "#475569",
                             lineHeight: "1.6",
                             marginTop: "3px",
-                            fontFamily:
-                              "Inter, 'Plus Jakarta Sans', system-ui, sans-serif",
+                            fontFamily: "Inter, 'Plus Jakarta Sans', system-ui, sans-serif",
                           }}
                         >
                           {pillar.desc}

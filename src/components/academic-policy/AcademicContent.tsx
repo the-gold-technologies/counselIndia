@@ -63,7 +63,8 @@ export default function AcademicContent() {
                   </li>
                   <li>
                     <b style={{ fontWeight: "bold" }}>Confidentiality:</b> Sharing Counsel
-                    India&apos;s confidential information or class content publicly is not acceptable.
+                    India&apos;s confidential information or class content publicly is not
+                    acceptable.
                   </li>
                   <li>
                     <b style={{ fontWeight: "bold" }}>Relevant Questions:</b> Questions asked during
@@ -82,9 +83,9 @@ export default function AcademicContent() {
                   </li>
                   <li>
                     <b style={{ fontWeight: "bold" }}>Be constructive:</b> If your classes or
-                    professional training sessions include pair or group work and peer reviews, it is
-                    inevitable that at some point personalities will collide, especially if you are
-                    asking colleagues to comment on each other’s assignments or points of views.
+                    professional training sessions include pair or group work and peer reviews, it
+                    is inevitable that at some point personalities will collide, especially if you
+                    are asking colleagues to comment on each other’s assignments or points of views.
                     Please make sure everyone understands the importance of keeping all feedback
                     constructive – critique, do not criticize. Feedback should be constructive,
                     focusing on improvement rather than criticism.
@@ -151,8 +152,8 @@ export default function AcademicContent() {
                     their pursuit of knowledge and personal development.
                   </li>
                   <li>
-                    <b style={{ fontWeight: "bold" }}>Aspiring Counsellor:</b> Honoring learners
-                    who exhibit outstanding communication skills, counselling skills, active
+                    <b style={{ fontWeight: "bold" }}>Aspiring Counsellor:</b> Honoring learners who
+                    exhibit outstanding communication skills, counselling skills, active
                     participation in role plays, case studies, and a genuine desire to support and
                     mentor their peers within the learning community.
                   </li>
@@ -174,9 +175,9 @@ export default function AcademicContent() {
                     <strong>Convocation Ceremony Rewards :</strong>
                   </p>
                   <li>
-                    <b style={{ fontWeight: "bold" }}>Best Learner:</b> This reward will be based
-                    on overall performance, participation, timely submissions, attendance,
-                    adhering to the policies and trainer’s feedback
+                    <b style={{ fontWeight: "bold" }}>Best Learner:</b> This reward will be based on
+                    overall performance, participation, timely submissions, attendance, adhering to
+                    the policies and trainer’s feedback
                   </li>
                   <li>
                     <b style={{ fontWeight: "bold" }}>Best Batch:</b> This reward will be given to
@@ -250,8 +251,8 @@ export default function AcademicContent() {
                   </div>
 
                   <li>
-                    <b style={{ fontWeight: "bold" }}>Meeting Format:</b> The Mentoring Session
-                    will be 1 on 1 in virtual mode on Microsoft team’s application.
+                    <b style={{ fontWeight: "bold" }}>Meeting Format:</b> The Mentoring Session will
+                    be 1 on 1 in virtual mode on Microsoft team’s application.
                   </li>
                   <p>
                     <b style={{ fontWeight: "bold" }}>a.</b> The buffer time to join the session is
@@ -262,8 +263,9 @@ export default function AcademicContent() {
                     considered, and the session will not be rescheduled for any other day
                   </p>
                   <p>
-                    <b style={{ fontWeight: "bold" }}>c.</b> Rescheduling of sessions can be possible
-                    with the prior information of at least 12 hours from the scheduled time.
+                    <b style={{ fontWeight: "bold" }}>c.</b> Rescheduling of sessions can be
+                    possible with the prior information of at least 12 hours from the scheduled
+                    time.
                   </p>
                   <li>
                     <b style={{ fontWeight: "bold" }}>Feedback and Evaluation:</b> A feedback form
@@ -271,8 +273,8 @@ export default function AcademicContent() {
                     about the session.
                   </li>
                   <li>
-                    <b style={{ fontWeight: "bold" }}>Confidentiality and Privacy:</b> Confidentiality
-                    will be maintained, and the data will not be shared with anyone.
+                    <b style={{ fontWeight: "bold" }}>Confidentiality and Privacy:</b>{" "}
+                    Confidentiality will be maintained, and the data will not be shared with anyone.
                   </li>
                 </ul>
 
@@ -282,9 +284,10 @@ export default function AcademicContent() {
                   </p>
                   <p>
                     <b style={{ fontWeight: "bold" }}>1. Introduction:</b> The Student Placement
-                    procedure of <b style={{ fontWeight: "bold" }}>COUNSEL INDIA SERVICES PVT. LTD.</b>{" "}
-                    outlines the guidelines and procedures for student placement. The objective is to
-                    ensure fair, transparent, and merit-based placement processes that align with the
+                    procedure of{" "}
+                    <b style={{ fontWeight: "bold" }}>COUNSEL INDIA SERVICES PVT. LTD.</b> outlines
+                    the guidelines and procedures for student placement. The objective is to ensure
+                    fair, transparent, and merit-based placement processes that align with the
                     institution&apos;s values and goals.
                   </p>
                   <p>
@@ -292,7 +295,8 @@ export default function AcademicContent() {
                   </p>
                   <p>
                     <b style={{ fontWeight: "bold" }}>
-                      Students eligible for placement opportunities must meet the following criteria:
+                      Students eligible for placement opportunities must meet the following
+                      criteria:
                     </b>
                   </p>
                   <li>
@@ -329,9 +333,9 @@ export default function AcademicContent() {
                     information about their placement.
                   </li>
                   <li>
-                    <b style={{ fontWeight: "bold" }}>Announcement:</b> Placement opportunities
-                    will be announced through official channels (i.e., emails, Online Portal), but
-                    not limited to, calls, and messages.
+                    <b style={{ fontWeight: "bold" }}>Announcement:</b> Placement opportunities will
+                    be announced through official channels (i.e., emails, Online Portal), but not
+                    limited to, calls, and messages.
                   </li>
                   <li>
                     <b style={{ fontWeight: "bold" }}>Application:</b> Eligible students must submit
@@ -375,12 +379,13 @@ export default function AcademicContent() {
                 </p>
                 <ul>
                   <li style={{ fontWeight: "bold" }}>
-                    After clearing the interview process and receiving an offer letter, placement cell
-                    will not be liable for any further assistance
+                    After clearing the interview process and receiving an offer letter, placement
+                    cell will not be liable for any further assistance
                   </li>
                   <li style={{ fontWeight: "bold" }}>
                     The learner needs to go through the full placement process for the opportunities
-                    they have applied for; otherwise, some strict disciplinary actions will be taken.
+                    they have applied for; otherwise, some strict disciplinary actions will be
+                    taken.
                   </li>
                 </ul>
 
@@ -473,8 +478,8 @@ export default function AcademicContent() {
                   learner (suspending or terminating them from the course) who fails to follow
                   Instructions. We believe that with your right commitment to psychology education,
                   such situations can be avoided, and the focus will remain on learning experiences.
-                  We are confident that together, as a CI Family, we can achieve our educational goals
-                  for which we are here on the same platform.
+                  We are confident that together, as a CI Family, we can achieve our educational
+                  goals for which we are here on the same platform.
                   <br />
                   We thank you for your cooperation and dedication to our shared mission.
                 </p>

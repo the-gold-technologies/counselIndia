@@ -5,14 +5,12 @@ const OFFERINGS = [
   {
     title: "Webinar",
     desc: "Online interactive sessions addressing common workplace stressors",
-    image:
-      "https://prod-s3.counselindia.com/bootcamp/workshopbusiness.jpg",
+    image: "https://prod-s3.counselindia.com/bootcamp/workshopbusiness.jpg",
   },
   {
     title: "Seminar & Workshops",
     desc: "Offline sessions on various topics covering work life balance, stress management, self-motivation, and more.",
-    image:
-      "https://prod-s3.counselindia.com/bootcamp/webinarbusiness.jpg",
+    image: "https://prod-s3.counselindia.com/bootcamp/webinarbusiness.jpg",
   },
   {
     title: "1 on 1 Counselling Session",
@@ -23,8 +21,7 @@ const OFFERINGS = [
   {
     title: "Psychometric Assessment",
     desc: "Evaluating your organization’s mental and emotional health through targeted assessments designed by top psychologists and providing tailored solutions.",
-    image:
-      "https://prod-s3.counselindia.com/bootcamp/testbusiness.jpg",
+    image: "https://prod-s3.counselindia.com/bootcamp/testbusiness.jpg",
   },
 ];
 
@@ -46,8 +43,7 @@ export default function CiBusinessOfferings() {
             className="section-title__title-02 m-0 d-inline-block text-white"
             style={{
               fontSize: "clamp(26px, 3.4vw, 36px)",
-              fontFamily:
-                "'Playfair Display', Georgia, 'Times New Roman', serif",
+              fontFamily: "'Playfair Display', Georgia, 'Times New Roman', serif",
               fontWeight: 700,
             }}
           >
@@ -58,10 +54,7 @@ export default function CiBusinessOfferings() {
         {/* 4 Corporate Offerings Cards (Height reduced by ~20px) */}
         <div className="row g-4 g-lg-5 justify-content-center mb-5">
           {OFFERINGS.map((item, idx) => (
-            <div
-              key={idx}
-              className="col-lg-6 col-md-6 col-12 d-flex justify-content-center"
-            >
+            <div key={idx} className="col-lg-6 col-md-6 col-12 d-flex justify-content-center">
               <div
                 className="bg-white overflow-hidden w-100 d-flex flex-column"
                 style={{
@@ -92,8 +85,7 @@ export default function CiBusinessOfferings() {
                     className="mb-2"
                     style={{
                       fontSize: "28px",
-                      fontFamily:
-                        "'Playfair Display', Georgia, 'Times New Roman', serif",
+                      fontFamily: "'Playfair Display', Georgia, 'Times New Roman', serif",
                       fontWeight: 700,
                       color: "#1e2532",
                       lineHeight: "1.3",
@@ -109,8 +101,7 @@ export default function CiBusinessOfferings() {
                       lineHeight: "1.55",
                       maxWidth: "440px",
                       margin: "0 auto",
-                      fontFamily:
-                        "Inter, 'Plus Jakarta Sans', system-ui, sans-serif",
+                      fontFamily: "Inter, 'Plus Jakarta Sans', system-ui, sans-serif",
                     }}
                   >
                     {item.desc}
@@ -152,8 +143,7 @@ export default function CiBusinessOfferings() {
                   className="text-white m-0"
                   style={{
                     fontSize: "28px",
-                    fontFamily:
-                      "'Playfair Display', Georgia, 'Times New Roman', serif",
+                    fontFamily: "'Playfair Display', Georgia, 'Times New Roman', serif",
                     fontWeight: 700,
                   }}
                 >
@@ -171,9 +161,9 @@ export default function CiBusinessOfferings() {
                 maxWidth: "540px",
               }}
             >
-              Empowering individuals with Emotional Intelligence and skills to
-              manage their emotions effectively, build strong relationships, and
-              cultivate self-awareness for a fulfilling life.
+              Empowering individuals with Emotional Intelligence and skills to manage their emotions
+              effectively, build strong relationships, and cultivate self-awareness for a fulfilling
+              life.
             </p>
           </div>
 
@@ -206,8 +196,7 @@ export default function CiBusinessOfferings() {
                   className="text-white m-0"
                   style={{
                     fontSize: "28px",
-                    fontFamily:
-                      "'Playfair Display', Georgia, 'Times New Roman', serif",
+                    fontFamily: "'Playfair Display', Georgia, 'Times New Roman', serif",
                     fontWeight: 700,
                   }}
                 >
@@ -225,10 +214,9 @@ export default function CiBusinessOfferings() {
                 maxWidth: "540px",
               }}
             >
-              Our mission is to empower India at an emotional level by training
-              them in counselling skills with comprehensive programs as well as
-              offering access to personal counselling through our global network
-              of expert Counsellors and Psychologists.
+              Our mission is to empower India at an emotional level by training them in counselling
+              skills with comprehensive programs as well as offering access to personal counselling
+              through our global network of expert Counsellors and Psychologists.
             </p>
           </div>
         </div>

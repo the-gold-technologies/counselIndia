@@ -12,8 +12,7 @@ export default function HarGharFollowJourney() {
             style={{
               fontSize: "clamp(34px, 4.2vw, 44px)",
               fontWeight: 700,
-              fontFamily:
-                "Georgia, 'Playfair Display', 'Times New Roman', serif",
+              fontFamily: "Georgia, 'Playfair Display', 'Times New Roman', serif",
               color: "#07a64b",
               letterSpacing: "-0.5px",
             }}
@@ -75,7 +74,9 @@ export default function HarGharFollowJourney() {
           display: block;
           border-radius: 10px;
           border: 1px solid #000000;
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
         }
 
         .responsive-image:hover {

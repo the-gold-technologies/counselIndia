@@ -184,9 +184,7 @@ export default function Header() {
   // Desktop Mega Menu state
   const [isCoursesOpen, setIsCoursesOpen] = useState(false);
   const [activeCategoryId, setActiveCategoryId] = useState<number>(17);
-  const [activeSubCategoryId, setActiveSubCategoryId] = useState<number | null>(
-    null,
-  );
+  const [activeSubCategoryId, setActiveSubCategoryId] = useState<number | null>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -198,7 +196,7 @@ export default function Header() {
 
     const handleGlobalClick = (e: MouseEvent) => {
       const target = (e.target as HTMLElement)?.closest(
-        '[data-bs-target="#loginModal"], [href="#loginModal"]',
+        '[data-bs-target="#loginModal"], [href="#loginModal"]'
       );
       if (target) {
         e.preventDefault();
@@ -238,31 +236,23 @@ export default function Header() {
 
   // Current active category and subcategory
   const activeCategory =
-    NAV_COURSE_CATEGORIES.find((c) => c.id === activeCategoryId) ||
-    NAV_COURSE_CATEGORIES[0];
+    NAV_COURSE_CATEGORIES.find((c) => c.id === activeCategoryId) || NAV_COURSE_CATEGORIES[0];
 
   const activeSubCategory = activeSubCategoryId
     ? activeCategory.subCategories.find((s) => s.id === activeSubCategoryId)
     : null;
 
   return (
-    <div
-      className="header-section header-sticky"
-      style={{ position: "relative", zIndex: 999 }}
-    >
-      <div
-        className="header-main-06"
-        style={{ paddingTop: 0, backgroundColor: "#ffffff" }}
-      >
+    <div className="header-section header-sticky" style={{ position: "relative", zIndex: 999 }}>
+      <div className="header-main-06" style={{ paddingTop: 0, backgroundColor: "#ffffff" }}>
         {/* Top Announcement Bar */}
         <div className="main22">
           <div className="marquee22">
             <div className="geek22">
               <a href="/membership" target="_blank" rel="noreferrer">
                 <strong>
-                  Join our exclusive membership for a personalized wellbeing
-                  routine crafted by expert psychologists—starting at just Rs
-                  199/month!
+                  Join our exclusive membership for a personalized wellbeing routine crafted by
+                  expert psychologists—starting at just Rs 199/month!
                 </strong>
                 <span className="register-now">&nbsp;</span>
               </a>
@@ -283,17 +273,15 @@ export default function Header() {
           >
             {/* Header Logo (Left) */}
             <div style={{ flexShrink: 0, marginRight: "10px" }}>
-              <Link
-                href="/"
-                className="header-logo__logo"
-                style={{ display: "block" }}
-              >
+              <Link href="/" className="header-logo__logo" style={{ display: "block" }}>
                 <img
                   src={logoSrc}
                   width="248"
                   height="54"
                   alt={settings.title}
-                  onError={(e) => { (e.target as HTMLImageElement).src = "/assets/images/dark-logo.png"; }}
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = "/assets/images/dark-logo.png";
+                  }}
                   style={{
                     maxHeight: "54px",
                     width: "auto",
@@ -351,9 +339,7 @@ export default function Header() {
                           strokeLinecap="round"
                           strokeLinejoin="round"
                           style={{
-                            transform: isCoursesOpen
-                              ? "rotate(180deg)"
-                              : "none",
+                            transform: isCoursesOpen ? "rotate(180deg)" : "none",
                             transition: "transform 0.2s",
                           }}
                         >
@@ -524,25 +510,18 @@ export default function Header() {
                               }}
                             >
                               {activeCategory.subCategories.map((sub) => {
-                                const isSubSelected =
-                                  sub.id === activeSubCategoryId;
+                                const isSubSelected = sub.id === activeSubCategoryId;
                                 return (
                                   <div
                                     key={sub.id}
-                                    onMouseEnter={() =>
-                                      setActiveSubCategoryId(sub.id)
-                                    }
+                                    onMouseEnter={() => setActiveSubCategoryId(sub.id)}
                                     style={{
                                       display: "flex",
                                       alignItems: "center",
                                       justifyContent: "space-between",
                                       padding: "9px 12px",
-                                      backgroundColor: isSubSelected
-                                        ? "#07a64b"
-                                        : "#e7f6ed",
-                                      color: isSubSelected
-                                        ? "#ffffff"
-                                        : "#07a64b",
+                                      backgroundColor: isSubSelected ? "#07a64b" : "#e7f6ed",
+                                      color: isSubSelected ? "#ffffff" : "#07a64b",
                                       borderRadius: "6px",
                                       cursor: "pointer",
                                       transition: "all 0.15s ease",
@@ -553,9 +532,7 @@ export default function Header() {
                                       style={{
                                         fontSize: "13.5px",
                                         fontWeight: 600,
-                                        color: isSubSelected
-                                          ? "#ffffff"
-                                          : "#07a64b",
+                                        color: isSubSelected ? "#ffffff" : "#07a64b",
                                         whiteSpace: "normal",
                                         wordBreak: "break-word",
                                         lineHeight: "1.3",
@@ -568,9 +545,7 @@ export default function Header() {
                                       height="13"
                                       viewBox="0 0 24 24"
                                       fill="none"
-                                      stroke={
-                                        isSubSelected ? "#ffffff" : "#07a64b"
-                                      }
+                                      stroke={isSubSelected ? "#ffffff" : "#07a64b"}
                                       strokeWidth="2.5"
                                       strokeLinecap="round"
                                       strokeLinejoin="round"
@@ -634,13 +609,11 @@ export default function Header() {
                                       transition: "all 0.15s ease",
                                     }}
                                     onMouseEnter={(e) => {
-                                      e.currentTarget.style.backgroundColor =
-                                        "#07a64b";
+                                      e.currentTarget.style.backgroundColor = "#07a64b";
                                       e.currentTarget.style.color = "#ffffff";
                                     }}
                                     onMouseLeave={(e) => {
-                                      e.currentTarget.style.backgroundColor =
-                                        "#e7f6ed";
+                                      e.currentTarget.style.backgroundColor = "#e7f6ed";
                                       e.currentTarget.style.color = "#07a64b";
                                     }}
                                   >
@@ -866,17 +839,11 @@ export default function Header() {
                   className="header-user__button"
                   style={{ padding: "0 10px", margin: "0 10px 0 0" }}
                 >
-                  <button
-                    className="header-user__login"
-                    onClick={() => setIsLoginModalOpen(true)}
-                  >
+                  <button className="header-user__login" onClick={() => setIsLoginModalOpen(true)}>
                     Log In
                   </button>
                 </div>
-                <div
-                  className="header-user__button"
-                  style={{ padding: "0", margin: "0" }}
-                >
+                <div className="header-user__button" style={{ padding: "0", margin: "0" }}>
                   <Link
                     href="/mentor-registration"
                     className="header-user__signup btn btn-hover-primary"
@@ -947,9 +914,7 @@ export default function Header() {
 
             {/* Mobile Offcanvas Menu */}
             <div
-              className={`offcanvas offcanvas-end offcanvas-mobile ${
-                isMobileOpen ? "show" : ""
-              }`}
+              className={`offcanvas offcanvas-end offcanvas-mobile ${isMobileOpen ? "show" : ""}`}
               id="offcanvasMobileMenu"
               style={{
                 position: "fixed",
@@ -974,15 +939,13 @@ export default function Header() {
               {/* Offcanvas Header */}
               <div className="offcanvas-header bg-white d-flex align-items-center justify-content-between p-3 border-bottom flex-shrink-0">
                 <div className="offcanvas-logo">
-                  <Link
-                    className="offcanvas-logo__logo"
-                    href="/"
-                    onClick={closeMobileMenu}
-                  >
+                  <Link className="offcanvas-logo__logo" href="/" onClick={closeMobileMenu}>
                     <img
                       src={logoSrc}
                       alt={settings.title}
-                      onError={(e) => { (e.target as HTMLImageElement).src = "/assets/images/dark-logo.png"; }}
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = "/assets/images/dark-logo.png";
+                      }}
                       style={{ width: "150px", height: "auto", display: "block" }}
                     />
                   </Link>
@@ -1333,10 +1296,7 @@ export default function Header() {
 
               {/* Offcanvas Footer / User Buttons */}
               <div className="offcanvas-user p-3 border-top bg-light flex-shrink-0">
-                <div
-                  className="d-flex align-items-center gap-2"
-                  style={{ width: "100%" }}
-                >
+                <div className="d-flex align-items-center gap-2" style={{ width: "100%" }}>
                   <button
                     className="btn fw-semibold"
                     onClick={() => {
@@ -1392,16 +1352,10 @@ export default function Header() {
         )}
 
       {/* AI Counselling Lead Capture Modal */}
-      <AiCounsellingModal
-        isOpen={isAiModalOpen}
-        onClose={() => setIsAiModalOpen(false)}
-      />
+      <AiCounsellingModal isOpen={isAiModalOpen} onClose={() => setIsAiModalOpen(false)} />
 
       {/* Login & Sign Up Pop-Up Modal */}
-      <LoginModal
-        isOpen={isLoginModalOpen}
-        onClose={() => setIsLoginModalOpen(false)}
-      />
+      <LoginModal isOpen={isLoginModalOpen} onClose={() => setIsLoginModalOpen(false)} />
     </div>
   );
 }

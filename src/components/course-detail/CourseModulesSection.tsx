@@ -22,8 +22,7 @@ export default function CourseModulesSection({ modules }: Props) {
                   style={{
                     fontWeight: 700,
                     fontSize: "40px",
-                    fontFamily:
-                      "Georgia, 'Playfair Display', 'Times New Roman', serif",
+                    fontFamily: "Georgia, 'Playfair Display', 'Times New Roman', serif",
                     color: "#1e293b",
                     textAlign: "left",
                   }}

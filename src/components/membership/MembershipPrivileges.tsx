@@ -24,42 +24,35 @@ export default function MembershipPrivileges() {
     let swiperInstance: any = null;
 
     const initSwiper = () => {
-      if (
-        typeof window !== "undefined" &&
-        (window as any).Swiper &&
-        swiperContainerRef.current
-      ) {
+      if (typeof window !== "undefined" && (window as any).Swiper && swiperContainerRef.current) {
         try {
-          swiperInstance = new (window as any).Swiper(
-            swiperContainerRef.current,
-            {
-              slidesPerView: 3,
-              spaceBetween: 24,
-              loop: true,
-              autoplay: {
-                delay: 3000,
-                disableOnInteraction: false,
+          swiperInstance = new (window as any).Swiper(swiperContainerRef.current, {
+            slidesPerView: 3,
+            spaceBetween: 24,
+            loop: true,
+            autoplay: {
+              delay: 3000,
+              disableOnInteraction: false,
+            },
+            pagination: {
+              el: ".privileges-pagination",
+              clickable: true,
+            },
+            breakpoints: {
+              0: {
+                slidesPerView: 1.2,
+                spaceBetween: 15,
               },
-              pagination: {
-                el: ".privileges-pagination",
-                clickable: true,
+              576: {
+                slidesPerView: 2,
+                spaceBetween: 20,
               },
-              breakpoints: {
-                0: {
-                  slidesPerView: 1.2,
-                  spaceBetween: 15,
-                },
-                576: {
-                  slidesPerView: 2,
-                  spaceBetween: 20,
-                },
-                992: {
-                  slidesPerView: 3,
-                  spaceBetween: 24,
-                },
+              992: {
+                slidesPerView: 3,
+                spaceBetween: 24,
               },
             },
-          );
+          });
         } catch (err) {
           console.error("Swiper init error:", err);
         }

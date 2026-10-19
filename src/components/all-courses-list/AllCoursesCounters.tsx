@@ -39,10 +39,7 @@ export default function AllCoursesCounters() {
         padding: "50px 15px 70px",
       }}
     >
-      <div
-        className="container custom-container"
-        style={{ maxWidth: "1200px", margin: "0 auto" }}
-      >
+      <div className="container custom-container" style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <div className="counter-grid-5">
           {stats.map((item, idx) => (
             <div

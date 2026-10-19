@@ -43,13 +43,12 @@ export default function GrowthCoursesCountdownCTA({ onCtaClick }: Props) {
               </h4>
 
               <p className="countdown-desc mb-4">
-                Don’t wait for “someday” to invest in yourself—our growth
-                courses are here now , but not for long! This is your chance to
-                grab life-changing insights, expert guidance, and practical
-                tools at an unbeatable price. Seats are filling up faster than a
-                pizza at a party, and once they’re gone, they’re gone! Don’t let
-                “I’ll think about it” turn into “I missed it.” Enroll today and
-                book your spot before someone else takes it!
+                Don’t wait for “someday” to invest in yourself—our growth courses are here now , but
+                not for long! This is your chance to grab life-changing insights, expert guidance,
+                and practical tools at an unbeatable price. Seats are filling up faster than a pizza
+                at a party, and once they’re gone, they’re gone! Don’t let “I’ll think about it”
+                turn into “I missed it.” Enroll today and book your spot before someone else takes
+                it!
               </p>
 
               {/* Coral CTA Pill Button */}

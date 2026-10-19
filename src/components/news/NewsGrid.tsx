@@ -4,10 +4,7 @@ import { NEWS_ARTICLES, NewsItem } from "./data/newsData";
 
 export default function NewsGrid() {
   return (
-    <div
-      className="blog-section pb-5 pt-2"
-      style={{ backgroundColor: "#ffffff" }}
-    >
+    <div className="blog-section pb-5 pt-2" style={{ backgroundColor: "#ffffff" }}>
       <div className="container custom-container">
         <div className="row gy-5 gx-4">
           {NEWS_ARTICLES.map((item: NewsItem) => (
@@ -65,8 +62,7 @@ export default function NewsGrid() {
                       className="meta-action d-inline-flex align-items-center gap-2"
                       style={{
                         fontSize: "14px",
-                        fontFamily:
-                          "Poppins, 'Plus Jakarta Sans', system-ui, sans-serif",
+                        fontFamily: "Poppins, 'Plus Jakarta Sans', system-ui, sans-serif",
                         color: "#7e7e7e",
                         fontWeight: 400,
                       }}
@@ -81,14 +77,7 @@ export default function NewsGrid() {
                         strokeLinecap="round"
                         strokeLinejoin="round"
                       >
-                        <rect
-                          width="18"
-                          height="18"
-                          x="3"
-                          y="4"
-                          rx="2"
-                          ry="2"
-                        />
+                        <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
                         <line x1="16" x2="16" y1="2" y2="6" />
                         <line x1="8" x2="8" y1="2" y2="6" />
                         <line x1="3" x2="21" y1="10" y2="10" />
@@ -103,8 +92,7 @@ export default function NewsGrid() {
                     style={{
                       fontSize: "16px",
                       lineHeight: "1.6",
-                      fontFamily:
-                        "'Playfair Display', Georgia, 'Times New Roman', serif",
+                      fontFamily: "'Playfair Display', Georgia, 'Times New Roman', serif",
                       fontWeight: 700,
                       color: "#1e2532",
                       overflow: "hidden",

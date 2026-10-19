@@ -38,10 +38,9 @@ export default function MembershipWhyJoin() {
                   margin: "0 auto",
                 }}
               >
-                Because life is too long to not be your best self, and we
-                understand this. This membership is a workout for your mind,
-                just like a good consistent workout keeps you happy and healthy
-                for longer.
+                Because life is too long to not be your best self, and we understand this. This
+                membership is a workout for your mind, just like a good consistent workout keeps you
+                happy and healthy for longer.
               </h6>
               <a
                 className="btn btn-primary btn-hover-primary"

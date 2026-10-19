@@ -100,8 +100,8 @@ export default function HeroSection() {
                     Gain a deeper understanding of human behaviour
                   </h3>
                   <p>
-                    Be part of a growing community of 200,000+ learners &amp;
-                    skilled counsellors from 22+ countries.
+                    Be part of a growing community of 200,000+ learners &amp; skilled counsellors
+                    from 22+ countries.
                   </p>
                 </div>
                 <Link
@@ -202,8 +202,7 @@ export default function HeroSection() {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        transition:
-                          "transform 0.2s ease, background-color 0.2s ease",
+                        transition: "transform 0.2s ease, background-color 0.2s ease",
                       }}
                       aria-label="Play video with audio"
                     >

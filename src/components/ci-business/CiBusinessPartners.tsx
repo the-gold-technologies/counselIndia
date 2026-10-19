@@ -36,34 +36,23 @@ const PARTNERS = [
 
 export default function CiBusinessPartners() {
   // Seamless loop with 4 repetitions
-  const marqueeItems = [
-    ...PARTNERS,
-    ...PARTNERS,
-    ...PARTNERS,
-    ...PARTNERS,
-  ];
+  const marqueeItems = [...PARTNERS, ...PARTNERS, ...PARTNERS, ...PARTNERS];
 
   return (
     <div className="partners-section py-5 bg-white overflow-hidden w-100">
       <div className="container custom-container py-2">
         {/* Section Title with Authentic Headline Curve Mark */}
-        <div
-          className="section-title text-center mb-5"
-          style={{ marginTop: "10px" }}
-        >
+        <div className="section-title text-center mb-5" style={{ marginTop: "10px" }}>
           <h2
             className="section-title__title-02 m-0 d-inline-block"
             style={{
               fontSize: "clamp(26px, 3.2vw, 34px)",
               color: "#1e2532",
               fontWeight: 700,
-              fontFamily:
-                "'Playfair Display', Georgia, 'Times New Roman', serif",
+              fontFamily: "'Playfair Display', Georgia, 'Times New Roman', serif",
             }}
           >
-            <mark className="partner-mark">
-              Organizations that trust our trainers
-            </mark>
+            <mark className="partner-mark">Organizations that trust our trainers</mark>
           </h2>
         </div>
 

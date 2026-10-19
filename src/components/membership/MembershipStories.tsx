@@ -29,9 +29,7 @@ export default function MembershipStories() {
     <>
       <div className="test-main">
         <div className="section-title text-center" data-aos="fade-up" data-aos-duration="1000">
-          <h2 className="section-title__title-03">
-            Personal Stories Straight from the Heart
-          </h2>
+          <h2 className="section-title__title-03">Personal Stories Straight from the Heart</h2>
         </div>
 
         <div className="container-test">
@@ -69,10 +67,10 @@ export default function MembershipStories() {
       </div>
 
       <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
+        @import url("https://fonts.googleapis.com/css?family=Roboto:300,400");
 
         .test-main {
-          background-color: #E6F0E2;
+          background-color: #e6f0e2;
           padding-top: 5%;
           width: 100%;
           box-sizing: border-box;
@@ -105,7 +103,7 @@ export default function MembershipStories() {
         .snip1533 {
           box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
           color: #000000;
-          font-family: 'Roboto', Arial, sans-serif;
+          font-family: "Roboto", Arial, sans-serif;
           font-size: 13px;
           max-width: 290px;
           min-width: 200px;
@@ -158,7 +156,7 @@ export default function MembershipStories() {
           font-weight: 300;
           line-height: 24px;
           margin: 10px 0 5px;
-          font-family: 'Roboto', Arial, sans-serif;
+          font-family: "Roboto", Arial, sans-serif;
         }
 
         .snip1533 blockquote {

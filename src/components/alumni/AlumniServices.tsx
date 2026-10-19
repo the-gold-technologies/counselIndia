@@ -8,9 +8,7 @@ export default function AlumniServices() {
       <div className="container custom-container py-2">
         {/* Section Title */}
         <div className="col-sm-12 text-center mb-4">
-          <h2 className="section-title__title text-center text-uppercase">
-            SERVICES
-          </h2>
+          <h2 className="section-title__title text-center text-uppercase">SERVICES</h2>
         </div>
 
         {/* 4 Cards Section */}
@@ -63,7 +61,9 @@ export default function AlumniServices() {
           border-radius: 8px;
           box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
           overflow: hidden;
-          transition: transform 0.2s ease, box-shadow 0.2s ease;
+          transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
         }
 
         .card:hover {

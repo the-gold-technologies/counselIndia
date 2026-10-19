@@ -61,7 +61,7 @@ export default function CounsellorsNetworkPage() {
         root: null,
         rootMargin: "300px",
         threshold: 0.1,
-      },
+      }
     );
 
     observer.observe(target);
@@ -89,7 +89,10 @@ export default function CounsellorsNetworkPage() {
           <NetworkBanner />
 
           {/* Heading */}
-          <h2 className="page-banner__main-title-02" style={{ textAlign: "center", marginTop: "5%", color: "#08A64B" }}>
+          <h2
+            className="page-banner__main-title-02"
+            style={{ textAlign: "center", marginTop: "5%", color: "#08A64B" }}
+          >
             Counsellors Network
           </h2>
 
@@ -97,10 +100,24 @@ export default function CounsellorsNetworkPage() {
           <div className="courses-section section-padding-01">
             <div className="container">
               {/* Archive Filter Bar */}
-              <div className="archive-filter-bars" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "15px", marginBottom: "25px" }}>
+              <div
+                className="archive-filter-bars"
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  flexWrap: "wrap",
+                  gap: "15px",
+                  marginBottom: "25px",
+                }}
+              >
                 <div className="archive-filter-bar">
                   <p style={{ margin: 0 }}>
-                    We found <span><strong>{counselors.length}</strong></span> counsellors for you
+                    We found{" "}
+                    <span>
+                      <strong>{counselors.length}</strong>
+                    </span>{" "}
+                    counsellors for you
                   </p>
                 </div>
               </div>
@@ -108,7 +125,11 @@ export default function CounsellorsNetworkPage() {
               {/* Initial Loading Skeleton */}
               {isLoading && counselors.length === 0 && (
                 <div style={{ textAlign: "center", padding: "80px 0" }}>
-                  <div className="spinner-border text-success" role="status" style={{ width: "3rem", height: "3rem" }}>
+                  <div
+                    className="spinner-border text-success"
+                    role="status"
+                    style={{ width: "3rem", height: "3rem" }}
+                  >
                     <span className="visually-hidden">Loading verified counsellors...</span>
                   </div>
                   <p className="mt-3 text-muted">Loading counsellors directly from directory...</p>
@@ -138,7 +159,11 @@ export default function CounsellorsNetworkPage() {
                 }}
               >
                 {visibleCount < counselors.length && !isLoading && (
-                  <div className="spinner-border text-success" role="status" style={{ width: "2rem", height: "2rem" }}>
+                  <div
+                    className="spinner-border text-success"
+                    role="status"
+                    style={{ width: "2rem", height: "2rem" }}
+                  >
                     <span className="visually-hidden">Loading more...</span>
                   </div>
                 )}

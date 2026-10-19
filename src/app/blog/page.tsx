@@ -88,7 +88,10 @@ export default function BlogPage() {
                 <>
                   <div className="row g-4">
                     {filteredBlogs.slice(0, visibleCount).map((blog) => (
-                      <div key={blog.id} className="col-xl-4 col-md-6 d-flex justify-content-center">
+                      <div
+                        key={blog.id}
+                        className="col-xl-4 col-md-6 d-flex justify-content-center"
+                      >
                         <BlogCard blog={blog} />
                       </div>
                     ))}
@@ -129,7 +132,14 @@ export default function BlogPage() {
                     border: "1px solid #edf2f7",
                   }}
                 >
-                  <h3 style={{ fontSize: "20px", color: "#1e293b", fontWeight: 700, marginBottom: "8px" }}>
+                  <h3
+                    style={{
+                      fontSize: "20px",
+                      color: "#1e293b",
+                      fontWeight: 700,
+                      marginBottom: "8px",
+                    }}
+                  >
                     No articles found
                   </h3>
                   <p style={{ color: "#64748b", fontSize: "14px", margin: "0 0 16px" }}>

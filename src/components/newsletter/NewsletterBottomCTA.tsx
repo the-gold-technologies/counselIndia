@@ -32,9 +32,7 @@ export default function NewsletterBottomCTA({ onSubscribeClick }: Props) {
           </button>
 
           <div className="subscriber-section footer-section2">
-            <p className="subscriber-text">
-              10k+ Subscribers enjoying their newsletter insights.
-            </p>
+            <p className="subscriber-text">10k+ Subscribers enjoying their newsletter insights.</p>
             <div className="subscriber-images">
               <img
                 className="subscriber-image"
@@ -140,7 +138,9 @@ export default function NewsletterBottomCTA({ onSubscribeClick }: Props) {
           white-space: nowrap !important;
           margin-right: 32px !important;
           display: inline-block !important;
-          transition: background-color 0.2s ease, transform 0.15s ease !important;
+          transition:
+            background-color 0.2s ease,
+            transform 0.15s ease !important;
         }
 
         #footer-btn:hover {

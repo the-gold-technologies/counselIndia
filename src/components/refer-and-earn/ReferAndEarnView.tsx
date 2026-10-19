@@ -157,9 +157,7 @@ export default function ReferAndEarnView() {
     return () => clearTimeout(timer);
   }, [isResendActive, resendCountdown]);
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
     if (type === "checkbox") {
       const { checked } = e.target as HTMLInputElement;
@@ -307,8 +305,8 @@ export default function ReferAndEarnView() {
             <div className="col-md-6">
               <h2 className="mb-2">Refer and earn rewards upto Rs. 80,000</h2>
               <p>
-                Help a friend become an counselindia learner and earn rewards
-                upto Rs. 80,000 #FriendshipGoals
+                Help a friend become an counselindia learner and earn rewards upto Rs. 80,000
+                #FriendshipGoals
               </p>
               <img
                 src="/assets/images/refer.png"
@@ -322,18 +320,10 @@ export default function ReferAndEarnView() {
                 data-aos="fade-up"
                 data-aos-duration="1000"
               >
-                <h4 className="countdown-register__title text-center pb-5">
-                  Signup To Earn
-                </h4>
+                <h4 className="countdown-register__title text-center pb-5">Signup To Earn</h4>
                 <ul className="tutor-course-segment__list-style-01">
-                  <li>
-                    Earn 5% flat cashback in advance once referee registers for a
-                    course *
-                  </li>
-                  <li>
-                    Not counselindia student, we’ve got you covered with easy
-                    bonus points*
-                  </li>
+                  <li>Earn 5% flat cashback in advance once referee registers for a course *</li>
+                  <li>Not counselindia student, we’ve got you covered with easy bonus points*</li>
                 </ul>
 
                 <div
@@ -356,11 +346,7 @@ export default function ReferAndEarnView() {
           <div className="row">
             <div className="col-sm-12">
               {/* Section Title Start */}
-              <div
-                className="section-title"
-                data-aos="fade-up"
-                data-aos-duration="1000"
-              >
+              <div className="section-title" data-aos="fade-up" data-aos-duration="1000">
                 <h2 className="section-title__title">
                   How to <mark>earn ?</mark>
                 </h2>
@@ -378,17 +364,10 @@ export default function ReferAndEarnView() {
                 data-aos-duration="1000"
               >
                 <div className="edumall-box-item__icon">
-                  <img
-                    src="/assets/images/export.png"
-                    alt="Icon"
-                    width="60"
-                    height="60"
-                  />
+                  <img src="/assets/images/export.png" alt="Icon" width="60" height="60" />
                 </div>
                 <div className="edumall-box-item__content">
-                  <h4 className="edumall-box-item__title">
-                    Fill the form to get Benefits
-                  </h4>
+                  <h4 className="edumall-box-item__title">Fill the form to get Benefits</h4>
                   <p>Fill the above form to register for Referral Benefits</p>
                 </div>
               </div>
@@ -402,20 +381,14 @@ export default function ReferAndEarnView() {
                 data-aos-duration="1000"
               >
                 <div className="edumall-box-item__icon">
-                  <img
-                    src="/assets/images/coins.png"
-                    alt="Icon"
-                    width="60"
-                    height="60"
-                  />
+                  <img src="/assets/images/coins.png" alt="Icon" width="60" height="60" />
                 </div>
                 <div className="edumall-box-item__content">
                   <h4 className="edumall-box-item__title">Earn Bonus Points</h4>
                   <p>
-                    You are eligible for 10% amount as referral bonus points as
-                    referral benefit after your friend successfully makes full
-                    payment for the program. This can redeemed once you purchase
-                    any course from Counsel India.
+                    You are eligible for 10% amount as referral bonus points as referral benefit
+                    after your friend successfully makes full payment for the program. This can
+                    redeemed once you purchase any course from Counsel India.
                   </p>
                 </div>
               </div>
@@ -429,22 +402,14 @@ export default function ReferAndEarnView() {
                 data-aos-duration="1000"
               >
                 <div className="edumall-box-item__icon">
-                  <img
-                    src="/assets/images/rupee.png"
-                    alt="Icon"
-                    width="60"
-                    height="60"
-                  />
+                  <img src="/assets/images/rupee.png" alt="Icon" width="60" height="60" />
                 </div>
                 <div className="edumall-box-item__content">
-                  <h4 className="edumall-box-item__title">
-                    Earn Flat Cash Back
-                  </h4>
+                  <h4 className="edumall-box-item__title">Earn Flat Cash Back</h4>
                   <p>
-                    You are eligible for 5% amount as direct cashback as referral
-                    benefit after your friend successfully makes full payment
-                    for the program. This can will be transferred to your account
-                    within 5 working days.
+                    You are eligible for 5% amount as direct cashback as referral benefit after your
+                    friend successfully makes full payment for the program. This can will be
+                    transferred to your account within 5 working days.
                   </p>
                 </div>
               </div>
@@ -459,14 +424,8 @@ export default function ReferAndEarnView() {
       <div className="faq-section section-padding-01 bg-color-01">
         <div className="container custom-container">
           {/* Section Title Start */}
-          <div
-            className="section-title text-center"
-            data-aos="fade-up"
-            data-aos-duration="1000"
-          >
-            <h2 className="section-title__title-03 mark-title">
-              Frequently Asked Questions
-            </h2>
+          <div className="section-title text-center" data-aos="fade-up" data-aos-duration="1000">
+            <h2 className="section-title__title-03 mark-title">Frequently Asked Questions</h2>
           </div>
           {/* Section Title End */}
 
@@ -474,11 +433,7 @@ export default function ReferAndEarnView() {
             <div className="col-lg-5">
               {/* FAQ Image Start */}
               <div className="faq-image">
-                <div
-                  className="faq-image__image"
-                  data-aos="fade-up"
-                  data-aos-duration="1000"
-                >
+                <div className="faq-image__image" data-aos="fade-up" data-aos-duration="1000">
                   <img src="/assets/images/faq.png" alt="FAQ" />
                 </div>
               </div>
@@ -486,11 +441,7 @@ export default function ReferAndEarnView() {
             </div>
             <div className="col-lg-7">
               {/* FAQ Accordion Start */}
-              <div
-                className="faq-accordion"
-                data-aos="fade-up"
-                data-aos-duration="1000"
-              >
+              <div className="faq-accordion" data-aos="fade-up" data-aos-duration="1000">
                 <div className="accordion" id="accordionFAQ">
                   {FAQ_ITEMS.map((faq, idx) => {
                     const isOpen = activeFaq === idx;
@@ -498,18 +449,14 @@ export default function ReferAndEarnView() {
                       <div className="accordion-item" key={faq.id}>
                         <button
                           type="button"
-                          className={`accordion-button ${
-                            isOpen ? "" : "collapsed"
-                          }`}
+                          className={`accordion-button ${isOpen ? "" : "collapsed"}`}
                           onClick={() => setActiveFaq(isOpen ? null : idx)}
                           aria-expanded={isOpen}
                         >
                           {faq.question}
                         </button>
                         <div
-                          className={`accordion-collapse collapse ${
-                            isOpen ? "show" : ""
-                          }`}
+                          className={`accordion-collapse collapse ${isOpen ? "show" : ""}`}
                           style={{ display: isOpen ? "block" : "none" }}
                         >
                           <div className="accordion-body">
@@ -616,11 +563,7 @@ export default function ReferAndEarnView() {
                 <h5 className="modal-title">Signup To Earn</h5>
               </div>
               <div className="modal-body">
-                <form
-                  id="myForm_refer_earn"
-                  name="myForm_refer_earn"
-                  onSubmit={handleFormSubmit}
-                >
+                <form id="myForm_refer_earn" name="myForm_refer_earn" onSubmit={handleFormSubmit}>
                   <div className="modal-form mb-3">
                     <label className="form-label" style={{ fontWeight: 500, marginBottom: "4px" }}>
                       Name
@@ -665,7 +608,10 @@ export default function ReferAndEarnView() {
 
                   <div className="col-md-12 mt-2 mb-3">
                     <div className="modal-form">
-                      <label className="form-label" style={{ fontWeight: 500, marginBottom: "4px" }}>
+                      <label
+                        className="form-label"
+                        style={{ fontWeight: 500, marginBottom: "4px" }}
+                      >
                         Select Country with Country Code
                       </label>
                       <select
@@ -714,7 +660,10 @@ export default function ReferAndEarnView() {
 
                   <div className="col-md-12 mt-2 mb-3">
                     <div className="modal-form">
-                      <label className="form-label" style={{ fontWeight: 500, marginBottom: "4px" }}>
+                      <label
+                        className="form-label"
+                        style={{ fontWeight: 500, marginBottom: "4px" }}
+                      >
                         Select State
                       </label>
                       <select
@@ -758,7 +707,10 @@ export default function ReferAndEarnView() {
 
                   <div className="col-md-12 mt-2 mb-3">
                     <div className="modal-form">
-                      <label className="form-label" style={{ fontWeight: 500, marginBottom: "4px" }}>
+                      <label
+                        className="form-label"
+                        style={{ fontWeight: 500, marginBottom: "4px" }}
+                      >
                         Select City
                       </label>
                       <input
@@ -884,21 +836,12 @@ export default function ReferAndEarnView() {
                         className="counseller_terms_checkbox_label mb-0"
                         style={{ fontSize: "13px", lineHeight: "1.5" }}
                       >
-                        By submitting this form, I agree to Counsel
-                        India&apos;s{" "}
-                        <Link
-                          href="/terms-condition"
-                          style={{ color: "#07a64b" }}
-                          target="_blank"
-                        >
+                        By submitting this form, I agree to Counsel India&apos;s{" "}
+                        <Link href="/terms-condition" style={{ color: "#07a64b" }} target="_blank">
                           Terms &amp; Conditions
                         </Link>{" "}
                         and{" "}
-                        <Link
-                          href="/privacy-policy"
-                          style={{ color: "#07a64b" }}
-                          target="_blank"
-                        >
+                        <Link href="/privacy-policy" style={{ color: "#07a64b" }} target="_blank">
                           Privacy Policy.
                         </Link>
                       </label>
@@ -982,7 +925,11 @@ export default function ReferAndEarnView() {
               &times;
             </button>
             <div className="modal-header pb-2" style={{ borderBottom: "1px solid #eee" }}>
-              <h5 className="modal-title" id="otpModalLabel" style={{ fontSize: "20px", fontWeight: 600 }}>
+              <h5
+                className="modal-title"
+                id="otpModalLabel"
+                style={{ fontSize: "20px", fontWeight: 600 }}
+              >
                 OTP Verification
               </h5>
             </div>
@@ -1009,16 +956,13 @@ export default function ReferAndEarnView() {
                     placeholder="Enter your OTP here"
                     required
                     value={otpValue}
-                    onChange={(e) =>
-                      setOtpValue(e.target.value.replace(/[^0-9]/g, ""))
-                    }
+                    onChange={(e) => setOtpValue(e.target.value.replace(/[^0-9]/g, ""))}
                   />
                 </div>
                 <div style={{ textAlign: "right", marginTop: "10px" }}>
                   {resendCountdown > 0 ? (
                     <span id="resendOTPTimerrefer" style={{ color: "#777", fontSize: "14px" }}>
-                      (Resend in{" "}
-                      <span id="resendTimerValuerefer">{resendCountdown}</span> sec)
+                      (Resend in <span id="resendTimerValuerefer">{resendCountdown}</span> sec)
                     </span>
                   ) : (
                     <span

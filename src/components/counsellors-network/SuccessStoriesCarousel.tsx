@@ -254,9 +254,7 @@ export default function SuccessStoriesCarousel() {
                       >
                         {item.name}
                       </h5>
-                      <span style={{ fontSize: "13.5px", color: "#64748b" }}>
-                        {item.location}
-                      </span>
+                      <span style={{ fontSize: "13.5px", color: "#64748b" }}>{item.location}</span>
                     </div>
                   </div>
                 </div>

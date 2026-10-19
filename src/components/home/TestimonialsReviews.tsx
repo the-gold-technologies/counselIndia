@@ -107,12 +107,8 @@ export default function TestimonialsReviews() {
 
                     <div className="testimonial-main-content d-flex flex-column justify-content-between flex-grow-1">
                       <div className="testimonial-caption">
-                        <h3 className="testimonial-caption__title">
-                          {item.title}
-                        </h3>
-                        <p style={{ textAlign: "justify" }}>
-                          {item.quote}
-                        </p>
+                        <h3 className="testimonial-caption__title">{item.title}</h3>
+                        <p style={{ textAlign: "justify" }}>{item.quote}</p>
                       </div>
 
                       <div className="testimonial-info">
@@ -125,12 +121,8 @@ export default function TestimonialsReviews() {
                           />
                         </div>
                         <div className="testimonial-info__caption">
-                          <h5 className="testimonial-info__name">
-                            {item.name}
-                          </h5>
-                          <p className="testimonial-info__designation">
-                            {item.role}
-                          </p>
+                          <h5 className="testimonial-info__name">{item.name}</h5>
+                          <p className="testimonial-info__designation">{item.role}</p>
                         </div>
                       </div>
                     </div>

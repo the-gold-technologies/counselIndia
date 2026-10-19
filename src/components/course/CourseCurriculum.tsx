@@ -23,8 +23,18 @@ export default function CourseCurriculum({ curriculum }: Props) {
   };
 
   return (
-    <div className="tutor-course-main-content" style={{ padding: "40px 0 35px", backgroundColor: "#ffffff", fontFamily: "'Poppins', sans-serif" }}>
-      <div className="container custom-container" style={{ maxWidth: "1170px", margin: "0 auto", padding: "0 16px" }}>
+    <div
+      className="tutor-course-main-content"
+      style={{
+        padding: "40px 0 35px",
+        backgroundColor: "#ffffff",
+        fontFamily: "'Poppins', sans-serif",
+      }}
+    >
+      <div
+        className="container custom-container"
+        style={{ maxWidth: "1170px", margin: "0 auto", padding: "0 16px" }}
+      >
         <div className="tutor-course-segment">
           {/* Header Row */}
           <div
@@ -53,9 +63,7 @@ export default function CourseCurriculum({ curriculum }: Props) {
               <span style={{ fontSize: "14px", fontWeight: 600, color: "#212529" }}>
                 {curriculum.totalSessions}
               </span>
-              <span style={{ fontSize: "14px", color: "#777777" }}>
-                {curriculum.totalHours}
-              </span>
+              <span style={{ fontSize: "14px", color: "#777777" }}>{curriculum.totalHours}</span>
             </div>
           </div>
 
@@ -68,9 +76,7 @@ export default function CourseCurriculum({ curriculum }: Props) {
                     <div className="course-curriculum-stat-count">
                       {st.count || <span style={{ visibility: "hidden" }}>-</span>}
                     </div>
-                    <div className="course-curriculum-stat-text">
-                      {st.text}
-                    </div>
+                    <div className="course-curriculum-stat-text">{st.text}</div>
                   </div>
                 ))}
               </div>

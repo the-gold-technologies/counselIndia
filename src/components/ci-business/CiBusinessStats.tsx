@@ -46,12 +46,8 @@ export default function CiBusinessStats() {
                     />
                   </div>
                   <div className="counter-item-03__content">
-                    <span className="counter-item-03__count">
-                      {stat.count}
-                    </span>
-                    <p className="counter-item-03__text">
-                      {stat.text}
-                    </p>
+                    <span className="counter-item-03__count">{stat.count}</span>
+                    <p className="counter-item-03__text">{stat.text}</p>
                   </div>
                 </div>
               </div>

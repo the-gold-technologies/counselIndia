@@ -91,8 +91,7 @@ export default function HarGharPRRelease() {
             style={{
               fontSize: "clamp(34px, 4.2vw, 44px)",
               fontWeight: 700,
-              fontFamily:
-                "Georgia, 'Playfair Display', 'Times New Roman', serif",
+              fontFamily: "Georgia, 'Playfair Display', 'Times New Roman', serif",
               color: "#07a64b",
               letterSpacing: "-0.5px",
             }}
@@ -128,8 +127,7 @@ export default function HarGharPRRelease() {
           background-color: #000000;
           box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
           color: #ffffff;
-          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-            sans-serif;
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
           font-size: 16px;
           line-height: 1.6em;
           margin: 0;

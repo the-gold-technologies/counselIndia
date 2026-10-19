@@ -21,8 +21,7 @@ export default function EventSpeakers({ speakers }: EventSpeakersProps) {
             className="event-details__title m-0"
             style={{
               fontSize: "clamp(30px, 4vw, 40px)",
-              fontFamily:
-                "'Playfair Display', Georgia, 'Times New Roman', serif",
+              fontFamily: "'Playfair Display', Georgia, 'Times New Roman', serif",
               fontWeight: 700,
               color: "#1d2a44",
               lineHeight: "1.3",

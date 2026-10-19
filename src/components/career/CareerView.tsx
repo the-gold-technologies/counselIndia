@@ -35,7 +35,10 @@ export default function CareerView() {
 
       {/* FAQ / Partners Section Start */}
       <div className="faq-section" style={{ backgroundColor: "#ffffff", padding: "30px 0 15px" }}>
-        <div className="container custom-container" style={{ maxWidth: "1170px", margin: "0 auto", padding: "0 16px" }}>
+        <div
+          className="container custom-container"
+          style={{ maxWidth: "1170px", margin: "0 auto", padding: "0 16px" }}
+        >
           <div className="row">
             <div className="partners-active swiper-dots-style">
               <div className="swiper">
@@ -117,8 +120,14 @@ export default function CareerView() {
       {/* Page Banner Caption End */}
 
       {/* Call To Action Start */}
-      <div className="call-to-action section-padding-01" style={{ backgroundColor: "#fbfcfe", padding: "30px 0 60px" }}>
-        <div className="container custom-container" style={{ maxWidth: "1170px", margin: "0 auto", padding: "0 16px" }}>
+      <div
+        className="call-to-action section-padding-01"
+        style={{ backgroundColor: "#fbfcfe", padding: "30px 0 60px" }}
+      >
+        <div
+          className="container custom-container"
+          style={{ maxWidth: "1170px", margin: "0 auto", padding: "0 16px" }}
+        >
           {JOB_OPENINGS.map((job) => (
             <div
               key={job.id}
@@ -207,7 +216,10 @@ export default function CareerView() {
                     textAlign: "right",
                   }}
                 >
-                  <div className="call-to-action__btn-03" style={{ padding: 0, textAlign: "right" }}>
+                  <div
+                    className="call-to-action__btn-03"
+                    style={{ padding: 0, textAlign: "right" }}
+                  >
                     <a
                       href={job.applyUrl}
                       target="_blank"
@@ -246,11 +258,7 @@ export default function CareerView() {
       {/* Call To Action End */}
 
       {/* Job Description Detail Modal */}
-      <JobDetailModal
-        job={selectedJob}
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-      />
+      <JobDetailModal job={selectedJob} isOpen={isModalOpen} onClose={handleCloseModal} />
     </div>
   );
 }

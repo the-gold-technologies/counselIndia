@@ -51,10 +51,8 @@ export default function SuccessHero() {
             maxWidth: "760px",
           }}
         >
-          Explore the amazing stories of people who overcame{" "}
-          <br className="d-none d-md-block" />
-          all challenges, embraced change, and achieved{" "}
-          <br className="d-none d-md-block" />
+          Explore the amazing stories of people who overcame <br className="d-none d-md-block" />
+          all challenges, embraced change, and achieved <br className="d-none d-md-block" />
           great heights.
         </p>
       </div>

@@ -72,9 +72,7 @@ export async function getPersonalityQuestions(): Promise<PersonalityQuestion[]> 
   try {
     const res = await fetchFromAdmin<PersonalityQuestion[]>("/api/personality-test/questions");
     if (res.success && Array.isArray(res.data)) {
-      return res.data
-        .filter((q) => q.status === "Active")
-        .sort((a, b) => a.position - b.position);
+      return res.data.filter((q) => q.status === "Active").sort((a, b) => a.position - b.position);
     }
     return [];
   } catch (error) {
@@ -103,7 +101,7 @@ export async function getPersonalityTabResults(): Promise<PersonalityTabResult[]
  * Submit candidate details and test result to Admin Leads / Personality Entries
  */
 export async function submitPersonalityTestLead(
-  data: PersonalitySubmissionData,
+  data: PersonalitySubmissionData
 ): Promise<{ success: boolean; data?: any; error?: string }> {
   try {
     // 1. Submit through the lead service category personality-test
@@ -141,7 +139,7 @@ export async function submitPersonalityTestLead(
  */
 export function calculatePersonalityResult(
   selectedAnswers: Record<string | number, string>,
-  tabResults: PersonalityTabResult[],
+  tabResults: PersonalityTabResult[]
 ): PersonalityTabResult | null {
   if (!tabResults || tabResults.length === 0) return null;
 
@@ -171,7 +169,7 @@ export function calculatePersonalityResult(
     const combo = tabResults.find(
       (r) =>
         (r.name.includes(topTrait) && r.name.includes(secondTrait)) ||
-        (r.name.includes(secondTrait) && r.name.includes(topTrait)),
+        (r.name.includes(secondTrait) && r.name.includes(topTrait))
     );
     if (combo) return combo;
   }

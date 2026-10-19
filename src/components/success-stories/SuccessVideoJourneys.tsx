@@ -13,8 +13,7 @@ export default function SuccessVideoJourneys() {
             style={{
               fontSize: "clamp(26px, 3.2vw, 34px)",
               fontWeight: 700,
-              fontFamily:
-                "Georgia, 'Playfair Display', 'Times New Roman', serif",
+              fontFamily: "Georgia, 'Playfair Display', 'Times New Roman', serif",
               color: "#1e293b",
               margin: 0,
             }}

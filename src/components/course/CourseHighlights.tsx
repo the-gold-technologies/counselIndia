@@ -10,8 +10,14 @@ interface Props {
 
 export default function CourseHighlights({ highlights }: Props) {
   return (
-    <div className="tutor-course-main-content" style={{ padding: "45px 0 10px", backgroundColor: "#ffffff" }}>
-      <div className="container custom-container" style={{ maxWidth: "1170px", margin: "0 auto", padding: "0 16px" }}>
+    <div
+      className="tutor-course-main-content"
+      style={{ padding: "45px 0 10px", backgroundColor: "#ffffff" }}
+    >
+      <div
+        className="container custom-container"
+        style={{ maxWidth: "1170px", margin: "0 auto", padding: "0 16px" }}
+      >
         <div className="why-choose-wrapper tutor-course-segment">
           <div className="row gy-6 gx-6">
             {highlights.map((item, idx) => (

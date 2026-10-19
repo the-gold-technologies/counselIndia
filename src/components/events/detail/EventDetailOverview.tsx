@@ -101,9 +101,7 @@ export default function EventDetailOverview({ event }: EventDetailOverviewProps)
                   <div className="col-12 col-md-6" key={i}>
                     <div className="d-flex align-items-start gap-2">
                       <span className="text-success fw-bold">✓</span>
-                      <span style={{ fontSize: "14.5px", color: "#334155" }}>
-                        {perk}
-                      </span>
+                      <span style={{ fontSize: "14.5px", color: "#334155" }}>{perk}</span>
                     </div>
                   </div>
                 ))}
@@ -200,10 +198,7 @@ export default function EventDetailOverview({ event }: EventDetailOverviewProps)
                   <span style={{ fontSize: "16px", color: "#475569" }}>₹</span>
                   Price
                 </span>
-                <span
-                  className="meta-value fw-bold font-size-16"
-                  style={{ color: "#07a64b" }}
-                >
+                <span className="meta-value fw-bold font-size-16" style={{ color: "#07a64b" }}>
                   Rs {event.price}
                 </span>
               </li>

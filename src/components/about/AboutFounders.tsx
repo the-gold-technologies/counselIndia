@@ -6,11 +6,7 @@ export default function AboutFounders() {
     <div className="founders-block">
       <div className="container custom-container">
         {/* Section Title */}
-        <div
-          className="section-title"
-          data-aos="fade-up"
-          data-aos-duration="1000"
-        >
+        <div className="section-title" data-aos="fade-up" data-aos-duration="1000">
           <h2 className="section-title__title">
             <mark>Our Founders</mark>
           </h2>
@@ -23,10 +19,7 @@ export default function AboutFounders() {
                 <div className="col-lg-4">
                   <div className="event-details__booking-info">
                     <div className="speaker-item text-center">
-                      <div
-                        className="speaker-item__thumbnail"
-                        style={{ margin: "5%" }}
-                      >
+                      <div className="speaker-item__thumbnail" style={{ margin: "5%" }}>
                         <img
                           src="https://prod-s3.counselindia.com/images/image.jpg"
                           alt="Mr. Bobby Thakur"
@@ -41,10 +34,7 @@ export default function AboutFounders() {
                           }}
                         />
                       </div>
-                      <div
-                        className="speaker-item__content"
-                        style={{ marginTop: "14%" }}
-                      >
+                      <div className="speaker-item__content" style={{ marginTop: "14%" }}>
                         <h6
                           className="speaker-item__name font-size-25"
                           style={{ fontSize: "25px", fontWeight: 700 }}
@@ -68,37 +58,32 @@ export default function AboutFounders() {
 
                 <div className="col-lg-8">
                   <p style={{ textAlign: "justify" }}>
-                    Bobby Thakur is a psychologist, educator, and the Founder of
-                    Counsel India, a leading platform dedicated to practical
-                    psychology and counseling education.
+                    Bobby Thakur is a psychologist, educator, and the Founder of Counsel India, a
+                    leading platform dedicated to practical psychology and counseling education.
                   </p>
 
                   <p style={{ textAlign: "justify" }}>
-                    With a vision of &ldquo;Har Ghar Counselor,&rdquo; he has
-                    helped thousands of individuals discover the power of
-                    psychology, build meaningful careers, and create real impact
-                    through emotional understanding.
+                    With a vision of &ldquo;Har Ghar Counselor,&rdquo; he has helped thousands of
+                    individuals discover the power of psychology, build meaningful careers, and
+                    create real impact through emotional understanding.
                   </p>
 
                   <p style={{ textAlign: "justify" }}>
-                    Over the years, he has guided learners, professionals, and
-                    aspiring counselors to not only understand human behavior —
-                    but to apply it in real life, relationships, and leadership.
+                    Over the years, he has guided learners, professionals, and aspiring counselors
+                    to not only understand human behavior — but to apply it in real life,
+                    relationships, and leadership.
                   </p>
 
                   <p style={{ textAlign: "justify" }}>
-                    Known for simplifying complex psychological concepts into
-                    practical tools, Bobby’s work focuses on emotional
-                    intelligence, communication, and human connection.
+                    Known for simplifying complex psychological concepts into practical tools,
+                    Bobby’s work focuses on emotional intelligence, communication, and human
+                    connection.
                   </p>
 
                   <p style={{ textAlign: "justify" }}>
                     He is also the author of the book{" "}
-                    <strong>
-                      Listen. Don’t Just Talk: A Million Dollar Skill
-                    </strong>
-                    , which emphasizes your ability to listen can change
-                    everything.
+                    <strong>Listen. Don’t Just Talk: A Million Dollar Skill</strong>, which
+                    emphasizes your ability to listen can change everything.
                   </p>
                 </div>
               </div>

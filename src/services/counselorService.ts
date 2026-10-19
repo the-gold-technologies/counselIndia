@@ -11,15 +11,12 @@ function slugify(text: string): string {
 /**
  * Transforms a database counselor record into the CounselorItem interface
  */
-export function mapDbCounselorToItem(
-  item: DbCounselor,
-  index = 0,
-): CounselorItem {
+export function mapDbCounselorToItem(item: DbCounselor, index = 0): CounselorItem {
+  const uniqueKey = item.liveId || item.id || String(item.sNo || index + 1);
   const numericId =
-    parseInt(item.liveId || String(item.sNo || index + 1), 10) ||
-    (item.sNo ?? index + 1);
+    parseInt(item.liveId || String(item.sNo || index + 1), 10) || (item.sNo ?? index + 1);
   const designationSlug = item.designation ? slugify(item.designation) : "";
-  const slug = `${slugify(item.name || "")}${designationSlug ? `-${designationSlug}` : ""}-${item.liveId || numericId}`;
+  const slug = `${slugify(item.name || "")}${designationSlug ? `-${designationSlug}` : ""}-${uniqueKey}`;
 
   // Clean experience format
   let exp = item.experience || "";
@@ -30,9 +27,7 @@ export function mapDbCounselorToItem(
   // Clean image URL
   let img = (item.image || "").trim();
   if (img) {
-    img = img
-      .replace("/counsellor//", "/counsellor/")
-      .replace("/counselor//", "/counselor/");
+    img = img.replace("/counsellor//", "/counsellor/").replace("/counselor//", "/counselor/");
   }
 
   return {
@@ -62,9 +57,7 @@ export function mapDbCounselorToItem(
 /**
  * Fetches verified counsellors from the Admin Panel API
  */
-export async function getVerifiedCounselors(
-  search?: string,
-): Promise<CounselorItem[]> {
+export async function getVerifiedCounselors(search?: string): Promise<CounselorItem[]> {
   try {
     const queryParams = new URLSearchParams();
     queryParams.set("status", "verified");
@@ -73,9 +66,7 @@ export async function getVerifiedCounselors(
       queryParams.set("search", search.trim());
     }
 
-    const res = await fetchFromAdmin<DbCounselor[]>(
-      `/api/counsellors?${queryParams.toString()}`,
-    );
+    const res = await fetchFromAdmin<DbCounselor[]>(`/api/counsellors?${queryParams.toString()}`);
 
     if (!res.success || !Array.isArray(res.data)) {
       return [];
@@ -83,10 +74,7 @@ export async function getVerifiedCounselors(
 
     return res.data.map((c, idx) => mapDbCounselorToItem(c, idx));
   } catch (error) {
-    console.error(
-      "Failed to fetch verified counsellors from Admin API:",
-      error,
-    );
+    console.error("Failed to fetch verified counsellors from Admin API:", error);
     return [];
   }
 }
@@ -94,11 +82,36 @@ export async function getVerifiedCounselors(
 /**
  * Fetches a single counsellor by liveId, cuid, or slug from the Admin Panel API
  */
-export async function getCounselorByIdOrSlug(
-  idOrSlug: string,
-): Promise<CounselorItem | null> {
+export async function getCounselorByIdOrSlug(idOrSlug: string): Promise<CounselorItem | null> {
   try {
-    // 1. Try to extract trailing numeric ID if slug format (e.g. name-designation-639)
+    const normalizedTarget = idOrSlug.toLowerCase().trim();
+
+    // Helper to verify if candidate counselor actually matches the requested idOrSlug
+    const isCounselorMatch = (
+      counselorName: string,
+      counselorId?: string,
+      counselorLiveId?: string
+    ) => {
+      // If query is an exact ID or CUID match
+      if (idOrSlug === counselorId || idOrSlug === counselorLiveId) {
+        return true;
+      }
+      // If query is numeric and matches liveId or counselorId
+      if (!isNaN(Number(idOrSlug)) && (counselorLiveId === idOrSlug || counselorId === idOrSlug)) {
+        return true;
+      }
+      // If slug contains the counselor's slugified name
+      const nameSlug = slugify(counselorName || "");
+      if (
+        nameSlug &&
+        (normalizedTarget.includes(nameSlug) || nameSlug.includes(normalizedTarget))
+      ) {
+        return true;
+      }
+      return false;
+    };
+
+    // 1. Try to extract trailing numeric ID if slug format (e.g. name-designation-683)
     const parts = idOrSlug.split("-");
     const trailingId = parts[parts.length - 1];
     const lookupId = !isNaN(Number(trailingId)) ? trailingId : idOrSlug;
@@ -106,23 +119,46 @@ export async function getCounselorByIdOrSlug(
     // 2. Fetch directly by ID/liveId from Admin
     try {
       const singleRes = await fetchFromAdmin<DbCounselor>(
-        `/api/counsellors/${encodeURIComponent(lookupId)}`,
+        `/api/counsellors/${encodeURIComponent(lookupId)}`
       );
-      if (singleRes.success && singleRes.data) {
+      if (
+        singleRes.success &&
+        singleRes.data &&
+        isCounselorMatch(singleRes.data.name, singleRes.data.id, singleRes.data.liveId)
+      ) {
         return mapDbCounselorToItem(singleRes.data);
       }
     } catch {
       // If direct ID lookup misses, fallback to searching all verified counsellors
     }
 
-    // 3. Fallback: Search all verified counsellors by slug match
+    // If lookupId differed from full idOrSlug, also try direct fetch with idOrSlug (e.g. cuid)
+    if (lookupId !== idOrSlug) {
+      try {
+        const singleRes = await fetchFromAdmin<DbCounselor>(
+          `/api/counsellors/${encodeURIComponent(idOrSlug)}`
+        );
+        if (
+          singleRes.success &&
+          singleRes.data &&
+          isCounselorMatch(singleRes.data.name, singleRes.data.id, singleRes.data.liveId)
+        ) {
+          return mapDbCounselorToItem(singleRes.data);
+        }
+      } catch {}
+    }
+
+    // 3. Fallback: Search all verified counsellors
     const all = await getVerifiedCounselors();
-    const normalizedTarget = idOrSlug.toLowerCase();
 
     const matched =
-      all.find((c) => c.slug === idOrSlug) ||
-      all.find((c) => String(c.id) === lookupId) ||
-      all.find((c) => normalizedTarget.includes(slugify(c.name)));
+      all.find((c) => c.slug.toLowerCase() === normalizedTarget) ||
+      all.find((c) => {
+        const nameSlug = slugify(c.name);
+        return nameSlug && normalizedTarget.includes(nameSlug);
+      }) ||
+      all.find((c) => String(c.id) === lookupId && isCounselorMatch(c.name, String(c.id))) ||
+      all.find((c) => String(c.id) === idOrSlug);
 
     return matched || null;
   } catch (error) {

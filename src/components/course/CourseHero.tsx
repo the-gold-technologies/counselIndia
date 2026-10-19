@@ -27,22 +27,14 @@ export default function CourseHero({ course, onOpenBrochure }: Props) {
               {/* Badges */}
               <div className="tutor-course-top-info__content">
                 <div className="tutor-course-top-info__badges">
-                  {course.badgeSale && (
-                    <span className="onsale">{course.badgeSale}</span>
-                  )}
-                  <a
-                    className="badges-category"
-                    href="#"
-                    onClick={(e) => e.preventDefault()}
-                  >
+                  {course.badgeSale && <span className="onsale">{course.badgeSale}</span>}
+                  <a className="badges-category" href="#" onClick={(e) => e.preventDefault()}>
                     {course.category}
                   </a>
                 </div>
 
                 {/* Title */}
-                <h1 className="tutor-course-top-info__title text-white">
-                  {course.name}
-                </h1>
+                <h1 className="tutor-course-top-info__title text-white">{course.name}</h1>
 
                 {/* Description */}
                 <div className="tutor-course-top-info__meta">
@@ -59,13 +51,7 @@ export default function CourseHero({ course, onOpenBrochure }: Props) {
                     </div>
                     <div style={{ display: "flex", gap: "3px" }}>
                       {[1, 2, 3, 4, 5].map((star) => (
-                        <svg
-                          key={star}
-                          width="16"
-                          height="16"
-                          viewBox="0 0 24 24"
-                          fill="#f7c04d"
-                        >
+                        <svg key={star} width="16" height="16" viewBox="0 0 24 24" fill="#f7c04d">
                           <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
                         </svg>
                       ))}
@@ -75,30 +61,15 @@ export default function CourseHero({ course, onOpenBrochure }: Props) {
 
                 {/* Buttons */}
                 <div className="tutor-course-top-info__btn">
-                  <a
-                    href={course.enrollUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <button
-                      className="btn-primary-custom"
-                      style={{ minWidth: "160px" }}
-                    >
+                  <a href={course.enrollUrl} target="_blank" rel="noopener noreferrer">
+                    <button className="btn-primary-custom" style={{ minWidth: "160px" }}>
                       Enroll Now
                     </button>
                   </a>
 
                   <a href={`tel:${course.phone}`}>
-                    <button
-                      className="btn-primary-custom"
-                      style={{ minWidth: "220px" }}
-                    >
-                      <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                      >
+                    <button className="btn-primary-custom" style={{ minWidth: "220px" }}>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z" />
                       </svg>
                       Talk To Career Expert
@@ -106,10 +77,7 @@ export default function CourseHero({ course, onOpenBrochure }: Props) {
                   </a>
 
                   <div style={{ width: "100%", marginTop: "8px" }}>
-                    <button
-                      onClick={onOpenBrochure}
-                      className="btn-light-custom"
-                    >
+                    <button onClick={onOpenBrochure} className="btn-light-custom">
                       Download Brochure
                       <svg
                         width="15"

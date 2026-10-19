@@ -6,11 +6,23 @@ export default function SignedMous() {
     { id: 1, image: "/assets/images/mou-signed/1.png", alt: "Galgotias University MOU" },
     { id: 2, image: "/assets/images/mou-signed/2.png", alt: "KRMU Gurugram MOU" },
     { id: 3, image: "/assets/images/mou-signed/3.png", alt: "O.P. Jindal Global University MOU" },
-    { id: 4, image: "/assets/images/mou-signed/4.png", alt: "Institutional Signed Association MOU" },
-    { id: 5, image: "/assets/images/mou-signed/5.png", alt: "Counsel India Memorandum of Understanding" },
+    {
+      id: 4,
+      image: "/assets/images/mou-signed/4.png",
+      alt: "Institutional Signed Association MOU",
+    },
+    {
+      id: 5,
+      image: "/assets/images/mou-signed/5.png",
+      alt: "Counsel India Memorandum of Understanding",
+    },
     { id: 6, image: "/assets/images/mou-signed/6.png", alt: "O.P. Jindal Global University MOU" },
     { id: 7, image: "/assets/images/mou-signed/7.png", alt: "KRMU Gurugram Association MOU" },
-    { id: 8, image: "/assets/images/mou-signed/8.png", alt: "University Institutional Association MOU" },
+    {
+      id: 8,
+      image: "/assets/images/mou-signed/8.png",
+      alt: "University Institutional Association MOU",
+    },
   ];
 
   // Duplicate for seamless infinite marquee scroll
@@ -68,13 +80,7 @@ export default function SignedMous() {
 
       <style jsx>{`
         .mou-marquee-container {
-          mask-image: linear-gradient(
-            to right,
-            transparent,
-            black 3%,
-            black 97%,
-            transparent
-          );
+          mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent);
           -webkit-mask-image: linear-gradient(
             to right,
             transparent,

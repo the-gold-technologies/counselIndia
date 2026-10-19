@@ -86,11 +86,7 @@ const INDIAN_STATES = [
   "Puducherry",
 ];
 
-export default function CourseBrochureModal({
-  isOpen,
-  onClose,
-  courseName,
-}: ModalProps) {
+export default function CourseBrochureModal({ isOpen, onClose, courseName }: ModalProps) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -188,13 +184,18 @@ export default function CourseBrochureModal({
         {submitted ? (
           <div style={{ textAlign: "center", padding: "40px 15px", color: "#07a64b" }}>
             <div style={{ fontSize: "48px", marginBottom: "12px" }}>✓</div>
-            <h4 style={{ margin: "0 0 8px", fontSize: "20px", color: "#212529", fontWeight: 700 }}>Thank You!</h4>
+            <h4 style={{ margin: "0 0 8px", fontSize: "20px", color: "#212529", fontWeight: 700 }}>
+              Thank You!
+            </h4>
             <p style={{ margin: 0, fontSize: "14px", color: "#6c757d" }}>
               Your brochure has been sent to your email &amp; mobile.
             </p>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
+          <form
+            onSubmit={handleSubmit}
+            style={{ display: "flex", flexDirection: "column", gap: "14px" }}
+          >
             {/* Full Name */}
             <div>
               <label style={labelStyle}>
@@ -335,20 +336,40 @@ export default function CourseBrochureModal({
                 <option value="" disabled>
                   Please Select
                 </option>
-                <option value="Google" style={{ color: "#212529" }}>Google</option>
-                <option value="Facebook" style={{ color: "#212529" }}>Facebook</option>
-                <option value="Instagram" style={{ color: "#212529" }}>Instagram</option>
-                <option value="LinkedIn" style={{ color: "#212529" }}>LinkedIn</option>
-                <option value="Blogs" style={{ color: "#212529" }}>Blogs</option>
-                <option value="Email" style={{ color: "#212529" }}>Email</option>
-                <option value="Whatsapp" style={{ color: "#212529" }}>Whatsapp</option>
-                <option value="Reference" style={{ color: "#212529" }}>Reference</option>
-                <option value="YouTube" style={{ color: "#212529" }}>YouTube</option>
+                <option value="Google" style={{ color: "#212529" }}>
+                  Google
+                </option>
+                <option value="Facebook" style={{ color: "#212529" }}>
+                  Facebook
+                </option>
+                <option value="Instagram" style={{ color: "#212529" }}>
+                  Instagram
+                </option>
+                <option value="LinkedIn" style={{ color: "#212529" }}>
+                  LinkedIn
+                </option>
+                <option value="Blogs" style={{ color: "#212529" }}>
+                  Blogs
+                </option>
+                <option value="Email" style={{ color: "#212529" }}>
+                  Email
+                </option>
+                <option value="Whatsapp" style={{ color: "#212529" }}>
+                  Whatsapp
+                </option>
+                <option value="Reference" style={{ color: "#212529" }}>
+                  Reference
+                </option>
+                <option value="YouTube" style={{ color: "#212529" }}>
+                  YouTube
+                </option>
               </select>
             </div>
 
             {/* Terms and conditions */}
-            <div style={{ display: "flex", alignItems: "flex-start", gap: "8px", marginTop: "2px" }}>
+            <div
+              style={{ display: "flex", alignItems: "flex-start", gap: "8px", marginTop: "2px" }}
+            >
               <input
                 type="checkbox"
                 id="brochureTerms"

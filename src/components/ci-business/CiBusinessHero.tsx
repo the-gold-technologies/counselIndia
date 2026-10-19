@@ -34,12 +34,10 @@ export default function CiBusinessHero() {
                   fontWeight: 500,
                   lineHeight: 1.5,
                   marginBottom: "10px",
-                  fontFamily:
-                    "Georgia, 'Playfair Display', 'Times New Roman', serif",
+                  fontFamily: "Georgia, 'Playfair Display', 'Times New Roman', serif",
                 }}
               >
-                Transform Your Workplace: Invest in your Employees and
-                Accelerate Growth
+                Transform Your Workplace: Invest in your Employees and Accelerate Growth
               </h1>
             </div>
 
@@ -59,8 +57,7 @@ export default function CiBusinessHero() {
                   fontWeight: 500,
                   lineHeight: 1.5,
                   marginBottom: "10px",
-                  fontFamily:
-                    "Georgia, 'Playfair Display', 'Times New Roman', serif",
+                  fontFamily: "Georgia, 'Playfair Display', 'Times New Roman', serif",
                 }}
               >
                 <mark className="hero-mark">Empower them with</mark>
@@ -72,8 +69,7 @@ export default function CiBusinessHero() {
                   fontSize: "32px",
                   fontWeight: 500,
                   lineHeight: 1.5,
-                  fontFamily:
-                    "Georgia, 'Playfair Display', 'Times New Roman', serif",
+                  fontFamily: "Georgia, 'Playfair Display', 'Times New Roman', serif",
                   paddingLeft: "0",
                   margin: "0",
                 }}
@@ -84,9 +80,7 @@ export default function CiBusinessHero() {
                 <li style={{ listStyleType: "disc", marginLeft: "25px" }}>
                   Higher Happiness Score
                 </li>
-                <li style={{ listStyleType: "disc", marginLeft: "25px" }}>
-                  Improved Productivity
-                </li>
+                <li style={{ listStyleType: "disc", marginLeft: "25px" }}>Improved Productivity</li>
               </ul>
             </div>
 

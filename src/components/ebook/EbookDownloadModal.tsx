@@ -20,23 +20,10 @@ const COUNTRIES = [
 ];
 
 const INDIAN_STATES: { [key: string]: string[] } = {
-  Delhi: [
-    "New Delhi",
-    "North Delhi",
-    "South Delhi",
-    "West Delhi",
-    "East Delhi",
-  ],
+  Delhi: ["New Delhi", "North Delhi", "South Delhi", "West Delhi", "East Delhi"],
   Maharashtra: ["Mumbai", "Pune", "Nagpur", "Thane", "Nashik"],
   Karnataka: ["Bengaluru", "Mysuru", "Hubli", "Mangaluru"],
-  "Uttar Pradesh": [
-    "Noida",
-    "Lucknow",
-    "Kanpur",
-    "Ghaziabad",
-    "Varanasi",
-    "Agra",
-  ],
+  "Uttar Pradesh": ["Noida", "Lucknow", "Kanpur", "Ghaziabad", "Varanasi", "Agra"],
   Haryana: ["Gurugram", "Faridabad", "Panipat", "Ambala"],
   "Tamil Nadu": ["Chennai", "Coimbatore", "Madurai", "Salem"],
   "West Bengal": ["Kolkata", "Howrah", "Durgapur", "Siliguri"],
@@ -56,11 +43,7 @@ const HEAR_ABOUT_OPTIONS = [
   "Other",
 ];
 
-export default function EbookDownloadModal({
-  ebook,
-  isOpen,
-  onClose,
-}: ModalProps) {
+export default function EbookDownloadModal({ ebook, isOpen, onClose }: ModalProps) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -80,9 +63,7 @@ export default function EbookDownloadModal({
   if (!isOpen || !ebook) return null;
 
   const availableCities =
-    formData.state && INDIAN_STATES[formData.state]
-      ? INDIAN_STATES[formData.state]
-      : [];
+    formData.state && INDIAN_STATES[formData.state] ? INDIAN_STATES[formData.state] : [];
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -230,8 +211,7 @@ export default function EbookDownloadModal({
           padding: "36px 30px 32px",
           position: "relative",
           boxSizing: "border-box",
-          animation:
-            "modalSlideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+          animation: "modalSlideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards",
         }}
       >
         {/* Close Button */}
@@ -286,9 +266,7 @@ export default function EbookDownloadModal({
                 placeholder="Your Full Name"
                 required
                 value={formData.name}
-                onChange={(e) =>
-                  setFormData({ ...formData, name: e.target.value })
-                }
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 style={inputStyle}
               />
             </div>
@@ -303,9 +281,7 @@ export default function EbookDownloadModal({
                 placeholder="Your Email Address"
                 required
                 value={formData.email}
-                onChange={(e) =>
-                  setFormData({ ...formData, email: e.target.value })
-                }
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 style={inputStyle}
               />
             </div>
@@ -319,9 +295,7 @@ export default function EbookDownloadModal({
               <select
                 required
                 value={formData.country}
-                onChange={(e) =>
-                  setFormData({ ...formData, country: e.target.value })
-                }
+                onChange={(e) => setFormData({ ...formData, country: e.target.value })}
                 style={inputStyle}
               >
                 <option value="">Please Select Country</option>
@@ -344,9 +318,7 @@ export default function EbookDownloadModal({
                 maxLength={10}
                 required
                 value={formData.mobile}
-                onChange={(e) =>
-                  setFormData({ ...formData, mobile: e.target.value })
-                }
+                onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
                 style={inputStyle}
               />
             </div>
@@ -359,9 +331,7 @@ export default function EbookDownloadModal({
               <select
                 required
                 value={formData.state}
-                onChange={(e) =>
-                  setFormData({ ...formData, state: e.target.value, city: "" })
-                }
+                onChange={(e) => setFormData({ ...formData, state: e.target.value, city: "" })}
                 style={inputStyle}
               >
                 <option value="">Please Select State</option>
@@ -381,9 +351,7 @@ export default function EbookDownloadModal({
               <select
                 required
                 value={formData.city}
-                onChange={(e) =>
-                  setFormData({ ...formData, city: e.target.value })
-                }
+                onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                 style={inputStyle}
               >
                 <option value="">Please Select City</option>
@@ -404,9 +372,7 @@ export default function EbookDownloadModal({
               <select
                 required
                 value={formData.hearAbout}
-                onChange={(e) =>
-                  setFormData({ ...formData, hearAbout: e.target.value })
-                }
+                onChange={(e) => setFormData({ ...formData, hearAbout: e.target.value })}
                 style={inputStyle}
               >
                 <option value="">Please Select</option>
@@ -432,9 +398,7 @@ export default function EbookDownloadModal({
                 id="ebLiveTerms"
                 required
                 checked={formData.terms}
-                onChange={(e) =>
-                  setFormData({ ...formData, terms: e.target.checked })
-                }
+                onChange={(e) => setFormData({ ...formData, terms: e.target.checked })}
                 style={{
                   marginTop: "4px",
                   accentColor: "#00a651",
@@ -603,14 +567,11 @@ export default function EbookDownloadModal({
                 marginBottom: "20px",
               }}
             >
-              Your e-book <strong>&quot;{ebook.name}&quot;</strong> has been
-              prepared for download. A copy has also been sent to{" "}
-              <strong>{formData.email}</strong>.
+              Your e-book <strong>&quot;{ebook.name}&quot;</strong> has been prepared for download.
+              A copy has also been sent to <strong>{formData.email}</strong>.
             </p>
 
-            <div
-              style={{ display: "flex", flexDirection: "column", gap: "10px" }}
-            >
+            <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
               <a
                 href={ebook.image}
                 download={`${ebook.name}.jpg`}

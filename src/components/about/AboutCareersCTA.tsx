@@ -20,26 +20,22 @@ export default function AboutCareersCTA() {
             height={45}
           />
           <div className="banner-caption-03">
-            <h3 className="banner-caption-03__title">
-              Explore Opportunities with CI
-            </h3>
+            <h3 className="banner-caption-03__title">Explore Opportunities with CI</h3>
             <p>
-              Being a mental health education company, we ensure our employees a
-              greater level of care, support, and work-life balance. We provide a
-              healthy, zero-burnout, skill-focused working environment as opposed
-              to over-working and highly stressful culture across most of the
-              workplaces. The Individual Development Plans (IDPs), regular
-              personal counselling sessions, flexible working hours, incentives
-              &amp; bonuses, female health care plans, rapid growth opportunities
-              and perfect work-life balance are just some of the reasons that
-              people prefer to work with us.
+              Being a mental health education company, we ensure our employees a greater level of
+              care, support, and work-life balance. We provide a healthy, zero-burnout,
+              skill-focused working environment as opposed to over-working and highly stressful
+              culture across most of the workplaces. The Individual Development Plans (IDPs),
+              regular personal counselling sessions, flexible working hours, incentives &amp;
+              bonuses, female health care plans, rapid growth opportunities and perfect work-life
+              balance are just some of the reasons that people prefer to work with us.
             </p>
             <p>
-              We aren’t looking for long resumes or high qualifications. We make
-              our hiring decisions based on your skill sets passion to excel and
-              succeed in your domain. Our hardworking and passionate employees
-              are rightfully rewarded with increments and perks. If you have it
-              yourself then Counsel India is a place for you to thrive and grow.
+              We aren’t looking for long resumes or high qualifications. We make our hiring
+              decisions based on your skill sets passion to excel and succeed in your domain. Our
+              hardworking and passionate employees are rightfully rewarded with increments and
+              perks. If you have it yourself then Counsel India is a place for you to thrive and
+              grow.
             </p>
             <Link
               href="/career"

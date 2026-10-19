@@ -52,7 +52,8 @@ export default function SuccessStories() {
             The Counsel India <mark>Impact</mark>
           </h2>
           <p className="text-muted mt-2">
-            Discover how thousands of aspiring counselors transformed their passion into rewarding psychology careers.
+            Discover how thousands of aspiring counselors transformed their passion into rewarding
+            psychology careers.
           </p>
         </div>
 
@@ -62,7 +63,8 @@ export default function SuccessStories() {
               <div className="display-5 fw-bold text-success mb-2">94%</div>
               <p className="fw-semibold text-dark mb-1">Career Transition Rate</p>
               <p className="text-muted font-size-14">
-                Learners say our courses directly helped launch and shape their professional counselling careers.
+                Learners say our courses directly helped launch and shape their professional
+                counselling careers.
               </p>
             </div>
           </div>
@@ -71,7 +73,8 @@ export default function SuccessStories() {
               <div className="display-5 fw-bold text-success mb-2">6 Months</div>
               <p className="fw-semibold text-dark mb-1">Most Popular Track</p>
               <p className="text-muted font-size-14">
-                Our comprehensive diploma programs provide hands-on internship hours and live client simulation.
+                Our comprehensive diploma programs provide hands-on internship hours and live client
+                simulation.
               </p>
             </div>
           </div>
@@ -80,7 +83,8 @@ export default function SuccessStories() {
               <div className="display-5 fw-bold text-success mb-2">22+</div>
               <p className="fw-semibold text-dark mb-1">Global Countries</p>
               <p className="text-muted font-size-14">
-                International student network practicing counselling across North America, Europe, and Asia.
+                International student network practicing counselling across North America, Europe,
+                and Asia.
               </p>
             </div>
           </div>
@@ -106,9 +110,7 @@ export default function SuccessStories() {
                     style={{ width: "100%", height: "100%", objectFit: "cover" }}
                   />
                 </div>
-                <h5 className="fw-bold font-size-16 mb-1 text-dark">
-                  {item.name}
-                </h5>
+                <h5 className="fw-bold font-size-16 mb-1 text-dark">{item.name}</h5>
                 <p className="text-muted font-size-12 mb-0">{item.role}</p>
               </div>
             </div>

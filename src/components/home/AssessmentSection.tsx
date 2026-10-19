@@ -21,8 +21,7 @@ const TESTS: TestConfig[] = [
     id: "test1",
     slug: "emotional-well-being",
     title: "Emotional Well-Being Test",
-    image:
-      "https://prod-s3.counselindia.com/mastergalaxyimages/second-cover_converted.webp",
+    image: "https://prod-s3.counselindia.com/mastergalaxyimages/second-cover_converted.webp",
     questions: [
       { id: 1, question: "How often do you feel overwhelmed by your daily responsibilities?" },
       { id: 2, question: "Do you find it easy to recover from minor setbacks or disappointments?" },
@@ -35,12 +34,17 @@ const TESTS: TestConfig[] = [
     id: "test2",
     slug: "quality-of-life",
     title: "Quality of Life Test",
-    image:
-      "https://prod-s3.counselindia.com/mastergalaxyimages/cover22_1730113051.png",
+    image: "https://prod-s3.counselindia.com/mastergalaxyimages/cover22_1730113051.png",
     questions: [
-      { id: 1, question: "How satisfied are you with your current physical health and energy levels?" },
+      {
+        id: 1,
+        question: "How satisfied are you with your current physical health and energy levels?",
+      },
       { id: 2, question: "Do you have enough energy and focus for your everyday routines?" },
-      { id: 3, question: "How satisfied are you with your personal and professional relationships?" },
+      {
+        id: 3,
+        question: "How satisfied are you with your personal and professional relationships?",
+      },
       { id: 4, question: "Do you feel you have adequate time for relaxation and hobbies?" },
       { id: 5, question: "How satisfied are you with the conditions of your living environment?" },
     ],
@@ -49,13 +53,15 @@ const TESTS: TestConfig[] = [
     id: "test3",
     slug: "general-health",
     title: "General Health Test",
-    image:
-      "https://prod-s3.counselindia.com/mastergalaxyimages/coverr_converted.webp",
+    image: "https://prod-s3.counselindia.com/mastergalaxyimages/coverr_converted.webp",
     questions: [
       { id: 1, question: "Have you felt tired or had low energy over the past two weeks?" },
       { id: 2, question: "How regularly do you experience undisturbed and restorative sleep?" },
       { id: 3, question: "Have you had trouble concentrating on work, reading, or conversations?" },
-      { id: 4, question: "How often do you experience physical tension, headaches, or muscle strain?" },
+      {
+        id: 4,
+        question: "How often do you experience physical tension, headaches, or muscle strain?",
+      },
       { id: 5, question: "Do you feel confident in making daily decisions and solving problems?" },
     ],
   },
@@ -112,15 +118,12 @@ export default function AssessmentSection() {
   };
 
   const isQuizComplete =
-    activeTest &&
-    activeTest.questions.every((q) => answers[q.id] !== undefined);
+    activeTest && activeTest.questions.every((q) => answers[q.id] !== undefined);
 
   const calculateScore = () => {
     if (!activeTest) return;
     const totalScore = Object.values(answers).reduce((acc, curr) => acc + curr, 0);
-    const calculatedPercentage = Math.round(
-      (totalScore / (activeTest.questions.length * 5)) * 100
-    );
+    const calculatedPercentage = Math.round((totalScore / (activeTest.questions.length * 5)) * 100);
     setScore(calculatedPercentage);
     setStep("result");
   };
@@ -213,8 +216,14 @@ export default function AssessmentSection() {
       </div>
 
       <div className="content-text">
-        <div className="blog-section section-padding-01" style={{ paddingTop: "20px", paddingBottom: "70px" }}>
-          <div className="container custom-container" style={{ maxWidth: "1170px", margin: "0 auto", padding: "0 15px" }}>
+        <div
+          className="blog-section section-padding-01"
+          style={{ paddingTop: "20px", paddingBottom: "70px" }}
+        >
+          <div
+            className="container custom-container"
+            style={{ maxWidth: "1170px", margin: "0 auto", padding: "0 15px" }}
+          >
             <div className="row g-4 justify-content-center">
               {TESTS.map((test) => (
                 <div className="col-xl-4 col-md-6" key={test.id}>
@@ -410,9 +419,7 @@ export default function AssessmentSection() {
                     placeholder="Your Full Name"
                     required
                     value={formData.name}
-                    onChange={(e) =>
-                      setFormData({ ...formData, name: e.target.value })
-                    }
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     style={inputStyle}
                   />
                   {formErrors.name && (
@@ -432,9 +439,7 @@ export default function AssessmentSection() {
                     placeholder="Your Email Address"
                     required
                     value={formData.email}
-                    onChange={(e) =>
-                      setFormData({ ...formData, email: e.target.value })
-                    }
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     style={inputStyle}
                   />
                   {formErrors.email && (
@@ -455,9 +460,7 @@ export default function AssessmentSection() {
                     maxLength={10}
                     required
                     value={formData.mobile}
-                    onChange={(e) =>
-                      setFormData({ ...formData, mobile: e.target.value })
-                    }
+                    onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
                     style={inputStyle}
                   />
                   {formErrors.mobile && (
@@ -481,9 +484,7 @@ export default function AssessmentSection() {
                     id="homeLeadTerms"
                     required
                     checked={formData.terms}
-                    onChange={(e) =>
-                      setFormData({ ...formData, terms: e.target.checked })
-                    }
+                    onChange={(e) => setFormData({ ...formData, terms: e.target.checked })}
                     style={{
                       marginTop: "3px",
                       width: "16px",
@@ -604,7 +605,15 @@ export default function AssessmentSection() {
 
               <form onSubmit={handleOtpVerify}>
                 <div style={{ marginBottom: "14px" }}>
-                  <label style={{ fontSize: "14px", fontWeight: 600, color: "#212529", display: "block", marginBottom: "4px" }}>
+                  <label
+                    style={{
+                      fontSize: "14px",
+                      fontWeight: 600,
+                      color: "#212529",
+                      display: "block",
+                      marginBottom: "4px",
+                    }}
+                  >
                     Enter OTP
                   </label>
                   <p style={{ fontSize: "12px", color: "#6b7280", margin: "0 0 10px" }}>
@@ -644,7 +653,14 @@ export default function AssessmentSection() {
                 </div>
 
                 {formErrors.otp && (
-                  <div style={{ color: "#dc2626", fontSize: "13px", textAlign: "center", marginBottom: "14px" }}>
+                  <div
+                    style={{
+                      color: "#dc2626",
+                      fontSize: "13px",
+                      textAlign: "center",
+                      marginBottom: "14px",
+                    }}
+                  >
                     {formErrors.otp}
                   </div>
                 )}
@@ -745,7 +761,14 @@ export default function AssessmentSection() {
                 Please rate the following questions based on your experience over the past 2 weeks:
               </p>
 
-              <div style={{ display: "flex", flexDirection: "column", gap: "16px", marginBottom: "24px" }}>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "16px",
+                  marginBottom: "24px",
+                }}
+              >
                 {activeTest.questions.map((q, idx) => (
                   <div
                     key={q.id}
@@ -756,10 +779,25 @@ export default function AssessmentSection() {
                       border: "1px solid #e5e7eb",
                     }}
                   >
-                    <p style={{ margin: "0 0 12px", fontWeight: 600, fontSize: "14.5px", color: "#1f2937" }}>
+                    <p
+                      style={{
+                        margin: "0 0 12px",
+                        fontWeight: 600,
+                        fontSize: "14.5px",
+                        color: "#1f2937",
+                      }}
+                    >
                       {idx + 1}. {q.question}
                     </p>
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "8px" }}>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        flexWrap: "wrap",
+                        gap: "8px",
+                      }}
+                    >
                       <span style={{ fontSize: "12px", color: "#6b7280" }}>Rarely (1)</span>
                       <div style={{ display: "flex", gap: "6px" }}>
                         {[1, 2, 3, 4, 5].map((val) => (
@@ -775,7 +813,8 @@ export default function AssessmentSection() {
                               fontWeight: answers[q.id] === val ? 700 : 500,
                               backgroundColor: answers[q.id] === val ? "#07a64b" : "#ffffff",
                               color: answers[q.id] === val ? "#ffffff" : "#374151",
-                              border: answers[q.id] === val ? "1px solid #07a64b" : "1px solid #d1d5db",
+                              border:
+                                answers[q.id] === val ? "1px solid #07a64b" : "1px solid #d1d5db",
                               cursor: "pointer",
                               transition: "all 0.15s ease",
                             }}
@@ -865,7 +904,9 @@ export default function AssessmentSection() {
                 ✓
               </div>
 
-              <h3 style={{ margin: "0 0 8px", fontSize: "22px", fontWeight: 700, color: "#1c2d3a" }}>
+              <h3
+                style={{ margin: "0 0 8px", fontSize: "22px", fontWeight: 700, color: "#1c2d3a" }}
+              >
                 Assessment Complete!
               </h3>
               <p style={{ margin: "0 0 20px", fontSize: "14px", color: "#6b7280" }}>
@@ -881,7 +922,15 @@ export default function AssessmentSection() {
                   marginBottom: "24px",
                 }}
               >
-                <div style={{ fontSize: "48px", fontWeight: 800, color: "#07a64b", lineHeight: 1, marginBottom: "8px" }}>
+                <div
+                  style={{
+                    fontSize: "48px",
+                    fontWeight: 800,
+                    color: "#07a64b",
+                    lineHeight: 1,
+                    marginBottom: "8px",
+                  }}
+                >
                   {score}%
                 </div>
                 <div
@@ -898,12 +947,14 @@ export default function AssessmentSection() {
                   {score >= 70
                     ? "Optimal Well-Being"
                     : score >= 45
-                    ? "Moderate Resilience"
-                    : "Needs Professional Guidance"}
+                      ? "Moderate Resilience"
+                      : "Needs Professional Guidance"}
                 </div>
               </div>
 
-              <div style={{ display: "flex", justifyContent: "center", gap: "12px", flexWrap: "wrap" }}>
+              <div
+                style={{ display: "flex", justifyContent: "center", gap: "12px", flexWrap: "wrap" }}
+              >
                 <button
                   type="button"
                   onClick={closeTest}

@@ -6,10 +6,7 @@ interface EventDetailHeroProps {
   name: string;
 }
 
-export default function EventDetailHero({
-  banner,
-  name,
-}: EventDetailHeroProps) {
+export default function EventDetailHero({ banner, name }: EventDetailHeroProps) {
   return (
     <div className="tutor-course-top-info w-100 p-0 m-0 bg-white">
       <div className="event_banner w-100 p-0 m-0 overflow-hidden">

@@ -71,7 +71,8 @@ export default function NewsletterBanner() {
             lineHeight: "1.6",
           }}
         >
-          Stay informed with evidence-based psychology articles, case studies, career guidance, and clinical breakthroughs delivered directly to your inbox every month.
+          Stay informed with evidence-based psychology articles, case studies, career guidance, and
+          clinical breakthroughs delivered directly to your inbox every month.
         </p>
 
         {/* Inline Subscribe Box */}

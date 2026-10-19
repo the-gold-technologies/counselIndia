@@ -33,14 +33,8 @@ export default function AlumniNetworkShowcase() {
 
         {/* Marquee Rows Linking to /learners-network */}
         <div className="partners-active swiper-dots-style">
-          <Link
-            href="/learners-network"
-            style={{ display: "block", textDecoration: "none" }}
-          >
-            <div
-              className="alumni-marquee-wrapper mb-4"
-              style={{ overflow: "hidden" }}
-            >
+          <Link href="/learners-network" style={{ display: "block", textDecoration: "none" }}>
+            <div className="alumni-marquee-wrapper mb-4" style={{ overflow: "hidden" }}>
               {/* Row 1 Marquee */}
               <div
                 className="alumni-marquee-container mb-3"

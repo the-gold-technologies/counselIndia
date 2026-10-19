@@ -10,11 +10,7 @@ export default function AboutAccreditations() {
     <div className="section-padding-01">
       <div className="container custom-container">
         {/* Section Title */}
-        <div
-          className="section-title"
-          data-aos="fade-up"
-          data-aos-duration="1000"
-        >
+        <div className="section-title" data-aos="fade-up" data-aos-duration="1000">
           <h2 className="section-title__title">
             <mark>Accreditations</mark>
           </h2>

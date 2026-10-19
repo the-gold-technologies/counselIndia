@@ -7,13 +7,15 @@ export default function ShortCoursesSlider() {
     {
       id: 1,
       title: "Psychology for Everyday Struggles",
-      image: "https://prod-s3.counselindia.com/blog/Psychology for Everyday Struggles_1736508322.jpg",
+      image:
+        "https://prod-s3.counselindia.com/blog/Psychology for Everyday Struggles_1736508322.jpg",
       slug: "psychology-for-everyday-struggles",
     },
     {
       id: 2,
       title: "The Art of Understanding Yourself",
-      image: "https://prod-s3.counselindia.com/blog/The Art of Understanding Yourself_1736508692.jpg",
+      image:
+        "https://prod-s3.counselindia.com/blog/The Art of Understanding Yourself_1736508692.jpg",
       slug: "the-art-of-understanding-yourself",
     },
     {
@@ -31,9 +33,7 @@ export default function ShortCoursesSlider() {
           {/* Left Column: Title & View All Button */}
           <div className="col-xl-3 col-lg-5 col-md-6 col-sm-7">
             <div className="section-title mb-0 pe-lg-8">
-              <h4 className="section-title__sub-title">
-                SHORT COURSES
-              </h4>
+              <h4 className="section-title__sub-title">SHORT COURSES</h4>
               <h2 className="section-title__title-02">
                 <br /> Exclusive Short Courses from <mark>Counsel India</mark>
               </h2>
@@ -61,7 +61,10 @@ export default function ShortCoursesSlider() {
               {shortCourses.map((course) => (
                 <div className="col-md-4 col-sm-6" key={course.id}>
                   {/* Event / Short Course Item */}
-                  <div className="event-item h-100 d-flex flex-column" style={{ borderRadius: "5px", overflow: "hidden" }}>
+                  <div
+                    className="event-item h-100 d-flex flex-column"
+                    style={{ borderRadius: "5px", overflow: "hidden" }}
+                  >
                     <div className="event-item__image">
                       <Link
                         href={`/course-detail/${course.slug}`}

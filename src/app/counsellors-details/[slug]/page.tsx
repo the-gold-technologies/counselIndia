@@ -70,10 +70,7 @@ export default function CounsellorDetailsPage({ params }: PageProps) {
   }
 
   return (
-    <div
-      className="main-wrapper"
-      style={{ backgroundColor: "#f8fafc", minHeight: "100vh" }}
-    >
+    <div className="main-wrapper" style={{ backgroundColor: "#f8fafc", minHeight: "100vh" }}>
       {/* 1. Header Banner: Learn from the best */}
       <div
         className="edumall-box-section section-padding-01"
@@ -109,14 +106,12 @@ export default function CounsellorDetailsPage({ params }: PageProps) {
                     fontSize: "15px",
                   }}
                 >
-                  Counsel India is aiming to be India&apos;s biggest employer
-                  for mental health professionals and has already employed
-                  top-notch RCI recognized psychologists for its 55+ products
-                  and services. Here are the list of some psychologists for its
-                  one of the educational products. It has its own network of
-                  mental health professionals with close to 2000+ in numbers and
-                  increasing everyday. Counsel India has aim to offer stage and
-                  career these professionals deserve.
+                  Counsel India is aiming to be India&apos;s biggest employer for mental health
+                  professionals and has already employed top-notch RCI recognized psychologists for
+                  its 55+ products and services. Here are the list of some psychologists for its one
+                  of the educational products. It has its own network of mental health professionals
+                  with close to 2000+ in numbers and increasing everyday. Counsel India has aim to
+                  offer stage and career these professionals deserve.
                 </p>
               </div>
             </div>
@@ -168,8 +163,7 @@ export default function CounsellorDetailsPage({ params }: PageProps) {
                     }}
                     onError={(e) => {
                       e.currentTarget.onerror = null;
-                      e.currentTarget.src =
-                        "/assets/images/avatar-placeholder.jpg";
+                      e.currentTarget.src = "/assets/images/avatar-placeholder.jpg";
                     }}
                   />
                 </div>
@@ -216,10 +210,7 @@ export default function CounsellorDetailsPage({ params }: PageProps) {
                   }}
                 >
                   {[1, 2, 3, 4, 5].map((star) => (
-                    <i
-                      key={star}
-                      className={star <= 4 ? "fas fa-star" : "far fa-star"}
-                    ></i>
+                    <i key={star} className={star <= 4 ? "fas fa-star" : "far fa-star"}></i>
                   ))}
                 </div>
 
@@ -508,9 +499,7 @@ export default function CounsellorDetailsPage({ params }: PageProps) {
                     margin: 0,
                   }}
                 >
-                  {counselor.experienceDetails ||
-                    counselor.experience ||
-                    "1 Years"}
+                  {counselor.experienceDetails || counselor.experience || "1 Years"}
                 </p>
               </div>
 

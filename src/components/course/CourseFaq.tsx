@@ -61,9 +61,7 @@ export default function CourseFaq({ faqs }: Props) {
                   key={idx}
                   style={{
                     borderRadius: "5px",
-                    boxShadow: isOpen
-                      ? "0 12px 35px rgba(0, 0, 0, 0.08)"
-                      : "none",
+                    boxShadow: isOpen ? "0 12px 35px rgba(0, 0, 0, 0.08)" : "none",
                     transition: "box-shadow 0.25s ease",
                   }}
                 >
@@ -77,9 +75,7 @@ export default function CourseFaq({ faqs }: Props) {
                       padding: "15px 24px",
                       backgroundColor: isOpen ? "#07a64b" : "#ffffff",
                       color: isOpen ? "#ffffff" : "#252525",
-                      border: isOpen
-                        ? "1px solid #07a64b"
-                        : "1px solid #e2e5e8",
+                      border: isOpen ? "1px solid #07a64b" : "1px solid #e2e5e8",
                       borderTopLeftRadius: "5px",
                       borderTopRightRadius: "5px",
                       borderBottomLeftRadius: isOpen ? "0px" : "5px",
@@ -141,8 +137,7 @@ export default function CourseFaq({ faqs }: Props) {
                           key={aIdx}
                           style={{
                             margin: 0,
-                            marginBottom:
-                              aIdx === faq.answer.length - 1 ? 0 : "12px",
+                            marginBottom: aIdx === faq.answer.length - 1 ? 0 : "12px",
                             fontSize: "14.5px",
                             lineHeight: "1.7",
                             color: "#555555",

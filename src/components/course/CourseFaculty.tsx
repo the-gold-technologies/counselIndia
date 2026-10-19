@@ -157,13 +157,11 @@ export default function CourseFaculty({ faculty }: Props) {
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = "translateY(-4px)";
-                  e.currentTarget.style.boxShadow =
-                    "0 10px 24px rgba(0, 0, 0, 0.08)";
+                  e.currentTarget.style.boxShadow = "0 10px 24px rgba(0, 0, 0, 0.08)";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow =
-                    "0 4px 18px rgba(0, 0, 0, 0.04)";
+                  e.currentTarget.style.boxShadow = "0 4px 18px rgba(0, 0, 0, 0.04)";
                 }}
               >
                 <div
@@ -236,8 +234,7 @@ export default function CourseFaculty({ faculty }: Props) {
                   width: dotIdx === currentIndex ? "24px" : "8px",
                   height: "8px",
                   borderRadius: "4px",
-                  backgroundColor:
-                    dotIdx === currentIndex ? "#07a64b" : "#cbd5e1",
+                  backgroundColor: dotIdx === currentIndex ? "#07a64b" : "#cbd5e1",
                   border: "none",
                   cursor: "pointer",
                   padding: 0,

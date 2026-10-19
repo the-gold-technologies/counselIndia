@@ -67,9 +67,7 @@ export default function GrievanceFormSection() {
   };
 
   const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -144,8 +142,7 @@ export default function GrievanceFormSection() {
           >
             <div className="section-title text-center">
               <h2 className="section-title__title">
-                Fill the form below so we can get to know you and your question
-                better.
+                Fill the form below so we can get to know you and your question better.
               </h2>
             </div>
 
@@ -176,13 +173,9 @@ export default function GrievanceFormSection() {
                 <h4 className="fw-bold mb-2" style={{ color: "#1e293b" }}>
                   Request Submitted Successfully!
                 </h4>
-                <p
-                  className="text-muted mb-4"
-                  style={{ maxWidth: "450px", margin: "0 auto" }}
-                >
-                  Thank you for reaching out. Our support team and your
-                  Relationship Manager (RM) will review your request and get
-                  back to you promptly.
+                <p className="text-muted mb-4" style={{ maxWidth: "450px", margin: "0 auto" }}>
+                  Thank you for reaching out. Our support team and your Relationship Manager (RM)
+                  will review your request and get back to you promptly.
                 </p>
                 <button
                   type="button"
@@ -218,9 +211,7 @@ export default function GrievanceFormSection() {
                       style={inputStyle}
                       required
                     />
-                    {errors.name && (
-                      <div className="text-danger mt-1 small">{errors.name}</div>
-                    )}
+                    {errors.name && <div className="text-danger mt-1 small">{errors.name}</div>}
                   </div>
 
                   {/* Mobile Number */}
@@ -240,9 +231,7 @@ export default function GrievanceFormSection() {
                       style={inputStyle}
                       required
                     />
-                    {errors.mobile && (
-                      <div className="text-danger mt-1 small">{errors.mobile}</div>
-                    )}
+                    {errors.mobile && <div className="text-danger mt-1 small">{errors.mobile}</div>}
                   </div>
 
                   {/* Email */}
@@ -261,9 +250,7 @@ export default function GrievanceFormSection() {
                       style={inputStyle}
                       required
                     />
-                    {errors.email && (
-                      <div className="text-danger mt-1 small">{errors.email}</div>
-                    )}
+                    {errors.email && <div className="text-danger mt-1 small">{errors.email}</div>}
                   </div>
 
                   {/* Course Name */}
@@ -283,9 +270,7 @@ export default function GrievanceFormSection() {
                       required
                     />
                     {errors.coursename && (
-                      <div className="text-danger mt-1 small">
-                        {errors.coursename}
-                      </div>
+                      <div className="text-danger mt-1 small">{errors.coursename}</div>
                     )}
                   </div>
 
@@ -305,11 +290,7 @@ export default function GrievanceFormSection() {
                       style={inputStyle}
                       required
                     />
-                    {errors.rmname && (
-                      <div className="text-danger mt-1 small">
-                        {errors.rmname}
-                      </div>
-                    )}
+                    {errors.rmname && <div className="text-danger mt-1 small">{errors.rmname}</div>}
                   </div>
 
                   {/* Type of Request */}
@@ -332,9 +313,7 @@ export default function GrievanceFormSection() {
                         <option value="Cancellation">Cancellation</option>
                       </select>
                       {errors.request2 && (
-                        <div className="text-danger mt-1 small">
-                          {errors.request2}
-                        </div>
+                        <div className="text-danger mt-1 small">{errors.request2}</div>
                       )}
                     </div>
                   </div>
@@ -359,9 +338,7 @@ export default function GrievanceFormSection() {
                       required
                     ></textarea>
                     {errors.question && (
-                      <div className="text-danger mt-1 small">
-                        {errors.question}
-                      </div>
+                      <div className="text-danger mt-1 small">{errors.question}</div>
                     )}
                   </div>
 

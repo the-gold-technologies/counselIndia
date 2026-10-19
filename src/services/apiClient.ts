@@ -14,12 +14,10 @@ export interface ApiResponse<T = any> {
 
 export async function fetchFromAdmin<T = any>(
   endpoint: string,
-  options?: RequestInit,
+  options?: RequestInit
 ): Promise<ApiResponse<T>> {
   if (!ADMIN_API_BASE_URL) {
-    throw new Error(
-      "NEXT_PUBLIC_ADMIN_API_URL is not configured in the environment file.",
-    );
+    throw new Error("NEXT_PUBLIC_ADMIN_API_URL is not configured in the environment file.");
   }
 
   const cleanEndpoint = endpoint.startsWith("/") ? endpoint : `/${endpoint}`;
@@ -35,7 +33,7 @@ export async function fetchFromAdmin<T = any>(
 
   if (!response.ok) {
     throw new Error(
-      `Admin API request failed with status ${response.status}: ${response.statusText}`,
+      `Admin API request failed with status ${response.status}: ${response.statusText}`
     );
   }
 

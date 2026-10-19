@@ -80,8 +80,7 @@ export default function HarGharImpact() {
               style={{
                 fontSize: "clamp(32px, 4vw, 42px)",
                 fontWeight: 700,
-                fontFamily:
-                  "Georgia, 'Playfair Display', 'Times New Roman', serif",
+                fontFamily: "Georgia, 'Playfair Display', 'Times New Roman', serif",
                 color: "#07a64b",
                 letterSpacing: "-0.5px",
               }}
@@ -100,9 +99,8 @@ export default function HarGharImpact() {
                 margin: "0 auto",
               }}
             >
-              Practical Psychology Learning Platform We love to support our
-              community who face mental health challenges daily. Over the past
-              8+ years,
+              Practical Psychology Learning Platform We love to support our community who face
+              mental health challenges daily. Over the past 8+ years,
               <br className="d-none d-md-block" />
               we’ve celebrated numerous milestones in improving mental wellness.
             </p>

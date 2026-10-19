@@ -29,7 +29,10 @@ export default function CourseCredentialsTabs({ credentials }: Props) {
         fontFamily: "'Poppins', sans-serif",
       }}
     >
-      <div className="container custom-container" style={{ maxWidth: "1170px", margin: "0 auto", padding: "0 16px" }}>
+      <div
+        className="container custom-container"
+        style={{ maxWidth: "1170px", margin: "0 auto", padding: "0 16px" }}
+      >
         {/* Tab Headers with Bottom Border Line */}
         <div
           className="become-an-instructor__tabs"

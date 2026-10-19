@@ -48,9 +48,7 @@ export default function AlumniStats() {
                   {hasAnimated ? item.count : "0"}
                   {item.suffix}
                 </h3>
-                <p className="counter-item-03__text">
-                  {item.label}
-                </p>
+                <p className="counter-item-03__text">{item.label}</p>
               </div>
             </div>
           ))}

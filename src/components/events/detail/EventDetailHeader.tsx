@@ -7,11 +7,7 @@ interface EventDetailHeaderProps {
   time: string;
 }
 
-export default function EventDetailHeader({
-  address,
-  date,
-  time,
-}: EventDetailHeaderProps) {
+export default function EventDetailHeader({ address, date, time }: EventDetailHeaderProps) {
   return (
     <div
       className="event-details__header mx-auto text-center"
@@ -26,8 +22,7 @@ export default function EventDetailHeader({
         className="event-details__title"
         style={{
           fontSize: "clamp(30px, 4.2vw, 42px)",
-          fontFamily:
-            "'Playfair Display', Georgia, 'Times New Roman', serif",
+          fontFamily: "'Playfair Display', Georgia, 'Times New Roman', serif",
           fontWeight: 700,
           color: "#1d2a44",
           lineHeight: "1.3",

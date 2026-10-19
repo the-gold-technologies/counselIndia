@@ -24,9 +24,7 @@ export default function FeaturesPillars() {
                 </svg>
               </div>
               <div className="features-item__caption">
-                <h3 className="features-item__title">
-                  Specialized Courses &amp; Diplomas
-                </h3>
+                <h3 className="features-item__title">Specialized Courses &amp; Diplomas</h3>
               </div>
             </div>
             {/* Features Item End */}
@@ -89,9 +87,7 @@ export default function FeaturesPillars() {
                 </svg>
               </div>
               <div className="features-item__caption">
-                <h3 className="features-item__title">
-                  Hiring Partners Network
-                </h3>
+                <h3 className="features-item__title">Hiring Partners Network</h3>
               </div>
             </div>
             {/* Features Item End */}

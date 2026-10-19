@@ -4,7 +4,11 @@ import React from "react";
 export default function CorporateClients() {
   const clientLogos = [
     { id: 1, image: "/assets/images/partners-logo/client-logo-01.jpg", alt: "Manav Rachna" },
-    { id: 2, image: "/assets/images/partners-logo/client-logo-02.jpg", alt: "Zakir Husain Delhi College" },
+    {
+      id: 2,
+      image: "/assets/images/partners-logo/client-logo-02.jpg",
+      alt: "Zakir Husain Delhi College",
+    },
     { id: 3, image: "/assets/images/partners-logo/client-logo-03.jpg", alt: "HDFC Bank" },
     { id: 4, image: "/assets/images/partners-logo/client-logo-04.jpg", alt: "American Express" },
     { id: 5, image: "/assets/images/partners-logo/client-logo-05.jpg", alt: "Indiabulls" },
@@ -12,12 +16,36 @@ export default function CorporateClients() {
     { id: 7, image: "/assets/images/partners-logo/client-logo-111.jpg", alt: "JBM Group" },
     { id: 8, image: "/assets/images/partners-logo/client-logo-121.jpg", alt: "BharatBenz" },
     { id: 9, image: "/assets/images/partners-logo/client-logo-131.jpg", alt: "Corporate Partner" },
-    { id: 10, image: "/assets/images/partners-logo/client-logo-07.jpg", alt: "Corporate Partner 7" },
-    { id: 11, image: "/assets/images/partners-logo/client-logo-08.jpg", alt: "Corporate Partner 8" },
-    { id: 12, image: "/assets/images/partners-logo/client-logo-09.jpg", alt: "Corporate Partner 9" },
-    { id: 13, image: "/assets/images/partners-logo/client-logo-10.jpg", alt: "Corporate Partner 10" },
-    { id: 14, image: "/assets/images/partners-logo/client-logo-11.jpg", alt: "Corporate Partner 11" },
-    { id: 15, image: "/assets/images/partners-logo/client-logo-12.jpg", alt: "Corporate Partner 12" },
+    {
+      id: 10,
+      image: "/assets/images/partners-logo/client-logo-07.jpg",
+      alt: "Corporate Partner 7",
+    },
+    {
+      id: 11,
+      image: "/assets/images/partners-logo/client-logo-08.jpg",
+      alt: "Corporate Partner 8",
+    },
+    {
+      id: 12,
+      image: "/assets/images/partners-logo/client-logo-09.jpg",
+      alt: "Corporate Partner 9",
+    },
+    {
+      id: 13,
+      image: "/assets/images/partners-logo/client-logo-10.jpg",
+      alt: "Corporate Partner 10",
+    },
+    {
+      id: 14,
+      image: "/assets/images/partners-logo/client-logo-11.jpg",
+      alt: "Corporate Partner 11",
+    },
+    {
+      id: 15,
+      image: "/assets/images/partners-logo/client-logo-12.jpg",
+      alt: "Corporate Partner 12",
+    },
   ];
 
   // Triplicate array for seamless infinite marquee loop
@@ -81,13 +109,7 @@ export default function CorporateClients() {
 
       <style jsx>{`
         .corporate-marquee-container {
-          mask-image: linear-gradient(
-            to right,
-            transparent,
-            black 3%,
-            black 97%,
-            transparent
-          );
+          mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent);
           -webkit-mask-image: linear-gradient(
             to right,
             transparent,

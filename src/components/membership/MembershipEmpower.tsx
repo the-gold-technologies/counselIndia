@@ -6,10 +6,7 @@ export default function MembershipEmpower() {
     <>
       <div className="container222out">
         <div className="container222s" style={{ margin: "3%" }}>
-          <h2
-            className="text-center"
-            style={{ fontSize: "40px", paddingTop: "6%" }}
-          >
+          <h2 className="text-center" style={{ fontSize: "40px", paddingTop: "6%" }}>
             We empower you through...
           </h2>
           <div className="container22s">
@@ -19,8 +16,7 @@ export default function MembershipEmpower() {
                 <div className="items-body-content">
                   <span>
                     <h6 className="mt-2">
-                      Bounce back like a boss so you can handle life&apos;s
-                      curveballs with grace.
+                      Bounce back like a boss so you can handle life&apos;s curveballs with grace.
                     </h6>
                   </span>
                   <i className="fa fa-angle-right"></i>
@@ -28,9 +24,8 @@ export default function MembershipEmpower() {
                 <div className="items-body-content">
                   <span>
                     <h6 className="mt-2">
-                      Discover stress-busting hacks that&apos;ll help you keep
-                      your cool and turn even the most chaotic days into Zen
-                      moments.
+                      Discover stress-busting hacks that&apos;ll help you keep your cool and turn
+                      even the most chaotic days into Zen moments.
                     </h6>
                   </span>
                   <i className="fa fa-angle-right"></i>
@@ -38,8 +33,8 @@ export default function MembershipEmpower() {
                 <div className="items-body-content">
                   <span>
                     <h6 className="mt-2">
-                      Get to know yourself on a whole new level, so you can
-                      truly ace that inner confidence and self-love.
+                      Get to know yourself on a whole new level, so you can truly ace that inner
+                      confidence and self-love.
                     </h6>
                   </span>
                   <i className="fa fa-angle-right"></i>
@@ -47,8 +42,7 @@ export default function MembershipEmpower() {
                 <div className="items-body-content">
                   <span>
                     <h6 className="mt-2">
-                      Learn to live in the moment and say goodbye to all
-                      distractions.
+                      Learn to live in the moment and say goodbye to all distractions.
                     </h6>
                   </span>
                   <i className="fa fa-angle-right"></i>
@@ -56,8 +50,7 @@ export default function MembershipEmpower() {
                 <div className="items-body-content">
                   <span>
                     <h6 className="mt-2">
-                      Get a relationship-glow-up with people skills and
-                      communication game
+                      Get a relationship-glow-up with people skills and communication game
                     </h6>
                   </span>
                   <i className="fa fa-angle-right"></i>
@@ -71,9 +64,8 @@ export default function MembershipEmpower() {
                 <div className="items-body-content">
                   <span>
                     <h6 className="mt-2">
-                      Find that perfect balance between work and play, so you
-                      can enjoy both without feeling like you&apos;re running on
-                      empty.
+                      Find that perfect balance between work and play, so you can enjoy both without
+                      feeling like you&apos;re running on empty.
                     </h6>
                   </span>
                   <i className="fa fa-angle-right"></i>
@@ -81,8 +73,8 @@ export default function MembershipEmpower() {
                 <div className="items-body-content">
                   <span>
                     <h6 className="mt-2">
-                      Sharpen your thinking and decision-making like a pro with
-                      tips that&apos;ll clear the mental fog and keep you sharp.
+                      Sharpen your thinking and decision-making like a pro with tips that&apos;ll
+                      clear the mental fog and keep you sharp.
                     </h6>
                   </span>
                   <i className="fa fa-angle-right"></i>
@@ -90,8 +82,8 @@ export default function MembershipEmpower() {
                 <div className="items-body-content">
                   <span>
                     <h6 className="mt-2">
-                      Begin a journey of self-improvement and growth, turning
-                      every challenge into a chance to shine and thrive.
+                      Begin a journey of self-improvement and growth, turning every challenge into a
+                      chance to shine and thrive.
                     </h6>
                   </span>
                   <i className="fa fa-angle-right"></i>
@@ -99,8 +91,8 @@ export default function MembershipEmpower() {
                 <div className="items-body-content">
                   <span>
                     <h6 className="mt-2">
-                      Set and smash your goals like a pro, turning your dreams
-                      into reality with style and confidence.
+                      Set and smash your goals like a pro, turning your dreams into reality with
+                      style and confidence.
                     </h6>
                   </span>
                   <i className="fa fa-angle-right"></i>
@@ -108,9 +100,8 @@ export default function MembershipEmpower() {
                 <div className="items-body-content">
                   <span>
                     <h6 className="mt-2">
-                      Pick up practical, real-world tools to tackle life&apos;s
-                      hurdles without breaking a sweat—because you&apos;ve got
-                      this!
+                      Pick up practical, real-world tools to tackle life&apos;s hurdles without
+                      breaking a sweat—because you&apos;ve got this!
                     </h6>
                   </span>
                   <i className="fa fa-angle-right"></i>

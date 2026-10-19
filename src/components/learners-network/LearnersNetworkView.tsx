@@ -11,9 +11,7 @@ export default function LearnersNetworkView() {
   const [searchTerm, setSearchTerm] = useState("");
   const [activeSearch, setActiveSearch] = useState("");
   const [visibleCount, setVisibleCount] = useState(BATCH_SIZE);
-  const [selectedLearner, setSelectedLearner] = useState<LearnerItem | null>(
-    null,
-  );
+  const [selectedLearner, setSelectedLearner] = useState<LearnerItem | null>(null);
   const [isSkillsModalOpen, setIsSkillsModalOpen] = useState(false);
   const [learners, setLearners] = useState<LearnerItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -67,7 +65,7 @@ export default function LearnersNetworkView() {
         item.name.toLowerCase().includes(lower) ||
         item.rci_number.toLowerCase().includes(lower) ||
         item.programname.toLowerCase().includes(lower) ||
-        (item.profession && item.profession.toLowerCase().includes(lower)),
+        (item.profession && item.profession.toLowerCase().includes(lower))
     );
   }, [activeSearch, learners]);
 
@@ -83,16 +81,11 @@ export default function LearnersNetworkView() {
 
     const observer = new IntersectionObserver(
       (entries) => {
-        if (
-          entries[0].isIntersecting &&
-          visibleCount < filteredLearners.length
-        ) {
-          setVisibleCount((prev) =>
-            Math.min(prev + BATCH_SIZE, filteredLearners.length),
-          );
+        if (entries[0].isIntersecting && visibleCount < filteredLearners.length) {
+          setVisibleCount((prev) => Math.min(prev + BATCH_SIZE, filteredLearners.length));
         }
       },
-      { threshold: 0.1, rootMargin: "300px" },
+      { threshold: 0.1, rootMargin: "300px" }
     );
 
     observer.observe(target);
@@ -109,10 +102,7 @@ export default function LearnersNetworkView() {
       <div className="container custom-container">
         {/* Right-Aligned Search Bar directly on the gradient background */}
         <div className="d-flex justify-content-end align-items-center mb-4">
-          <form
-            onSubmit={handleSearchSubmit}
-            className="d-flex align-items-center"
-          >
+          <form onSubmit={handleSearchSubmit} className="d-flex align-items-center">
             <input
               type="text"
               name="search"
@@ -164,11 +154,8 @@ export default function LearnersNetworkView() {
         {activeSearch && (
           <div className="mb-4">
             <p className="mb-0 text-dark font-size-15">
-              Found{" "}
-              <span className="text-success fw-bold">
-                {filteredLearners.length}
-              </span>{" "}
-              results for &ldquo;<strong>{activeSearch}</strong>&rdquo;
+              Found <span className="text-success fw-bold">{filteredLearners.length}</span> results
+              for &ldquo;<strong>{activeSearch}</strong>&rdquo;
               <button
                 type="button"
                 onClick={handleClearSearch}
@@ -190,19 +177,13 @@ export default function LearnersNetworkView() {
             >
               <span className="visually-hidden">Loading...</span>
             </div>
-            <p className="mt-3 text-muted fw-semibold">
-              Loading Verified Counselors Directory...
-            </p>
+            <p className="mt-3 text-muted fw-semibold">Loading Verified Counselors Directory...</p>
           </div>
         ) : displayedLearners.length > 0 ? (
           <>
             <div className="row g-4">
               {displayedLearners.map((learner) => (
-                <LearnerCard
-                  key={learner.id}
-                  learner={learner}
-                  onOpenSkills={handleOpenSkills}
-                />
+                <LearnerCard key={learner.id} learner={learner} onOpenSkills={handleOpenSkills} />
               ))}
             </div>
 
@@ -230,10 +211,7 @@ export default function LearnersNetworkView() {
           </>
         ) : (
           <div className="text-center py-5 my-5 bg-white rounded-3 shadow-sm border p-5">
-            <i
-              className="fas fa-user-slash text-muted mb-3"
-              style={{ fontSize: "48px" }}
-            ></i>
+            <i className="fas fa-user-slash text-muted mb-3" style={{ fontSize: "48px" }}></i>
             <h4 className="fw-bold text-dark mb-2">No Alumni Found!</h4>
             <p className="text-muted font-size-15 mb-3">
               We couldn&apos;t find any alumni matching &ldquo;{activeSearch}

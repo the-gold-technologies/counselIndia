@@ -153,11 +153,7 @@ export default function MentorRegistrationForm() {
     ]);
   };
 
-  const updateExperience = (
-    id: string,
-    field: keyof ExperienceItem,
-    value: string
-  ) => {
+  const updateExperience = (id: string, field: keyof ExperienceItem, value: string) => {
     setExperienceList((prev) =>
       prev.map((item) => (item.id === id ? { ...item, [field]: value } : item))
     );
@@ -347,7 +343,8 @@ export default function MentorRegistrationForm() {
                 Registration Submitted Successfully!
               </h3>
               <p style={{ color: "#4b5563", fontSize: "15px", marginBottom: "24px" }}>
-                Thank you for applying. Our team will verify your credentials and reach out to you within 24–48 hours.
+                Thank you for applying. Our team will verify your credentials and reach out to you
+                within 24–48 hours.
               </p>
               <button
                 type="button"

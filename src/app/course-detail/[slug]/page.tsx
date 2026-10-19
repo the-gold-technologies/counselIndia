@@ -1,10 +1,7 @@
 import React from "react";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import {
-  GROWTH_COURSES,
-  GrowthCourse,
-} from "@/components/growth-courses/data/growthCoursesData";
+import { GROWTH_COURSES, GrowthCourse } from "@/components/growth-courses/data/growthCoursesData";
 import CourseHeroOverview from "@/components/course-detail/CourseHeroOverview";
 import CourseModulesSection from "@/components/course-detail/CourseModulesSection";
 import CourseCertificateSection from "@/components/course-detail/CourseCertificateSection";
@@ -22,9 +19,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({
-  params,
-}: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const course = GROWTH_COURSES.find((c) => c.slug === slug);
 

@@ -30,10 +30,7 @@ export default function CourseDetailView({ course }: Props) {
   return (
     <main style={{ backgroundColor: "#ffffff", minHeight: "100vh" }}>
       {/* 1. Hero Section */}
-      <CourseHero
-        course={course}
-        onOpenBrochure={() => setIsBrochureOpen(true)}
-      />
+      <CourseHero course={course} onOpenBrochure={() => setIsBrochureOpen(true)} />
 
       {/* 2. Key Highlights */}
       {course.highlights && course.highlights.length > 0 && (
@@ -92,13 +89,14 @@ export default function CourseDetailView({ course }: Props) {
 
       {/* 10. Scholarship Section */}
       {course.scholarship && course.scholarship.points && course.scholarship.points.length > 0 && (
-        <CourseScholarship scholarship={course.scholarship} phone={course.phone || "+918031320449"} />
+        <CourseScholarship
+          scholarship={course.scholarship}
+          phone={course.phone || "+918031320449"}
+        />
       )}
 
       {/* 11. Faculty Mentors */}
-      {course.faculty && course.faculty.length > 0 && (
-        <CourseFaculty faculty={course.faculty} />
-      )}
+      {course.faculty && course.faculty.length > 0 && <CourseFaculty faculty={course.faculty} />}
 
       {/* 12. Refer & Earn Banner */}
       {course.referEarn && <CourseReferEarn referEarn={course.referEarn} />}

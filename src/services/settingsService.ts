@@ -27,10 +27,12 @@ export const DEFAULT_SETTINGS: SiteSettingData = {
   contactUsMail: "admissions@counselindiaservices.in",
   contactUsHotline: "+91-8930804054",
   contactUsHeadOffice: "12A20, 13th Floor , Sector-96, Noida, Uttar Pradesh, 201301",
-  contactUsBranchOffice: "1. Evolve Work Studio , 3rd floor , Raj Pinnacle (Behind Teleradiology Solution) , Doddanekundi Industrial Area, Bangalore Karnataka - 560048\n2. Yesssworks Andheri, 3rd Floor, Ackruti Softech Park, Shree Krishna Nagar, Marol Midc Industry Estate, Andheri East, Mumbai, Maharashtra 400093",
+  contactUsBranchOffice:
+    "1. Evolve Work Studio , 3rd floor , Raj Pinnacle (Behind Teleradiology Solution) , Doddanekundi Industrial Area, Bangalore Karnataka - 560048\n2. Yesssworks Andheri, 3rd Floor, Ackruti Softech Park, Shree Krishna Nagar, Marol Midc Industry Estate, Andheri East, Mumbai, Maharashtra 400093",
   contactUsHoursOperation: "Monday - Friday: 09:00 - 20:00\nSunday & Saturday: 10:30 - 22:00",
 
-  footerTitle: "Counsel India is the only practical e-learning platform for psychology and counselling programs in India.",
+  footerTitle:
+    "Counsel India is the only practical e-learning platform for psychology and counselling programs in India.",
   footerCompanyName: "COUNSELINDIA SERVICES PRIVATE LIMITED",
   footerAddress: "12A20, 13th Floor, E-Square , Sector 96, Noida, Uttar Pradesh 201301",
   gstNumber: "09AAICC6447N1Z0",

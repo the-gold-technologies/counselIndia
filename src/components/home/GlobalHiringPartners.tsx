@@ -7,7 +7,8 @@ export default function GlobalHiringPartners() {
     {
       id: 1,
       href: "/hiring-partner/minds",
-      image: "https://prod-s3.counselindia.com/hiring_partners/Screenshot 2024-07-13 at 11.01.14 AM_1720849487.png",
+      image:
+        "https://prod-s3.counselindia.com/hiring_partners/Screenshot 2024-07-13 at 11.01.14 AM_1720849487.png",
       alt: "Minds",
     },
     {
@@ -37,25 +38,29 @@ export default function GlobalHiringPartners() {
     {
       id: 6,
       href: "/hiring-partner/firstvite-e-learning-pvt-ltd",
-      image: "https://prod-s3.counselindia.com/hiring_partners/news_WhatsApp_Image_2023-07-31_at_11.45.32_AM-removebg-preview_1690784289.png",
+      image:
+        "https://prod-s3.counselindia.com/hiring_partners/news_WhatsApp_Image_2023-07-31_at_11.45.32_AM-removebg-preview_1690784289.png",
       alt: "Firstvite E-Learning",
     },
     {
       id: 7,
       href: "/hiring-partner/adventure-flight-education-private-limited",
-      image: "https://prod-s3.counselindia.com/hiring_partners/news_news_logo2_1689053141_1708927422_1715323913.png",
+      image:
+        "https://prod-s3.counselindia.com/hiring_partners/news_news_logo2_1689053141_1708927422_1715323913.png",
       alt: "Adventure Flight Education",
     },
     {
       id: 8,
       href: "/hiring-partner/my-career-pathshala",
-      image: "https://prod-s3.counselindia.com/hiring_partners/news_my-career-pathshala (1)_1686290177_1715326236.jpg",
+      image:
+        "https://prod-s3.counselindia.com/hiring_partners/news_my-career-pathshala (1)_1686290177_1715326236.jpg",
       alt: "My Career Pathshala",
     },
     {
       id: 9,
       href: "/hiring-partner/uk-international-beauty-school",
-      image: "https://prod-s3.counselindia.com/hiring_partners/news_UK INTERNATIONAL BEAUTY SCHOOL_1690778864.jpg",
+      image:
+        "https://prod-s3.counselindia.com/hiring_partners/news_UK INTERNATIONAL BEAUTY SCHOOL_1690778864.jpg",
       alt: "UK International Beauty School",
     },
     {
@@ -73,7 +78,8 @@ export default function GlobalHiringPartners() {
     {
       id: 12,
       href: "/hiring-partner/educlouds",
-      image: "https://prod-s3.counselindia.com/hiring_partners/news_Logo Educlouds (1)_1707722328_1715324005.png",
+      image:
+        "https://prod-s3.counselindia.com/hiring_partners/news_Logo Educlouds (1)_1707722328_1715324005.png",
       alt: "Educlouds",
     },
     {
@@ -85,19 +91,22 @@ export default function GlobalHiringPartners() {
     {
       id: 14,
       href: "/hiring-partner/traident-brains-pvt-ltd",
-      image: "https://prod-s3.counselindia.com/hiring_partners/news_cropped-traident-logo-illustration-2-1_1689053556_1715324116.png",
+      image:
+        "https://prod-s3.counselindia.com/hiring_partners/news_cropped-traident-logo-illustration-2-1_1689053556_1715324116.png",
       alt: "Traident Brains",
     },
     {
       id: 15,
       href: "/hiring-partner/the-mind-and-wellness-clinic",
-      image: "https://prod-s3.counselindia.com/hiring_partners/news_The Mind and Wellness Clinic_1703744904_1715325965.png",
+      image:
+        "https://prod-s3.counselindia.com/hiring_partners/news_The Mind and Wellness Clinic_1703744904_1715325965.png",
       alt: "The Mind and Wellness Clinic",
     },
     {
       id: 16,
       href: "/hiring-partner/educounsoullers",
-      image: "https://prod-s3.counselindia.com/hiring_partners/news_Educounsellors_1690780582_1715322524.jpg",
+      image:
+        "https://prod-s3.counselindia.com/hiring_partners/news_Educounsellors_1690780582_1715322524.jpg",
       alt: "Educounsellors",
     },
     {
@@ -115,13 +124,15 @@ export default function GlobalHiringPartners() {
     {
       id: 19,
       href: "/hiring-partner/unique-consulting-services",
-      image: "https://prod-s3.counselindia.com/hiring_partners/news_WhatsApp_Image_2023-07-31_at_11.37.18_AM-removebg-preview_1690783719.png",
+      image:
+        "https://prod-s3.counselindia.com/hiring_partners/news_WhatsApp_Image_2023-07-31_at_11.37.18_AM-removebg-preview_1690783719.png",
       alt: "Unique Consulting Services",
     },
     {
       id: 20,
       href: "/hiring-partner/jagatmitra-foundation",
-      image: "https://prod-s3.counselindia.com/hiring_partners/news_Jagatmitra Foundation _1702555785.png",
+      image:
+        "https://prod-s3.counselindia.com/hiring_partners/news_Jagatmitra Foundation _1702555785.png",
       alt: "Jagatmitra Foundation",
     },
   ];
@@ -185,13 +196,7 @@ export default function GlobalHiringPartners() {
 
       <style jsx>{`
         .hiring-marquee-container {
-          mask-image: linear-gradient(
-            to right,
-            transparent,
-            black 3%,
-            black 97%,
-            transparent
-          );
+          mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent);
           -webkit-mask-image: linear-gradient(
             to right,
             transparent,
