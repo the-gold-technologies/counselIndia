@@ -5,12 +5,16 @@ import { useSiteSettings } from "@/hooks/useSiteSettings";
 
 export default function FloatingContactButtons() {
   const { settings } = useSiteSettings();
+  const rawWa = settings.whatsNumber || "8448519298";
+  const cleanDigits = rawWa.replace(/[^\d]/g, "");
+  const whatsappTarget = cleanDigits.length === 10 ? `91${cleanDigits}` : cleanDigits;
+
   return (
     <>
       {/* Left Floating Call Support Button */}
       <div className="dropup">
         <a
-          href={`https://api.whatsapp.com/send?phone=${settings.whatsNumber}&text=Hi.`}
+          href={`https://api.whatsapp.com/send?phone=${whatsappTarget}&text=Hi.`}
           target="_blank"
           rel="noreferrer"
           className="dropup-btn"

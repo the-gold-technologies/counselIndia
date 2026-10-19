@@ -9,10 +9,10 @@ export const DEFAULT_SETTINGS: SiteSettingData = {
   lightLogo: "/assets/images/dark-logo.png",
   favicon: "/favicon.ico",
 
-  adminEmail: "admin@counselindia.com",
   supportEmail: "wecare@counselindiaservices.in",
-  helplineNumber: "+919518241200",
-  whatsNumber: "+918448519298",
+  helplineNumber: "8031320449",
+  inquiryNumber: "8031320449",
+  whatsNumber: "8448519298",
   emergencyNumber: "+918930804054",
   companyName: "COUNSELINDIA SERVICES PRIVATE LIMITED",
   websiteLink: "https://www.counselindia.com",
@@ -37,8 +37,9 @@ export const DEFAULT_SETTINGS: SiteSettingData = {
   footerAddress: "12A20, 13th Floor, E-Square , Sector 96, Noida, Uttar Pradesh 201301",
   gstNumber: "09AAICC6447N1Z0",
   footerSupportEmail: "wecare@counselindiaservices.in",
-  footerWhatsappNumber: "+918448519298",
-  footerHelplineNumber: "+919518241200",
+  footerWhatsappNumber: "8448519298",
+  footerHelplineNumber: "8031320449",
+  footerInquiryNumber: "8031320449",
   footerTwitterLink: "https://twitter.com/counselindia1?lang=en",
   footerFbLink: "https://www.facebook.com/counselindia/",
   instaLink: "https://www.instagram.com/counsel_india_",
@@ -55,9 +56,12 @@ export async function getSiteSettings(): Promise<SiteSettingData> {
       next: { revalidate: 60 },
     });
     if (res.success && res.data) {
+      const data = res.data;
       return {
         ...DEFAULT_SETTINGS,
-        ...res.data,
+        ...data,
+        inquiryNumber: data.inquiryNumber || data.helplineNumber || "8031320449",
+        footerInquiryNumber: data.footerInquiryNumber || data.footerHelplineNumber || "8031320449",
       };
     }
     return DEFAULT_SETTINGS;

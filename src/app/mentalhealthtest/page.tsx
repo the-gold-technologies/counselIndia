@@ -167,7 +167,11 @@ const TESTS: TestData[] = [
   },
 ];
 
-export default function MentalHealthTestPage() {
+import { useSearchParams } from "next/navigation";
+import { Suspense, useEffect } from "react";
+
+function MentalHealthTestContent() {
+  const searchParams = useSearchParams();
   const [selectedTest, setSelectedTest] = useState<TestData | null>(null);
   const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
   const [userData, setUserData] = useState<{ name: string; email: string; mobile: string }>({
@@ -178,6 +182,35 @@ export default function MentalHealthTestPage() {
   const [isTestActive, setIsTestActive] = useState(false);
   const [answers, setAnswers] = useState<{ [key: number]: number }>({});
   const [testCompleted, setTestCompleted] = useState(false);
+
+  useEffect(() => {
+    const testParam = searchParams.get("test") || searchParams.get("id");
+    const nameParam = searchParams.get("name") || "";
+    const emailParam = searchParams.get("email") || "";
+    const mobileParam = searchParams.get("mobile") || "";
+
+    if (testParam || nameParam) {
+      let matched = TESTS.find(
+        (t) =>
+          t.id === testParam ||
+          t.title.toLowerCase().includes(testParam?.toLowerCase() || "") ||
+          (testParam === "test1" && t.id === "emotional-well-being") ||
+          (testParam === "test2" && t.id === "quality-of-life") ||
+          (testParam === "test3" && t.id === "general-health")
+      );
+      if (!matched) matched = TESTS[0];
+
+      setSelectedTest(matched);
+      if (nameParam) {
+        setUserData({
+          name: nameParam,
+          email: emailParam,
+          mobile: mobileParam,
+        });
+        setIsTestActive(true);
+      }
+    }
+  }, [searchParams]);
 
   const handleOpenLeadModal = (test: TestData) => {
     setSelectedTest(test);
@@ -253,5 +286,13 @@ export default function MentalHealthTestPage() {
         onStart={handleStartTest}
       />
     </div>
+  );
+}
+
+export default function MentalHealthTestPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-white" />}>
+      <MentalHealthTestContent />
+    </Suspense>
   );
 }

@@ -12,6 +12,7 @@ export interface SiteSettingData {
   adminEmail?: string;
   supportEmail?: string;
   helplineNumber?: string;
+  inquiryNumber?: string;
   whatsNumber?: string;
   emergencyNumber?: string;
   companyName?: string;
@@ -51,6 +52,7 @@ export interface SiteSettingData {
   footerSupportEmail?: string;
   footerWhatsappNumber?: string;
   footerHelplineNumber?: string;
+  footerInquiryNumber?: string;
   footerTwitterLink?: string;
   footerFbLink?: string;
   instaLink?: string;

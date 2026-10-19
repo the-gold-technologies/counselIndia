@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Link from "next/link";
 import { EbookItem } from "./EbookCard";
 import { submitLead } from "@/services/leadService";
 
@@ -62,6 +63,11 @@ export default function EbookDownloadModal({ ebook, isOpen, onClose }: ModalProp
 
   if (!isOpen || !ebook) return null;
 
+  const cleanFilename = (ebook.name || "Ebook")
+    .replace(/[^a-zA-Z0-9\s_-]/g, "")
+    .trim()
+    .replace(/\s+/g, "_");
+
   const availableCities =
     formData.state && INDIAN_STATES[formData.state] ? INDIAN_STATES[formData.state] : [];
 
@@ -115,28 +121,45 @@ export default function EbookDownloadModal({ ebook, isOpen, onClose }: ModalProp
     }
 
     setIsSubmitting(true);
-    await submitLead({
-      category: "ebook",
-      name: formData.name.trim(),
-      email: formData.email.trim(),
-      mobile: formData.mobile.trim(),
-      countryCode: formData.country,
-      state: formData.state,
-      city: formData.city,
-      hearFrom: formData.hearAbout,
-      courseType: ebook.category || "Psychology",
-      courseName: ebook.name,
-      content: ebook.name,
-      medium: "Website Ebook Modal",
-      source: `Ebook: ${ebook.name}`,
-      extraData: {
-        ebookId: ebook.id,
-        ebookName: ebook.name,
-        courseType: ebook.category,
-      },
-    });
-    setIsSubmitting(false);
-    setIsSuccess(true);
+    try {
+      await submitLead({
+        category: "ebook",
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        mobile: formData.mobile.trim(),
+        countryCode: formData.country,
+        state: formData.state,
+        city: formData.city,
+        hearFrom: formData.hearAbout,
+        courseType: ebook.category || "Psychology",
+        courseName: ebook.name,
+        content: ebook.name,
+        medium: "Website Ebook Modal",
+        source: `Ebook: ${ebook.name}`,
+        extraData: {
+          ebookId: ebook.id,
+          ebookName: ebook.name,
+          courseType: ebook.category,
+        },
+      });
+
+      // Automatically trigger real PDF download
+      const downloadEndpoint = `/api/download-ebook?name=${encodeURIComponent(ebook.name)}${ebook.downloadUrl ? `&url=${encodeURIComponent(ebook.downloadUrl)}` : ""}`;
+
+      const dlLink = document.createElement("a");
+      dlLink.href = downloadEndpoint;
+      dlLink.download = `${cleanFilename}.pdf`;
+      document.body.appendChild(dlLink);
+      dlLink.click();
+      document.body.removeChild(dlLink);
+
+      setIsSuccess(true);
+    } catch (err) {
+      console.error("Failed to submit lead or trigger download:", err);
+      setErrorMessage("Something went wrong while processing your request. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleCloseAll = () => {
@@ -201,17 +224,20 @@ export default function EbookDownloadModal({ ebook, isOpen, onClose }: ModalProp
       <div
         style={{
           backgroundColor: "#ffffff",
-          border: "1px solid black",
-          borderRadius: "10px",
-          boxShadow: "0px 10px 25px rgba(0, 0, 0, 0.35)",
-          maxWidth: "480px",
+          border: isSuccess ? "none" : "1px solid black",
+          borderRadius: isSuccess ? "16px" : "10px",
+          boxShadow: isSuccess
+            ? "0px 15px 40px rgba(0, 0, 0, 0.2)"
+            : "0px 10px 25px rgba(0, 0, 0, 0.35)",
+          maxWidth: isSuccess ? "960px" : "480px",
           width: "100%",
-          maxHeight: "90vh",
+          maxHeight: "92vh",
           overflowY: "auto",
-          padding: "36px 30px 32px",
+          padding: isSuccess ? "45px 40px" : "36px 30px 32px",
           position: "relative",
           boxSizing: "border-box",
           animation: "modalSlideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+          transition: "max-width 0.3s ease, padding 0.3s ease",
         }}
       >
         {/* Close Button */}
@@ -531,84 +557,151 @@ export default function EbookDownloadModal({ ebook, isOpen, onClose }: ModalProp
             </div>
           </form>
         ) : (
-          /* Thank You Confirmation */
-          <div style={{ textAlign: "center", padding: "10px 0" }}>
-            <div
-              style={{
-                width: "60px",
-                height: "60px",
-                backgroundColor: "#e8f8ee",
-                color: "#00a651",
-                borderRadius: "50%",
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: "26px",
-                marginBottom: "16px",
-              }}
-            >
-              ✓
-            </div>
-            <h3
-              style={{
-                fontSize: "24px",
-                fontWeight: 800,
-                color: "#1e293b",
-                marginBottom: "8px",
-              }}
-            >
-              Thank You!
-            </h3>
-            <p
-              style={{
-                fontSize: "14px",
-                color: "#475569",
-                lineHeight: "1.6",
-                marginBottom: "20px",
-              }}
-            >
-              Your e-book <strong>&quot;{ebook.name}&quot;</strong> has been prepared for download.
-              A copy has also been sent to <strong>{formData.email}</strong>.
-            </p>
+          /* Thank You Confirmation Screen matching User Reference UI */
+          <div className="container-fluid p-0">
+            <div className="row align-items-center g-4">
+              {/* Left Column: Counselor Call Support Illustration */}
+              <div className="col-lg-5 col-md-5 text-center">
+                <img
+                  src="/assets/images/thank-you-counselor.png"
+                  alt="Counselor Support"
+                  style={{
+                    width: "100%",
+                    maxWidth: "360px",
+                    height: "auto",
+                    display: "inline-block",
+                    objectFit: "contain",
+                  }}
+                />
+              </div>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-              <a
-                href={ebook.image}
-                download={`${ebook.name}.jpg`}
-                style={{
-                  backgroundColor: "#00a651",
-                  color: "#ffffff",
-                  borderRadius: "6px",
-                  padding: "12px 24px",
-                  fontWeight: 700,
-                  fontSize: "15px",
-                  textDecoration: "none",
-                  display: "inline-block",
-                }}
-              >
-                Download PDF Copy
-              </a>
-              <a
-                href="https://chat.whatsapp.com/GVe7eiTWceVGcxmwz0hMqp"
-                target="_blank"
-                rel="noreferrer"
-                style={{
-                  backgroundColor: "#25d366",
-                  color: "#ffffff",
-                  borderRadius: "6px",
-                  padding: "10px 24px",
-                  fontWeight: 600,
-                  fontSize: "14.5px",
-                  textDecoration: "none",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: "8px",
-                }}
-              >
-                <i className="fab fa-whatsapp"></i>
-                <span>Join Psychology WhatsApp Community</span>
-              </a>
+              {/* Right Column: Thank You Details & CTAs */}
+              <div className="col-lg-7 col-md-7 ps-lg-4 text-start">
+                <h2
+                  style={{
+                    fontFamily: "'Playfair Display', Georgia, serif",
+                    fontSize: "36px",
+                    fontWeight: 700,
+                    color: "#1e293b",
+                    marginBottom: "18px",
+                    lineHeight: 1.2,
+                  }}
+                >
+                  Thank You!
+                </h2>
+
+                <p
+                  style={{
+                    fontSize: "14.5px",
+                    color: "#475569",
+                    lineHeight: "1.7",
+                    marginBottom: "14px",
+                  }}
+                >
+                  Our counselor will contact you between 11:00 AM and 7:00 PM during working hours.
+                </p>
+
+                <p
+                  style={{
+                    fontSize: "14.5px",
+                    color: "#475569",
+                    lineHeight: "1.7",
+                    marginBottom: "14px",
+                  }}
+                >
+                  These are life-transforming conversations designed to support your personal growth
+                  and development. We highly encourage you to attend the call.
+                </p>
+
+                <p
+                  style={{
+                    fontSize: "14.5px",
+                    color: "#475569",
+                    lineHeight: "1.7",
+                    marginBottom: "28px",
+                  }}
+                >
+                  If you are unavailable at the time of the call, kindly answer within 30 seconds
+                  and inform the counselor of your preferred time for rescheduling.
+                </p>
+
+                {/* Two CTA Buttons */}
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "14px",
+                    flexWrap: "wrap",
+                  }}
+                >
+                  <Link
+                    href="/"
+                    onClick={handleCloseAll}
+                    style={{
+                      backgroundColor: "#00a651",
+                      color: "#ffffff",
+                      borderRadius: "6px",
+                      padding: "13px 28px",
+                      fontWeight: 600,
+                      fontSize: "15px",
+                      textDecoration: "none",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      border: "none",
+                      cursor: "pointer",
+                      boxShadow: "0 2px 8px rgba(0, 166, 81, 0.25)",
+                      transition: "background-color 0.2s ease",
+                    }}
+                  >
+                    Go Back Home
+                  </Link>
+
+                  <a
+                    href="https://chat.whatsapp.com/GVe7eiTWceVGcxmwz0hMqp"
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{
+                      backgroundColor: "#00a651",
+                      color: "#ffffff",
+                      borderRadius: "6px",
+                      padding: "13px 28px",
+                      fontWeight: 600,
+                      fontSize: "15px",
+                      textDecoration: "none",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      border: "none",
+                      cursor: "pointer",
+                      boxShadow: "0 2px 8px rgba(0, 166, 81, 0.25)",
+                      transition: "background-color 0.2s ease",
+                    }}
+                  >
+                    Join Whatsapp
+                  </a>
+                </div>
+
+                {/* Re-download helper */}
+                <p
+                  style={{
+                    fontSize: "12.5px",
+                    color: "#94a3b8",
+                    marginTop: "18px",
+                    marginBottom: 0,
+                  }}
+                >
+                  E-book download started automatically. If it didn&apos;t start,{" "}
+                  <a
+                    href={`/api/download-ebook?name=${encodeURIComponent(ebook.name)}${ebook.downloadUrl ? `&url=${encodeURIComponent(ebook.downloadUrl)}` : ""}`}
+                    download={`${cleanFilename}.pdf`}
+                    style={{ color: "#00a651", fontWeight: 600, textDecoration: "underline" }}
+                  >
+                    click here to re-download
+                  </a>
+                  .
+                </p>
+              </div>
             </div>
           </div>
         )}

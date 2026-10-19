@@ -175,12 +175,12 @@ export default function AppDownloadBanner() {
                         Get in Touch
                       </h3>
                       <p className="text-white mb-2 font-size-15">
-                        Talk to our team :{" "}
+                        Inquiry Number :{" "}
                         <a
-                          href={`tel:${settings.helplineNumber}`}
+                          href={`tel:${settings.inquiryNumber || settings.helplineNumber}`}
                           className="text-white fw-bold text-decoration-underline"
                         >
-                          {settings.helplineNumber}
+                          {settings.inquiryNumber || settings.helplineNumber}
                         </a>
                       </p>
                       <p className="text-white-50 font-size-14 mb-0">

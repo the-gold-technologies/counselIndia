@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { submitLead } from "@/services/leadService";
 
 interface TestQuestion {
@@ -68,6 +69,7 @@ const TESTS: TestConfig[] = [
 ];
 
 export default function AssessmentSection() {
+  const router = useRouter();
   const [activeTest, setActiveTest] = useState<TestConfig | null>(null);
   // Default step when opened is "lead" to match the user screenshot form
   const [step, setStep] = useState<"lead" | "otp" | "quiz" | "result">("lead");
@@ -163,9 +165,17 @@ export default function AssessmentSection() {
         medium: "Website Assessment Modal",
         source: `Assessment: ${activeTest?.title || "Self-Assessment"}`,
       }).catch(console.error);
-      setStep("otp");
-      setIsResendActive(true);
-      setResendTimer(30);
+
+      closeTest();
+      const testPath =
+        activeTest?.id === "test2"
+          ? "mental_test2"
+          : activeTest?.id === "test3"
+            ? "mental_test3"
+            : "mental_test1";
+      router.push(
+        `/${testPath}/${encodeURIComponent(formData.email.trim())}/${encodeURIComponent(formData.mobile.trim())}/${encodeURIComponent(formData.name.trim())}`
+      );
     }
   };
 

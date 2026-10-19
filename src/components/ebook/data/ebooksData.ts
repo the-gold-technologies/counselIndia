@@ -4,6 +4,7 @@ export interface EbookItem {
   image: string;
   slug?: string;
   category?: string;
+  downloadUrl?: string;
 }
 
 export const EBOOKS_DATA: EbookItem[] = [
@@ -12,6 +13,8 @@ export const EBOOKS_DATA: EbookItem[] = [
     name: "The Psychology of Success: Mindsets and Strategies of High Achievers",
     image:
       "https://prod-s3.counselindia.com/ebook/Population%20Boom%20and%20Suicide%20Surge%20India%27s%20Urgent%20Mental%20Health%C2%A0Challenge%20%282%29_1730276292.jpg",
+    downloadUrl:
+      "https://prod-s3.counselindia.com/ebook/Copy of Marketing Psychology (1)_1730276292.pdf",
     slug: "the-psychology-of-success-mindsets-and-strategies-of-high-achievers-71",
   },
   {
@@ -19,6 +22,7 @@ export const EBOOKS_DATA: EbookItem[] = [
     name: "The Psychology of selling",
     image:
       "https://prod-s3.counselindia.com/ebook/Teaching%20Styles%20What%20Works%20Best%20at%20Different%20Times%20%20%282%29_1721108019.jpg",
+    downloadUrl: "https://prod-s3.counselindia.com/ebook/The Psychology of Selling_1721108019.pdf",
     slug: "the-psychology-of-selling-70",
   },
   {
@@ -26,12 +30,15 @@ export const EBOOKS_DATA: EbookItem[] = [
     name: "Theories of Personality Understanding Individual Differences",
     image:
       "https://prod-s3.counselindia.com/ebook/Teaching%20Styles%20What%20Works%20Best%20at%20Different%20Times%20%20%281%29_1721031746.jpg",
+    downloadUrl:
+      "https://prod-s3.counselindia.com/ebook/Theories of Personality Understanding Individual Differences  (1)_1721031747.pdf",
     slug: "theories-of-personality-understanding-individual-differences-69",
   },
   {
     id: 68,
     name: "THE PSYCHOLOGY OF SELLING",
     image: "https://prod-s3.counselindia.com/ebook/Psychology%20Ebooks%20%283%29_1719210110.jpg",
+    downloadUrl: "https://prod-s3.counselindia.com/ebook/The Psychology of Selling_1719210111.pdf",
     slug: "the-psychology-of-selling-68",
   },
   {
@@ -39,6 +46,8 @@ export const EBOOKS_DATA: EbookItem[] = [
     name: "Overcoming Examination Anxiety",
     image:
       "https://prod-s3.counselindia.com/ebook/Psychology%20Career%20Options%20In%20India%20%20%20%283%29_1716462138.jpg",
+    downloadUrl:
+      "https://prod-s3.counselindia.com/ebook/eBook on Examination anxiety (1)_1716462138.pdf",
     slug: "overcoming-examination-anxiety-67",
   },
   {
@@ -46,12 +55,15 @@ export const EBOOKS_DATA: EbookItem[] = [
     name: "GENDER ROLES In The SOCIETY",
     image:
       "https://prod-s3.counselindia.com/ebook/WhatsApp%20Image%202024-05-22%20at%2016.42.55_197b5956_1716376766.jpg",
+    downloadUrl: "https://prod-s3.counselindia.com/ebook/WORKPPLACE CONFLICTS (3)_1716376766.pdf",
     slug: "gender-roles-in-the-society-66",
   },
   {
     id: 65,
     name: "Marketing Psychology",
     image: "https://prod-s3.counselindia.com/ebook/Marketing%20Psyc_hology_1714216447.jpg",
+    downloadUrl:
+      "https://prod-s3.counselindia.com/ebook/Marketing Psychology-compressed_1714216448.pdf",
     slug: "marketing-psychology-65",
   },
   {
@@ -59,6 +71,7 @@ export const EBOOKS_DATA: EbookItem[] = [
     name: "Workplace Conflicts",
     image:
       "https://prod-s3.counselindia.com/ebook/WhatsApp%20Image%202024-04-22%20at%201.39.17%20PM_1713855522.jpeg",
+    downloadUrl: "https://prod-s3.counselindia.com/ebook/WORKPPLACE CONFLICTS (2)_1713855523.pdf",
     slug: "workplace-conflicts-64",
   },
   {
@@ -66,18 +79,24 @@ export const EBOOKS_DATA: EbookItem[] = [
     name: "Understanding Guilt & Regret",
     image:
       "https://prod-s3.counselindia.com/ebook/Understanding%20Guilt%20%26%20Regret_1712823157.jpg",
+    downloadUrl:
+      "https://prod-s3.counselindia.com/ebook/UNDERSTANDING GUILT AND REGRET_1712823157.pdf",
     slug: "understanding-guilt-regret-63",
   },
   {
     id: 62,
     name: "Exploring Personality Disorders Causes, Symptoms, & Treatments",
     image: "https://prod-s3.counselindia.com/ebook/content%20covers%20%281%29_1711791255.png",
+    downloadUrl:
+      "https://prod-s3.counselindia.com/ebook/Exploring Pers_onality Disorders-compressed_1711791255.pdf",
     slug: "exploring-personality-disorders-causes-symptoms-treatments-62",
   },
   {
     id: 61,
     name: "Psychology Behind Bullying",
     image: "https://prod-s3.counselindia.com/ebook/BULLYING%20%281%29_1711698069.png",
+    downloadUrl:
+      "https://prod-s3.counselindia.com/ebook/Psychology Behind BULLYING_compressed_1711698069.pdf",
     slug: "psychology-behind-bullying-61",
   },
   {
@@ -85,6 +104,8 @@ export const EBOOKS_DATA: EbookItem[] = [
     name: "Inner Child Healing",
     image:
       "https://prod-s3.counselindia.com/ebook/Inner%20child%20healing%20%281%29%20%281%29%20%281%29%20%281%29_1710411238.png",
+    downloadUrl:
+      "https://prod-s3.counselindia.com/ebook/Inner child healing_compressed_1710411239.pdf",
     slug: "inner-child-healing-59",
   },
   {
@@ -92,6 +113,8 @@ export const EBOOKS_DATA: EbookItem[] = [
     name: "When Eating Becomes a Problem",
     image:
       "https://prod-s3.counselindia.com/ebook/Exploring%20Eating%20Disorders%20Across%20Ages%20%281%29%20%282%29_1709112648_1712057492.png",
+    downloadUrl:
+      "https://prod-s3.counselindia.com/ebook/When Eating Becomes a Problem-compressed_1709112649_1712057492.pdf",
     slug: "when-eating-becomes-a-problem-57",
   },
   {
@@ -99,6 +122,8 @@ export const EBOOKS_DATA: EbookItem[] = [
     name: "Understanding Your Mind",
     image:
       "https://prod-s3.counselindia.com/ebook/10%20tips%20How%20to%20become%20an%20Industrial%20Organizational%20Psychologist%20%20-min%20%281%29_1708589815_1712057378.png",
+    downloadUrl:
+      "https://prod-s3.counselindia.com/ebook/Understanding Your Mind_compressed_1708589815_1712057378.pdf",
     slug: "understanding-your-mind-56",
   },
   {
@@ -106,6 +131,8 @@ export const EBOOKS_DATA: EbookItem[] = [
     name: "Psychological Dimensions of Meditation",
     image:
       "https://prod-s3.counselindia.com/ebook/Psychological%20dimensions%20of%20MEDITATION_1708514459_1712057136.png",
+    downloadUrl:
+      "https://prod-s3.counselindia.com/ebook/Psychological dimensions of MEDITATION_compressed (1)_1708514459_1712057136.pdf",
     slug: "psychological-dimensions-of-meditation-55",
   },
   {
@@ -113,6 +140,8 @@ export const EBOOKS_DATA: EbookItem[] = [
     name: "Psychology of Decision Making",
     image:
       "https://prod-s3.counselindia.com/ebook/10%20Best%20Career%20Options%20in%20Psychology%20-min_1707991189_1712057001.png",
+    downloadUrl:
+      "https://prod-s3.counselindia.com/ebook/Psychology of Decision Making_compressed_1707991068_1712056895.pdf",
     slug: "psychology-of-decision-making-54",
   },
   {
@@ -120,6 +149,8 @@ export const EBOOKS_DATA: EbookItem[] = [
     name: "Impact of Physical Fitness on Mental Health",
     image:
       "https://prod-s3.counselindia.com/ebook/news_Impact%20of%20physical%20fitness%20on%20mental%20health_1706592867.png",
+    downloadUrl:
+      "https://prod-s3.counselindia.com/ebook/news_Impact of physical fitness on mental health_compressed_1706592867.pdf",
     slug: "impact-of-physical-fitness-on-mental-health-53",
   },
   {
@@ -127,6 +158,8 @@ export const EBOOKS_DATA: EbookItem[] = [
     name: "Mental Health in the Digital Age",
     image:
       "https://prod-s3.counselindia.com/ebook/news_Mental%20Health%20in%20the%20Digi%EF%BB%BFtal%20Age_1706531637.png",
+    downloadUrl:
+      "https://prod-s3.counselindia.com/ebook/news_Mental Health in the Digital Age_compressed_1706531637.pdf",
     slug: "mental-health-in-the-digital-age-52",
   },
   {
@@ -134,84 +167,107 @@ export const EBOOKS_DATA: EbookItem[] = [
     name: "Factors Contributing To Mental Wellness",
     image:
       "https://prod-s3.counselindia.com/ebook/399117259Factors%20Contributing%20To%20Mental%20Wellness_1706084049.png",
+    downloadUrl: "https://prod-s3.counselindia.com/ebook/1365859832_1706090092.pdf",
     slug: "factors-contributing-to-mental-wellness-51",
   },
   {
     id: 50,
     name: "Underst\ufeffanding Addiction",
     image: "https://prod-s3.counselindia.com/ebook/news_e-book_1703848869.png",
+    downloadUrl:
+      "https://prod-s3.counselindia.com/ebook/news_Understanding Addiction_1703848869.pdf",
     slug: "underst-anding-addiction-50",
   },
   {
     id: 49,
     name: "Impact of Video Games on a Child's Mental Health",
     image: "https://prod-s3.counselindia.com/ebook/news_e%20book_1703748189.png",
+    downloadUrl:
+      "https://prod-s3.counselindia.com/ebook/news__Impact of Video Games on a Child's Mental Health_1703748189.pdf",
     slug: "impact-of-video-games-on-a-child-s-mental-health-49",
   },
   {
     id: 48,
     name: "The Psychology of Motivation",
     image: "https://prod-s3.counselindia.com/ebook/news_ebook-cover-motivation_1703153301.jpg",
+    downloadUrl:
+      "https://prod-s3.counselindia.com/ebook/news_The Psychology of Motivation_1703153301.pdf",
     slug: "the-psychology-of-motivation-48",
   },
   {
     id: 47,
     name: "Treatment of Psychological Disorders",
     image: "https://prod-s3.counselindia.com/ebook/news_Treatment_1702538983.png",
+    downloadUrl:
+      "https://prod-s3.counselindia.com/ebook/news_Treatment of psychological disorders_1702538983.pdf",
     slug: "treatment-of-psychological-disorders-47",
   },
   {
     id: 46,
     name: "Insights into Human Behavior: A Counselor's Guide",
     image: "https://prod-s3.counselindia.com/ebook/news_ebbok-cover-ishika_1701340800.jpg",
+    downloadUrl:
+      "https://prod-s3.counselindia.com/ebook/news_Insights into Human Behavior_1701340800.pdf",
     slug: "insights-into-human-behavior-a-counselor-s-guide-46",
   },
   {
     id: 45,
     name: "Technology in Counselling: Opportunities and Challenges",
     image: "https://prod-s3.counselindia.com/ebook/news_EBOOK-ISHIKA_1700897749.jpg",
+    downloadUrl:
+      "https://prod-s3.counselindia.com/ebook/news_Technology in Counselling_1700897749.pdf",
     slug: "technology-in-counselling-opportunities-and-challenges-45",
   },
   {
     id: 44,
     name: "Performance Anxiety",
     image: "https://prod-s3.counselindia.com/ebook/news_muskan-ebbok-website_1700890882.jpg",
+    downloadUrl: "https://prod-s3.counselindia.com/ebook/news_Performance Anxity_1700890882.pdf",
     slug: "performance-anxiety-44",
   },
   {
     id: 43,
     name: "Sleep Paralysis",
     image: "https://prod-s3.counselindia.com/ebook/news_ebook_1700561382.jpg",
+    downloadUrl:
+      "https://prod-s3.counselindia.com/ebook/news_Causes and effects of sleep paralysis_1700561382.pdf",
     slug: "sleep-paralysis-43",
   },
   {
     id: 42,
     name: "The Science of Sleep",
     image: "https://prod-s3.counselindia.com/ebook/news_The%20Science%20of%20Sleep_1698910813.png",
+    downloadUrl: "https://prod-s3.counselindia.com/ebook/news_The Science  of Sleep_1698910813.pdf",
     slug: "the-science-of-sleep-42",
   },
   {
     id: 41,
     name: "Effect of Meditation on Mental Health",
     image: "https://prod-s3.counselindia.com/ebook/news_ebook-website-cover_1698310016.jpg",
+    downloadUrl:
+      "https://prod-s3.counselindia.com/ebook/news_Effect of Meditation on Mental Health_1698310016.pdf",
     slug: "effect-of-meditation-on-mental-health-41",
   },
   {
     id: 40,
     name: "Understanding the world of Industrial and Organizational Psychology",
     image: "https://prod-s3.counselindia.com/ebook/news_EBOOK_1698048463.jpg",
+    downloadUrl: "https://prod-s3.counselindia.com/ebook/569613060_1698388008.pdf",
     slug: "understanding-the-world-of-industrial-and-organizational-psychology-40",
   },
   {
     id: 39,
     name: "Overcoming Social Anxiety",
     image: "https://prod-s3.counselindia.com/ebook/news_ebbok-cover-website_1697022540.jpg",
+    downloadUrl:
+      "https://prod-s3.counselindia.com/ebook/news_Overcoming Social Anxiety_1697022540.pdf",
     slug: "overcoming-social-anxiety-39",
   },
   {
     id: 37,
     name: "Mood Disorders: Exploring Depression and Bipolar Disorder",
     image: "https://prod-s3.counselindia.com/ebook/news_mood-diosrder-ebook_1696320579.jpg",
+    downloadUrl: "https://prod-s3.counselindia.com/ebook/news_mood-diosrder-ebook_1696320579.pdf",
     slug: "mood-disorders-exploring-depression-and-bipolar-disorder-37",
   },
   {
@@ -219,72 +275,92 @@ export const EBOOKS_DATA: EbookItem[] = [
     name: "Psychology On Depression",
     image:
       "https://prod-s3.counselindia.com/ebook/news_Psychology%20on%20Depression_1696053634.png",
+    downloadUrl:
+      "https://prod-s3.counselindia.com/ebook/news_Psychology on Depression eBook_1696053634.pdf",
     slug: "psychology-on-depression-36",
   },
   {
     id: 35,
     name: "Exploring Child Psychology",
     image: "https://prod-s3.counselindia.com/ebook/news_EBOOK-WEBSITE_1695369470.png",
+    downloadUrl:
+      "https://prod-s3.counselindia.com/ebook/news_Child Psychology eBook_1695369470.pdf",
     slug: "exploring-child-psychology-35",
   },
   {
     id: 34,
     name: "Understanding Schizophrenia",
     image: "https://prod-s3.counselindia.com/ebook/news_ebook-website%20%283%29_1693553579.jpg",
+    downloadUrl: "https://prod-s3.counselindia.com/ebook/news_Schizophrenia ebook_1693553579.pdf",
     slug: "understanding-schizophrenia-34",
   },
   {
     id: 33,
     name: "Understanding Autism Spectrum Disorder",
     image: "https://prod-s3.counselindia.com/ebook/news_ebbok-website%20%281%29_1692700156.jpg",
+    downloadUrl:
+      "https://prod-s3.counselindia.com/ebook/news_Copy of Mental Health and Mental Disorders A Comprehensive Overview_1692700156.pdf",
     slug: "understanding-autism-spectrum-disorder-33",
   },
   {
     id: 32,
     name: "Anger Management",
     image: "https://prod-s3.counselindia.com/ebook/news_ebook-cover_1691753805.jpg",
+    downloadUrl: "https://prod-s3.counselindia.com/ebook/news_ebook anger_1691753805.pdf",
     slug: "anger-management-32",
   },
   {
     id: 31,
     name: "Mental Health and Mental Disorders: A Comprehensive Overview",
     image: "https://prod-s3.counselindia.com/ebook/news_blog-ebook_1690802263.jpg",
+    downloadUrl:
+      "https://prod-s3.counselindia.com/ebook/news_pdf_20230731_164512_0000_1690802263.pdf",
     slug: "mental-health-and-mental-disorders-a-comprehensive-overview-31",
   },
   {
     id: 30,
     name: "The power of Mindfulness",
     image: "https://prod-s3.counselindia.com/ebook/news_Ebook-website%20%282%29_1689244238.jpg",
+    downloadUrl: "https://prod-s3.counselindia.com/ebook/news_Ebook on Mindfulness_1689244238.pdf",
     slug: "the-power-of-mindfulness-30",
   },
   {
     id: 29,
     name: "The Power of Learning Psychology",
     image: "https://prod-s3.counselindia.com/ebook/news_Ebook-Website-_1__1688991789.webp",
+    downloadUrl:
+      "https://prod-s3.counselindia.com/ebook/news_Ebook on Psychology in everyday life_1688991789.pdf",
     slug: "the-power-of-learning-psychology-29",
   },
   {
     id: 28,
     name: "Overthinking Unraveled: Master Your Mind, Free Your Life",
     image: "https://prod-s3.counselindia.com/ebook/news_ebook-website-2_1687766855.jpg",
+    downloadUrl:
+      "https://prod-s3.counselindia.com/ebook/news_news_New Ebook April 2023_1682401639.pdf (1)_1687766855.pdf",
     slug: "overthinking-unraveled-master-your-mind-free-your-life-28",
   },
   {
     id: 27,
     name: "Unraveling Phobia",
     image: "https://prod-s3.counselindia.com/ebook/news_ebook-website_1687763872.webp",
+    downloadUrl: "https://prod-s3.counselindia.com/ebook/news_ebook on phobias_1687763872.pdf",
     slug: "unraveling-phobia-27",
   },
   {
     id: 26,
     name: "Becoming a Career Counsellor: Guiding Others towards Success",
     image: "https://prod-s3.counselindia.com/ebook/news_ebook%20%281%29_1686379536.webp",
+    downloadUrl:
+      "https://prod-s3.counselindia.com/ebook/news_Career Counselling Ebook_1686379536.pdf",
     slug: "becoming-a-career-counsellor-guiding-others-towards-success-26",
   },
   {
     id: 25,
     name: "Child Psychology: Unlocking the Wonders of Development",
     image: "https://prod-s3.counselindia.com/ebook/news_ebook-website_1685347414.webp",
+    downloadUrl:
+      "https://prod-s3.counselindia.com/ebook/news_Ebook child psychology_1685347414.pdf",
     slug: "child-psychology-unlocking-the-wonders-of-development-25",
   },
   {
@@ -292,6 +368,8 @@ export const EBOOKS_DATA: EbookItem[] = [
     name: "The Psychology of Emotions",
     image:
       "https://prod-s3.counselindia.com/ebook/news_WhatsApp%20Image%202023-05-10%20at%204.32.24%20PM_1684747635.jpeg",
+    downloadUrl:
+      "https://prod-s3.counselindia.com/ebook/news_The Psychology of Emotions_1684747635.pdf",
     slug: "the-psychology-of-emotions-24",
   },
   {
@@ -299,18 +377,23 @@ export const EBOOKS_DATA: EbookItem[] = [
     name: "Psychology on Behavior",
     image:
       "https://prod-s3.counselindia.com/ebook/news_WhatsApp%20Image%202023-05-10%20at%2016.32.48_1683872618.jpeg",
+    downloadUrl:
+      "https://prod-s3.counselindia.com/ebook/news_New Ebook April 2023 (2)_1683872618.pdf",
     slug: "psychology-on-behavior-23",
   },
   {
     id: 22,
     name: "Understanding Workplace Psychology",
     image: "https://prod-s3.counselindia.com/ebook/news_Ebook-Website_1683628429.jpg",
+    downloadUrl:
+      "https://prod-s3.counselindia.com/ebook/news_Workplace Psychology Ebook_1683628429.pdf",
     slug: "understanding-workplace-psychology-22",
   },
   {
     id: 21,
     name: "Understanding OCD",
     image: "https://prod-s3.counselindia.com/ebook/news_CDO-2_1682420787.jpg",
+    downloadUrl: "https://prod-s3.counselindia.com/ebook/news_Ebook OCD_1682420787.pdf",
     slug: "understanding-ocd-21",
   },
   {
@@ -318,6 +401,7 @@ export const EBOOKS_DATA: EbookItem[] = [
     name: "Psychology of Personality",
     image:
       "https://prod-s3.counselindia.com/ebook/1446545058WhatsApp%20Image%202023-05-10%20at%2012.08.10%20PM%20%281%29_1683701492.jpeg",
+    downloadUrl: "https://prod-s3.counselindia.com/ebook/529866514_1683701492.pdf",
     slug: "psychology-of-personality-20",
   },
   {
@@ -325,6 +409,7 @@ export const EBOOKS_DATA: EbookItem[] = [
     name: "The Psychology of Relationships: Understanding Interpersonal Connections, Attachment Styles, and Building Healthy Relationships",
     image:
       "https://prod-s3.counselindia.com/ebook/1912879158WhatsApp%20Image%202023-05-10%20at%2012.08.11%20PM%20%281%29_1683701311.jpeg",
+    downloadUrl: "https://prod-s3.counselindia.com/ebook/1790305091_1683701311.pdf",
     slug: "the-psychology-of-relationships-understanding-interpersonal-connections-attachment-styles-and-building-healthy-relationships-15",
   },
   {
@@ -332,6 +417,7 @@ export const EBOOKS_DATA: EbookItem[] = [
     name: "Psychology of Anxiety and Stress",
     image:
       "https://prod-s3.counselindia.com/ebook/2001934049WhatsApp%20Image%202023-05-10%20at%2012.08.11%20PM_1683700996.jpeg",
+    downloadUrl: "https://prod-s3.counselindia.com/ebook/558898674_1683700996.pdf",
     slug: "psychology-of-anxiety-and-stress-12",
   },
   {
@@ -339,12 +425,16 @@ export const EBOOKS_DATA: EbookItem[] = [
     name: "How to clear the psychologist interview",
     image:
       "https://prod-s3.counselindia.com/ebook/1661548420WhatsApp%20Image%202023-05-10%20at%2012.08.10%20PM_1683701059.jpeg",
+    downloadUrl:
+      "https://prod-s3.counselindia.com/ebook/news_How to clear the psychologist interview ebook.pdf_1679119150.pdf",
     slug: "how-to-clear-the-psychologist-interview-9",
   },
   {
     id: 7,
     name: "Counsellor Learning Guide",
     image: "https://prod-s3.counselindia.com/ebook/1074325007EBOOK-4-6_1681810868.jpg",
+    downloadUrl:
+      "https://prod-s3.counselindia.com/ebook/news_Counselor Learning Guide_1679030113.pdf",
     slug: "counsellor-learning-guide-7",
   },
   {
@@ -352,12 +442,15 @@ export const EBOOKS_DATA: EbookItem[] = [
     name: "Career in Psychology by APA",
     image:
       "https://prod-s3.counselindia.com/ebook/1787297894WhatsApp%20Image%202023-05-10%20at%2012.08.09%20PM_1683701089.jpeg",
+    downloadUrl:
+      "https://prod-s3.counselindia.com/ebook/news_Career in Psychology by APA_1679030007.pdf",
     slug: "career-in-psychology-by-apa-6",
   },
   {
     id: 5,
     name: "Counselling Skills",
     image: "https://prod-s3.counselindia.com/ebook/1318005055EBOOK-4-2_1681810823.jpg",
+    downloadUrl: "https://prod-s3.counselindia.com/ebook/news_COUNSELLING SKILLS_1679029895.pdf",
     slug: "counselling-skills-5",
   },
   {
@@ -365,6 +458,8 @@ export const EBOOKS_DATA: EbookItem[] = [
     name: "How to write a research paper in psychology?",
     image:
       "https://prod-s3.counselindia.com/ebook/2074809429WhatsApp%20Image%202023-05-10%20at%2012.08.12%20PM_1683701030.jpeg",
+    downloadUrl:
+      "https://prod-s3.counselindia.com/ebook/news_How to write a research paper in Psychology.docx_1679029620.pdf",
     slug: "how-to-write-a-research-paper-in-psychology-4",
   },
 ];
