@@ -10,7 +10,7 @@ export default function AllCoursesList() {
   const [isLoading, setIsLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
-  const [enquiryCourseName, setEnquiryCourseName] = useState<string | null>(null);
+  const [enquiryCourse, setEnquiryCourse] = useState<CourseItem | null>(null);
 
   // Directly fetch from Admin API, exactly like learner network and alumni
   useEffect(() => {
@@ -452,7 +452,7 @@ export default function AllCoursesList() {
 
                       <button
                         type="button"
-                        onClick={() => setEnquiryCourseName(d.name)}
+                        onClick={() => setEnquiryCourse(d)}
                         style={{
                           backgroundColor: "#07a64b",
                           color: "#ffffff",
@@ -517,11 +517,13 @@ export default function AllCoursesList() {
       </div>
 
       {/* Enquiry / Brochure Modal on Enquire Now click */}
-      {enquiryCourseName && (
+      {enquiryCourse && (
         <CourseBrochureModal
           isOpen={true}
-          onClose={() => setEnquiryCourseName(null)}
-          courseName={enquiryCourseName}
+          onClose={() => setEnquiryCourse(null)}
+          courseName={enquiryCourse.name}
+          courseCategory={enquiryCourse.category}
+          brochureUrl={enquiryCourse.brochure}
         />
       )}
 

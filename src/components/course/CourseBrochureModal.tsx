@@ -1,11 +1,15 @@
 "use client";
 import React, { useState } from "react";
+import Link from "next/link";
 import { submitLead } from "@/services/leadService";
+import { useSiteSettings } from "@/hooks/useSiteSettings";
 
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   courseName?: string;
+  courseCategory?: string;
+  brochureUrl?: string;
 }
 
 const inputStyle: React.CSSProperties = {
@@ -86,11 +90,18 @@ const INDIAN_STATES = [
   "Puducherry",
 ];
 
-export default function CourseBrochureModal({ isOpen, onClose, courseName }: ModalProps) {
+export default function CourseBrochureModal({
+  isOpen,
+  onClose,
+  courseName,
+  courseCategory,
+  brochureUrl,
+}: ModalProps) {
+  const { settings } = useSiteSettings();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    country: "",
+    country: "India (+91)",
     mobile: "",
     state: "",
     city: "",
@@ -98,11 +109,31 @@ export default function CourseBrochureModal({ isOpen, onClose, courseName }: Mod
     terms: false,
   });
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   if (!isOpen) return null;
 
+  const inquiryPhone = settings.inquiryNumber || settings.helplineNumber || "8031320449";
+  const rawWa = settings.whatsNumber || "8448519298";
+  const cleanDigits = rawWa.replace(/[^\d]/g, "");
+  const whatsappTarget = cleanDigits.length === 10 ? `91${cleanDigits}` : cleanDigits;
+
+  const handleClose = () => {
+    setSubmitted(false);
+    setIsSubmitting(false);
+    setErrorMsg(null);
+    onClose();
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    setErrorMsg(null);
+
+    const activeCourseName = courseName || "General Course Enquiry";
+    const activeCourseType = courseCategory || "Master's Program";
+
     try {
       await submitLead({
         category: "courses-enquiry",
@@ -112,19 +143,42 @@ export default function CourseBrochureModal({ isOpen, onClose, courseName }: Mod
         countryCode: formData.country,
         state: formData.state,
         city: formData.city,
-        courseName: courseName || "General Course Enquiry",
+        courseType: activeCourseType,
+        courseName: activeCourseName,
         hearFrom: formData.hearAbout,
         medium: "Website Course Brochure",
         source: `Course Brochure (${formData.city ? `${formData.city}, ` : ""}${formData.state || "Website"})`,
+        extraData: {
+          courseName: activeCourseName,
+          courseType: activeCourseType,
+          brochureUrl: brochureUrl || "",
+        },
       });
-    } catch (err) {
+
+      // Automatically trigger real PDF download
+      const cleanFilename = activeCourseName
+        .replace(/[^a-zA-Z0-9\s_-]/g, "")
+        .trim()
+        .replace(/\s+/g, "_");
+
+      const downloadEndpoint = `/api/download-brochure?name=${encodeURIComponent(activeCourseName)}${
+        brochureUrl ? `&url=${encodeURIComponent(brochureUrl)}` : ""
+      }`;
+
+      const dlLink = document.createElement("a");
+      dlLink.href = downloadEndpoint;
+      dlLink.download = `${cleanFilename}_Brochure.pdf`;
+      document.body.appendChild(dlLink);
+      dlLink.click();
+      document.body.removeChild(dlLink);
+
+      setSubmitted(true);
+    } catch (err: any) {
       console.error("Course lead submission error:", err);
+      setErrorMsg("Failed to submit inquiry. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      onClose();
-    }, 2500);
   };
 
   return (
@@ -132,7 +186,8 @@ export default function CourseBrochureModal({ isOpen, onClose, courseName }: Mod
       style={{
         position: "fixed",
         inset: 0,
-        backgroundColor: "rgba(0, 0, 0, 0.6)",
+        backgroundColor: "rgba(0, 0, 0, 0.65)",
+        backdropFilter: "blur(4px)",
         zIndex: 99999,
         display: "flex",
         alignItems: "center",
@@ -140,41 +195,58 @@ export default function CourseBrochureModal({ isOpen, onClose, courseName }: Mod
         padding: "16px",
         overflowY: "auto",
       }}
-      onClick={onClose}
+      onClick={handleClose}
     >
       <div
         style={{
           backgroundColor: "#ffffff",
-          borderRadius: "5px",
-          border: "0.8px solid black",
-          boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)",
+          borderRadius: submitted ? "16px" : "10px",
+          border: submitted ? "none" : "1px solid #1e293b",
+          boxShadow: submitted
+            ? "0px 20px 50px rgba(0, 0, 0, 0.25)"
+            : "0px 10px 30px rgba(0, 0, 0, 0.4)",
           width: "100%",
-          maxWidth: "490px",
+          maxWidth: submitted ? "960px" : "490px",
           position: "relative",
           maxHeight: "92vh",
           overflowY: "auto",
           fontFamily: "'Poppins', sans-serif",
-          padding: "26px 26px 30px",
+          padding: submitted ? "48px 42px" : "28px 28px 32px",
           boxSizing: "border-box",
+          transition: "max-width 0.3s ease, padding 0.3s ease",
         }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
-          onClick={onClose}
+          onClick={handleClose}
           style={{
             position: "absolute",
-            top: "12px",
-            right: "14px",
-            background: "none",
+            top: "14px",
+            right: "16px",
+            background: "#f1f5f9",
             border: "none",
-            fontSize: "22px",
-            fontWeight: 400,
+            borderRadius: "50%",
+            width: "32px",
+            height: "32px",
+            fontSize: "16px",
+            fontWeight: 500,
             cursor: "pointer",
-            color: "#000000",
+            color: "#64748b",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
             lineHeight: 1,
-            padding: "4px 8px",
             zIndex: 10,
+            transition: "all 0.2s ease",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = "#fee2e2";
+            e.currentTarget.style.color = "#ef4444";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = "#f1f5f9";
+            e.currentTarget.style.color = "#64748b";
           }}
           aria-label="Close modal"
         >
@@ -182,20 +254,158 @@ export default function CourseBrochureModal({ isOpen, onClose, courseName }: Mod
         </button>
 
         {submitted ? (
-          <div style={{ textAlign: "center", padding: "40px 15px", color: "#07a64b" }}>
-            <div style={{ fontSize: "48px", marginBottom: "12px" }}>✓</div>
-            <h4 style={{ margin: "0 0 8px", fontSize: "20px", color: "#212529", fontWeight: 700 }}>
-              Thank You!
-            </h4>
-            <p style={{ margin: 0, fontSize: "14px", color: "#6c757d" }}>
-              Your brochure has been sent to your email &amp; mobile.
-            </p>
+          /* Thank You Confirmation Screen matching User Reference UI */
+          <div className="container-fluid p-0">
+            <div className="row align-items-center g-4">
+              {/* Left Column: Counselor Call Support Illustration */}
+              <div className="col-lg-5 col-md-5 text-center">
+                <img
+                  src="/assets/images/thank-you-counselor.png"
+                  alt="Counselor Support"
+                  style={{
+                    width: "100%",
+                    maxWidth: "380px",
+                    height: "auto",
+                    display: "inline-block",
+                    objectFit: "contain",
+                  }}
+                />
+              </div>
+
+              {/* Right Column: Thank You Details & CTAs */}
+              <div className="col-lg-7 col-md-7 ps-lg-4 text-start">
+                <h2
+                  style={{
+                    fontFamily: "'Playfair Display', Georgia, serif",
+                    fontSize: "38px",
+                    fontWeight: 700,
+                    color: "#1e293b",
+                    marginBottom: "18px",
+                    lineHeight: 1.2,
+                  }}
+                >
+                  Thank You!
+                </h2>
+
+                <p
+                  style={{
+                    fontSize: "14.5px",
+                    color: "#475569",
+                    lineHeight: "1.7",
+                    marginBottom: "14px",
+                  }}
+                >
+                  Our counselor will contact you between 11:00 AM and 7:00 PM during working hours.
+                </p>
+
+                <p
+                  style={{
+                    fontSize: "14.5px",
+                    color: "#475569",
+                    lineHeight: "1.7",
+                    marginBottom: "14px",
+                  }}
+                >
+                  These are life-transforming conversations designed to support your personal growth
+                  and development. We highly encourage you to attend the call.
+                </p>
+
+                <p
+                  style={{
+                    fontSize: "14.5px",
+                    color: "#475569",
+                    lineHeight: "1.7",
+                    marginBottom: "28px",
+                  }}
+                >
+                  If you are unavailable at the time of the call, kindly answer within 30 seconds
+                  and inform the counselor of your preferred time for rescheduling.
+                </p>
+
+                {/* Two Action Buttons: Talk to Us Now & Join Whatsapp */}
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "14px",
+                    flexWrap: "wrap",
+                  }}
+                >
+                  <a
+                    href={`tel:${inquiryPhone}`}
+                    style={{
+                      backgroundColor: "#00a651",
+                      color: "#ffffff",
+                      borderRadius: "6px",
+                      padding: "13px 28px",
+                      fontWeight: 600,
+                      fontSize: "15px",
+                      textDecoration: "none",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      border: "none",
+                      cursor: "pointer",
+                      boxShadow: "0 2px 8px rgba(0, 166, 81, 0.25)",
+                      transition: "background-color 0.2s ease",
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#008f45")}
+                    onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#00a651")}
+                  >
+                    Talk to Us Now
+                  </a>
+
+                  <a
+                    href={`https://api.whatsapp.com/send?phone=${whatsappTarget}&text=${encodeURIComponent(
+                      `Hi, I have downloaded the brochure for ${courseName || "your course"}. I would like more information.`
+                    )}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{
+                      backgroundColor: "#00a651",
+                      color: "#ffffff",
+                      borderRadius: "6px",
+                      padding: "13px 28px",
+                      fontWeight: 600,
+                      fontSize: "15px",
+                      textDecoration: "none",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      border: "none",
+                      cursor: "pointer",
+                      boxShadow: "0 2px 8px rgba(0, 166, 81, 0.25)",
+                      transition: "background-color 0.2s ease",
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#008f45")}
+                    onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#00a651")}
+                  >
+                    Join Whatsapp
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         ) : (
           <form
             onSubmit={handleSubmit}
             style={{ display: "flex", flexDirection: "column", gap: "14px" }}
           >
+            {errorMsg && (
+              <div
+                style={{
+                  backgroundColor: "#fee2e2",
+                  color: "#b91c1c",
+                  padding: "10px 14px",
+                  borderRadius: "6px",
+                  fontSize: "13px",
+                  fontWeight: 500,
+                }}
+              >
+                {errorMsg}
+              </div>
+            )}
+
             {/* Full Name */}
             <div>
               <label style={labelStyle}>
@@ -244,11 +454,8 @@ export default function CourseBrochureModal({ isOpen, onClose, courseName }: Mod
                 <option value="" disabled hidden>
                   Please Select Country
                 </option>
-                <option value="" disabled>
-                  Please Select Country
-                </option>
                 {COUNTRIES.map((c) => (
-                  <option key={c} value={c} style={{ color: "#212529" }}>
+                  <option key={c} value={c}>
                     {c}
                   </option>
                 ))}
@@ -263,7 +470,6 @@ export default function CourseBrochureModal({ isOpen, onClose, courseName }: Mod
               <input
                 type="tel"
                 required
-                maxLength={12}
                 placeholder="Your Mobile Number"
                 value={formData.mobile}
                 onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
@@ -289,33 +495,31 @@ export default function CourseBrochureModal({ isOpen, onClose, courseName }: Mod
                 <option value="" disabled hidden>
                   Please Select State
                 </option>
-                <option value="" disabled>
-                  Please Select State
-                </option>
                 {INDIAN_STATES.map((s) => (
-                  <option key={s} value={s} style={{ color: "#212529" }}>
+                  <option key={s} value={s}>
                     {s}
                   </option>
                 ))}
+                <option value="Other / Outside India">Other / Outside India</option>
               </select>
             </div>
 
-            {/* Select City */}
+            {/* Enter City */}
             <div>
               <label style={labelStyle}>
-                Select City<span style={{ color: "#ef4444" }}>*</span>
+                Enter City<span style={{ color: "#ef4444" }}>*</span>
               </label>
               <input
                 type="text"
                 required
-                placeholder="Please Select City"
+                placeholder="Enter City"
                 value={formData.city}
                 onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                 style={inputStyle}
               />
             </div>
 
-            {/* How Did You Hear About Us. */}
+            {/* How Did You Hear About Us */}
             <div>
               <label style={labelStyle}>
                 How Did You Hear About Us.<span style={{ color: "#ef4444" }}>*</span>
@@ -333,69 +537,35 @@ export default function CourseBrochureModal({ isOpen, onClose, courseName }: Mod
                 <option value="" disabled hidden>
                   Please Select
                 </option>
-                <option value="" disabled>
-                  Please Select
-                </option>
-                <option value="Google" style={{ color: "#212529" }}>
-                  Google
-                </option>
-                <option value="Facebook" style={{ color: "#212529" }}>
-                  Facebook
-                </option>
-                <option value="Instagram" style={{ color: "#212529" }}>
-                  Instagram
-                </option>
-                <option value="LinkedIn" style={{ color: "#212529" }}>
-                  LinkedIn
-                </option>
-                <option value="Blogs" style={{ color: "#212529" }}>
-                  Blogs
-                </option>
-                <option value="Email" style={{ color: "#212529" }}>
-                  Email
-                </option>
-                <option value="Whatsapp" style={{ color: "#212529" }}>
-                  Whatsapp
-                </option>
-                <option value="Reference" style={{ color: "#212529" }}>
-                  Reference
-                </option>
-                <option value="YouTube" style={{ color: "#212529" }}>
-                  YouTube
-                </option>
+                <option value="Instagram">Instagram</option>
+                <option value="Facebook">Facebook</option>
+                <option value="LinkedIn">LinkedIn</option>
+                <option value="Google Search">Google Search</option>
+                <option value="YouTube">YouTube</option>
+                <option value="Friend or Colleague">Friend or Colleague</option>
+                <option value="University / College">University / College</option>
+                <option value="WhatsApp">WhatsApp</option>
+                <option value="Other">Other</option>
               </select>
             </div>
 
-            {/* Terms and conditions */}
+            {/* Terms and Privacy Checkbox */}
             <div
-              style={{ display: "flex", alignItems: "flex-start", gap: "8px", marginTop: "2px" }}
+              style={{ display: "flex", alignItems: "flex-start", gap: "8px", marginTop: "4px" }}
             >
               <input
                 type="checkbox"
-                id="brochureTerms"
+                id="brochure-terms"
+                required
                 checked={formData.terms}
                 onChange={(e) => setFormData({ ...formData, terms: e.target.checked })}
-                required
-                style={{
-                  marginTop: "3px",
-                  width: "16px",
-                  height: "16px",
-                  accentColor: "#07a64b",
-                  flexShrink: 0,
-                  cursor: "pointer",
-                }}
+                style={{ marginTop: "3px", cursor: "pointer", accentColor: "#07a64b" }}
               />
               <label
-                htmlFor="brochureTerms"
-                style={{
-                  fontSize: "13.5px",
-                  color: "#212529",
-                  lineHeight: "1.45",
-                  cursor: "pointer",
-                  fontFamily: "'Poppins', sans-serif",
-                }}
+                htmlFor="brochure-terms"
+                style={{ fontSize: "13px", color: "#495057", lineHeight: "1.4", cursor: "pointer" }}
               >
-                By submitting this form, I agree to Counsel India&apos;s{" "}
+                By submitting this form, I agree to Counsel India’s{" "}
                 <a
                   href="/terms-and-conditions"
                   style={{ color: "#07a64b", textDecoration: "none" }}
@@ -421,6 +591,7 @@ export default function CourseBrochureModal({ isOpen, onClose, courseName }: Mod
             <div>
               <button
                 type="submit"
+                disabled={isSubmitting}
                 style={{
                   backgroundColor: "#07a64b",
                   color: "#ffffff",
@@ -430,14 +601,19 @@ export default function CourseBrochureModal({ isOpen, onClose, courseName }: Mod
                   padding: "10px 32px",
                   fontSize: "15px",
                   fontWeight: 600,
-                  cursor: "pointer",
+                  cursor: isSubmitting ? "not-allowed" : "pointer",
                   fontFamily: "'Poppins', sans-serif",
                   transition: "background-color 0.2s",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  minHeight: "44px",
+                  lineHeight: "1",
                 }}
                 onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#068f40")}
                 onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#07a64b")}
               >
-                Submit
+                {isSubmitting ? "Submitting..." : "Submit"}
               </button>
             </div>
           </form>

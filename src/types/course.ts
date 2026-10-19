@@ -13,6 +13,7 @@ export interface CourseItem {
   status?: string;
   nextBatchDate?: string;
   fee?: string;
+  brochure?: string;
 }
 
 export interface CourseDetailData {
@@ -21,6 +22,8 @@ export interface CourseDetailData {
   slug: string;
   badgeSale?: string;
   category?: string;
+  brochure?: string;
+  scSchemePdf?: string;
   bgImage?: string;
   partnerLogo?: string;
   description?: string;

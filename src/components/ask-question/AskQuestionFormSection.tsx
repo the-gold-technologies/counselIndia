@@ -299,20 +299,34 @@ export default function AskQuestionFormSection() {
                   Thank you for reaching out. Our team of expert counselors will review your
                   question and reach out to you shortly.
                 </p>
-                <button
-                  type="button"
-                  className="btn btn-primary btn-hover-secondary px-4 py-2"
-                  style={{
-                    border: "0.8px solid black",
-                    borderRadius: "5px",
-                    boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.5)",
-                    backgroundColor: "#07a64b",
-                    color: "#ffffff",
-                  }}
-                  onClick={handleReset}
-                >
-                  Ask Another Question
-                </button>
+                <div className="d-flex justify-content-center align-items-center mt-4">
+                  <button
+                    type="button"
+                    className="btn btn-primary btn-hover-secondary"
+                    style={{
+                      border: "0.8px solid black",
+                      borderRadius: "5px",
+                      boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.5)",
+                      backgroundColor: "#07a64b",
+                      color: "#ffffff",
+                      fontWeight: 600,
+                      fontSize: "15px",
+                      height: "46px",
+                      minHeight: "46px",
+                      lineHeight: "1",
+                      padding: "0 28px",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      textAlign: "center",
+                      cursor: "pointer",
+                      margin: "0 auto",
+                    }}
+                    onClick={handleReset}
+                  >
+                    Ask Another Question
+                  </button>
+                </div>
               </div>
             ) : (
               <form onSubmit={handleSubmit} noValidate id="myFormAskQuestion">
@@ -580,9 +594,11 @@ export default function AskQuestionFormSection() {
                         fontWeight: 700,
                         fontSize: "16px",
                         height: "52px",
+                        lineHeight: "1",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
+                        textAlign: "center",
                         cursor: "pointer",
                       }}
                     >

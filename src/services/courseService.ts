@@ -12,6 +12,8 @@ export interface DbCourse {
   slug: string;
   coverImage?: string;
   backgroundImage?: string;
+  brochure?: string;
+  scSchemePdf?: string;
   rating?: string | number;
   duration?: string;
   listDuration?: string;
@@ -204,6 +206,8 @@ export function mapDbToCourseDetail(c: any): CourseDetailData {
     slug: c.slug,
     badgeSale: c.totalDiscountPercent ? `${c.totalDiscountPercent}% OFF` : undefined,
     category: c.category || "Course",
+    brochure: c.brochure || "",
+    scSchemePdf: c.scSchemePdf || "",
     bgImage: bgImg,
     partnerLogo: undefined,
     description: cleanDesc,
@@ -316,6 +320,7 @@ export async function getActiveCourses(search?: string, category?: string): Prom
         status: c.status || "Active",
         nextBatchDate: formatBatchDate(c.nextBatchDate),
         fee: c.totalDiscountFee || c.totalProgramFee || "",
+        brochure: c.brochure || "",
       };
     });
   } catch (err) {

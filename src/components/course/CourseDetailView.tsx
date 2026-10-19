@@ -125,6 +125,8 @@ export default function CourseDetailView({ course }: Props) {
         isOpen={isBrochureOpen}
         onClose={() => setIsBrochureOpen(false)}
         courseName={course.name}
+        courseCategory={course.category}
+        brochureUrl={course.brochure}
       />
     </main>
   );

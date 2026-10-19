@@ -111,28 +111,43 @@ export default function SupportContent() {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="modal-wrapper">
-              <button
-                type="button"
-                className="modal-close"
-                onClick={handleCloseModal}
-                aria-label="Close"
-              >
-                &times;
-              </button>
-
               <div
                 className="modal-content"
                 style={{
-                  boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.3)",
-                  border: "0.8px solid black",
-                  borderRadius: "5px",
+                  boxShadow: "0px 20px 50px rgba(0, 0, 0, 0.25)",
+                  border: "1px solid rgba(0, 0, 0, 0.08)",
+                  borderRadius: "14px",
+                  maxHeight: "calc(100vh - 36px)",
+                  display: "flex",
+                  flexDirection: "column",
+                  overflow: "hidden",
                 }}
               >
-                <div className="modal-header">
-                  <h5 className="modal-title new_enq">Please tell us about</h5>
+                <div className="modal-header position-relative">
+                  <h3 className="modal-title new_enq">Please tell us about</h3>
+                  <button
+                    type="button"
+                    className="modal-close-inside"
+                    onClick={handleCloseModal}
+                    aria-label="Close"
+                  >
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <line x1="18" y1="6" x2="6" y2="18"></line>
+                      <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                  </button>
                 </div>
 
-                <div className="modal-body">
+                <div className="modal-body custom-scrollbar">
                   {isSubmitted ? (
                     <div className="text-center py-4">
                       <div
@@ -155,13 +170,21 @@ export default function SupportContent() {
                         type="button"
                         className="btn btn-primary btn-hover-secondary"
                         onClick={handleCloseModal}
+                        style={{
+                          backgroundColor: "#07a64b",
+                          borderColor: "#07a64b",
+                          borderRadius: "8px",
+                          fontWeight: 600,
+                          padding: "10px 28px",
+                          lineHeight: "1",
+                        }}
                       >
                         Done
                       </button>
                     </div>
                   ) : (
                     <form onSubmit={handleSubmit} noValidate>
-                      <div className="row gy-4">
+                      <div className="row gy-3">
                         {/* Name */}
                         <div className="col-md-12">
                           <div className="modal-form">
@@ -307,10 +330,27 @@ export default function SupportContent() {
 
                         {/* Submit */}
                         <div className="col-md-12">
-                          <div className="modal-form mt-2">
+                          <div className="modal-form mt-2 pt-1 pb-1">
                             <button
                               type="submit"
-                              className="btn btn-primary btn-hover-secondary w-100"
+                              className="btn btn-primary btn-hover-secondary w-100 modal-submit-btn"
+                              style={{
+                                backgroundColor: "#07a64b",
+                                borderColor: "#07a64b",
+                                color: "#ffffff",
+                                fontWeight: 700,
+                                fontSize: "16px",
+                                height: "48px",
+                                minHeight: "48px",
+                                lineHeight: "1",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                borderRadius: "8px",
+                                boxShadow: "0 4px 14px rgba(7, 166, 75, 0.35)",
+                                cursor: "pointer",
+                                transition: "all 0.25s ease",
+                              }}
                             >
                               Submit
                             </button>
@@ -386,61 +426,60 @@ export default function SupportContent() {
           display: inline-block;
         }
 
-        /* Modal Styles matching Counsel India */
+        /* Modal Styles matching Counsel India Modern UI */
         .modal-backdrop-custom {
           position: fixed;
           top: 0;
           left: 0;
           right: 0;
           bottom: 0;
-          background-color: rgba(0, 0, 0, 0.6);
+          background-color: rgba(15, 23, 42, 0.65);
+          backdrop-filter: blur(4px);
           z-index: 99999;
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 15px;
+          padding: 16px;
           overflow-y: auto;
         }
 
         .modal-register {
-          max-width: 470px;
+          max-width: 480px;
           width: 100%;
-          margin: 1.75rem auto;
+          margin: auto;
         }
 
         .modal-wrapper {
           position: relative;
           width: 100%;
-          padding-top: 40px;
         }
 
-        .modal-close {
+        .modal-close-inside {
           position: absolute;
-          top: 0;
-          right: 0;
-          padding: 0;
-          line-height: 1;
-          width: 40px;
-          height: 40px;
-          font-size: 28px;
-          border: 0;
-          background: 0;
-          color: #fff;
-          cursor: pointer;
+          top: 18px;
+          right: 18px;
+          width: 34px;
+          height: 34px;
+          border-radius: 50%;
+          border: none;
+          background: #f1f5f9;
+          color: #64748b;
           display: flex;
           align-items: center;
           justify-content: center;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          z-index: 10;
         }
 
-        .modal-content {
-          background: #ffffff;
-          box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
-          border: 0.8px solid black;
-          border-radius: 5px;
+        .modal-close-inside:hover {
+          background: #fee2e2;
+          color: #ef4444;
+          transform: rotate(90deg);
         }
 
         .modal-header {
-          padding: 24px 30px 10px;
+          padding: 22px 28px 10px;
           border-bottom: 0;
           text-align: center;
           display: block;
@@ -448,14 +487,32 @@ export default function SupportContent() {
 
         .modal-title.new_enq {
           font-size: 24px;
-          font-weight: 600;
-          color: #212529;
+          font-weight: 700;
+          color: #1e293b;
           margin: 0;
-          line-height: 1.4;
+          line-height: 1.3;
+          letter-spacing: -0.02em;
         }
 
         .modal-body {
-          padding: 10px 30px 30px;
+          padding: 8px 28px 24px;
+        }
+
+        .modal-body.custom-scrollbar::-webkit-scrollbar {
+          width: 6px;
+        }
+
+        .modal-body.custom-scrollbar::-webkit-scrollbar-track {
+          background: #f8fafc;
+        }
+
+        .modal-body.custom-scrollbar::-webkit-scrollbar-thumb {
+          background: #cbd5e1;
+          border-radius: 4px;
+        }
+
+        .modal-body.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: #94a3b8;
         }
 
         .modal-form {
@@ -465,37 +522,46 @@ export default function SupportContent() {
         .modal-form .form-label {
           display: block;
           font-size: 13px;
-          font-weight: 500;
-          color: #252525;
-          margin-bottom: 7px;
-          line-height: 20px;
+          font-weight: 600;
+          color: #1e293b;
+          margin-bottom: 5px;
+          line-height: 18px;
         }
 
         .modal-form .form-control.sub,
         .modal-form .form-select.sub {
-          color: #252525;
-          background-color: #f8f8f8;
-          border: 1px solid #f8f8f8;
+          color: #1e293b;
+          background-color: #f8fafc;
+          border: 1.5px solid #e2e8f0;
           font-size: 14px;
           font-weight: 400;
-          height: 50px;
-          padding: 3px 20px;
+          height: 44px;
+          padding: 0 16px;
           width: 100%;
-          border-radius: 5px;
+          border-radius: 8px;
           outline: none;
-          transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+          transition: all 0.2s ease;
         }
 
         .modal-form .form-control.sub:focus,
         .modal-form .form-select.sub:focus {
           border-color: #07a64b;
           background-color: #ffffff;
+          box-shadow: 0 0 0 3px rgba(7, 166, 75, 0.12);
         }
 
         .modal-form textarea.form-control.sub {
-          height: 110px;
-          padding: 14px 20px;
+          height: 85px;
+          min-height: 75px;
+          padding: 10px 16px;
           resize: vertical;
+        }
+
+        .modal-submit-btn:hover {
+          background-color: #057435 !important;
+          border-color: #057435 !important;
+          transform: translateY(-1px);
+          box-shadow: 0 6px 18px rgba(7, 166, 75, 0.4) !important;
         }
 
         .font-size-12 {
@@ -516,24 +582,28 @@ export default function SupportContent() {
             margin-bottom: 1.5rem !important;
           }
 
-          .btn {
-            font-size: 14px;
-            height: 45px;
-            line-height: 45px;
-            padding: 0 20px;
-          }
-
           .modal-register {
-            max-width: calc(100% - 20px);
-            margin: 10px auto;
-          }
-
-          .modal-body {
-            padding: 10px 20px 25px;
+            max-width: calc(100% - 16px);
+            margin: auto;
           }
 
           .modal-header {
-            padding: 20px 20px 10px;
+            padding: 18px 20px 8px;
+          }
+
+          .modal-title.new_enq {
+            font-size: 20px;
+          }
+
+          .modal-body {
+            padding: 6px 18px 20px;
+          }
+
+          .modal-close-inside {
+            top: 14px;
+            right: 14px;
+            width: 30px;
+            height: 30px;
           }
         }
       `}</style>
