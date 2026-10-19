@@ -147,6 +147,9 @@ export default function ContactUsView() {
     if (type === "checkbox") {
       const checked = (e.target as HTMLInputElement).checked;
       setFormData((prev) => ({ ...prev, [name]: checked }));
+    } else if (name === "mobile") {
+      const cleaned = value.replace(/\D/g, "").slice(0, 10);
+      setFormData((prev) => ({ ...prev, [name]: cleaned }));
     } else {
       setFormData((prev) => ({ ...prev, [name]: value }));
     }
@@ -154,16 +157,22 @@ export default function ContactUsView() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name.trim()) {
+    const nameTrimmed = formData.name.trim();
+    const emailTrimmed = formData.email.trim();
+    const mobileTrimmed = formData.mobile.trim();
+
+    if (!nameTrimmed) {
       setErrorMsg("Please enter your name.");
       return;
     }
-    if (!formData.email.trim() || !formData.email.includes("@")) {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailTrimmed || !emailRegex.test(emailTrimmed)) {
       setErrorMsg("Please enter a valid email address.");
       return;
     }
-    if (!formData.mobile.trim()) {
-      setErrorMsg("Please enter your mobile number.");
+    const indianMobileRegex = /^[6-9]\d{9}$/;
+    if (!indianMobileRegex.test(mobileTrimmed)) {
+      setErrorMsg("Please enter a valid 10-digit mobile number starting with 6, 7, 8, or 9.");
       return;
     }
     if (!formData.agree) {
@@ -599,11 +608,13 @@ export default function ContactUsView() {
                     <input
                       type="tel"
                       name="mobile"
-                      maxLength={12}
+                      maxLength={10}
+                      inputMode="numeric"
+                      pattern="[6-9][0-9]{9}"
                       value={formData.mobile}
                       onChange={handleChange}
                       style={inputStyle}
-                      placeholder="Contact Number"
+                      placeholder="Contact Number (10 digits)"
                       required
                     />
                   </div>

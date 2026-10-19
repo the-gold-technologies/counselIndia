@@ -131,8 +131,45 @@ export default function CourseBrochureModal({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
     setErrorMsg(null);
+
+    const trimmedName = formData.name.trim();
+    const trimmedEmail = formData.email.trim();
+    const trimmedMobile = formData.mobile.trim();
+
+    if (!trimmedName) {
+      setErrorMsg("Please enter your name.");
+      return;
+    }
+
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(trimmedEmail)) {
+      setErrorMsg("Please enter a valid email address (e.g. name@example.com).");
+      return;
+    }
+
+    const phoneRegex = /^[6-9]\d{9}$/;
+    if (!phoneRegex.test(trimmedMobile)) {
+      setErrorMsg("Please enter a valid 10-digit mobile number starting with 6, 7, 8, or 9.");
+      return;
+    }
+
+    if (!formData.country) {
+      setErrorMsg("Please select your country.");
+      return;
+    }
+
+    if (!formData.state) {
+      setErrorMsg("Please select your state.");
+      return;
+    }
+
+    if (!formData.city) {
+      setErrorMsg("Please select your city.");
+      return;
+    }
+
+    setIsSubmitting(true);
 
     const activeCourseName = courseName || "General Course Enquiry";
     const activeCourseType = courseCategory || "Master's Program";
@@ -140,9 +177,9 @@ export default function CourseBrochureModal({
     try {
       await submitLead({
         category: "courses-enquiry",
-        name: formData.name.trim(),
-        email: formData.email.trim(),
-        mobile: `${formData.country ? `(${formData.country}) ` : ""}${formData.mobile}`.trim(),
+        name: trimmedName,
+        email: trimmedEmail,
+        mobile: `${formData.country ? `(${formData.country}) ` : ""}${trimmedMobile}`.trim(),
         countryCode: formData.country,
         state: formData.state,
         city: formData.city,
@@ -473,9 +510,16 @@ export default function CourseBrochureModal({
               <input
                 type="tel"
                 required
+                maxLength={10}
+                inputMode="numeric"
+                pattern="[6-9][0-9]{9}"
                 placeholder="Your Mobile Number"
                 value={formData.mobile}
-                onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
+                onChange={(e) => {
+                  const cleaned = e.target.value.replace(/\D/g, "").slice(0, 10);
+                  setFormData({ ...formData, mobile: cleaned });
+                  if (errorMsg) setErrorMsg(null);
+                }}
                 style={inputStyle}
               />
             </div>

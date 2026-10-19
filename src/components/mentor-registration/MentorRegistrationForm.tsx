@@ -169,6 +169,27 @@ export default function MentorRegistrationForm() {
     e.preventDefault();
     setErrorMessage("");
 
+    const nameTrimmed = name.trim();
+    const emailTrimmed = email.trim();
+    const mobileTrimmed = mobile.trim();
+
+    if (!nameTrimmed) {
+      setErrorMessage("Please enter your full name.");
+      return;
+    }
+
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailTrimmed || !emailRegex.test(emailTrimmed)) {
+      setErrorMessage("Please enter a valid email address.");
+      return;
+    }
+
+    const indianMobileRegex = /^[6-9]\d{9}$/;
+    if (!indianMobileRegex.test(mobileTrimmed)) {
+      setErrorMessage("Please enter a valid 10-digit mobile number starting with 6, 7, 8, or 9.");
+      return;
+    }
+
     if (!termsAgreed) {
       setErrorMessage("You must agree to Terms & Conditions and Privacy Policy.");
       return;
@@ -177,9 +198,9 @@ export default function MentorRegistrationForm() {
     setIsSubmitting(true);
     await submitLead({
       category: "course-registration",
-      name: name.trim(),
-      email: email.trim(),
-      mobile: mobile.trim(),
+      name: nameTrimmed,
+      email: emailTrimmed,
+      mobile: mobileTrimmed,
       content: `Experience: ${experience} | Qualification: ${qualification} | Expertise: ${expertise} | RCI: ${rciNumber} | Language: ${language}`,
       message: `Mentor Registration | Expected Charges: ${expectedCharges} | Address: ${address}`,
       medium: "Website Mentor Registration",
@@ -456,10 +477,12 @@ export default function MentorRegistrationForm() {
                     <input
                       type="tel"
                       maxLength={10}
-                      placeholder="Phone Number"
+                      inputMode="numeric"
+                      pattern="[6-9][0-9]{9}"
+                      placeholder="Phone Number (10 digits)"
                       required
                       value={mobile}
-                      onChange={(e) => setMobile(e.target.value)}
+                      onChange={(e) => setMobile(e.target.value.replace(/\D/g, "").slice(0, 10))}
                       style={inputStyle}
                     />
                   </div>

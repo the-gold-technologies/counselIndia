@@ -10,23 +10,30 @@ export default function Footer() {
   const { settings } = useSiteSettings();
   const [email, setEmail] = useState("");
   const [newsletterSubscribed, setNewsletterSubscribed] = useState(false);
+  const [newsletterError, setNewsletterError] = useState("");
   const [showLoginModal, setShowLoginModal] = useState(false);
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
-      await submitLead({
-        category: "subscription",
-        email: email.trim(),
-        source: "Footer Newsletter",
-        medium: "Website Footer",
-      });
-      setNewsletterSubscribed(true);
-      setTimeout(() => {
-        setNewsletterSubscribed(false);
-        setEmail("");
-      }, 4000);
+    setNewsletterError("");
+    const trimmed = email.trim();
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!trimmed || !emailRegex.test(trimmed)) {
+      setNewsletterError("Please enter a valid email address.");
+      return;
     }
+
+    await submitLead({
+      category: "subscription",
+      email: trimmed,
+      source: "Footer Newsletter",
+      medium: "Website Footer",
+    });
+    setNewsletterSubscribed(true);
+    setTimeout(() => {
+      setNewsletterSubscribed(false);
+      setEmail("");
+    }, 4000);
   };
 
   return (
@@ -526,6 +533,11 @@ export default function Footer() {
                     Subscribe
                   </button>
                 </form>
+                {newsletterError && (
+                  <p className="text-danger font-size-12 mt-1 mb-0 fw-semibold">
+                    {newsletterError}
+                  </p>
+                )}
                 {newsletterSubscribed && (
                   <p className="text-success font-size-12 mt-1 mb-0 fw-semibold">
                     ✓ Thank you for subscribing!

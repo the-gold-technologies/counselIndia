@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { submitLead } from "@/services/leadService";
+import { ALL_INDIAN_STATES, getCitiesForState } from "@/data/indianLocations";
 
 export const REFERRAL_COURSES = [
   { id: "8", name: "Counselling Master Course- Advanced" },
@@ -114,8 +115,10 @@ export default function ReferAndEarnView() {
   const queryCourseId = searchParams.get("course_id") || "56";
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isOtpOpen, setIsOtpOpen] = useState(false);
   const [activeFaq, setActiveFaq] = useState<number | null>(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   // Form states
   const [formData, setFormData] = useState({
@@ -133,29 +136,13 @@ export default function ReferAndEarnView() {
     eligibility: false,
   });
 
-  const [otpValue, setOtpValue] = useState("");
-  const [resendCountdown, setResendCountdown] = useState(30);
-  const [isResendActive, setIsResendActive] = useState(false);
-  const [otpSuccess, setOtpSuccess] = useState(false);
-  const [otpError, setOtpError] = useState("");
+  const availableCities = getCitiesForState(formData.state);
 
   useEffect(() => {
     if (queryCourseId) {
       setFormData((prev) => ({ ...prev, course_refer: queryCourseId }));
     }
   }, [queryCourseId]);
-
-  useEffect(() => {
-    let timer: NodeJS.Timeout;
-    if (isResendActive && resendCountdown > 0) {
-      timer = setTimeout(() => {
-        setResendCountdown((c) => c - 1);
-      }, 1000);
-    } else if (resendCountdown === 0) {
-      setIsResendActive(false);
-    }
-    return () => clearTimeout(timer);
-  }, [isResendActive, resendCountdown]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
@@ -165,106 +152,135 @@ export default function ReferAndEarnView() {
     } else {
       setFormData((prev) => ({ ...prev, [name]: value }));
     }
+    if (errorMessage) setErrorMessage("");
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMessage("");
+
+    const trimmedName = formData.name.trim();
+    const trimmedEmail = formData.email.trim();
+    const trimmedMobile = formData.mobile.trim();
+    const trimmedPersonName = formData.person_refer_name.trim();
+    const trimmedPersonPhone = formData.person_refer_phone.trim();
+    const trimmedPersonEmail = formData.person_refer_email.trim();
+
+    if (!trimmedName) {
+      setErrorMessage("Please enter your name.");
+      return;
+    }
+
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(trimmedEmail)) {
+      setErrorMessage("Please enter a valid email address (e.g. name@example.com).");
+      return;
+    }
+
+    const phoneRegex = /^[6-9]\d{9}$/;
+    if (!phoneRegex.test(trimmedMobile)) {
+      setErrorMessage("Please enter a valid 10-digit mobile number starting with 6, 7, 8, or 9.");
+      return;
+    }
+
+    if (!formData.state) {
+      setErrorMessage("Please select your state.");
+      return;
+    }
+
+    if (!formData.city.trim()) {
+      setErrorMessage("Please select or enter your city.");
+      return;
+    }
+
+    if (!trimmedPersonName) {
+      setErrorMessage("Please enter the referral person's name.");
+      return;
+    }
+
+    if (!phoneRegex.test(trimmedPersonPhone)) {
+      setErrorMessage("Please enter a valid 10-digit mobile number for the referral person.");
+      return;
+    }
+
+    if (!emailRegex.test(trimmedPersonEmail)) {
+      setErrorMessage("Please enter a valid email address for the referral person.");
+      return;
+    }
+
+    if (!formData.course_refer) {
+      setErrorMessage("Please select the course you are referring for.");
+      return;
+    }
+
     if (!formData.eligibility) {
-      alert("Please agree to Counsel India's Terms & Conditions and Privacy Policy.");
+      setErrorMessage("Please agree to Counsel India's Terms & Conditions and Privacy Policy.");
       return;
     }
-    setIsModalOpen(false);
-    setIsOtpOpen(true);
-    setResendCountdown(30);
-    setIsResendActive(true);
-    setOtpError("");
-    setOtpSuccess(false);
-  };
 
-  const handleResendOtp = () => {
-    setResendCountdown(30);
-    setIsResendActive(true);
-    setOtpError("");
-  };
+    setIsSubmitting(true);
+    const stateVal =
+      formData.state === "other" || formData.state === "Other"
+        ? formData.stateOther || "Other"
+        : formData.state;
 
-  const handleOtpVerify = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (otpValue.trim().length < 4) {
-      setOtpError("Please enter a valid OTP.");
-      return;
-    }
-    setOtpSuccess(true);
-    setOtpError("");
-    const stateVal = formData.state === "other" ? formData.stateOther : formData.state;
-
-    // 1. Submit referrer record to refer-enquiry
-    await submitLead({
-      category: "refer-enquiry",
-      name: formData.name.trim(),
-      email: formData.email.trim(),
-      mobile: formData.mobile.trim(),
-      countryCode: formData.country,
-      state: stateVal,
-      city: formData.city,
-      courseName: formData.course_refer,
-      content: `Referred: ${formData.person_refer_name} (${formData.person_refer_email}, ${formData.person_refer_phone})`,
-      message: `Referrer: ${formData.name} (${formData.email}, ${formData.mobile}) | Referred Person: ${formData.person_refer_name} | Phone: ${formData.person_refer_phone} | Email: ${formData.person_refer_email}`,
-      medium: "Website Refer & Earn",
-      source: "Refer & Earn Page",
-      extraData: {
-        referrerName: formData.name,
-        referrerEmail: formData.email,
-        referrerMobile: formData.mobile,
-        referredName: formData.person_refer_name,
-        referredPhone: formData.person_refer_phone,
-        referredEmail: formData.person_refer_email,
-        referByName: formData.name,
-        referByEmail: formData.email,
-        referByPhone: formData.mobile,
-        courseRefer: formData.course_refer,
-      },
-    });
-
-    // 2. Submit referred candidate to leadform-data (Lead Information Data)
-    await submitLead({
-      category: "leadform-data",
-      name: formData.person_refer_name.trim(),
-      email: formData.person_refer_email.trim(),
-      mobile: formData.person_refer_phone.trim(),
-      countryCode: formData.country,
-      state: stateVal,
-      city: formData.city,
-      courseName: formData.course_refer,
-      content: `Referred by: ${formData.name} (${formData.email})`,
-      medium: "Website Refer & Earn",
-      source: "Refer & Earn Page",
-      extraData: {
-        referByName: formData.name,
-        referByEmail: formData.email,
-        referByPhone: formData.mobile,
-        leadName: formData.person_refer_name,
-      },
-    });
-    setTimeout(() => {
-      setIsOtpOpen(false);
-      setOtpSuccess(false);
-      setOtpValue("");
-      // Reset form
-      setFormData({
-        name: "",
-        email: "",
-        country: "101",
-        mobile: "",
-        state: "",
-        stateOther: "",
-        city: "",
-        person_refer_name: "",
-        person_refer_phone: "",
-        person_refer_email: "",
-        course_refer: queryCourseId,
-        eligibility: false,
+    try {
+      // 1. Submit referrer record to refer-enquiry
+      await submitLead({
+        category: "refer-enquiry",
+        name: trimmedName,
+        email: trimmedEmail,
+        mobile: trimmedMobile,
+        countryCode: formData.country,
+        state: stateVal,
+        city: formData.city.trim(),
+        courseName: formData.course_refer,
+        content: `Referred: ${trimmedPersonName} (${trimmedPersonEmail}, ${trimmedPersonPhone})`,
+        message: `Referrer: ${trimmedName} (${trimmedEmail}, ${trimmedMobile}) | Referred Person: ${trimmedPersonName} | Phone: ${trimmedPersonPhone} | Email: ${trimmedPersonEmail}`,
+        medium: "Website Refer & Earn",
+        source: "Refer & Earn Page",
+        extraData: {
+          referrerName: trimmedName,
+          referrerEmail: trimmedEmail,
+          referrerMobile: trimmedMobile,
+          referredName: trimmedPersonName,
+          referredPhone: trimmedPersonPhone,
+          referredEmail: trimmedPersonEmail,
+          referByName: trimmedName,
+          referByEmail: trimmedEmail,
+          referByPhone: trimmedMobile,
+          courseRefer: formData.course_refer,
+        },
       });
-    }, 2500);
+
+      // 2. Submit referred candidate to leadform-data (Lead Information Data)
+      await submitLead({
+        category: "leadform-data",
+        name: trimmedPersonName,
+        email: trimmedPersonEmail,
+        mobile: trimmedPersonPhone,
+        countryCode: formData.country,
+        state: stateVal,
+        city: formData.city.trim(),
+        courseName: formData.course_refer,
+        content: `Referred by: ${trimmedName} (${trimmedEmail})`,
+        medium: "Website Refer & Earn",
+        source: "Refer & Earn Page",
+        extraData: {
+          referByName: trimmedName,
+          referByEmail: trimmedEmail,
+          referByPhone: trimmedMobile,
+          leadName: trimmedPersonName,
+        },
+      });
+
+      setIsSuccess(true);
+    } catch (err) {
+      console.error("Referral submission error:", err);
+      setErrorMessage("Failed to submit referral. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -485,7 +501,7 @@ export default function ReferAndEarnView() {
       {/* FAQ End */}
 
       {/* Backdrop */}
-      {(isModalOpen || isOtpOpen) && (
+      {isModalOpen && (
         <div
           className="modal-backdrop fade show"
           style={{
@@ -497,10 +513,7 @@ export default function ReferAndEarnView() {
             backgroundColor: "rgba(0, 0, 0, 0.5)",
             zIndex: 1040,
           }}
-          onClick={() => {
-            setIsModalOpen(false);
-            setIsOtpOpen(false);
-          }}
+          onClick={() => setIsModalOpen(false)}
         />
       )}
 
@@ -526,7 +539,10 @@ export default function ReferAndEarnView() {
           if (e.target === e.currentTarget) setIsModalOpen(false);
         }}
       >
-        <div className="modal-dialog modal-dialog-centered modal-login">
+        <div
+          className="modal-dialog modal-dialog-centered modal-login"
+          style={{ maxWidth: "480px" }}
+        >
           {/* Modal Wrapper Start */}
           <div className="modal-wrapper">
             {/* Modal Content Start */}
@@ -546,323 +562,462 @@ export default function ReferAndEarnView() {
                 onClick={() => setIsModalOpen(false)}
                 style={{
                   position: "absolute",
-                  top: "-38px",
-                  right: "0",
-                  color: "#ffffff",
+                  top: "12px",
+                  right: "14px",
+                  color: "#000000",
                   background: "transparent",
                   border: 0,
-                  fontSize: "28px",
+                  fontSize: "24px",
                   cursor: "pointer",
                   lineHeight: 1,
+                  zIndex: 10,
                 }}
               >
-                &times;
+                ✕
               </button>
 
               <div className="modal-header">
-                <h5 className="modal-title">Signup To Earn</h5>
+                <h5 className="modal-title" style={{ fontWeight: 700 }}>
+                  Signup To Earn
+                </h5>
               </div>
+
               <div className="modal-body">
-                <form id="myForm_refer_earn" name="myForm_refer_earn" onSubmit={handleFormSubmit}>
-                  <div className="modal-form mb-3">
-                    <label className="form-label" style={{ fontWeight: 500, marginBottom: "4px" }}>
-                      Name
-                    </label>
-                    <input
-                      id="name"
-                      type="text"
+                {isSuccess ? (
+                  <div style={{ textAlign: "center", padding: "28px 12px 16px" }}>
+                    <div
                       style={{
-                        border: "0.8px solid black",
-                        borderRadius: "5px",
-                        boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.3)",
+                        width: "64px",
+                        height: "64px",
+                        borderRadius: "50%",
+                        backgroundColor: "#dcfce7",
+                        color: "#16a34a",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        fontSize: "30px",
+                        margin: "0 auto 16px",
                       }}
-                      required
-                      name="name"
-                      className="form-control"
-                      placeholder="Your name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-
-                  <div className="modal-form mb-3">
-                    <label className="form-label" style={{ fontWeight: 500, marginBottom: "4px" }}>
-                      Email
-                    </label>
-                    <input
-                      id="email"
-                      name="email"
-                      style={{
-                        border: "0.8px solid black",
-                        borderRadius: "5px",
-                        boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.3)",
-                      }}
-                      type="email"
-                      required
-                      className="form-control"
-                      placeholder="Your email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-
-                  <div className="col-md-12 mt-2 mb-3">
-                    <div className="modal-form">
-                      <label
-                        className="form-label"
-                        style={{ fontWeight: 500, marginBottom: "4px" }}
-                      >
-                        Select Country with Country Code
-                      </label>
-                      <select
-                        className="form-control"
-                        style={{
-                          boxShadow: "0 0 5px rgba(0, 0, 0, 0.4)",
-                          borderRadius: "5px",
-                          border: "0.8px solid black",
-                        }}
-                        name="country"
-                        id="formCountry"
-                        required
-                        value={formData.country}
-                        onChange={handleInputChange}
-                      >
-                        {COUNTRIES.map((c) => (
-                          <option key={c.id} value={c.id}>
-                            {c.name} ({c.code})
-                          </option>
-                        ))}
-                      </select>
+                    >
+                      ✓
                     </div>
-                  </div>
-
-                  <div className="modal-form mb-3">
-                    <label className="form-label" style={{ fontWeight: 500, marginBottom: "4px" }}>
-                      Phone
-                    </label>
-                    <input
-                      id="mobile"
-                      name="mobile"
+                    <h4
                       style={{
-                        border: "0.8px solid black",
-                        borderRadius: "5px",
-                        boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.3)",
+                        fontSize: "22px",
+                        fontWeight: 700,
+                        color: "#1e293b",
+                        marginBottom: "8px",
                       }}
-                      type="tel"
-                      className="form-control"
-                      maxLength={12}
-                      placeholder="Your phone"
-                      required
-                      value={formData.mobile}
-                      onChange={handleInputChange}
-                    />
+                    >
+                      Referral Submitted Successfully!
+                    </h4>
+                    <p
+                      style={{
+                        color: "#64748b",
+                        fontSize: "14px",
+                        lineHeight: "1.6",
+                        marginBottom: "24px",
+                      }}
+                    >
+                      Thank you for referring your friend. Our team will get in touch with them
+                      shortly!
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsSuccess(false);
+                        setIsModalOpen(false);
+                        setFormData({
+                          name: "",
+                          email: "",
+                          country: "101",
+                          mobile: "",
+                          state: "",
+                          stateOther: "",
+                          city: "",
+                          person_refer_name: "",
+                          person_refer_phone: "",
+                          person_refer_email: "",
+                          course_refer: queryCourseId,
+                          eligibility: false,
+                        });
+                      }}
+                      style={{
+                        backgroundColor: "#07a64b",
+                        color: "#ffffff",
+                        border: "none",
+                        borderRadius: "6px",
+                        padding: "10px 32px",
+                        fontWeight: 600,
+                        fontSize: "15px",
+                        cursor: "pointer",
+                      }}
+                    >
+                      Done
+                    </button>
                   </div>
+                ) : (
+                  <form id="myForm_refer_earn" name="myForm_refer_earn" onSubmit={handleFormSubmit}>
+                    {errorMessage && (
+                      <div
+                        style={{
+                          backgroundColor: "#fee2e2",
+                          color: "#991b1b",
+                          padding: "8px 12px",
+                          borderRadius: "5px",
+                          fontSize: "13px",
+                          marginBottom: "16px",
+                        }}
+                      >
+                        {errorMessage}
+                      </div>
+                    )}
 
-                  <div className="col-md-12 mt-2 mb-3">
-                    <div className="modal-form">
+                    <div className="modal-form mb-3">
                       <label
                         className="form-label"
                         style={{ fontWeight: 500, marginBottom: "4px" }}
                       >
-                        Select State
+                        Name
                       </label>
-                      <select
-                        className="form-control"
+                      <input
+                        id="name"
+                        type="text"
                         style={{
-                          boxShadow: "0 0 5px rgba(0, 0, 0, 0.3)",
-                          borderRadius: "5px",
                           border: "0.8px solid black",
+                          borderRadius: "5px",
+                          boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.3)",
                         }}
-                        name="state"
-                        id="formState"
                         required
-                        value={formData.state}
+                        name="name"
+                        className="form-control"
+                        placeholder="Your name"
+                        value={formData.name}
                         onChange={handleInputChange}
+                      />
+                    </div>
+
+                    <div className="modal-form mb-3">
+                      <label
+                        className="form-label"
+                        style={{ fontWeight: 500, marginBottom: "4px" }}
                       >
-                        <option value="">Please Select State</option>
-                        {INDIAN_STATES.map((s) => (
-                          <option key={s} value={s}>
-                            {s}
-                          </option>
-                        ))}
-                      </select>
-                      {formData.state === "Other" && (
-                        <input
-                          id="formState2"
-                          type="text"
-                          className="form-control mt-2"
-                          name="stateOther"
+                        Email
+                      </label>
+                      <input
+                        id="email"
+                        name="email"
+                        style={{
+                          border: "0.8px solid black",
+                          borderRadius: "5px",
+                          boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.3)",
+                        }}
+                        type="email"
+                        required
+                        className="form-control"
+                        placeholder="Your email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+
+                    <div className="col-md-12 mt-2 mb-3">
+                      <div className="modal-form">
+                        <label
+                          className="form-label"
+                          style={{ fontWeight: 500, marginBottom: "4px" }}
+                        >
+                          Select Country with Country Code
+                        </label>
+                        <select
+                          className="form-control"
+                          style={{
+                            boxShadow: "0 0 5px rgba(0, 0, 0, 0.4)",
+                            borderRadius: "5px",
+                            border: "0.8px solid black",
+                          }}
+                          name="country"
+                          id="formCountry"
+                          required
+                          value={formData.country}
+                          onChange={handleInputChange}
+                        >
+                          {COUNTRIES.map((c) => (
+                            <option key={c.id} value={c.id}>
+                              {c.name} ({c.code})
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
+
+                    <div className="modal-form mb-3">
+                      <label
+                        className="form-label"
+                        style={{ fontWeight: 500, marginBottom: "4px" }}
+                      >
+                        Phone
+                      </label>
+                      <input
+                        id="mobile"
+                        name="mobile"
+                        style={{
+                          border: "0.8px solid black",
+                          borderRadius: "5px",
+                          boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.3)",
+                        }}
+                        type="tel"
+                        className="form-control"
+                        maxLength={10}
+                        inputMode="numeric"
+                        placeholder="Your phone"
+                        required
+                        value={formData.mobile}
+                        onChange={(e) => {
+                          const cleaned = e.target.value.replace(/\D/g, "").slice(0, 10);
+                          setFormData({ ...formData, mobile: cleaned });
+                          if (errorMessage) setErrorMessage("");
+                        }}
+                      />
+                    </div>
+
+                    <div className="col-md-12 mt-2 mb-3">
+                      <div className="modal-form">
+                        <label
+                          className="form-label"
+                          style={{ fontWeight: 500, marginBottom: "4px" }}
+                        >
+                          Select State
+                        </label>
+                        <select
+                          className="form-control"
                           style={{
                             boxShadow: "0 0 5px rgba(0, 0, 0, 0.3)",
                             borderRadius: "5px",
                             border: "0.8px solid black",
                           }}
-                          placeholder="Enter Your other State"
-                          value={formData.stateOther}
-                          onChange={handleInputChange}
-                        />
-                      )}
+                          name="state"
+                          id="formState"
+                          required
+                          value={formData.state}
+                          onChange={(e) => {
+                            handleInputChange(e);
+                            setFormData((prev) => ({ ...prev, state: e.target.value, city: "" }));
+                          }}
+                        >
+                          <option value="">Please Select State</option>
+                          {ALL_INDIAN_STATES.map((s) => (
+                            <option key={s} value={s}>
+                              {s}
+                            </option>
+                          ))}
+                          <option value="Other">Other</option>
+                        </select>
+                        {formData.state === "Other" && (
+                          <input
+                            id="formState2"
+                            type="text"
+                            className="form-control mt-2"
+                            name="stateOther"
+                            style={{
+                              boxShadow: "0 0 5px rgba(0, 0, 0, 0.3)",
+                              borderRadius: "5px",
+                              border: "0.8px solid black",
+                            }}
+                            placeholder="Enter Your other State"
+                            value={formData.stateOther}
+                            onChange={handleInputChange}
+                          />
+                        )}
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="col-md-12 mt-2 mb-3">
-                    <div className="modal-form">
+                    <div className="col-md-12 mt-2 mb-3">
+                      <div className="modal-form">
+                        <label
+                          className="form-label"
+                          style={{ fontWeight: 500, marginBottom: "4px" }}
+                        >
+                          Select City
+                        </label>
+                        <select
+                          id="formCity"
+                          className="form-control"
+                          name="city"
+                          style={{
+                            boxShadow: "0 0 5px rgba(0, 0, 0, 0.3)",
+                            borderRadius: "5px",
+                            border: "0.8px solid black",
+                          }}
+                          required
+                          value={formData.city}
+                          onChange={handleInputChange}
+                        >
+                          <option value="">Please Select City</option>
+                          {availableCities.map((ct) => (
+                            <option key={ct} value={ct}>
+                              {ct}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
+
+                    <div className="modal-form mb-3">
                       <label
                         className="form-label"
                         style={{ fontWeight: 500, marginBottom: "4px" }}
                       >
-                        Select City
+                        Referral Person&apos;s Name
                       </label>
                       <input
-                        id="formCity"
-                        type="text"
-                        className="form-control"
-                        name="city"
+                        id="person_refer_name"
                         style={{
-                          boxShadow: "0 0 5px rgba(0, 0, 0, 0.3)",
-                          borderRadius: "5px",
                           border: "0.8px solid black",
+                          borderRadius: "5px",
+                          boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.3)",
                         }}
-                        placeholder="Enter Your City"
+                        name="person_refer_name"
+                        type="text"
+                        className="form-control name"
+                        placeholder="Referral Person's Name"
                         required
-                        value={formData.city}
+                        value={formData.person_refer_name}
                         onChange={handleInputChange}
                       />
                     </div>
-                  </div>
 
-                  <div className="modal-form mb-3">
-                    <label className="form-label" style={{ fontWeight: 500, marginBottom: "4px" }}>
-                      Referral Person&apos;s Name
-                    </label>
-                    <input
-                      id="person_refer_name"
-                      style={{
-                        border: "0.8px solid black",
-                        borderRadius: "5px",
-                        boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.3)",
-                      }}
-                      name="person_refer_name"
-                      type="text"
-                      className="form-control name"
-                      placeholder="Referral Person's Name"
-                      required
-                      value={formData.person_refer_name}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-
-                  <div className="modal-form mb-3">
-                    <label className="form-label" style={{ fontWeight: 500, marginBottom: "4px" }}>
-                      Referral Person&apos;s Contact Number
-                    </label>
-                    <input
-                      id="person_refer_phone"
-                      style={{
-                        border: "0.8px solid black",
-                        borderRadius: "5px",
-                        boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.3)",
-                      }}
-                      name="person_refer_phone"
-                      type="tel"
-                      maxLength={12}
-                      className="form-control mobile"
-                      placeholder="Referral Person's Contact Number"
-                      required
-                      value={formData.person_refer_phone}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-
-                  <div className="modal-form mb-3">
-                    <label className="form-label" style={{ fontWeight: 500, marginBottom: "4px" }}>
-                      Referral Person&apos;s Email
-                    </label>
-                    <input
-                      id="person_refer_email"
-                      style={{
-                        border: "0.8px solid black",
-                        borderRadius: "5px",
-                        boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.3)",
-                      }}
-                      name="person_refer_email"
-                      type="email"
-                      className="form-control email"
-                      placeholder="Referral Person's Email"
-                      required
-                      value={formData.person_refer_email}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-
-                  <div className="modal-form mb-4">
-                    <label className="form-label" style={{ fontWeight: 500, marginBottom: "4px" }}>
-                      Course Referring For
-                    </label>
-                    <select
-                      id="course_refer"
-                      name="course_refer"
-                      style={{
-                        border: "0.8px solid black",
-                        borderRadius: "5px",
-                        boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.3)",
-                      }}
-                      className="form-control"
-                      value={formData.course_refer}
-                      onChange={handleInputChange}
-                    >
-                      <option value="">Select Course</option>
-                      {REFERRAL_COURSES.map((course) => (
-                        <option key={course.id} value={course.id}>
-                          {course.name}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div className="col-md-12 mb-3">
-                    <div className="d-flex align-items-start gap-2">
-                      <input
-                        type="checkbox"
-                        id="eligibility"
-                        className="counseller_terms_checkbox mt-1"
-                        name="eligibility"
-                        required
-                        checked={formData.eligibility}
-                        onChange={handleInputChange}
-                      />
+                    <div className="modal-form mb-3">
                       <label
-                        htmlFor="eligibility"
-                        className="counseller_terms_checkbox_label mb-0"
-                        style={{ fontSize: "13px", lineHeight: "1.5" }}
+                        className="form-label"
+                        style={{ fontWeight: 500, marginBottom: "4px" }}
                       >
-                        By submitting this form, I agree to Counsel India&apos;s{" "}
-                        <Link href="/terms-condition" style={{ color: "#07a64b" }} target="_blank">
-                          Terms &amp; Conditions
-                        </Link>{" "}
-                        and{" "}
-                        <Link href="/privacy-policy" style={{ color: "#07a64b" }} target="_blank">
-                          Privacy Policy.
-                        </Link>
+                        Referral Person&apos;s Contact Number
                       </label>
+                      <input
+                        id="person_refer_phone"
+                        style={{
+                          border: "0.8px solid black",
+                          borderRadius: "5px",
+                          boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.3)",
+                        }}
+                        name="person_refer_phone"
+                        type="tel"
+                        maxLength={10}
+                        inputMode="numeric"
+                        className="form-control mobile"
+                        placeholder="Referral Person's Contact Number"
+                        required
+                        value={formData.person_refer_phone}
+                        onChange={(e) => {
+                          const cleaned = e.target.value.replace(/\D/g, "").slice(0, 10);
+                          setFormData({ ...formData, person_refer_phone: cleaned });
+                          if (errorMessage) setErrorMessage("");
+                        }}
+                      />
                     </div>
-                  </div>
 
-                  <div className="modal-form mt-4">
-                    <button
-                      type="submit"
-                      style={{
-                        boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.4)",
-                        border: "0.8px solid black",
-                        borderRadius: "5px",
-                        width: "100%",
-                      }}
-                      className="btn btn-primary btn-hover-primary"
-                    >
-                      Submit
-                    </button>
-                  </div>
-                </form>
+                    <div className="modal-form mb-3">
+                      <label
+                        className="form-label"
+                        style={{ fontWeight: 500, marginBottom: "4px" }}
+                      >
+                        Referral Person&apos;s Email
+                      </label>
+                      <input
+                        id="person_refer_email"
+                        style={{
+                          border: "0.8px solid black",
+                          borderRadius: "5px",
+                          boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.3)",
+                        }}
+                        name="person_refer_email"
+                        type="email"
+                        className="form-control email"
+                        placeholder="Referral Person's Email"
+                        required
+                        value={formData.person_refer_email}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+
+                    <div className="modal-form mb-4">
+                      <label
+                        className="form-label"
+                        style={{ fontWeight: 500, marginBottom: "4px" }}
+                      >
+                        Course Referring For
+                      </label>
+                      <select
+                        id="course_refer"
+                        name="course_refer"
+                        style={{
+                          border: "0.8px solid black",
+                          borderRadius: "5px",
+                          boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.3)",
+                        }}
+                        className="form-control"
+                        value={formData.course_refer}
+                        onChange={handleInputChange}
+                      >
+                        <option value="">Select Course</option>
+                        {REFERRAL_COURSES.map((course) => (
+                          <option key={course.id} value={course.id}>
+                            {course.name}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div className="col-md-12 mb-3">
+                      <div className="d-flex align-items-start gap-2">
+                        <input
+                          type="checkbox"
+                          id="eligibility"
+                          className="counseller_terms_checkbox mt-1"
+                          name="eligibility"
+                          required
+                          checked={formData.eligibility}
+                          onChange={handleInputChange}
+                        />
+                        <label
+                          htmlFor="eligibility"
+                          className="counseller_terms_checkbox_label mb-0"
+                          style={{ fontSize: "13px", lineHeight: "1.5" }}
+                        >
+                          By submitting this form, I agree to Counsel India&apos;s{" "}
+                          <Link
+                            href="/terms-condition"
+                            style={{ color: "#07a64b" }}
+                            target="_blank"
+                          >
+                            Terms &amp; Conditions
+                          </Link>{" "}
+                          and{" "}
+                          <Link href="/privacy-policy" style={{ color: "#07a64b" }} target="_blank">
+                            Privacy Policy.
+                          </Link>
+                        </label>
+                      </div>
+                    </div>
+
+                    <div className="modal-form mt-4">
+                      <button
+                        type="submit"
+                        disabled={isSubmitting}
+                        style={{
+                          boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.4)",
+                          border: "0.8px solid black",
+                          borderRadius: "5px",
+                          width: "100%",
+                        }}
+                        className="btn btn-primary btn-hover-primary"
+                      >
+                        {isSubmitting ? "Submitting..." : "Submit"}
+                      </button>
+                    </div>
+                  </form>
+                )}
               </div>
             </div>
             {/* Modal Content End */}
@@ -871,154 +1026,6 @@ export default function ReferAndEarnView() {
         </div>
       </div>
       {/* Referral Modal End */}
-
-      {/* OTP Modal Start */}
-      <div
-        className={`modal fade ${isOtpOpen ? "show" : ""}`}
-        id="otpModalrefer"
-        tabIndex={-1}
-        role="dialog"
-        aria-hidden={!isOtpOpen}
-        style={{
-          display: isOtpOpen ? "block" : "none",
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          overflowX: "hidden",
-          overflowY: "auto",
-          zIndex: 1070,
-        }}
-        onClick={(e) => {
-          if (e.target === e.currentTarget) setIsOtpOpen(false);
-        }}
-      >
-        <div className="modal-dialog modal-dialog-centered" style={{ maxWidth: "420px" }}>
-          <div
-            className="modal-content"
-            style={{
-              border: "0.8px solid black",
-              borderRadius: "5px",
-              boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.3)",
-              backgroundColor: "#ffffff",
-              position: "relative",
-              padding: "30px",
-            }}
-          >
-            <button
-              type="button"
-              className="modal-close"
-              onClick={() => setIsOtpOpen(false)}
-              style={{
-                position: "absolute",
-                top: "12px",
-                right: "15px",
-                color: "#333",
-                background: "transparent",
-                border: 0,
-                fontSize: "24px",
-                cursor: "pointer",
-                lineHeight: 1,
-              }}
-            >
-              &times;
-            </button>
-            <div className="modal-header pb-2" style={{ borderBottom: "1px solid #eee" }}>
-              <h5
-                className="modal-title"
-                id="otpModalLabel"
-                style={{ fontSize: "20px", fontWeight: 600 }}
-              >
-                OTP Verification
-              </h5>
-            </div>
-            <div className="modal-body pt-3">
-              <form id="otpFormrefer" onSubmit={handleOtpVerify}>
-                <div className="mb-3">
-                  <label
-                    htmlFor="otprefer"
-                    className="form-label"
-                    style={{ fontWeight: 500, marginBottom: "6px" }}
-                  >
-                    Enter OTP
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="otprefer"
-                    style={{
-                      border: "0.8px solid black",
-                      borderRadius: "5px",
-                      boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.3)",
-                    }}
-                    name="otprefer"
-                    placeholder="Enter your OTP here"
-                    required
-                    value={otpValue}
-                    onChange={(e) => setOtpValue(e.target.value.replace(/[^0-9]/g, ""))}
-                  />
-                </div>
-                <div style={{ textAlign: "right", marginTop: "10px" }}>
-                  {resendCountdown > 0 ? (
-                    <span id="resendOTPTimerrefer" style={{ color: "#777", fontSize: "14px" }}>
-                      (Resend in <span id="resendTimerValuerefer">{resendCountdown}</span> sec)
-                    </span>
-                  ) : (
-                    <span
-                      id="resendOTPTextrefer"
-                      style={{
-                        cursor: "pointer",
-                        color: "#07a64b",
-                        fontWeight: 600,
-                        fontSize: "14px",
-                      }}
-                      onClick={handleResendOtp}
-                    >
-                      Resend OTP
-                    </span>
-                  )}
-                </div>
-                {otpSuccess && (
-                  <div
-                    id="otpSuccessrefer"
-                    style={{
-                      color: "green",
-                      textAlign: "center",
-                      marginTop: "12px",
-                      fontWeight: 600,
-                    }}
-                  >
-                    Referral details submitted successfully!
-                  </div>
-                )}
-                {otpError && (
-                  <div
-                    id="otpErrorsrefer"
-                    style={{
-                      textAlign: "center",
-                      marginTop: "12px",
-                      color: "#dc3545",
-                    }}
-                  >
-                    {otpError}
-                  </div>
-                )}
-                <div className="text-center mt-4">
-                  <button
-                    type="submit"
-                    className="btn btn-primary btn-hover-primary"
-                    style={{ minWidth: "140px" }}
-                  >
-                    Verify OTP
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* OTP Modal End */}
     </>
   );
 }

@@ -17,17 +17,41 @@ export default function GrowthCourseEnrollModal({ course, isOpen, onClose }: Pro
     state: "",
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   if (!isOpen) return null;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMessage("");
+
+    const trimmedName = formData.fullName.trim();
+    const trimmedEmail = formData.email.trim();
+    const trimmedPhone = formData.phone.trim();
+
+    if (!trimmedName) {
+      setErrorMessage("Please enter your full name.");
+      return;
+    }
+
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(trimmedEmail)) {
+      setErrorMessage("Please enter a valid email address (e.g. name@example.com).");
+      return;
+    }
+
+    const phoneRegex = /^[6-9]\d{9}$/;
+    if (!phoneRegex.test(trimmedPhone)) {
+      setErrorMessage("Please enter a valid 10-digit mobile number starting with 6, 7, 8, or 9.");
+      return;
+    }
+
     try {
       await submitLead({
         category: "courses-enquiry",
-        name: formData.fullName.trim(),
-        email: formData.email.trim(),
-        mobile: formData.phone.trim(),
+        name: trimmedName,
+        email: trimmedEmail,
+        mobile: trimmedPhone,
         state: formData.state,
         courseName: course?.title || "Growth Course Enquiry",
         medium: "Website Growth Courses",
@@ -100,6 +124,15 @@ export default function GrowthCourseEnrollModal({ course, isOpen, onClose }: Pro
             </div>
           ) : (
             <form onSubmit={handleSubmit}>
+              {errorMessage && (
+                <div
+                  className="alert alert-danger py-2 px-3 font-size-13 mb-3 rounded-3"
+                  role="alert"
+                >
+                  {errorMessage}
+                </div>
+              )}
+
               <div className="mb-3">
                 <label className="form-label font-size-13 fw-semibold text-dark">
                   Full Name <span className="text-danger">*</span>
@@ -111,7 +144,10 @@ export default function GrowthCourseEnrollModal({ course, isOpen, onClose }: Pro
                   className="form-control rounded-3 py-2 px-3 font-size-14"
                   style={{ backgroundColor: "#ffffff", border: "1px solid #d1d5db" }}
                   value={formData.fullName}
-                  onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                  onChange={(e) => {
+                    setFormData({ ...formData, fullName: e.target.value });
+                    if (errorMessage) setErrorMessage("");
+                  }}
                 />
               </div>
 
@@ -126,7 +162,10 @@ export default function GrowthCourseEnrollModal({ course, isOpen, onClose }: Pro
                   className="form-control rounded-3 py-2 px-3 font-size-14"
                   style={{ backgroundColor: "#ffffff", border: "1px solid #d1d5db" }}
                   value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  onChange={(e) => {
+                    setFormData({ ...formData, email: e.target.value });
+                    if (errorMessage) setErrorMessage("");
+                  }}
                 />
               </div>
 
@@ -137,13 +176,18 @@ export default function GrowthCourseEnrollModal({ course, isOpen, onClose }: Pro
                 <input
                   type="tel"
                   required
+                  maxLength={10}
+                  inputMode="numeric"
+                  pattern="[6-9][0-9]{9}"
                   placeholder="10-digit mobile number"
                   className="form-control rounded-3 py-2 px-3 font-size-14"
                   style={{ backgroundColor: "#ffffff", border: "1px solid #d1d5db" }}
                   value={formData.phone}
-                  onChange={(e) =>
-                    setFormData({ ...formData, phone: e.target.value.replace(/\D/g, "") })
-                  }
+                  onChange={(e) => {
+                    const cleaned = e.target.value.replace(/\D/g, "").slice(0, 10);
+                    setFormData({ ...formData, phone: cleaned });
+                    if (errorMessage) setErrorMessage("");
+                  }}
                 />
               </div>
 

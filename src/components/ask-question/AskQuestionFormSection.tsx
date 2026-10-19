@@ -141,19 +141,18 @@ export default function AskQuestionFormSection() {
       newErrors.name = "Please enter your name.";
     }
 
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!formData.email.trim()) {
       newErrors.email = "Please enter your email address.";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email Address.";
+    } else if (!emailRegex.test(formData.email.trim())) {
+      newErrors.email = "Please enter a valid email address.";
     }
 
+    const indianMobileRegex = /^[6-9]\d{9}$/;
     if (!formData.mobile.trim()) {
       newErrors.mobile = "Please enter your mobile number.";
-    } else if (
-      formData.country.includes("+91") &&
-      !/^\d{10}$/.test(formData.mobile.replace(/\D/g, ""))
-    ) {
-      newErrors.mobile = "Mobile number should have 10 digits.";
+    } else if (!indianMobileRegex.test(formData.mobile.trim())) {
+      newErrors.mobile = "Please enter a valid 10-digit mobile number starting with 6, 7, 8, or 9.";
     }
 
     if (!formData.state) {
@@ -183,6 +182,9 @@ export default function AskQuestionFormSection() {
     if (type === "checkbox") {
       const checked = (e.target as HTMLInputElement).checked;
       setFormData((prev) => ({ ...prev, [name]: checked }));
+    } else if (name === "mobile") {
+      const cleaned = value.replace(/\D/g, "").slice(0, 10);
+      setFormData((prev) => ({ ...prev, [name]: cleaned }));
     } else {
       setFormData((prev) => ({ ...prev, [name]: value }));
       if (name === "state") {
@@ -427,8 +429,10 @@ export default function AskQuestionFormSection() {
                       className={`form-control ${errors.mobile ? "is-invalid" : ""}`}
                       id="mobile"
                       name="mobile"
-                      placeholder="Your Mobile Number"
-                      maxLength={14}
+                      placeholder="Your Mobile Number (10 digits)"
+                      maxLength={10}
+                      inputMode="numeric"
+                      pattern="[6-9][0-9]{9}"
                       value={formData.mobile}
                       onChange={handleChange}
                       style={inputStyle}

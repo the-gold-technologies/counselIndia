@@ -157,10 +157,17 @@ export default function SubscribeLeadForm() {
                     <input
                       type="tel"
                       maxLength={10}
+                      inputMode="numeric"
+                      pattern="[6-9][0-9]{9}"
                       className="form-control"
-                      placeholder="9876543210"
+                      placeholder="10-digit mobile number"
                       value={formData.phoneNo}
-                      onChange={(e) => setFormData({ ...formData, phoneNo: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          phoneNo: e.target.value.replace(/\D/g, "").slice(0, 10),
+                        })
+                      }
                     />
                     {errors.phoneNo && (
                       <div className="text-danger font-size-12 mt-1">{errors.phoneNo}</div>

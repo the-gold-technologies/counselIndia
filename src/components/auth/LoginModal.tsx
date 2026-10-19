@@ -16,6 +16,7 @@ export default function LoginModal({ isOpen, onClose, onSuccess }: LoginModalPro
   const [otp, setOtp] = useState("");
   const [otpSent, setOtpSent] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   // Dynamically load lord-icon for animated waving avatar
   useEffect(() => {
@@ -32,6 +33,7 @@ export default function LoginModal({ isOpen, onClose, onSuccess }: LoginModalPro
 
   const handlePasswordLogin = (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMessage("");
     setIsSubmitting(true);
     setTimeout(() => {
       setIsSubmitting(false);
@@ -42,6 +44,13 @@ export default function LoginModal({ isOpen, onClose, onSuccess }: LoginModalPro
 
   const handleSendOtp = (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMessage("");
+    const cleaned = emailOrPhone.trim();
+    const phoneRegex = /^[6-9]\d{9}$/;
+    if (!phoneRegex.test(cleaned)) {
+      setErrorMessage("Please enter a valid 10-digit mobile number starting with 6, 7, 8, or 9.");
+      return;
+    }
     setOtpSent(true);
   };
 
@@ -391,6 +400,22 @@ export default function LoginModal({ isOpen, onClose, onSuccess }: LoginModalPro
         ) : (
           /* OTP Tab Form */
           <form onSubmit={otpSent ? handleOtpLogin : handleSendOtp}>
+            {errorMessage && (
+              <div
+                style={{
+                  backgroundColor: "#fee2e2",
+                  color: "#991b1b",
+                  padding: "9px 12px",
+                  borderRadius: "5px",
+                  fontSize: "13px",
+                  fontWeight: 600,
+                  marginBottom: "16px",
+                  textAlign: "center",
+                }}
+              >
+                {errorMessage}
+              </div>
+            )}
             <div style={{ marginBottom: "18px" }}>
               <label
                 style={{
@@ -405,10 +430,13 @@ export default function LoginModal({ isOpen, onClose, onSuccess }: LoginModalPro
               </label>
               <input
                 type="tel"
-                placeholder="Your mobile number"
+                placeholder="10-digit mobile number"
+                maxLength={10}
+                inputMode="numeric"
+                pattern="[6-9][0-9]{9}"
                 required
                 value={emailOrPhone}
-                onChange={(e) => setEmailOrPhone(e.target.value)}
+                onChange={(e) => setEmailOrPhone(e.target.value.replace(/\D/g, "").slice(0, 10))}
                 style={{
                   borderRadius: "5px",
                   boxShadow: "0 0 5px rgba(0, 0, 0, 0.3)",

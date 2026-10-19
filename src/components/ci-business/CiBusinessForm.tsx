@@ -19,18 +19,43 @@ export default function CiBusinessForm() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.agreed) {
-      alert("Please agree to the Terms & Conditions and Privacy Policy.");
+    setErrorMessage("");
+
+    const nameTrimmed = formData.name.trim();
+    const emailTrimmed = formData.email.trim();
+    const mobileTrimmed = formData.mobile.trim();
+
+    if (!nameTrimmed) {
+      setErrorMessage("Please enter your full name.");
       return;
     }
+
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailTrimmed || !emailRegex.test(emailTrimmed)) {
+      setErrorMessage("Please enter a valid email address.");
+      return;
+    }
+
+    const indianMobileRegex = /^[6-9]\d{9}$/;
+    if (!indianMobileRegex.test(mobileTrimmed)) {
+      setErrorMessage("Please enter a valid 10-digit mobile number starting with 6, 7, 8, or 9.");
+      return;
+    }
+
+    if (!formData.agreed) {
+      setErrorMessage("Please agree to the Terms & Conditions and Privacy Policy.");
+      return;
+    }
+
     await submitLead({
       category: "ci-business",
-      name: formData.name.trim(),
-      email: formData.email.trim(),
-      mobile: formData.mobile.trim(),
+      name: nameTrimmed,
+      email: emailTrimmed,
+      mobile: mobileTrimmed,
       countryCode: formData.country,
       state: formData.state,
       city: formData.city,
@@ -121,6 +146,22 @@ export default function CiBusinessForm() {
             </div>
           ) : (
             <form onSubmit={handleSubmit}>
+              {errorMessage && (
+                <div
+                  style={{
+                    backgroundColor: "#fee2e2",
+                    color: "#991b1b",
+                    padding: "10px 16px",
+                    borderRadius: "6px",
+                    fontSize: "14px",
+                    fontWeight: 600,
+                    marginBottom: "20px",
+                    textAlign: "center",
+                  }}
+                >
+                  {errorMessage}
+                </div>
+              )}
               <div className="row gx-md-5 gy-4 gy-md-5">
                 {/* Row 1: Name & Email */}
                 <div className="col-md-6 col-12">
@@ -167,11 +208,18 @@ export default function CiBusinessForm() {
                   <input
                     type="tel"
                     required
-                    maxLength={12}
-                    placeholder="Your Mobile Number"
+                    maxLength={10}
+                    inputMode="numeric"
+                    pattern="[6-9][0-9]{9}"
+                    placeholder="Your Mobile Number (10 digits)"
                     className="form-control form-input-custom"
                     value={formData.mobile}
-                    onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        mobile: e.target.value.replace(/\D/g, "").slice(0, 10),
+                      })
+                    }
                   />
                 </div>
 

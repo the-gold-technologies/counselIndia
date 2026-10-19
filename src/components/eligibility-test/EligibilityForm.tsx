@@ -266,16 +266,48 @@ export default function EligibilityForm() {
                     ✓
                   </div>
                   <h4 className="fw-bold text-dark mb-2">Form Submitted Successfully!</h4>
-                  <p className="text-muted mb-4 font-size-14">
+                  <p
+                    className="text-muted mb-4 font-size-14"
+                    style={{ maxWidth: "480px", margin: "0 auto 24px" }}
+                  >
                     Thank you for submitting your eligibility details. Our counselling team will
                     connect with you shortly.
                   </p>
-                  <button
-                    onClick={() => setSubmitSuccess(false)}
-                    className="btn btn-outline-success px-4 py-2"
-                  >
-                    Submit Another Response
-                  </button>
+                  <div className="d-flex justify-content-center align-items-center">
+                    <button
+                      type="button"
+                      onClick={() => setSubmitSuccess(false)}
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        textAlign: "center",
+                        backgroundColor: "#00a651",
+                        color: "#ffffff",
+                        border: "none",
+                        borderRadius: "8px",
+                        fontWeight: 700,
+                        fontSize: "15px",
+                        lineHeight: "1.2",
+                        padding: "13px 32px",
+                        height: "auto",
+                        minHeight: "46px",
+                        cursor: "pointer",
+                        boxShadow: "0 3px 10px rgba(0, 166, 81, 0.25)",
+                        transition: "all 0.2s ease",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.backgroundColor = "#05823a";
+                        e.currentTarget.style.transform = "translateY(-1px)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.backgroundColor = "#00a651";
+                        e.currentTarget.style.transform = "translateY(0)";
+                      }}
+                    >
+                      Submit Another Response
+                    </button>
+                  </div>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit}>

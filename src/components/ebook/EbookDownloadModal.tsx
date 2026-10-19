@@ -75,13 +75,18 @@ export default function EbookDownloadModal({ ebook, isOpen, onClose }: ModalProp
     e.preventDefault();
     setErrorMessage("");
 
-    if (!formData.name.trim()) {
+    const trimmedName = formData.name.trim();
+    const trimmedEmail = formData.email.trim();
+    const trimmedMobile = formData.mobile.trim();
+
+    if (!trimmedName) {
       setErrorMessage("Please enter your full name.");
       return;
     }
 
-    if (!formData.email.trim()) {
-      setErrorMessage("Please enter a valid email address.");
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(trimmedEmail)) {
+      setErrorMessage("Please enter a valid email address (e.g. name@example.com).");
       return;
     }
 
@@ -90,8 +95,9 @@ export default function EbookDownloadModal({ ebook, isOpen, onClose }: ModalProp
       return;
     }
 
-    if (!formData.mobile.trim() || formData.mobile.length < 7) {
-      setErrorMessage("Please enter a valid mobile number.");
+    const phoneRegex = /^[6-9]\d{9}$/;
+    if (!phoneRegex.test(trimmedMobile)) {
+      setErrorMessage("Please enter a valid 10-digit mobile number starting with 6, 7, 8, or 9.");
       return;
     }
 
@@ -342,9 +348,15 @@ export default function EbookDownloadModal({ ebook, isOpen, onClose }: ModalProp
                 type="tel"
                 placeholder="Your Mobile Number"
                 maxLength={10}
+                inputMode="numeric"
+                pattern="[6-9][0-9]{9}"
                 required
                 value={formData.mobile}
-                onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
+                onChange={(e) => {
+                  const cleaned = e.target.value.replace(/\D/g, "").slice(0, 10);
+                  setFormData({ ...formData, mobile: cleaned });
+                  if (errorMessage) setErrorMessage("");
+                }}
                 style={inputStyle}
               />
             </div>

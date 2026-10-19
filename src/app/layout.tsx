@@ -1,3 +1,4 @@
+import UtmTracker from "@/components/common/UtmTracker";
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
@@ -60,6 +61,7 @@ export default function RootLayout({
         <Footer />
         <MobileBottomNav />
         <FloatingContactButtons />
+        <UtmTracker />
         <AutoCampaignPopup />
 
         <Script src="https://code.jquery.com/jquery-3.6.0.min.js" strategy="beforeInteractive" />

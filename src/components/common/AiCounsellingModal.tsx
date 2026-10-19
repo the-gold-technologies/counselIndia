@@ -185,9 +185,16 @@ export default function AiCounsellingModal({ isOpen, onClose }: AiModalProps) {
                 type="tel"
                 placeholder="Your Number"
                 maxLength={10}
+                inputMode="numeric"
+                pattern="[6-9][0-9]{9}"
                 required
                 value={formData.mobile}
-                onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    mobile: e.target.value.replace(/\D/g, "").slice(0, 10),
+                  })
+                }
                 style={{
                   boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.4)",
                   border: "0.8px solid black",

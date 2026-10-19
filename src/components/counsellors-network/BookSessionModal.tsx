@@ -201,10 +201,35 @@ export default function BookSessionModal({ counselor, isOpen, onClose }: ModalPr
     fetchCities();
   }, [formData.state]);
 
+  const [errorMessage, setErrorMessage] = useState("");
+
   if (!isOpen || !counselor) return null;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMessage("");
+
+    const trimmedName = formData.name.trim();
+    const trimmedEmail = formData.email.trim();
+    const trimmedMobile = formData.mobile.trim();
+
+    if (!trimmedName) {
+      setErrorMessage("Please enter your full name.");
+      return;
+    }
+
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!trimmedEmail || !emailRegex.test(trimmedEmail)) {
+      setErrorMessage("Please enter a valid email address (e.g. name@example.com).");
+      return;
+    }
+
+    const phoneRegex = /^[6-9]\d{9}$/;
+    if (!trimmedMobile || !phoneRegex.test(trimmedMobile)) {
+      setErrorMessage("Please enter a valid 10-digit mobile number starting with 6, 7, 8, or 9.");
+      return;
+    }
+
     const selectedCountry = countries.find((c) => String(c.id) === String(formData.country));
     const selectedState = states.find((s) => String(s.id) === String(formData.state));
     const stateName = selectedState?.name || formData.state || "";
@@ -213,9 +238,9 @@ export default function BookSessionModal({ counselor, isOpen, onClose }: ModalPr
 
     await submitLead({
       category: "book-session",
-      name: formData.name.trim(),
-      email: formData.email.trim(),
-      mobile: formData.mobile.trim(),
+      name: trimmedName,
+      email: trimmedEmail,
+      mobile: trimmedMobile,
       countryCode,
       state: stateName,
       city: cityName,
@@ -390,6 +415,21 @@ export default function BookSessionModal({ counselor, isOpen, onClose }: ModalPr
             </div>
           ) : (
             <form onSubmit={handleSubmit}>
+              {errorMessage && (
+                <div
+                  style={{
+                    backgroundColor: "#fee2e2",
+                    color: "#991b1b",
+                    padding: "8px 12px",
+                    borderRadius: "5px",
+                    fontSize: "13px",
+                    marginBottom: "16px",
+                  }}
+                >
+                  {errorMessage}
+                </div>
+              )}
+
               {/* Full Name */}
               <div style={{ marginBottom: "18px" }}>
                 <label style={labelStyle}>
@@ -400,7 +440,10 @@ export default function BookSessionModal({ counselor, isOpen, onClose }: ModalPr
                   placeholder="Full Name"
                   required
                   value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  onChange={(e) => {
+                    setFormData({ ...formData, name: e.target.value });
+                    if (errorMessage) setErrorMessage("");
+                  }}
                   style={inputStyle}
                 />
               </div>
@@ -415,7 +458,10 @@ export default function BookSessionModal({ counselor, isOpen, onClose }: ModalPr
                   placeholder="Your Email"
                   required
                   value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  onChange={(e) => {
+                    setFormData({ ...formData, email: e.target.value });
+                    if (errorMessage) setErrorMessage("");
+                  }}
                   style={inputStyle}
                 />
               </div>
@@ -456,9 +502,16 @@ export default function BookSessionModal({ counselor, isOpen, onClose }: ModalPr
                 <input
                   type="tel"
                   placeholder="Your Number"
+                  maxLength={10}
+                  inputMode="numeric"
+                  pattern="[6-9][0-9]{9}"
                   required
                   value={formData.mobile}
-                  onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
+                  onChange={(e) => {
+                    const cleaned = e.target.value.replace(/\D/g, "").slice(0, 10);
+                    setFormData({ ...formData, mobile: cleaned });
+                    if (errorMessage) setErrorMessage("");
+                  }}
                   style={inputStyle}
                 />
               </div>

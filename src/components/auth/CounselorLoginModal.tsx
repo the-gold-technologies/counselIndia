@@ -131,16 +131,24 @@ export default function CounselorLoginModal({
     e.preventDefault();
     setErrorMessage("");
 
-    if (!regName.trim()) {
+    const name = regName.trim();
+    const email = regEmail.trim();
+    const mobile = regMobile.trim();
+
+    if (!name) {
       setErrorMessage("Please enter your full name.");
       return;
     }
-    if (!regEmail.trim()) {
-      setErrorMessage("Please enter your email address.");
+
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!email || !emailRegex.test(email)) {
+      setErrorMessage("Please enter a valid email address.");
       return;
     }
-    if (!regMobile.trim()) {
-      setErrorMessage("Please enter your mobile number.");
+
+    const indianMobileRegex = /^[6-9]\d{9}$/;
+    if (!indianMobileRegex.test(mobile)) {
+      setErrorMessage("Please enter a valid 10-digit mobile number starting with 6, 7, 8, or 9.");
       return;
     }
 
@@ -431,9 +439,12 @@ export default function CounselorLoginModal({
                 </label>
                 <input
                   type="tel"
-                  placeholder="Your Mobile Number"
+                  placeholder="Your Mobile Number (10 digits)"
+                  maxLength={10}
+                  inputMode="numeric"
+                  pattern="[6-9][0-9]{9}"
                   value={regMobile}
-                  onChange={(e) => setRegMobile(e.target.value)}
+                  onChange={(e) => setRegMobile(e.target.value.replace(/\D/g, "").slice(0, 10))}
                   style={inputStyle}
                   required
                 />

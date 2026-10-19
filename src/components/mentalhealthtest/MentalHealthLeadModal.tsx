@@ -29,7 +29,8 @@ export default function MentalHealthLeadModal({ test, isOpen, onClose, onStart }
       return;
     }
 
-    if (!email) {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!email || !emailRegex.test(email)) {
       setErrorMessage("Please enter a valid email address.");
       return;
     }
@@ -199,9 +200,16 @@ export default function MentalHealthLeadModal({ test, isOpen, onClose, onStart }
               type="tel"
               placeholder="Your Mobile Number"
               maxLength={10}
+              inputMode="numeric"
+              pattern="[6-9][0-9]{9}"
               required
               value={formData.mobile}
-              onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  mobile: e.target.value.replace(/\D/g, "").slice(0, 10),
+                })
+              }
               style={inputStyle}
             />
           </div>

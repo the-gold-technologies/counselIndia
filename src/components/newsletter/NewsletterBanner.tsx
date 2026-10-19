@@ -5,22 +5,29 @@ import { submitLead } from "@/services/leadService";
 export default function NewsletterBanner() {
   const [email, setEmail] = useState("");
   const [isSubscribed, setIsSubscribed] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email.trim()) {
-      await submitLead({
-        category: "subscription",
-        email: email.trim(),
-        medium: "Website Newsletter Banner",
-        source: "Newsletter Page Banner",
-      });
-      setIsSubscribed(true);
-      setTimeout(() => {
-        setIsSubscribed(false);
-        setEmail("");
-      }, 4000);
+    setErrorMsg("");
+    const trimmed = email.trim();
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!trimmed || !emailRegex.test(trimmed)) {
+      setErrorMsg("Please enter a valid email address.");
+      return;
     }
+
+    await submitLead({
+      category: "subscription",
+      email: trimmed,
+      medium: "Website Newsletter Banner",
+      source: "Newsletter Page Banner",
+    });
+    setIsSubscribed(true);
+    setTimeout(() => {
+      setIsSubscribed(false);
+      setEmail("");
+    }, 4000);
   };
 
   return (
@@ -130,6 +137,19 @@ export default function NewsletterBanner() {
             Subscribe Free
           </button>
         </form>
+
+        {errorMsg && (
+          <p
+            style={{
+              color: "#dc2626",
+              fontSize: "13.5px",
+              fontWeight: 600,
+              marginTop: "12px",
+            }}
+          >
+            {errorMsg}
+          </p>
+        )}
 
         {isSubscribed && (
           <p

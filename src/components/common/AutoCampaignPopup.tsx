@@ -58,25 +58,33 @@ export default function AutoCampaignPopup() {
     e.preventDefault();
     setErrorMessage("");
 
-    if (!name.trim()) {
+    const trimmedName = name.trim();
+    const trimmedEmail = email.trim();
+    const trimmedMobile = mobile.trim();
+
+    if (!trimmedName) {
       setErrorMessage("Please enter your full name");
       return;
     }
-    if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      setErrorMessage("Please enter your email address");
+
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!trimmedEmail || !emailRegex.test(trimmedEmail)) {
+      setErrorMessage("Please enter a valid email address (e.g. name@example.com)");
       return;
     }
-    if (!mobile.trim() || !/^\d{10}$/.test(mobile.replace(/\D/g, ""))) {
-      setErrorMessage("Your mobile number must be 10 digits");
+
+    const phoneRegex = /^[6-9]\d{9}$/;
+    if (!trimmedMobile || !phoneRegex.test(trimmedMobile)) {
+      setErrorMessage("Please enter a valid 10-digit mobile number starting with 6, 7, 8, or 9");
       return;
     }
 
     setIsSubmitting(true);
     await submitLead({
       category: "exit-intent",
-      name: name.trim(),
-      email: email.trim(),
-      mobile: mobile.trim(),
+      name: trimmedName,
+      email: trimmedEmail,
+      mobile: trimmedMobile,
       medium: "Website Exit Intent / Auto Popup",
       source: "Auto Campaign Popup",
     });
@@ -371,9 +379,15 @@ export default function AutoCampaignPopup() {
                       name="mobile"
                       id="mobile"
                       maxLength={10}
+                      inputMode="numeric"
+                      pattern="[6-9][0-9]{9}"
                       placeholder="Your Mobile Number"
                       value={mobile}
-                      onChange={(e) => setMobile(e.target.value)}
+                      onChange={(e) => {
+                        const cleaned = e.target.value.replace(/\D/g, "").slice(0, 10);
+                        setMobile(cleaned);
+                        if (errorMessage) setErrorMessage("");
+                      }}
                       style={{
                         width: "280px",
                         height: "48px",

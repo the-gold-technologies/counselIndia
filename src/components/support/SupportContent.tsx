@@ -27,15 +27,17 @@ export default function SupportContent() {
     if (!formData.name.trim()) {
       errs.name = "Please enter your full name.";
     }
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!formData.email.trim()) {
       errs.email = "Please enter your email address.";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+    } else if (!emailRegex.test(formData.email.trim())) {
       errs.email = "Please enter a valid email address.";
     }
+    const indianMobileRegex = /^[6-9]\d{9}$/;
     if (!formData.mobile.trim()) {
       errs.mobile = "Please enter your mobile number.";
-    } else if (formData.mobile.replace(/\D/g, "").length < 10) {
-      errs.mobile = "Please enter a valid 10-digit mobile number.";
+    } else if (!indianMobileRegex.test(formData.mobile.trim())) {
+      errs.mobile = "Please enter a valid 10-digit mobile number starting with 6, 7, 8, or 9.";
     }
     if (!formData.enquiry_type) {
       errs.enquiry_type = "Please select an enquiry type.";
@@ -248,14 +250,17 @@ export default function SupportContent() {
                             <input
                               name="mobile"
                               type="tel"
-                              maxLength={12}
+                              maxLength={10}
+                              inputMode="numeric"
+                              pattern="[6-9][0-9]{9}"
                               className={`form-control sub ${errors.mobile ? "is-invalid" : ""}`}
-                              placeholder="Your Mobile Number"
+                              placeholder="Your Mobile Number (10 digits)"
                               value={formData.mobile}
                               onChange={(e) => {
+                                const cleaned = e.target.value.replace(/\D/g, "").slice(0, 10);
                                 setFormData({
                                   ...formData,
-                                  mobile: e.target.value,
+                                  mobile: cleaned,
                                 });
                                 if (errors.mobile) setErrors({ ...errors, mobile: undefined });
                               }}

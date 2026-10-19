@@ -21,18 +21,38 @@ export default function BlogDetailContent({ blog, relatedBlogs }: DetailProps) {
     termsAgreed: false,
   });
   const [submitted, setSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmitComment = (e: React.FormEvent) => {
     e.preventDefault();
-    if (
-      !commentForm.name ||
-      !commentForm.email ||
-      !commentForm.mobile ||
-      !commentForm.termsAgreed
-    ) {
-      alert("Please fill in all required fields and accept the Terms & Conditions.");
+    setErrorMessage("");
+
+    const nameTrimmed = commentForm.name.trim();
+    const emailTrimmed = commentForm.email.trim();
+    const mobileTrimmed = commentForm.mobile.trim();
+
+    if (!nameTrimmed) {
+      setErrorMessage("Please enter your name.");
       return;
     }
+
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailTrimmed || !emailRegex.test(emailTrimmed)) {
+      setErrorMessage("Please enter a valid email address.");
+      return;
+    }
+
+    const indianMobileRegex = /^[6-9]\d{9}$/;
+    if (!indianMobileRegex.test(mobileTrimmed)) {
+      setErrorMessage("Please enter a valid 10-digit mobile number starting with 6, 7, 8, or 9.");
+      return;
+    }
+
+    if (!commentForm.termsAgreed) {
+      setErrorMessage("Please accept the Terms & Conditions.");
+      return;
+    }
+
     setSubmitted(true);
     setTimeout(() => {
       setSubmitted(false);
@@ -426,6 +446,21 @@ export default function BlogDetailContent({ blog, relatedBlogs }: DetailProps) {
                   </div>
                 ) : (
                   <form onSubmit={handleSubmitComment}>
+                    {errorMessage && (
+                      <div
+                        style={{
+                          backgroundColor: "#fee2e2",
+                          color: "#991b1b",
+                          padding: "10px 14px",
+                          borderRadius: "5px",
+                          fontSize: "13.5px",
+                          fontWeight: 600,
+                          marginBottom: "16px",
+                        }}
+                      >
+                        {errorMessage}
+                      </div>
+                    )}
                     {/* Full Name */}
                     <div style={{ marginBottom: "16px" }}>
                       <input
@@ -510,10 +545,18 @@ export default function BlogDetailContent({ blog, relatedBlogs }: DetailProps) {
                     <div style={{ marginBottom: "16px" }}>
                       <input
                         type="tel"
-                        placeholder="Your Mobile Number"
+                        placeholder="Your Mobile Number (10 digits)"
+                        maxLength={10}
+                        inputMode="numeric"
+                        pattern="[6-9][0-9]{9}"
                         required
                         value={commentForm.mobile}
-                        onChange={(e) => setCommentForm({ ...commentForm, mobile: e.target.value })}
+                        onChange={(e) =>
+                          setCommentForm({
+                            ...commentForm,
+                            mobile: e.target.value.replace(/\D/g, "").slice(0, 10),
+                          })
+                        }
                         style={{
                           width: "100%",
                           height: "48px",

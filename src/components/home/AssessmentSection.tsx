@@ -143,7 +143,7 @@ export default function AssessmentSection() {
 
     const mobileRegex = /^[6-9]\d{9}$/;
     if (!mobileRegex.test(formData.mobile.trim())) {
-      errors.mobile = "Please enter a valid 10-digit Indian mobile number.";
+      errors.mobile = "Please enter a valid 10-digit mobile number starting with 6, 7, 8, or 9.";
     }
 
     if (!formData.terms) {
@@ -468,9 +468,16 @@ export default function AssessmentSection() {
                     type="tel"
                     placeholder="Your Mobile Number"
                     maxLength={10}
+                    inputMode="numeric"
+                    pattern="[6-9][0-9]{9}"
                     required
                     value={formData.mobile}
-                    onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        mobile: e.target.value.replace(/\D/g, "").slice(0, 10),
+                      })
+                    }
                     style={inputStyle}
                   />
                   {formErrors.mobile && (
