@@ -167,7 +167,7 @@ const TESTS: TestData[] = [
   },
 ];
 
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import { Suspense, useEffect } from "react";
 
 function MentalHealthTestContent() {
@@ -217,13 +217,27 @@ function MentalHealthTestContent() {
     setIsLeadModalOpen(true);
   };
 
-  const handleStartTest = (user: { name: string; email: string; mobile: string }) => {
-    setUserData(user);
+  const router = useRouter();
+
+  const handleStartTest = (user: {
+    name: string;
+    email: string;
+    mobile: string;
+    leadId?: string;
+  }) => {
     setIsLeadModalOpen(false);
-    setIsTestActive(true);
-    setAnswers({});
-    setTestCompleted(false);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    let targetRoute = "/mental_test1";
+    if (selectedTest?.id === "quality-of-life") {
+      targetRoute = "/mental_test2";
+    } else if (selectedTest?.id === "general-health") {
+      targetRoute = "/mental_test3";
+    }
+    const query = new URLSearchParams();
+    if (user.name) query.set("name", user.name);
+    if (user.email) query.set("email", user.email);
+    if (user.mobile) query.set("mobile", user.mobile);
+    if (user.leadId) query.set("id", user.leadId);
+    router.push(`${targetRoute}?${query.toString()}`);
   };
 
   const handleOptionSelect = (questionId: number, points: number) => {

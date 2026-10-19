@@ -72,7 +72,9 @@ export async function getPersonalityQuestions(): Promise<PersonalityQuestion[]> 
   try {
     const res = await fetchFromAdmin<PersonalityQuestion[]>("/api/personality-test/questions");
     if (res.success && Array.isArray(res.data)) {
-      return res.data.filter((q) => q.status === "Active").sort((a, b) => a.position - b.position);
+      return res.data
+        .filter((q) => q.status === "Active")
+        .sort((a, b) => (a.position || 0) - (b.position || 0));
     }
     return [];
   } catch (error) {
@@ -98,13 +100,30 @@ export async function getPersonalityTabResults(): Promise<PersonalityTabResult[]
 }
 
 /**
- * Submit candidate details and test result to Admin Leads / Personality Entries
+ * Fetch a single personality test entry by lead ID / sNo
+ */
+export async function getPersonalityEntry(leadId: string): Promise<any | null> {
+  try {
+    const res = await fetchFromAdmin<any>(
+      `/api/personality-test/entries?id=${encodeURIComponent(leadId)}`
+    );
+    if (res.success && res.data) {
+      return res.data;
+    }
+    return null;
+  } catch (error) {
+    console.error("[PersonalityService] Failed to fetch personality entry:", error);
+    return null;
+  }
+}
+
+/**
+ * Submit candidate details to Admin Leads / Personality Entries
  */
 export async function submitPersonalityTestLead(
   data: PersonalitySubmissionData
 ): Promise<{ success: boolean; data?: any; error?: string }> {
   try {
-    // 1. Submit through the lead service category personality-test
     const leadRes = await submitLead({
       category: "personality-test",
       name: data.name,
@@ -122,8 +141,8 @@ export async function submitPersonalityTestLead(
         age: data.age,
         proBackground: data.proBackground,
         purposeGiveTest: data.purposeGiveTest,
-        result: data.resultName || "Completed",
-        answers: data.answers,
+        result: data.resultName || "In Progress",
+        answers: data.answers || {},
       },
     });
 
@@ -131,6 +150,48 @@ export async function submitPersonalityTestLead(
   } catch (error: any) {
     console.error("[PersonalityService] Submission error:", error);
     return { success: false, error: error?.message || "Failed to submit lead" };
+  }
+}
+
+/**
+ * Update candidate's test result archetype and answers in Admin Leads / Personality Entries
+ */
+export async function updatePersonalityTestResult(
+  leadId: string,
+  resultName: string,
+  answers: Record<string | number, string>,
+  additionalData?: {
+    name?: string;
+    email?: string;
+    mobile?: string;
+    gender?: string;
+    state?: string;
+    age?: string | number;
+    score?: number;
+    marks?: string;
+    courseName?: string;
+  }
+): Promise<{ success: boolean; data?: any; error?: string }> {
+  try {
+    const adminUrl = process.env.NEXT_PUBLIC_ADMIN_API_URL || "";
+    const res = await fetch(`${adminUrl}/api/personality-test/entries`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: leadId,
+        result: resultName,
+        marks: resultName,
+        answers,
+        ...(additionalData || {}),
+      }),
+    });
+    const json = await res.json();
+    return json;
+  } catch (error: any) {
+    console.error("[PersonalityService] Failed to update lead result:", error);
+    return { success: false, error: error?.message || "Failed to update lead result" };
   }
 }
 
@@ -168,8 +229,10 @@ export function calculatePersonalityResult(
   if (topCount > 0 && topCount === secondCount) {
     const combo = tabResults.find(
       (r) =>
-        (r.name.includes(topTrait) && r.name.includes(secondTrait)) ||
-        (r.name.includes(secondTrait) && r.name.includes(topTrait))
+        (r.name.toLowerCase().includes(topTrait.toLowerCase()) &&
+          r.name.toLowerCase().includes(secondTrait.toLowerCase())) ||
+        (r.name.toLowerCase().includes(secondTrait.toLowerCase()) &&
+          r.name.toLowerCase().includes(topTrait.toLowerCase()))
     );
     if (combo) return combo;
   }

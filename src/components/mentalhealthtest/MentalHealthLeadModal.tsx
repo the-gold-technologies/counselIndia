@@ -7,16 +7,17 @@ interface ModalProps {
   test: TestData | null;
   isOpen: boolean;
   onClose: () => void;
-  onStart: (userData: { name: string; email: string; mobile: string }) => void;
+  onStart: (userData: { name: string; email: string; mobile: string; leadId?: string }) => void;
 }
 
 export default function MentalHealthLeadModal({ test, isOpen, onClose, onStart }: ModalProps) {
   const [formData, setFormData] = useState({ name: "", email: "", mobile: "", terms: true });
   const [errorMessage, setErrorMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   if (!isOpen || !test) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage("");
 
@@ -46,21 +47,36 @@ export default function MentalHealthLeadModal({ test, isOpen, onClose, onStart }
       return;
     }
 
-    submitLead({
-      category: "personality-test",
-      name,
-      email,
-      mobile,
-      content: test.title,
-      medium: "Website Personality / Mental Health Test",
-      source: `Personality Test: ${test.title}`,
-      extraData: {
-        testId: test.id,
-        testTitle: test.title,
-      },
-    }).catch(console.error);
+    if (typeof window !== "undefined") {
+      try {
+        localStorage.setItem("ci_candidate_info", JSON.stringify({ name, email, mobile }));
+      } catch {}
+    }
 
-    onStart({ name, email, mobile });
+    setIsSubmitting(true);
+    try {
+      const res = await submitLead({
+        category: "personality-test",
+        name,
+        email,
+        mobile,
+        content: test.title,
+        medium: "Website Personality / Mental Health Test",
+        source: `Mental Test: ${test.title}`,
+        courseName: test.title,
+        extraData: {
+          testId: test.id,
+          testTitle: test.title,
+          result: "In Progress",
+        },
+      });
+      const leadId = res.data?.id || res.data?.sNo ? String(res.data.id || res.data.sNo) : "";
+      onStart({ name, email, mobile, leadId });
+    } catch {
+      onStart({ name, email, mobile });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const inputStyle: React.CSSProperties = {
@@ -272,30 +288,31 @@ export default function MentalHealthLeadModal({ test, isOpen, onClose, onStart }
           <div style={{ display: "flex", justifyContent: "flex-start" }}>
             <button
               type="submit"
+              disabled={isSubmitting}
               style={{
                 border: "0.8px solid black",
                 borderRadius: "6px",
                 boxShadow: "0px 0px 5px rgba(0, 0, 0, 0.3)",
-                backgroundColor: "#00a651",
+                backgroundColor: isSubmitting ? "#94a3b8" : "#00a651",
                 color: "#ffffff",
                 padding: "0 40px",
                 height: "46px",
                 fontSize: "16px",
                 fontWeight: 700,
-                cursor: "pointer",
+                cursor: isSubmitting ? "not-allowed" : "pointer",
                 display: "inline-flex",
                 alignItems: "center",
                 justifyContent: "center",
                 transition: "background-color 0.2s ease, transform 0.15s ease",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "#009347";
+                if (!isSubmitting) e.currentTarget.style.backgroundColor = "#009347";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "#00a651";
+                if (!isSubmitting) e.currentTarget.style.backgroundColor = "#00a651";
               }}
             >
-              Submit
+              {isSubmitting ? "Submitting..." : "Submit"}
             </button>
           </div>
         </form>

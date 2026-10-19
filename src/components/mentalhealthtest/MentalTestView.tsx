@@ -1,7 +1,9 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { submitLead } from "@/services/leadService";
+import { updatePersonalityTestResult } from "@/services/personalityService";
 
 export interface TestQuestionDef {
   id: number;
@@ -75,11 +77,13 @@ interface MentalTestViewProps {
     name?: string;
     email?: string;
     mobile?: string;
+    state?: string;
     id?: string;
   };
 }
 
 export default function MentalTestView({ testNumber, initialUser }: MentalTestViewProps) {
+  const router = useRouter();
   const config = MENTAL_TESTS_CONFIG[testNumber] || MENTAL_TESTS_CONFIG[1];
 
   const [answers, setAnswers] = useState<Record<number, { choice: string; points: number }>>({});
@@ -87,9 +91,33 @@ export default function MentalTestView({ testNumber, initialUser }: MentalTestVi
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [totalScore, setTotalScore] = useState(0);
 
-  const name = initialUser?.name || "Student";
-  const email = initialUser?.email || "";
-  const mobile = initialUser?.mobile || "";
+  const [candidateName, setCandidateName] = useState(initialUser?.name || "");
+  const [candidateEmail, setCandidateEmail] = useState(initialUser?.email || "");
+  const [candidateMobile, setCandidateMobile] = useState(initialUser?.mobile || "");
+  const [candidateState, setCandidateState] = useState(initialUser?.state || "");
+  const [leadId, setLeadId] = useState(initialUser?.id || "");
+
+  // Fallback to localStorage if initialUser was incomplete
+  React.useEffect(() => {
+    if (initialUser?.name) setCandidateName(initialUser.name);
+    if (initialUser?.email) setCandidateEmail(initialUser.email);
+    if (initialUser?.mobile) setCandidateMobile(initialUser.mobile);
+    if (initialUser?.state) setCandidateState(initialUser.state);
+    if (initialUser?.id) setLeadId(initialUser.id);
+
+    if (typeof window !== "undefined") {
+      try {
+        const saved = localStorage.getItem("ci_candidate_info");
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (!candidateName && parsed.name) setCandidateName(parsed.name);
+          if (!candidateEmail && parsed.email) setCandidateEmail(parsed.email);
+          if (!candidateMobile && parsed.mobile) setCandidateMobile(parsed.mobile);
+          if (!candidateState && parsed.state) setCandidateState(parsed.state);
+        }
+      } catch {}
+    }
+  }, [initialUser]);
 
   const handleSelectOption = (questionId: number, choice: string, points: number) => {
     setAnswers((prev) => ({
@@ -113,35 +141,82 @@ export default function MentalTestView({ testNumber, initialUser }: MentalTestVi
       return;
     }
 
+    // Validate candidate details before submission
+    if (!candidateName.trim() || !candidateEmail.trim() || !candidateMobile.trim()) {
+      setErrorMessage(
+        "Please fill in your Name, Email Address, and Mobile Number before submitting."
+      );
+      const detailsEl = document.getElementById("candidate-details-card");
+      if (detailsEl) {
+        detailsEl.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+      return;
+    }
+
     const calculatedScore = Object.values(answers).reduce((acc, curr) => acc + curr.points, 0);
     setTotalScore(calculatedScore);
     setIsSubmitted(true);
     window.scrollTo({ top: 0, behavior: "smooth" });
 
-    // Submit lead to PostgreSQL admin panel
+    const finalScore = String(calculatedScore);
+
+    const activeId = leadId || initialUser?.id;
+    const formattedAnswers: Record<string | number, string> = {};
+    Object.entries(answers).forEach(([k, v]) => {
+      formattedAnswers[k] = v.choice;
+    });
+
     try {
-      await submitLead({
-        category: "personality-test",
-        name: name !== "Student" ? name : undefined,
-        email: email || undefined,
-        mobile: mobile || undefined,
-        courseName: config.title,
-        content: `Score: ${calculatedScore}/40 in ${config.title}`,
-        medium: "Website Mental Test",
-        source: `Mental Test ${testNumber}: ${config.title}`,
-        extraData: {
-          testNumber,
-          testTitle: config.title,
-          score: calculatedScore,
-          maxScore: 40,
-          percentage: Math.round((calculatedScore / 40) * 100),
-          id: initialUser?.id,
-          answers,
-        },
-      });
+      if (activeId) {
+        // Update the existing lead that was created by the modal
+        await updatePersonalityTestResult(
+          String(activeId),
+          finalScore,
+          formattedAnswers,
+          {
+            name: candidateName.trim(),
+            email: candidateEmail.trim(),
+            mobile: candidateMobile.trim(),
+            state: candidateState.trim() || undefined,
+            score: calculatedScore,
+            marks: finalScore,
+            courseName: config.title,
+          }
+        );
+      } else {
+        // Only if no lead was created previously, create one with complete details
+        const res = await submitLead({
+          category: "personality-test",
+          name: candidateName.trim(),
+          email: candidateEmail.trim(),
+          mobile: candidateMobile.trim(),
+          state: candidateState.trim() || undefined,
+          courseName: config.title,
+          content: `Score: ${calculatedScore}/40 in ${config.title}`,
+          medium: "Website Mental Test",
+          source: `Mental Test ${testNumber}: ${config.title}`,
+          extraData: {
+            testNumber,
+            testTitle: config.title,
+            score: calculatedScore,
+            marks: finalScore,
+            result: finalScore,
+            maxScore: 40,
+            percentage: Math.round((calculatedScore / 40) * 100),
+            answers,
+          },
+        });
+        if (res.data?.id || res.data?.sNo) {
+          setLeadId(String(res.data.id || res.data.sNo));
+        }
+      }
     } catch (err) {
       console.error("Failed to save test submission lead:", err);
     }
+
+    // Redirect to the success page requested by user
+    const targetSuccessUrl = `/mentaltest${testNumber}/success?testNumber=${testNumber}&score=${calculatedScore}&name=${encodeURIComponent(candidateName.trim())}&id=${encodeURIComponent(leadId || initialUser?.id || "")}`;
+    router.push(targetSuccessUrl);
   };
 
   const getResultDetails = (score: number) => {
@@ -249,6 +324,70 @@ export default function MentalTestView({ testNumber, initialUser }: MentalTestVi
                 <div className="card1 pt-2">
                   <div className="card-body1">
                     <form id="personalityTestForm" onSubmit={handleSubmit} noValidate>
+                      {/* Candidate Information Card */}
+                      <div
+                        id="candidate-details-card"
+                        className="p-3 mb-4 rounded-2"
+                        style={{
+                          backgroundColor: "#f0fdf4",
+                          border: "1px solid #bbf7d0",
+                        }}
+                      >
+                        <h6 className="fw-bold mb-3" style={{ color: "#166534", fontSize: "15px" }}>
+                          Candidate Information
+                        </h6>
+                        <div className="row g-2">
+                          <div className="col-md-4">
+                            <input
+                              type="text"
+                              className="form-control form-control-sm"
+                              placeholder="Full Name *"
+                              required
+                              value={candidateName}
+                              onChange={(e) => setCandidateName(e.target.value)}
+                              style={{
+                                border: "1px solid #86efac",
+                                height: "40px",
+                                fontSize: "14px",
+                              }}
+                            />
+                          </div>
+                          <div className="col-md-4">
+                            <input
+                              type="email"
+                              className="form-control form-control-sm"
+                              placeholder="Email Address *"
+                              required
+                              value={candidateEmail}
+                              onChange={(e) => setCandidateEmail(e.target.value)}
+                              style={{
+                                border: "1px solid #86efac",
+                                height: "40px",
+                                fontSize: "14px",
+                              }}
+                            />
+                          </div>
+                          <div className="col-md-4">
+                            <input
+                              type="tel"
+                              className="form-control form-control-sm"
+                              placeholder="Mobile Number *"
+                              maxLength={10}
+                              required
+                              value={candidateMobile}
+                              onChange={(e) =>
+                                setCandidateMobile(e.target.value.replace(/\D/g, "").slice(0, 10))
+                              }
+                              style={{
+                                border: "1px solid #86efac",
+                                height: "40px",
+                                fontSize: "14px",
+                              }}
+                            />
+                          </div>
+                        </div>
+                      </div>
+
                       <div className="containertest">
                         {config.questions.map((q) => (
                           <div className="question" key={q.id} id={`q-block-${q.id}`}>
@@ -339,9 +478,10 @@ export default function MentalTestView({ testNumber, initialUser }: MentalTestVi
                         </button>
                       </div>
 
-                      <input type="hidden" name="name" value={name} />
-                      <input type="hidden" name="email" value={email} />
-                      <input type="hidden" name="mobile" value={mobile} />
+                      <input type="hidden" name="name" value={candidateName} />
+                      <input type="hidden" name="email" value={candidateEmail} />
+                      <input type="hidden" name="mobile" value={candidateMobile} />
+                      <input type="hidden" name="state" value={candidateState} />
                     </form>
                   </div>
                 </div>

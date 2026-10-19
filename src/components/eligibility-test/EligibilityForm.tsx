@@ -57,7 +57,11 @@ const DEFAULT_CITIES: CityItem[] = [
   { id: "other", name: "Other" },
 ];
 
-export default function EligibilityForm() {
+interface EligibilityFormProps {
+  onSuccess?: (candidate: { id?: string; name: string; email: string; mobile: string }) => void;
+}
+
+export default function EligibilityForm({ onSuccess }: EligibilityFormProps) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -200,7 +204,7 @@ export default function EligibilityForm() {
     }
 
     setIsSubmitting(true);
-    await submitLead({
+    const res = await submitLead({
       category: "personality-test",
       name: formData.name.trim(),
       email: formData.email.trim(),
@@ -221,7 +225,17 @@ export default function EligibilityForm() {
       },
     });
     setIsSubmitting(false);
-    setSubmitSuccess(true);
+    const leadId = res.data?.id || res.data?.sNo ? String(res.data.id || res.data.sNo) : "";
+    if (onSuccess) {
+      onSuccess({
+        id: leadId,
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        mobile: formData.mobile.trim(),
+      });
+    } else {
+      setSubmitSuccess(true);
+    }
   };
 
   return (
