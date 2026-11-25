@@ -18,6 +18,7 @@ export interface DbCourse {
   duration?: string;
   listDuration?: string;
   enrolment?: string;
+  enrolmentSeats?: string;
   lessons?: string;
   nextBatchDate?: string;
   totalProgramFee?: string;
@@ -109,7 +110,20 @@ function parseList(input?: string | string[]): string[] {
     .filter(Boolean);
 }
 
+/** Admins can switch individual overview / objective / credential / curriculum items off. */
+function activeItems(list: unknown): any[] {
+  if (!Array.isArray(list)) return [];
+  return list.filter((it: any) => String(it?.status || "Active").toLowerCase() !== "inactive");
+}
+
 export function mapDbToCourseDetail(c: any): CourseDetailData {
+  c = {
+    ...c,
+    overviewData: activeItems(c.overviewData),
+    learnData: activeItems(c.learnData),
+    credentialData: activeItems(c.credentialData),
+    curriculumData: activeItems(c.curriculumData),
+  };
   const sNo = Number(c.liveId) || c.sNo || 1;
   const rawDesc = c.subdescription || c.aboutUs || c.description || "";
   const cleanDesc = stripHtml(rawDesc);
@@ -295,7 +309,7 @@ export async function getActiveCourses(search?: string, category?: string): Prom
       const sNo = Number(c.liveId) || c.sNo || idx + 1;
       const { badgeText, badgeBg } = getBadge(c.category);
 
-      let desc = c.subdescription || "";
+      let desc = stripHtml(c.subdescription || "");
       desc = desc.replace(/\r\n/g, " ").replace(/\n/g, " ").trim();
       if (desc.length > 175) {
         desc = desc.slice(0, 172) + "...";
@@ -309,7 +323,10 @@ export async function getActiveCourses(search?: string, category?: string): Prom
         slug: c.slug,
         cover_image: coverImg,
         list_duration: c.listDuration || c.duration || "3 months",
-        enrolment: c.enrolment ? `${c.enrolment} Seats Left` : "25 Seats Left",
+        enrolment:
+          c.enrolmentSeats || c.enrolment
+            ? `${c.enrolmentSeats || c.enrolment} Seats Left`
+            : "25 Seats Left",
         subdescription:
           desc ||
           "A professional psychology and counselling program designed to build clinical competencies and practical therapy skills.",
