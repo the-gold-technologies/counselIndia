@@ -10,7 +10,7 @@ export default function StatsCounter() {
     },
     {
       icon: "/assets/images/7.svg",
-      count: "200000",
+      count: "250000",
       text: "Happy Learners & Still Counting",
     },
     {

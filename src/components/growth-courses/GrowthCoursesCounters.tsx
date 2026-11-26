@@ -10,7 +10,7 @@ const COUNTERS_DATA = [
   },
   {
     id: 2,
-    count: "200000+",
+    count: "250000+",
     text: "Happy Learners and\ncounting",
     icon: "/assets/images/7.svg",
   },

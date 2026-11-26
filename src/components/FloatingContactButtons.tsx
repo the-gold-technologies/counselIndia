@@ -5,7 +5,7 @@ import { useSiteSettings } from "@/hooks/useSiteSettings";
 
 export default function FloatingContactButtons() {
   const { settings } = useSiteSettings();
-  const rawWa = settings.whatsNumber || "8448519298";
+  const rawWa = settings.whatsNumber || "8031320449";
   const cleanDigits = rawWa.replace(/[^\d]/g, "");
   const whatsappTarget = cleanDigits.length === 10 ? `91${cleanDigits}` : cleanDigits;
 

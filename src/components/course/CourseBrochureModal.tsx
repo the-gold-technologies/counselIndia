@@ -118,7 +118,7 @@ export default function CourseBrochureModal({
   if (!isOpen) return null;
 
   const inquiryPhone = settings.inquiryNumber || settings.helplineNumber || "8031320449";
-  const rawWa = settings.whatsNumber || "8448519298";
+  const rawWa = settings.whatsNumber || "8031320449";
   const cleanDigits = rawWa.replace(/[^\d]/g, "");
   const whatsappTarget = cleanDigits.length === 10 ? `91${cleanDigits}` : cleanDigits;
 

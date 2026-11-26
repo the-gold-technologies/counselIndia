@@ -1,10 +1,22 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useSiteSettings } from "@/hooks/useSiteSettings";
 import CounselorLoginModal from "./auth/CounselorLoginModal";
 
 import { submitLead } from "@/services/leadService";
+import { getActiveCourses } from "@/services/courseService";
+
+// Footer course directory is built from active courses in the Admin panel, grouped by category.
+// Categories listed here are shown first, in this order; any other category follows.
+const FOOTER_CATEGORY_ORDER = [
+  "Masters Programs",
+  "PG Diploma Programs",
+  "Certification Programs",
+  "Entrepreneurship Programs",
+];
+
+type FooterCourseGroup = { title: string; courses: { name: string; slug: string }[] };
 
 export default function Footer() {
   const { settings } = useSiteSettings();
@@ -12,6 +24,28 @@ export default function Footer() {
   const [newsletterSubscribed, setNewsletterSubscribed] = useState(false);
   const [newsletterError, setNewsletterError] = useState("");
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [courseGroups, setCourseGroups] = useState<FooterCourseGroup[]>([]);
+
+  useEffect(() => {
+    let isMounted = true;
+    getActiveCourses().then((courses) => {
+      if (!isMounted) return;
+      const byCategory = new Map<string, FooterCourseGroup>();
+      for (const c of courses) {
+        const title = c.category || "Other Programs";
+        if (!byCategory.has(title)) byCategory.set(title, { title, courses: [] });
+        byCategory.get(title)!.courses.push({ name: c.name, slug: c.slug });
+      }
+      const rank = (t: string) => {
+        const i = FOOTER_CATEGORY_ORDER.indexOf(t);
+        return i === -1 ? FOOTER_CATEGORY_ORDER.length : i;
+      };
+      setCourseGroups([...byCategory.values()].sort((a, b) => rank(a.title) - rank(b.title)));
+    });
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -230,7 +264,7 @@ export default function Footer() {
                     </li>
                     <li>
                       <a
-                        href="https://rzp.io/l/counselindiapayment"
+                        href="https://rzp.io/rzp/X5Q7xhF"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-white hover-text-primary text-decoration-none"
@@ -557,117 +591,29 @@ export default function Footer() {
 
             {/* SEO Categorized Course Directory Links */}
             <div className="font-size-13" style={{ lineHeight: "1.9" }}>
-              <div className="mb-3">
-                <h6 className="text-white fw-bold mb-1 font-size-14">Trending MBA Programs</h6>
-                <div>
-                  <Link
-                    href="/courses/masters-industrial-organizational-psychology"
-                    className="text-decoration-none hover-text-white"
-                    style={{ color: "#969696" }}
-                  >
-                    Masters in Industrial &amp; Organizational Psychology
-                  </Link>
+              {courseGroups.map((group) => (
+                <div className="mb-3" key={group.title}>
+                  <h6 className="text-white fw-bold mb-1 font-size-14">{group.title}</h6>
+                  <div>
+                    {group.courses.map((course, idx) => (
+                      <React.Fragment key={course.slug}>
+                        {idx > 0 && (
+                          <span className="mx-2" style={{ color: "#969696" }}>
+                            |
+                          </span>
+                        )}
+                        <Link
+                          href={`/courses/${course.slug}`}
+                          className="text-decoration-none hover-text-white"
+                          style={{ color: "#969696" }}
+                        >
+                          {course.name}
+                        </Link>
+                      </React.Fragment>
+                    ))}
+                  </div>
                 </div>
-              </div>
-
-              <div className="mb-3">
-                <h6 className="text-white fw-bold mb-1 font-size-14">Master&apos;s Programs</h6>
-                <div>
-                  <Link
-                    href="/courses/counselling-master-course-advanced"
-                    className="text-decoration-none hover-text-white"
-                    style={{ color: "#969696" }}
-                  >
-                    Counselling Master Course- Advanced
-                  </Link>
-                  <span className="mx-2" style={{ color: "#969696" }}>
-                    |
-                  </span>
-                  <Link
-                    href="/courses/counselling-master-course-intermediate"
-                    className="text-decoration-none hover-text-white"
-                    style={{ color: "#969696" }}
-                  >
-                    Counselling Master Course - Intermediate
-                  </Link>
-                  <span className="mx-2" style={{ color: "#969696" }}>
-                    |
-                  </span>
-                  <Link
-                    href="/courses/counselling-master-course-foundation"
-                    className="text-decoration-none hover-text-white"
-                    style={{ color: "#969696" }}
-                  >
-                    Counselling Master Course- Foundation
-                  </Link>
-                </div>
-              </div>
-
-              <div className="mb-3">
-                <h6 className="text-white fw-bold mb-1 font-size-14">PG Diploma Programs</h6>
-                <div>
-                  <Link
-                    href="/courses/pg-diploma-clinical-psychology"
-                    className="text-decoration-none hover-text-white"
-                    style={{ color: "#969696" }}
-                  >
-                    PG Diploma in Clinical Psychology
-                  </Link>
-                  <span className="mx-2" style={{ color: "#969696" }}>
-                    |
-                  </span>
-                  <Link
-                    href="/courses/pg-diploma-child-psychology"
-                    className="text-decoration-none hover-text-white"
-                    style={{ color: "#969696" }}
-                  >
-                    PG Diploma in Child Psychology
-                  </Link>
-                  <span className="mx-2" style={{ color: "#969696" }}>
-                    |
-                  </span>
-                  <Link
-                    href="/courses/pg-diploma-counselling-psychology"
-                    className="text-decoration-none hover-text-white"
-                    style={{ color: "#969696" }}
-                  >
-                    PG Diploma in Counselling Psychology
-                  </Link>
-                </div>
-              </div>
-
-              <div className="mb-3">
-                <h6 className="text-white fw-bold mb-1 font-size-14">Certification Programs</h6>
-                <div>
-                  <Link
-                    href="/courses/certificate-cbt"
-                    className="text-decoration-none hover-text-white"
-                    style={{ color: "#969696" }}
-                  >
-                    Certificate in Cognitive Behavioural Therapy (CBT)
-                  </Link>
-                  <span className="mx-2" style={{ color: "#969696" }}>
-                    |
-                  </span>
-                  <Link
-                    href="/courses/certificate-art-therapy"
-                    className="text-decoration-none hover-text-white"
-                    style={{ color: "#969696" }}
-                  >
-                    Certificate in Art Therapy
-                  </Link>
-                  <span className="mx-2" style={{ color: "#969696" }}>
-                    |
-                  </span>
-                  <Link
-                    href="/courses/certificate-rebt"
-                    className="text-decoration-none hover-text-white"
-                    style={{ color: "#969696" }}
-                  >
-                    Certificate in Rational Emotive Behaviour Therapy (REBT)
-                  </Link>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>

@@ -254,12 +254,6 @@ export const EVENT_DETAILS_DATA: Record<string, EventDetail> = {
         image: "https://prod-s3.counselindia.com/speaker/uploaded_imageAH0pn5_1721130126.jpeg",
       },
       {
-        id: 5,
-        name: "Mr. Shivam Dixit",
-        designation: "Psychologist & Mentor",
-        image: "https://prod-s3.counselindia.com/speaker/uploaded_imageynDklj_1720949599.jpeg",
-      },
-      {
         id: 6,
         name: "Akshay Agarwal",
         designation: "Psychologist & Mentor",
@@ -320,12 +314,6 @@ export const EVENT_DETAILS_DATA: Record<string, EventDetail> = {
         name: "Abhishek Kapoor",
         designation: "Psychologist & Mentor",
         image: "https://prod-s3.counselindia.com/speaker/uploaded_imageAH0pn5_1721130126.jpeg",
-      },
-      {
-        id: 3,
-        name: "Mr. Shivam Dixit",
-        designation: "Psychologist & Mentor",
-        image: "https://prod-s3.counselindia.com/speaker/uploaded_imageynDklj_1720949599.jpeg",
       },
     ],
     faqs: [
@@ -388,12 +376,6 @@ export const EVENT_DETAILS_DATA: Record<string, EventDetail> = {
         name: "Abhishek Kapoor",
         designation: "Psychologist & Mentor",
         image: "https://prod-s3.counselindia.com/speaker/uploaded_imageAH0pn5_1721130126.jpeg",
-      },
-      {
-        id: 4,
-        name: "Mr. Shivam Dixit",
-        designation: "Psychologist & Mentor",
-        image: "https://prod-s3.counselindia.com/speaker/uploaded_imageynDklj_1720949599.jpeg",
       },
       {
         id: 5,
@@ -476,12 +458,6 @@ export const EVENT_DETAILS_DATA: Record<string, EventDetail> = {
         image: "https://prod-s3.counselindia.com/speaker/uploaded_imageAH0pn5_1721130126.jpeg",
       },
       {
-        id: 3,
-        name: "Mr. Shivam Dixit",
-        designation: "Psychologist & Mentor",
-        image: "https://prod-s3.counselindia.com/speaker/uploaded_imageynDklj_1720949599.jpeg",
-      },
-      {
         id: 4,
         name: "Akshay Agarwal",
         designation: "Psychologist & Mentor",
@@ -555,12 +531,6 @@ export const EVENT_DETAILS_DATA: Record<string, EventDetail> = {
         image: "https://prod-s3.counselindia.com/speaker/uploaded_imageAH0pn5_1721130126.jpeg",
       },
       {
-        id: 4,
-        name: "Mr. Shivam Dixit",
-        designation: "Psychologist & Mentor",
-        image: "https://prod-s3.counselindia.com/speaker/uploaded_imageynDklj_1720949599.jpeg",
-      },
-      {
         id: 5,
         name: "Akshay Agarwal",
         designation: "Psychologist & Mentor",
@@ -620,12 +590,6 @@ export const EVENT_DETAILS_DATA: Record<string, EventDetail> = {
         name: "Mr. P Hanumanth Rao",
         designation: "Psychologist & Mentor",
         image: "https://prod-s3.counselindia.com/speaker/uploaded_imagesFYLsf_1712736242.jpeg",
-      },
-      {
-        id: 2,
-        name: "Mr. Shivam Dixit",
-        designation: "Psychologist & Mentor",
-        image: "https://prod-s3.counselindia.com/speaker/uploaded_imageynDklj_1720949599.jpeg",
       },
       {
         id: 3,
@@ -1759,12 +1723,6 @@ export const EVENT_DETAILS_DATA: Record<string, EventDetail> = {
         image: "https://prod-s3.counselindia.com/speaker/1kH27oFcrn.png",
       },
       {
-        id: 5,
-        name: "Mr. Shivam Dixit",
-        designation: "Psychologist & Mentor",
-        image: "https://prod-s3.counselindia.com/speaker/uploaded_imageynDklj_1720949599.jpeg",
-      },
-      {
         id: 6,
         name: "Akshay Agarwal",
         designation: "Psychologist & Mentor",
@@ -2000,12 +1958,6 @@ export const EVENT_DETAILS_DATA: Record<string, EventDetail> = {
         name: "Abhishek Kapoor",
         designation: "Psychologist & Mentor",
         image: "https://prod-s3.counselindia.com/speaker/uploaded_imageAH0pn5_1721130126.jpeg",
-      },
-      {
-        id: 4,
-        name: "Mr. Shivam Dixit",
-        designation: "Psychologist & Mentor",
-        image: "https://prod-s3.counselindia.com/speaker/uploaded_imageynDklj_1720949599.jpeg",
       },
       {
         id: 5,

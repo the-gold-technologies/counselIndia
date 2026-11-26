@@ -158,16 +158,6 @@ export const NEWS_ARTICLES: NewsItem[] = [
       "https://pninews.in/Counsel-India-and-Medhavi-Skill-University-together-resolve-to-promote-skill-development-opportunities-unveil-Pragati-2024",
   },
   {
-    id: 19,
-    title:
-      "Post Budget Quote For Healthcare 2024 Quote by, Mr. Shivam Dixit, Co-Founder and CEO of Counsel India",
-    publishedDate: "05 Feb 2024",
-    coverImage:
-      "https://prod-s3.counselindia.com/news/WhatsApp Image 2024-03-13 at 12.15.58_06025802_1710312563.jpg",
-    redirectUrl:
-      "https://www.apnnews.com/post-budget-quote-for-healthcare-2024-quote-by-mr-shivam-dixit-co-founder-and-ceo-of-counsel-india/",
-  },
-  {
     id: 20,
     title: "Counsel India Elevates Work Culture with Modernized HR Policies",
     publishedDate: "05 Feb 2024",
