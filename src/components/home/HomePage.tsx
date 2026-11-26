@@ -19,6 +19,8 @@ import NewsInFocus from "@/components/home/NewsInFocus";
 import EventsSpotlight from "@/components/home/EventsSpotlight";
 import LatestNewsAndUpdates from "@/components/home/LatestNewsAndUpdates";
 import AppDownloadBanner from "@/components/home/AppDownloadBanner";
+import AccreditationsSection from "@/components/home/AccreditationsSection";
+import PodcastsSection from "@/components/home/PodcastsSection";
 
 export default function Home() {
   return (
@@ -31,6 +33,9 @@ export default function Home() {
 
       {/* 3. About Counsel India */}
       <AboutSection />
+
+      {/* 4. Accreditations & Associations by World's Top and Best (UGC Universities) */}
+      <AccreditationsSection />
 
       {/* 5. Eligibility Test CTA Banner */}
       <CtaEligibility />
@@ -64,6 +69,9 @@ export default function Home() {
 
       {/* 15. Exclusive Short Courses from Counsel India */}
       <ShortCoursesSlider />
+
+      {/* 15b. Counsel India Podcasts */}
+      <PodcastsSection />
 
       {/* 16. Testimonials - Here’s why learners love us.. */}
       <TestimonialsReviews />

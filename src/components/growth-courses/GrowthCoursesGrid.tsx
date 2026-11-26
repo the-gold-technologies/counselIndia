@@ -50,7 +50,8 @@ export default function GrowthCoursesGrid({ onSelectCourse: _onSelectCourse }: P
           <div className="row g-3 align-items-center">
             <div className="col-lg-5 col-md-12">
               <h3 className="mb-1" style={{ fontSize: "20px", fontWeight: 700, color: "#1e293b" }}>
-                {GROWTH_COURSES.length} Growth Courses in {psychologyBreakdown.length} Psychology Domains
+                {GROWTH_COURSES.length} Growth Courses in {psychologyBreakdown.length} Psychology
+                Domains
               </h3>
               <p className="mb-0 text-muted" style={{ fontSize: "13px" }}>
                 Search by course name or filter by psychology domain.
@@ -165,8 +166,7 @@ export default function GrowthCoursesGrid({ onSelectCourse: _onSelectCourse }: P
                     <span>{area}</span>
                     <span
                       style={{
-                        backgroundColor:
-                          isSelected ? "rgba(255,255,255,0.25)" : "#ecfdf3",
+                        backgroundColor: isSelected ? "rgba(255,255,255,0.25)" : "#ecfdf3",
                         color: isSelected ? "#ffffff" : "#09A64A",
                         borderRadius: "12px",
                         padding: "1px 8px",
@@ -230,4 +230,3 @@ export default function GrowthCoursesGrid({ onSelectCourse: _onSelectCourse }: P
     </div>
   );
 }
-
