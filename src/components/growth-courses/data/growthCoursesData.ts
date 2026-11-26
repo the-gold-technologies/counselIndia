@@ -1,6 +1,8 @@
 export interface GrowthCourse {
   id: number;
   title: string;
+  /** Psychology area — used for the course count & filter on the Growth Courses page */
+  area: string;
   slug: string;
   coverimage: string;
   videoUrl?: string;
@@ -21,6 +23,7 @@ export const GROWTH_COURSES: GrowthCourse[] = [
   {
     id: 1,
     title: "Psychology for Everyday Struggles",
+    area: "General Psychology",
     slug: "psychology-for-everyday-struggles",
     coverimage:
       "https://prod-s3.counselindia.com/blog/Psychology for Everyday Struggles_1736508322.jpg",
@@ -48,6 +51,7 @@ export const GROWTH_COURSES: GrowthCourse[] = [
   {
     id: 2,
     title: "Counselling Booster Program",
+    area: "Counselling Psychology",
     slug: "counselling-booster-program",
     coverimage: "https://prod-s3.counselindia.com/blog/Counselling Booster Program_1736508523.jpg",
     videoUrl: "https://www.youtube.com/embed/AVWfmDKaEPE?si=magCm3bHug41UolO",
@@ -75,6 +79,7 @@ export const GROWTH_COURSES: GrowthCourse[] = [
   {
     id: 3,
     title: "The Art of Understanding Yourself",
+    area: "Self & Personality Psychology",
     slug: "the-art-of-understanding-yourself",
     coverimage:
       "https://prod-s3.counselindia.com/blog/The Art of Understanding Yourself_1736508692.jpg",
