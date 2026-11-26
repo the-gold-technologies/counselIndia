@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import BlogCard from "@/components/blog/BlogCard";
 import BlogSidebar from "@/components/blog/BlogSidebar";
-import { getBlogs, buildBlogCategories } from "@/services/blogService";
+import { getBlogs, buildBlogCategories, slugifyCategory } from "@/services/blogService";
 import type { BlogItem } from "@/types/blog";
 
 export default function BlogPage() {
@@ -12,6 +12,15 @@ export default function BlogPage() {
   const observerRef = useRef<HTMLDivElement | null>(null);
   const [blogs, setBlogs] = useState<BlogItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  // Read initial category filter from URL query (?category=...)
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const cat = params.get("category");
+    if (cat) {
+      setSelectedCategory(cat);
+    }
+  }, []);
 
   // Blogs are managed in the Admin panel (Blogs section)
   useEffect(() => {
@@ -33,6 +42,13 @@ export default function BlogPage() {
   const handleCategorySelect = (slug: string | null) => {
     setSelectedCategory(slug);
     setVisibleCount(12);
+    const url = new URL(window.location.href);
+    if (slug) {
+      url.searchParams.set("category", slug);
+    } else {
+      url.searchParams.delete("category");
+    }
+    window.history.replaceState({}, "", url.toString());
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -41,23 +57,16 @@ export default function BlogPage() {
     setVisibleCount(12);
   };
 
-  // Filter by search query AND category
+  // Filter by search query AND exact category slug
   const filteredBlogs = blogs.filter((b) => {
+    const q = searchQuery.toLowerCase().trim();
     const matchesSearch =
-      searchQuery.trim() === "" ||
-      b.title.toLowerCase().includes(searchQuery.toLowerCase().trim()) ||
-      b.category.toLowerCase().includes(searchQuery.toLowerCase().trim());
+      q === "" || b.title.toLowerCase().includes(q) || b.category.toLowerCase().includes(q);
 
     if (!selectedCategory) return matchesSearch;
 
-    const normalizedSelected = selectedCategory.toLowerCase().replace(/[^a-z0-9]/g, "");
-    const normalizedBlogCatSlug = (b.categorySlug || "").toLowerCase().replace(/[^a-z0-9]/g, "");
-    const normalizedBlogCatName = (b.category || "").toLowerCase().replace(/[^a-z0-9]/g, "");
-
-    const matchesCategory =
-      normalizedBlogCatSlug.includes(normalizedSelected) ||
-      normalizedSelected.includes(normalizedBlogCatSlug) ||
-      normalizedBlogCatName.includes(normalizedSelected);
+    const blogSlug = b.categorySlug || slugifyCategory(b.category || "");
+    const matchesCategory = blogSlug === selectedCategory;
 
     return matchesSearch && matchesCategory;
   });
@@ -181,7 +190,7 @@ export default function BlogPage() {
                   <button
                     onClick={() => {
                       setSearchQuery("");
-                      setSelectedCategory(null);
+                      handleCategorySelect(null);
                     }}
                     style={{
                       backgroundColor: "#00a651",

@@ -816,7 +816,7 @@ export default function BlogDetailContent({ blog, relatedBlogs, categories }: De
                   {categories.map((c) => (
                     <li key={c.slug} style={{ marginBottom: "8px" }}>
                       <Link
-                        href={`/blog`}
+                        href={`/blog?category=${encodeURIComponent(c.slug)}`}
                         style={{
                           fontSize: "14.5px",
                           color: "#334155",

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 export interface PodcastItem {
   id: string | number;
@@ -15,65 +15,36 @@ export interface PodcastItem {
   category?: string | null;
 }
 
-const DEFAULT_PODCASTS: PodcastItem[] = [
-  {
-    id: 1,
-    title: "The Psychology of Mental Resilience & Overcoming Anxiety",
-    youtubeUrl: "https://www.youtube.com/watch?v=0N_1mQfUe7s",
-    youtubeId: "0N_1mQfUe7s",
-    thumbnail: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=800",
-    guest: "Bobby Thakur (Founder & CEO)",
-    host: "Counsel India Podcast",
-    duration: "38 mins",
-    description:
-      "In this inspiring episode, Mr. Bobby Thakur breaks down how mental resilience is built, actionable ways to overcome daily anxiety, and the future of counseling in India.",
-    category: "Mental Wellness",
-  },
-  {
-    id: 2,
-    title: "Why India Needs 1 Million Counsellors | Career in Psychology",
-    youtubeUrl: "https://www.youtube.com/watch?v=bTqVqk7FSmY",
-    youtubeId: "bTqVqk7FSmY",
-    thumbnail: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800",
-    guest: "Senior Clinical Psychologist",
-    host: "Counsel India Podcast",
-    duration: "45 mins",
-    description:
-      "A deep-dive conversation exploring the massive demand for certified psychologists, clinical skill essentials, and how to build a high-impact private practice.",
-    category: "Career Guidance",
-  },
-  {
-    id: 3,
-    title: "Child Psychology, Parenting & Modern School Dynamics",
-    youtubeUrl: "https://www.youtube.com/watch?v=kJQP7kiw5Fk",
-    youtubeId: "kJQP7kiw5Fk",
-    thumbnail: "https://images.unsplash.com/photo-1544717305-2782549b5136?w=800",
-    guest: "Dr. Sunita Sharma",
-    host: "Counsel India Podcast",
-    duration: "32 mins",
-    description:
-      "Understanding emotional regulation in kids, handling behavioral challenges, and practical tips for parents and educators to support young minds.",
-    category: "Child Psychology",
-  },
-  {
-    id: 4,
-    title: "Decoding Emotional Intelligence & Workplace Relationships",
-    youtubeUrl: "https://www.youtube.com/watch?v=L_LUpnjgPso",
-    youtubeId: "L_LUpnjgPso",
-    thumbnail: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800",
-    guest: "Corporate Wellbeing Specialist",
-    host: "Counsel India Podcast",
-    duration: "28 mins",
-    description:
-      "How high EQ transforms leadership, reduces burnout, and improves workplace communication in fast-paced corporate environments.",
-    category: "Corporate Wellness",
-  },
-];
-
 export default function PodcastsSection() {
-  const [podcasts, setPodcasts] = useState<PodcastItem[]>(DEFAULT_PODCASTS);
+  const [podcasts, setPodcasts] = useState<PodcastItem[]>([]);
   const [activeVideoId, setActiveVideoId] = useState<string | null>(null);
 
+  // Carousel slider states
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [itemsPerView, setItemsPerView] = useState(3);
+  const [isPaused, setIsPaused] = useState(false);
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
+
+  // Responsive itemsPerView (1 / 2 / 3 cards)
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width < 640) {
+        setItemsPerView(1);
+      } else if (width < 992) {
+        setItemsPerView(2);
+      } else {
+        setItemsPerView(3);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Fetch dynamic podcasts from admin API
   useEffect(() => {
     let isMounted = true;
     const adminUrl = process.env.NEXT_PUBLIC_ADMIN_API_URL;
@@ -82,12 +53,11 @@ export default function PodcastsSection() {
     fetch(`${adminUrl}/api/podcasts`)
       .then((res) => res.json())
       .then((json) => {
-        if (!isMounted || !json.success || !Array.isArray(json.data) || json.data.length === 0)
-          return;
+        if (!isMounted || !json.success || !Array.isArray(json.data)) return;
         setPodcasts(json.data);
       })
       .catch((err) => {
-        console.warn("Could not load podcasts from admin, using defaults:", err);
+        console.warn("Could not load podcasts from admin:", err);
       });
 
     return () => {
@@ -95,12 +65,87 @@ export default function PodcastsSection() {
     };
   }, []);
 
+  // Lock body scroll and handle Escape key when video modal is open
+  useEffect(() => {
+    if (activeVideoId) {
+      document.body.style.overflow = "hidden";
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === "Escape") {
+          setActiveVideoId(null);
+        }
+      };
+      window.addEventListener("keydown", handleKeyDown);
+      return () => {
+        document.body.style.overflow = "";
+        window.removeEventListener("keydown", handleKeyDown);
+      };
+    } else {
+      document.body.style.overflow = "";
+    }
+  }, [activeVideoId]);
+
+  const maxIndex = Math.max(0, podcasts.length - itemsPerView);
+  const canGoPrev = currentIndex > 0;
+  const canGoNext = currentIndex < maxIndex;
+
+  // Keep currentIndex within bounds when viewport or data changes
+  useEffect(() => {
+    if (currentIndex > maxIndex) {
+      setCurrentIndex(maxIndex);
+    }
+  }, [currentIndex, maxIndex]);
+
+  // Auto-slide carousel
+  useEffect(() => {
+    if (maxIndex <= 0 || isPaused || activeVideoId) return;
+
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
+    }, 4000);
+
+    return () => clearInterval(timer);
+  }, [maxIndex, isPaused, activeVideoId]);
+
+  if (podcasts.length === 0) {
+    return null;
+  }
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => Math.max(0, prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => Math.min(maxIndex, prev + 1));
+  };
+
+  // Touch handlers for mobile swipe
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX.current === null || touchEndX.current === null) return;
+    const diff = touchStartX.current - touchEndX.current;
+    const minSwipeDistance = 50;
+    if (diff > minSwipeDistance && canGoNext) {
+      handleNext();
+    } else if (diff < -minSwipeDistance && canGoPrev) {
+      handlePrev();
+    }
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
   return (
-    <div className="podcasts-section py-5" style={{ backgroundColor: "#f9fafb" }}>
+    <div className="podcasts-section py-5" style={{ backgroundColor: "#f8fafc" }}>
       <div className="container custom-container">
-        {/* Header */}
-        <div className="d-flex flex-column flex-md-row align-items-md-end justify-content-between mb-4">
-          <div className="section-title mb-3 mb-md-0" data-aos="fade-up" data-aos-duration="1000">
+        {/* Header Section */}
+        <div className="d-flex flex-column flex-md-row align-items-md-end justify-content-between mb-4 gap-3">
+          <div className="section-title mb-0" data-aos="fade-up" data-aos-duration="1000">
             <h2 className="section-title__title font-size-36 fw-bold">
               Counsel India <mark>Podcasts</mark>
             </h2>
@@ -110,48 +155,68 @@ export default function PodcastsSection() {
             </p>
           </div>
 
-          <a
-            href="https://www.youtube.com/channel/UCWnALe3hLVdGJzVOuEgGoYg"
-            target="_blank"
-            rel="noreferrer"
-            className="btn btn-outline-success rounded-pill px-4 py-2 font-size-13 fw-semibold d-inline-flex align-items-center gap-2 align-self-start align-self-md-auto"
-          >
-            <i className="fab fa-youtube text-danger font-size-16"></i>
-            <span>Visit YouTube Channel</span>
-          </a>
+          <div className="d-flex align-items-center gap-3 flex-wrap">
+            <a
+              href="https://www.youtube.com/channel/UCWnALe3hLVdGJzVOuEgGoYg"
+              target="_blank"
+              rel="noreferrer"
+              className="yt-visit-btn d-inline-flex align-items-center gap-2"
+            >
+              <span className="yt-visit-icon d-inline-flex align-items-center justify-content-center">
+                <i className="fab fa-youtube"></i>
+              </span>
+              <span className="yt-visit-label">Visit YouTube Channel</span>
+            </a>
+          </div>
         </div>
 
-        {/* Podcast Cards Grid */}
-        <div className="row g-4">
-          {podcasts.map((podcast) => {
-            const videoId =
-              podcast.youtubeId ||
-              (podcast.youtubeUrl.includes("v=")
-                ? podcast.youtubeUrl.split("v=")[1]?.split("&")[0]
-                : null);
+        {/* Carousel Slider Viewport */}
+        <div
+          className="podcast-slider-viewport overflow-hidden"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          <div
+            className="podcast-slider-track d-flex"
+            style={{
+              transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)`,
+              transition: "transform 0.45s cubic-bezier(0.16, 1, 0.3, 1)",
+            }}
+          >
+            {podcasts.map((podcast) => {
+              const videoId =
+                podcast.youtubeId ||
+                (podcast.youtubeUrl.includes("v=")
+                  ? podcast.youtubeUrl.split("v=")[1]?.split("&")[0]
+                  : null);
 
-            return (
-              <div key={podcast.id} className="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+              const handleOpenVideo = () => {
+                if (videoId) {
+                  setActiveVideoId(videoId);
+                } else {
+                  window.open(podcast.youtubeUrl, "_blank");
+                }
+              };
+
+              return (
                 <div
-                  className="podcast-card h-100 bg-white rounded-3 border overflow-hidden d-flex flex-column justify-content-between"
+                  key={podcast.id}
+                  className="podcast-slider-slide"
                   style={{
-                    borderColor: "#e5e7eb",
-                    boxShadow: "0 2px 10px rgba(0, 0, 0, 0.04)",
-                    transition: "transform 0.25s ease, box-shadow 0.25s ease",
+                    flex: `0 0 ${100 / itemsPerView}%`,
+                    maxWidth: `${100 / itemsPerView}%`,
+                    padding: "0 8px",
                   }}
                 >
-                  <div>
-                    {/* Thumbnail with Play Trigger */}
+                  <div className="podcast-card h-100 d-flex flex-column">
+                    {/* Thumbnail Media Area */}
                     <div
-                      className="position-relative overflow-hidden cursor-pointer"
-                      style={{ aspectRatio: "16/9", backgroundColor: "#000" }}
-                      onClick={() => {
-                        if (videoId) {
-                          setActiveVideoId(videoId);
-                        } else {
-                          window.open(podcast.youtubeUrl, "_blank");
-                        }
-                      }}
+                      className="podcast-thumb position-relative overflow-hidden cursor-pointer"
+                      style={{ aspectRatio: "16/9", backgroundColor: "#0f172a" }}
+                      onClick={handleOpenVideo}
                     >
                       <img
                         src={
@@ -161,114 +226,133 @@ export default function PodcastsSection() {
                             : "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=800")
                         }
                         alt={podcast.title}
-                        className="w-100 h-100 object-fit-cover"
-                        style={{ transition: "transform 0.3s ease" }}
+                        className="w-100 h-100 object-fit-cover podcast-thumb-img"
                       />
 
-                      {/* Dark overlay & Play Button */}
+                      {/* Gradient overlay */}
                       <div
                         className="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center"
-                        style={{ backgroundColor: "rgba(0, 0, 0, 0.3)" }}
+                        style={{
+                          background:
+                            "linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.55) 100%)",
+                        }}
                       >
-                        <div
-                          className="play-btn rounded-circle d-flex align-items-center justify-content-center shadow"
-                          style={{
-                            width: "52px",
-                            height: "52px",
-                            backgroundColor: "#ff0000",
-                            color: "#ffffff",
-                            transition: "transform 0.2s ease",
-                          }}
-                        >
-                          <i className="fas fa-play ms-1 font-size-16"></i>
+                        <div className="play-btn rounded-circle d-flex align-items-center justify-content-center">
+                          <i
+                            className="fas fa-play ms-1 text-white"
+                            style={{ fontSize: "13px" }}
+                          ></i>
                         </div>
                       </div>
 
-                      {/* Duration Badge */}
-                      {podcast.duration && (
-                        <span
-                          className="position-absolute bottom-0 end-0 m-2 px-2 py-0.5 rounded text-white font-size-11 fw-semibold"
-                          style={{ backgroundColor: "rgba(0, 0, 0, 0.75)" }}
-                        >
-                          {podcast.duration}
-                        </span>
-                      )}
-
-                      {/* Category Badge */}
+                      {/* Category badge — top left */}
                       {podcast.category && (
                         <span
-                          className="position-absolute top-0 start-0 m-2 px-2.5 py-0.5 rounded-pill text-white font-size-10 fw-semibold"
-                          style={{ backgroundColor: "#07a64b" }}
+                          className="podcast-category-badge position-absolute text-white fw-semibold"
+                          style={{ top: "10px", left: "10px" }}
                         >
                           {podcast.category}
                         </span>
                       )}
+
+                      {/* Duration badge — bottom right */}
+                      {podcast.duration && (
+                        <span
+                          className="podcast-duration-badge position-absolute text-white fw-semibold"
+                          style={{ bottom: "10px", right: "10px" }}
+                        >
+                          <i className="far fa-clock me-1" style={{ fontSize: "9px" }}></i>
+                          {podcast.duration}
+                        </span>
+                      )}
                     </div>
 
-                    {/* Content Details */}
-                    <div className="p-3">
-                      <div className="text-muted font-size-11 fw-medium mb-1">
-                        {podcast.host || "Counsel India"}
-                      </div>
+                    {/* Card Body */}
+                    <div className="podcast-card-body d-flex flex-column flex-grow-1">
+                      {/* Channel label */}
+                      <p className="podcast-channel-label mb-2">Counsel India</p>
+
+                      {/* Episode Title */}
                       <h4
-                        className="font-size-15 fw-bold text-dark mb-2"
+                        className="podcast-title cursor-pointer mb-2"
                         style={{
-                          lineHeight: "1.35",
                           display: "-webkit-box",
                           WebkitLineClamp: 2,
                           WebkitBoxOrient: "vertical",
                           overflow: "hidden",
                         }}
+                        onClick={handleOpenVideo}
                       >
                         {podcast.title}
                       </h4>
 
+                      {/* Guest name — simple inline row */}
                       {podcast.guest && (
-                        <div className="d-flex align-items-center gap-1.5 text-secondary font-size-12 mb-2">
-                          <i className="fas fa-user-circle text-success"></i>
-                          <span className="fw-medium">{podcast.guest}</span>
+                        <div className="podcast-guest-row mb-2">
+                          <span className="guest-avatar">
+                            <i className="fas fa-user"></i>
+                          </span>
+                          <span className="podcast-guest-name">{podcast.guest}</span>
                         </div>
                       )}
 
+                      {/* Description */}
                       {podcast.description && (
                         <p
-                          className="text-muted font-size-12 mb-0"
+                          className="podcast-desc mb-0"
                           style={{
                             display: "-webkit-box",
                             WebkitLineClamp: 2,
                             WebkitBoxOrient: "vertical",
                             overflow: "hidden",
-                            lineHeight: "1.5",
                           }}
                         >
                           {podcast.description}
                         </p>
                       )}
+
+                      {/* Spacer pushes button to bottom */}
+                      <div className="flex-grow-1" style={{ minHeight: "12px" }}></div>
+
+                      {/* Watch Episode button */}
+                      <button
+                        type="button"
+                        onClick={handleOpenVideo}
+                        className="podcast-watch-btn w-100 d-flex align-items-center justify-content-center gap-2 mt-3"
+                      >
+                        <i
+                          className="fab fa-youtube podcast-btn-yt"
+                          style={{ fontSize: "15px", color: "#ff0000" }}
+                        ></i>
+                        <span>Watch Episode</span>
+                      </button>
                     </div>
                   </div>
-
-                  {/* Watch Action */}
-                  <div className="p-3 pt-0">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        if (videoId) {
-                          setActiveVideoId(videoId);
-                        } else {
-                          window.open(podcast.youtubeUrl, "_blank");
-                        }
-                      }}
-                      className="btn btn-sm btn-outline-dark w-100 rounded-pill font-size-12 fw-semibold d-flex align-items-center justify-content-center gap-1.5"
-                    >
-                      <i className="fab fa-youtube text-danger"></i>
-                      <span>Watch Episode</span>
-                    </button>
-                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
+
+        {/* Carousel Pagination Dots */}
+        {maxIndex > 0 && (
+          <div
+            className="d-flex align-items-center justify-content-center mt-4"
+            style={{ gap: "8px" }}
+          >
+            {Array.from({ length: maxIndex + 1 }).map((_, idx) => (
+              <button
+                key={idx}
+                type="button"
+                onClick={() => setCurrentIndex(idx)}
+                className={`podcast-dot border-0 p-0 cursor-pointer ${
+                  currentIndex === idx ? "active" : ""
+                }`}
+                aria-label={`Go to slide ${idx + 1}`}
+              />
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Video Modal Popup */}
@@ -276,36 +360,50 @@ export default function PodcastsSection() {
         <div
           className="position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center p-3"
           style={{
-            backgroundColor: "rgba(0, 0, 0, 0.8)",
-            zIndex: 9999,
-            backdropFilter: "blur(4px)",
+            backgroundColor: "rgba(0, 0, 0, 0.85)",
+            zIndex: 99999,
+            backdropFilter: "blur(8px)",
           }}
           onClick={() => setActiveVideoId(null)}
         >
           <div
             className="position-relative w-100"
-            style={{ maxWidth: "860px" }}
+            style={{ maxWidth: "880px" }}
             onClick={(e) => e.stopPropagation()}
           >
             <button
               type="button"
               onClick={() => setActiveVideoId(null)}
-              className="btn btn-light rounded-circle position-absolute top-0 end-0 m-n3 shadow"
-              style={{
-                width: "40px",
-                height: "40px",
-                zIndex: 10,
-                transform: "translate(15px, -15px)",
-              }}
+              className="podcast-modal-close-btn shadow"
+              aria-label="Close video"
+              title="Close (Esc)"
             >
-              <i className="fas fa-times"></i>
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M2 2L14 14M2 14L14 2"
+                  stroke="#111827"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                />
+              </svg>
             </button>
             <div
-              className="rounded-3 overflow-hidden shadow-lg"
-              style={{ aspectRatio: "16/9", backgroundColor: "#000" }}
+              className="rounded-4 overflow-hidden shadow-2xl"
+              style={{
+                aspectRatio: "16/9",
+                backgroundColor: "#000",
+                boxShadow:
+                  "0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.1)",
+              }}
             >
               <iframe
-                src={`https://www.youtube.com/embed/${activeVideoId}?autoplay=1`}
+                src={`https://www.youtube.com/embed/${activeVideoId}?autoplay=1&rel=0`}
                 title="Counsel India Podcast"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -317,13 +415,263 @@ export default function PodcastsSection() {
       )}
 
       <style jsx>{`
+        .podcast-slider-viewport {
+          position: relative;
+          padding: 8px 0;
+        }
+
+        /* ── Podcast Card ── */
+        .podcast-card {
+          background: #ffffff;
+          border: 1px solid #e5e7eb;
+          border-radius: 14px;
+          overflow: hidden;
+          transition:
+            transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+            box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+        }
+
         .podcast-card:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08) !important;
+          transform: translateY(-5px);
+          box-shadow: 0 10px 28px rgba(0, 0, 0, 0.09);
+        }
+
+        .podcast-card:hover .podcast-title {
+          color: #07a64b;
+        }
+
+        .podcast-thumb-img {
+          transition: transform 0.45s ease;
+        }
+
+        .podcast-card:hover .podcast-thumb-img {
+          transform: scale(1.05);
+        }
+
+        /* ── Play button ── */
+        .play-btn {
+          width: 46px;
+          height: 46px;
+          background-color: #ff0000;
+          box-shadow:
+            0 4px 14px rgba(255, 0, 0, 0.4),
+            0 0 0 4px rgba(255, 255, 255, 0.22);
+          transition:
+            transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+            box-shadow 0.25s ease;
         }
 
         .podcast-card:hover .play-btn {
-          transform: scale(1.15);
+          transform: scale(1.12);
+          box-shadow:
+            0 6px 20px rgba(255, 0, 0, 0.55),
+            0 0 0 6px rgba(255, 255, 255, 0.3);
+        }
+
+        /* ── Thumbnail overlay badges ── */
+        .podcast-category-badge {
+          font-size: 10px;
+          padding: 3px 10px;
+          border-radius: 20px;
+          background: rgba(7, 166, 75, 0.88);
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+        }
+
+        .podcast-duration-badge {
+          font-size: 10px;
+          padding: 2px 7px;
+          border-radius: 5px;
+          background: rgba(15, 23, 42, 0.78);
+          backdrop-filter: blur(6px);
+          -webkit-backdrop-filter: blur(6px);
+          border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        /* ── Card body ── */
+        .podcast-card-body {
+          padding: 14px 15px 15px;
+        }
+
+        .podcast-channel-label {
+          font-size: 10px;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.7px;
+          color: #9ca3af;
+          margin: 0;
+        }
+
+        .podcast-title {
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 1.45;
+          color: #111827;
+          margin: 0;
+          transition: color 0.2s ease;
+          min-height: 40px;
+        }
+
+        /* ── Guest row ── */
+        .podcast-guest-row {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        }
+
+        .guest-avatar {
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          background-color: #ecfdf5;
+          color: #07a64b;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          font-size: 9px;
+        }
+
+        .podcast-guest-name {
+          font-size: 12px;
+          color: #374151;
+          font-weight: 500;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        /* ── Description ── */
+        .podcast-desc {
+          font-size: 12px;
+          color: #6b7280;
+          line-height: 1.6;
+          margin: 0;
+        }
+
+        /* ── Watch Episode button ── */
+        .podcast-watch-btn {
+          background-color: #f9fafb;
+          border: 1px solid #e5e7eb;
+          color: #374151;
+          border-radius: 8px;
+          padding: 9px 14px;
+          font-size: 12.5px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.22s ease;
+          gap: 7px;
+        }
+
+        .podcast-watch-btn:hover {
+          background-color: #07a64b;
+          border-color: #07a64b;
+          color: #ffffff;
+          box-shadow: 0 4px 14px rgba(7, 166, 75, 0.28);
+        }
+
+        .podcast-watch-btn:hover .podcast-btn-yt {
+          color: #ffffff !important;
+        }
+
+        /* ── YouTube Visit Button ── */
+        .yt-visit-btn {
+          text-decoration: none;
+          background-color: #ff0000;
+          border-radius: 8px;
+          padding: 7px 14px 7px 8px;
+          transition:
+            background-color 0.2s ease,
+            box-shadow 0.2s ease,
+            transform 0.2s ease;
+          box-shadow: 0 3px 10px rgba(255, 0, 0, 0.2);
+        }
+
+        .yt-visit-btn:hover {
+          background-color: #cc0000;
+          box-shadow: 0 5px 14px rgba(255, 0, 0, 0.3);
+          transform: translateY(-1px);
+        }
+
+        .yt-visit-icon {
+          width: 24px;
+          height: 24px;
+          background-color: rgba(255, 255, 255, 0.18);
+          border-radius: 5px;
+          font-size: 13px;
+          color: #ffffff;
+        }
+
+        .yt-visit-label {
+          font-size: 12px;
+          font-weight: 700;
+          color: #ffffff;
+          letter-spacing: 0.1px;
+        }
+
+        .podcast-dot {
+          width: 8px;
+          height: 8px;
+          min-width: 0;
+          min-height: 0;
+          padding: 0;
+          border-radius: 9999px;
+          background-color: #d1d5db;
+          transition: all 0.25s ease;
+          flex-shrink: 0;
+        }
+
+        .podcast-dot.active {
+          width: 24px;
+          background-color: #07a64b;
+        }
+
+        .podcast-modal-close-btn {
+          position: absolute;
+          top: -46px;
+          right: 0;
+          width: 38px;
+          height: 38px;
+          min-width: 38px;
+          min-height: 38px;
+          max-width: 38px;
+          max-height: 38px;
+          padding: 0 !important;
+          margin: 0 !important;
+          border-radius: 50% !important;
+          background-color: #ffffff !important;
+          border: none !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          cursor: pointer;
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+          transition:
+            transform 0.2s ease,
+            background-color 0.2s ease;
+          z-index: 100;
+          flex-shrink: 0;
+        }
+
+        .podcast-modal-close-btn:hover {
+          background-color: #f3f4f6 !important;
+          transform: scale(1.08);
+        }
+
+        @media (max-width: 576px) {
+          .podcast-modal-close-btn {
+            top: -40px;
+            right: 4px;
+            width: 34px;
+            height: 34px;
+            min-width: 34px;
+            min-height: 34px;
+            max-width: 34px;
+            max-height: 34px;
+          }
         }
 
         .cursor-pointer {
