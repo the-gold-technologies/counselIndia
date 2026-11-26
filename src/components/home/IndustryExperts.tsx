@@ -1,6 +1,8 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import { getFeaturedCounselors } from "@/services/counselorService";
+import { CounselorItem } from "@/types/counselor";
 
 interface Expert {
   id: number;
@@ -11,8 +13,48 @@ interface Expert {
   shortAbout: string;
 }
 
+// "VARNICA KOTNALA" -> "Varnica Kotnala"; leaves mixed-case text untouched
+function tidyCase(text: string): string {
+  if (!text || text !== text.toUpperCase()) return text;
+  return text.toLowerCase().replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+function toShortAbout(about: string): string {
+  const plain = about
+    .replace(/<[^>]*>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  return plain.length > 180 ? `${plain.slice(0, 177).trimEnd()}...` : plain;
+}
+
+function featuredToExpert(c: CounselorItem): Expert {
+  return {
+    id: c.id,
+    name: tidyCase(c.name),
+    role: tidyCase(c.designation),
+    slug: c.slug,
+    image: c.image,
+    shortAbout: toShortAbout(c.about || c.education || ""),
+  };
+}
+
+const normalizeName = (name: string) => name.toLowerCase().replace(/[^a-z]/g, "");
+
 export default function IndustryExperts() {
-  const experts: Expert[] = [
+  // Active trainers marked "Show at top" in Admin → Manage Counsellors
+  const [featured, setFeatured] = useState<Expert[]>([]);
+
+  useEffect(() => {
+    let cancelled = false;
+    getFeaturedCounselors().then((list) => {
+      if (!cancelled) setFeatured(list.map(featuredToExpert));
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const staticExperts: Expert[] = [
     {
       id: 1,
       name: "Ayushi Madaan",
@@ -170,10 +212,19 @@ export default function IndustryExperts() {
     },
   ];
 
+  // Active trainers first, then the rest (without repeating anyone already featured)
+  const experts = useMemo(() => {
+    const featuredNames = new Set(featured.map((e) => normalizeName(e.name)));
+    return [...featured, ...staticExperts.filter((e) => !featuredNames.has(normalizeName(e.name)))];
+    // staticExperts is a constant list defined in this component
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [featured]);
+
   useEffect(() => {
     let swiperInstance: any = null;
     const init = () => {
       if (typeof window !== "undefined" && (window as any).Swiper) {
+        if (swiperInstance?.destroy) swiperInstance.destroy(true, true);
         swiperInstance = new (window as any).Swiper(".experts-active .swiper", {
           slidesPerView: 3,
           spaceBetween: 30,
@@ -194,7 +245,7 @@ export default function IndustryExperts() {
       clearTimeout(t);
       if (swiperInstance?.destroy) swiperInstance.destroy(true, true);
     };
-  }, []);
+  }, [experts]);
 
   return (
     <div className="edumall-box-section section-padding-01 bg-white">
@@ -213,10 +264,11 @@ export default function IndustryExperts() {
         {/* Section Title End */}
 
         <div className="experts-active swiper-dots-style">
-          <div className="swiper">
+          {/* Remount when the featured trainers load so Swiper starts on a clean DOM */}
+          <div className="swiper" key={featured.length}>
             <div className="swiper-wrapper py-3">
               {experts.map((expert) => (
-                <div className="swiper-slide h-auto" key={expert.id}>
+                <div className="swiper-slide h-auto" key={expert.slug}>
                   {/* Box Item Start */}
                   <div className="edumall-box-item-03 w-100 d-flex flex-column justify-content-between h-100">
                     <div>

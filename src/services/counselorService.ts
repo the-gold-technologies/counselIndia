@@ -55,6 +55,22 @@ export function mapDbCounselorToItem(item: DbCounselor, index = 0): CounselorIte
 }
 
 /**
+ * Fetches "Show at top" counsellors (active trainers) marked in the Admin Panel
+ */
+export async function getFeaturedCounselors(): Promise<CounselorItem[]> {
+  try {
+    const res = await fetchFromAdmin<DbCounselor[]>(
+      "/api/counsellors?status=verified&featured=true&all=true"
+    );
+    if (!res.success || !Array.isArray(res.data)) return [];
+    return res.data.map((c, idx) => mapDbCounselorToItem(c, idx));
+  } catch (error) {
+    console.error("Failed to fetch featured counsellors from Admin API:", error);
+    return [];
+  }
+}
+
+/**
  * Fetches verified counsellors from the Admin Panel API
  */
 export async function getVerifiedCounselors(search?: string): Promise<CounselorItem[]> {
