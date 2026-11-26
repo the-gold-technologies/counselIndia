@@ -141,7 +141,10 @@ export default function PodcastsSection() {
   };
 
   return (
-    <div className="podcasts-section py-5" style={{ backgroundColor: "#f8fafc" }}>
+    <div
+      className="podcasts-section section-padding-02 bg-white"
+      style={{ backgroundColor: "#f8fafc" }}
+    >
       <div className="container custom-container">
         {/* Header Section */}
         <div className="d-flex flex-column flex-md-row align-items-md-end justify-content-between mb-4 gap-3">
@@ -415,6 +418,11 @@ export default function PodcastsSection() {
       )}
 
       <style jsx>{`
+        .section-padding-02 {
+          padding-top: 50px;
+          padding-bottom: 50px;
+        }
+
         .podcast-slider-viewport {
           position: relative;
           padding: 8px 0;

@@ -177,7 +177,7 @@ export default function Accreditations() {
   };
 
   return (
-    <div className="blog-section section-padding-01 bg-white">
+    <div className="blog-section section-padding-02 bg-white">
       <div className="container custom-container">
         <div className="row gy-10 flex-row-reverse">
           <div className="col-lg-12">
@@ -256,6 +256,17 @@ export default function Accreditations() {
       </div>
 
       <style jsx>{`
+        .section-padding-02 {
+          padding-top: 50px;
+          padding-bottom: 50px;
+        }
+        .custom-container {
+          max-width: 1200px;
+          margin-left: auto;
+          margin-right: auto;
+          padding-left: 15px;
+          padding-right: 15px;
+        }
         :global(.program-active .swiper-pagination) {
           display: none !important;
         }
