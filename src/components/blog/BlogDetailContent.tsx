@@ -1,14 +1,15 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import { BlogItem, BLOG_CATEGORIES } from "./data/blogsData";
+import type { BlogCategoryItem, BlogItem } from "@/types/blog";
 
 interface DetailProps {
   blog: BlogItem;
   relatedBlogs: BlogItem[];
+  categories: BlogCategoryItem[];
 }
 
-export default function BlogDetailContent({ blog, relatedBlogs }: DetailProps) {
+export default function BlogDetailContent({ blog, relatedBlogs, categories }: DetailProps) {
   const [commentForm, setCommentForm] = useState({
     name: "",
     email: "",
@@ -70,32 +71,13 @@ export default function BlogDetailContent({ blog, relatedBlogs }: DetailProps) {
     }, 4000);
   };
 
-  // Static related posts matching exact screenshots
-  // Static related posts matching live Counsel India post
+  // Sidebar "related posts": prefer the same category, then the newest others
   const topRelatedPosts = [
-    {
-      title: "Frequently confused terms in psychology: Important differences you must know",
-      date: "27 Jun 2022",
-      image:
-        "https://prod-s3.counselindia.com/blog/1681892189WhatsAppImage2023-04-19at1.43.11PM(1).jpeg",
-      slug: "frequently-confused-terms-in-psychology-important-differences-you-must-know",
-    },
-    {
-      title:
-        "The importance of knowing the human mind: How does studying psychology benefit your life",
-      date: "11 Jul 2022",
-      image:
-        "https://prod-s3.counselindia.com/blog/1681892958WhatsAppImage2023-04-19at1.43.11PM.jpeg",
-      slug: "the-importance-of-knowing-the-human-mind-how-does-studying-psychology-benefit-your-life",
-    },
-    {
-      title: "Top 10 reasons: Why do people choose psychology as a career?",
-      date: "06 Oct 2022",
-      image:
-        "https://prod-s3.counselindia.com/blog/1681893094WhatsAppImage2023-04-19at1.43.11PM(3).jpeg",
-      slug: "top-10-reasons-why-do-people-choose-psychology-as-a-career",
-    },
-  ];
+    ...relatedBlogs.filter((b) => b.categorySlug === blog.categorySlug),
+    ...relatedBlogs.filter((b) => b.categorySlug !== blog.categorySlug),
+  ]
+    .slice(0, 3)
+    .map((b) => ({ title: b.title, date: b.date, image: b.image, slug: b.slug }));
 
   return (
     <div
@@ -308,6 +290,36 @@ export default function BlogDetailContent({ blog, relatedBlogs }: DetailProps) {
                   </>
                 )}
               </div>
+
+              {/* 4b. Tags (managed in Admin → Blogs → Tags) */}
+              {blog.tags && blog.tags.length > 0 && (
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    alignItems: "center",
+                    gap: "8px",
+                    marginBottom: "10px",
+                  }}
+                >
+                  <span style={{ fontSize: "14px", fontWeight: 700, color: "#1e293b" }}>Tags:</span>
+                  {blog.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      style={{
+                        fontSize: "13px",
+                        color: "#00a651",
+                        backgroundColor: "#ecfdf5",
+                        border: "1px solid #d1fae5",
+                        borderRadius: "20px",
+                        padding: "4px 12px",
+                      }}
+                    >
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+              )}
 
               {/* 5. Thin Divider Line */}
               <hr style={{ borderColor: "#f1f5f9", margin: "40px 0 35px" }} />
@@ -801,7 +813,7 @@ export default function BlogDetailContent({ blog, relatedBlogs }: DetailProps) {
               {/* 1. Categories List with bullets matching Screenshot 1 */}
               <div style={{ marginBottom: "35px" }}>
                 <ul style={{ listStyle: "disc", paddingLeft: "20px", margin: 0 }}>
-                  {BLOG_CATEGORIES.map((c) => (
+                  {categories.map((c) => (
                     <li key={c.slug} style={{ marginBottom: "8px" }}>
                       <Link
                         href={`/blog`}

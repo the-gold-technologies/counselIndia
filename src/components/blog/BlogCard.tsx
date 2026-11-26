@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { BlogItem } from "./data/blogsData";
+import type { BlogItem } from "@/types/blog";
 
 interface CardProps {
   blog: BlogItem;

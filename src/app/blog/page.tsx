@@ -2,13 +2,33 @@
 import React, { useState, useEffect, useRef } from "react";
 import BlogCard from "@/components/blog/BlogCard";
 import BlogSidebar from "@/components/blog/BlogSidebar";
-import { BLOGS_DATA, BLOG_CATEGORIES } from "@/components/blog/data/blogsData";
+import { getBlogs, buildBlogCategories } from "@/services/blogService";
+import type { BlogItem } from "@/types/blog";
 
 export default function BlogPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [visibleCount, setVisibleCount] = useState(12);
   const observerRef = useRef<HTMLDivElement | null>(null);
+  const [blogs, setBlogs] = useState<BlogItem[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Blogs are managed in the Admin panel (Blogs section)
+  useEffect(() => {
+    let isMounted = true;
+    getBlogs()
+      .then((data) => {
+        if (isMounted) setBlogs(data);
+      })
+      .finally(() => {
+        if (isMounted) setIsLoading(false);
+      });
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const categories = buildBlogCategories(blogs);
 
   const handleCategorySelect = (slug: string | null) => {
     setSelectedCategory(slug);
@@ -22,7 +42,7 @@ export default function BlogPage() {
   };
 
   // Filter by search query AND category
-  const filteredBlogs = BLOGS_DATA.filter((b) => {
+  const filteredBlogs = blogs.filter((b) => {
     const matchesSearch =
       searchQuery.trim() === "" ||
       b.title.toLowerCase().includes(searchQuery.toLowerCase().trim()) ||
@@ -76,7 +96,7 @@ export default function BlogPage() {
               <BlogSidebar
                 searchQuery={searchQuery}
                 onSearchChange={handleSearchChange}
-                categories={BLOG_CATEGORIES}
+                categories={categories}
                 selectedCategory={selectedCategory}
                 onCategorySelect={handleCategorySelect}
               />
@@ -84,7 +104,20 @@ export default function BlogPage() {
 
             {/* 2. Right Cards Grid (9 Cols) */}
             <div className="col-lg-9">
-              {filteredBlogs.length > 0 ? (
+              {isLoading ? (
+                <div style={{ display: "flex", justifyContent: "center", padding: "80px 0" }}>
+                  <div
+                    style={{
+                      width: "32px",
+                      height: "32px",
+                      border: "3px solid #e2e8f0",
+                      borderTopColor: "#00a651",
+                      borderRadius: "50%",
+                      animation: "spin 0.8s linear infinite",
+                    }}
+                  />
+                </div>
+              ) : filteredBlogs.length > 0 ? (
                 <>
                   <div className="row g-4">
                     {filteredBlogs.slice(0, visibleCount).map((blog) => (

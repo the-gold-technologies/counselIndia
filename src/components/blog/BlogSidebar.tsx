@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { BlogCategoryItem } from "./data/blogsData";
+import type { BlogCategoryItem } from "@/types/blog";
 
 interface SidebarProps {
   searchQuery: string;
