@@ -3,7 +3,6 @@ import React from "react";
 import HeroSection from "@/components/home/HeroSection";
 import FeaturesPillars from "@/components/home/FeaturesPillars";
 import AboutSection from "@/components/home/AboutSection";
-import Accreditations from "@/components/home/Accreditations";
 import CtaEligibility from "@/components/home/CtaEligibility";
 import StatsCounter from "@/components/home/StatsCounter";
 import AssessmentSection from "@/components/home/AssessmentSection";
@@ -32,9 +31,6 @@ export default function Home() {
 
       {/* 3. About Counsel India */}
       <AboutSection />
-
-      {/* 4. Accreditations and Associations by World’s Top and Best */}
-      <Accreditations />
 
       {/* 5. Eligibility Test CTA Banner */}
       <CtaEligibility />

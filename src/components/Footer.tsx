@@ -7,6 +7,26 @@ import CounselorLoginModal from "./auth/CounselorLoginModal";
 import { submitLead } from "@/services/leadService";
 import { getActiveCourses } from "@/services/courseService";
 
+// Accreditation / membership badges shown in the footer (same logos as the live site footer)
+const FOOTER_BADGES = [
+  {
+    src: "https://prod-s3.counselindia.com/footerlogo/gallery_foot2_1695194837.webp",
+    alt: "World Federation for Mental Health (WFMH)",
+  },
+  {
+    src: "https://prod-s3.counselindia.com/footerlogo/gallery_foot3_1695194847.webp",
+    alt: "ISO 9001:2015 Certified Company",
+  },
+  {
+    src: "https://prod-s3.counselindia.com/footerlogo/gallery_foot5_1695194868.webp",
+    alt: "National Career Service",
+  },
+  {
+    src: "https://prod-s3.counselindia.com/footerlogo/gallery_foot7_1695194890.webp",
+    alt: "International Association of Therapists (IAOTH)",
+  },
+];
+
 // Footer course directory is built from active courses in the Admin panel, grouped by category.
 // Categories listed here are shown first, in this order; any other category follows.
 const FOOTER_CATEGORY_ORDER = [
@@ -463,70 +483,31 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Row 2: Accreditation Badges & Newsletter Bar */}
+            {/* Row 2: Accreditation Badges (same as live site footer) & Newsletter Bar */}
             <div className="row align-items-center mt-4 pt-3">
               <div className="col-lg-7 col-md-6 mb-4 mb-md-0">
                 <div className="d-flex flex-wrap align-items-center gap-3">
-                  <div
-                    className="p-1 rounded-circle bg-white d-flex align-items-center justify-content-center shadow-sm"
-                    style={{ width: "56px", height: "56px" }}
-                  >
-                    <img
-                      src="/assets/images/counsel2.jpg"
-                      alt="IAOTH Accredited"
+                  {FOOTER_BADGES.map((badge) => (
+                    <div
+                      key={badge.alt}
+                      className="rounded-circle bg-white d-flex align-items-center justify-content-center"
                       style={{
-                        width: "46px",
-                        height: "46px",
-                        objectFit: "contain",
-                        borderRadius: "50%",
+                        width: "64px",
+                        height: "64px",
+                        border: "3px solid #4caf50",
+                        boxShadow: "0 4px 14px rgba(0,0,0,0.25)",
+                        overflow: "hidden",
                       }}
-                    />
-                  </div>
-                  <div
-                    className="p-1 rounded-circle bg-white d-flex align-items-center justify-content-center shadow-sm"
-                    style={{ width: "56px", height: "56px" }}
-                  >
-                    <img
-                      src="/assets/images/counsel1.jpg"
-                      alt="Skill India Accreditation"
-                      style={{
-                        width: "46px",
-                        height: "46px",
-                        objectFit: "contain",
-                        borderRadius: "50%",
-                      }}
-                    />
-                  </div>
-                  <div
-                    className="p-1 rounded-circle bg-white d-flex align-items-center justify-content-center shadow-sm"
-                    style={{ width: "56px", height: "56px" }}
-                  >
-                    <img
-                      src="/assets/images/logo/msu_logo.png"
-                      alt="Medhavi Skills University"
-                      style={{
-                        width: "46px",
-                        height: "46px",
-                        objectFit: "contain",
-                        borderRadius: "50%",
-                      }}
-                    />
-                  </div>
-                  <div
-                    className="p-1 rounded-circle bg-white d-flex align-items-center justify-content-center shadow-sm"
-                    style={{ width: "56px", height: "56px" }}
-                  >
-                    <img
-                      src="/assets/images/logo/GU_logo.png"
-                      alt="Galgotias University"
-                      style={{
-                        width: "46px",
-                        height: "46px",
-                        objectFit: "contain",
-                        borderRadius: "50%",
-                      }}
-                    />
-                  </div>
+                    >
+                      <img
+                        src={badge.src}
+                        alt={badge.alt}
+                        title={badge.alt}
+                        loading="lazy"
+                        style={{ width: "48px", height: "48px", objectFit: "contain" }}
+                      />
+                    </div>
+                  ))}
                 </div>
               </div>
 

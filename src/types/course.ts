@@ -9,6 +9,8 @@ export interface CourseItem {
   badgeText: string;
   badgeBg: string;
   category?: string;
+  /** Top-level group: CI Programs, IPA, AIU, MIT */
+  mainCategory?: string;
   rating: number;
   status?: string;
   nextBatchDate?: string;

@@ -9,6 +9,7 @@ export interface DbCourse {
   liveId?: string;
   name: string;
   category?: string;
+  mainCategory?: string | null;
   slug: string;
   coverImage?: string;
   backgroundImage?: string;
@@ -333,6 +334,7 @@ export async function getActiveCourses(search?: string, category?: string): Prom
         badgeText,
         badgeBg,
         category: c.category || "General",
+        mainCategory: c.mainCategory || "CI Programs",
         rating: Number(c.rating) || 5,
         status: c.status || "Active",
         nextBatchDate: formatBatchDate(c.nextBatchDate),

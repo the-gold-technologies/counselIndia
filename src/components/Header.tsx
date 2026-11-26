@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useSiteSettings } from "@/hooks/useSiteSettings";
 import AiCounsellingModal from "./common/AiCounsellingModal";
 import LoginModal from "./auth/LoginModal";
+import { getActiveCourses } from "@/services/courseService";
+import type { CourseItem } from "@/types/course";
 
 export interface NavCourse {
   id: number;
@@ -28,149 +30,52 @@ export interface NavCategory {
   subCategories: NavSubCategory[];
 }
 
-export const NAV_COURSE_CATEGORIES: NavCategory[] = [
-  {
-    id: 17,
-    name: "CI Programs",
-    slug: "ci-programs",
-    icon: "https://www.counselindia.com/assets/images/icon/ci_icon.png",
-    subCategories: [
-      {
-        id: 2,
-        name: "Master's Program",
-        slug: "master-s-program",
-        courses: [
-          {
-            id: 10,
-            name: "Counselling Master Course- Foundation",
-            slug: "counselling-master-course-foundation",
-            isActive: true,
-          },
-          {
-            id: 9,
-            name: "Counselling Master Course - Intermediate",
-            slug: "counselling-master-course-intermediate",
-            isActive: true,
-          },
-          {
-            id: 8,
-            name: "Counselling Master Course- Advanced",
-            slug: "counselling-master-course-advanced",
-            isActive: true,
-          },
-        ],
-      },
-      {
-        id: 37,
-        name: "Entrepreneurship Programs",
-        slug: "entrepreneurship-programs",
-        courses: [
-          {
-            id: 61,
-            name: "Business Growth Master Course",
-            slug: "business-growth-master-course",
-            isActive: true,
-          },
-          {
-            id: 56,
-            name: "Counsellor Entrepreneurship Program",
-            slug: "counsellor-entrepreneurship-program",
-            isActive: true,
-          },
-        ],
-      },
-      {
-        id: 22,
-        name: "Internships",
-        slug: "internships",
-        courses: [
-          {
-            id: 16,
-            name: "Psychology Internship (Clinical Psychology)",
-            slug: "psychology-internship-clinical-psychology",
-            isActive: true,
-          },
-        ],
-      },
-      {
-        id: 38,
-        name: "Diploma Programs",
-        slug: "diploma-programs",
-        courses: [
-          {
-            id: 45,
-            name: "Certificate in Child Psychology",
-            slug: "certificate-in-child-psychology",
-            isActive: true,
-          },
-          {
-            id: 52,
-            name: "Advanced Certificate in Child Psychology",
-            slug: "advanced-certificate-in-child-psychology",
-            isActive: true,
-          },
-          {
-            id: 57,
-            name: "PG Diploma in Counselling Psychology & Clinical Skills",
-            slug: "pg-diploma-in-counselling-psychology-clinical-skills",
-            isActive: true,
-          },
-          {
-            id: 58,
-            name: "Diploma in Child Psychology & Parenting",
-            slug: "diploma-in-child-psychology-parenting",
-            isActive: true,
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: 46,
-    name: "IPA",
-    slug: "ipa",
-    icon: "https://www.counselindia.com/assets/images/icon/VGU.png",
-    subCategories: [
-      {
-        id: 47,
-        name: "Masters Program",
-        slug: "masters-program",
-        courses: [
-          {
-            id: 64,
-            name: "Masters in Psychology",
-            slug: "masters-in-psychology-work-integrated-skill-based-program",
-            isActive: true,
-          },
-          {
-            id: 80,
-            name: "Masters In Clinical Psychology",
-            slug: "masters-in-clinical-psychology",
-            isActive: true,
-          },
-          {
-            id: 35,
-            name: "Masters in Child Psychology",
-            slug: "masters-in-child-psychology-work-integrated-skill-based-program)",
-            isActive: true,
-          },
-          {
-            id: 37,
-            name: "Masters in Industrial & Organizational Psychology",
-            slug: "masters-in-industrial-organizational-psychology",
-            isActive: true,
-          },
-          {
-            id: 11,
-            name: "Therapy Master Course",
-            slug: "therapy-master-course",
-            isActive: true,
-          },
-        ],
-      },
-    ],
-  },
-];
+// Course mega menu is built from the active courses in the Admin panel:
+// main category (CI Programs / IPA / AIU / MIT) -> sub-category -> courses.
+const MAIN_CATEGORY_ORDER = ["CI Programs", "IPA", "AIU", "MIT"];
+const MAIN_CATEGORY_ICONS: Record<string, string> = {
+  "CI Programs": "https://www.counselindia.com/assets/images/icon/ci_icon.png",
+  IPA: "https://www.counselindia.com/assets/images/icon/VGU.png",
+};
+const DEFAULT_CATEGORY_ICON = "https://www.counselindia.com/assets/images/icon/ci_icon.png";
+
+const toSlug = (v: string) =>
+  v
+    .toLowerCase()
+    .replace(/['’]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+
+export function buildNavCategories(courses: CourseItem[]): NavCategory[] {
+  const mains = new Map<string, Map<string, NavCourse[]>>();
+  courses.forEach((c, i) => {
+    const main = c.mainCategory || "CI Programs";
+    const sub = c.category || "Other Programs";
+    if (!mains.has(main)) mains.set(main, new Map());
+    const subs = mains.get(main)!;
+    if (!subs.has(sub)) subs.set(sub, []);
+    subs.get(sub)!.push({ id: i + 1, name: c.name, slug: c.slug, isActive: true });
+  });
+  const rank = (m: string) => {
+    const i = MAIN_CATEGORY_ORDER.indexOf(m);
+    return i === -1 ? MAIN_CATEGORY_ORDER.length : i;
+  };
+  let subId = 0;
+  return [...mains.entries()]
+    .sort(([a], [b]) => rank(a) - rank(b))
+    .map(([name, subs], idx) => ({
+      id: idx + 1,
+      name,
+      slug: toSlug(name),
+      icon: MAIN_CATEGORY_ICONS[name] || DEFAULT_CATEGORY_ICON,
+      subCategories: [...subs.entries()].map(([subName, list]) => ({
+        id: ++subId,
+        name: subName,
+        slug: toSlug(subName),
+        courses: list,
+      })),
+    }));
+}
 
 export default function Header() {
   const { settings } = useSiteSettings();
@@ -183,11 +88,23 @@ export default function Header() {
 
   // Desktop Mega Menu state
   const [isCoursesOpen, setIsCoursesOpen] = useState(false);
-  const [activeCategoryId, setActiveCategoryId] = useState<number>(17);
+  const [navCategories, setNavCategories] = useState<NavCategory[]>([]);
+  const [activeCategoryId, setActiveCategoryId] = useState<number>(1);
   const [activeSubCategoryId, setActiveSubCategoryId] = useState<number | null>(null);
 
   useEffect(() => {
     setMounted(true);
+  }, []);
+
+  // Course menu comes from the Admin panel (Courses → main category / sub-category)
+  useEffect(() => {
+    let alive = true;
+    getActiveCourses().then((courses) => {
+      if (alive) setNavCategories(buildNavCategories(courses));
+    });
+    return () => {
+      alive = false;
+    };
   }, []);
 
   useEffect(() => {
@@ -235,11 +152,11 @@ export default function Header() {
   };
 
   // Current active category and subcategory
-  const activeCategory =
-    NAV_COURSE_CATEGORIES.find((c) => c.id === activeCategoryId) || NAV_COURSE_CATEGORIES[0];
+  const activeCategory: NavCategory | undefined =
+    navCategories.find((c) => c.id === activeCategoryId) || navCategories[0];
 
   const activeSubCategory = activeSubCategoryId
-    ? activeCategory.subCategories.find((s) => s.id === activeSubCategoryId)
+    ? activeCategory?.subCategories.find((s) => s.id === activeSubCategoryId)
     : null;
 
   return (
@@ -311,7 +228,8 @@ export default function Header() {
                     className="position-relative"
                     onMouseEnter={() => {
                       setIsCoursesOpen(true);
-                      if (!activeCategoryId) setActiveCategoryId(17);
+                      if (!navCategories.some((c) => c.id === activeCategoryId))
+                        setActiveCategoryId(navCategories[0]?.id ?? 1);
                       setActiveSubCategoryId(null);
                     }}
                     onMouseLeave={() => {
@@ -404,7 +322,7 @@ export default function Header() {
                                 gap: "10px",
                               }}
                             >
-                              {NAV_COURSE_CATEGORIES.map((cat) => {
+                              {navCategories.map((cat) => {
                                 const isSelected = cat.id === activeCategoryId;
                                 return (
                                   <div
@@ -509,7 +427,7 @@ export default function Header() {
                                 gap: "10px",
                               }}
                             >
-                              {activeCategory.subCategories.map((sub) => {
+                              {(activeCategory?.subCategories ?? []).map((sub) => {
                                 const isSubSelected = sub.id === activeSubCategoryId;
                                 return (
                                   <div

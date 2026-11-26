@@ -8,7 +8,9 @@ import CourseBrochureModal from "@/components/course/CourseBrochureModal";
 export default function AllCoursesList() {
   const [courses, setCourses] = useState<CourseItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  // Main category (CI Programs / IPA / AIU / MIT) and sub-category filters, both from Admin data
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [selectedSub, setSelectedSub] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [enquiryCourse, setEnquiryCourse] = useState<CourseItem | null>(null);
 
@@ -37,13 +39,31 @@ export default function AllCoursesList() {
     };
   }, []);
 
+  const MAIN_ORDER = ["CI Programs", "IPA", "AIU", "MIT"];
+  const mainTabs = useMemo(() => {
+    const present = new Set(courses.map((c) => c.mainCategory || "CI Programs"));
+    const rank = (m: string) =>
+      MAIN_ORDER.includes(m) ? MAIN_ORDER.indexOf(m) : MAIN_ORDER.length;
+    return [
+      { label: "All Courses", value: "all" },
+      ...[...present].sort((a, b) => rank(a) - rank(b)).map((m) => ({ label: m, value: m })),
+    ];
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [courses]);
+
+  const subTabs = useMemo(() => {
+    const inMain = courses.filter(
+      (c) => selectedCategory === "all" || (c.mainCategory || "CI Programs") === selectedCategory
+    );
+    return [...new Set(inMain.map((c) => c.category || "Other Programs"))];
+  }, [courses, selectedCategory]);
+
   // Filtered courses
   const filteredCourses = useMemo(() => {
     return courses.filter((c) => {
       const catMatch =
-        selectedCategory === "all" ||
-        (c.category && c.category.toLowerCase().includes(selectedCategory.toLowerCase())) ||
-        (c.badgeText && c.badgeText.toLowerCase().includes(selectedCategory.toLowerCase()));
+        (selectedCategory === "all" || (c.mainCategory || "CI Programs") === selectedCategory) &&
+        (selectedSub === "all" || (c.category || "Other Programs") === selectedSub);
 
       const searchMatch =
         !searchQuery.trim() ||
@@ -53,7 +73,7 @@ export default function AllCoursesList() {
 
       return catMatch && searchMatch;
     });
-  }, [courses, selectedCategory, searchQuery]);
+  }, [courses, selectedCategory, selectedSub, searchQuery]);
 
   return (
     <div
@@ -81,17 +101,14 @@ export default function AllCoursesList() {
               flexWrap: "wrap",
             }}
           >
-            {[
-              { label: "All Courses", value: "all" },
-              { label: "Master's Programs", value: "master" },
-              { label: "Diploma Programs", value: "diploma" },
-              { label: "Entrepreneurship", value: "entrepreneur" },
-              { label: "Internships", value: "internship" },
-            ].map((tab) => (
+            {mainTabs.map((tab) => (
               <button
                 key={tab.value}
                 type="button"
-                onClick={() => setSelectedCategory(tab.value)}
+                onClick={() => {
+                  setSelectedCategory(tab.value);
+                  setSelectedSub("all");
+                }}
                 style={{
                   padding: "7px 18px",
                   borderRadius: "20px",
@@ -110,6 +127,35 @@ export default function AllCoursesList() {
               </button>
             ))}
           </div>
+
+          {/* Sub-category chips (Masters / PG Diploma / Certification / ...) */}
+          {subTabs.length > 1 && (
+            <div style={{ display: "flex", gap: "6px", flexWrap: "wrap", width: "100%", order: 3 }}>
+              {[
+                { label: "All", value: "all" },
+                ...subTabs.map((s) => ({ label: s, value: s })),
+              ].map((chip) => (
+                <button
+                  key={chip.value}
+                  type="button"
+                  onClick={() => setSelectedSub(chip.value)}
+                  style={{
+                    padding: "4px 12px",
+                    borderRadius: "14px",
+                    fontSize: "12px",
+                    fontWeight: 600,
+                    fontFamily: "'Poppins', sans-serif",
+                    border: selectedSub === chip.value ? "1px solid #00a651" : "1px solid #e2e8f0",
+                    backgroundColor: selectedSub === chip.value ? "#ecfdf5" : "#ffffff",
+                    color: selectedSub === chip.value ? "#00a651" : "#64748b",
+                    cursor: "pointer",
+                  }}
+                >
+                  {chip.label}
+                </button>
+              ))}
+            </div>
+          )}
 
           {/* Search Box */}
           <div style={{ position: "relative", minWidth: "240px", flex: "1", maxWidth: "320px" }}>
@@ -222,6 +268,7 @@ export default function AllCoursesList() {
               type="button"
               onClick={() => {
                 setSelectedCategory("all");
+                setSelectedSub("all");
                 setSearchQuery("");
               }}
               style={{
