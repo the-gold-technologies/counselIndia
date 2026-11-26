@@ -1,12 +1,18 @@
 import React from "react";
 import type { Metadata } from "next";
 import LearnersNetworkView from "@/components/learners-network/LearnersNetworkView";
+import { pageMetadata } from "@/services/pageSeoService";
 
-export const metadata: Metadata = {
+const fallbackMetadata: Metadata = {
   title: "Alumni Network | Counsel India",
   description:
     "Explore the Counsel India Alumni Network. Verify certified counseling psychology learners and practitioners across 15+ countries.",
 };
+
+// SEO from Admin → Page SEO; the values above are used when nothing is saved there.
+export function generateMetadata(): Promise<Metadata> {
+  return pageMetadata("/learners-network", fallbackMetadata);
+}
 
 export default function LearnersNetworkPage() {
   return (

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getCourseBySlug } from "@/services/courseService";
 import CourseDetailView from "@/components/course/CourseDetailView";
+import { pageMetadata } from "@/services/pageSeoService";
 
 interface PageProps {
   params: Promise<{
@@ -21,10 +22,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
-  return {
-    title: `${course.name} | Counsel India`,
-    description: (course.description || "").slice(0, 160),
-  };
+  // SEO from Admin → Page SEO (saved under /course/<slug>), else the course name & description
+  return pageMetadata(
+    `/course/${slug}`,
+    {
+      title: `${course.name} | Counsel India`,
+      description: (course.description || "").slice(0, 160),
+    },
+    { canonicalPath: `/course/${slug}` }
+  );
 }
 
 export default async function CourseDetailPage({ params }: PageProps) {

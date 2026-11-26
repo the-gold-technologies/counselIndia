@@ -1,12 +1,18 @@
 import MentalTestView from "@/components/mentalhealthtest/MentalTestView";
 import { getPersonalityEntry } from "@/services/personalityService";
 import { Metadata } from "next";
+import { pageMetadata } from "@/services/pageSeoService";
 
-export const metadata: Metadata = {
+const fallbackMetadata: Metadata = {
   title: "Quality of Life Test | Counsel India",
   description:
     "Assess your satisfaction across key life domains including health, security, relationships, and purpose.",
 };
+
+// SEO from Admin → Page SEO; the values above are used when nothing is saved there.
+export function generateMetadata(): Promise<Metadata> {
+  return pageMetadata("/mental_test2", fallbackMetadata);
+}
 
 interface PageProps {
   params: Promise<{ slug?: string[] }>;

@@ -1,7 +1,8 @@
 import { Metadata } from "next";
 import SupportView from "@/components/support/SupportView";
+import { pageMetadata } from "@/services/pageSeoService";
 
-export const metadata: Metadata = {
+const fallbackMetadata: Metadata = {
   title: "Counsel India Support Services | Counsel India",
   description:
     "Counsel India Support Services. Have questions, need course assistance, or customer support? Reach out to Counsel India's dedicated student support team.",
@@ -13,6 +14,11 @@ export const metadata: Metadata = {
     type: "website",
   },
 };
+
+// SEO from Admin → Page SEO; the values above are used when nothing is saved there.
+export function generateMetadata(): Promise<Metadata> {
+  return pageMetadata("/support", fallbackMetadata);
+}
 
 export default function SupportPage() {
   return <SupportView />;

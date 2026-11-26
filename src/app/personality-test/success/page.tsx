@@ -1,12 +1,18 @@
 import React, { Suspense } from "react";
 import { Metadata } from "next";
 import PersonalitySuccessView from "@/components/personality-test/PersonalitySuccessView";
+import { pageMetadata } from "@/services/pageSeoService";
 
-export const metadata: Metadata = {
+const fallbackMetadata: Metadata = {
   title: "Personality Assessment Result | Counsel India",
   description:
     "View your personalized psychology archetype assessment outcome, key strengths, and tailored development path.",
 };
+
+// SEO from Admin → Page SEO; the values above are used when nothing is saved there.
+export function generateMetadata(): Promise<Metadata> {
+  return pageMetadata("/personality-test/success", fallbackMetadata);
+}
 
 export default function PersonalityTestSuccessPage() {
   return (

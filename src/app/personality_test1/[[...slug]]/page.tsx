@@ -2,12 +2,18 @@ import React from "react";
 import { Metadata } from "next";
 import PersonalityTestRunner from "@/components/eligibility-test/PersonalityTestRunner";
 import { getPersonalityEntry } from "@/services/personalityService";
+import { pageMetadata } from "@/services/pageSeoService";
 
-export const metadata: Metadata = {
+const fallbackMetadata: Metadata = {
   title: "Personality Test | Eligibility Assessment | Counsel India",
   description:
     "Assess your psychological traits, decision making, and career readiness in psychology.",
 };
+
+// SEO from Admin → Page SEO; the values above are used when nothing is saved there.
+export function generateMetadata(): Promise<Metadata> {
+  return pageMetadata("/personality_test1", fallbackMetadata);
+}
 
 interface PageProps {
   params: Promise<{ slug?: string[] }>;

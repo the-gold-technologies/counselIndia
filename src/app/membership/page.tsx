@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import MembershipHero from "@/components/membership/MembershipHero";
 import MembershipIntro from "@/components/membership/MembershipIntro";
 import MembershipWhyJoin from "@/components/membership/MembershipWhyJoin";
+import { pageMetadata } from "@/services/pageSeoService";
 
 // Dynamically import below-the-fold components for instant initial page render
 const MembershipStories = dynamic(() => import("@/components/membership/MembershipStories"), {
@@ -49,11 +50,16 @@ const MembershipFaq = dynamic(() => import("@/components/membership/MembershipFa
   ssr: true,
 });
 
-export const metadata: Metadata = {
+const fallbackMetadata: Metadata = {
   title: "Counsel India Membership - Online Psychology & Emotional Wellbeing",
   description:
     "Join Counsel India's exclusive membership for personalized wellbeing routines crafted by expert psychologists starting at Rs 199/month.",
 };
+
+// SEO from Admin → Page SEO; the values above are used when nothing is saved there.
+export function generateMetadata(): Promise<Metadata> {
+  return pageMetadata("/membership", fallbackMetadata);
+}
 
 export default function MembershipPage() {
   return (

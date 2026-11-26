@@ -14,12 +14,18 @@ import AboutLifeGallery from "@/components/about/AboutLifeGallery";
 import AboutAccreditations from "@/components/about/AboutAccreditations";
 import AboutWorkCulture from "@/components/about/AboutWorkCulture";
 import AboutCareersCTA from "@/components/about/AboutCareersCTA";
+import { pageMetadata } from "@/services/pageSeoService";
 
-export const metadata: Metadata = {
+const fallbackMetadata: Metadata = {
   title: "About Us | Counsel India - Practical Psychology Learning Platform",
   description:
     "Learn more about Counsel India, our mission of 'Har Ghar Counselor', leadership visionaries, practical psychology courses, accreditations, and thriving work culture.",
 };
+
+// SEO from Admin → Page SEO; the values above are used when nothing is saved there.
+export function generateMetadata(): Promise<Metadata> {
+  return pageMetadata("/about", fallbackMetadata);
+}
 
 export default function AboutPage() {
   return (

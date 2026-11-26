@@ -8,11 +8,13 @@ import FloatingContactButtons from "@/components/FloatingContactButtons";
 import AutoCampaignPopup from "@/components/common/AutoCampaignPopup";
 import Script from "next/script";
 import { getSiteSettings } from "@/services/settingsService";
+import { defaultMetadata } from "@/services/pageSeoService";
 
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSiteSettings();
   const favicon = settings.favicon || "/favicon.png";
-  return {
+  // Site-wide defaults from Admin → Page SEO; each page overrides them with its own SEO.
+  return defaultMetadata({
     title: "Counsel India - Online Psychology Courses & Therapy",
     description:
       "Counsel India is the best place for Online psychology & psychology therapist. Get an internship in psychology from a top psychologist in India and a career as a psychologist in India.",
@@ -21,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
       shortcut: favicon,
       apple: favicon,
     },
-  };
+  });
 }
 
 export default async function RootLayout({
