@@ -22,8 +22,9 @@ export const DEFAULT_SETTINGS: SiteSettingData = {
   twitterLink: "https://twitter.com/counselindia1?lang=en",
   youtubeLink: "https://www.youtube.com/channel/UCWnALe3hLVdGJzVOuEgGoYg",
   pinterestLink: "https://in.pinterest.com/counselindia",
-  googlePlayAppLink: "https://play.google.com/store/apps/details?id=co.alicia.qcmiv&pli=1",
-  iosAppLink: "https://apps.apple.com",
+  googlePlayAppLink:
+    "https://play.google.com/store/apps/details?id=com.tagmango.internationalpsychologyassociationipa",
+  iosAppLink: "https://apps.apple.com/us/app/ipa-universe/id6749293681",
 
   contactUsMobile: "+91-8031320449",
   contactUsMail: "admissions@counselindiaservices.in",

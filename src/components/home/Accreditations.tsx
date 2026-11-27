@@ -7,6 +7,7 @@ export interface AccreditationCard {
   image: string;
   link?: string;
   alt: string;
+  title?: string;
   category?: string;
 }
 
@@ -14,8 +15,17 @@ const DEFAULT_CARDS: AccreditationCard[] = [
   {
     id: 1,
     image: "/assets/images/accredited/mit_university.jpg",
-    link: "https://mituniversitysikkim.com/",
+    link: "https://www.mituniversitysikkim.com/",
+    title: "MIT University Sikkim",
     alt: "MIT University Sikkim - Psychology Accreditation (UGC Approved)",
+    category: "ugc_university",
+  },
+  {
+    id: 7,
+    image: "",
+    link: "https://aiu.edu.in/",
+    title: "Asian International University",
+    alt: "Asian International University (AIU) - Psychology Accreditation (UGC Approved)",
     category: "ugc_university",
   },
   {
@@ -73,8 +83,9 @@ export default function Accreditations() {
           return;
         const mapped: AccreditationCard[] = json.data.map((item: any) => ({
           id: item.id,
-          image: item.logo || "/assets/images/accredited/mit_university.jpg",
+          image: item.logo || "",
           link: item.link || "https://www.counselindia.com",
+          title: item.title,
           alt: `${item.title} - ${item.subtitle || "Psychology Accreditation"}`,
           category: item.category,
         }));
@@ -203,19 +214,29 @@ export default function Accreditations() {
                         className="d-block w-100 text-decoration-none"
                       >
                         <div className="partner-logo w-100">
-                          <div className="partner-logo__logo w-100">
-                            <img
-                              src={card.image}
-                              alt={card.alt}
-                              style={{
-                                width: "100%",
-                                height: "auto",
-                                display: "block",
-                                borderRadius: "8px",
-                                boxShadow: "0 6px 25px rgba(0, 0, 0, 0.08)",
-                                transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                              }}
-                            />
+                          <div className="partner-logo__logo w-100 position-relative">
+                            {card.image ? (
+                              <img
+                                src={card.image}
+                                alt={card.alt}
+                                style={{
+                                  width: "100%",
+                                  height: "auto",
+                                  display: "block",
+                                  borderRadius: "8px",
+                                  boxShadow: "0 6px 25px rgba(0, 0, 0, 0.08)",
+                                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                                }}
+                              />
+                            ) : (
+                              // No logo uploaded yet: show the institution name instead
+                              <div className="accreditation-text-card" aria-label={card.alt}>
+                                {card.title || card.alt}
+                              </div>
+                            )}
+                            {card.category === "ugc_university" && (
+                              <span className="ugc-badge">UGC Approved</span>
+                            )}
                           </div>
                         </div>
                       </a>
@@ -277,6 +298,35 @@ export default function Accreditations() {
         .custom-dot-bullet:hover {
           background-color: #07a64b !important;
           opacity: 0.8;
+        }
+        .accreditation-text-card {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          aspect-ratio: 16 / 9;
+          padding: 20px;
+          border-radius: 8px;
+          background: #f4fbf7;
+          border: 1px solid #d5efe0;
+          box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+          color: #1d2733;
+          font-size: 20px;
+          font-weight: 700;
+          line-height: 1.3;
+        }
+        .ugc-badge {
+          position: absolute;
+          top: 10px;
+          left: 10px;
+          padding: 4px 10px;
+          border-radius: 999px;
+          background: #07a64b;
+          color: #fff;
+          font-size: 12px;
+          font-weight: 600;
+          letter-spacing: 0.02em;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
         }
         .partner-logo__logo img:hover {
           transform: translateY(-4px);

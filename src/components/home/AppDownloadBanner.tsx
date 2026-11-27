@@ -91,7 +91,7 @@ export default function AppDownloadBanner() {
 
                 <div className="download-content-02__btn d-flex flex-wrap align-items-center justify-content-center justify-content-md-start gap-3 position-relative pt-2">
                   <a
-                    href={settings.iosAppLink || "https://apps.apple.com"}
+                    href={settings.iosAppLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="ios_img_but"
@@ -105,14 +105,7 @@ export default function AppDownloadBanner() {
                     />
                   </a>
 
-                  <a
-                    href={
-                      settings.googlePlayAppLink ||
-                      "https://play.google.com/store/apps/details?id=co.alicia.qcmiv&pli=1"
-                    }
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <a href={settings.googlePlayAppLink} target="_blank" rel="noopener noreferrer">
                     <img
                       src="/assets/images/android.png"
                       alt="Get it on Google Play"
@@ -120,6 +113,23 @@ export default function AppDownloadBanner() {
                       height="52"
                       style={{ height: "48px", width: "auto", display: "block" }}
                     />
+                  </a>
+
+                  <a
+                    href="https://members.internationalpsychologyassociation.org"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-outline-primary px-4 py-2 fw-semibold rounded-2"
+                    style={{
+                      borderColor: "#07a64b",
+                      color: "#07a64b",
+                      height: "48px",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      fontSize: "15px",
+                    }}
+                  >
+                    Visit Storefront
                   </a>
 
                   <Link

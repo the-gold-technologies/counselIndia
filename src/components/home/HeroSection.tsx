@@ -122,7 +122,7 @@ export default function HeroSection() {
                 <div className="slider-search mt-8">
                   <div className="download-content-02__btn">
                     <a
-                      href={settings.iosAppLink || "https://apps.apple.com"}
+                      href={settings.iosAppLink}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="ios_img_but mr-2"
@@ -134,14 +134,7 @@ export default function HeroSection() {
                         height="52"
                       />
                     </a>
-                    <a
-                      href={
-                        settings.googlePlayAppLink ||
-                        "https://play.google.com/store/apps/details?id=co.alicia.qcmiv&pli=1"
-                      }
-                      target="_blank"
-                      rel="noreferrer"
-                    >
+                    <a href={settings.googlePlayAppLink} target="_blank" rel="noreferrer">
                       <img
                         src="/assets/images/android.png"
                         alt="Psychology App Android"
